@@ -34,7 +34,7 @@ svg.append(f'<g class="tm-fog"><ellipse cx="{fx+200}" cy="125" rx="170" ry="95"/
 svg.append('<g class="tm-rose" transform="translate(705 34)"><circle r="16"/><path d="M0 -20 L4 0 L0 20 L-4 0 Z"/><text y="-24" text-anchor="middle">N</text></g>')
 svg.append('</svg>')
 fig=('<figure class="trailmap" aria-label="The trail of the hunt">\n        '+''.join(svg)+
-     f'\n        <figcaption>Halls light up on the trail as they open. {nopen} are lit; the rest of the way is still in fog.</figcaption>\n      </figure>')
+     f'\n        <figcaption>Halls light up on the trail as they open. {['No','One','Two','Three','Four','Five','Six','Seven'][nopen]} are lit; the rest of the way is still in fog.</figcaption>\n      </figure>')
 p=pathlib.Path(__file__).resolve().parent.parent/'index.html'; s=p.read_text(encoding='utf-8')
 new=re.sub(r'<figure class="(?:halls|trailmap)".*?</figure>', fig, s, count=1, flags=re.S)
 assert new!=s or fig in s

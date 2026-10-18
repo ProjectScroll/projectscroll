@@ -1414,3 +1414,23 @@ footer.site{padding-bottom:1rem}
 @media (max-width:900px){ .ad-stamp{width:5.4rem; height:5.4rem; font-size:.56rem} }
 @media (max-width:720px){ .ad-kicker span{letter-spacing:.12em; font-size:.74rem; white-space:nowrap} .ad-kicker{gap:.5rem} }
 .svc.studio li:last-child{grid-column:auto!important}
+
+/* ===== Draft 50: review fixes ===== */
+form.tmpl select{font:inherit; font-size:1rem; color:var(--ink); background:var(--paper); border:1px solid var(--line); border-radius:4px; padding:.5rem .65rem; width:100%; min-height:2.6rem; appearance:auto}
+form.tmpl select:focus{outline:2px solid var(--rule); outline-offset:1px; border-color:transparent}
+.cipherline{overflow-wrap:anywhere; word-break:break-word; letter-spacing:.24em; line-height:1.9}
+@media (max-width:640px){
+  .otd{padding-right:5rem}
+  .btoast{left:.75rem; right:.75rem; max-width:none}
+}
+.studionote{max-width:38rem; margin:.4rem auto 1.4rem}
+/* the ticker with reduced motion: the label sits on top, the news below */
+.ticker.still{grid-template-columns:minmax(0,1fr) auto; grid-template-areas:"tag ctl" "view view" "list list"}
+.ticker.still .tk-tag{grid-area:tag} .ticker.still .tk-ctl{grid-area:ctl; background:var(--rule); border-left:0} .ticker.still .tk-view{grid-area:view} .ticker.still .tk-list{grid-area:list}
+.ticker.still .tk-ctl .tk-btn{background:transparent; color:#fff; border-color:rgba(255,255,255,.55)}
+.ticker.still .tk-track li::after{display:none}
+:root[data-theme="dark"] .ticker.still .tk-ctl{background-color:#8c2a21}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .ticker.still .tk-ctl{background:#8c2a21} }
+.ticker{box-sizing:border-box; max-width:calc(100% - 8px); min-width:0}
+@media (max-width:700px){ .ticker{max-width:100%} }
+.tk-btn[hidden]{display:none!important}
