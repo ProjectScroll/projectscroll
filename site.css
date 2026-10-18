@@ -354,3 +354,74 @@ footer.site .fine{font-size:.82rem; margin-top:.8rem}
 .pull::before{content:"\201C"; position:absolute; left:-.3rem; top:2.2rem; font-family:"Libre Caslon Display",serif; font-size:7.5rem; line-height:.8; color:var(--rule); opacity:.85}
 
 @media (max-width:640px){ .scale figcaption{font-size:.64rem; letter-spacing:.04em} .pull{padding-left:2.4rem} .pull::before{font-size:5.5rem; top:2.4rem} }
+
+/* ---------- case board tools ---------- */
+.filters{display:flex; flex-wrap:wrap; gap:.4rem; margin:0 0 .9rem}
+.filters button{font:inherit; font-size:.85rem; color:var(--ink-soft); background:none; border:1px solid var(--line); border-radius:999px; padding:.2rem .8rem; cursor:pointer; transition:background .2s, color .2s, border-color .2s}
+.filters button:hover{color:var(--ink); border-color:var(--ink-soft)}
+.filters button[aria-pressed="true"]{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+.ledger tr[hidden]{display:none!important}
+.ledger td.status-c{white-space:nowrap}
+.tools{display:inline-flex; gap:.15rem; margin-left:.35rem; vertical-align:middle}
+.tools button{font:inherit; font-size:1rem; line-height:1; width:1.7rem; height:1.7rem; display:inline-grid; place-items:center; color:var(--ink-soft); background:none; border:1px solid transparent; border-radius:4px; cursor:pointer}
+.tools button:hover{border-color:var(--line); color:var(--ink)}
+.tools svg{width:1rem; height:1rem}
+.follow[aria-pressed="true"]{color:var(--kI)}
+.seals a.mine{box-shadow:0 0 0 2px var(--paper), 0 0 0 3.5px var(--kI)}
+@media (max-width:640px){ .tools{display:flex; margin:.35rem 0 0} .ledger td.status-c{display:flex; flex-direction:column; align-items:flex-end} }
+
+/* ---------- marking quiz ---------- */
+.quiz{margin-top:1.8rem; padding:1.1rem 1.2rem 1rem; border:1px solid var(--line); border-left:3px solid var(--kI); border-radius:4px}
+.quiz h3{margin-top:0}
+.qlist{margin:0; padding-left:1.3rem}
+.qlist > li{padding:.6rem 0; border-bottom:1px dotted var(--line)}
+.qlist > li:last-child{border-bottom:0}
+.qlist > li::marker{color:var(--ink-soft); font-family:"Libre Caslon Display",serif}
+.qlist p{margin:0 0 .45rem}
+.qopts{display:flex; flex-wrap:wrap; gap:.4rem}
+.qopts .mk{border:0; cursor:pointer; font-size:.72rem; padding:.3rem .6rem; opacity:.9; transition:opacity .2s, transform .15s, box-shadow .2s}
+.qopts .mk:hover{opacity:1; transform:translateY(-1px)}
+.qopts .mk.dim{opacity:.25}
+.qopts .mk.right{box-shadow:0 0 0 2px var(--paper), 0 0 0 4px var(--ledger)}
+.qopts .mk.wrong{box-shadow:0 0 0 2px var(--paper), 0 0 0 4px var(--rule)}
+.qwhy{font-size:.93rem; color:var(--ink-soft); margin:.5rem 0 0!important}
+.qwhy b{color:var(--ink)}
+
+/* ---------- the middle plate: the doctor's window beside the quotation ---------- */
+.plate2{border-top:1px solid var(--line); max-width:calc(var(--measure) + 2rem); padding:2.6rem 0 0}
+.plate2 .pull{border-top:0; padding-top:1rem}
+.still{margin:0 auto 1rem; width:min(100%, 22rem)}
+.still img, .wide img{display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:3px; box-shadow:0 1px 2px rgba(0,0,0,.06), 0 14px 34px -16px rgba(0,0,0,.4)}
+@media (min-width:900px){
+  .plate2{display:grid; grid-template-columns:19rem minmax(0,1fr); column-gap:2.4rem; align-items:center}
+  .still{width:100%; margin:0}
+  .plate2 .pull{padding:0 0 0 3.2rem}
+}
+.wide{margin:1.8rem 0 0}
+/* images fade up gently as they scroll into view */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .still img, .wide img{animation:rise linear both; animation-timeline:view(); animation-range:entry 0% entry 60%}
+    @keyframes rise{from{opacity:0; transform:translateY(18px) scale(.985)} to{opacity:1; transform:none}}
+  }
+}
+
+/* ---------- the timeline ---------- */
+.tl-wrap{position:relative; margin:1.2rem 0 2.8rem}
+.tl{list-style:none; margin:0; padding:1.6rem .2rem .9rem; display:grid; grid-auto-flow:column; grid-auto-columns:minmax(13rem, 15rem); gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:thin; position:relative; outline:none}
+.tl:focus-visible{outline:3px solid var(--rule); outline-offset:3px}
+.tl li{scroll-snap-align:start; position:relative; padding-top:1.6rem; font-size:.93rem; line-height:1.45}
+.tl li::after{content:""; position:absolute; top:.68rem; left:.75rem; right:-1rem; border-top:1.5px solid var(--line)}
+.tl li.now::after{display:none}
+.tl li::before{content:""; position:absolute; z-index:1; top:.32rem; left:0; width:.75rem; height:.75rem; border-radius:50%; background:var(--paper); border:2px solid var(--rule)}
+.tl li.now::before{background:var(--rule); box-shadow:0 0 0 4px color-mix(in srgb, var(--rule) 25%, transparent)}
+.tl .yr{display:block; font-family:"Libre Caslon Display",serif; font-size:1.7rem; line-height:1; color:var(--ink); margin:0 0 .35rem}
+.tl p{margin:0 0 .45rem}
+.tl a{font-size:.85rem; margin-left:.2rem}
+.tl-nav{position:absolute; bottom:-2.3rem; width:2rem; height:2rem; border-radius:50%; border:1px solid var(--line); background:var(--paper); color:var(--ink); font-size:1.2rem; line-height:1; cursor:pointer}
+.tl-nav:hover{border-color:var(--ink-soft)}
+.tl-nav.prev{right:2.5rem} .tl-nav.next{right:0}
+@media (max-width:640px){ .tl-nav{display:none} }
+
+.swipe{display:none; font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--rule); margin:-.3rem 0 0}
+@media (max-width:640px){ .swipe{display:block} }

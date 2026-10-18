@@ -111,27 +111,32 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <p>Every mystery the hunt has posted, and where it stands. When someone cracks one, their name goes here and in the next post.</p>
       <div class="seals" aria-hidden="true"><a href="#case-1" title="Case 1: open">1</a><a href="#case-2" title="Case 2: open">2</a><a href="#case-3" title="Case 3: open">3</a><a href="#case-4" title="Case 4: open">4</a><a href="#case-5" title="Case 5: open">5</a><a href="#case-6" title="Case 6: open">6</a><a href="#case-7" title="Case 7: open">7</a><a href="#case-8" title="Case 8: open">8</a><a href="#case-9" title="Case 9: open">9</a><a href="#case-10" title="Case 10: open">10</a></div>
       <p class="tally"><span><b>10</b>open</span><span><b>0</b>solved</span><span>Nobody is ahead of you yet.</span></p>
+      <div class="filters" role="group" aria-label="Show cases">
+        <button type="button" data-f="all" aria-pressed="true">All</button><button type="button" data-f="h1" aria-pressed="false">First hall</button><button type="button" data-f="h2" aria-pressed="false">Second hall</button><button type="button" data-f="desk" aria-pressed="false">From the desk</button><button type="button" data-f="mine" aria-pressed="false">★ My cases <span id="minecount"></span></button>
+      </div>
+      <p class="note mine-empty" id="mineEmpty" hidden>Tap the ☆ beside any case to follow it. Your list stays on this device only.</p>
       <table class="ledger">
         <caption>Last updated 17 October 2026.</caption>
         <thead><tr><th scope="col">No.</th><th scope="col">The question</th><th scope="col">Opened</th><th scope="col">Status</th></tr></thead>
         <tbody>
-          <tr class="group"><td colspan="4">The first hall <small>The Cassopolis Hall of Comparative Ovations</small></td></tr>
-          <tr id="case-1"><td class="no">1</td><td>Did the joke lodge of 1846 ever have a real charter? Even the man who first wrote its story wasn't sure.</td><td class="hall">Oct 2026</td><td class="status-c"><span class="status">Open</span></td></tr>
-          <tr id="case-2"><td class="no">2</td><td>In 1867 the old hotel where the lodge danced was hauled across the village and turned into a mill. Where did it end up?</td><td class="hall">Oct 2026</td><td class="status-c"><span class="status">Open</span></td></tr>
+          <tr class="group" data-hall="h1"><td colspan="4">The first hall <small>The Cassopolis Hall of Comparative Ovations</small></td></tr>
+          <tr id="case-1" data-hall="h1"><td class="no">1</td><td>Did the joke lodge of 1846 ever have a real charter? Even the man who first wrote its story wasn't sure.</td><td class="hall">Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
+          <tr id="case-2" data-hall="h1"><td class="no">2</td><td>In 1867 the old hotel where the lodge danced was hauled across the village and turned into a mill. Where did it end up?</td><td class="hall">Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
 
-          <tr class="group"><td colspan="4">The second hall <small>A lake with no stream in and no stream out. Its page is behind the first hall's last door.</small></td></tr>
-          <tr id="case-3"><td class="no">3</td><td>Who was the settler who gave away forty acres of lakefront?</td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span></td></tr>
-          <tr id="case-4"><td class="no">4</td><td>Where is the 1831 parchment deed today?</td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span></td></tr>
-          <tr id="case-5"><td class="no">5</td><td>Where does the lake's water really come from?</td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span></td></tr>
-          <tr id="case-6"><td class="no">6</td><td>Where did the boulders on the shore go?</td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span></td></tr>
-          <tr id="case-7"><td class="no">7</td><td>What powered the flour mill on a lake with no stream, and where did it stand?</td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span></td></tr>
-          <tr id="case-8"><td class="no">8</td><td>Who was the doctor who took a bone home and kept it?</td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span></td></tr>
-          <tr id="case-9"><td class="no">9</td><td>What became of that bone, and of everything else taken from the grave?</td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span></td></tr>
+          <tr class="group" data-hall="h2"><td colspan="4">The second hall <small>A lake with no stream in and no stream out. Its page is behind the first hall's last door.</small></td></tr>
+          <tr id="case-3" data-hall="h2"><td class="no">3</td><td>Who was the settler who gave away forty acres of lakefront?</td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
+          <tr id="case-4" data-hall="h2"><td class="no">4</td><td>Where is the 1831 parchment deed today?</td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
+          <tr id="case-5" data-hall="h2"><td class="no">5</td><td>Where does the lake's water really come from?</td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
+          <tr id="case-6" data-hall="h2"><td class="no">6</td><td>Where did the boulders on the shore go?</td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
+          <tr id="case-7" data-hall="h2"><td class="no">7</td><td>What powered the flour mill on a lake with no stream, and where did it stand?</td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
+          <tr id="case-8" data-hall="h2"><td class="no">8</td><td>Who was the doctor who took a bone home and kept it?</td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
+          <tr id="case-9" data-hall="h2"><td class="no">9</td><td>What became of that bone, and of everything else taken from the grave?</td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
 
-          <tr class="group"><td colspan="4">From the desk <small>Practice cases, solved the same way</small></td></tr>
-          <tr id="case-10"><td class="no">10</td><td>One letter, two certificates: which middle initial is right? <a href="/notes/one-letter-two-certificates/">Read the case</a></td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span></td></tr>
+          <tr class="group" data-hall="desk"><td colspan="4">From the desk <small>Practice cases, solved the same way</small></td></tr>
+          <tr id="case-10" data-hall="desk"><td class="no">10</td><td>One letter, two certificates: which middle initial is right? <a href="/notes/one-letter-two-certificates/">Read the case</a></td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
         </tbody>
       </table>
+      <p class="copied" id="caseCopied" aria-live="polite" style="margin:.6rem 0 0"></p>
       <p class="note" style="margin-top:1rem">Post answers in the comments on <a href="https://www.facebook.com/projectscroll/">Facebook</a>, with the page you found them on. The rules above still apply: everything here is solved on paper.</p>
     </section>
 
@@ -216,15 +221,56 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
         <p>A pioneer died in Michigan in 1912. His death certificate gives no middle initial <a class="mk sm kD" href="#mk-document" title="What this mark means">Document</a>. A county history adds "Senior" to his name <a class="mk sm kC" href="#mk-county-history" title="What this mark means">County history</a>. His son's death certificate, filled in twenty-three years later, gives the father a middle initial: the son's own <a class="mk sm kD" href="#mk-document" title="What this mark means">Document</a>. The first informant was closer to the event <a class="mk sm kI" href="#mk-inference" title="What this mark means">Inference</a>. Father and son shared a name, and in 1935 someone gave the father the son's initial too <a class="mk sm kR" href="#mk-reading" title="What this mark means">Reading</a>. Or he never used a middle initial at all, which his obituary would show <a class="mk sm kH" href="#mk-hypothesis" title="What this mark means">Hypothesis</a>.</p>
         <p class="note" style="margin:0">Tap a mark to see what it means. From our case "<a href="/notes/one-letter-two-certificates/">One Letter, Two Certificates</a>." Every report you receive from us is marked the same way.</p>
       </div>
+
+      <div class="quiz" id="quiz">
+        <h3>Try marking these yourself</h3>
+        <p class="note" style="margin:0 0 .6rem">Pick the mark you would give each one. <span id="qscore" aria-live="polite"></span></p>
+        <ol class="qlist">
+          <li data-a="kP"><p>A notice in the local paper, the week after he died.</p><div class="qopts"><button type="button" class="mk kD">Document</button><button type="button" class="mk kP">Period print</button><button type="button" class="mk kT">Tradition</button></div><p class="qwhy" hidden>Period print. It was printed at the time, but by a newspaper, not by an office whose job was to record the death.</p></li>
+          <li data-a="kT"><p>"Great-aunt Ruth always said the family came from Ohio."</p><div class="qopts"><button type="button" class="mk kC">County history</button><button type="button" class="mk kT">Tradition</button><button type="button" class="mk kR">Reading</button></div><p class="qwhy" hidden>Tradition. Write it down exactly as she said it, then go and test it.</p></li>
+          <li data-a="kM"><p>A website listing every burial in a cemetery, typed up by volunteers.</p><div class="qopts"><button type="button" class="mk kD">Document</button><button type="button" class="mk kM">Compiled</button><button type="button" class="mk kF">Field</button></div><p class="qwhy" hidden>Compiled. A later hand gathered it. Wonderful for finding a name; then find the original burial record or the stone itself, on paper.</p></li>
+          <li data-a="kC"><p>A biography of a doctor in a county history of the 1890s, quoting his obituary.</p><div class="qopts"><button type="button" class="mk kP">Period print</button><button type="button" class="mk kC">County history</button><button type="button" class="mk kM">Compiled</button></div><p class="qwhy" hidden>County history. And notice the obituary inside it: if that newspaper survives, it is a period print, and stronger.</p></li>
+          <li data-a="kI"><p>"The first certificate was filed a month after he died, so its informant was closer to the event."</p><div class="qopts"><button type="button" class="mk kI">Inference</button><button type="button" class="mk kR">Reading</button><button type="button" class="mk kH">Hypothesis</button></div><p class="qwhy" hidden>Inference. It follows directly from the dates on the records themselves.</p></li>
+        </ol>
+      </div>
     </section>
 
+    <div class="plate2">
+      <figure class="still">
+        <img src="/img/doctors-window.jpg" width="800" height="1000" loading="lazy" decoding="async" alt="An old country doctor's things on a sunlit windowsill above a lake: a brass balance scale, glass medicine bottles, a black leather bag with a stethoscope, a pocket watch, a rolled map and a uniform cap.">
+      </figure>
     <blockquote class="pull">
       <p>…the distant echoes, as it were, of the glacial age, indicating in whispers the time when the dominion of water was complete over all this country.”</p>
       <cite>A county historian on the lakes of southwest Michigan, 1906</cite>
     </blockquote>
+    </div>
+
+    <section id="timeline">
+      <p class="part">Part VI</p>
+      <h2>On the record, so far</h2>
+      <p>Every date the hunt has touched, in order, with the mark each one carries. Scroll along it like a scroll.</p>
+      <p class="swipe" aria-hidden="true">Swipe sideways →</p>
+      <div class="tl-wrap">
+        <button type="button" class="tl-nav prev" aria-label="Earlier">‹</button>
+        <ol class="tl" id="tl" tabindex="0" aria-label="Timeline">
+          <li><span class="yr">1831</span><p>The village is laid out. Broadway and State are already on the plat.</p><span class="mk sm kD">Document</span></li>
+          <li><span class="yr">1846</span><p>In the spring, a joke secret society is founded in a village hotel.</p><span class="mk sm kC">County history</span> <a href="#case-1">Case 1</a></li>
+          <li><span class="yr">1849</span><p>A small-town doctor sets out for the California gold fields, and writes it down.</p><span class="mk sm kC">County history</span></li>
+          <li><span class="yr">1852</span><p>12 June: the Masons hold their first meeting under the same hotel roof.</p><span class="mk sm kC">County history</span></li>
+          <li><span class="yr">1860</span><p>A Philadelphia wall map engraves one word on the hotel's block: HOTEL.</p><span class="mk sm kD">Document</span></li>
+          <li><span class="yr">1867</span><p>The old hotel is hauled across the village and turned into a mill. A new hotel rises on its ground.</p><span class="mk sm kC">County history</span> <a href="#case-2">Case 2</a></li>
+          <li><span class="yr">1882</span><p>The county history records that "many people" believe a lake is fed by a river from Lake Superior.</p><span class="mk sm kC">County history</span> <span class="mk sm kT">Tradition</span></li>
+          <li><span class="yr">1906</span><p>A county historian hears in the lakes "the distant echoes … of the glacial age."</p><span class="mk sm kC">County history</span></li>
+          <li><span class="yr">1912</span><p>A pioneer dies. His death certificate gives no middle initial.</p><span class="mk sm kD">Document</span> <a href="#case-10">Case 10</a></li>
+          <li><span class="yr">1935</span><p>His son's certificate gives the father an initial: the son's own.</p><span class="mk sm kD">Document</span></li>
+          <li class="now"><span class="yr">Now</span><p>The scroll is open. The next date on it may be one you find.</p><a href="#cases">The case board</a></li>
+        </ol>
+        <button type="button" class="tl-nav next" aria-label="Later">›</button>
+      </div>
+    </section>
 
     <section id="notes" class="notes">
-      <p class="part">Part VI</p>
+      <p class="part">Part VII</p>
       <h2>From the field notes</h2>
       <p>The first lesson from the desk: what to do when two old records tell you two different things.</p>
       <ol>
@@ -236,6 +282,9 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <p class="note">From "One Letter, Two Certificates." <a href="/notes/one-letter-two-certificates/">Read the whole case</a> · <a href="/notes/">All field notes</a></p>
       <p><a class="btn dl" href="/worksheet/project-scroll-hunters-worksheet.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The hunter's worksheet (PDF, one page)</a></p>
 
+      <figure class="wide">
+        <img src="/img/two-certificates.jpg" width="1400" height="787" loading="lazy" decoding="async" alt="Two old death certificates side by side on a wooden desk, a brass magnifying glass resting on one, with reading glasses, a fountain pen and old books.">
+      </figure>
       <div class="try" id="try">
         <h3>Try it yourself</h3>
         <p>A pioneer died in 1912. Two records name his father. Which would you trust for his middle initial?</p>
@@ -248,7 +297,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     </section>
 
     <section id="faq">
-      <p class="part">Part VII</p>
+      <p class="part">Part VIII</p>
       <h2>Questions</h2>
       <details class="faq"><summary>Does the hunt cost anything?</summary><p>No. The hunt is free to follow and free to play. All you need is curiosity and, now and then, a library card.</p></details>
       <details class="faq"><summary>Do I have to go anywhere?</summary><p>No. Every clue is solved on paper: in books, maps and records, many of them free online. The hunt never sends anyone onto private land or near a grave.</p></details>
