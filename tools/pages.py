@@ -43,8 +43,8 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="alternate" type="application/rss+xml" title="Project Scroll field notes" href="/feed.xml">
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<script>try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.css?v=47">
+<script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
+<link rel="stylesheet" href="/site.css?v=48">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
@@ -84,7 +84,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline" aria-label="A line written in code">ESP HZCO TD SPHRLR. DLJ TE TY JZFC MLORP MZZV.</p>
   </footer>
 </div>
-<script src="/site.js?v=47" defer></script>
+<script src="/site.js?v=48" defer></script>
 </body>
 </html>
 '''

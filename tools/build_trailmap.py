@@ -18,7 +18,7 @@ def path(pts):
     return d
 lit=[i for i,h in enumerate(HALLS) if h['open']]; last=max(lit)
 nopen=len(lit)
-svg=[f'<svg viewBox="0 0 740 250" role="img" aria-labelledby="tmT tmD"><title id="tmT">The trail of the hunt</title><desc id="tmD">{nopen} halls are open and lit on the trail. The rest of the trail lies in fog until each hall opens.</desc>',
+svg=[f'<svg viewBox="0 0 740 250" role="group" aria-labelledby="tmT tmD"><title id="tmT">The trail of the hunt</title><desc id="tmD">{nopen} halls are open and lit on the trail. The rest of the trail lies in fog until each hall opens.</desc>',
  '<defs><radialGradient id="tmFog"><stop offset="0" class="tm-f0"/><stop offset=".55" class="tm-f1"/><stop offset="1" class="tm-f2"/></radialGradient></defs>',
  f'<path class="tm-trail" d="{path(PTS)}"/>',
  f'<path class="tm-walked" d="{path(PTS[:last+1])}"/>']

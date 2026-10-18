@@ -2,7 +2,7 @@
   "use strict";
   let root=document.documentElement, btn=document.getElementById('theme');
   function themeNow(){ return root.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); }
-  function label(){ btn.textContent = themeNow()==='dark' ? 'Light' : 'Dark'; }
+  function label(){ btn.textContent = themeNow()==='dark' ? 'Light' : 'Dark'; btn.setAttribute('aria-pressed', String(themeNow()==='dark')); }
   label();
   btn.addEventListener('click', function(){
     let next = themeNow()==='dark' ? 'light' : 'dark';
@@ -15,6 +15,7 @@
   if (menu && bar){
     menu.addEventListener('click', function(){ let o=bar.classList.toggle('open'); menu.setAttribute('aria-expanded', o?'true':'false'); menu.textContent=o?'Close':'Menu'; });
     bar.querySelectorAll('nav a').forEach(function(a){ a.addEventListener('click', function(){ bar.classList.remove('open'); menu.setAttribute('aria-expanded','false'); menu.textContent='Menu'; }); });
+    document.addEventListener('keydown', function(e){ if (e.key==='Escape' && bar.classList.contains('open')){ bar.classList.remove('open'); menu.setAttribute('aria-expanded','false'); menu.textContent='Menu'; menu.focus(); } });
   }
 
   /* the asterisk leads to its footnote */
@@ -179,7 +180,8 @@
       rail.addEventListener('pointerup', function(){ drag=false; });
       rail.addEventListener('pointercancel', function(){ drag=false; });
     }
-    t.addEventListener('scroll', edges, {passive:true}); window.addEventListener('resize', edges);
+    let eq=0; const edgesSoon=function(){ if (!eq) eq=requestAnimationFrame(function(){ eq=0; edges(); }); };
+    t.addEventListener('scroll', edgesSoon, {passive:true}); window.addEventListener('resize', edgesSoon, {passive:true});
     document.querySelectorAll('.tl-filters button').forEach(function(b){ b.addEventListener('click', function(){ setTimeout(build,0); }); });
     build();
   })();
@@ -485,7 +487,9 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
   let toastEl=null, tq=[], showing=false;
   const showNext=function(){
     if (showing || !tq.length) return; showing=true; const id=tq.shift();
-    if (!toastEl){ toastEl=document.createElement('div'); toastEl.className='btoast'; toastEl.setAttribute('role','status'); toastEl.setAttribute('aria-live','polite'); document.body.appendChild(toastEl); }
+    if (!toastEl){ toastEl=document.createElement('div'); toastEl.className='btoast'; toastEl.setAttribute('role','status'); toastEl.setAttribute('aria-live','polite'); document.body.appendChild(toastEl);
+      /* a new live region must be in the page before it is filled, or screen readers miss the first announcement */
+      showing=false; tq.unshift(id); requestAnimationFrame(function(){ requestAnimationFrame(showNext); }); return; }
     toastEl.innerHTML='<svg viewBox="0 0 40 40" aria-hidden="true"><path class="tin" d="M20 2l4.7 9.6 10.5 1.5-7.6 7.4 1.8 10.5L20 26l-9.4 5 1.8-10.5-7.6-7.4 10.5-1.5z"/><circle cx="20" cy="17.5" r="4.2" class="boss"/></svg><span><small>Badge earned</small><b></b><a href="/badges/">Your badges</a></span>';
     toastEl.querySelector('b').textContent=name(id);
     requestAnimationFrame(function(){ toastEl.classList.add('on'); });
@@ -575,6 +579,8 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
 /* ---------- the trail map: a soft hewgag note when a lit hall is tapped ---------- */
 (function(){
   const halls=document.querySelectorAll('.trailmap .tm-hall'); if (!halls.length) return; let ac=null;
+  const tmap=document.querySelector('.trailmap');
+  if (tmap && 'IntersectionObserver' in window) new IntersectionObserver(function(es){ tmap.classList.toggle('inview', es[0].isIntersecting); }).observe(tmap); else if (tmap) tmap.classList.add('inview');
   const horn=function(){
     try{ ac=ac||new (window.AudioContext||window.webkitAudioContext)(); const t=ac.currentTime, g=ac.createGain(), lp=ac.createBiquadFilter();
       lp.type='lowpass'; lp.frequency.setValueAtTime(900,t); lp.frequency.linearRampToValueAtTime(1600,t+.25); lp.frequency.linearRampToValueAtTime(700,t+1.1);
@@ -636,9 +642,10 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
   /* moving the pointer through the margins stirs the leaves near it, like a breath of wind */
   let gx=-999, gy=-999, gvx=0;
   if (kind!=='fly') addEventListener('pointermove', function(e){ if (e.pointerType!=='mouse') return; gvx=Math.max(-12,Math.min(12,e.clientX-gx)); gx=e.clientX; gy=e.clientY; }, {passive:true});
-  let run=true; document.addEventListener('visibilitychange', function(){ run=!document.hidden; if (run) requestAnimationFrame(tick); });
+  let raf=0;
+  const loop=function(t){ tick(t); raf=requestAnimationFrame(loop); };
+  document.addEventListener('visibilitychange', function(){ cancelAnimationFrame(raf); raf=0; if (!document.hidden) raf=requestAnimationFrame(loop); });
   const tick=function(t){
-    if (!run) return;
     x.clearRect(0,0,W,H);
     gvx*=.9;
     P.forEach(function(p){
@@ -655,9 +662,8 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
       else { x.globalAlpha=.8; x.fillStyle=p.c; x.beginPath(); x.ellipse(0,0,p.s,p.s*.55,0,0,6.28); x.fill(); }
       x.restore();
     });
-    requestAnimationFrame(tick);
   };
-  requestAnimationFrame(tick);
+  raf=requestAnimationFrame(loop);
 })();
 
 /* lantern: a warm glow that follows the pointer on computers */
@@ -666,7 +672,7 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
     let off=false; try{ off=localStorage.getItem('ps-lantern')==='off'; }catch(e){}
     const l=document.createElement('div'); l.className='lantern'; l.setAttribute('aria-hidden','true'); document.body.appendChild(l);
     let x=0, y=0, raf=0;
-    const paint=function(){ raf=0; l.style.setProperty('--lx', x+'px'); l.style.setProperty('--ly', y+'px'); };
+    const paint=function(){ raf=0; l.style.transform='translate3d('+(x-260)+'px,'+(y-260)+'px,0)'; };
     document.addEventListener('pointermove', function(e){ if (e.pointerType!=='mouse') return; x=e.clientX; y=e.clientY; if (!off) l.classList.add('on'); if (!raf) raf=requestAnimationFrame(paint); }, {passive:true});
     document.documentElement.addEventListener('mouseleave', function(){ l.classList.remove('on'); });
     const btn=document.getElementById('lanternBtn');

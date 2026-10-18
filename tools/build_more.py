@@ -237,7 +237,7 @@ badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       document.getElementById('charterform').addEventListener('submit', function(e){ e.preventDefault();
         const nm=document.getElementById('cname').value.trim(); document.getElementById('chName').textContent=nm||'________________________';
         document.getElementById('chDate').textContent='Given this '+new Date().toLocaleDateString('en-US',{day:'numeric',month:'long',year:'numeric'});
-        document.body.classList.add('printing-charter'); window.print(); setTimeout(function(){ document.body.classList.remove('printing-charter'); }, 500); });
+        document.body.classList.add('printing-charter'); addEventListener('afterprint', function(){ document.body.classList.remove('printing-charter'); }, {once:true}); window.print(); });
       document.getElementById('breset').addEventListener('click', function(){ window.psResetBadges(); draw(); });
     });
     </script>

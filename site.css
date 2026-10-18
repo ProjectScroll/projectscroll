@@ -197,6 +197,9 @@ footer{max-width:var(--measure); padding-top:2.4rem; font-size:.9rem; color:var(
 @media (max-width:880px){
   .bar nav{display:none}
   .theme{margin-left:auto}
+  /* without scripts the menu button cannot open, so show the links as a row that scrolls sideways */
+  html:not(.js) .bar nav{display:flex; overflow-x:auto; gap:.9rem; font-size:.9rem; white-space:nowrap; min-width:0; flex:1}
+  html:not(.js) .menu, html:not(.js) .searchbtn, html:not(.js) .theme{display:none!important}
 }
 @media (max-width:640px){
   .bar-in{padding-left:2.1rem}
@@ -323,22 +326,6 @@ footer.site .fine{font-size:.82rem; margin-top:.8rem}
 .scale figcaption span:last-child{flex:3; padding-left:.4rem}
 .scale .ends{display:flex; justify-content:space-between; font-size:.76rem; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--line); margin-top:.3rem; padding-top:.2rem}
 .scale .ends span:first-child::before{content:"← "} .scale .ends span:last-child::after{content:" →"}
-
-/* ---------- the halls track ---------- */
-.halls{margin:1.6rem 0 1.2rem}
-.halls ol{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:.6rem; position:relative}
-.halls ol::before{content:""; position:absolute; left:1.3rem; right:12%; top:1.3rem; border-top:1.5px dotted var(--line)}
-.halls li{position:relative; display:flex; flex-direction:column; gap:.1rem; font-size:.92rem; line-height:1.35}
-.halls .seal{width:2.6rem; height:2.6rem; border-radius:50%; display:grid; place-items:center; font-family:"Libre Caslon Display",serif; font-size:1.05rem; margin-bottom:.45rem; position:relative; z-index:1}
-.halls .open .seal{background:var(--rule); color:#fff; box-shadow:0 0 0 4px var(--paper), 0 0 0 5px color-mix(in srgb, var(--rule) 40%, transparent)}
-.halls .locked .seal{background:var(--paper); color:var(--ink-soft); border:1.5px dashed var(--line); box-shadow:0 0 0 4px var(--paper)}
-.halls .seal svg{width:1.1rem; height:1.1rem}
-.halls small{color:var(--ink-soft); font-size:.82rem}
-.halls .locked b{color:var(--ink-soft); font-weight:400}
-@media (max-width:640px){
-  .halls ol{grid-template-columns:1fr 1fr; row-gap:1.1rem}
-  .halls ol::before{display:none}
-}
 
 /* ---------- case seals ---------- */
 .seals{display:flex; flex-wrap:wrap; gap:.4rem; margin:.2rem 0 .9rem}
@@ -491,7 +478,7 @@ main > section:nth-of-type(even):not(.contact){max-width:calc(48rem + 3rem)!impo
 .sheet::before{left:1.6rem}
 @supports (animation-timeline: scroll()){ @media (prefers-reduced-motion: no-preference){ .sheet::after{left:max(1.6rem, calc((100vw - (48rem + 6rem)) / 2 + 1.6rem))} } }
 /* tables, cards and timelines fill the column exactly */
-table.ledger, .cards, .cases, ul.svc, ol.promises, .rulecards, dl.marks, .tl-wrap, .worked, .quiz, .try, .getbox, .start, .halls{width:100%; max-width:100%}
+table.ledger, .cards, .cases, ul.svc, ol.promises, .rulecards, dl.marks, .tl-wrap, .worked, .quiz, .try, .getbox, .start{width:100%; max-width:100%}
 .wide, .still{margin-left:auto; margin-right:auto}
 
 /* ---------- the rules, without icons: numbered in small red capitals ---------- */
@@ -544,7 +531,7 @@ main.page{max-width:var(--col); margin-left:auto; margin-right:auto}
 @media (hover:none){ .lens-tip::after{content:" Press and slide your finger."} }
 
 /* 4 wax seals for solved cases */
-.seals a.solved, .halls .solved .seal{color:#fff; border:0; background:radial-gradient(circle at 35% 30%, #d3554a 0 18%, #a3261a 45%, #7a1810 100%);
+.seals a.solved{color:#fff; border:0; background:radial-gradient(circle at 35% 30%, #d3554a 0 18%, #a3261a 45%, #7a1810 100%);
   box-shadow:0 0 0 2px color-mix(in srgb,#a3261a 50%,transparent), inset 0 -2px 3px rgba(0,0,0,.35), 0 2px 4px rgba(0,0,0,.3); animation:stamp .5s cubic-bezier(.3,1.6,.5,1) both}
 @keyframes stamp{from{transform:scale(1.8) rotate(-12deg); opacity:0} to{transform:none; opacity:1}}
 .status.solved{background:radial-gradient(circle at 35% 30%, #c94a3f, #8f1f14); border-color:#8f1f14; color:#fff}
@@ -552,13 +539,6 @@ main.page{max-width:var(--col); margin-left:auto; margin-right:auto}
 /* 5 lamplight in dark mode */
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) body::after{content:""; position:fixed; inset:0; pointer-events:none; z-index:0; background:radial-gradient(60rem 42rem at 50% 32%, rgba(255,196,120,.07), transparent 70%)} }
 :root[data-theme="dark"] body::after{content:""; position:fixed; inset:0; pointer-events:none; z-index:0; background:radial-gradient(60rem 42rem at 50% 32%, rgba(255,196,120,.07), transparent 70%)}
-
-/* 6 halls: progress line + note on the sealed hall */
-.halls ol::after{content:""; position:absolute; left:1.3rem; top:1.3rem; width:calc(25% + .2rem); border-top:2px solid var(--rule)}
-.halls li[data-tip]{cursor:help}
-.halls li[data-tip]::after{content:attr(data-tip); position:absolute; left:0; top:-2.4rem; white-space:nowrap; font-size:.78rem; background:var(--ink); color:var(--paper); padding:.25rem .55rem; border-radius:3px; opacity:0; transform:translateY(4px); transition:opacity .2s, transform .2s; pointer-events:none; z-index:3}
-.halls li[data-tip]:hover::after, .halls li[data-tip]:focus::after{opacity:1; transform:none}
-@media (max-width:640px){ .halls ol::after{display:none} }
 
 /* 7 case board: meter, hints, share */
 .meter{height:6px; border-radius:999px; background:color-mix(in srgb, var(--line) 70%, transparent); max-width:22rem; margin:0 auto .7rem; overflow:hidden}
@@ -653,6 +633,7 @@ dialog.search::backdrop{background:rgba(20,24,28,.45); backdrop-filter:blur(3px)
 .search-in{display:flex; gap:.6rem; align-items:center; padding:.8rem 1rem; border-bottom:1px solid var(--line)}
 .search-in input{flex:1; font:inherit; font-size:1.1rem; border:0; background:none; color:var(--ink); padding:.3rem 0}
 .search-in input:focus{outline:none}
+.search-in input:focus-visible{outline:2px solid var(--rule); outline-offset:2px}
 .search-res{list-style:none; margin:0; padding:.3rem 0; overflow:auto; max-height:60vh}
 .search-res li a{display:block; padding:.6rem 1rem; text-decoration:none; color:inherit; border-bottom:1px dotted var(--line)}
 .search-res li a:hover, .search-res li a:focus{background:color-mix(in srgb, var(--rule) 7%, transparent)}
@@ -880,7 +861,7 @@ label.btn{cursor:pointer}
   .tl .yr{display:inline!important; font-size:1.1rem!important; margin-right:.4rem!important}
   .tl p{display:inline!important}
   details.faq p{display:block!important}
-  .mk, .mstrip span, .status, .halls .open .seal, .bar9 a{-webkit-print-color-adjust:exact!important; print-color-adjust:exact!important}
+  .mk, .mstrip span, .status, .bar9 a{-webkit-print-color-adjust:exact!important; print-color-adjust:exact!important}
   a{color:inherit!important}
   footer.site nav{display:none!important}
   footer.site .fine::after{content:" · projectscroll.com"}
@@ -981,9 +962,6 @@ details.faq[open]{background:color-mix(in srgb, var(--paper) 60%, transparent)}
 .promo .kicker{font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--rule); margin:0 0 .35rem}
 .promo-h{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:clamp(1.7rem, 3.6vw, 2.3rem); line-height:1.15; margin:0 0 .7rem; text-wrap:balance}
 .promo-lede{max-width:44rem; margin:0 auto 1.1rem; text-wrap:balance}
-.promo-scale{display:flex; gap:3px; height:.55rem; max-width:26rem; margin:0 auto 1rem}
-.promo-scale span{flex:1; border-radius:2px} .promo-scale i{flex:0 0 .6rem}
-.promo-scale .kD{background:var(--kD)} .promo-scale .kP{background:var(--kP)} .promo-scale .kC{background:var(--kC)} .promo-scale .kM{background:var(--kM)} .promo-scale .kT{background:var(--kT)} .promo-scale .kF{background:var(--kF)} .promo-scale .kI{background:var(--kI)} .promo-scale .kR{background:var(--kR)} .promo-scale .kH{background:var(--kH)}
 .promo-sample{max-width:40rem; margin:0 auto 1.2rem; padding:.8rem 1rem; background:var(--paper); border:1px dashed var(--line); border-radius:4px; font-size:.97rem; line-height:1.8; text-align:left}
 .promo-ctas{display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem; margin:0}
 @media (max-width:640px){ .promo{padding:1.3rem 1rem 1.2rem} .promo-ctas .btn{flex:1 1 100%; text-align:center} }
@@ -1037,13 +1015,13 @@ footer.site nav a:hover{color:var(--rule); border-bottom-color:var(--rule)}
 @media print{ .explore .ic, .clue-ic{display:none!important} }
 
 /* ---------- the lantern: warm light that follows the pointer ---------- */
-.lantern{position:fixed; inset:0; pointer-events:none; z-index:90; opacity:0; transition:opacity .5s ease;
-  background:radial-gradient(circle 210px at var(--lx,-500px) var(--ly,-500px), rgba(255,186,60,.34) 0%, rgba(255,170,50,.17) 36%, rgba(255,150,40,.05) 62%, transparent 76%);
-  mix-blend-mode:multiply}
+.lantern{position:fixed; left:0; top:0; width:520px; height:520px; pointer-events:none; z-index:90; opacity:0; transition:opacity .5s ease; will-change:transform; border-radius:50%;
+  background:radial-gradient(circle closest-side, rgba(255,186,60,.34) 0%, rgba(255,170,50,.17) 36%, rgba(255,150,40,.05) 62%, transparent 76%);
+  mix-blend-mode:multiply; transform:translate3d(-600px,-600px,0)}
 .lantern.on{opacity:1}
-:root[data-theme="dark"] .lantern{mix-blend-mode:screen; background:radial-gradient(circle 230px at var(--lx,-500px) var(--ly,-500px), rgba(255,196,90,.17) 0%, rgba(255,170,60,.08) 40%, rgba(255,150,40,.025) 64%, transparent 76%)}
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .lantern{mix-blend-mode:screen; background:radial-gradient(circle 230px at var(--lx,-500px) var(--ly,-500px), rgba(255,196,90,.17) 0%, rgba(255,170,60,.08) 40%, rgba(255,150,40,.025) 64%, transparent 76%)} }
-@media (prefers-reduced-motion: no-preference){ .lantern.on{animation:flicker 4.5s ease-in-out infinite} }
+:root[data-theme="dark"] .lantern{mix-blend-mode:screen; background:radial-gradient(circle closest-side, rgba(255,196,90,.17) 0%, rgba(255,170,60,.08) 40%, rgba(255,150,40,.025) 64%, transparent 76%)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .lantern{mix-blend-mode:screen; background:radial-gradient(circle closest-side, rgba(255,196,90,.17) 0%, rgba(255,170,60,.08) 40%, rgba(255,150,40,.025) 64%, transparent 76%)} }
+@media (prefers-reduced-motion: no-preference){ .lantern.on{animation:flicker 4.5s ease-in-out 3} }
 @keyframes flicker{0%,100%{opacity:1} 22%{opacity:.88} 41%{opacity:.97} 63%{opacity:.84} 80%{opacity:.95}}
 .lanternbtn{background:none; border:0; padding:0; font:inherit; font-size:.85rem; color:var(--ink-soft); text-decoration:underline; text-underline-offset:3px; cursor:pointer}
 .lanternbtn:hover{color:var(--rule)}
@@ -1217,6 +1195,7 @@ footer.site{padding-bottom:1rem}
 @media (max-width:640px){ .trailmap{overflow-x:auto; -webkit-overflow-scrolling:touch} .trailmap svg{min-width:620px} .trailmap figcaption{position:sticky; left:0} }
 .trailmap figcaption{font-size:.85rem; color:var(--ink-soft); text-align:center; margin:.3rem 0 .4rem}
 @media (prefers-reduced-motion: no-preference){ .tm-walked{animation:march 9s linear infinite} @keyframes march{to{stroke-dashoffset:-130}} }
+.trailmap:not(.inview) .tm-walked{animation-play-state:paused}
 /* the coded line at the foot of every page */
 .cipherline{margin:.6rem 0 0; font-family:"Libre Caslon Display",serif; font-size:.7rem; letter-spacing:.32em; color:var(--ink-soft); opacity:1; user-select:all}
 .cipherline:hover{color:var(--rule)}
