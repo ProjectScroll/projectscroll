@@ -1055,3 +1055,10 @@ html{scrollbar-color:color-mix(in srgb, var(--ink-soft) 55%, transparent) transp
 .secfig a.figlink:hover img, .secfig:hover img{transform:translateY(-2px)}
 @media print{ .lantern, .lanternbtn{display:none!important} }
 @media print{ html.reveal main > section > *, html.reveal .plate2 > *{opacity:1!important; transform:none!important} .hero h1{clip-path:none!important; animation:none!important} .lens, .lens-tip, .checker, .weigh, .tl-filters, .faqbar, .meter, #openMsgr{display:none!important} body::after{display:none!important} }
+
+/* Draft 38: tools line on case pages */
+.casetools{display:flex; flex-wrap:wrap; align-items:center; gap:.35rem .5rem; margin:1rem 0 1.4rem; font-size:.9rem}
+.casetools span{color:var(--ink-soft); margin-right:.2rem}
+.casetools a{text-decoration:none; border:1px solid var(--line); border-radius:999px; padding:.15rem .7rem; color:var(--ink); background:var(--paper)}
+.casetools a:hover{border-color:var(--rule); color:var(--rule)}
+@media print{ .casetools{display:none!important} }

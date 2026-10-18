@@ -24,6 +24,7 @@ for c in C:
       <li><b>Get named.</b> The first solver with the page to prove it is named in the next post and on this board.</li>
     </ol>
     <p class="note">Everything is solved on paper. Never dig, never go near a grave, and never set foot on anyone’s land.</p>
+    <p class="casetools"><span>Tools for the hunt:</span> <a href="/records/">Where the records are</a> <a href="/glossary/">The glossary</a> <a href="/toolkit/">The toolkit</a> <a href="/guide/old-handwriting/">Reading the old hand</a> <a href="/worksheet/project-scroll-hunters-worksheet.pdf">The hunter’s worksheet (PDF)</a></p>
     <div class="notebook" id="casenote" data-case="{n}">
       <h2>Your notebook for this case</h2>
       <p class="note">Jot down what you find and where. It is saved only on this device, and nobody else can see it. <a href="/notebook/">All your notes</a></p>

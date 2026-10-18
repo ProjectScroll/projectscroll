@@ -147,4 +147,32 @@ about = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
 page('about/index.html', 'About · Project Scroll',
      'Project Scroll is independent historical research: a history hunt anyone can play and a research desk anyone can hire, where every clue is true.', about,
      og='https://projectscroll.com/og/about.jpg')
-print('records, glossary, about built')
+
+# ------------------------------------------------------------------ privacy
+priv = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
+    <p class="kicker">Privacy</p>
+    <h1>What this site keeps</h1>
+    <p class="lede">Almost nothing, and none of it leaves your device. Project Scroll has no ads, no analytics, no tracking and no accounts.</p>
+    <h2>Kept in your own browser</h2>
+    <p>A few things are remembered so the site works the way you left it. They are stored in your browser on this device, nobody else can see them, and we never receive them.</p>
+    <ul class="dis">
+      <li><b>Light or dark.</b> The page colors you chose.</li>
+      <li><b>The lantern.</b> Whether you put it out.</li>
+      <li><b>The opening flourish.</b> That you have already seen the ink draw itself on your first visit, so it does not replay.</li>
+      <li><b>Your followed cases.</b> The cases you starred on the case board.</li>
+      <li><b>Your case notes.</b> Anything you write in a case notebook. <a href="/notebook/">See all your notes</a>.</li>
+      <li><b>Your drafts.</b> What you type into the message form and the family-history and family-legend forms, so it survives a reload. Nothing is sent from those forms; you copy the text and send it yourself.</li>
+    </ul>
+    <p>To clear all of it, clear this site’s data in your browser settings.</p>
+    <h2>Sent to other sites</h2>
+    <ul class="dis">
+      <li><b>The map room.</b> The 1860 wall map is shown straight from the Library of Congress, so your browser asks the Library’s image server (tile.loc.gov) for the pieces of the map you look at.</li>
+      <li><b>Facebook.</b> Links to Project Scroll’s Facebook page and Messenger simply take you there. Nothing from Facebook is loaded on these pages until you click.</li>
+    </ul>
+    <h2>When you write to us</h2>
+    <p>Messages reach us through Facebook, under Facebook’s own privacy terms. What you tell us about your family is used to answer your question and for nothing else.</p>
+    <p class="center"><a class="btn" href="/">Back to Project Scroll</a> <a class="btn" href="/#contact">Get in touch</a></p>
+'''
+page('privacy/index.html', 'Privacy · Project Scroll',
+     'What projectscroll.com keeps: no ads, no analytics, no tracking. A few settings and notes stay in your own browser.', priv)
+print('records, glossary, about, privacy built')
