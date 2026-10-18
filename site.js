@@ -320,6 +320,9 @@
     'probate':['Probate','The court process that settles a dead person’s estate. Probate files can hold wills, inventories, heirs’ names and signatures.'],
     'informant':['Informant','The person who answered the questions on a certificate. Their memory, not the dead person’s, is what the form records.'],
     'county histories':['County histories','Thick volumes published from the 1870s to the 1910s, mostly from what local families supplied. Rich, but rarely checked.'],
+    'survey maps':['Survey maps','Maps drawn from the government land surveys that first measured the country into townships and square-mile sections, with the lakes, streams and early roads the surveyors found.'],
+    'death certificates':['Death certificates','The form filed when someone died: date, place, cause, and often the parents’ names. Michigan required them from 1897. The answers came from an informant, not the person who died.'],
+    'forgotten newspapers':['Forgotten newspapers','Small-town papers of the 1800s and early 1900s, many surviving only on microfilm or in a few libraries. Their notices, gossip and obituaries often record what no official paper did.'],
     'field notes':['Field notes','The notebooks surveyors kept as they walked the land: distances, trees, streams and what they saw, line by line.'],
     'census':['Census','The national head-count taken every ten years. Old schedules list every person in a household, with ages and birthplaces.'],
     'transcription':['Transcription','A typed copy of an old handwritten record. Useful, but every copy can add mistakes, so check the original when you can.']
@@ -331,16 +334,23 @@
       const p=n.parentElement; if (!p || p.closest('h1,h2,h3,button,a,summary,.mk,label,script,style,.gl,.tl .yr,.mstrip,.promo-marks,figcaption,[popover]')) return NodeFilter.FILTER_REJECT; return NodeFilter.FILTER_ACCEPT; }});
     const nodes=[]; while (walker.nextNode()) nodes.push(walker.currentNode);
     nodes.forEach(function(n){
-      Object.keys(GL).forEach(function(term){
-        if (used[term] || !n.parentNode) return;
-        const re=new RegExp('\\b('+term+')\\b','i'), m=n.nodeValue.match(re); if (!m) return;
-        used[term]=true; gi++;
-        const id='gl'+gi, after=n.splitText(m.index); after.nodeValue=after.nodeValue.slice(m[0].length);
+      let cur=n;
+      while (cur && cur.parentNode){
+        let best=null;
+        Object.keys(GL).forEach(function(term){
+          if (used[term]) return;
+          const m=cur.nodeValue.match(new RegExp('\\b('+term+')\\b','i'));
+          if (m && (!best || m.index<best.m.index)) best={term:term, m:m};
+        });
+        if (!best) break;
+        const term=best.term, m=best.m; used[term]=true; gi++;
+        const id='gl'+gi, after=cur.splitText(m.index); after.nodeValue=after.nodeValue.slice(m[0].length);
         const b=document.createElement('button'); b.type='button'; b.className='gl'; b.textContent=m[0]; b.setAttribute('popovertarget',id); b.setAttribute('aria-label',m[0]+': what this means');
         const pop=document.createElement('div'); pop.id=id; pop.setAttribute('popover',''); pop.className='gloss'; pop.innerHTML='<b></b>'; pop.querySelector('b').textContent=GL[term][0]; pop.appendChild(document.createTextNode(GL[term][1]));
-        n.parentNode.insertBefore(b, after); document.body.appendChild(pop);
+        cur.parentNode.insertBefore(b, after); document.body.appendChild(pop);
         pop.addEventListener('toggle', function(e){ if (e.newState==='open'){ const r=b.getBoundingClientRect(), w=pop.offsetWidth; pop.style.left=Math.max(8,Math.min(innerWidth-w-8, r.left+r.width/2-w/2))+'px'; const below=r.bottom+8; pop.style.top=(below+pop.offsetHeight>innerHeight? r.top-pop.offsetHeight-8 : below)+'px'; } });
-      });
+        cur=after;
+      }
     });
   }
 
