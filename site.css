@@ -194,7 +194,7 @@ details.faq p{margin:.5rem 0 0 1.1rem}
 .contact{background:var(--paper-2); margin:1rem 0 0; padding:2rem 1.2rem; border-top:0; max-width:calc(var(--measure) + 2rem)}
 .contact .addr{font-size:1.35rem; font-family:"Libre Caslon Display",serif}
 footer{max-width:var(--measure); padding-top:2.4rem; font-size:.9rem; color:var(--ink-soft)}
-@media (max-width:1080px){
+@media (max-width:880px){
   .bar nav{display:none}
   .theme{margin-left:auto}
 }
@@ -282,7 +282,7 @@ dl.marks dd i{display:block; color:var(--ink-soft); font-size:.9rem; margin-top:
 
 /* ---------- mobile menu ---------- */
 .menu{display:none; font:inherit; font-size:.9rem; color:var(--ink-soft); background:none; border:1px solid var(--line); border-radius:999px; padding:.2rem .8rem; cursor:pointer; margin-left:auto}
-@media (max-width:1080px){
+@media (max-width:880px){
   .menu{display:inline-block}
   .theme{margin-left:0}
   .bar.open nav{display:flex; flex-direction:column; gap:0; position:absolute; left:0; right:0; top:100%;
@@ -479,6 +479,17 @@ table.ledger, .cards, .cases, ul.svc, ol.promises, .rulecards, dl.marks, .tl-wra
 .promo-marks .mk{font-size:.7rem; padding:.22rem .5rem; text-decoration:none}
 .promo-marks .mk:hover{filter:brightness(1.12)}
 
+/* ---------- the top bar shares the page column: logo at its left edge, Light/Dark at its right ---------- */
+.bar-in{max-width:calc(48rem + 5.5rem)!important; padding:.6rem 2.75rem!important; gap:1rem}
+.bar nav{gap:1.05rem; font-size:.93rem}
+.mark{font-size:1.22rem}
+@media (max-width:640px){ .bar-in{padding:.6rem 1rem .6rem 2.1rem!important} }
+/* inner pages (field notes, 404) sit on the same centred column */
+main.page{max-width:var(--col); margin-left:auto; margin-right:auto}
+
+.verdict:empty{display:none}
+.try{padding-bottom:1.1rem}
+
 @media print{
   @page{margin:.6in}
   .bar,.theme,.menu,.src,.skip,body::before,.sheet::before,.sheet::after,.tools,.filters,.tl-nav,.swipe,.seals,#copy,.copied,.ctas,.start .btn,.dl{display:none!important}
@@ -609,3 +620,5 @@ details.faq[open]{background:color-mix(in srgb, var(--paper) 60%, transparent)}
 @media (max-width:640px){ .promo{padding:1.3rem 1rem 1.2rem} .promo-ctas .btn{flex:1 1 100%; text-align:center} }
 @media print{ .promo{break-inside:avoid; background:#fff!important} .promo-ctas{display:none!important} .promo::before{-webkit-print-color-adjust:exact; print-color-adjust:exact} }
 .clue{max-width:calc(var(--measure) + 12rem)}
+
+@media print{ #msgform{display:none!important} .contact{break-inside:avoid} }

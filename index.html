@@ -29,7 +29,7 @@
 /* apply a saved theme before first paint, so there is no flash */
 try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}
 </script>
-<link rel="stylesheet" href="/site.css?v=20">
+<link rel="stylesheet" href="/site.css?v=21">
 </head>
 <body>
 <!--
@@ -52,7 +52,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       Project Scroll
     </a>
     <nav aria-label="Sections" id="sitenav">
-      <a href="#hunt">The hunt</a><a href="#cases">Case board</a><a href="#services">Research</a><a href="#method">How we work</a><a href="#marks">Evidence</a><a href="#faq">Questions</a><a href="#contact">Contact</a>
+      <a href="#hunt">Hunt</a><a href="#cases">Cases</a><a href="#services">Research</a><a href="#method">Method</a><a href="#marks">Evidence</a><a href="#faq">Questions</a><a href="#contact">Contact</a>
     </nav>
     <button class="menu" type="button" id="menu" aria-expanded="false" aria-controls="sitenav">Menu</button>
     <button class="theme" type="button" aria-label="Switch between light and dark" id="theme">Dark</button>
@@ -121,7 +121,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     <section id="cases">
       <p class="part">Part II</p>
       <h2>The case board</h2>
-      <p class="intro">Every mystery the hunt has posted, and where it stands. When someone cracks one, their name goes here and in the next post.</p>
+      <p class="intro">Every mystery the hunt has posted, and where each one stands. Crack one, and your name goes here and in the next post.</p>
       <div class="seals" aria-hidden="true"><a href="#case-1" title="Case 1: open">1</a><a href="#case-2" title="Case 2: open">2</a><a href="#case-3" title="Case 3: open">3</a><a href="#case-4" title="Case 4: open">4</a><a href="#case-5" title="Case 5: open">5</a><a href="#case-6" title="Case 6: open">6</a><a href="#case-7" title="Case 7: open">7</a><a href="#case-8" title="Case 8: open">8</a><a href="#case-9" title="Case 9: open">9</a><a href="#case-10" title="Case 10: open">10</a></div>
       <p class="tally"><span><b>10</b>open</span><span><b>0</b>solved</span><span>Nobody is ahead of you yet.</span></p>
       <div class="filters" role="group" aria-label="Show cases">
@@ -156,7 +156,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     <section id="services">
       <p class="part">Part III</p>
       <h2>Bring us your mystery</h2>
-      <p class="intro">A lost ancestor, a forgotten place, an heirloom no one can explain. If the answer was ever written down, we will look for it, and tell you honestly what we find.</p>
+      <p class="intro">Some questions have waited a hundred years for someone to look properly. If the answer was ever written down, we will look for it, and tell you honestly what we find.</p>
       <h3 class="sub">Cases from our desk</h3>
       <div class="cases">
         <p>A pioneer whose death certificate and his son’s can’t agree on his middle initial.<button class="src" type="button" popovertarget="s1" aria-label="Source for this case">source</button></p>
@@ -269,7 +269,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     <section id="timeline">
       <p class="part">Part VI</p>
       <h2>On the record, so far</h2>
-      <p class="intro">Every date the hunt has touched, in order, with the mark each one carries. Scroll along it like a scroll.</p>
+      <p class="intro">Every date the hunt has touched, in order, with the mark each one carries. Read it left to right, like a scroll.</p>
       <p class="swipe" aria-hidden="true">Swipe sideways →</p>
       <div class="tl-wrap">
         <button type="button" class="tl-nav prev" aria-label="Earlier">‹</button>
@@ -334,7 +334,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
 
     <section id="contact" class="contact">
       <h2>Start with a question</h2>
-      <p class="intro">Send a message to <a href="https://www.facebook.com/projectscroll/">Project Scroll on Facebook</a> with the name, the place and the rough dates, plus whatever the family says. A photo of any paper you already have helps. We’ll write back with an honest read on what the records are likely to show, before you commit to anything.</p>
+      <p class="intro">Tell us the name, the place and the rough dates, and whatever the family says. A photo of any paper you already have helps. We’ll write back on <a href="https://www.facebook.com/projectscroll/">Facebook</a> with an honest read on what the records are likely to show, before you commit to anything.</p>
       <p class="ctas" style="margin:0 0 .4rem"><a class="btn primary" href="https://m.me/projectscroll">Message us on Facebook</a><a class="btn" href="https://www.facebook.com/projectscroll/">Visit the page</a></p>
       <form class="tmpl" id="msgform" onsubmit="return false">
         <p class="note center" style="margin:0 0 .6rem">Fill in what you can, copy it, and paste it into your Facebook message. Nothing is sent from this page.</p>
@@ -366,6 +366,6 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
 </div>
 
 <a class="totop" href="#top" aria-label="Back to the top" hidden>↑</a>
-<script src="/site.js?v=20" defer></script>
+<script src="/site.js?v=21" defer></script>
 </body>
 </html>
