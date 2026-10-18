@@ -730,6 +730,27 @@ label.btn{cursor:pointer}
 .mapstat{font-size:.85rem; color:var(--ink-soft); margin-left:.4rem}
 .osd{height:min(78vh, 52rem); background:#2a2620; border:1px solid var(--line); border-radius:6px; overflow:hidden}
 @media print{ .maproom{display:none!important} }
+.tnpromo{margin:.6rem 0 0; font-size:1rem}
+.tnpromo a{display:inline-block; padding:.45rem .8rem; border:1px solid var(--rule); border-radius:4px; text-decoration:none}
+.tnpromo a:hover{background:var(--rule); color:#fff}
+.tnbar .seg{display:inline-flex}
+.tnbar .seg .btn{border-radius:0}
+.tnbar .seg .btn:first-child{border-radius:4px 0 0 4px}
+.tnbar .seg .btn:last-child{border-radius:0 4px 4px 0; margin-left:-1px}
+.tnbar .btn[aria-pressed="true"]{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+.tnrange{display:inline-flex; align-items:center; gap:.45rem; font-size:.85rem; color:var(--ink-soft); margin:0 .3rem}
+.tnrange[hidden]{display:none}
+.tnrange input{width:min(12rem, 40vw); accent-color:var(--rule)}
+.tnwrap{position:relative}
+.tnmap.leaflet-container{background:var(--paper); font:inherit}
+.tnmap .leaflet-control-attribution{font-size:.7rem}
+.tnswipe{position:absolute; top:0; bottom:0; left:50%; width:0; border-left:2px solid var(--rule); z-index:500; pointer-events:none}
+.tnswipe[hidden]{display:none}
+.tnswipe::before, .tnswipe::after{position:absolute; top:.6rem; padding:.15rem .5rem; font-size:.8rem; background:var(--paper); color:var(--ink); border:1px solid var(--line); border-radius:3px; white-space:nowrap}
+.tnswipe::before{content:"1860"; right:.6rem}
+.tnswipe::after{content:"Today"; left:.6rem}
+.tnhandle{pointer-events:auto; position:absolute; top:50%; left:-1.35rem; width:2.6rem; height:2.6rem; margin-top:-1.3rem; border-radius:50%; border:2px solid var(--rule); background:var(--paper); color:var(--rule); font-size:.8rem; cursor:ew-resize; touch-action:none; box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.tnhandle:focus-visible{outline:3px solid var(--ink); outline-offset:2px}
 
 @media print{ .listen, .explore{display:none!important} .gl{text-decoration:none} }
 

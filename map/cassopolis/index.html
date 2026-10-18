@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cassopolis, 1860 and today · Project Scroll</title>
+<meta name="description" content="The 1860 town plan of Cassopolis, Michigan, laid over today’s streets. Fade between them or compare side by side.">
+<link rel="canonical" href="https://projectscroll.com/map/cassopolis/">
+<meta name="theme-color" content="#E8ECE6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151B21" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Cassopolis, 1860 and today · Project Scroll">
+<meta property="og:description" content="The 1860 town plan of Cassopolis, Michigan, laid over today’s streets. Fade between them or compare side by side.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Project Scroll">
+<meta property="og:url" content="https://projectscroll.com/map/cassopolis/">
+<meta property="og:image" content="https://projectscroll.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/icons/icon-32.png" type="image/png" sizes="32x32">
+<link rel="alternate icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="Project Scroll field notes" href="/feed.xml">
+<link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script>try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="/site.css?v=27">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+<header class="bar">
+  <div class="bar-in">
+    <a class="mark" href="/" aria-label="Project Scroll home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="4" width="18" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 4v24" stroke="#B3362B" stroke-width="2"/><path d="M14 11h7M14 15h7M14 19h5" stroke="currentColor" stroke-width="1.6"/></svg>
+      Project Scroll
+    </a>
+    <nav aria-label="Sections" id="sitenav">
+      <a href="/#hunt">Hunt</a><a href="/#cases">Cases</a><a href="/#services">Research</a><a href="/notes/">Field notes</a><a href="/#contact">Contact</a>
+    </nav>
+    <button class="searchbtn" type="button" id="searchBtn" aria-label="Search the site" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <button class="menu" type="button" id="menu" aria-expanded="false" aria-controls="sitenav">Menu</button>
+    <button class="theme" type="button" aria-label="Switch between light and dark" id="theme">Dark</button>
+  </div>
+</header>
+<dialog class="search" id="searchDlg" aria-label="Search the site">
+  <form method="dialog" class="search-in" onsubmit="return false"><input type="search" id="searchQ" placeholder="Search cases, field notes, guides…" autocomplete="off" aria-label="Search"><button type="button" class="linkbtn" id="searchClose">Close</button></form>
+  <ol class="search-res" id="searchRes" aria-live="polite"></ol>
+  <p class="note search-tip">Tip: press <kbd>/</kbd> anywhere to search.</p>
+</dialog>
+<div class="sheet" id="top">
+  <main id="main" class="page">
+    <p class="crumb"><a href="/map/">← The map room</a></p>
+    <p class="kicker">Then and now</p>
+    <h1>Cassopolis, 1860 and today</h1>
+    <p class="lede" style="font-size:1.15rem">The 1860 wall map has a little plan of Cassopolis, the county seat, with every block, lot and street the engraver knew. Here it is laid over the streets of today. Fade between the two, or drag a line across and see one beside the other.</p>
+    <p class="note">Drag to move, scroll or pinch to zoom. The old plan was lined up by hand on street corners that still carry their 1860 names, so it is close but not exact: expect it to be out by a few yards in places.</p>
+  <div class="maproom">
+    <div class="mapbar tnbar">
+      <span class="seg" role="group" aria-label="How to compare">
+        <button type="button" class="btn" id="tnFade" aria-pressed="true">Fade</button><button type="button" class="btn" id="tnSwipe" aria-pressed="false">Side by side</button>
+      </span>
+      <label class="tnrange" id="tnFadeBox"><span>Today</span><input type="range" id="tnOp" min="0" max="100" value="75" aria-label="How much of the 1860 plan to show"><span>1860</span></label>
+      <button type="button" class="btn" id="tnHome">Back to town</button>
+      <span class="mapstat" id="tnStat" aria-live="polite">Loading…</span>
+    </div>
+    <div class="tnwrap">
+      <div id="tnMap" class="osd tnmap" role="application" aria-label="The 1860 plan of Cassopolis laid over a modern street map"></div>
+      <div class="tnswipe" id="tnLine" hidden><button type="button" class="tnhandle" id="tnHandle" aria-label="Drag to move the dividing line. Left and right arrow keys also move it."><span aria-hidden="true">◂ ▸</span></button></div>
+    </div>
+  </div>
+    <h2>Things to look for</h2>
+    <ul class="dis">
+      <li><b>State Street and Broadway.</b> The heart of the 1860 town. Find the <b>Court House</b> and the <b>Jail</b> just north of State, then fade to today.</li>
+      <li><b>Timber Street</b>, between O’Keefe and East. Look for it on today’s map.</li>
+      <li>The <b>Union School</b> at the top of the plan, beside the State Road.</li>
+      <li>The <b>Tannery</b> and the <b>Cemetery</b> on the west side of town, and the State Road running north.</li>
+      <li>The <b>names on the lots</b>: Tompkins, Martin, Histed, Read, Jones and the rest. Each one is a lead to a deed.</li>
+    </ul>
+    <h2>How this was made</h2>
+    <p>The plan was cut from the Library of Congress copy of the wall map. Nineteen street corners that appear on both maps (Broadway, Rowland, O’Keefe and East, where they meet York, State, Jefferson, Water and South) were matched by measurement, and the plan was scaled to fit them. On average the old corners land within about five yards of the new ones.</p>
+    <p class="note">One label has been painted out of this copy so that it does not spoil the hunt. Nothing else has been changed.</p>
+    <p class="note">1860 plan: <i>Map of the Counties of Cass, Van Buren and Berrien, Michigan</i> (Philadelphia: Geil, Harley &amp; Siverd, 1860), inset “Cassopolis, County Seat of Cass Co.” Library of Congress, Geography and Map Division, g4113c.la000324. Public domain. Today’s streets: © OpenStreetMap contributors, © CARTO.</p>
+    <link rel="stylesheet" href="/vendor/leaflet-1.9.4/leaflet.css?v=1">
+    <script src="/vendor/leaflet-1.9.4/leaflet.js?v=1"></script>
+    <script>
+    (function(){ "use strict";
+      const stat=document.getElementById('tnStat');
+      if (!window.L){ stat.textContent='The map could not load. Try refreshing the page.'; return; }
+      const B=L.latLngBounds([41.9061,-86.018103],[41.917772,-86.007168]);
+      const map=L.map('tnMap',{zoomSnap:0.25, minZoom:13, maxZoom:19, maxBounds:B.pad(1.5), maxBoundsViscosity:0.8, scrollWheelZoom:true});
+      const home=()=>map.fitBounds(B.pad(-0.08));
+      home();
+      const att='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
+      const tiles=k=>L.tileLayer('https://{s}.basemaps.cartocdn.com/'+k+'/{z}/{x}/{y}{r}.png',{subdomains:'abcd', maxZoom:20, attribution:att});
+      const light=tiles('light_nolabels'), dark=tiles('dark_nolabels');
+      const isDark=()=>{ const t=document.documentElement.dataset.theme; return t ? t==='dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
+      let base=null;
+      const setBase=()=>{ const want=isDark()?dark:light; if(base===want) return; if(base) map.removeLayer(base); base=want.addTo(map); base.bringToBack(); };
+      setBase();
+      new MutationObserver(setBase).observe(document.documentElement,{attributes:true, attributeFilter:['data-theme']});
+      matchMedia('(prefers-color-scheme: dark)').addEventListener('change',setBase);
+      const old=L.imageOverlay('/img/cass1860.webp',B,{opacity:0.75, alt:'1860 town plan of Cassopolis', className:'tnold'}).addTo(map);
+      old.on('load',()=>{ stat.textContent='1860 plan placed over today’s streets.'; clip(); });
+      old.on('error',()=>{ stat.textContent='The 1860 plan did not load. Try refreshing the page.'; });
+      const op=document.getElementById('tnOp');
+      op.addEventListener('input',()=>old.setOpacity(op.value/100));
+      document.getElementById('tnHome').onclick=home;
+      // side by side
+      const wrap=document.querySelector('.tnwrap'), line=document.getElementById('tnLine'), handle=document.getElementById('tnHandle');
+      const bFade=document.getElementById('tnFade'), bSwipe=document.getElementById('tnSwipe'), fadeBox=document.getElementById('tnFadeBox');
+      let swipe=false, frac=0.5;
+      function clip(){
+        const img=old.getElement(); if(!img) return;
+        if(!swipe){ img.style.clipPath=''; return; }
+        const w=wrap.getBoundingClientRect(), r=img.getBoundingClientRect();
+        const x=w.left+w.width*frac;
+        const cut=Math.min(100,Math.max(0,r.right-x)/(r.width||1)*100);
+        img.style.clipPath='inset(0 '+cut.toFixed(3)+'% 0 0)';
+        line.style.left=(frac*100)+'%';
+      }
+      function mode(s){
+        swipe=s; bFade.setAttribute('aria-pressed',String(!s)); bSwipe.setAttribute('aria-pressed',String(s));
+        line.hidden=!s; fadeBox.hidden=s; old.setOpacity(s?1:op.value/100); clip();
+      }
+      bFade.onclick=()=>mode(false); bSwipe.onclick=()=>mode(true);
+      map.on('move zoom zoomend resize viewreset',clip);
+      map.on('zoomanim',()=>requestAnimationFrame(function f(t0){ clip(); if(map._animatingZoom) requestAnimationFrame(f); }));
+      let drag=false;
+      const at=e=>{ const w=wrap.getBoundingClientRect(); frac=Math.min(0.98,Math.max(0.02,(e.clientX-w.left)/w.width)); clip(); };
+      handle.addEventListener('pointerdown',e=>{ drag=true; handle.setPointerCapture(e.pointerId); map.dragging.disable(); e.preventDefault(); });
+      handle.addEventListener('pointermove',e=>{ if(drag) at(e); });
+      const up=()=>{ if(!drag) return; drag=false; map.dragging.enable(); };
+      handle.addEventListener('pointerup',up); handle.addEventListener('pointercancel',up);
+      handle.addEventListener('keydown',e=>{ if(e.key==='ArrowLeft'||e.key==='ArrowRight'){ frac=Math.min(0.98,Math.max(0.02,frac+(e.key==='ArrowLeft'?-0.04:0.04))); clip(); e.preventDefault(); } });
+      L.DomEvent.disableClickPropagation(line);
+    })();
+    </script>
+  </main>
+  <footer class="site">
+    <div>
+      <p class="motto">Every clue is true. Every answer is in the record.</p>
+      <p>Project Scroll is independent historical research. Some mysteries open in an afternoon. Some take a season.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="/">Home</a><a href="/#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
+    </nav>
+    <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a></p>
+  </footer>
+</div>
+<script src="/site.js?v=27" defer></script>
+</body>
+</html>
