@@ -160,6 +160,51 @@ ul.plain b{display:block; font-weight:700}
   @starting-style{[popover].source:popover-open{opacity:0; transform:translateY(6px)}}
 }
 .rules li{margin-bottom:.45rem}
+.ctas{display:flex; flex-wrap:wrap; gap:.7rem; margin:0 0 2.2rem}
+.btn{display:inline-block; font:inherit; font-size:1rem; text-decoration:none; cursor:pointer; padding:.55rem 1.1rem; border-radius:3px; border:1.5px solid var(--ink); color:var(--ink); background:transparent; transition:background .2s, color .2s}
+.btn:hover{background:color-mix(in srgb, var(--ink) 8%, transparent); text-decoration:none}
+.btn.primary{background:var(--ink); color:var(--paper)}
+.btn.primary:hover{background:color-mix(in srgb, var(--ink) 85%, var(--rule))}
+.tmpl{margin:1rem 0 1.2rem}
+.tmpl pre{font:inherit; font-size:.95rem; line-height:1.8; white-space:pre-wrap; margin:0 0 .8rem; padding:.9rem 1rem; background:var(--paper); border:1px dashed var(--line); border-radius:4px}
+.copied{margin-left:.7rem; font-size:.9rem; color:var(--ledger)}
+.skip{position:absolute; left:-999px; top:.5rem; z-index:10; background:var(--ink); color:var(--paper); padding:.5rem .8rem; border-radius:3px}
+.skip:focus{left:.75rem}
+ol.steps{list-style:none; counter-reset:step; padding:0; margin:1.2rem 0 1.4rem}
+ol.steps li{counter-increment:step; position:relative; padding:0 0 .9rem 2.6rem}
+ol.steps li::before{
+  content:counter(step); position:absolute; left:0; top:.05rem; width:1.75rem; height:1.75rem; border-radius:50%;
+  border:1.5px solid var(--rule); color:var(--rule); font-family:"Libre Caslon Display",serif; font-size:1rem;
+  display:grid; place-items:center; line-height:1;
+}
+ol.steps li:not(:last-child)::after{content:""; position:absolute; left:.85rem; top:2rem; bottom:.1rem; border-left:1px dotted var(--line)}
+.pull{margin:0; padding:3rem 0; border-top:1px solid var(--line); max-width:var(--measure)}
+.pull p{font-family:"Libre Caslon Display",serif; font-size:clamp(1.5rem,3.2vw,2.05rem); line-height:1.3; margin:0 0 .8rem; text-wrap:balance}
+.pull cite{font-style:normal; font-size:.9rem; color:var(--ink-soft)}
+.try{margin-top:2rem; padding:1.4rem 1.2rem; border:1px solid var(--line); border-left:3px solid var(--ledger); border-radius:4px}
+.try h3{margin-top:0}
+.cards{display:grid; grid-template-columns:1fr 1fr; gap:.8rem; margin:.6rem 0 .4rem}
+@media (max-width:640px){.cards{grid-template-columns:1fr}}
+.card{
+  text-align:left; font:inherit; font-size:.95rem; line-height:1.5; color:var(--ink); background:var(--paper);
+  border:1px solid var(--line); border-radius:4px; padding:.9rem 1rem; cursor:pointer;
+  transition:border-color .2s, transform .2s, box-shadow .2s;
+}
+.card:hover{border-color:var(--ink-soft); transform:translateY(-2px); box-shadow:0 10px 24px -18px rgba(0,0,0,.5)}
+.card .kind{display:block; font-family:"Libre Caslon Display",serif; font-size:1.15rem; margin-bottom:.25rem}
+.card[aria-pressed="true"]{border-color:var(--rule); box-shadow:inset 0 0 0 1px var(--rule)}
+.verdict{min-height:1.5em; margin:.6rem 0 0}
+@media (prefers-reduced-motion: reduce){.card,.card:hover{transition:none; transform:none}}
+.notes ol{padding-left:1.3rem; margin:0}
+.notes li{margin-bottom:.7rem}
+.notes li::marker{color:var(--rule); font-family:"Libre Caslon Display",serif}
+details.faq{border-bottom:1px dotted var(--line); padding:.7rem 0}
+details.faq summary{cursor:pointer; font-weight:700; list-style:none}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::before{content:"+"; display:inline-block; width:1.1rem; color:var(--rule)}
+details.faq[open] summary::before{content:"–"}
+details.faq p{margin:.5rem 0 0 1.1rem}
+
 .contact{background:var(--paper-2); margin:1rem 0 0; padding:2rem 1.2rem; border-top:0; max-width:calc(var(--measure) + 2rem)}
 .contact .addr{font-size:1.35rem; font-family:"Libre Caslon Display",serif}
 footer{max-width:var(--measure); padding-top:2.4rem; font-size:.9rem; color:var(--ink-soft)}
@@ -179,31 +224,38 @@ footer{max-width:var(--measure); padding-top:2.4rem; font-size:.9rem; color:var(
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to the content</a>
 <header class="bar">
   <div class="bar-in">
-    <a class="mark" href="#top" aria-label="Project Scroll, back to top">
+    <a class="mark" href="/" aria-label="Project Scroll home">
       <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="4" width="18" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 4v24" stroke="#B3362B" stroke-width="2"/><path d="M14 11h7M14 15h7M14 19h5" stroke="currentColor" stroke-width="1.6"/></svg>
       Project Scroll
     </a>
     <nav aria-label="Sections">
-      <a href="#hunt">The hunt</a><a href="#services">Research</a><a href="#method">How we work</a><a href="#contact">Contact</a>
+      <a href="#hunt">The hunt</a><a href="#services">Research</a><a href="#method">How we work</a><a href="#faq">Questions</a><a href="#contact">Contact</a>
     </nav>
     <button class="theme" type="button" aria-label="Switch between light and dark" id="theme">Dark</button>
   </div>
 </header>
 
 <div class="sheet" id="top">
-  <main>
+  <main id="main">
     <div class="hero">
       <h1>Every clue is true.<button class="fn" type="button" id="star" aria-label="Read the footnote">*</button></h1>
-      <p class="lede">Project Scroll is a history hunt played on paper. Old county histories, survey maps, death certificates and forgotten newspapers hold real mysteries, and every one of them can be solved without a shovel.</p>
+      <p class="lede">Project Scroll is a history hunt played on paper. Real mysteries hide in old county histories, survey maps, death certificates and forgotten newspapers, and every one of them can be solved without a shovel.</p>
+      <p class="ctas"><a class="btn primary" href="#hunt">Start the hunt</a><a class="btn" href="#services">Bring us a mystery</a></p>
       <p class="foot" id="foot"><span>*</span> And every answer is in the record.</p>
     </div>
 
     <section id="hunt" class="has-note">
       <h2>The hunt</h2>
       <p>It began in one small Michigan county, with a lake that has no stream in and no stream out, a secret society from 1846, and a doctor who kept a bone. It is growing from there, one hall at a time.</p>
-      <p>Each mystery is posted on Facebook. Follow the clues, read the sources, and tell us what you find. When someone cracks one, we name them.</p>
+      <ol class="steps">
+        <li><b>Find a clue.</b> Each mystery is posted on Facebook, with the sources you need to start.</li>
+        <li><b>Search the record.</b> Old books, maps and certificates, many of them free online.</li>
+        <li><b>Post your answer.</b> Put it in the comments, and say where you found it.</li>
+        <li><b>Get named.</b> When someone cracks one, the next post says who.</li>
+      </ol>
       <p class="note">Start with Project Scroll on Facebook. The first door is in the pinned post.</p>
       <h3>The rules</h3>
       <ul class="rules">
@@ -248,16 +300,63 @@ footer{max-width:var(--measure); padding-top:2.4rem; font-size:.9rem; color:var(
       <p>A written report in plain English: what we found, where we found it, what is still open, and where to look next. Where the old books and maps are free online, we include the links so you can turn the pages yourself.</p>
     </section>
 
+    <blockquote class="pull">
+      <p>"…the distant echoes, as it were, of the glacial age, indicating in whispers the time when the dominion of water was complete over all this country."</p>
+      <cite>A county historian on the lakes of southwest Michigan, 1906</cite>
+    </blockquote>
+
+    <section id="notes" class="notes">
+      <h2>From the field notes</h2>
+      <p>The first lesson from the desk: what to do when two old records tell you two different things.</p>
+      <ol>
+        <li>Ask who gave the information, and when. Closer to the event usually weighs more, but not always.</li>
+        <li>Keep looking. A third, independent record can tip the balance, but records are weighed, not counted.</li>
+        <li>Write down both versions and where each came from. Never quietly "fix" one.</li>
+        <li>Call it settled only when the evidence settles it. Until then, it's an open question.</li>
+      </ol>
+      <p class="note">From "One Letter, Two Certificates," on Project Scroll's Facebook page. New field notes are added as they're posted.</p>
+
+      <div class="try" id="try">
+        <h3>Try it yourself</h3>
+        <p>A pioneer died in 1912. Two records name his father. Which would you trust for his middle initial?</p>
+        <div class="cards">
+          <button type="button" class="card" data-pick="a"><span class="kind">Record A</span>His own death certificate, filed about a month after he died. <em>No middle initial.</em></button>
+          <button type="button" class="card" data-pick="b"><span class="kind">Record B</span>His son's death certificate, filled in twenty-three years later. <em>Gives him one.</em></button>
+        </div>
+        <p class="verdict" id="verdict" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2>Questions</h2>
+      <details class="faq"><summary>Does the hunt cost anything?</summary><p>No. The hunt is free to follow and free to play. All you need is curiosity and, now and then, a library card.</p></details>
+      <details class="faq"><summary>Do I have to go anywhere?</summary><p>No. Every clue is solved on paper: in books, maps and records, many of them free online. The hunt never sends anyone onto private land or near a grave.</p></details>
+      <details class="faq"><summary>I solved one. Now what?</summary><p>Post your answer in the comments on Facebook, and say where you found it. Solvers are named in the next post.</p></details>
+      <details class="faq"><summary>Can you help with my own family's mystery?</summary><p>Yes. Send Project Scroll a message on Facebook with what you know. We'll tell you honestly what the records are likely to show before you commit to anything.</p></details>
+      <details class="faq"><summary>Is Project Scroll only about Michigan?</summary><p>It started in one Michigan county, but the methods work anywhere, and so does our research. Mysteries are welcome from wherever you are.</p></details>
+    </section>
+
     <section id="contact" class="contact">
       <h2>Start with a question</h2>
       <p>Send a message to Project Scroll on Facebook with the name, the place and the rough dates, plus whatever the family says. A photo of any paper you already have helps. We'll write back with an honest read on what the records are likely to show, before you commit to anything.</p>
       <p class="addr">Message Project Scroll on Facebook</p>
+      <div class="tmpl">
+        <pre id="tmpl">My mystery:
+Name(s):
+Place:
+Rough dates:
+What the family says:
+Papers or photos I already have:</pre>
+        <button type="button" class="btn" id="copy">Copy this outline</button>
+        <span class="copied" id="copied" aria-live="polite"></span>
+      </div>
       <p class="note">An email address is coming soon.</p>
     </section>
   </main>
 
   <footer>
     <p>Project Scroll is independent historical research. Some mysteries open in an afternoon. Some take a season.</p>
+    <p><a href="#top">Back to the top</a></p>
   </footer>
 </div>
 
@@ -278,6 +377,30 @@ footer{max-width:var(--measure); padding-top:2.4rem; font-size:.9rem; color:var(
   star.addEventListener('click', function(){
     foot.scrollIntoView({block:'center'}); foot.classList.add('lit');
     setTimeout(function(){ foot.classList.remove('lit'); }, 1600);
+  });
+
+
+  /* copy the message outline */
+  var copyBtn=document.getElementById('copy');
+  if (copyBtn) copyBtn.addEventListener('click', function(){
+    var txt=document.getElementById('tmpl').textContent, out=document.getElementById('copied');
+    var done=function(){ out.textContent='Copied. Paste it into your Facebook message.'; setTimeout(function(){out.textContent='';},4000); };
+    if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, function(){ out.textContent='Select the outline and copy it.'; });
+    else out.textContent='Select the outline and copy it.';
+  });
+
+  /* the "try it yourself" record puzzle */
+  var verdict=document.getElementById('verdict');
+  var answers={
+    a:"Good pick. Record A was filled in about a month after he died, by someone close to the event, so it usually weighs more. But it doesn't prove he had no initial: the next step is a third, independent record, such as his obituary or his gravestone.",
+    b:"Worth a look, but careful. Record B was filled in twenty-three years later, by someone remembering a man long gone, and the son carried that same initial. Closer to the event usually weighs more, so look for a third record before you believe it."
+  };
+  document.querySelectorAll('.card').forEach(function(c){
+    c.setAttribute('aria-pressed','false');
+    c.addEventListener('click', function(){
+      document.querySelectorAll('.card').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
+      c.setAttribute('aria-pressed','true'); verdict.textContent=answers[c.dataset.pick];
+    });
   });
 
   /* mark the section you are reading in the top bar */
