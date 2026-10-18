@@ -36,7 +36,7 @@ for (const [w,cs,lab] of [[1280,'light','computer'],[390,'dark','phone']]){
    ok(P+'magnifying glass appears and shows the picture', await q.evaluate(()=>document.getElementById('lensFig').classList.contains('on') && /two-certificates/.test(document.querySelector('.lens').style.backgroundImage)));
    await q.screenshot({path:'D24_lens.png',clip:{x:bx.x-20,y:bx.y-20,width:bx.width+40,height:bx.height+60}}); }
  // sealed hall tooltip
- if (w>500){ await q.hover('.halls li[data-tip]'); await q.waitForTimeout(300); const op=await q.evaluate(()=>getComputedStyle(document.querySelector('.halls li[data-tip]'),'::after').opacity); ok(P+'sealed hall shows its note on hover', op==='1', op); }
+ { const n=await q.evaluate(()=>[document.querySelectorAll('.trailmap .tm-hall').length, document.querySelectorAll('.trailmap .tm-sealed title').length]); ok(P+'trail map: 2 halls lit, the rest sealed with a note', n[0]===2 && n[1]===5, String(n)); }
  // meter + seals mechanism (simulated solved case + hint, then reload logic)
  ok(P+'meter reads 0 of 10', (await q.getAttribute('.meter','aria-label'))==='0 of 10 cases solved');
  errs.length===0 ? ok(P+'no script errors',true) : ok(P+'no script errors',false,errs.join('|'));

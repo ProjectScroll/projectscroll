@@ -1164,3 +1164,60 @@ footer.site{padding-bottom:1rem}
   .partrail a:hover{color:#fff}
   .partrail a[aria-current="true"]{color:#ff8f80; border-right-color:#ff8f80}
 }
+
+/* ---------- Draft 46: badges, countdown, on this day, trail map, the coded line ---------- */
+.btoast{position:fixed; left:1rem; bottom:1rem; z-index:95; display:flex; align-items:center; gap:.7rem; max-width:20rem; padding:.7rem 1rem .7rem .7rem; border-radius:10px;
+  background:var(--ink); color:var(--paper); box-shadow:0 14px 34px -12px rgba(0,0,0,.6); transform:translateY(150%); opacity:0; transition:transform .45s cubic-bezier(.2,.9,.3,1.2), opacity .3s}
+.btoast.on{transform:none; opacity:1}
+.btoast svg{width:2.6rem; height:2.6rem; flex:none}
+.btoast small{display:block; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; opacity:.75}
+.btoast b{display:block; font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.15rem; line-height:1.2}
+.btoast a{color:inherit; font-size:.82rem}
+.tin{fill:#b8bdbf; stroke:#6f777b; stroke-width:1.2; stroke-linejoin:round}
+.boss{fill:#d9dddf; stroke:#6f777b; stroke-width:.8}
+@media (prefers-reduced-motion: reduce){ .btoast{transition:none} }
+/* the badge book */
+.bcount{font-family:"Libre Caslon Display",serif; font-size:1.3rem; margin:.4rem 0 1rem}
+.badgebook{list-style:none; padding:0; margin:0 0 2rem; display:grid; grid-template-columns:repeat(auto-fill,minmax(9.5rem,1fr)); gap:.8rem}
+.badgebook li{display:grid; justify-items:center; text-align:center; gap:.2rem; padding:1rem .7rem .8rem; border:1px dashed var(--line); border-radius:8px; background:var(--paper)}
+.badgebook svg{width:3.4rem; height:3.4rem; filter:grayscale(1); opacity:.28}
+.badgebook li.won{border-style:solid; border-color:color-mix(in srgb, var(--ink-soft) 40%, transparent); box-shadow:0 10px 24px -18px rgba(0,0,0,.5)}
+.badgebook li.won svg{opacity:1; filter:drop-shadow(0 2px 2px rgba(0,0,0,.25))}
+.badgebook b{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.05rem}
+.badgebook span{font-size:.82rem; color:var(--ink-soft); line-height:1.4}
+.badgebook small{font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft)}
+.badgebook li.won small{color:var(--rule)}
+.sayword{border-left:3px solid var(--rule); padding:.4rem 0 .4rem 1rem; margin:0 0 1.6rem}
+.linkbtn{background:none; border:0; padding:0; font:inherit; color:var(--ledger); text-decoration:underline; cursor:pointer}
+/* the countdown and on this day */
+.clue-next{margin:.55rem 0 0!important; font-family:inherit!important; font-size:.85rem!important; letter-spacing:.06em; text-transform:uppercase; color:var(--rule)}
+.otd{max-width:var(--col); margin:1.4rem auto 0; padding:.85rem 1.2rem; border:1px solid var(--line); border-radius:6px; background:var(--paper); display:grid; grid-template-columns:auto 1fr; column-gap:.8rem; align-items:baseline}
+.otd-l{grid-column:1 / -1; font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft)}
+.otd-d{grid-column:1; font-family:"Libre Caslon Display",serif; font-size:1.15rem; color:var(--rule); white-space:nowrap}
+.otd-t{grid-column:2; margin:0; font-size:1rem; line-height:1.5}
+.otd-s{grid-column:2; font-size:.8rem; color:var(--ink-soft); font-style:italic}
+@media (max-width:640px){ .otd{grid-template-columns:1fr} .otd-d,.otd-t,.otd-s{grid-column:1} }
+/* the trail map */
+.trailmap{margin:1.6rem 0 1.4rem; padding:.6rem .6rem .2rem; border:1px solid var(--line); border-radius:8px;
+  background:radial-gradient(ellipse at 30% 40%, color-mix(in srgb, #d9c7a0 18%, var(--paper)), var(--paper) 70%)}
+.trailmap svg{display:block; width:100%; height:auto; font-family:"Libre Caslon Text",serif}
+.tm-trail{fill:none; stroke:var(--ink-soft); stroke-width:1.6; stroke-dasharray:2 6; stroke-linecap:round; opacity:.55}
+.tm-walked{fill:none; stroke:var(--rule); stroke-width:2.2; stroke-dasharray:7 6; stroke-linecap:round}
+.tm-hall circle{fill:var(--rule); stroke:var(--paper); stroke-width:3}
+.tm-n{fill:#fff; font-family:"Libre Caslon Display",serif; font-size:15px}
+.tm-name{fill:var(--ink); font-family:"Libre Caslon Display",serif; font-size:16px}
+.tm-line{fill:var(--ink-soft); font-size:12px; font-style:italic}
+.tm-sealed circle{fill:var(--paper); stroke:var(--ink-soft); stroke-width:1.2; stroke-dasharray:3 3}
+.tm-sealed text{fill:var(--ink-soft); font-size:13px}
+.tm-fog ellipse{fill:url(#tmFog)}
+.tm-f0{stop-color:var(--paper); stop-opacity:.92} .tm-f1{stop-color:var(--paper); stop-opacity:.8} .tm-f2{stop-color:var(--paper); stop-opacity:0}
+.tm-rose circle{fill:none; stroke:var(--ink-soft); stroke-width:.8; opacity:.6}
+.tm-rose path{fill:var(--ink-soft); opacity:.6}
+.tm-rose text{fill:var(--ink-soft); font-size:10px}
+@media (max-width:640px){ .trailmap{overflow-x:auto; -webkit-overflow-scrolling:touch} .trailmap svg{min-width:620px} .trailmap figcaption{position:sticky; left:0} }
+.trailmap figcaption{font-size:.85rem; color:var(--ink-soft); text-align:center; margin:.3rem 0 .4rem}
+@media (prefers-reduced-motion: no-preference){ .tm-walked{animation:march 9s linear infinite} @keyframes march{to{stroke-dashoffset:-130}} }
+/* the coded line at the foot of every page */
+.cipherline{margin:.6rem 0 0; font-family:"Libre Caslon Display",serif; font-size:.7rem; letter-spacing:.32em; color:var(--ink-soft); opacity:1; user-select:all}
+.cipherline:hover{color:var(--rule)}
+@media print{ .btoast, .clue-next, .otd{display:none!important} }

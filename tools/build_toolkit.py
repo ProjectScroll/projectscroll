@@ -55,7 +55,17 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <p class="result" id="cOut" aria-live="polite"></p>
       <p class="note">“Removed” counts the generations between two cousins: your parent’s first cousin is your first cousin once removed.</p>
     </section>
-    <script src="/toolkit/toolkit.js?v=1" defer></script>
+    <section class="tool" id="cipher">
+      <h2>Cipher wheel</h2>
+      <p>The simplest secret writing of all: every letter slides the same number of places along the alphabet. Turn the wheel until the line makes sense. Somewhere on this site, a line is waiting for it.</p>
+      <div class="formrow">
+        <label class="wide-in">Coded line <input type="text" id="cyIn" value="LCLYF JSBL PZ AYBL" autocomplete="off" spellcheck="false"></label>
+        <label>Turn the wheel <input type="range" id="cyK" min="0" max="25" value="0"></label>
+      </div>
+      <p class="result cyout" id="cyOut" aria-live="polite"></p>
+      <p class="note">Try the sample above: it reads plain at one turn of the wheel, and that turn is seven. Old soldiers, lodges and lovers all used ciphers like this one, and so does the hunt.</p>
+    </section>
+    <script src="/toolkit/toolkit.js?v=2" defer></script>
 '''
-page('toolkit/index.html','The hunter’s toolkit · Project Scroll','Free tools for reading old records: a faded-ink enhancer, an age-at-death calculator, a Soundex finder and a cousin calculator. Everything runs in your browser.',body, og='https://projectscroll.com/og/toolkit.jpg')
+page('toolkit/index.html','The hunter’s toolkit · Project Scroll','Free tools for reading old records: a faded-ink enhancer, an age-at-death calculator, a Soundex finder, a cousin calculator and a cipher wheel. Everything runs in your browser.',body, og='https://projectscroll.com/og/toolkit.jpg')
 print('toolkit built')

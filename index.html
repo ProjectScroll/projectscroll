@@ -43,7 +43,7 @@
 /* apply a saved theme before first paint, so there is no flash */
 try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}
 </script>
-<link rel="stylesheet" href="/site.css?v=44">
+<link rel="stylesheet" href="/site.css?v=45">
 </head>
 <body>
 <!--
@@ -158,7 +158,10 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <span class="lbl" id="clueLbl">Clue of the week · 17 October</span>
       <p id="clueText">One man gave away forty acres of lakefront. Try to picture anyone doing that today. Who was he?</p>
       <a href="#case-3" id="clueLink">It’s case 3 on the board</a> · <a href="https://www.facebook.com/projectscroll/">Follow the hunt on Facebook</a>
+      <p class="clue-next" id="clueNext" aria-live="off"></p>
     </aside>
+    <aside class="otd" id="otd" aria-label="On this day in the record" hidden><span class="otd-l"></span> <span class="otd-d"></span><p class="otd-t"></p><span class="otd-s"></span></aside>
+    <script type="application/json" id="otdData">[[1, 24, 1832, "Eber Root is licensed to keep a tavern in Cassopolis, one of the first two in the village. His frame tavern became the Union Hotel.", "L. H. Glover, 1906"], [1, 26, 1837, "Michigan is admitted to the Union as a state.", "Act of Congress, 26 January 1837"], [3, 11, 1845, "E. A. Graves starts the Cass County Advocate at Cassopolis. No copy from 1846 has turned up yet. One could date the joke lodge.", "H. S. Rogers, 1875, p. 259"], [7, 4, 1846, "Cassopolis Presbyterians hold their Fourth of July dinner inside their unfinished church.", "H. S. Rogers, 1875"], [1, 16, 1847, "The Odd Fellows’ Cass County Lodge No. 21 receives its dispensation, the same winter as the joke lodge’s grand ball.", "H. S. Rogers, 1875, pp. 254–255"], [2, 18, 1847, "Cass County Lodge No. 21 of the Odd Fellows is instituted at Cassopolis: “the first legitimate secret society.”", "H. S. Rogers, 1875, pp. 254–255"], [6, 12, 1852, "The county’s Masons hold their first meeting, in the Union Hotel, where the joke lodge had danced.", "H. S. Rogers, 1875, p. 256"], [7, 9, 1852, "The Masons meet for the first time under dispensation, in the Odd Fellows’ Hall.", "H. S. Rogers, 1875, p. 256"], [2, 11, 1860, "Frank Leslie’s Illustrated Newspaper begins its “Grand Exposure of the Sons of Malta.”", "Frank Leslie’s Illustrated Newspaper, vol. IX, no. 219"], [9, 20, 1870, "The Cassopolis Reading Room is organized in the dental office of James M. Shepard, the man who wrote the joke lodge’s story down.", "H. S. Rogers, 1875, p. 258"], [11, 24, 1842, "James M. Shepard is born. About thirty years on, he will write down the story of the joke lodge founded in his village when he was three.", "His death certificate and gravestone"], [8, 2, 1790, "Census day for the first United States census.", "U.S. Census Bureau"], [6, 1, 1850, "Census day for the 1850 census, the first to name every free person in a household.", "U.S. Census Bureau"], [7, 1, 1837, "Civil registration of births, marriages and deaths begins in England and Wales.", "General Register Office"], [1, 1, 1892, "Ellis Island opens as the immigration station for the port of New York.", "National Park Service"], [1, 10, 1921, "Fire in the Commerce Building in Washington damages the 1890 census. Almost all of it is later lost.", "National Archives"]]</script>
     <ul class="stats" aria-label="Project Scroll at a glance">
       <li><a href="#cases"><b>10</b><span>open cases on the board</span></a></li>
       <li><a href="/map/cassopolis/"><b>4</b><span>towns mapped, 1860 and today</span></a></li>
@@ -179,13 +182,9 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <figure class="secfig tall">
         <picture><source srcset="/img/county-survey-map.webp" type="image/webp"><img src="/img/county-survey-map.jpg" width="760" height="996" loading="lazy" decoding="async" alt="An old hand-drawn county land map on aged paper, divided into numbered survey tracts, with rivers and roads winding across it."></picture><figcaption>A county land map drawn from the original surveys. Every answer in the hunt is on paper like this.</figcaption>
       </figure>
-      <figure class="halls" aria-label="The halls of the hunt so far: two of three open">
-        <ol>
-          <li class="open"><span class="seal">I</span><b>The first hall</b><small>Open · start in the pinned post</small></li>
-          <li class="open"><span class="seal">II</span><b>The second hall</b><small>Open · its door is in the first</small></li>
-          <li class="locked" tabindex="0" data-tip="Opens when the second hall is solved"><span class="seal"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><b>The third hall</b><small>Still sealed</small></li>
-          <li class="locked more"><span class="seal">…</span><b>And on</b><small>The scroll is long</small></li>
-        </ol>
+      <figure class="trailmap" aria-label="The trail of the hunt">
+        <svg viewBox="0 0 740 250" role="img" aria-labelledby="tmT tmD"><title id="tmT">The trail of the hunt</title><desc id="tmD">2 halls are open and lit on the trail. The rest of the trail lies in fog until each hall opens.</desc><defs><radialGradient id="tmFog"><stop offset="0" class="tm-f0"/><stop offset=".55" class="tm-f1"/><stop offset="1" class="tm-f2"/></radialGradient></defs><path class="tm-trail" d="M70 168 C130.0 168 130.0 98 190 98 C245.0 98 245.0 160 300 160 C355.0 160 355.0 92 410 92 C462.5 92 462.5 150 515 150 C562.5 150 562.5 86 610 86 C645.0 86 645.0 140 680 140"/><path class="tm-walked" d="M70 168 C130.0 168 130.0 98 190 98"/><g class="tm-hall"><circle cx="70" cy="168" r="17"/><text x="70" y="173" text-anchor="middle" class="tm-n">I</text><text x="70" y="206" text-anchor="middle" class="tm-name">The first hall</text><text x="70" y="223" text-anchor="middle" class="tm-line">The lodge of 1846</text></g><g class="tm-hall"><circle cx="190" cy="98" r="17"/><text x="190" y="103" text-anchor="middle" class="tm-n">II</text><text x="190" y="54" text-anchor="middle" class="tm-name">The second hall</text><text x="190" y="71" text-anchor="middle" class="tm-line">No stream in, no stream out</text></g><g class="tm-sealed"><title>Hall III: sealed until the hall before it is solved</title><circle cx="300" cy="160" r="13"/><text x="300" y="165" text-anchor="middle">?</text></g><g class="tm-sealed"><title>Hall IV: sealed until the hall before it is solved</title><circle cx="410" cy="92" r="13"/><text x="410" y="97" text-anchor="middle">?</text></g><g class="tm-sealed"><title>Hall V: sealed until the hall before it is solved</title><circle cx="515" cy="150" r="13"/><text x="515" y="155" text-anchor="middle">?</text></g><g class="tm-sealed"><title>Hall VI: sealed until the hall before it is solved</title><circle cx="610" cy="86" r="13"/><text x="610" y="91" text-anchor="middle">?</text></g><g class="tm-sealed"><title>Hall VII: sealed until the hall before it is solved</title><circle cx="680" cy="140" r="13"/><text x="680" y="145" text-anchor="middle">?</text></g><g class="tm-fog"><ellipse cx="470" cy="125" rx="170" ry="95"/><ellipse cx="650" cy="115" rx="190" ry="105"/><ellipse cx="365" cy="185" rx="85" ry="55"/></g><g class="tm-rose" transform="translate(705 34)"><circle r="16"/><path d="M0 -20 L4 0 L0 20 L-4 0 Z"/><text y="-24" text-anchor="middle">N</text></g></svg>
+        <figcaption>Halls light up on the trail as they open. 2 are lit; the rest of the way is still in fog.</figcaption>
       </figure>
       <div class="start">
         <p><b>Ready?</b> The first door is in the pinned post on Project Scroll’s Facebook page.</p>
@@ -492,13 +491,14 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <p>Project Scroll is independent historical research. Some mysteries open in an afternoon. Some take a season.</p>
     </div>
     <nav aria-label="Footer">
-      <a href="#hunt">The hunt</a><a href="#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/records/">Where the records are</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
+      <a href="#hunt">The hunt</a><a href="#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/records/">Where the records are</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/badges/">Your badges</a><a href="/privacy/">Privacy</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
     </nav>
     <a class="totop" href="#top" aria-label="Back to the top" hidden>↑</a>
     <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a> · <button type="button" class="lanternbtn" id="lanternBtn" hidden>Put out the lantern</button></p>
+    <p class="cipherline" aria-label="A line written in code">ESP HZCO TD SPHRLR. DLJ TE TY JZFC MLORP MZZV.</p>
   </footer>
 </div>
 
-<script src="/site.js?v=44" defer></script>
+<script src="/site.js?v=45" defer></script>
 </body>
 </html>

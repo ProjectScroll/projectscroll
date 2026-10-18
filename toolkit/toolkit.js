@@ -86,4 +86,12 @@ function cousin(){
 }
 ['cA','cB'].forEach(function(i){ document.getElementById(i).addEventListener('change', cousin); });
 document.getElementById('cA').value=3; document.getElementById('cB').value=4; cousin();
+
+/* ---------- cipher wheel ---------- */
+(function(){
+  const inp=document.getElementById('cyIn'), k=document.getElementById('cyK'), out=document.getElementById('cyOut'); if (!inp) return;
+  const shift=function(str,n){ return str.replace(/[a-z]/gi,function(ch){ const b=ch<='Z'?65:97; return String.fromCharCode((ch.charCodeAt(0)-b+n)%26+b); }); };
+  const draw=function(){ const n=+k.value; out.innerHTML=''; const b=document.createElement('b'); b.textContent=shift(inp.value, (26-n)%26); out.append('Turned '+n+': ', b); };
+  inp.addEventListener('input',draw); k.addEventListener('input',draw); draw();
+})();
 })();

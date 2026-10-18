@@ -454,6 +454,95 @@
   nums.forEach(function(n){ io.observe(n); });
 })();
 
+/* ---------- the tin-badge field book: badges earned around the site, kept in this browser only ---------- */
+window.PS_BADGES=[
+  ['candidate','Candidate','Open Project Scroll for the first time.'],
+  ['regular','Regular','Come back on three different days.'],
+  ['scroll','Read the walls','Read the home page from top to bottom.'],
+  ['footnote','Footnote','Find what the little red star is hiding.'],
+  ['casefile','Case reader','Open a case from the case board.'],
+  ['follower','On the trail','Follow a case with its star.'],
+  ['marks','Weigher','Mark a piece of evidence in “Try marking these yourself.”'],
+  ['glossary','Plain English','Open a definition, or the glossary.'],
+  ['mapper','Map room','Walk the 1860 wall map.'],
+  ['thennow','Then and now','Lay an 1860 town plan over today’s streets.'],
+  ['informant','Informant','Read the guide to the death certificate.'],
+  ['oldhand','The old hand','Read the guide to old handwriting.'],
+  ['records','Record keeper','Visit “Where the records are.”'],
+  ['notes','Field notes','Open the book of field notes.'],
+  ['legend','Legend tester','Test a family legend.'],
+  ['toolkit','Toolmaker','Use a tool in the hunter’s toolkit.'],
+  ['lantern','Lamplighter','Put out the lantern, then light it again.'],
+  ['hewgag','Hewgag','Decode the hidden line, and say the word in your badge book.']
+];
+(function(){
+  const KEY='ps-badges'; let got={};
+  try{ got=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ got={}; }
+  const save=function(){ try{ localStorage.setItem(KEY, JSON.stringify(got)); }catch(e){} };
+  const name=function(id){ const b=window.PS_BADGES.filter(function(x){ return x[0]===id; })[0]; return b?b[1]:id; };
+  let toastEl=null, tq=[], showing=false;
+  const showNext=function(){
+    if (showing || !tq.length) return; showing=true; const id=tq.shift();
+    if (!toastEl){ toastEl=document.createElement('div'); toastEl.className='btoast'; toastEl.setAttribute('role','status'); toastEl.setAttribute('aria-live','polite'); document.body.appendChild(toastEl); }
+    toastEl.innerHTML='<svg viewBox="0 0 40 40" aria-hidden="true"><path class="tin" d="M20 2l4.7 9.6 10.5 1.5-7.6 7.4 1.8 10.5L20 26l-9.4 5 1.8-10.5-7.6-7.4 10.5-1.5z"/><circle cx="20" cy="17.5" r="4.2" class="boss"/></svg><span><small>Badge earned</small><b></b><a href="/badges/">Your badges</a></span>';
+    toastEl.querySelector('b').textContent=name(id);
+    requestAnimationFrame(function(){ toastEl.classList.add('on'); });
+    setTimeout(function(){ toastEl.classList.remove('on'); setTimeout(function(){ showing=false; showNext(); }, 450); }, 4200);
+  };
+  const earn=window.psEarn=function(id){ if (got[id]) return false; got[id]=new Date().toISOString().slice(0,10); save(); tq.push(id); showNext(); document.dispatchEvent(new CustomEvent('ps-badge',{detail:id})); return true; };
+  window.psBadges=function(){ return got; };
+  window.psResetBadges=function(){ got={}; save(); };
+  /* days visited */
+  try{ const d=new Date().toISOString().slice(0,10); let days=JSON.parse(localStorage.getItem('ps-days')||'[]'); if (days.indexOf(d)<0){ days.push(d); days=days.slice(-30); localStorage.setItem('ps-days', JSON.stringify(days)); } if (days.length>=3) setTimeout(function(){ earn('regular'); }, 2500); }catch(e){}
+  setTimeout(function(){ earn('candidate'); }, 1500);
+  const path=location.pathname;
+  const byPath=[[/^\/cases\/\d+\/?$/,'casefile'],[/^\/map\/?$/,'mapper'],[/^\/map\/[a-z-]+\/?$/,'thennow'],[/^\/guide\/death-certificate\/?$/,'informant'],[/^\/guide\/old-handwriting\/?$/,'oldhand'],[/^\/records\/?$/,'records'],[/^\/glossary\/?$/,'glossary'],[/^\/notes\/book\/?$/,'notes']];
+  byPath.forEach(function(r){ if (r[0].test(path)) setTimeout(function(){ earn(r[1]); }, 2200); });
+  document.addEventListener('click', function(e){
+    const t=e.target.closest && e.target.closest('button,a'); if (!t) return;
+    if (t.id==='star') earn('footnote');
+    else if (t.classList.contains('follow')) earn('follower');
+    else if (t.classList.contains('gl')) earn('glossary');
+    else if (t.closest('.qopts')) earn('marks');
+    else if (/^\/legends\/?$/.test(path) && t.tagName==='BUTTON' && t.closest('main')) earn('legend');
+  });
+  if (/^\/toolkit\/?$/.test(path)){ const once=function(e){ if (e.target.closest && e.target.closest('.tool')){ earn('toolkit'); } }; document.addEventListener('input', once); document.addEventListener('change', once); }
+  const lb=document.getElementById('lanternBtn'); if (lb){ let n=0; lb.addEventListener('click', function(){ n++; if (n>=2) earn('lantern'); }); }
+  const ct=document.getElementById('contact');
+  if (ct && 'IntersectionObserver' in window && document.getElementById('hunt')){ const io=new IntersectionObserver(function(es){ if (es[0].isIntersecting){ earn('scroll'); io.disconnect(); } }, {threshold:.25}); io.observe(ct); }
+})();
+
+/* ---------- the clue of the week counts down to the next one ---------- */
+(function(){
+  const cj=document.getElementById('clues'), box=document.getElementById('clueNext'); if (!cj || !box) return;
+  let list=[]; try{ list=JSON.parse(cj.textContent); }catch(e){ return; }
+  const tick=function(){
+    const now=new Date(); const nx=list.filter(function(c){ return new Date(c[0]+'T00:00:00')>now; })[0];
+    if (!nx){ box.textContent='The next clue is coming soon.'; return; }
+    let ms=new Date(nx[0]+'T00:00:00')-now, d=Math.floor(ms/864e5), h=Math.floor(ms%864e5/36e5), m=Math.floor(ms%36e5/6e4);
+    const pl=function(n,w){ return n+' '+w+(n===1?'':'s'); };
+    box.textContent='Next clue in '+(d>0? pl(d,'day')+', '+pl(h,'hour') : h>0? pl(h,'hour')+', '+pl(m,'minute') : pl(Math.max(1,m),'minute'))+' · '+nx[1];
+  };
+  tick(); setInterval(tick, 30000);
+})();
+
+/* ---------- on this day in the record ---------- */
+(function(){
+  const box=document.getElementById('otd'), dj=document.getElementById('otdData'); if (!box || !dj) return;
+  let L=[]; try{ L=JSON.parse(dj.textContent); }catch(e){ return; }
+  const now=new Date(), y=now.getFullYear(), MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const at=function(e,yr){ return new Date(yr, e[0]-1, e[1]); };
+  const today=new Date(y, now.getMonth(), now.getDate());
+  let hit=L.filter(function(e){ return e[0]===now.getMonth()+1 && e[1]===now.getDate(); })[0], lbl, days=0;
+  if (hit){ lbl='On this day in the record'; }
+  else { let best=null; L.forEach(function(e){ let d=at(e,y); if (d<today) d=at(e,y+1); const k=d-today; if (!best || k<best.k) best={e:e,k:k}; }); hit=best.e; days=Math.round(best.k/864e5); lbl='Coming up in the record · in '+days+(days===1?' day':' days'); }
+  box.querySelector('.otd-l').textContent=lbl;
+  box.querySelector('.otd-d').textContent=hit[1]+' '+MON[hit[0]-1]+' '+hit[2];
+  box.querySelector('.otd-t').textContent=hit[3];
+  box.querySelector('.otd-s').textContent=hit[4];
+  box.hidden=false;
+})();
+
 /* lantern: a warm glow that follows the pointer on computers */
   (function(){
     if (!window.matchMedia || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;

@@ -159,6 +159,7 @@ priv = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li><b>Light or dark.</b> The page colors you chose.</li>
       <li><b>The lantern.</b> Whether you put it out.</li>
       <li><b>The opening flourish.</b> That you have already seen the ink draw itself on your first visit, so it does not replay.</li>
+      <li><b>Your tin badges.</b> The badges you have earned around the site, and the days you visited, so the “Regular” badge can count them.</li>
       <li><b>Your followed cases.</b> The cases you starred on the case board.</li>
       <li><b>Your case notes.</b> Anything you write in a case notebook. <a href="/notebook/">See all your notes</a>.</li>
       <li><b>Your drafts.</b> What you type into the message form and the family-history and family-legend forms, so it survives a reload. Nothing is sent from those forms; you copy the text and send it yourself.</li>
@@ -175,4 +176,43 @@ priv = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
 '''
 page('privacy/index.html', 'Privacy · Project Scroll',
      'What projectscroll.com keeps: no ads, no analytics, no tracking. A few settings and notes stay in your own browser.', priv)
-print('records, glossary, about, privacy built')
+
+# ------------------------------------------------------------------ badges
+badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
+    <p class="kicker">Your field book</p>
+    <h1>Your tin badges</h1>
+    <p class="lede">In the winter of 1846–47, two hundred badges of the “Ancient and Honorable Order” were worn at a ball in Cassopolis. Not one is known to survive. Here, you can earn your own, one for each thing you do as you explore the site.</p>
+    <p class="bcount" id="bcount" aria-live="polite"></p>
+    <ol class="badgebook" id="badgebook"></ol>
+    <div class="sayword" id="sayword">
+      <h2>Say the word</h2>
+      <p>Somewhere on every page of this site, a line is written in code. Turn it with the cipher wheel in the <a href="/toolkit/#cipher">hunter’s toolkit</a>, and it will tell you what to do.</p>
+      <form id="wordform" class="formrow" autocomplete="off"><label>The word <input type="text" id="word" spellcheck="false"></label><button type="submit" class="btn primary">Say it</button></form>
+      <p class="note" id="wordmsg" aria-live="polite"></p>
+    </div>
+    <p class="note">Your badges are kept only in this browser, on this device. Nobody else can see them, and we never receive them. <button type="button" class="linkbtn" id="breset">Start the field book over</button></p>
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const ol=document.getElementById('badgebook'), cnt=document.getElementById('bcount'); if (!ol || !window.PS_BADGES) return;
+      const draw=function(){ const got=window.psBadges(); let n=0; ol.innerHTML='';
+        window.PS_BADGES.forEach(function(b,i){ const has=!!got[b[0]]; if (has) n++;
+          const li=document.createElement('li'); li.className=has?'won':'';
+          li.innerHTML='<svg viewBox="0 0 40 40" aria-hidden="true"><path class="tin" d="M20 2l4.7 9.6 10.5 1.5-7.6 7.4 1.8 10.5L20 26l-9.4 5 1.8-10.5-7.6-7.4 10.5-1.5z"/><circle cx="20" cy="17.5" r="4.2" class="boss"/></svg><b></b><span></span><small></small>';
+          li.querySelector('b').textContent=b[1]; li.querySelector('span').textContent=b[2];
+          li.querySelector('small').textContent=has?('Earned '+got[b[0]]):'Not yet';
+          ol.appendChild(li); });
+        cnt.textContent=n+' of '+window.PS_BADGES.length+' badges earned';
+      };
+      draw(); document.addEventListener('ps-badge', function(){ setTimeout(draw,50); });
+      document.getElementById('wordform').addEventListener('submit', function(e){ e.preventDefault();
+        const w=document.getElementById('word').value.trim().toLowerCase(), m=document.getElementById('wordmsg');
+        if (!w){ m.textContent='Type the word first.'; return; }
+        if (w==='hewgag'){ window.psEarn('hewgag'); m.textContent='That is the word. Blow it loud.'; draw(); }
+        else m.textContent='That is not the word. Turn the wheel again.'; });
+      document.getElementById('breset').addEventListener('click', function(){ window.psResetBadges(); draw(); });
+    });
+    </script>
+'''
+page('badges/index.html', 'Your tin badges · Project Scroll',
+     'Earn tin badges as you explore Project Scroll: read a case, walk the map room, use the toolkit and crack the hidden line. Kept in your own browser.', badges)
+print('records, glossary, about, privacy, badges built')
