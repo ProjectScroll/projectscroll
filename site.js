@@ -2,7 +2,9 @@
   "use strict";
   let root=document.documentElement, btn=document.getElementById('theme');
   function themeNow(){ return root.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); }
-  function label(){ btn.textContent = themeNow()==='dark' ? 'Light' : 'Dark'; btn.setAttribute('aria-pressed', String(themeNow()==='dark')); }
+  const MOON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg>';
+  const SUN='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M5.3 18.7 7 17M17 7l1.7-1.7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>';
+  function label(){ const d=themeNow()==='dark'; btn.innerHTML = d ? SUN : MOON; btn.setAttribute('aria-label', d ? 'Switch to light' : 'Switch to dark'); btn.title = d ? 'Light pages' : 'Dark pages'; btn.setAttribute('aria-pressed', String(d)); }
   label();
   btn.addEventListener('click', function(){
     let next = themeNow()==='dark' ? 'light' : 'dark';
@@ -15,8 +17,12 @@
   if (menu && bar){
     menu.addEventListener('click', function(){ let o=bar.classList.toggle('open'); menu.setAttribute('aria-expanded', o?'true':'false'); menu.textContent=o?'Close':'Menu'; });
     bar.querySelectorAll('nav a').forEach(function(a){ a.addEventListener('click', function(){ bar.classList.remove('open'); menu.setAttribute('aria-expanded','false'); menu.textContent='Menu'; }); });
+    document.addEventListener('click', function(e){ if (bar.classList.contains('open') && !bar.contains(e.target)){ bar.classList.remove('open'); menu.setAttribute('aria-expanded','false'); menu.textContent='Menu'; } });
     document.addEventListener('keydown', function(e){ if (e.key==='Escape' && bar.classList.contains('open')){ bar.classList.remove('open'); menu.setAttribute('aria-expanded','false'); menu.textContent='Menu'; menu.focus(); } });
   }
+
+  /* the top bar gains a soft shadow once the page has scrolled */
+  if (bar){ let bq=0; const lift=function(){ bq=0; bar.classList.toggle('lifted', scrollY>12); }; addEventListener('scroll', function(){ if (!bq) bq=requestAnimationFrame(lift); }, {passive:true}); lift(); }
 
   /* the asterisk leads to its footnote */
   let star=document.getElementById('star'), foot=document.getElementById('foot');
@@ -92,9 +98,9 @@
       rows.forEach(function(r){ r.hidden = !(f==='all' || r.dataset.hall===f || (f==='mine' && mine.indexOf(r.id)>-1)); });
       groups.forEach(function(g){ let any=rows.some(function(r){ return r.dataset.hall===g.dataset.hall && !r.hidden; }); g.hidden=!any; });
       if (emptyEl) emptyEl.hidden = !(f==='mine' && mine.length===0);
-      document.querySelectorAll('.filters button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.f===f?'true':'false'); });
+      document.querySelectorAll('.filters button[data-f]').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.f===f?'true':'false'); });
     }
-    document.querySelectorAll('.filters button').forEach(function(b){ b.addEventListener('click', function(){ filter(b.dataset.f); }); });
+    document.querySelectorAll('.filters button[data-f]').forEach(function(b){ b.addEventListener('click', function(){ filter(b.dataset.f); }); });
     let note=document.getElementById('caseCopied');
     rows.forEach(function(r){
       r.querySelector('.follow').addEventListener('click', function(){
@@ -497,6 +503,10 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
   };
   const earn=window.psEarn=function(id){ if (got[id]) return false; got[id]=new Date().toISOString().slice(0,10); save(); tq.push(id); showNext(); document.dispatchEvent(new CustomEvent('ps-badge',{detail:id})); return true; };
   window.psBadges=function(){ return got; };
+  const bl=document.getElementById('badgeLink'), bn=document.getElementById('badgeN');
+  const showCount=function(){ if (!bl) return; const n=Object.keys(got).length, all=window.PS_BADGES.length;
+    if (bn){ bn.textContent=n; bn.hidden=!n; } bl.setAttribute('aria-label','Your badges: '+n+' of '+all); bl.title='Your badges · '+n+' of '+all; };
+  showCount(); document.addEventListener('ps-badge', function(){ showCount(); if (bl){ bl.classList.remove('ping'); void bl.offsetWidth; bl.classList.add('ping'); } });
   window.psResetBadges=function(){ got={}; save(); };
   /* days visited */
   try{ const d=new Date().toISOString().slice(0,10); let days=JSON.parse(localStorage.getItem('ps-days')||'[]'); if (days.indexOf(d)<0){ days.push(d); days=days.slice(-30); localStorage.setItem('ps-days', JSON.stringify(days)); } if (days.length>=3) setTimeout(function(){ earn('regular'); }, 2500); }catch(e){}
@@ -542,11 +552,16 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
   let hit=L.filter(function(e){ return e[0]===now.getMonth()+1 && e[1]===now.getDate(); })[0], lbl, days=0;
   if (hit){ lbl='On this day in the record'; }
   else { let best=null; L.forEach(function(e){ let d=at(e,y); if (d<today) d=at(e,y+1); const k=d-today; if (!best || k<best.k) best={e:e,k:k}; }); hit=best.e; days=Math.round(best.k/864e5); lbl='Coming up in the record · in '+days+(days===1?' day':' days'); }
-  box.querySelector('.otd-l').textContent=lbl;
-  box.querySelector('.otd-d').textContent=hit[1]+' '+MON[hit[0]-1]+' '+hit[2];
-  box.querySelector('.otd-t').textContent=hit[3];
-  box.querySelector('.otd-s').textContent=hit[4];
-  box.hidden=false;
+  const S=L.slice().sort(function(a,b){ return (a[0]-b[0])||(a[1]-b[1])||(a[2]-b[2]); });
+  const show=function(e,l){ box.querySelector('.otd-l').textContent=l; box.querySelector('.otd-d').textContent=e[1]+' '+MON[e[0]-1]+' '+e[2];
+    box.querySelector('.otd-t').textContent=e[3]; box.querySelector('.otd-s').textContent=e[4]; };
+  show(hit,lbl); box.hidden=false;
+  /* turn through the calendar of the record, a day at a time */
+  let i=S.indexOf(hit); const nav=box.querySelector('.otd-nav');
+  if (nav && S.length>1){ nav.hidden=false;
+    const go=function(d){ i=(i+d+S.length)%S.length; const e=S[i]; show(e, e===hit ? lbl : 'Elsewhere in the calendar of the record'); box.classList.remove('flip'); void box.offsetWidth; box.classList.add('flip'); };
+    document.getElementById('otdPrev').addEventListener('click', function(){ go(-1); });
+    document.getElementById('otdNext').addEventListener('click', function(){ go(1); }); }
 })();
 
 /* links to other websites open in a new tab. The site's own menu (top bar, logo, footer, search results,
@@ -562,6 +577,46 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
   };
   document.querySelectorAll('a[href]').forEach(mark);
   document.addEventListener('click', function(e){ const a=e.target.closest && e.target.closest('a[href]'); if (a) mark(a); }, true);
+})();
+
+/* ---------- what's new on the trail: a moving ticker ---------- */
+(function(){
+  const tk=document.querySelector('.ticker'), track=document.getElementById('tkTrack'); if (!tk || !track) return;
+  const items=[].slice.call(track.children), still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const dt=function(li){ const t=li.querySelector('time'); return t ? t.getAttribute('datetime') : ''; };
+  /* what has appeared since this visitor last looked */
+  let seen=null; try{ seen=localStorage.getItem('ps-news-seen'); }catch(e){}
+  const newest=items.map(dt).sort().pop(); let fresh=0;
+  if (seen) items.forEach(function(li){ if (dt(li)>seen){ li.classList.add('fresh'); fresh++; } });
+  const fr=document.getElementById('tkFresh'); if (fr && fresh){ fr.textContent=fresh+' new'; fr.title='New since your last visit'; fr.hidden=false; }
+  setTimeout(function(){ try{ localStorage.setItem('ps-news-seen', newest); }catch(e){} }, 6000);
+  /* the full list, for reading at leisure */
+  const list=document.getElementById('tkList'), all=document.getElementById('tkAll');
+  if (list) items.forEach(function(li){ const c=li.cloneNode(true); list.appendChild(c); });
+  if (all && list) all.addEventListener('click', function(){ const o=list.hidden; list.hidden=!o; all.setAttribute('aria-expanded', String(o)); all.textContent=o?'Close':'All news'; tk.classList.toggle('expanded', o); });
+  if (still) { tk.classList.add('still'); return; }
+  /* a second copy of the items makes the loop seamless; it is hidden from screen readers and the keyboard */
+  items.forEach(function(li){ const c=li.cloneNode(true); c.setAttribute('aria-hidden','true'); c.querySelectorAll('a').forEach(function(a){ a.tabIndex=-1; }); track.appendChild(c); });
+  const speed=function(){ tk.style.setProperty('--tkdur', Math.max(20, Math.round(track.scrollWidth/2/55))+'s'); };
+  speed(); addEventListener('resize', speed, {passive:true}); tk.classList.add('run');
+  const pb=document.getElementById('tkPause'); let paused=false; try{ paused=localStorage.getItem('ps-ticker')==='paused'; }catch(e){}
+  const sync=function(){ tk.classList.toggle('paused', paused); if (pb){ pb.setAttribute('aria-pressed', String(paused)); pb.setAttribute('aria-label', paused?'Play the news':'Pause the news'); } };
+  if (pb){ pb.hidden=false; pb.addEventListener('click', function(){ paused=!paused; try{ localStorage.setItem('ps-ticker', paused?'paused':'run'); }catch(e){} sync(); }); }
+  sync();
+})();
+
+/* ---------- the case board: "Pick one for me" ---------- */
+(function(){
+  const box=document.querySelector('#cases .filters'); if (!box) return;
+  const b=document.createElement('button'); b.type='button'; b.className='pickcase'; b.textContent='🎲 Pick one for me'; b.setAttribute('aria-label','Pick a case for me at random'); box.appendChild(b);
+  let last=null;
+  b.addEventListener('click', function(){
+    const open=[].slice.call(document.querySelectorAll('#cases tr[id^="case-"]')).filter(function(tr){ return !tr.hidden && !/solved/i.test(tr.textContent.slice(-40)); });
+    if (!open.length) return; let tr; do { tr=open[Math.floor(Math.random()*open.length)]; } while (open.length>1 && tr===last); last=tr;
+    tr.scrollIntoView({block:'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    tr.classList.remove('picked'); void tr.offsetWidth; tr.classList.add('picked');
+    const a=tr.querySelector('a, button'); if (a) setTimeout(function(){ a.focus({preventScroll:true}); }, 500);
+  });
 })();
 
 /* ---------- then and now: the hotel corner slider ---------- */

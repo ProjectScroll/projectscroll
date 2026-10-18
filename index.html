@@ -66,11 +66,12 @@ document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-
       Project Scroll
     </a>
     <nav aria-label="Sections" id="sitenav">
-      <a href="#timeline">Record</a><a href="#hunt">Hunt</a><a href="#cases">Cases</a><a href="#services">Research</a><a href="#method">Method</a><a href="#marks">Evidence</a><a href="#faq">Questions</a><a href="#contact">Contact</a>
+      <a href="#timeline" data-n="I">Record</a><a href="#hunt" data-n="II">Hunt</a><a href="#cases" data-n="III">Cases</a><a href="#services" data-n="IV">Research</a><a href="#method" data-n="V">Method</a><a href="#marks" data-n="VI">Evidence</a><a href="#faq" data-n="VIII">Questions</a><a href="#contact">Contact</a>
     </nav>
     <button class="searchbtn" type="button" id="searchBtn" aria-label="Search the site" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <a class="badgelink" id="badgeLink" href="/badges/" aria-label="Your badges"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3l4.6 9.4 10.4 1.5-7.5 7.3 1.8 10.3L20 26.6l-9.3 4.9 1.8-10.3-7.5-7.3 10.4-1.5z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg><span class="bn" id="badgeN" hidden></span></a>
     <button class="menu" type="button" id="menu" aria-expanded="false" aria-controls="sitenav">Menu</button>
-    <button class="theme" type="button" aria-label="Switch between light and dark" id="theme">Dark</button>
+    <button class="theme" type="button" aria-label="Switch to dark" id="theme">Dark</button>
   </div>
 </header>
 
@@ -87,11 +88,24 @@ document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-
       <p class="ctas"><a class="btn primary" href="#hunt">Start the hunt</a><a class="btn" href="#services">Bring us a mystery</a></p>
       <ul class="trust"><li>Free to play</li><li>Solved with clues</li><li>Open to anyone, anywhere</li></ul>
       <p class="foot" id="foot"><span>*</span> And every answer is in the record.</p>
-      <aside class="whatsnew" aria-label="What’s new on the trail"><h2>What’s new on the trail</h2><ul><li><time datetime="2026-10-18">18 Oct 2026</time> Person of the month: the dentist who wrote down the lodge’s story. And for anyone who breaks the line in code, a second one is waiting.</li><li><time datetime="2026-10-18">18 Oct 2026</time> Tin badges, a trail map, a countdown to the next clue and a line in code arrive on the site. Find the line.</li><li><time datetime="2026-10-17">17 Oct 2026</time> The second hall opens: a lake with no stream in and no stream out, and seven new cases on the board.</li></ul></aside>
       <figure class="plate">
         <picture><source type="image/webp" srcset="/img/heron-dawn.webp"><img src="/img/heron-dawn.jpg" width="576" height="1024" alt="A great blue heron wading in a misty lake at sunrise, autumn trees glowing red and gold on the far shore, mossy boulders in the foreground." fetchpriority="high" decoding="async"></picture>
       </figure>
     </div>
+
+    <aside class="ticker" aria-labelledby="tkH">
+      <h2 class="tk-tag" id="tkH"><span class="tk-dot" aria-hidden="true"></span>What’s new<span class="tk-long">on the trail</span><span class="tk-fresh" id="tkFresh" hidden></span></h2>
+      <div class="tk-view"><ul class="tk-track" id="tkTrack">
+        <li><a href="#pom"><time datetime="2026-10-18">18 Oct</time> Person of the month: the dentist who wrote down the lodge’s story</a></li>
+        <li><a href="/badges/"><time datetime="2026-10-18">18 Oct</time> Break the line in code and a second one is waiting in your badge book</a></li>
+        <li><a href="#tnc"><time datetime="2026-10-18">18 Oct</time> Then and now: drag the hotel corner from 1860 to today</a></li>
+        <li><a href="/badges/"><time datetime="2026-10-18">18 Oct</time> Nineteen tin badges to earn, and five ranks from Candidate to Noble Grand Humbug</a></li>
+        <li><a href="#hunt"><time datetime="2026-10-17">17 Oct</time> The second hall opens: a lake with no stream in and no stream out</a></li>
+        <li><a href="#clue"><time datetime="2026-10-17">17 Oct</time> Clue of the week: one man gave away forty acres of lakefront</a></li>
+      </ul></div>
+      <div class="tk-ctl"><button type="button" class="tk-btn" id="tkPause" aria-pressed="false" aria-label="Pause the news" hidden><svg viewBox="0 0 16 16" aria-hidden="true"><path class="ps" d="M5 3v10M11 3v10"/><path class="pl" d="M5 3l8 5-8 5z"/></svg></button><button type="button" class="tk-btn tk-allbtn" id="tkAll" aria-expanded="false" aria-controls="tkList">All news</button></div>
+      <ol class="tk-list" id="tkList" hidden></ol>
+    </aside>
 
     <aside class="promo" aria-label="Research services">
       <p class="kicker">Research services</p>
@@ -154,14 +168,14 @@ document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-
     </section>
 
     <script type="application/json" id="clues">[["2026-10-17", "17 October", "One man gave away forty acres of lakefront. Try to picture anyone doing that today. Who was he?", 3], ["2026-10-24", "24 October", "In 1867 a village hotel was hauled across town and turned into a mill. Nobody has pinned down where it went.", 2], ["2026-10-31", "31 October", "A lake with no stream in and no stream out once had a flour mill on its shore. What turned the wheel?", 7], ["2026-11-07", "7 November", "A deed written on parchment in 1831 has vanished. Somewhere, someone may have it in a drawer.", 4], ["2026-11-14", "14 November", "The man who first wrote down the joke lodge’s story put a question mark after the word “charter.” Was there ever one?", 1], ["2026-11-21", "21 November", "Old shores were stony. Where did all the boulders go?", 6], ["2026-11-28", "28 November", "A county history said a lake was fed by a river running underground from Lake Superior. Where does its water really come from?", 5]]</script>
-    <aside class="clue" aria-label="Clue of the week">
+    <aside class="clue" id="clue" aria-label="Clue of the week">
       <svg class="clue-ic" viewBox="0 0 64 64" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="26" cy="26" r="16"/><circle cx="26" cy="26" r="11" stroke-width="1" opacity=".5"/><path d="M38 38l16 16" stroke-width="5"/><path d="M19 20a9 9 0 0 1 8-5" stroke-width="1.6" opacity=".7"/></svg>
       <span class="lbl" id="clueLbl">Clue of the week · 17 October</span>
       <p id="clueText">One man gave away forty acres of lakefront. Try to picture anyone doing that today. Who was he?</p>
       <a href="#case-3" id="clueLink">It’s case 3 on the board</a> · <a href="https://www.facebook.com/projectscroll/">Follow the hunt on Facebook</a>
       <p class="clue-next" id="clueNext" aria-live="off"></p>
     </aside>
-    <aside class="otd" id="otd" aria-label="On this day in the record" hidden><span class="otd-l"></span> <span class="otd-d"></span><p class="otd-t"></p><span class="otd-s"></span></aside>
+    <aside class="otd" id="otd" aria-label="On this day in the record" hidden><span class="otd-l"></span> <span class="otd-d"></span><p class="otd-t"></p><span class="otd-s"></span><span class="otd-nav" hidden><button type="button" class="otd-b" id="otdPrev" aria-label="Earlier in the calendar">‹</button><button type="button" class="otd-b" id="otdNext" aria-label="Later in the calendar">›</button></span></aside>
     <script type="application/json" id="otdData">[[1, 24, 1832, "Eber Root is licensed to keep a tavern in Cassopolis, one of the first two in the village. His frame tavern became the Union Hotel.", "L. H. Glover, 1906"], [1, 26, 1837, "Michigan is admitted to the Union as a state.", "Act of Congress, 26 January 1837"], [3, 11, 1845, "E. A. Graves starts the Cass County Advocate at Cassopolis. No copy from 1846 has turned up yet. One could date the joke lodge.", "H. S. Rogers, 1875, p. 259"], [7, 4, 1846, "Cassopolis Presbyterians hold their Fourth of July dinner inside their unfinished church.", "H. S. Rogers, 1875"], [1, 16, 1847, "The Odd Fellows’ Cass County Lodge No. 21 receives its dispensation, the same winter as the joke lodge’s grand ball.", "H. S. Rogers, 1875, pp. 254–255"], [2, 18, 1847, "Cass County Lodge No. 21 of the Odd Fellows is instituted at Cassopolis: “the first legitimate secret society.”", "H. S. Rogers, 1875, pp. 254–255"], [6, 12, 1852, "The county’s Masons hold their first meeting, in the Union Hotel, where the joke lodge had danced.", "H. S. Rogers, 1875, p. 256"], [7, 9, 1852, "The Masons meet for the first time under dispensation, in the Odd Fellows’ Hall.", "H. S. Rogers, 1875, p. 256"], [2, 11, 1860, "Frank Leslie’s Illustrated Newspaper begins its “Grand Exposure of the Sons of Malta.”", "Frank Leslie’s Illustrated Newspaper, vol. IX, no. 219"], [9, 20, 1870, "The Cassopolis Reading Room is organized in the dental office of James M. Shepard, the man who wrote the joke lodge’s story down.", "H. S. Rogers, 1875, p. 258"], [11, 24, 1842, "James M. Shepard is born. About thirty years on, he will write down the story of the joke lodge founded in his village when he was three.", "His death certificate and gravestone"], [8, 2, 1790, "Census day for the first United States census.", "U.S. Census Bureau"], [6, 1, 1850, "Census day for the 1850 census, the first to name every free person in a household.", "U.S. Census Bureau"], [7, 1, 1837, "Civil registration of births, marriages and deaths begins in England and Wales.", "General Register Office"], [1, 1, 1892, "Ellis Island opens as the immigration station for the port of New York.", "National Park Service"], [1, 10, 1921, "Fire in the Commerce Building in Washington damages the 1890 census. Almost all of it is later lost.", "National Archives"]]</script>
     <ul class="stats" aria-label="Project Scroll at a glance">
       <li><a href="#cases"><b>10</b><span>open cases on the board</span></a></li>
@@ -421,7 +435,7 @@ document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-
         <li>Call it settled only when the evidence settles it. Until then, it’s an open question.</li>
       </ol>
       <p class="note center">From “One Letter, Two Certificates.” <a href="/notes/one-letter-two-certificates/">Read the whole case</a> · <a href="/notes/">All field notes</a></p>
-      <aside class="pom" aria-labelledby="pomH">
+      <aside class="pom" id="pom" aria-labelledby="pomH">
         <p class="kicker">Person of the month · October</p>
         <h3 id="pomH">James M. Shepard, the man who wrote it down</h3>
         <p>He was three years old in 1846, when the joke lodge was founded. He came to Cassopolis in 1868 and worked there as a dentist. In September 1870 the village’s reading room was organized in his dental office, and a year later he was one of the incorporators of its library association.</p>
