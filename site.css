@@ -430,6 +430,11 @@ footer.site .fine{font-size:.82rem; margin-top:.8rem}
 .tl li{scroll-snap-align:start; position:relative; padding-top:1.6rem; font-size:.93rem; line-height:1.45}
 .tl li::after{content:""; position:absolute; top:.68rem; left:.75rem; right:-1rem; border-top:1.5px solid var(--line)}
 .tl li.now::after{display:none}
+.tl li.sealed::before{background:var(--paper); border-color:var(--ink-soft); border-style:dashed}
+.tl li.sealed .yr{color:var(--ink-soft)}
+.tl li.sealed p{color:var(--ink-soft); font-style:italic}
+.mk.sealedmk{background:transparent; color:var(--ink-soft); border:1px dashed var(--ink-soft); display:inline-flex; align-items:center; gap:.25rem}
+.mk.sealedmk svg{width:.75rem; height:.75rem}
 .tl li::before{content:""; position:absolute; z-index:1; top:.32rem; left:0; width:.75rem; height:.75rem; border-radius:50%; background:var(--paper); border:2px solid var(--rule)}
 .tl li.now::before{background:var(--rule); box-shadow:0 0 0 4px color-mix(in srgb, var(--rule) 25%, transparent)}
 .tl .yr{display:block; font-family:"Libre Caslon Display",serif; font-size:1.7rem; line-height:1; color:var(--ink); margin:0 0 .35rem}
