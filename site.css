@@ -396,8 +396,20 @@ footer.site .fine{font-size:.82rem; margin-top:.8rem}
 }
 .wide{margin:1.8rem auto 0; width:min(100%, 24rem)}
 .secfig{margin:1.6rem auto 1.4rem; width:min(100%, 30rem)}
+.stats{list-style:none; padding:0; margin:1.6rem auto 0; max-width:var(--col); display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.stats li + li{border-left:1px solid var(--line)}
+.stats a{display:block; text-align:center; padding:1rem .5rem; text-decoration:none; color:var(--ink)}
+.stats a:hover b{color:var(--rule)}
+.stats b{display:block; font-family:"Libre Caslon Display", Georgia, serif; font-weight:400; font-size:2.4rem; line-height:1; color:var(--ink)}
+.stats span{display:block; font-size:.82rem; color:var(--ink-soft); margin-top:.35rem; line-height:1.3}
+@media (max-width:640px){ .stats{grid-template-columns:repeat(2,1fr)} .stats li:nth-child(3){border-left:0} .stats li:nth-child(n+3){border-top:1px solid var(--line)} .stats b{font-size:2rem} }
+@media print{ .stats{break-inside:avoid} }
 .secfig.tall{width:min(100%, 16rem)}
 .secfig.small{width:min(100%, 26rem)}
+.secfig.map{width:min(100%, 24rem)}
+.figlink{display:block; border-radius:3px}
+.figlink:hover img{box-shadow:0 0 0 2px var(--rule), 0 14px 34px -16px rgba(0,0,0,.4)}
+.contact .secfig.small{width:min(100%, 20rem)}
 .secfig img{display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:3px; box-shadow:0 1px 2px rgba(0,0,0,.06), 0 14px 34px -16px rgba(0,0,0,.4)}
 .secfig figcaption{font-size:.85rem; color:var(--ink-soft); text-align:center; margin-top:.55rem; line-height:1.45}
 .promo-svcs{list-style:none; padding:0; margin:.9rem 0 1rem; display:flex; flex-wrap:wrap; justify-content:center; gap:.4rem}
@@ -851,7 +863,7 @@ label.btn{cursor:pointer}
   img{max-width:100%!important; height:auto!important; break-inside:avoid!important; animation:none!important; opacity:1!important; transform:none!important; box-shadow:none!important}
   .still{width:3in!important; margin:0 auto 1rem!important}
   .wide{width:3.4in!important; margin:1rem auto 0!important}
-  .secfig{width:3.2in!important; margin:.8rem auto!important} .secfig.tall{width:2.2in!important} .secfig.small{width:3in!important}
+  .secfig{width:3.2in!important; margin:.8rem auto!important} .secfig.tall, .secfig.map{width:2.4in!important} .secfig.small{width:3in!important}
   .promo-svcs a{border-color:#999!important}
   .plate2{display:block!important}
   figure, table.ledger tr, .try, .worked, .quiz, dl.marks > div, .tl li, .clue{break-inside:avoid!important}
