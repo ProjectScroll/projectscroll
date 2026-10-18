@@ -549,13 +549,15 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
   box.hidden=false;
 })();
 
-/* every link that leaves this page opens in a new tab; jumps within the page stay put */
+/* links to other websites open in a new tab. The site's own menu (top bar, logo, footer, search results,
+   parts rail) stays in the same tab, so Back works. Other links to the site's own pages still open a new tab. */
 (function(){
-  const here=location.origin+location.pathname;
+  const here=location.origin+location.pathname, MENU='.bar, footer.site nav, #searchRes, .partrail, .skip';
   const mark=function(a){
     const h=a.getAttribute('href'); if (!h || h.charAt(0)==='#' || /^(mailto:|tel:|javascript:)/i.test(h)) return;
     let u; try{ u=new URL(h, location.href); }catch(e){ return; }
     if (u.origin+u.pathname===here && u.hash) return;
+    if (u.origin===location.origin && a.closest(MENU)){ if (a.target==='_blank') a.removeAttribute('target'); return; }
     a.target='_blank'; const r=(a.getAttribute('rel')||'').split(/\s+/); if (r.indexOf('noopener')<0) r.push('noopener'); a.setAttribute('rel', r.join(' ').trim());
   };
   document.querySelectorAll('a[href]').forEach(mark);
