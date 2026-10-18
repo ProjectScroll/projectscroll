@@ -80,7 +80,7 @@
     <h2>How this was made</h2>
     <p>The plan was cut from the Library of Congress copy of the wall map. Nineteen street corners that appear on both maps (Broadway, Rowland, O’Keefe and East, where they meet York, State, Jefferson, Water and South) were matched by measurement, and the plan was scaled to fit them. On average the old corners land within about five yards of the new ones.</p>
     <p class="note">One label has been painted out of this copy so that it does not spoil the hunt. Nothing else has been changed.</p>
-    <p class="note">1860 plan: <i>Map of the Counties of Cass, Van Buren and Berrien, Michigan</i> (Philadelphia: Geil, Harley &amp; Siverd, 1860), inset “Cassopolis, County Seat of Cass Co.” Library of Congress, Geography and Map Division, g4113c.la000324. Public domain. Today’s streets: © OpenStreetMap contributors, © CARTO.</p>
+    <p class="note">1860 plan: <i>Map of the Counties of Cass, Van Buren and Berrien, Michigan</i> (Philadelphia: Geil, Harley &amp; Siverd, 1860), inset “Cassopolis, County Seat of Cass Co.” Library of Congress, Geography and Map Division, g4113c.la000324. Public domain. Today’s streets and water: drawn from OpenStreetMap data, © OpenStreetMap contributors, available under the Open Database License.</p>
     <link rel="stylesheet" href="/vendor/leaflet-1.9.4/leaflet.css?v=1">
     <script src="/vendor/leaflet-1.9.4/leaflet.js?v=1"></script>
     <script>
@@ -88,19 +88,34 @@
       const stat=document.getElementById('tnStat');
       if (!window.L){ stat.textContent='The map could not load. Try refreshing the page.'; return; }
       const B=L.latLngBounds([41.9061,-86.018103],[41.917772,-86.007168]);
-      const map=L.map('tnMap',{zoomSnap:0.25, minZoom:13, maxZoom:19, maxBounds:B.pad(1.5), maxBoundsViscosity:0.8, scrollWheelZoom:true});
-      const home=()=>map.fitBounds(B.pad(-0.08));
+      const map=L.map('tnMap',{zoomSnap:0.25, minZoom:13, maxZoom:19, maxBounds:L.latLngBounds([41.895,-86.035],[41.930,-85.990]), maxBoundsViscosity:0.8, scrollWheelZoom:true});
+      const home=()=>map.fitBounds(B.pad(0.02));
       home();
-      const att='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
-      const tiles=k=>L.tileLayer('https://{s}.basemaps.cartocdn.com/'+k+'/{z}/{x}/{y}{r}.png',{subdomains:'abcd', maxZoom:20, attribution:att});
-      const light=tiles('light_nolabels'), dark=tiles('dark_nolabels');
+      // today's streets and water, drawn from OpenStreetMap data (no labels, by design)
+      const dec=a=>{ const o=[]; let la=0, lo=0; for(let i=0;i<a.length;i+=2){ la+=a[i]; lo+=a[i+1]; o.push([la/1e5, lo/1e5]); } return o; };
       const isDark=()=>{ const t=document.documentElement.dataset.theme; return t ? t==='dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
-      let base=null;
-      const setBase=()=>{ const want=isDark()?dark:light; if(base===want) return; if(base) map.removeLayer(base); base=want.addTo(map); base.bringToBack(); };
-      setBase();
-      new MutationObserver(setBase).observe(document.documentElement,{attributes:true, attributeFilter:['data-theme']});
-      matchMedia('(prefers-color-scheme: dark)').addEventListener('change',setBase);
-      const old=L.imageOverlay('/img/cass1860.webp',B,{opacity:0.75, alt:'1860 town plan of Cassopolis', className:'tnold'}).addTo(map);
+      const pal=()=>isDark() ? {land:'#1d2329', water:'#2c4656', minor:'#7d8994', major:'#c9d1d8', rail:'#8a7f72'} : {land:'#f1efe8', water:'#b9d0dc', minor:'#a6a39a', major:'#5d5a54', rail:'#8a7560'};
+      const cv=L.canvas({padding:0.5});
+      const groups={w:[], r:[], m:[], x:[]};
+      const style={
+        w:c=>({renderer:cv, stroke:false, fillColor:c.water, fillOpacity:1, interactive:false}),
+        r:c=>({renderer:cv, color:c.minor, weight:2, interactive:false}),
+        m:c=>({renderer:cv, color:c.major, weight:3.5, interactive:false}),
+        x:c=>({renderer:cv, color:c.rail, weight:2, dashArray:'6 5', interactive:false})
+      };
+      const paint=()=>{ const c=pal(); map.getContainer().style.background=c.land; for(const k in groups) for(const l of groups[k]) l.setStyle(style[k](c)); };
+      fetch('/map/cassopolis/today.json?v=1').then(r=>r.json()).then(d=>{
+        const c=pal();
+        for(const p of d.w) groups.w.push(L.polygon(p.map(dec), style.w(c)).addTo(map));
+        for(const k of ['r','x','m']) for(const a of d[k]) groups[k].push(L.polyline(dec(a), style[k](c)).addTo(map));
+      }).catch(()=>{ stat.textContent='Today’s streets did not load. Try refreshing the page.'; });
+      new MutationObserver(paint).observe(document.documentElement,{attributes:true, attributeFilter:['data-theme']});
+      matchMedia('(prefers-color-scheme: dark)').addEventListener('change',paint);
+      map.attributionControl.setPrefix(false);
+      map.attributionControl.addAttribution('Today: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors');
+      map.getContainer().style.background=pal().land;
+      map.createPane('old').style.zIndex=450;
+      const old=L.imageOverlay('/img/cass1860.webp',B,{pane:'old', opacity:0.75, alt:'1860 town plan of Cassopolis', className:'tnold'}).addTo(map);
       old.on('load',()=>{ stat.textContent='1860 plan placed over today’s streets.'; clip(); });
       old.on('error',()=>{ stat.textContent='The 1860 plan did not load. Try refreshing the page.'; });
       const op=document.getElementById('tnOp');

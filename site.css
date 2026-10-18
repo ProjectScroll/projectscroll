@@ -743,7 +743,9 @@ label.btn{cursor:pointer}
 .tnrange input{width:min(12rem, 40vw); accent-color:var(--rule)}
 .tnwrap{position:relative}
 .tnmap.leaflet-container{background:var(--paper); font:inherit}
-.tnmap .leaflet-control-attribution{font-size:.7rem}
+.tnmap .leaflet-control-attribution{font-size:.7rem; background:var(--paper); color:var(--ink-soft)}
+.tnmap .leaflet-control-attribution a{color:inherit}
+.tnmap .leaflet-bar a{background:var(--paper); color:var(--ink); border-color:var(--line)}
 .tnswipe{position:absolute; top:0; bottom:0; left:50%; width:0; border-left:2px solid var(--rule); z-index:500; pointer-events:none}
 .tnswipe[hidden]{display:none}
 .tnswipe::before, .tnswipe::after{position:absolute; top:.6rem; padding:.15rem .5rem; font-size:.8rem; background:var(--paper); color:var(--ink); border:1px solid var(--line); border-radius:3px; white-space:nowrap}
