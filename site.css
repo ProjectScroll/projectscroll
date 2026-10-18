@@ -1062,3 +1062,9 @@ html{scrollbar-color:color-mix(in srgb, var(--ink-soft) 55%, transparent) transp
 .casetools a{text-decoration:none; border:1px solid var(--line); border-radius:999px; padding:.15rem .7rem; color:var(--ink); background:var(--paper)}
 .casetools a:hover{border-color:var(--rule); color:var(--rule)}
 @media print{ .casetools{display:none!important} }
+
+/* Draft 39: keep the whole top bar inside the page column */
+.bar-in{gap:.7rem}
+.bar nav{gap:.68rem; font-size:.9rem}
+.bar nav + .searchbtn{margin-left:.45rem}
+@media (min-width:881px) and (max-width:1020px){ .bar nav{gap:.55rem; font-size:.84rem} .bar-in{gap:.5rem} .bar .brand{font-size:.95em} }
