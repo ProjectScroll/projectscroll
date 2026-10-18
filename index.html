@@ -52,7 +52,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       Project Scroll
     </a>
     <nav aria-label="Sections" id="sitenav">
-      <a href="#hunt">The hunt</a><a href="#cases">Case board</a><a href="#services">Research</a><a href="#method">How we work</a><a href="#faq">Questions</a><a href="#contact">Contact</a>
+      <a href="#hunt">The hunt</a><a href="#cases">Case board</a><a href="#services">Research</a><a href="#method">How we work</a><a href="#marks">Evidence</a><a href="#faq">Questions</a><a href="#contact">Contact</a>
     </nav>
     <button class="menu" type="button" id="menu" aria-expanded="false" aria-controls="sitenav">Menu</button>
     <button class="theme" type="button" aria-label="Switch between light and dark" id="theme">Dark</button>
@@ -78,6 +78,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     </aside>
 
     <section id="hunt" class="has-note">
+      <p class="part">Part I</p>
       <h2>The hunt</h2>
       <p>It began in one small Michigan county, with a lake that has no stream in and no stream out, a secret society from 1846, and a doctor who kept a bone. It is growing from there, one hall at a time.</p>
       <ol class="steps">
@@ -86,6 +87,14 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
         <li><b>Post your answer.</b> Put it in the comments, and say where you found it.</li>
         <li><b>Get named.</b> When someone cracks one, the next post says who.</li>
       </ol>
+      <figure class="halls" aria-label="The halls of the hunt so far">
+        <ol>
+          <li class="open"><span class="seal">I</span><b>The first hall</b><small>Open · start in the pinned post</small></li>
+          <li class="open"><span class="seal">II</span><b>The second hall</b><small>Open · its door is in the first</small></li>
+          <li class="locked"><span class="seal"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><b>The third hall</b><small>Still sealed</small></li>
+          <li class="locked more"><span class="seal">…</span><b>And on</b><small>The scroll is long</small></li>
+        </ol>
+      </figure>
       <p class="note">Start with <a href="https://www.facebook.com/projectscroll/">Project Scroll on Facebook</a>. The first door is in the pinned post.</p>
       <h3>The rules</h3>
       <ul class="rules">
@@ -97,8 +106,10 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     </section>
 
     <section id="cases">
+      <p class="part">Part II</p>
       <h2>The case board</h2>
       <p>Every mystery the hunt has posted, and where it stands. When someone cracks one, their name goes here and in the next post.</p>
+      <div class="seals" aria-hidden="true"><a href="#case-1" title="Case 1: open">1</a><a href="#case-2" title="Case 2: open">2</a><a href="#case-3" title="Case 3: open">3</a><a href="#case-4" title="Case 4: open">4</a><a href="#case-5" title="Case 5: open">5</a><a href="#case-6" title="Case 6: open">6</a><a href="#case-7" title="Case 7: open">7</a><a href="#case-8" title="Case 8: open">8</a><a href="#case-9" title="Case 9: open">9</a><a href="#case-10" title="Case 10: open">10</a></div>
       <p class="tally"><span><b>10</b>open</span><span><b>0</b>solved</span><span>Nobody is ahead of you yet.</span></p>
       <table class="ledger">
         <caption>Last updated 17 October 2026.</caption>
@@ -125,6 +136,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     </section>
 
     <section id="services">
+      <p class="part">Part III</p>
       <h2>Bring us your mystery</h2>
       <div class="cases">
         <p>A pioneer whose death certificate and his son's can't agree on his middle initial.<button class="src" type="button" popovertarget="s1" aria-label="Source for this case">source</button></p>
@@ -158,6 +170,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     </section>
 
     <section id="method">
+      <p class="part">Part IV</p>
       <h2>How we work</h2>
       <p><b>Every claim comes with its source.</b> You'll know exactly where each fact came from, so you can check it yourself.</p>
       <p><b>Disagreements are clues, not failures.</b> When two records argue, we show you both and explain why.</p>
@@ -167,8 +180,17 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <h3>What you get</h3>
       <p>A written report in plain English: what we found, where we found it, what is still open, and where to look next. Where the old books and maps are free online, we include the links so you can turn the pages yourself. <a href="/sample/project-scroll-sample-report.pdf">See a sample report</a>.</p>
 
-      <h3 id="marks">How we mark the evidence</h3>
+    </section>
+
+    <section id="marks">
+      <p class="part">Part V</p>
+      <h2>How we mark the evidence</h2>
       <p>Not every source is worth the same. A death certificate filed the week a man died is not a story his grandson told sixty years later, and neither of them is our own opinion. So in our longer research reports, every statement carries one of nine marks, strongest first. You can see at a glance what the record says, and what we are arguing from it.</p>
+      <figure class="scale" aria-label="The nine marks, from strongest to weakest">
+        <div class="bar9"><a class="kD" href="#mk-document" title="Document"></a><a class="kP" href="#mk-period-print" title="Period print"></a><a class="kC" href="#mk-county-history" title="County history"></a><a class="kM" href="#mk-compiled" title="Compiled"></a><a class="kT" href="#mk-tradition" title="Tradition"></a><a class="kF" href="#mk-field" title="Field"></a><span class="gap"></span><a class="kI" href="#mk-inference" title="Inference"></a><a class="kR" href="#mk-reading" title="Reading"></a><a class="kH" href="#mk-hypothesis" title="Hypothesis"></a></div>
+        <figcaption><span>What the record says</span><span>What we argue from it</span></figcaption>
+        <div class="ends"><span>Strongest</span><span>Weakest</span></div>
+      </figure>
 
       <p class="mgroup">What the record says</p>
       <dl class="marks">
@@ -197,11 +219,12 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     </section>
 
     <blockquote class="pull">
-      <p>"…the distant echoes, as it were, of the glacial age, indicating in whispers the time when the dominion of water was complete over all this country."</p>
+      <p>…the distant echoes, as it were, of the glacial age, indicating in whispers the time when the dominion of water was complete over all this country.”</p>
       <cite>A county historian on the lakes of southwest Michigan, 1906</cite>
     </blockquote>
 
     <section id="notes" class="notes">
+      <p class="part">Part VI</p>
       <h2>From the field notes</h2>
       <p>The first lesson from the desk: what to do when two old records tell you two different things.</p>
       <ol>
@@ -225,6 +248,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     </section>
 
     <section id="faq">
+      <p class="part">Part VII</p>
       <h2>Questions</h2>
       <details class="faq"><summary>Does the hunt cost anything?</summary><p>No. The hunt is free to follow and free to play. All you need is curiosity and, now and then, a library card.</p></details>
       <details class="faq"><summary>Do I have to go anywhere?</summary><p>No. Every clue is solved on paper: in books, maps and records, many of them free online. The hunt never sends anyone onto private land or near a grave.</p></details>

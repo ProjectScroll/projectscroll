@@ -54,7 +54,7 @@ p,li{text-wrap:pretty}
 .mark{display:flex; align-items:center; gap:.55rem; font-family:"Libre Caslon Display",serif; font-size:1.3rem; color:var(--ink); text-decoration:none}
 .mark svg{width:22px; height:22px}
 .bar nav{margin-left:auto; display:flex; gap:1.1rem; font-size:.95rem}
-.bar nav a{color:var(--ink-soft); text-decoration:none; padding:.15rem 0; border-bottom:2px solid transparent; transition:color .2s, border-color .2s}
+.bar nav a{white-space:nowrap; color:var(--ink-soft); text-decoration:none; padding:.15rem 0; border-bottom:2px solid transparent; transition:color .2s, border-color .2s}
 .bar nav a:hover{color:var(--ink)}
 .bar nav a[aria-current="true"]{color:var(--ink); border-bottom-color:var(--rule)}
 .theme{
@@ -194,7 +194,7 @@ details.faq p{margin:.5rem 0 0 1.1rem}
 .contact{background:var(--paper-2); margin:1rem 0 0; padding:2rem 1.2rem; border-top:0; max-width:calc(var(--measure) + 2rem)}
 .contact .addr{font-size:1.35rem; font-family:"Libre Caslon Display",serif}
 footer{max-width:var(--measure); padding-top:2.4rem; font-size:.9rem; color:var(--ink-soft)}
-@media (max-width:860px){
+@media (max-width:1080px){
   .bar nav{display:none}
   .theme{margin-left:auto}
 }
@@ -286,7 +286,7 @@ dl.marks dd i{display:block; color:var(--ink-soft); font-size:.9rem; margin-top:
 
 /* ---------- mobile menu ---------- */
 .menu{display:none; font:inherit; font-size:.9rem; color:var(--ink-soft); background:none; border:1px solid var(--line); border-radius:999px; padding:.2rem .8rem; cursor:pointer; margin-left:auto}
-@media (max-width:860px){
+@media (max-width:1080px){
   .menu{display:inline-block}
   .theme{margin-left:0}
   .bar.open nav{display:flex; flex-direction:column; gap:0; position:absolute; left:0; right:0; top:100%;
@@ -310,3 +310,47 @@ footer.site{max-width:var(--measure); display:grid; gap:.4rem 2rem; border-top:1
 footer.site .motto{font-family:"Libre Caslon Display",serif; font-size:1.25rem; color:var(--ink); margin-bottom:.4rem}
 footer.site nav{display:flex; flex-wrap:wrap; gap:.3rem 1.1rem}
 footer.site .fine{font-size:.82rem; margin-top:.8rem}
+
+/* ---------- part numerals, like the parts of a field book ---------- */
+.part{font-family:"Libre Caslon Display",serif; font-size:.95rem; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); margin:0 0 .2rem; display:flex; align-items:center; gap:.7rem}
+.part::after{content:""; flex:0 0 2.5rem; height:1px; background:var(--rule); opacity:.6}
+
+/* ---------- the evidence scale ---------- */
+.scale{margin:1.4rem 0 .4rem}
+.bar9{display:flex; height:.9rem; gap:3px}
+.bar9 a{flex:1; border-radius:2px; transition:transform .2s, filter .2s}
+.bar9 a:hover{transform:scaleY(1.5); filter:brightness(1.1)}
+.bar9 .gap{flex:0 0 .9rem}
+.scale figcaption{display:flex; font-size:.76rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-top:.45rem}
+.scale figcaption span:first-child{flex:6.4}
+.scale figcaption span:last-child{flex:3; padding-left:.4rem}
+.scale .ends{display:flex; justify-content:space-between; font-size:.76rem; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--line); margin-top:.3rem; padding-top:.2rem}
+.scale .ends span:first-child::before{content:"← "} .scale .ends span:last-child::after{content:" →"}
+
+/* ---------- the halls track ---------- */
+.halls{margin:1.6rem 0 1.2rem}
+.halls ol{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:.6rem; position:relative}
+.halls ol::before{content:""; position:absolute; left:1.3rem; right:12%; top:1.3rem; border-top:1.5px dotted var(--line)}
+.halls li{position:relative; display:flex; flex-direction:column; gap:.1rem; font-size:.92rem; line-height:1.35}
+.halls .seal{width:2.6rem; height:2.6rem; border-radius:50%; display:grid; place-items:center; font-family:"Libre Caslon Display",serif; font-size:1.05rem; margin-bottom:.45rem; position:relative; z-index:1}
+.halls .open .seal{background:var(--rule); color:#fff; box-shadow:0 0 0 4px var(--paper), 0 0 0 5px color-mix(in srgb, var(--rule) 40%, transparent)}
+.halls .locked .seal{background:var(--paper); color:var(--ink-soft); border:1.5px dashed var(--line); box-shadow:0 0 0 4px var(--paper)}
+.halls .seal svg{width:1.1rem; height:1.1rem}
+.halls small{color:var(--ink-soft); font-size:.82rem}
+.halls .locked b{color:var(--ink-soft); font-weight:400}
+@media (max-width:640px){
+  .halls ol{grid-template-columns:1fr 1fr; row-gap:1.1rem}
+  .halls ol::before{display:none}
+}
+
+/* ---------- case seals ---------- */
+.seals{display:flex; flex-wrap:wrap; gap:.4rem; margin:.2rem 0 .9rem}
+.seals a{width:2rem; height:2rem; border-radius:50%; display:grid; place-items:center; font-family:"Libre Caslon Display",serif; font-size:.85rem; text-decoration:none; color:var(--rule); border:1.5px solid var(--rule); transition:background .2s, color .2s}
+.seals a:hover{background:var(--rule); color:#fff}
+.seals a.solved{background:var(--ledger); border-color:var(--ledger); color:#fff}
+
+/* ---------- pull quote: a large opening mark ---------- */
+.pull{position:relative; padding-left:3.2rem}
+.pull::before{content:"\201C"; position:absolute; left:-.3rem; top:2.2rem; font-family:"Libre Caslon Display",serif; font-size:7.5rem; line-height:.8; color:var(--rule); opacity:.85}
+
+@media (max-width:640px){ .scale figcaption{font-size:.64rem; letter-spacing:.04em} .pull{padding-left:2.4rem} .pull::before{font-size:5.5rem; top:2.4rem} }
