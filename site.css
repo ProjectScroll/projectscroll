@@ -205,10 +205,6 @@ footer{max-width:var(--measure); padding-top:2.4rem; font-size:.9rem; color:var(
   @supports (animation-timeline: scroll()){ .sheet::after{left:1rem} }
   .hero{padding-top:3rem}
 }
-@media print{
-  .bar,.theme,.src,body::before,.sheet::after{display:none}
-  body{background:#fff; color:#000}
-}
 
 /* ---------- clue of the week ---------- */
 .clue{max-width:var(--measure); margin:0 0 2.6rem; padding:1.1rem 1.2rem 1.15rem; border:1px solid var(--line); border-left:3px solid var(--rule); border-radius:4px; background:color-mix(in srgb, var(--paper-2) 55%, transparent)}
@@ -390,14 +386,14 @@ footer.site .fine{font-size:.82rem; margin-top:.8rem}
 /* ---------- the middle plate: the doctor's window beside the quotation ---------- */
 .plate2{border-top:1px solid var(--line); max-width:calc(var(--measure) + 2rem); padding:2.6rem 0 0}
 .plate2 .pull{border-top:0; padding-top:1rem}
-.still{margin:0 auto 1rem; width:min(100%, 22rem)}
+.still{margin:0 auto 1rem; width:min(100%, 17rem)}
 .still img, .wide img{display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:3px; box-shadow:0 1px 2px rgba(0,0,0,.06), 0 14px 34px -16px rgba(0,0,0,.4)}
 @media (min-width:900px){
-  .plate2{display:grid; grid-template-columns:19rem minmax(0,1fr); column-gap:2.4rem; align-items:center}
+  .plate2{display:grid; grid-template-columns:15rem minmax(0,1fr); column-gap:2.4rem; align-items:center}
   .still{width:100%; margin:0}
   .plate2 .pull{padding:0 0 0 3.2rem}
 }
-.wide{margin:1.8rem 0 0}
+.wide{margin:1.8rem auto 0; width:min(100%, 34rem)}
 /* images fade up gently as they scroll into view */
 @supports (animation-timeline: view()){
   @media (prefers-reduced-motion: no-preference){
@@ -425,3 +421,34 @@ footer.site .fine{font-size:.82rem; margin-top:.8rem}
 
 .swipe{display:none; font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--rule); margin:-.3rem 0 0}
 @media (max-width:640px){ .swipe{display:block} }
+
+/* ---------- start the hunt ---------- */
+.start{display:flex; flex-wrap:wrap; align-items:center; gap:.8rem 1.4rem; margin:1.4rem 0 1.8rem; padding:1rem 1.2rem; border:1px solid var(--line); border-left:3px solid var(--rule); border-radius:4px; background:color-mix(in srgb, var(--paper-2) 55%, transparent)}
+.start p{margin:0; flex:1 1 18rem}
+
+@media print{
+  @page{margin:.6in}
+  .bar,.theme,.menu,.src,.skip,body::before,.sheet::before,.sheet::after,.tools,.filters,.tl-nav,.swipe,.seals,#copy,.copied,.ctas,.start .btn,.dl{display:none!important}
+  :root{--paper:#fff!important; --paper-2:#f4f4f2!important; --ink:#000!important; --ink-soft:#444!important; --line:#bbb!important}
+  body{background:#fff!important; color:#000!important; font-size:11pt!important}
+  .sheet{max-width:none!important; padding:0!important}
+  .hero{display:block!important; padding:0 0 1rem!important}
+  .plate{width:2.2in!important; float:right!important; margin:0 0 .5rem 1rem!important}
+  img{max-width:100%!important; height:auto!important; break-inside:avoid!important; animation:none!important; opacity:1!important; transform:none!important; box-shadow:none!important}
+  .still{width:3in!important; margin:0 auto 1rem!important}
+  .wide{width:5in!important; margin:1rem auto 0!important}
+  .plate2{display:block!important}
+  figure, table.ledger tr, .try, .worked, .quiz, dl.marks > div, .tl li, .clue{break-inside:avoid!important}
+  h2, h3, .part{break-after:avoid!important}
+  .tl{display:block!important; overflow:visible!important; padding:0!important}
+  .tl li{padding:0 0 .5rem 1.2rem!important}
+  .tl li::after{display:none!important}
+  .tl li::before{top:.35rem!important}
+  .tl .yr{display:inline!important; font-size:1.1rem!important; margin-right:.4rem!important}
+  .tl p{display:inline!important}
+  details.faq p{display:block!important}
+  .mk, .mstrip span, .status, .halls .open .seal, .bar9 a{-webkit-print-color-adjust:exact!important; print-color-adjust:exact!important}
+  a{color:inherit!important}
+  footer.site nav{display:none!important}
+  footer.site .fine::after{content:" · projectscroll.com"}
+}
