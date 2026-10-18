@@ -543,6 +543,19 @@ window.PS_BADGES=[
   box.hidden=false;
 })();
 
+/* every link that leaves this page opens in a new tab; jumps within the page stay put */
+(function(){
+  const here=location.origin+location.pathname;
+  const mark=function(a){
+    const h=a.getAttribute('href'); if (!h || h.charAt(0)==='#' || /^(mailto:|tel:|javascript:)/i.test(h)) return;
+    let u; try{ u=new URL(h, location.href); }catch(e){ return; }
+    if (u.origin+u.pathname===here && u.hash) return;
+    a.target='_blank'; const r=(a.getAttribute('rel')||'').split(/\s+/); if (r.indexOf('noopener')<0) r.push('noopener'); a.setAttribute('rel', r.join(' ').trim());
+  };
+  document.querySelectorAll('a[href]').forEach(mark);
+  document.addEventListener('click', function(e){ const a=e.target.closest && e.target.closest('a[href]'); if (a) mark(a); }, true);
+})();
+
 /* lantern: a warm glow that follows the pointer on computers */
   (function(){
     if (!window.matchMedia || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;

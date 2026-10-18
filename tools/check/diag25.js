@@ -21,9 +21,9 @@ for (const [w,cs,lab] of [[1280,'light','computer'],[390,'dark','phone']]){
  const orn=await q.evaluate(()=>getComputedStyle(document.querySelector('#cases'),'::before').backgroundImage.includes('svg')); ok(P+'engraved flourish between sections', orn);
  // explore cards + case links
  ok(P+'eight explore cards present', await q.evaluate(()=>document.querySelectorAll('.explore a').length===8));
- await q.click('#case-4 .qlink'); await q.waitForLoadState(); ok(P+'case question opens its own page', /\/cases\/4\/$/.test(q.url()));
- ok(P+'case page has its own share card', (await q.getAttribute('meta[property="og:image"]','content')).endsWith('/cases/4/card.png'));
- ok(P+'case page shows Open status', /Open/.test(await q.textContent('.casestatus')));
+ { const [cp]=await Promise.all([q.context().waitForEvent('page'), q.click('#case-4 .qlink')]); await cp.waitForLoadState(); ok(P+'case question opens its own page in a new tab', /\/cases\/4\/$/.test(cp.url()));
+ ok(P+'case page has its own share card', (await cp.getAttribute('meta[property="og:image"]','content')).endsWith('/cases/4/card.png'));
+ ok(P+'case page shows Open status', /Open/.test(await cp.textContent('.casestatus'))); await cp.close(); }
  // guide
  await q.goto(''+BASE+'/guide/death-certificate/'); await q.waitForTimeout(500);
  ok(P+'guide opens on the Informant box', /Informant/.test(await q.textContent('#pl')));
