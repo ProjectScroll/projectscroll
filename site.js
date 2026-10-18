@@ -321,7 +321,7 @@
     'informant':['Informant','The person who answered the questions on a certificate. Their memory, not the dead person’s, is what the form records.'],
     'county histories':['County histories','Thick volumes published from the 1870s to the 1910s, mostly from what local families supplied. Rich, but rarely checked.'],
     'survey maps':['Survey maps','Maps drawn from the government land surveys that first measured the country into townships and square-mile sections, with the lakes, streams and early roads the surveyors found.'],
-    'death certificates':['Death certificates','The form filed when someone died: date, place, cause, and often the parents’ names. Michigan required them from 1897. The answers came from an informant, not the person who died.'],
+    'certificates':['Certificates','The forms filed for a birth, a marriage or a death. A death certificate gives the date, place and cause, and often the parents’ names; Michigan required them from 1897. The answers came from an informant, not the person named.'],
     'forgotten newspapers':['Forgotten newspapers','Small-town papers of the 1800s and early 1900s, many surviving only on microfilm or in a few libraries. Their notices, gossip and obituaries often record what no official paper did.'],
     'field notes':['Field notes','The notebooks surveyors kept as they walked the land: distances, trees, streams and what they saw, line by line.'],
     'census':['Census','The national head-count taken every ten years. Old schedules list every person in a household, with ages and birthplaces.'],
