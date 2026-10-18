@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The map room · 1860 wall map · Project Scroll</title>
+<meta name="description" content="Walk over every inch of the 1860 wall map of Cass, Van Buren and Berrien counties, Michigan, from the Library of Congress.">
+<link rel="canonical" href="https://projectscroll.com/map/">
+<meta name="theme-color" content="#E8ECE6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151B21" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="The map room · 1860 wall map · Project Scroll">
+<meta property="og:description" content="Walk over every inch of the 1860 wall map of Cass, Van Buren and Berrien counties, Michigan, from the Library of Congress.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Project Scroll">
+<meta property="og:url" content="https://projectscroll.com/map/">
+<meta property="og:image" content="https://projectscroll.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/icons/icon-32.png" type="image/png" sizes="32x32">
+<link rel="alternate icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="Project Scroll field notes" href="/feed.xml">
+<link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script>try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="/site.css?v=25">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+<header class="bar">
+  <div class="bar-in">
+    <a class="mark" href="/" aria-label="Project Scroll home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="4" width="18" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 4v24" stroke="#B3362B" stroke-width="2"/><path d="M14 11h7M14 15h7M14 19h5" stroke="currentColor" stroke-width="1.6"/></svg>
+      Project Scroll
+    </a>
+    <nav aria-label="Sections" id="sitenav">
+      <a href="/#hunt">Hunt</a><a href="/#cases">Cases</a><a href="/#services">Research</a><a href="/notes/">Field notes</a><a href="/#contact">Contact</a>
+    </nav>
+    <button class="menu" type="button" id="menu" aria-expanded="false" aria-controls="sitenav">Menu</button>
+    <button class="theme" type="button" aria-label="Switch between light and dark" id="theme">Dark</button>
+  </div>
+</header>
+<div class="sheet" id="top">
+  <main id="main" class="page">
+    <p class="crumb"><a href="/">← Project Scroll</a></p>
+    <p class="kicker">The map room</p>
+    <h1>The 1860 wall map</h1>
+    <p class="lede" style="font-size:1.15rem">In 1860 Geil, Harley &amp; Siverd of Philadelphia engraved a great wall map of Cass, Van Buren and Berrien counties, Michigan: every township, the farms and the names of the people on them, with little town plans and pictures of houses around the border. The original is at the Library of Congress. Here you can walk over every inch of it.</p>
+    <p class="note">Drag to move. Scroll, pinch or use the buttons to zoom. Nothing is marked: the hunt is yours.</p>
+  <div class="maproom">
+    <div class="mapbar">
+      <button type="button" class="btn" id="mzin" aria-label="Zoom in">+</button><button type="button" class="btn" id="mzout" aria-label="Zoom out">−</button><button type="button" class="btn" id="mhome">Whole map</button><button type="button" class="btn" id="mfull">Full screen</button>
+      <span class="mapstat" id="mstat" aria-live="polite">Loading the map from the Library of Congress…</span>
+    </div>
+    <div id="osd" class="osd" role="application" aria-label="Zoomable 1860 wall map of Cass, Van Buren and Berrien counties"></div>
+  </div>
+    <h2>Things to look for</h2>
+    <ul class="dis">
+      <li>The small <b>town plans</b> along the left side, with streets, blocks and the names of buildings.</li>
+      <li>The <b>business directories</b> printed in the margins, listing who kept which shop or hotel.</li>
+      <li>The <b>engraved houses</b> around the border: the proudest farms and homes of 1860.</li>
+      <li>Every <b>farm</b>, marked with its owner’s name and acreage.</li>
+    </ul>
+    <p class="note">Source: <i>Map of the Counties of Cass, Van Buren and Berrien, Michigan</i> (Philadelphia: Geil, Harley &amp; Siverd, 1860). Library of Congress, Geography and Map Division, g4113c.la000324. Public domain. Shown through the Library’s own image service.</p>
+    <script src="/vendor/openseadragon-4.1.1.min.js?v=1"></script>
+    <script>
+    (function(){ var stat=document.getElementById('mstat');
+      if (!window.OpenSeadragon){ stat.textContent='The map viewer could not load. Try refreshing the page.'; return; }
+      var v=OpenSeadragon({ id:'osd', tileSources:'https://tile.loc.gov/image-services/iiif/service:gmd:gmd411:g4113:g4113c:la000324/info.json', showNavigationControl:false, showNavigator:true, navigatorPosition:'BOTTOM_RIGHT',
+        maxZoomPixelRatio:2.2, visibilityRatio:0.6, gestureSettingsMouse:{clickToZoom:false, dblClickToZoom:true}, crossOriginPolicy:'Anonymous', animationTime:0.9 });
+      v.addHandler('open', function(){ stat.textContent='18,612 × 20,096 pixels, from the Library of Congress.'; });
+      v.addHandler('open-failed', function(){ stat.textContent='The Library of Congress image service did not answer. Please try again in a minute.'; });
+      document.getElementById('mzin').onclick=function(){ v.viewport.zoomBy(1.6); };
+      document.getElementById('mzout').onclick=function(){ v.viewport.zoomBy(1/1.6); };
+      document.getElementById('mhome').onclick=function(){ v.viewport.goHome(); };
+      document.getElementById('mfull').onclick=function(){ v.setFullScreen(!v.isFullPage()); };
+    })();
+    </script>
+  </main>
+  <footer class="site">
+    <div>
+      <p class="motto">Every clue is true. Every answer is in the record.</p>
+      <p>Project Scroll is independent historical research. Some mysteries open in an afternoon. Some take a season.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="/">Home</a><a href="/#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
+    </nav>
+    <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a></p>
+  </footer>
+</div>
+<script src="/site.js?v=25" defer></script>
+</body>
+</html>

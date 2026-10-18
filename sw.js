@@ -1,8 +1,8 @@
 /* Project Scroll offline support.
    Pages: network first, so visitors always get the newest version when online; the saved copy is used only offline.
    Files with a version tag (?v=) and pictures: saved copy first, since their names change whenever they change. */
-const CACHE = 'ps-v24';
-const CORE = ['/', '/notes/', '/notes/one-letter-two-certificates/', '/404.html', '/site.css?v=24', '/site.js?v=24',
+const CACHE = 'ps-v25';
+const CORE = ['/', '/notes/', '/notes/one-letter-two-certificates/', '/404.html', '/map/', '/guide/death-certificate/', '/site.css?v=25', '/site.js?v=25',
   '/img/heron-dawn.webp', '/img/doctors-window.jpg', '/img/two-certificates.jpg', '/favicon.svg', '/icons/icon-192.png',
   '/fonts/libre-caslon-display-latin-400-normal.woff2', '/fonts/libre-caslon-text-latin-400-normal.woff2',
   '/fonts/libre-caslon-text-latin-400-italic.woff2', '/fonts/libre-caslon-text-latin-700-normal.woff2'];

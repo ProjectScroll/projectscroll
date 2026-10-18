@@ -1,0 +1,65 @@
+"""Builds a page and a share card for every case, the solver keepsake page, and syncs the case board.
+Source of truth: cases.json. Run:  python3 tools/build_cases.py   (then node tools/cards.js to draw the share cards)"""
+import json, re, html, pathlib, sys
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
+from pages import page, R
+D=json.load(open(f'{R}/cases.json')); C=D['cases']; FB='https://www.facebook.com/projectscroll/'
+esc=html.escape
+for c in C:
+    n=c['n']; solved=c.get('solved')
+    status=f'<span class="status solved">Solved</span> Cracked by {esc(solved)}' + (f' on {esc(c["solvedOn"])}' if c.get('solvedOn') else '') if solved else '<span class="status">Open</span> Nobody has cracked it yet.'
+    hint=f'<h2>A hint</h2><p>{esc(c["hint"])}</p>' if c.get('hint') else ''
+    keep=f'<p><a class="btn" href="/keepsake/?case={n}">Solver’s keepsake</a></p>' if solved else ''
+    extra='<p><a href="/notes/one-letter-two-certificates/">Read the full case in the field notes</a>.</p>' if n==10 else ''
+    body=f'''    <p class="crumb"><a href="/#cases">← The case board</a></p>
+    <p class="kicker">Case {n} · {esc(c['hallName'])}</p>
+    <h1>{esc(c['question'])}</h1>
+    <p class="casestatus">{status}</p>
+    <p class="note">Opened {esc(c['opened'])}.</p>
+    {hint}{extra}
+    <h2>How to answer</h2>
+    <ol class="steps">
+      <li><b>Search the record.</b> Old county histories, maps, certificates and newspapers. Many are free online.</li>
+      <li><b>Post your answer</b> in the comments on <a href="{FB}">Project Scroll’s Facebook page</a>, and say exactly where you found it.</li>
+      <li><b>Get named.</b> The first solver with the page to prove it is named in the next post and on this board.</li>
+    </ol>
+    <p class="note">Everything is solved on paper. Never dig, never go near a grave, and never set foot on anyone’s land.</p>
+    {keep}
+    <p class="ctas" style="margin-top:1.4rem"><a class="btn primary" href="{FB}">Start on Facebook</a><a class="btn" href="/#cases">All cases</a><button type="button" class="btn" id="sharecase">Share this case</button></p>
+    <p class="copied" id="shareout" aria-live="polite"></p>
+    <script>document.getElementById('sharecase').addEventListener('click',function(){{var u=location.href.split('#')[0],t=document.title;if(navigator.share){{navigator.share({{title:t,url:u}}).catch(function(){{}});}}else if(navigator.clipboard){{navigator.clipboard.writeText(u).then(function(){{document.getElementById('shareout').textContent='Link copied.';}});}}}});</script>
+'''
+    page(f'cases/{n}/index.html', f'Case {n}: {c["question"][:70]}{"…" if len(c["question"])>70 else ""} · Project Scroll', c['question'], body, og=f'https://projectscroll.com/cases/{n}/card.png')
+    # card source for the drawing script
+pathlib.Path(f'{R}/tools/cards.json').write_text(json.dumps(C, ensure_ascii=False))
+
+# keepsake page (reads cases.json in the browser; shows a certificate only for a solved case)
+kbody='''    <p class="crumb no-print"><a href="/#cases">← The case board</a></p>
+    <div id="keep"><p class="kicker">Solver’s keepsake</p><h1>Nothing to show yet</h1><p>Keepsakes appear here for solved cases. Choose a solved case on <a href="/#cases">the case board</a>.</p></div>
+    <p class="center no-print" id="keepbtns" hidden><button type="button" class="btn primary" onclick="print()">Print or save as PDF</button></p>
+    <script>
+    (function(){ var n=+new URLSearchParams(location.search).get('case'); if(!n) return;
+      fetch('/cases.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){
+        var c=d.cases.filter(function(x){return x.n===n})[0]; if(!c||!c.solved) return;
+        var k=document.getElementById('keep'); k.className='cert'; k.innerHTML='';
+        var add=function(tag,cls,txt){var e=document.createElement(tag); if(cls)e.className=cls; e.textContent=txt; k.appendChild(e); return e;};
+        add('p','cert-k','Project Scroll'); add('p','cert-s','This keepsake records that'); add('p','cert-name',c.solved);
+        add('p','cert-s','was named by Project Scroll as the solver of'); add('p','cert-case','Case '+c.n+': '+c.question);
+        add('p','cert-d',(c.solvedOn?c.solvedOn+' · ':'')+c.hallName); add('p','cert-motto','Every clue is true. Every answer is in the record.');
+        add('p','cert-note','A keepsake, not an official record. The case board at projectscroll.com is the record of who solved what.');
+        document.getElementById('keepbtns').hidden=false; document.title='Keepsake · Case '+c.n+' · '+c.solved; });
+    })();
+    </script>
+'''
+page('keepsake/index.html','Solver’s keepsake · Project Scroll','A keepsake for solvers of Project Scroll cases.',kbody,noindex=True)
+
+# sync the case board on the home page
+p=f'{R}/index.html'; s=open(p).read()
+for c in C:
+    attrs=f' data-hall="{c["hall"]}"'+(f' data-solved="{esc(c["solved"])}"' if c.get('solved') else '')+(f' data-hint="{esc(c["hint"])}"' if c.get('hint') else '')
+    s=re.sub(rf'<tr id="case-{c["n"]}" data-hall="\w+"[^>]*>', f'<tr id="case-{c["n"]}"{attrs}>', s)
+    # question text links to its page
+    s=re.sub(rf'(<tr id="case-{c["n"]}"[^>]*><td class="no">{c["n"]}</td><td>)(?!<a class="qlink")(.*?)(?=( <a href="/notes/|<span class="tools"|</td>))', lambda m: m.group(1)+f'<a class="qlink" href="/cases/{c["n"]}/">'+m.group(2).strip()+'</a>', s, count=1, flags=re.S)
+s=re.sub(r'<caption>Last updated [^<]*</caption>', f'<caption>Last updated {D["updated_text"] if "updated_text" in D else "18 October 2026"}.</caption>', s)
+open(p,'w').write(s)
+print('built', len(C), 'case pages')

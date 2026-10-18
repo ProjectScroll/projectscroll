@@ -7,7 +7,7 @@
   btn.addEventListener('click', function(){
     let next = themeNow()==='dark' ? 'light' : 'dark';
     let apply = function(){ root.dataset.theme=next; try{localStorage.setItem('ps-theme',next);}catch(e){} label(); };
-    if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.startViewTransition(apply); else apply();
+    if (document.startViewTransition && document.visibilityState==='visible' && !matchMedia('(prefers-reduced-motion: reduce)').matches){ let done=false; const go=function(){ if (!done){ done=true; apply(); } }; try{ document.startViewTransition(go); }catch(e){ go(); } setTimeout(go, 350); } else apply();
   });
 
   /* mobile menu */
@@ -268,6 +268,55 @@
 
   /* 14 works offline after a first visit */
   if ('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){ addEventListener('load', function(){ navigator.serviceWorker.register('/sw.js').catch(function(){}); }); }
+
+  /* glossary: the first use of each term on the page gets a short definition */
+  const GL={
+    'plat':['Plat','A surveyor’s drawing of land divided into lots or parcels, with streets and boundaries. Village plats were filed with the county.'],
+    'probate':['Probate','The court process that settles a dead person’s estate. Probate files can hold wills, inventories, heirs’ names and signatures.'],
+    'informant':['Informant','The person who answered the questions on a certificate. Their memory, not the dead person’s, is what the form records.'],
+    'county histories':['County histories','Thick volumes published from the 1870s to the 1910s, mostly from what local families supplied. Rich, but rarely checked.'],
+    'field notes':['Field notes','The notebooks surveyors kept as they walked the land: distances, trees, streams and what they saw, line by line.'],
+    'census':['Census','The national head-count taken every ten years. Old schedules list every person in a household, with ages and birthplaces.'],
+    'transcription':['Transcription','A typed copy of an old handwritten record. Useful, but every copy can add mistakes, so check the original when you can.']
+  };
+  const host=document.querySelector('main'); let gi=0;
+  if (host && 'showPopover' in HTMLElement.prototype){
+    const used={};
+    const walker=document.createTreeWalker(host, NodeFilter.SHOW_TEXT, {acceptNode:function(n){
+      const p=n.parentElement; if (!p || p.closest('h1,h2,h3,button,a,summary,.mk,label,script,style,.gl,.tl .yr,.mstrip,.promo-marks,figcaption,[popover]')) return NodeFilter.FILTER_REJECT; return NodeFilter.FILTER_ACCEPT; }});
+    const nodes=[]; while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function(n){
+      Object.keys(GL).forEach(function(term){
+        if (used[term] || !n.parentNode) return;
+        const re=new RegExp('\\b('+term+')\\b','i'), m=n.nodeValue.match(re); if (!m) return;
+        used[term]=true; gi++;
+        const id='gl'+gi, after=n.splitText(m.index); after.nodeValue=after.nodeValue.slice(m[0].length);
+        const b=document.createElement('button'); b.type='button'; b.className='gl'; b.textContent=m[0]; b.setAttribute('popovertarget',id); b.setAttribute('aria-label',m[0]+': what this means');
+        const pop=document.createElement('div'); pop.id=id; pop.setAttribute('popover',''); pop.className='gloss'; pop.innerHTML='<b></b>'; pop.querySelector('b').textContent=GL[term][0]; pop.appendChild(document.createTextNode(GL[term][1]));
+        n.parentNode.insertBefore(b, after); document.body.appendChild(pop);
+        pop.addEventListener('toggle', function(e){ if (e.newState==='open'){ const r=b.getBoundingClientRect(), w=pop.offsetWidth; pop.style.left=Math.max(8,Math.min(innerWidth-w-8, r.left+r.width/2-w/2))+'px'; const below=r.bottom+8; pop.style.top=(below+pop.offsetHeight>innerHeight? r.top-pop.offsetHeight-8 : below)+'px'; } });
+      });
+    });
+  }
+
+  /* read aloud: each section can be read out by the device's own voice */
+  if ('speechSynthesis' in window){
+    let speaking=null;
+    const stop=function(){ speechSynthesis.cancel(); if (speaking){ speaking.setAttribute('aria-pressed','false'); speaking.textContent='Listen'; } speaking=null; };
+    document.querySelectorAll('main > section > .part, main.page > .kicker').forEach(function(part){
+      const sec=part.closest('section') || part.closest('main');
+      const b=document.createElement('button'); b.type='button'; b.className='listen'; b.textContent='Listen'; b.setAttribute('aria-pressed','false'); b.setAttribute('aria-label','Read this section aloud');
+      part.appendChild(b);
+      b.addEventListener('click', function(){
+        if (speaking===b){ stop(); return; } stop();
+        const clone=sec.cloneNode(true); clone.querySelectorAll('.listen,.mk,button,svg,script,style,[hidden],.mstrip,.tools,.seals,.filters,figure,input,textarea').forEach(function(x){ x.remove(); });
+        const text=clone.innerText || clone.textContent; const u=new SpeechSynthesisUtterance(text.replace(/\s+/g,' ').trim());
+        u.rate=.95; u.lang='en-US'; u.onend=u.onerror=function(){ if (speaking===b) stop(); };
+        speaking=b; b.setAttribute('aria-pressed','true'); b.textContent='Stop'; speechSynthesis.speak(u);
+      });
+    });
+    addEventListener('pagehide', stop);
+  }
 
   /* for anyone who opens the browser's console */
   try{

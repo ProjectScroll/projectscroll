@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /tools/
+Disallow: /keepsake/
 
 Sitemap: https://projectscroll.com/sitemap.xml
