@@ -13,7 +13,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Project Scroll">
 <meta property="og:url" content="https://projectscroll.com/legends/">
-<meta property="og:image" content="https://projectscroll.com/og.png">
+<meta property="og:image" content="https://projectscroll.com/og/legends.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -25,7 +25,7 @@
 <link rel="alternate" type="application/rss+xml" title="Project Scroll field notes" href="/feed.xml">
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
-<link rel="stylesheet" href="/site.css?v=28">
+<link rel="stylesheet" href="/site.css?v=29">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
@@ -112,7 +112,53 @@
 
     <h2>Bring us your family’s story</h2>
     <p>Tell us the story exactly as it was told to you, who told it, and anything written down. We will record it word for word, find what the records say, and tell you honestly which parts hold up.</p>
-    <p class="center"><a class="btn" href="/#contact">Bring us your story</a> <a class="btn" href="/families/">Family histories</a></p>
+    <div class="intake" id="intake">
+      <p class="note" style="margin:0">Fill in what you can. This builds a tidy message for you to copy and send us on Facebook Messenger. Nothing is sent or stored by this page.</p>
+      <label for="ikName">Your first name</label><input type="text" id="ikName" autocomplete="given-name">
+      <label for="ikWho">Who is the story about? <span class="h">Full names, as far as you know them</span></label><input type="text" id="ikWho">
+      <label for="ikWhere">Where did they live? <span class="h">Town, county, state or country</span></label><input type="text" id="ikWhere">
+      <label for="ikWhen">Roughly when? <span class="h">Birth, marriage or death years, even guesses</span></label><input type="text" id="ikWhen">
+      
+      <label for="ikStory">The family story, exactly as it was told</label><textarea id="ikStory"></textarea>
+      <label for="ikTold">Who told it, and when did you first hear it? <span class="h">(optional)</span></label><input type="text" id="ikTold">
+      <fieldset><legend>What does the family have?</legend><div class="chk">
+        <label><input type="checkbox" value="a family Bible"> Family Bible</label><label><input type="checkbox" value="letters"> Letters</label><label><input type="checkbox" value="photographs"> Photographs</label><label><input type="checkbox" value="obituaries or clippings"> Obituaries or clippings</label><label><input type="checkbox" value="certificates"> Certificates</label><label><input type="checkbox" value="someone's family tree"> Someone’s family tree</label><label><input type="checkbox" value="DNA test results"> DNA results</label>
+      </div></fieldset>
+      <div class="out" id="ikOut" aria-live="polite"></div>
+      <div class="btns"><button type="button" class="btn" id="ikCopy">Copy my message</button><a class="btn" href="https://m.me/projectscroll" rel="noopener" id="ikSend">Open Messenger</a></div>
+      <p class="note center" id="ikDone" aria-live="polite" style="margin:.5rem 0 0"></p>
+    </div>
+    <script>
+    (function(){ "use strict";
+      const $=id=>document.getElementById(id), KEY='ps-intake-legend';
+      const fields=['ikName','ikWho','ikWhere','ikWhen','ikStory','ikTold','ikWant'].map($).filter(Boolean);
+      try{ const saved=JSON.parse(localStorage.getItem(KEY)||'{}'); fields.forEach(f=>{ if(saved[f.id]) f.value=saved[f.id]; }); }catch(e){}
+      const boxes=[...document.querySelectorAll('#intake input[type=checkbox]')];
+      function build(){
+        const v=id=>($(id)&&$(id).value.trim())||'';
+        const has=boxes.filter(b=>b.checked).map(b=>b.value);
+        const L=['Hello Project Scroll,', '', "I would like a family story tested against the records.", ''];
+        if(v('ikWho')) L.push('Who: '+v('ikWho'));
+        if(v('ikWhere')) L.push('Where: '+v('ikWhere'));
+        if(v('ikWhen')) L.push('When: '+v('ikWhen'));
+        if(v('ikWant')) L.push('What I would like: '+v('ikWant'));
+        if(v('ikStory')) L.push('', 'The story, as told: '+v('ikStory'));
+        if(v('ikTold')) L.push('Told by: '+v('ikTold'));
+        if(has.length) L.push('', 'We have: '+has.join(', ')+'.');
+        L.push('', 'Thank you'+(v('ikName')?',':'.'));
+        if(v('ikName')) L.push(v('ikName'));
+        $('ikOut').textContent=L.join('\n');
+        try{ const o={}; fields.forEach(f=>o[f.id]=f.value); localStorage.setItem(KEY,JSON.stringify(o)); }catch(e){}
+      }
+      document.getElementById('intake').addEventListener('input',build); build();
+      $('ikCopy').addEventListener('click',()=>{
+        const t=$('ikOut').textContent, ok=()=>{ $('ikDone').textContent='Copied. Now open Messenger and paste it in.'; };
+        if(navigator.clipboard) navigator.clipboard.writeText(t).then(ok,()=>{ const r=document.createRange(); r.selectNodeContents($('ikOut')); getSelection().removeAllRanges(); getSelection().addRange(r); $('ikDone').textContent='Select-all is done: press copy on your keyboard.'; });
+      });
+    })();
+    </script>
+
+    <p class="center"><a class="btn" href="/families/">Family histories</a></p>
     <script>
     (function(){ "use strict";
       const btns=[...document.querySelectorAll('.lg-btn')], ans=[...document.querySelectorAll('.lg-ans')], empty=document.querySelector('.lg-empty');
@@ -126,14 +172,15 @@
   <footer class="site">
     <div>
       <p class="motto">Every clue is true. Every answer is in the record.</p>
+      <a class="fbfollow" href="https://www.facebook.com/projectscroll/" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21z"/></svg>Follow the hunt on Facebook</a>
       <p>Project Scroll is independent historical research. Some mysteries open in an afternoon. Some take a season.</p>
     </div>
     <nav aria-label="Footer">
-      <a href="/">Home</a><a href="/#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
+      <a href="/">Home</a><a href="/#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/records/">Where the records are</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
     </nav>
     <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a></p>
   </footer>
 </div>
-<script src="/site.js?v=28" defer></script>
+<script src="/site.js?v=29" defer></script>
 </body>
 </html>

@@ -57,5 +57,5 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     </section>
     <script src="/toolkit/toolkit.js?v=1" defer></script>
 '''
-page('toolkit/index.html','The hunter’s toolkit · Project Scroll','Free tools for reading old records: a faded-ink enhancer, an age-at-death calculator, a Soundex finder and a cousin calculator. Everything runs in your browser.',body)
+page('toolkit/index.html','The hunter’s toolkit · Project Scroll','Free tools for reading old records: a faded-ink enhancer, an age-at-death calculator, a Soundex finder and a cousin calculator. Everything runs in your browser.',body, og='https://projectscroll.com/og/toolkit.jpg')
 print('toolkit built')

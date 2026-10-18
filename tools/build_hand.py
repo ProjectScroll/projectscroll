@@ -42,5 +42,5 @@ body=f'''    <p class="crumb"><a href="/toolkit/">← The hunter’s toolkit</a>
         out.textContent = n===items.length ? ('You read '+s+' of '+items.length+' like a clerk.') : (s+' of '+n+' so far.'); }}); }}); }}); }})();
     </script>
 '''
-page('guide/old-handwriting/index.html','Reading the old hand · Project Scroll','The handwriting tricks and abbreviations of old records explained: the long s, ye, inst. and ult., double dates and more, with a quiz.',body)
+page('guide/old-handwriting/index.html','Reading the old hand · Project Scroll','The handwriting tricks and abbreviations of old records explained: the long s, ye, inst. and ult., double dates and more, with a quiz.',body, og='https://projectscroll.com/og/handwriting.jpg')
 print('hand built')

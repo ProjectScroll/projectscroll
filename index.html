@@ -35,13 +35,13 @@
 {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does the hunt cost anything?", "acceptedAnswer": {"@type": "Answer", "text": "No. The hunt is free to follow and free to play. All you need is curiosity and, now and then, a library card."}}, {"@type": "Question", "name": "Do I have to go anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. Every clue is solved on paper: in books, maps and records, many of them free online. The hunt never sends anyone onto private land or near a grave."}}, {"@type": "Question", "name": "I solved one. Now what?", "acceptedAnswer": {"@type": "Answer", "text": "Post your answer in the comments on Facebook, and say where you found it. Solvers are named in the next post."}}, {"@type": "Question", "name": "Can you help with my own family's mystery?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Send Project Scroll a message on Facebook with what you know. We'll tell you honestly what the records are likely to show before you commit to anything."}}, {"@type": "Question", "name": "What should I keep notes on?", "acceptedAnswer": {"@type": "Answer", "text": "Use the hunter's worksheet: one page to log each record, who made it, when, and where you found it. Print as many as you need."}}, {"@type": "Question", "name": "Is anything hidden on this website?", "acceptedAnswer": {"@type": "Answer", "text": "Perhaps. Every page has a back side, and curious hunters know where to look."}}, {"@type": "Question", "name": "Is Project Scroll only about Michigan?", "acceptedAnswer": {"@type": "Answer", "text": "It started in one Michigan county, but the methods work anywhere, and so does our research. Mysteries are welcome from wherever you are."}}]}
 </script>
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://projectscroll.com/#org", "name": "Project Scroll", "url": "https://projectscroll.com/", "logo": "https://projectscroll.com/icons/icon-512.png", "image": "https://projectscroll.com/og.png", "sameAs": ["https://www.facebook.com/projectscroll/"], "description": "A history hunt and research desk. Every clue is true. Every answer is in the record.", "knowsAbout": ["Genealogy", "Local history", "Historical research", "Old maps", "County histories"]}, {"@type": "WebSite", "@id": "https://projectscroll.com/#site", "name": "Project Scroll", "url": "https://projectscroll.com/", "publisher": {"@id": "https://projectscroll.com/#org"}, "inLanguage": "en-US"}]}
+{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://projectscroll.com/#org", "name": "Project Scroll", "url": "https://projectscroll.com/", "logo": "https://projectscroll.com/icons/icon-512.png", "image": "https://projectscroll.com/og.png", "sameAs": ["https://www.facebook.com/projectscroll/"], "description": "A history hunt and research desk. Every clue is true. Every answer is in the record.", "knowsAbout": ["Genealogy", "Local history", "Historical research", "Old maps", "County histories", "Family history", "Family registers", "Pedigree research"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Family history research", "description": "Family registers, ancestral monographs and full family histories built from original records, every statement marked with its source.", "url": "https://projectscroll.com/families/", "provider": {"@id": "https://projectscroll.com/#org"}, "areaServed": "Worldwide", "serviceType": "Historical and genealogical research"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Family legend testing", "description": "A family story traced to where it began and tested against the records.", "url": "https://projectscroll.com/legends/", "provider": {"@id": "https://projectscroll.com/#org"}, "areaServed": "Worldwide", "serviceType": "Historical and genealogical research"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Lost ancestor and local history research", "description": "Certificates, deeds, censuses, county histories, maps and newspapers compared line by line to answer one clear question.", "url": "https://projectscroll.com/#services", "provider": {"@id": "https://projectscroll.com/#org"}, "areaServed": "Worldwide", "serviceType": "Historical and genealogical research"}}]}, {"@type": "WebSite", "@id": "https://projectscroll.com/#site", "name": "Project Scroll", "url": "https://projectscroll.com/", "publisher": {"@id": "https://projectscroll.com/#org"}, "inLanguage": "en-US"}]}
 </script>
 <script>
 /* apply a saved theme before first paint, so there is no flash */
 try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}
 </script>
-<link rel="stylesheet" href="/site.css?v=28">
+<link rel="stylesheet" href="/site.css?v=29">
 </head>
 <body>
 <!--
@@ -366,6 +366,8 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
         <a href="/map/"><span class="k">The map room</span><b>Walk the 1860 wall map</b><span class="d">Zoom into every farm, town plan and engraved house on the great county map, straight from the Library of Congress.</span></a>
         <a href="/guide/death-certificate/"><span class="k">A guide from the desk</span><b>How to read a death certificate</b><span class="d">Tap each box to see who filled it in, and how far to trust it.</span></a>
         <a href="/toolkit/"><span class="k">The hunter’s toolkit</span><b>Tools for reading the record</b><span class="d">Bring faded ink back to life, turn an age at death into a birth date, find Soundex codes and name any cousin.</span></a>
+        <a href="/records/"><span class="k">From the desk</span><b>Where the records are</b><span class="d">The free archives, newspapers and maps we search first, from Michigan to Sweden.</span></a>
+        <a href="/glossary/"><span class="k">Plain English</span><b>The glossary</b><span class="d">Relict, probate, plat, ahnentafel: the words old records use, explained.</span></a>
         <a href="/notes/book/"><span class="k">Bound in leather</span><b>The book of field notes</b><span class="d">Every lesson from the desk, in a small book whose pages turn.</span></a>
       </div>
 
@@ -424,16 +426,17 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
   <footer class="site">
     <div>
       <p class="motto">Every clue is true. Every answer is in the record.</p>
+      <a class="fbfollow" href="https://www.facebook.com/projectscroll/" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21z"/></svg>Follow the hunt on Facebook</a>
       <p>Project Scroll is independent historical research. Some mysteries open in an afternoon. Some take a season.</p>
     </div>
     <nav aria-label="Footer">
-      <a href="#hunt">The hunt</a><a href="#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
+      <a href="#hunt">The hunt</a><a href="#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/records/">Where the records are</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
     </nav>
     <a class="totop" href="#top" aria-label="Back to the top" hidden>↑</a>
     <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a></p>
   </footer>
 </div>
 
-<script src="/site.js?v=28" defer></script>
+<script src="/site.js?v=29" defer></script>
 </body>
 </html>

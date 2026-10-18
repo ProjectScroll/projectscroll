@@ -42,7 +42,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="alternate" type="application/rss+xml" title="Project Scroll field notes" href="/feed.xml">
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.css?v=28">
+<link rel="stylesheet" href="/site.css?v=29">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
@@ -72,15 +72,16 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
   <footer class="site">
     <div>
       <p class="motto">Every clue is true. Every answer is in the record.</p>
+      <a class="fbfollow" href="https://www.facebook.com/projectscroll/" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21z"/></svg>Follow the hunt on Facebook</a>
       <p>Project Scroll is independent historical research. Some mysteries open in an afternoon. Some take a season.</p>
     </div>
     <nav aria-label="Footer">
-      <a href="/">Home</a><a href="/#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter's worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
+      <a href="/">Home</a><a href="/#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/records/">Where the records are</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter's worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
     </nav>
     <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a></p>
   </footer>
 </div>
-<script src="/site.js?v=28" defer></script>
+<script src="/site.js?v=29" defer></script>
 </body>
 </html>
 '''
@@ -142,7 +143,7 @@ if __name__=='__main__':
         <h2>Your turn</h2>
         <p>Pick someone in your family who died long ago. Find two records that name them and compare every box: name, dates, parents, birthplaces. Do they disagree? Which would you believe, and why? The best mysteries start at home.</p>
         <p>Want to test yourself first? <a href="/#try">Try the two-record puzzle</a>. Got a mystery you can't crack? <a href="https://m.me/projectscroll">Message us on Facebook</a>, or see <a href="/#contact">how to start</a>. Tell us how you did in the comments on <a href="https://www.facebook.com/projectscroll/">Project Scroll's page</a>.</p>
-    ''')
+    ''', og='https://projectscroll.com/og/one-letter.jpg')
 
     page('notes/index.html','Field notes · Project Scroll',
      'Lessons from the Project Scroll research desk: how to read old records, weigh them against each other and know when a question is settled.',
@@ -154,7 +155,7 @@ if __name__=='__main__':
           <li><a href="/notes/one-letter-two-certificates/">One Letter, Two Certificates</a><span>No. 1 · 17 October 2026 · What to do when two old records tell you two different things.</span></li>
         </ul>
         <p><a class="btn dl" href="/worksheet/project-scroll-hunters-worksheet.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The hunter's worksheet (PDF)</a></p>
-    ''')
+    ''', og='https://projectscroll.com/og/notes.jpg')
 
     page('404.html','Not in the record · Project Scroll','This page is not in the record.',
     '''    <p class="kicker">Error 404</p>

@@ -33,5 +33,5 @@ body=f'''    <p class="crumb"><a href="/notes/">← Field notes</a></p>
       draw(); }})();
     </script>
 '''
-page('notes/book/index.html','The book of field notes · Project Scroll','The Project Scroll field notes as a small bound book with turning pages.',body)
+page('notes/book/index.html','The book of field notes · Project Scroll','The Project Scroll field notes as a small bound book with turning pages.',body, og='https://projectscroll.com/og/book.jpg')
 print('book built')

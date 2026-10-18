@@ -8,11 +8,39 @@ Placement: least-squares fit to 19 street corners that keep their 1860 names
 OpenStreetMap. Root-mean-square error about 5 m, worst about 9 m.
 """
 import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
-N, W, S, E = 41.917772, -86.018103, 41.906100, -86.007168
-body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
+import json
+NILES=json.loads((pathlib.Path(__file__).parent/'towns'/'niles_bounds.json').read_text())
+TOWNS = [
+ dict(slug='cassopolis', name='Cassopolis', inset='Cassopolis, County Seat of Cass Co.', img='/img/cass1860.webp',
+      N=41.917772, W=-86.018103, S=41.906100, E=-86.007168, maxb='[41.895,-86.035],[41.930,-85.990]',
+      lede='The 1860 wall map has a little plan of Cassopolis, the county seat, with every block, lot and street the engraver knew.',
+      look=['<b>State Street and Broadway.</b> The heart of the 1860 town. Find the <b>Court House</b> and the <b>Jail</b> just north of State, then fade to today.',
+            '<b>Timber Street</b>, between O’Keefe and East. Look for it on today’s map.',
+            'The <b>Union School</b> at the top of the plan, beside the State Road.',
+            'The <b>Tannery</b> and the <b>Cemetery</b> on the west side of town, and the State Road running north.',
+            'The <b>names on the lots</b>: Tompkins, Martin, Histed, Read, Jones and the rest. Each one is a lead to a deed.'],
+      how='The plan was cut from the Library of Congress copy of the wall map. Nineteen street corners that appear on both maps (Broadway, Rowland, O’Keefe and East, where they meet York, State, Jefferson, Water and South) were matched by measurement, and the plan was scaled to fit them. On average the old corners land within about five yards of the new ones.',
+      extra='<p class="note">One label has been painted out of this copy so that it does not spoil the hunt. Nothing else has been changed.</p>',
+      og='cassopolis', desc='The 1860 town plan of Cassopolis, Michigan, laid over today’s streets. Fade between them or compare side by side.'),
+ dict(slug='niles', name='Niles', inset='City of Niles, Berrien Co.', img='/img/towns/niles1860.webp',
+      N=NILES['N'], W=NILES['W'], S=NILES['S'], E=NILES['E'], maxb='[41.810,-86.285],[41.855,-86.220]',
+      lede='The biggest town plan on the 1860 wall map is the City of Niles, in Berrien County, astride the St. Joseph River.',
+      look=['<b>The numbered streets</b>, Front to Twelfth, still in the same order today. Fade to see how closely the blocks match.',
+            'The <b>Michigan Central Railroad</b> and its depot on the river, and the <b>mill race</b> beside it.',
+            'The <b>bridges</b> across the St. Joseph, and the island in the river.',
+            'The <b>additions</b> named for the men who laid them out: Hoffman’s, Beeson’s, Moore’s, Bond’s and the rest. Each name is a lead to a plat in the county’s records.',
+            'The <b>Union School</b>, the <b>Fair Ground</b> and the <b>Cemetery</b> on the east side of town.'],
+      how='The plan was cut from the Library of Congress copy of the wall map. Forty-three street corners that appear on both maps (Front Street to Ninth Street, where they meet Eagle, Howard, Cass, Ferry, Sycamore and Main) were matched by measurement, and the plan was fitted to them, turning it a fraction of a degree. On average the old corners land within about four yards of the new ones. Where today’s Main Street bends away east of Fifth Street it was left out of the fit, because the 1860 plan carries it straight.',
+      og='niles', desc='The 1860 plan of the City of Niles, Michigan, laid over today’s streets. Fade between them or compare side by side.'),
+]
+def build(t):
+    others=' · '.join(f'<a href="/map/{o["slug"]}/">{o["name"]}</a>' for o in TOWNS if o['slug']!=t['slug'])
+    looks=''.join(f'<li>{x}</li>' for x in t['look'])
+    return f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
     <p class="kicker">Then and now</p>
-    <h1>Cassopolis, 1860 and today</h1>
-    <p class="lede" style="font-size:1.15rem">The 1860 wall map has a little plan of Cassopolis, the county seat, with every block, lot and street the engraver knew. Here it is laid over the streets of today. Fade between the two, or drag a line across and see one beside the other.</p>
+    <h1>{t["name"]}, 1860 and today</h1>
+    <p class="lede" style="font-size:1.15rem">{t["lede"]} Here it is laid over the streets of today. Fade between the two, or drag a line across and see one beside the other.</p>
+    <p class="note">Other towns: {others}</p>
     <p class="note">Drag to move, scroll or pinch to zoom. The old plan was lined up by hand on street corners that still carry their 1860 names, so it is close but not exact: expect it to be out by a few yards in places.</p>
   <div class="maproom">
     <div class="mapbar tnbar">
@@ -24,30 +52,24 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
       <span class="mapstat" id="tnStat" aria-live="polite">Loading…</span>
     </div>
     <div class="tnwrap">
-      <div id="tnMap" class="osd tnmap" role="application" aria-label="The 1860 plan of Cassopolis laid over a modern street map"></div>
+      <div id="tnMap" class="osd tnmap" role="application" aria-label="The 1860 plan of {t["name"]} laid over a modern street map"></div>
       <div class="tnswipe" id="tnLine" hidden><button type="button" class="tnhandle" id="tnHandle" aria-label="Drag to move the dividing line. Left and right arrow keys also move it."><span aria-hidden="true">◂ ▸</span></button></div>
     </div>
   </div>
     <h2>Things to look for</h2>
-    <ul class="dis">
-      <li><b>State Street and Broadway.</b> The heart of the 1860 town. Find the <b>Court House</b> and the <b>Jail</b> just north of State, then fade to today.</li>
-      <li><b>Timber Street</b>, between O’Keefe and East. Look for it on today’s map.</li>
-      <li>The <b>Union School</b> at the top of the plan, beside the State Road.</li>
-      <li>The <b>Tannery</b> and the <b>Cemetery</b> on the west side of town, and the State Road running north.</li>
-      <li>The <b>names on the lots</b>: Tompkins, Martin, Histed, Read, Jones and the rest. Each one is a lead to a deed.</li>
-    </ul>
+    <ul class="dis">{looks}</ul>
     <h2>How this was made</h2>
-    <p>The plan was cut from the Library of Congress copy of the wall map. Nineteen street corners that appear on both maps (Broadway, Rowland, O’Keefe and East, where they meet York, State, Jefferson, Water and South) were matched by measurement, and the plan was scaled to fit them. On average the old corners land within about five yards of the new ones.</p>
-    <p class="note">One label has been painted out of this copy so that it does not spoil the hunt. Nothing else has been changed.</p>
-    <p class="note">1860 plan: <i>Map of the Counties of Cass, Van Buren and Berrien, Michigan</i> (Philadelphia: Geil, Harley &amp; Siverd, 1860), inset “Cassopolis, County Seat of Cass Co.” Library of Congress, Geography and Map Division, g4113c.la000324. Public domain. Today’s streets and water: drawn from OpenStreetMap data, © OpenStreetMap contributors, available under the Open Database License.</p>
+    <p>{t["how"]}</p>
+    {t.get("extra","")}
+    <p class="note">1860 plan: <i>Map of the Counties of Cass, Van Buren and Berrien, Michigan</i> (Philadelphia: Geil, Harley &amp; Siverd, 1860), inset “{t["inset"]}” Library of Congress, Geography and Map Division, g4113c.la000324. Public domain. Today’s streets and water: drawn from OpenStreetMap data, © OpenStreetMap contributors, available under the Open Database License.</p>
     <link rel="stylesheet" href="/vendor/leaflet-1.9.4/leaflet.css?v=1">
     <script src="/vendor/leaflet-1.9.4/leaflet.js?v=1"></script>
     <script>
     (function(){{ "use strict";
       const stat=document.getElementById('tnStat');
       if (!window.L){{ stat.textContent='The map could not load. Try refreshing the page.'; return; }}
-      const B=L.latLngBounds([{S},{W}],[{N},{E}]);
-      const map=L.map('tnMap',{{zoomSnap:0.25, minZoom:13, maxZoom:19, maxBounds:L.latLngBounds([41.895,-86.035],[41.930,-85.990]), maxBoundsViscosity:0.8, scrollWheelZoom:true}});
+      const B=L.latLngBounds([{t["S"]},{t["W"]}],[{t["N"]},{t["E"]}]);
+      const map=L.map('tnMap',{{zoomSnap:0.25, minZoom:13, maxZoom:19, maxBounds:L.latLngBounds({t["maxb"]}), maxBoundsViscosity:0.8, scrollWheelZoom:true}});
       const home=()=>map.fitBounds(B.pad(0.02));
       home();
       // today's streets and water, drawn from OpenStreetMap data (no labels, by design)
@@ -63,7 +85,7 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
         x:c=>({{renderer:cv, color:c.rail, weight:2, dashArray:'6 5', interactive:false}})
       }};
       const paint=()=>{{ const c=pal(); map.getContainer().style.background=c.land; for(const k in groups) for(const l of groups[k]) l.setStyle(style[k](c)); }};
-      fetch('/map/cassopolis/today.json?v=1').then(r=>r.json()).then(d=>{{
+      fetch('/map/{t["slug"]}/today.json?v=1').then(r=>r.json()).then(d=>{{
         const c=pal();
         for(const p of d.w) groups.w.push(L.polygon(p.map(dec), style.w(c)).addTo(map));
         for(const k of ['r','x','m']) for(const a of d[k]) groups[k].push(L.polyline(dec(a), style[k](c)).addTo(map));
@@ -74,7 +96,7 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
       map.attributionControl.addAttribution('Today: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors');
       map.getContainer().style.background=pal().land;
       map.createPane('old').style.zIndex=450;
-      const old=L.imageOverlay('/img/cass1860.webp',B,{{pane:'old', opacity:0.75, alt:'1860 town plan of Cassopolis', className:'tnold'}}).addTo(map);
+      const old=L.imageOverlay('{t["img"]}',B,{{pane:'old', opacity:0.75, alt:'1860 town plan of {t["name"]}', className:'tnold'}}).addTo(map);
       old.on('load',()=>{{ stat.textContent='1860 plan placed over today’s streets.'; clip(); }});
       old.on('error',()=>{{ stat.textContent='The 1860 plan did not load. Try refreshing the page.'; }});
       const op=document.getElementById('tnOp');
@@ -111,6 +133,6 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
     }})();
     </script>
 '''
-page('map/cassopolis/index.html', 'Cassopolis, 1860 and today · Project Scroll',
-     'The 1860 town plan of Cassopolis, Michigan, laid over today’s streets. Fade between them or compare side by side.', body)
-print('then-and-now built')
+for t in TOWNS:
+    page(f'map/{t["slug"]}/index.html', f'{t["name"]}, 1860 and today · Project Scroll', t['desc'], build(t), og=f'https://projectscroll.com/og/{t["og"]}.jpg')
+print('then-and-now built:', ', '.join(t['name'] for t in TOWNS))

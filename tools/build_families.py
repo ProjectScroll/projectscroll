@@ -42,6 +42,58 @@ FAM = {
      ['Died 1889', 'M', 'An online family tree, which cites no source for the date.']]},
 }
 
+
+def intake(kind):
+    fam = kind == 'family'
+    want = ('<label for="ikWant">What would you like?</label><select id="ikWant"><option>Not sure yet: advise me</option><option>A family register (descendants of one couple)</option><option>An ancestral monograph (all the ancestors of one person)</option><option>A full family history</option><option>One line, or one question, to begin with</option></select>') if fam else ''
+    story_label = 'The family story, exactly as it was told' if not fam else 'Any family story, exactly as it was told <span class="h">(optional)</span>'
+    return f"""    <div class="intake" id="intake">
+      <p class="note" style="margin:0">Fill in what you can. This builds a tidy message for you to copy and send us on Facebook Messenger. Nothing is sent or stored by this page.</p>
+      <label for="ikName">Your first name</label><input type="text" id="ikName" autocomplete="given-name">
+      <label for="ikWho">{'Who is it about?' if fam else 'Who is the story about?'} <span class="h">Full names, as far as you know them</span></label><input type="text" id="ikWho">
+      <label for="ikWhere">Where did they live? <span class="h">Town, county, state or country</span></label><input type="text" id="ikWhere">
+      <label for="ikWhen">Roughly when? <span class="h">Birth, marriage or death years, even guesses</span></label><input type="text" id="ikWhen">
+      {want}
+      <label for="ikStory">{story_label}</label><textarea id="ikStory"></textarea>
+      <label for="ikTold">Who told it, and when did you first hear it? <span class="h">(optional)</span></label><input type="text" id="ikTold">
+      <fieldset><legend>What does the family have?</legend><div class="chk">
+        <label><input type="checkbox" value="a family Bible"> Family Bible</label><label><input type="checkbox" value="letters"> Letters</label><label><input type="checkbox" value="photographs"> Photographs</label><label><input type="checkbox" value="obituaries or clippings"> Obituaries or clippings</label><label><input type="checkbox" value="certificates"> Certificates</label><label><input type="checkbox" value="someone's family tree"> Someone’s family tree</label><label><input type="checkbox" value="DNA test results"> DNA results</label>
+      </div></fieldset>
+      <div class="out" id="ikOut" aria-live="polite"></div>
+      <div class="btns"><button type="button" class="btn" id="ikCopy">Copy my message</button><a class="btn" href="https://m.me/projectscroll" rel="noopener" id="ikSend">Open Messenger</a></div>
+      <p class="note center" id="ikDone" aria-live="polite" style="margin:.5rem 0 0"></p>
+    </div>
+    <script>
+    (function(){{ "use strict";
+      const $=id=>document.getElementById(id), KEY='ps-intake-{kind}';
+      const fields=['ikName','ikWho','ikWhere','ikWhen','ikStory','ikTold','ikWant'].map($).filter(Boolean);
+      try{{ const saved=JSON.parse(localStorage.getItem(KEY)||'{{}}'); fields.forEach(f=>{{ if(saved[f.id]) f.value=saved[f.id]; }}); }}catch(e){{}}
+      const boxes=[...document.querySelectorAll('#intake input[type=checkbox]')];
+      function build(){{
+        const v=id=>($(id)&&$(id).value.trim())||'';
+        const has=boxes.filter(b=>b.checked).map(b=>b.value);
+        const L=['Hello Project Scroll,', '', {'"I would like help with a family history."' if fam else '"I would like a family story tested against the records."'}, ''];
+        if(v('ikWho')) L.push('Who: '+v('ikWho'));
+        if(v('ikWhere')) L.push('Where: '+v('ikWhere'));
+        if(v('ikWhen')) L.push('When: '+v('ikWhen'));
+        if(v('ikWant')) L.push('What I would like: '+v('ikWant'));
+        if(v('ikStory')) L.push('', 'The story, as told: '+v('ikStory'));
+        if(v('ikTold')) L.push('Told by: '+v('ikTold'));
+        if(has.length) L.push('', 'We have: '+has.join(', ')+'.');
+        L.push('', 'Thank you'+(v('ikName')?',':'.'));
+        if(v('ikName')) L.push(v('ikName'));
+        $('ikOut').textContent=L.join('\\n');
+        try{{ const o={{}}; fields.forEach(f=>o[f.id]=f.value); localStorage.setItem(KEY,JSON.stringify(o)); }}catch(e){{}}
+      }}
+      document.getElementById('intake').addEventListener('input',build); build();
+      $('ikCopy').addEventListener('click',()=>{{
+        const t=$('ikOut').textContent, ok=()=>{{ $('ikDone').textContent='Copied. Now open Messenger and paste it in.'; }};
+        if(navigator.clipboard) navigator.clipboard.writeText(t).then(ok,()=>{{ const r=document.createRange(); r.selectNodeContents($('ikOut')); getSelection().removeAllRanges(); getSelection().addRange(r); $('ikDone').textContent='Select-all is done: press copy on your keyboard.'; }});
+      }});
+    }})();
+    </script>
+"""
+
 families = f'''    <p class="crumb"><a href="/#services">← Research services</a></p>
     <p class="kicker">Research services</p>
     <h1>Family histories, built to be checked</h1>
@@ -96,7 +148,9 @@ families = f'''    <p class="crumb"><a href="/#services">← Research services</
       <li><b>We build it from the records.</b> Certificates, censuses, deeds, wills, church books, newspapers and county histories.</li>
       <li><b>You get a book you can trust.</b> Every statement marked, every source listed, every gap honest, ready to print, share and add to.</li>
     </ol>
-    <p class="center"><a class="btn" href="/#contact">Tell us about your family</a> <a class="btn" href="/legends/">Test a family legend</a></p>
+    <h2 id="start">Tell us about your family</h2>
+{intake('family')}
+    <p class="center"><a class="btn" href="/sample/project-scroll-sample-family-register.pdf">See a sample family register (PDF)</a> <a class="btn" href="/legends/">Test a family legend</a></p>
     <script>
     (function(){{ "use strict";
       const F={json.dumps(FAM, ensure_ascii=False)};
@@ -130,7 +184,7 @@ families = f'''    <p class="crumb"><a href="/#services">← Research services</
     </script>
 '''
 page('families/index.html', 'Family histories and registers · Project Scroll',
-     'Family registers, ancestral monographs and full family histories, built from the records with every statement marked and every gap shown honestly.', families)
+     'Family registers, ancestral monographs and full family histories, built from the records with every statement marked and every gap shown honestly.', families, og='https://projectscroll.com/og/families.jpg')
 
 # ---------------------------------------------------------------- legends
 LEG = [
@@ -204,7 +258,8 @@ legends = f'''    <p class="crumb"><a href="/#services">← Research services</a
 
     <h2>Bring us your family’s story</h2>
     <p>Tell us the story exactly as it was told to you, who told it, and anything written down. We will record it word for word, find what the records say, and tell you honestly which parts hold up.</p>
-    <p class="center"><a class="btn" href="/#contact">Bring us your story</a> <a class="btn" href="/families/">Family histories</a></p>
+{intake('legend')}
+    <p class="center"><a class="btn" href="/families/">Family histories</a></p>
     <script>
     (function(){{ "use strict";
       const btns=[...document.querySelectorAll('.lg-btn')], ans=[...document.querySelectorAll('.lg-ans')], empty=document.querySelector('.lg-empty');
@@ -216,5 +271,5 @@ legends = f'''    <p class="crumb"><a href="/#services">← Research services</a
     </script>
 '''
 page('legends/index.html', 'Is the family story true? · Project Scroll',
-     'Test a family legend against the records: Ellis Island name changes, famous ancestors, the Cherokee princess, three brothers, burned courthouses and more.', legends)
+     'Test a family legend against the records: Ellis Island name changes, famous ancestors, the Cherokee princess, three brothers, burned courthouses and more.', legends, og='https://projectscroll.com/og/legends.jpg')
 print('families + legends built')

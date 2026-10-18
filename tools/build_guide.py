@@ -61,5 +61,5 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       show(10); }})();
     </script>
 '''
-page('guide/death-certificate/index.html','How to read a death certificate · Project Scroll','An interactive guide: tap each box of a death certificate to see who filled it in and how far to trust it.',body)
+page('guide/death-certificate/index.html','How to read a death certificate · Project Scroll','An interactive guide: tap each box of a death certificate to see who filled it in and how far to trust it.',body, og='https://projectscroll.com/og/death-certificate.jpg')
 print('guide built')

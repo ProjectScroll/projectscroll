@@ -730,6 +730,35 @@ label.btn{cursor:pointer}
 .mapstat{font-size:.85rem; color:var(--ink-soft); margin-left:.4rem}
 .osd{height:min(78vh, 52rem); background:#2a2620; border:1px solid var(--line); border-radius:6px; overflow:hidden}
 @media print{ .maproom{display:none!important} }
+.recfilter{display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:.5rem; margin:1rem 0}
+.recfilter label{font-size:.9rem; color:var(--ink-soft)}
+.recfilter input{font:inherit; padding:.45rem .7rem; border:1px solid var(--line); border-radius:4px; background:var(--paper); color:var(--ink); width:min(22rem,100%)}
+.recnav{font-size:.95rem}
+.recsec[hidden], .reclist li[hidden], .gl[hidden]{display:none}
+.reclist{list-style:none; padding:0; margin:.6rem 0 1.4rem}
+.reclist li{padding:.6rem 0; border-bottom:1px solid var(--line)}
+.reclist li a{font-weight:700}
+.reclist .d{display:block; color:var(--ink-soft); font-size:.95rem; margin-top:.1rem}
+.paid{display:inline-block; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; border:1px solid var(--line); border-radius:10px; padding:0 .45rem; margin-left:.4rem; color:var(--ink-soft); vertical-align:.12em}
+.recnone{text-align:center; color:var(--ink-soft)}
+.glossary{margin:1rem 0}
+.gl{padding:.65rem 0; border-bottom:1px solid var(--line)}
+.gl dt{font-weight:700; color:var(--rule)}
+.gl dd{margin:.15rem 0 0}
+.intake{border:1px solid var(--line); border-top:3px solid var(--rule); border-radius:6px; padding:1.1rem 1.2rem; background:var(--paper); margin:1rem 0}
+.intake label{display:block; font-weight:700; margin:.8rem 0 .25rem}
+.intake label .h{font-weight:400; color:var(--ink-soft); font-size:.9rem}
+.intake input[type=text], .intake textarea, .intake select{font:inherit; width:100%; box-sizing:border-box; padding:.5rem .65rem; border:1px solid var(--line); border-radius:4px; background:var(--paper); color:var(--ink)}
+.intake textarea{min-height:6rem; resize:vertical}
+.intake fieldset{border:0; padding:0; margin:.8rem 0 0}
+.intake legend{font-weight:700; padding:0; margin-bottom:.3rem}
+.intake .chk{display:flex; flex-wrap:wrap; gap:.3rem 1rem}
+.intake .chk label{display:inline-flex; gap:.35rem; font-weight:400; margin:0; align-items:center}
+.intake .out{white-space:pre-wrap; font-size:.92rem; background:color-mix(in srgb, var(--paper) 85%, var(--ink) 5%); border-radius:4px; padding:.8rem; margin:1rem 0 .6rem}
+.intake .btns{display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center}
+.fbfollow{display:inline-flex; align-items:center; gap:.45rem; margin:.4rem 0 .6rem; padding:.4rem .9rem; border:1px solid var(--line); border-radius:20px; text-decoration:none; color:var(--ink); font-size:.95rem}
+.fbfollow:hover{border-color:var(--rule)}
+.fbfollow svg{width:18px; height:18px}
 .fammakes{display:grid; grid-template-columns:repeat(auto-fit,minmax(14rem,1fr)); gap:1rem; margin:1rem 0 1.5rem}
 .fammakes > div{border:1px solid var(--line); border-top:3px solid var(--rule); border-radius:4px; padding:1rem 1.1rem; background:var(--paper)}
 .fammakes .k, .solved .k{font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:var(--rule); margin:0 0 .2rem}
