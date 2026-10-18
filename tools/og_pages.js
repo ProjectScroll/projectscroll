@@ -5,6 +5,8 @@ const CARDS=[
  ['map','The map room','The 1860 wall map','Every farm, town plan and engraved house of three Michigan counties.',I('cass1860.webp'),'center 40%'],
  ['cassopolis','Then and now','Cassopolis, 1860 and today','The old town plan laid over today’s streets.',I('cass1860.webp'),'center 62%'],
  ['niles','Then and now','Niles, 1860 and today','The 1860 city plan laid over today’s streets.','file://'+path.join(R,'img/towns/niles1860.webp'),'center 55%'],
+ ['dowagiac','Then and now','Dowagiac, 1860 and today','The 1860 town plan laid over today’s streets.','file://'+path.join(R,'img/towns/dowagiac1860.webp'),'center 40%'],
+ ['pawpaw','Then and now','Paw Paw, 1860 and today','The 1860 town plan laid over today’s streets.','file://'+path.join(R,'img/towns/pawpaw1860.webp'),'center'],
  ['families','Research services','Family histories, built to be checked','Registers, monographs and family books, every statement marked.',I('two-certificates.jpg'),'center'],
  ['legends','Mysteries in the family','Is the family story true?','Ellis Island, the famous ancestor, the three brothers: tested against the records.',I('doctors-window.jpg'),'center'],
  ['toolkit','The hunter’s toolkit','Tools for reading the record','Faded ink, ages at death, Soundex codes and cousins.',I('two-certificates.jpg'),'30% center'],

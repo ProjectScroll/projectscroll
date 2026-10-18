@@ -9,7 +9,10 @@ OpenStreetMap. Root-mean-square error about 5 m, worst about 9 m.
 """
 import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
 import json
-NILES=json.loads((pathlib.Path(__file__).parent/'towns'/'niles_bounds.json').read_text())
+_TD=pathlib.Path(__file__).parent/'towns'
+NILES=json.loads((_TD/'niles_bounds.json').read_text())
+DOWAGIAC=json.loads((_TD/'dowagiac_bounds.json').read_text())
+PAWPAW=json.loads((_TD/'pawpaw_bounds.json').read_text())
 TOWNS = [
  dict(slug='cassopolis', name='Cassopolis', inset='Cassopolis, County Seat of Cass Co.', img='/img/cass1860.webp',
       N=41.917772, W=-86.018103, S=41.906100, E=-86.007168, maxb='[41.895,-86.035],[41.930,-85.990]',
@@ -32,6 +35,28 @@ TOWNS = [
             'The <b>Union School</b>, the <b>Fair Ground</b> and the <b>Cemetery</b> on the east side of town.'],
       how='The plan was cut from the Library of Congress copy of the wall map. Forty-three street corners that appear on both maps (Front Street to Ninth Street, where they meet Eagle, Howard, Cass, Ferry, Sycamore and Main) were matched by measurement, and the plan was fitted to them, turning it a fraction of a degree. On average the old corners land within about four yards of the new ones. Where today’s Main Street bends away east of Fifth Street it was left out of the fit, because the 1860 plan carries it straight.',
       og='niles', desc='The 1860 plan of the City of Niles, Michigan, laid over today’s streets. Fade between them or compare side by side.'),
+ dict(slug='dowagiac', name='Dowagiac', inset='Dowagiac, Cass Co.', img='/img/towns/dowagiac1860.webp',
+      N=DOWAGIAC['N'], W=DOWAGIAC['W'], S=DOWAGIAC['S'], E=DOWAGIAC['E'], maxb='[41.965,-86.135],[42.000,-86.085]',
+      lede='Dowagiac, in Cass County, grew up along the Michigan Central Railroad, which cuts across its 1860 plan on a long diagonal.',
+      look=['<b>The railroad</b>, its depot and freight house, and how the streets beside it were laid out on the slant.',
+            'The <b>Union School</b> on Parsonage Street, and the <b>Cemetery</b> at the west edge of town.',
+            'The <b>additions</b> named for the men who laid them out: Hamilton’s, McOmber’s, Spalding’s and the rest. Each name is a lead to a plat.',
+            '<b>Dowagiac Creek</b> and <b>Herndon Mills</b> at the south edge of the plan.',
+            'The <b>names on the lots</b>, such as P. Hamilton and G. C. Jones, and the business directory printed beside the plan.'],
+      how='The plan was cut from the Library of Congress copy of the wall map. Thirty-three street corners that appear on both maps (Parsonage, Green, Cross, Center, Hamilton, Orchard, Front and McOmber, where they meet Wayne, North, Telegraph, West, Spruce, Courtland and Division) were matched by measurement, and the plan was fitted to them. On average the old corners land within about three yards of the new ones.',
+      extra='<p class="note">The little village of Brownsville, printed in the corner of the same inset, has been left out of this copy.</p>',
+      og='dowagiac', desc='The 1860 plan of Dowagiac, Michigan, laid over today’s streets. Fade between them or compare side by side.'),
+ dict(slug='paw-paw', name='Paw Paw', inset='Paw Paw, County Seat of Van Buren Co.', img='/img/towns/pawpaw1860.webp',
+      N=PAWPAW['N'], W=PAWPAW['W'], S=PAWPAW['S'], E=PAWPAW['E'], maxb='[42.200,-85.915],[42.235,-85.865]',
+      lede='Paw Paw, the county seat of Van Buren County, sits on the Paw Paw River.',
+      look=['<b>Kalamazoo, Niles, LaGrave, Brown, Van Buren and Gremps Streets</b>, all still carrying their 1860 names.',
+            'The <b>Paw Paw River</b> winding through the west side of town, and the mills and tannery beside it.',
+            'The <b>Cemetery</b> and the <b>Road to Allegan</b> at the north edge.',
+            'The <b>additions</b>: Willard’s, Dyckman’s and Woodman’s. Each name is a lead to a plat.',
+            'The <b>business directory</b> printed beside the plan: lawyers, county officers, merchants and mechanics of 1860.'],
+      how='The plan was cut from the Library of Congress copy of the wall map. Thirty street corners that appear on both maps (Gremps, Kalamazoo, Niles, LaGrave, Brown and Van Buren, where they meet Cedar, Pine, Elm, Oak and Paw Paw Street) were matched by measurement, and the plan was fitted to them. On average the old corners land within about four yards of the new ones.',
+      extra='<p class="note">The wall map was printed in sheets, and the join between two of them runs across the south end of this plan. The strip below the join has been left off.</p>',
+      og='pawpaw', desc='The 1860 plan of Paw Paw, Michigan, laid over today’s streets. Fade between them or compare side by side.'),
 ]
 def build(t):
     others=' · '.join(f'<a href="/map/{o["slug"]}/">{o["name"]}</a>' for o in TOWNS if o['slug']!=t['slug'])
@@ -77,9 +102,10 @@ def build(t):
       const isDark=()=>{{ const t=document.documentElement.dataset.theme; return t ? t==='dark' : matchMedia('(prefers-color-scheme: dark)').matches; }};
       const pal=()=>isDark() ? {{land:'#1d2329', water:'#2c4656', minor:'#7d8994', major:'#c9d1d8', rail:'#8a7f72'}} : {{land:'#f1efe8', water:'#b9d0dc', minor:'#a6a39a', major:'#5d5a54', rail:'#8a7560'}};
       const cv=L.canvas({{padding:0.5}});
-      const groups={{w:[], r:[], m:[], x:[]}};
+      const groups={{w:[], s:[], r:[], m:[], x:[]}};
       const style={{
         w:c=>({{renderer:cv, stroke:false, fillColor:c.water, fillOpacity:1, interactive:false}}),
+        s:c=>({{renderer:cv, color:c.water, weight:4, interactive:false}}),
         r:c=>({{renderer:cv, color:c.minor, weight:2, interactive:false}}),
         m:c=>({{renderer:cv, color:c.major, weight:3.5, interactive:false}}),
         x:c=>({{renderer:cv, color:c.rail, weight:2, dashArray:'6 5', interactive:false}})
@@ -88,7 +114,7 @@ def build(t):
       fetch('/map/{t["slug"]}/today.json?v=1').then(r=>r.json()).then(d=>{{
         const c=pal();
         for(const p of d.w) groups.w.push(L.polygon(p.map(dec), style.w(c)).addTo(map));
-        for(const k of ['r','x','m']) for(const a of d[k]) groups[k].push(L.polyline(dec(a), style[k](c)).addTo(map));
+        for(const k of ['s','r','x','m']) for(const a of (d[k]||[])) groups[k].push(L.polyline(dec(a), style[k](c)).addTo(map));
       }}).catch(()=>{{ stat.textContent='Today’s streets did not load. Try refreshing the page.'; }});
       new MutationObserver(paint).observe(document.documentElement,{{attributes:true, attributeFilter:['data-theme']}});
       matchMedia('(prefers-color-scheme: dark)').addEventListener('change',paint);
