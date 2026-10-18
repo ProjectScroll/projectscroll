@@ -409,7 +409,30 @@
 
   /* for anyone who opens the browser's console */
 
-  /* lantern: a warm glow that follows the pointer on computers */
+  /* parts: a "next" link at the foot of each part, and a contents rail in the margin */
+(function(){
+  const parts=[].slice.call(document.querySelectorAll('main > section')).filter(function(s){ return s.id && s.querySelector(':scope > .part') && s.querySelector(':scope > h2'); });
+  if (parts.length<3) return;
+  const label=function(s){ return { num:s.querySelector(':scope > .part').firstChild.textContent.replace(/^\s*Part\s*/i,'').trim(), title:s.querySelector(':scope > h2').textContent.trim() }; };
+  parts.forEach(function(s,i){
+    const nx=parts[i+1] || document.getElementById('contact'); if (!nx) return;
+    const p=document.createElement('p'); p.className='nextpart';
+    const a=document.createElement('a'); a.href='#'+nx.id;
+    const L=parts[i+1] ? label(nx) : {num:'', title:(nx.querySelector('h2')||{}).textContent||'Contact'};
+    a.innerHTML='<span>Next</span> '+(L.num?'<b>Part '+L.num+'</b> · ':'')+L.title+' <i aria-hidden="true">↓</i>';
+    p.appendChild(a); s.appendChild(p);
+  });
+  const rail=document.createElement('nav'); rail.className='partrail'; rail.setAttribute('aria-label','Parts of this page');
+  const links=parts.map(function(s){ const L=label(s), a=document.createElement('a'); a.href='#'+s.id; a.innerHTML='<b>'+L.num+'</b><span>'+L.title+'</span>'; rail.appendChild(a); return a; });
+  document.body.appendChild(rail);
+  if ('IntersectionObserver' in window){
+    const io=new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ const i=parts.indexOf(e.target); links.forEach(function(a,j){ if (j===i) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current'); }); } }); }, {rootMargin:'-45% 0px -50% 0px'});
+    parts.forEach(function(s){ io.observe(s); });
+    const hero=document.querySelector('.hero'); if (hero){ new IntersectionObserver(function(es){ rail.classList.toggle('show', !es[0].isIntersecting); }).observe(hero); } else rail.classList.add('show');
+  } else rail.classList.add('show');
+})();
+
+/* lantern: a warm glow that follows the pointer on computers */
   (function(){
     if (!window.matchMedia || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
     let off=false; try{ off=localStorage.getItem('ps-lantern')==='off'; }catch(e){}

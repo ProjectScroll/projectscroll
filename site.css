@@ -1068,3 +1068,50 @@ html{scrollbar-color:color-mix(in srgb, var(--ink-soft) 55%, transparent) transp
 .bar nav{gap:.68rem; font-size:.9rem}
 .bar nav + .searchbtn{margin-left:.45rem}
 @media (min-width:881px) and (max-width:1020px){ .bar nav{gap:.55rem; font-size:.84rem} .bar-in{gap:.5rem} .bar .brand{font-size:.95em} }
+
+/* ---------- Draft 40: every part is its own panel ---------- */
+:root{--panel:#EEF1EB; --panel-2:#E2E8DF; --panel-edge:#C3CCC1; --panel-shadow:0 1px 0 rgba(255,255,255,.65) inset, 0 22px 44px -34px rgba(24,36,48,.55)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--panel:#192027; --panel-2:#1E272F; --panel-edge:#2E3A44; --panel-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 22px 44px -30px rgba(0,0,0,.8)} }
+:root[data-theme="dark"]{--panel:#192027; --panel-2:#1E272F; --panel-edge:#2E3A44; --panel-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 22px 44px -30px rgba(0,0,0,.8)}
+main{counter-reset:part}
+main > section > .part{counter-increment:part}
+main > section, main > section:nth-of-type(even):not(.contact), main > section.contact{
+  max-width:calc(var(--col) + 2rem)!important; margin:3.4rem auto!important; padding:3.3rem 1rem 3rem!important;
+  background:var(--panel)!important; border:1px solid var(--panel-edge)!important; border-top:3px solid color-mix(in srgb, var(--rule) 70%, var(--panel-edge))!important;
+  border-radius:12px!important; box-shadow:var(--panel-shadow); position:relative; isolation:isolate}
+main > section:nth-of-type(even):not(.contact){background:var(--panel-2)!important}
+main > section::after{content:counter(part, upper-roman); position:absolute; z-index:-1; top:.9rem; right:1.3rem; font-family:"Libre Caslon Display",serif; font-size:5.4rem; line-height:1; color:var(--rule); opacity:.075; pointer-events:none}
+main > section.contact::after{content:none}
+/* the flourish now sits in the gap between panels */
+main > section + section::before, main > .plate2 + section::before, main > section + .plate2::before, .plate2::before{top:-2.55rem!important; background-color:transparent!important}
+main > section + section, main > .plate2 + section{border-top-width:3px!important}
+.plate2{margin-top:3.4rem!important; padding-top:1rem!important}
+/* the clue and the figures between panels */
+main > .clue{margin-top:3.4rem!important}
+.stats{margin-bottom:0}
+@media (max-width:640px){
+  main > section, main > section:nth-of-type(even):not(.contact), main > section.contact{max-width:none!important; margin:2.6rem -.45rem 2.6rem .1rem!important; padding:2.6rem .9rem 2.3rem!important; border-radius:10px!important}
+  main > section::after{font-size:3.6rem; top:.7rem; right:.8rem}
+  main > section + section::before, main > .plate2 + section::before, .plate2::before{top:-2.1rem!important}
+}
+@media print{ main > section{background:none!important; box-shadow:none!important; border:0!important; border-top:1px solid #999!important; border-radius:0!important; margin:0!important; padding:1.5rem 0!important} main > section::after{display:none!important} }
+/* next-part link at the foot of each panel */
+.nextpart{margin:2.4rem 0 0; padding-top:1.1rem; border-top:1px dashed var(--panel-edge); text-align:right!important; font-size:.92rem}
+.nextpart a{text-decoration:none; color:var(--ink-soft)}
+.nextpart a span{font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:var(--rule); margin-right:.3rem}
+.nextpart a b{font-weight:400; font-family:"Libre Caslon Display",serif; color:var(--ink)}
+.nextpart a i{font-style:normal; display:inline-block; margin-left:.25rem; transition:transform .2s}
+.nextpart a:hover{color:var(--ink)} .nextpart a:hover i{transform:translateY(3px)}
+/* contents rail in the left margin, wide screens only */
+.partrail{display:none}
+@media (min-width:1220px){
+  .partrail{display:flex; flex-direction:column; gap:.15rem; position:fixed; z-index:40; top:50%; transform:translateY(-50%); left:calc(50% - var(--col)/2 - 6.2rem); width:4rem; opacity:0; pointer-events:none; transition:opacity .4s}
+  .partrail.show{opacity:1; pointer-events:auto}
+  .partrail a{position:relative; display:flex; justify-content:flex-end; align-items:center; text-decoration:none; color:var(--ink-soft); font-family:"Libre Caslon Display",serif; font-size:.92rem; padding:.18rem .5rem .18rem 0; border-right:2px solid transparent; transition:color .2s, border-color .2s}
+  .partrail a b{font-weight:400}
+  .partrail a span{position:absolute; left:calc(100% + .7rem); top:50%; transform:translateY(-50%); white-space:nowrap; font-family:inherit; font-size:.85rem; background:var(--panel); border:1px solid var(--panel-edge); border-radius:6px; padding:.2rem .55rem; color:var(--ink); opacity:0; pointer-events:none; transition:opacity .15s; box-shadow:0 8px 18px -12px rgba(0,0,0,.4)}
+  .partrail a:hover span, .partrail a:focus-visible span{opacity:1}
+  .partrail a:hover{color:var(--ink)}
+  .partrail a[aria-current="true"]{color:var(--rule); border-right-color:var(--rule)}
+}
+@media print{ .partrail, .nextpart{display:none!important} }
