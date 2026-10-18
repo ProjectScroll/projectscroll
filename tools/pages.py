@@ -42,7 +42,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="alternate" type="application/rss+xml" title="Project Scroll field notes" href="/feed.xml">
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.css?v=40">
+<link rel="stylesheet" href="/site.css?v=41">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
@@ -81,7 +81,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a> · <button type="button" class="lanternbtn" id="lanternBtn" hidden>Put out the lantern</button></p>
   </footer>
 </div>
-<script src="/site.js?v=40" defer></script>
+<script src="/site.js?v=41" defer></script>
 </body>
 </html>
 '''
