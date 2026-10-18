@@ -29,6 +29,7 @@
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="Project Scroll field notes" href="/feed.xml">
+<link rel="preload" as="image" href="/img/heron-dawn.webp" type="image/webp" fetchpriority="high">
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does the hunt cost anything?", "acceptedAnswer": {"@type": "Answer", "text": "No. The hunt is free to follow and free to play. All you need is curiosity and, now and then, a library card."}}, {"@type": "Question", "name": "Do I have to go anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. Every clue is solved on paper: in books, maps and records, many of them free online. The hunt never sends anyone onto private land or near a grave."}}, {"@type": "Question", "name": "I solved one. Now what?", "acceptedAnswer": {"@type": "Answer", "text": "Post your answer in the comments on Facebook, and say where you found it. Solvers are named in the next post."}}, {"@type": "Question", "name": "Can you help with my own family's mystery?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Send Project Scroll a message on Facebook with what you know. We'll tell you honestly what the records are likely to show before you commit to anything."}}, {"@type": "Question", "name": "What should I keep notes on?", "acceptedAnswer": {"@type": "Answer", "text": "Use the hunter's worksheet: one page to log each record, who made it, when, and where you found it. Print as many as you need."}}, {"@type": "Question", "name": "Is anything hidden on this website?", "acceptedAnswer": {"@type": "Answer", "text": "Perhaps. Every page has a back side, and curious hunters know where to look."}}, {"@type": "Question", "name": "Is Project Scroll only about Michigan?", "acceptedAnswer": {"@type": "Answer", "text": "It started in one Michigan county, but the methods work anywhere, and so does our research. Mysteries are welcome from wherever you are."}}]}
@@ -40,7 +41,7 @@
 /* apply a saved theme before first paint, so there is no flash */
 try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}
 </script>
-<link rel="stylesheet" href="/site.css?v=22">
+<link rel="stylesheet" href="/site.css?v=23">
 </head>
 <body>
 <!--
@@ -79,7 +80,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <ul class="trust"><li>Free to play</li><li>Solved on paper</li><li>Open to anyone, anywhere</li></ul>
       <p class="foot" id="foot"><span>*</span> And every answer is in the record.</p>
       <figure class="plate">
-        <img src="/img/heron-dawn.png" width="576" height="1024" alt="A great blue heron wading in a misty lake at sunrise, autumn trees glowing red and gold on the far shore, mossy boulders in the foreground." fetchpriority="high" decoding="async">
+        <picture><source type="image/webp" srcset="/img/heron-dawn.webp"><img src="/img/heron-dawn.png" width="576" height="1024" alt="A great blue heron wading in a misty lake at sunrise, autumn trees glowing red and gold on the far shore, mossy boulders in the foreground." fetchpriority="high" decoding="async"></picture>
       </figure>
     </div>
 
@@ -377,6 +378,6 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
 </div>
 
 <a class="totop" href="#top" aria-label="Back to the top" hidden>↑</a>
-<script src="/site.js?v=22" defer></script>
+<script src="/site.js?v=23" defer></script>
 </body>
 </html>

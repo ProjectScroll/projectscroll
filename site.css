@@ -622,3 +622,4 @@ details.faq[open]{background:color-mix(in srgb, var(--paper) 60%, transparent)}
 .clue{max-width:calc(var(--measure) + 12rem)}
 
 @media print{ #msgform{display:none!important} .contact{break-inside:avoid} }
+.plate picture{display:block}
