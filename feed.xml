@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Project Scroll · Field notes</title>
+  <link>https://projectscroll.com/notes/</link>
+  <atom:link href="https://projectscroll.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Lessons from the Project Scroll research desk: how to read old records, weigh them, and know when a question is settled.</description>
+  <language>en-us</language>
+  <item>
+    <title>One Letter, Two Certificates</title>
+    <link>https://projectscroll.com/notes/one-letter-two-certificates/</link>
+    <guid>https://projectscroll.com/notes/one-letter-two-certificates/</guid>
+    <pubDate>Sat, 17 Oct 2026 12:00:00 -0400</pubDate>
+    <description>A pioneer, his son, two death certificates and one middle initial: what to do when old records disagree.</description>
+  </item>
+</channel>
+</rss>
