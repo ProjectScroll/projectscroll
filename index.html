@@ -41,7 +41,7 @@
 /* apply a saved theme before first paint, so there is no flash */
 try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}
 </script>
-<link rel="stylesheet" href="/site.css?v=23">
+<link rel="stylesheet" href="/site.css?v=24">
 </head>
 <body>
 <!--
@@ -93,10 +93,11 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <p class="promo-ctas"><a class="btn primary" href="#contact">Bring us your mystery</a><a class="btn" href="#marks">How we mark the evidence</a><a class="btn" href="/sample/project-scroll-sample-report.pdf">Sample report (PDF)</a></p>
     </aside>
 
+    <script type="application/json" id="clues">[["2026-10-17", "17 October", "One man gave away forty acres of lakefront. Try to picture anyone doing that today. Who was he?", 3], ["2026-10-24", "24 October", "In 1867 a village hotel was hauled across town and turned into a mill. Nobody has pinned down where it went.", 2], ["2026-10-31", "31 October", "A lake with no stream in and no stream out once had a flour mill on its shore. What turned the wheel?", 7], ["2026-11-07", "7 November", "A deed written on parchment in 1831 has vanished. Somewhere, someone may have it in a drawer.", 4], ["2026-11-14", "14 November", "The man who first wrote down the joke lodge’s story put a question mark after the word “charter.” Was there ever one?", 1], ["2026-11-21", "21 November", "Old shores were stony. Where did all the boulders go?", 6], ["2026-11-28", "28 November", "A county history said a lake was fed by a river running underground from Lake Superior. Where does its water really come from?", 5]]</script>
     <aside class="clue" aria-label="Clue of the week">
-      <span class="lbl">Clue of the week · 17 October</span>
-      <p>One man gave away forty acres of lakefront. Try to picture anyone doing that today. Who was he?</p>
-      <a href="#case-3">It’s case 3 on the board</a> · <a href="https://www.facebook.com/projectscroll/">Follow the hunt on Facebook</a>
+      <span class="lbl" id="clueLbl">Clue of the week · 17 October</span>
+      <p id="clueText">One man gave away forty acres of lakefront. Try to picture anyone doing that today. Who was he?</p>
+      <a href="#case-3" id="clueLink">It’s case 3 on the board</a> · <a href="https://www.facebook.com/projectscroll/">Follow the hunt on Facebook</a>
     </aside>
 
     <section id="hunt">
@@ -109,11 +110,11 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
         <li><b>Post your answer.</b> Put it in the comments, and say where you found it.</li>
         <li><b>Get named.</b> When someone cracks one, the next post says who.</li>
       </ol>
-      <figure class="halls" aria-label="The halls of the hunt so far">
+      <figure class="halls" aria-label="The halls of the hunt so far: two of three open">
         <ol>
           <li class="open"><span class="seal">I</span><b>The first hall</b><small>Open · start in the pinned post</small></li>
           <li class="open"><span class="seal">II</span><b>The second hall</b><small>Open · its door is in the first</small></li>
-          <li class="locked"><span class="seal"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><b>The third hall</b><small>Still sealed</small></li>
+          <li class="locked" tabindex="0" data-tip="Opens when the second hall is solved"><span class="seal"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><b>The third hall</b><small>Still sealed</small></li>
           <li class="locked more"><span class="seal">…</span><b>And on</b><small>The scroll is long</small></li>
         </ol>
       </figure>
@@ -134,7 +135,8 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <p class="part">Part II</p>
       <h2>The case board</h2>
       <p class="intro">Every mystery the hunt has posted, and where each one stands. Crack one, and your name goes here and in the next post.</p>
-      <div class="seals" aria-hidden="true"><a href="#case-1" title="Case 1: open">1</a><a href="#case-2" title="Case 2: open">2</a><a href="#case-3" title="Case 3: open">3</a><a href="#case-4" title="Case 4: open">4</a><a href="#case-5" title="Case 5: open">5</a><a href="#case-6" title="Case 6: open">6</a><a href="#case-7" title="Case 7: open">7</a><a href="#case-8" title="Case 8: open">8</a><a href="#case-9" title="Case 9: open">9</a><a href="#case-10" title="Case 10: open">10</a></div>
+      <nav class="seals" aria-label="Jump to a case"><a href="#case-1" title="Case 1: open">1</a><a href="#case-2" title="Case 2: open">2</a><a href="#case-3" title="Case 3: open">3</a><a href="#case-4" title="Case 4: open">4</a><a href="#case-5" title="Case 5: open">5</a><a href="#case-6" title="Case 6: open">6</a><a href="#case-7" title="Case 7: open">7</a><a href="#case-8" title="Case 8: open">8</a><a href="#case-9" title="Case 9: open">9</a><a href="#case-10" title="Case 10: open">10</a></nav>
+      <div class="meter" role="img" aria-label="0 of 10 cases solved"><span style="width:0%"></span></div>
       <p class="tally"><span><b>10</b>open</span><span><b>0</b>solved</span><span>Nobody is ahead of you yet.</span></p>
       <div class="filters" role="group" aria-label="Show cases">
         <button type="button" data-f="all" aria-pressed="true">All</button><button type="button" data-f="h1" aria-pressed="false">First hall</button><button type="button" data-f="h2" aria-pressed="false">Second hall</button><button type="button" data-f="desk" aria-pressed="false">From the desk</button><button type="button" data-f="mine" aria-pressed="false">★ My cases <span id="minecount"></span></button>
@@ -190,6 +192,18 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
         <li><b>Lodges, churches and old societies</b>Rosters, proceedings and minute books, where they survive and their keepers allow access, to learn who belonged, when, and what they did.</li>
         <li><b>A second pair of eyes</b>A family history, a book chapter or an article checked against its sources before it goes out into the world.</li>
       </ul>
+
+      <h3 class="sub">Is my question answerable?</h3>
+      <div class="checker" id="checker">
+        <p class="note center" style="margin:0 0 .8rem">Four quick questions for an honest first read. Nothing you choose leaves this page.</p>
+        <ol class="ck">
+          <li><span>Do you know at least one full name?</span><div><button type="button" data-v="1">Yes</button><button type="button" data-v="0">Not yet</button></div></li>
+          <li><span>Do you know a place, even just a county or a town?</span><div><button type="button" data-v="1">Yes</button><button type="button" data-v="0">Not yet</button></div></li>
+          <li><span>Do you know a rough date, within twenty years or so?</span><div><button type="button" data-v="1">Yes</button><button type="button" data-v="0">Not yet</button></div></li>
+          <li><span>Did it happen before about 1950?</span><div><button type="button" data-v="1">Yes</button><button type="button" data-v="0">No, later</button></div></li>
+        </ol>
+        <div class="ck-out" id="ckOut" aria-live="polite" hidden></div>
+      </div>
 
       <h3 class="sub">What happens when you bring us one</h3>
       <ol class="steps">
@@ -255,6 +269,26 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
         <p class="note" style="margin:0">Tap a mark to see what it means. From our case “<a href="/notes/one-letter-two-certificates/">One Letter, Two Certificates</a>.” Every report you receive from us is marked the same way.</p>
       </div>
 
+      <div class="weigh" id="weigh">
+        <h3>Weigh the evidence</h3>
+        <p class="note" style="margin:0 0 .8rem">Add records to each side and watch the scale. Records are weighed, not counted: one good document can outweigh a pile of family stories.</p>
+        <svg class="scale-svg" viewBox="0 0 320 170" aria-hidden="true">
+          <rect x="150" y="150" width="20" height="8" rx="2" class="brass"/><rect x="115" y="157" width="90" height="7" rx="3" class="brass"/>
+          <rect x="157" y="30" width="6" height="122" class="brass"/><circle cx="160" cy="28" r="6" class="brass"/>
+          <g id="beam"><rect x="40" y="25" width="240" height="6" rx="3" class="brass"/>
+            <g id="panL"><line x1="55" y1="31" x2="35" y2="95" class="cord"/><line x1="55" y1="31" x2="75" y2="95" class="cord"/><path d="M25 95 h60 a30 12 0 0 1 -60 0z" class="pan"/></g>
+            <g id="panR"><line x1="265" y1="31" x2="245" y2="95" class="cord"/><line x1="265" y1="31" x2="285" y2="95" class="cord"/><path d="M235 95 h60 a30 12 0 0 1 -60 0z" class="pan"/></g>
+          </g>
+        </svg>
+        <div class="sides">
+          <div class="side" data-side="L"><p class="side-h">Side A</p><div class="adds"><button type="button" class="mk kD" data-w="5">+ Document</button><button type="button" class="mk kP" data-w="4">+ Period print</button><button type="button" class="mk kC" data-w="3">+ County history</button><button type="button" class="mk kM" data-w="2">+ Compiled</button><button type="button" class="mk kT" data-w="1">+ Tradition</button></div><p class="pile" aria-live="polite"></p></div>
+          <div class="side" data-side="R"><p class="side-h">Side B</p><div class="adds"><button type="button" class="mk kD" data-w="5">+ Document</button><button type="button" class="mk kP" data-w="4">+ Period print</button><button type="button" class="mk kC" data-w="3">+ County history</button><button type="button" class="mk kM" data-w="2">+ Compiled</button><button type="button" class="mk kT" data-w="1">+ Tradition</button></div><p class="pile" aria-live="polite"></p></div>
+        </div>
+        <p class="center weigh-out" id="weighOut" aria-live="polite">The scale is level. Add a record to either side.</p>
+        <p class="center"><button type="button" class="linkbtn" id="weighReset">Empty both sides</button></p>
+        <p class="note center" style="margin:.2rem 0 0">The weights are a rule of thumb, not a formula: a late or careless document can still be wrong, and a detailed tradition can still be right.</p>
+      </div>
+
       <div class="quiz" id="quiz">
         <h3>Try marking these yourself</h3>
         <p class="note" style="margin:0 0 .6rem">Pick the mark you would give each one. <span id="qscore" aria-live="polite"></span> <button type="button" class="linkbtn" id="qreset" hidden>Try again</button></p>
@@ -283,6 +317,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <h2>On the record, so far</h2>
       <p class="intro">Every date the hunt has touched, in order, with the mark each one carries. Read it left to right, like a scroll.</p>
       <p class="swipe" aria-hidden="true">Swipe sideways →</p>
+      <div class="filters tl-filters" role="group" aria-label="Show dates by mark"><button type="button" data-m="all" aria-pressed="true">All</button><button type="button" data-m="kD" aria-pressed="false">Documents</button><button type="button" data-m="kC" aria-pressed="false">County histories</button><button type="button" data-m="kT" aria-pressed="false">Traditions</button></div>
       <div class="tl-wrap">
         <button type="button" class="tl-nav prev" aria-label="Earlier">‹</button>
         <ol class="tl" id="tl" tabindex="0" aria-label="Timeline">
@@ -315,8 +350,8 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <p class="note center">From “One Letter, Two Certificates.” <a href="/notes/one-letter-two-certificates/">Read the whole case</a> · <a href="/notes/">All field notes</a></p>
       <p class="center"><a class="btn dl" href="/worksheet/project-scroll-hunters-worksheet.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The hunter’s worksheet (PDF, one page)</a></p>
 
-      <figure class="wide">
-        <img src="/img/two-certificates.jpg" width="1400" height="787" loading="lazy" decoding="async" alt="Two old death certificates side by side on a wooden desk, a brass magnifying glass resting on one, with reading glasses, a fountain pen and old books.">
+      <figure class="wide lens-wrap" id="lensFig">
+        <img src="/img/two-certificates.jpg" width="1400" height="787" loading="lazy" decoding="async" alt="Two old death certificates side by side on a wooden desk, a brass magnifying glass resting on one, with reading glasses, a fountain pen and old books."><span class="lens" aria-hidden="true"></span><figcaption class="lens-tip">Move over the picture to look closer.</figcaption>
       </figure>
       <div class="try" id="try">
         <h3>Try it yourself</h3>
@@ -333,7 +368,8 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     <section id="faq">
       <p class="part">Part VIII</p>
       <h2>Questions</h2>
-      <p class="center" style="margin:-.3rem 0 .8rem"><button type="button" class="linkbtn" id="faqall">Open all answers</button></p>
+      <div class="faqbar"><label class="faqsearch"><span class="sr">Search the questions</span><input type="search" id="faqq" placeholder="Search the questions…" autocomplete="off"></label><button type="button" class="linkbtn" id="faqall">Open all answers</button></div>
+      <p class="note center" id="faqnone" hidden>No question matches that yet. <a href="https://m.me/projectscroll">Ask us on Facebook</a>.</p>
       <details class="faq"><summary>Does the hunt cost anything?</summary><p>No. The hunt is free to follow and free to play. All you need is curiosity and, now and then, a library card.</p></details>
       <details class="faq"><summary>Do I have to go anywhere?</summary><p>No. Every clue is solved on paper: in books, maps and records, many of them free online. The hunt never sends anyone onto private land or near a grave.</p></details>
       <details class="faq"><summary>I solved one. Now what?</summary><p>Post your answer in the comments on <a href="https://www.facebook.com/projectscroll/">Facebook</a>, and say where you found it. Solvers are named in the next post.</p></details>
@@ -360,6 +396,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
         <label><span>Papers or photos I already have</span><input name="papers" placeholder="Certificates, letters, a photograph…"></label>
         <p class="center" style="margin:.8rem 0 0"><button type="button" class="btn primary" id="copy">Copy my message</button> <button type="button" class="btn" id="clearmsg">Clear</button></p>
         <p class="copied center" id="copied" aria-live="polite" style="margin:.5rem 0 0"></p>
+        <p class="center" id="openMsgr" hidden style="margin:.5rem 0 0"><a class="btn primary" href="https://m.me/projectscroll" target="_blank" rel="noopener">Open Messenger and paste it ›</a></p>
       </form>
       <p class="note center">An email address is coming soon.</p>
     </section>
@@ -373,11 +410,11 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     <nav aria-label="Footer">
       <a href="#hunt">The hunt</a><a href="#cases">Case board</a><a href="/notes/">Field notes</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
     </nav>
+    <a class="totop" href="#top" aria-label="Back to the top" hidden>↑</a>
     <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a></p>
   </footer>
 </div>
 
-<a class="totop" href="#top" aria-label="Back to the top" hidden>↑</a>
-<script src="/site.js?v=23" defer></script>
+<script src="/site.js?v=24" defer></script>
 </body>
 </html>

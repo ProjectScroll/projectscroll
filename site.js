@@ -35,7 +35,7 @@
     document.getElementById('copy').addEventListener('click', function(){
       let lines=fields.map(function(f){ return f.closest('label').querySelector('span').textContent+': '+f.value.trim(); });
       let txt='Hello Project Scroll,\n\n'+lines.join('\n');
-      let done=function(){ out.textContent='Copied. Now paste it into your message to Project Scroll on Facebook.'; setTimeout(function(){ out.textContent=''; },5000); };
+      let done=function(){ const om=document.getElementById('openMsgr'); if (om) om.hidden=false; out.textContent='Copied. Now open Messenger and paste it.'; setTimeout(function(){ out.textContent=''; },5000); };
       if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, function(){ out.textContent='Your browser blocked copying. Select the text and copy it by hand.'; });
       else out.textContent='Your browser blocked copying. Select the text and copy it by hand.';
     });
@@ -101,6 +101,7 @@
       });
       r.querySelector('.link').addEventListener('click', function(){
         let url=location.origin+location.pathname+'#'+r.id;
+        if (navigator.share && matchMedia('(pointer:coarse)').matches){ navigator.share({title:'Project Scroll · Case '+r.id.split('-')[1], text:r.children[1].firstChild.textContent.trim(), url:url}).catch(function(){}); return; }
         let done=function(){ note.textContent='Link to case '+r.id.split('-')[1]+' copied. Paste it anywhere to share.'; setTimeout(function(){ note.textContent=''; },3500); };
         if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, function(){ note.textContent=url; }); else note.textContent=url;
       });
@@ -145,6 +146,128 @@
   /* back-to-top button appears once you are well down the scroll */
   let tt=document.querySelector('.totop');
   if (tt){ let onS=function(){ tt.hidden = scrollY < innerHeight*1.5; }; addEventListener('scroll', onS, {passive:true}); onS(); }
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 1 the ink writes itself, on a visitor's first visit only */
+  try{ if (!reduce && !localStorage.getItem('ps-inked')){ document.documentElement.classList.add('ink'); localStorage.setItem('ps-inked','1'); } }catch(e){}
+
+  /* 2 sections arrive as you scroll */
+  if (!reduce && 'IntersectionObserver' in window){
+    const blocks=[].slice.call(document.querySelectorAll('main > section, main > .plate2'));
+    document.documentElement.classList.add('reveal');
+    const ro=new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); } }); }, {rootMargin:'0px 0px -8% 0px'});
+    blocks.forEach(function(b){ ro.observe(b); });
+    if (location.hash) blocks.forEach(function(b){ b.classList.add('in'); });
+    addEventListener('beforeprint', function(){ blocks.forEach(function(b){ b.classList.add('in'); }); });
+  }
+
+  /* 3 magnifying glass over the certificates picture */
+  const fig=document.getElementById('lensFig');
+  if (fig){
+    const img=fig.querySelector('img'), lens=fig.querySelector('.lens'), Z=2.6;
+    const move=function(x,y){ const r=img.getBoundingClientRect(); const lx=Math.max(0,Math.min(r.width,x-r.left)), ly=Math.max(0,Math.min(r.height,y-r.top));
+      lens.style.left=(img.offsetLeft+lx)+'px'; lens.style.top=(img.offsetTop+ly)+'px';
+      lens.style.backgroundImage='url("'+(img.currentSrc||img.src)+'")'; lens.style.backgroundSize=(r.width*Z)+'px '+(r.height*Z)+'px';
+      lens.style.backgroundPosition=(-(lx*Z-75))+'px '+(-(ly*Z-75))+'px'; };
+    fig.addEventListener('pointerenter', function(e){ if (e.pointerType==='mouse') fig.classList.add('on'); });
+    fig.addEventListener('pointerleave', function(){ fig.classList.remove('on'); });
+    fig.addEventListener('pointermove', function(e){ if (e.pointerType==='mouse' || fig.classList.contains('on')) move(e.clientX,e.clientY); });
+    fig.addEventListener('pointerdown', function(e){ if (e.pointerType!=='mouse'){ fig.classList.add('on'); move(e.clientX,e.clientY); } });
+    ['pointerup','pointercancel'].forEach(function(t){ fig.addEventListener(t, function(e){ if (e.pointerType!=='mouse') fig.classList.remove('on'); }); });
+    fig.addEventListener('touchmove', function(e){ if (fig.classList.contains('on')){ e.preventDefault(); const t=e.touches[0]; move(t.clientX,t.clientY); } }, {passive:false});
+  }
+
+  /* 4 + 7 solved cases get wax seals; the meter fills; published hints get a Hint button */
+  const rowsAll=[].slice.call(document.querySelectorAll('tr[id^="case-"]'));
+  if (rowsAll.length){
+    let solved=0;
+    rowsAll.forEach(function(r){
+      const st=r.querySelector('.status'), seal=document.querySelector('.seals a[href="#'+r.id+'"]');
+      if (r.dataset.solved){ solved++; st.textContent='Solved'; st.classList.add('solved');
+        const by=document.createElement('span'); by.className='by'; by.textContent='Cracked by '+r.dataset.solved; r.children[1].appendChild(by);
+        if (seal){ seal.classList.add('solved'); seal.title='Case '+r.id.split('-')[1]+': solved by '+r.dataset.solved; } }
+      if (r.dataset.hint){ const hb=document.createElement('button'); hb.type='button'; hb.className='hintbtn'; hb.textContent='Hint'; hb.setAttribute('aria-expanded','false');
+        const h=document.createElement('span'); h.className='hint'; h.textContent=r.dataset.hint; h.hidden=true;
+        hb.addEventListener('click', function(){ h.hidden=!h.hidden; hb.setAttribute('aria-expanded', h.hidden?'false':'true'); hb.textContent=h.hidden?'Hint':'Hide hint'; });
+        r.children[1].appendChild(hb); r.children[1].appendChild(h); }
+    });
+    const total=rowsAll.length, m=document.querySelector('.meter');
+    if (m){ m.setAttribute('aria-label', solved+' of '+total+' cases solved'); setTimeout(function(){ m.firstElementChild.style.width=(solved/total*100)+'%'; }, 300); }
+    const tb=document.querySelectorAll('.tally b'); if (tb.length>1){ tb[0].textContent=total-solved; tb[1].textContent=solved; } if (solved>0){ const sp=document.querySelectorAll('.tally > span'); if (sp[2]) sp[2].textContent = solved===total ? 'Every case is cracked. New halls are coming.' : 'The hunt is on.'; }
+  }
+
+  /* 8 is my question answerable? */
+  const ck=document.getElementById('checker');
+  if (ck){
+    const items=[].slice.call(ck.querySelectorAll('.ck li')), out=document.getElementById('ckOut');
+    const verdict=function(a){
+      const n=a.reduce(function(x,y){return x+y;},0);
+      if (a[3]===0) return '<p><b>Possibly, with care.</b> Records after about 1950 are often closed for privacy, and we don’t locate living people. Older family members, newspapers and published sources can still help.</p>';
+      if (n===4) return '<p><b>Very likely.</b> A name, a place and a rough date are exactly what the old records are indexed by. This is the kind of question we answer.</p>';
+      if (n===3) return '<p><b>Likely.</b> One piece is missing, but the other three usually lead to it. Tell us what you have.</p>';
+      if (n===2) return '<p><b>Worth a look.</b> It will take more digging, and we’ll tell you honestly in our first reply whether the records are likely to hold the answer.</p>';
+      return '<p><b>Hard, but not hopeless.</b> Family papers, a photograph or a story can be the thread. Send what you have and we’ll say plainly what is possible.</p>';
+    };
+    const answers=[null,null,null,null];
+    items.forEach(function(li,i){ li.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed','false'); b.addEventListener('click', function(){
+      li.querySelectorAll('button').forEach(function(x){ x.setAttribute('aria-pressed', x===b?'true':'false'); }); answers[i]=+b.dataset.v;
+      if (answers.every(function(v){ return v!==null; })){ out.innerHTML=verdict(answers)+'<p><a class="btn primary" href="#contact">Bring us your mystery</a></p>'; out.hidden=false; }
+    }); }); });
+  }
+
+  /* 9 weigh the evidence */
+  const wg=document.getElementById('weigh');
+  if (wg){
+    const beam=document.getElementById('beam'), pl=document.getElementById('panL'), pr=document.getElementById('panR'), wo=document.getElementById('weighOut');
+    const load={L:[],R:[]};
+    const draw=function(){
+      const sum=function(a){ return a.reduce(function(x,y){ return x+y.w; },0); }, L=sum(load.L), R=sum(load.R);
+      const ang=Math.max(-16,Math.min(16,(R-L)*2.2));
+      beam.style.transform='rotate('+ang+'deg)'; pl.style.transform='rotate('+(-ang)+'deg)'; pr.style.transform='rotate('+(-ang)+'deg)';
+      wg.querySelectorAll('.side').forEach(function(sd){ const a=load[sd.dataset.side]; sd.querySelector('.pile').textContent = a.length ? a.map(function(x){ return x.n; }).join(' · ') : ''; });
+      if (!load.L.length && !load.R.length) wo.textContent='The scale is level. Add a record to either side.';
+      else if (L===R) wo.textContent='Balanced. Time to look for a third, independent record.';
+      else { const heavy=L>R?'A':'B', many=(L>R?load.L:load.R).length < (L>R?load.R:load.L).length;
+        wo.textContent='Side '+heavy+' weighs more'+(many?', even with fewer records.':'.'); }
+    };
+    wg.querySelectorAll('.side').forEach(function(sd){ sd.querySelectorAll('.adds .mk').forEach(function(b){ b.addEventListener('click', function(){
+      if (load[sd.dataset.side].length>=8) return; load[sd.dataset.side].push({w:+b.dataset.w, n:b.textContent.replace('+ ','')}); draw(); }); }); });
+    document.getElementById('weighReset').addEventListener('click', function(){ load.L=[]; load.R=[]; draw(); });
+  }
+
+  /* 10 timeline filter */
+  const tlf=document.querySelectorAll('.tl-filters button');
+  tlf.forEach(function(b){ b.addEventListener('click', function(){
+    tlf.forEach(function(x){ x.setAttribute('aria-pressed', x===b?'true':'false'); });
+    document.querySelectorAll('#tl > li').forEach(function(li){ li.hidden = !(b.dataset.m==='all' || li.classList.contains('now') || li.querySelector('.mk.'+b.dataset.m)); });
+    const t=document.getElementById('tl'); if (t) t.scrollLeft=0;
+  }); });
+
+  /* 11 search the questions */
+  const fq=document.getElementById('faqq');
+  if (fq){
+    const ds=[].slice.call(document.querySelectorAll('details.faq')), none=document.getElementById('faqnone');
+    ds.forEach(function(d){ d.dataset.text=d.textContent.toLowerCase(); });
+    fq.addEventListener('input', function(){
+      const v=fq.value.trim().toLowerCase(); let shown=0;
+      ds.forEach(function(d){ const hit=!v || v.split(/\s+/).every(function(w){ return d.dataset.text.indexOf(w)>-1; }); d.hidden=!hit; if (hit) shown++; if (v && hit) d.open=true; if (!v) d.open=false; });
+      none.hidden = shown>0;
+    });
+  }
+
+  /* 13 the clue of the week changes itself on schedule */
+  const cj=document.getElementById('clues');
+  if (cj){ try{
+    const list=JSON.parse(cj.textContent), today=new Date(); let cur=list[0];
+    list.forEach(function(c){ if (new Date(c[0]+'T00:00:00')<=today) cur=c; });
+    document.getElementById('clueLbl').textContent='Clue of the week · '+cur[1];
+    document.getElementById('clueText').textContent=cur[2];
+    const cl=document.getElementById('clueLink'); cl.href='#case-'+cur[3]; cl.textContent='It’s case '+cur[3]+' on the board';
+  }catch(e){} }
+
+  /* 14 works offline after a first visit */
+  if ('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){ addEventListener('load', function(){ navigator.serviceWorker.register('/sw.js').catch(function(){}); }); }
 
   /* for anyone who opens the browser's console */
   try{
