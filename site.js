@@ -35,12 +35,12 @@
   /* the message builder: fill in, copy, paste into Facebook (kept only in this browser as a draft) */
   let form=document.getElementById('msgform');
   if (form){
-    let DK='ps-msg', fields=[].slice.call(form.querySelectorAll('input,textarea')), out=document.getElementById('copied');
+    let DK='ps-msg', fields=[].slice.call(form.querySelectorAll('input,textarea,select')), out=document.getElementById('copied');
     try{ let d=JSON.parse(localStorage.getItem(DK)||'{}'); fields.forEach(function(f){ if (d[f.name]) f.value=d[f.name]; }); }catch(e){}
     let store=function(){ let d={}; fields.forEach(function(f){ d[f.name]=f.value; }); try{ localStorage.setItem(DK, JSON.stringify(d)); }catch(e){} };
-    fields.forEach(function(f){ f.addEventListener('input', store); });
+    fields.forEach(function(f){ f.addEventListener('input', store); f.addEventListener('change', store); });
     document.getElementById('copy').addEventListener('click', function(){
-      let lines=fields.map(function(f){ return f.closest('label').querySelector('span').textContent+': '+f.value.trim(); });
+      let lines=fields.filter(function(f){ return f.value.trim(); }).map(function(f){ return f.closest('label').querySelector('span').textContent+': '+f.value.trim(); });
       let txt='Hello Project Scroll,\n\n'+lines.join('\n');
       let done=function(){ const om=document.getElementById('openMsgr'); if (om) om.hidden=false; out.textContent='Copied. Now open Messenger and paste it.'; setTimeout(function(){ out.textContent=''; },5000); };
       if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, function(){ out.textContent='Your browser blocked copying. Select the text and copy it by hand.'; });

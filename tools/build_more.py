@@ -129,9 +129,13 @@ page('glossary/index.html', 'The glossary · Project Scroll',
 about = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">About</p>
     <h1>About Project Scroll</h1>
-    <p class="lede" style="font-size:1.15rem">Project Scroll is independent historical research: a history hunt anyone can play, and a research desk anyone can hire. Both run on one rule. Every clue is true, and every answer is in the record.</p>
+    <p class="lede" style="font-size:1.15rem">Project Scroll is independent historical research: a history hunt anyone can play, a research desk anyone can hire, and a studio for digital imaging, design, photography and video. All of it runs on one rule. Every clue is true, and every answer is in the record.</p>
     <h2>Who we are</h2>
     <p>Project Scroll is run by an independent researcher and author who writes narrative nonfiction about the history of the Great Lakes country, and who was trained in visual communications. The research behind those books is the same research we offer you: old certificates, deeds, surveys, county histories and newspapers, read line by line and compared until they agree, or until we can say exactly why they don’t.</p>
+    <h2>What we offer</h2>
+    <p><b>Professional research.</b> Lost ancestors, family histories and registers, family legends tested against the record, forgotten places, heirlooms, lodges and old societies, and a second pair of eyes on anything you mean to publish. <a href="/#services">Research services</a>.</p>
+    <p><b>Imaging, design and video.</b> Digital imaging of photographs, documents, maps and heirlooms; imaging analysis of faded ink, damaged pages and the details in old photographs; image creation and restoration; graphic design for family books, charts, covers and keepsakes; photography; and video production, from family-history films to recorded interviews. <a href="/#studio">The studio</a>.</p>
+    <p>Every commission starts with an honest first read: what can be done, and what it will take, before you commit to anything.</p>
     <h2>What we believe</h2>
     <ul class="dis">
       <li><b>The record decides.</b> Not the family tree online, not the story everybody tells, not what we hoped to find.</li>
@@ -142,10 +146,10 @@ about = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     </ul>
     <h2>Where it started</h2>
     <p>Project Scroll began in Cassopolis, Michigan, with a few questions the county history couldn’t answer. It doesn’t stop there. The hunt and the desk now take on questions from anywhere the records reach.</p>
-    <p class="center"><a class="btn" href="/#hunt">Play the hunt</a> <a class="btn" href="/#services">Research services</a> <a class="btn" href="/#contact">Get in touch</a></p>
+    <p class="center"><a class="btn" href="/#hunt">Play the hunt</a> <a class="btn" href="/#services">Research services</a> <a class="btn" href="/#studio">Imaging, design and video</a> <a class="btn" href="/#contact">Get in touch</a></p>
 '''
 page('about/index.html', 'About · Project Scroll',
-     'Project Scroll is independent historical research: a history hunt anyone can play and a research desk anyone can hire, where every clue is true.', about,
+     'Project Scroll is independent historical research: a history hunt anyone can play, a research desk anyone can hire, and a studio for digital imaging, design, photography and video.', about,
      og='https://projectscroll.com/og/about.jpg')
 
 # ------------------------------------------------------------------ privacy
