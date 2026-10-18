@@ -29,7 +29,7 @@
 /* apply a saved theme before first paint, so there is no flash */
 try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}
 </script>
-<link rel="stylesheet" href="/site.css?v=19">
+<link rel="stylesheet" href="/site.css?v=20">
 </head>
 <body>
 <!--
@@ -76,7 +76,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <p class="kicker">Research services</p>
       <h2 class="promo-h">Research you can check, line by line.</h2>
       <p class="promo-lede">Bring us a lost ancestor, a forgotten place or an heirloom no one can explain. Every statement in your report carries one of nine marks, so you can see at a glance what the record says, and what we are arguing from it.</p>
-      <div class="promo-scale" aria-hidden="true"><span class="kD"></span><span class="kP"></span><span class="kC"></span><span class="kM"></span><span class="kT"></span><span class="kF"></span><i></i><span class="kI"></span><span class="kR"></span><span class="kH"></span></div>
+      <p class="promo-marks"><span class="lbl">The nine marks, strongest first:</span> <a class="mk kD" href="#mk-document">Document</a><a class="mk kP" href="#mk-period-print">Period print</a><a class="mk kC" href="#mk-county-history">County history</a><a class="mk kM" href="#mk-compiled">Compiled</a><a class="mk kT" href="#mk-tradition">Tradition</a><a class="mk kI" href="#mk-inference">Inference</a><a class="mk kR" href="#mk-reading">Reading</a><a class="mk kH" href="#mk-hypothesis">Hypothesis</a><a class="mk kF" href="#mk-field">Field (our own survey)</a></p>
       <p class="promo-sample">His death certificate gives no middle initial <a class="mk sm kD" href="#mk-document">Document</a>. His son’s, twenty-three years later, gives him one <a class="mk sm kD" href="#mk-document">Document</a>. In 1935, someone gave the father his son’s initial <a class="mk sm kR" href="#mk-reading">Reading</a>.</p>
       <p class="promo-ctas"><a class="btn primary" href="#contact">Bring us your mystery</a><a class="btn" href="#marks">How we mark the evidence</a><a class="btn" href="/sample/project-scroll-sample-report.pdf">Sample report (PDF)</a></p>
     </aside>
@@ -366,6 +366,6 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
 </div>
 
 <a class="totop" href="#top" aria-label="Back to the top" hidden>↑</a>
-<script src="/site.js?v=19" defer></script>
+<script src="/site.js?v=20" defer></script>
 </body>
 </html>
