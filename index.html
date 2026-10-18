@@ -4,9 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Project Scroll · A history hunt</title>
-<meta name="description" content="A history hunt where every clue is true and every answer is in the record. Research services for lost ancestors, forgotten places and heirlooms no one can explain.">
+<meta name="description" content="A history hunt played online, where every clue is true and every answer is in the record. Research services for lost ancestors, family histories, family legends, forgotten places and heirlooms no one can explain.">
 <meta name="theme-color" content="#E8ECE6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151B21" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
 <meta property="og:title" content="Project Scroll">
 <meta property="og:description" content="A history hunt. Every clue is true. Every answer is in the record.">
 <meta property="og:type" content="website">
@@ -31,6 +32,7 @@
 <link rel="alternate" type="application/rss+xml" title="Project Scroll field notes" href="/feed.xml">
 <link rel="preload" as="image" href="/img/heron-dawn.webp" type="image/webp" fetchpriority="high">
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does the hunt cost anything?", "acceptedAnswer": {"@type": "Answer", "text": "No. The hunt is free to follow and free to play. All you need is curiosity and, now and then, a library card."}}, {"@type": "Question", "name": "Do I have to go anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. Every clue is solved on paper: in books, maps and records, many of them free online. The hunt never sends anyone onto private land or near a grave."}}, {"@type": "Question", "name": "I solved one. Now what?", "acceptedAnswer": {"@type": "Answer", "text": "Post your answer in the comments on Facebook, and say where you found it. Solvers are named in the next post."}}, {"@type": "Question", "name": "Can you help with my own family's mystery?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Send Project Scroll a message on Facebook with what you know. We'll tell you honestly what the records are likely to show before you commit to anything."}}, {"@type": "Question", "name": "Can you write up my whole family’s history?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We make family registers (every descendant of one couple), ancestral monographs (every ancestor of one person) and full family histories, built from the records with every statement marked."}}, {"@type": "Question", "name": "What should I keep notes on?", "acceptedAnswer": {"@type": "Answer", "text": "Use the hunter's worksheet: one page to log each record, who made it, when, and where you found it. Print as many as you need."}}, {"@type": "Question", "name": "Is anything hidden on this website?", "acceptedAnswer": {"@type": "Answer", "text": "Perhaps. Every page has a back side, and curious hunters know where to look."}}, {"@type": "Question", "name": "Who runs Project Scroll?", "acceptedAnswer": {"@type": "Answer", "text": "An independent researcher and author who writes narrative nonfiction about the history of the Great Lakes country. The research behind those books is the same research we offer you."}}, {"@type": "Question", "name": "How long does a research case take?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the question and on what survives. Some mysteries open in an afternoon; some take a season. After the first read we tell you what we expect to find, and roughly how long it should take, before you commit to anything."}}, {"@type": "Question", "name": "Does this website track me?", "acceptedAnswer": {"@type": "Answer", "text": "No. There are no ads, no analytics and no tracking. The few things the site remembers, such as your followed cases and your notes, stay in your own browser."}}, {"@type": "Question", "name": "Is Project Scroll only about Michigan?", "acceptedAnswer": {"@type": "Answer", "text": "It started in one Michigan county, but the methods work anywhere, and so does our research. Mysteries are welcome from wherever you are."}}]}
 </script>
@@ -41,7 +43,7 @@
 /* apply a saved theme before first paint, so there is no flash */
 try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}
 </script>
-<link rel="stylesheet" href="/site.css?v=42">
+<link rel="stylesheet" href="/site.css?v=43">
 </head>
 <body>
 <!--
@@ -81,12 +83,12 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
   <main id="main">
     <div class="hero">
       <h1>Every clue is true.<button class="fn" type="button" id="star" aria-label="Read the footnote">*</button></h1>
-      <p class="lede">Project Scroll is a history hunt played online. Real mysteries hide in pages, websites, old county histories, survey maps, certificates, forgotten newspapers and legends, and every one of them can be solved by you.</p>
+      <p class="lede">Project Scroll is a history hunt played online. Real mysteries hide in pages, websites, old county histories, survey maps, certificates, forgotten newspapers and <b>legends</b>. Every one of them can be solved by you.</p>
       <p class="ctas"><a class="btn primary" href="#hunt">Start the hunt</a><a class="btn" href="#services">Bring us a mystery</a></p>
       <ul class="trust"><li>Free to play</li><li>Solved with clues</li><li>Open to anyone, anywhere</li></ul>
       <p class="foot" id="foot"><span>*</span> And every answer is in the record.</p>
       <figure class="plate">
-        <picture><source type="image/webp" srcset="/img/heron-dawn.webp"><img src="/img/heron-dawn.png" width="576" height="1024" alt="A great blue heron wading in a misty lake at sunrise, autumn trees glowing red and gold on the far shore, mossy boulders in the foreground." fetchpriority="high" decoding="async"></picture>
+        <picture><source type="image/webp" srcset="/img/heron-dawn.webp"><img src="/img/heron-dawn.jpg" width="576" height="1024" alt="A great blue heron wading in a misty lake at sunrise, autumn trees glowing red and gold on the far shore, mossy boulders in the foreground." fetchpriority="high" decoding="async"></picture>
       </figure>
     </div>
 
@@ -491,6 +493,6 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
   </footer>
 </div>
 
-<script src="/site.js?v=42" defer></script>
+<script src="/site.js?v=43" defer></script>
 </body>
 </html>

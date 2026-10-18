@@ -320,6 +320,7 @@
     'probate':['Probate','The court process that settles a dead person’s estate. Probate files can hold wills, inventories, heirs’ names and signatures.'],
     'informant':['Informant','The person who answered the questions on a certificate. Their memory, not the dead person’s, is what the form records.'],
     'county histories':['County histories','Thick volumes published from the 1870s to the 1910s, mostly from what local families supplied. Rich, but rarely checked.'],
+    'legends':['Legends','The stories families and towns tell about themselves: the famous ancestor, the buried treasure, the river under the ground. Some are true. We read each one against the record.'],
     'survey maps':['Survey maps','Maps drawn from the government land surveys that first measured the country into townships and square-mile sections, with the lakes, streams and early roads the surveyors found.'],
     'certificates':['Certificates','The forms filed for a birth, a marriage or a death. A death certificate gives the date, place and cause, and often the parents’ names; Michigan required them from 1897. The answers came from an informant, not the person named.'],
     'forgotten newspapers':['Forgotten newspapers','Small-town papers of the 1800s and early 1900s, many surviving only on microfilm or in a few libraries. Their notices, gossip and obituaries often record what no official paper did.'],
@@ -331,7 +332,7 @@
   if (host && 'showPopover' in HTMLElement.prototype){
     const used={};
     const walker=document.createTreeWalker(host, NodeFilter.SHOW_TEXT, {acceptNode:function(n){
-      const p=n.parentElement; if (!p || p.closest('h1,h2,h3,button,a,summary,.mk,label,script,style,.gl,.tl .yr,.mstrip,.promo-marks,figcaption,[popover]')) return NodeFilter.FILTER_REJECT; return NodeFilter.FILTER_ACCEPT; }});
+      const p=n.parentElement; if (!p || p.closest('h1,h2,h3,button,a,summary,.mk,label,script,style,.gl,.tl .yr,.mstrip,.promo-marks,figcaption,[popover],svg,[role="img"],[role="button"],[tabindex],.cert-svg')) return NodeFilter.FILTER_REJECT; return NodeFilter.FILTER_ACCEPT; }});
     const nodes=[]; while (walker.nextNode()) nodes.push(walker.currentNode);
     nodes.forEach(function(n){
       let cur=n;
