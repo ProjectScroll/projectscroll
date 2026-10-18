@@ -41,7 +41,7 @@
 /* apply a saved theme before first paint, so there is no flash */
 try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}
 </script>
-<link rel="stylesheet" href="/site.css?v=25">
+<link rel="stylesheet" href="/site.css?v=26">
 </head>
 <body>
 <!--
@@ -66,11 +66,17 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     <nav aria-label="Sections" id="sitenav">
       <a href="#hunt">Hunt</a><a href="#cases">Cases</a><a href="#services">Research</a><a href="#method">Method</a><a href="#marks">Evidence</a><a href="#faq">Questions</a><a href="#contact">Contact</a>
     </nav>
+    <button class="searchbtn" type="button" id="searchBtn" aria-label="Search the site" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     <button class="menu" type="button" id="menu" aria-expanded="false" aria-controls="sitenav">Menu</button>
     <button class="theme" type="button" aria-label="Switch between light and dark" id="theme">Dark</button>
   </div>
 </header>
 
+<dialog class="search" id="searchDlg" aria-label="Search the site">
+  <form method="dialog" class="search-in" onsubmit="return false"><input type="search" id="searchQ" placeholder="Search cases, field notes, guides…" autocomplete="off" aria-label="Search"><button type="button" class="linkbtn" id="searchClose">Close</button></form>
+  <ol class="search-res" id="searchRes" aria-live="polite"></ol>
+  <p class="note search-tip">Tip: press <kbd>/</kbd> anywhere to search.</p>
+</dialog>
 <div class="sheet" id="top">
   <main id="main">
     <div class="hero">
@@ -353,6 +359,8 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <div class="explore">
         <a href="/map/"><span class="k">The map room</span><b>Walk the 1860 wall map</b><span class="d">Zoom into every farm, town plan and engraved house on the great county map, straight from the Library of Congress.</span></a>
         <a href="/guide/death-certificate/"><span class="k">A guide from the desk</span><b>How to read a death certificate</b><span class="d">Tap each box to see who filled it in, and how far to trust it.</span></a>
+        <a href="/toolkit/"><span class="k">The hunter’s toolkit</span><b>Tools for reading the record</b><span class="d">Bring faded ink back to life, turn an age at death into a birth date, find Soundex codes and name any cousin.</span></a>
+        <a href="/notes/book/"><span class="k">Bound in leather</span><b>The book of field notes</b><span class="d">Every lesson from the desk, in a small book whose pages turn.</span></a>
       </div>
 
       <figure class="wide lens-wrap" id="lensFig">
@@ -413,13 +421,13 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <p>Project Scroll is independent historical research. Some mysteries open in an afternoon. Some take a season.</p>
     </div>
     <nav aria-label="Footer">
-      <a href="#hunt">The hunt</a><a href="#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
+      <a href="#hunt">The hunt</a><a href="#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
     </nav>
     <a class="totop" href="#top" aria-label="Back to the top" hidden>↑</a>
     <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a></p>
   </footer>
 </div>
 
-<script src="/site.js?v=25" defer></script>
+<script src="/site.js?v=26" defer></script>
 </body>
 </html>

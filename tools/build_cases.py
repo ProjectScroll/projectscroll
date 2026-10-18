@@ -24,6 +24,12 @@ for c in C:
       <li><b>Get named.</b> The first solver with the page to prove it is named in the next post and on this board.</li>
     </ol>
     <p class="note">Everything is solved on paper. Never dig, never go near a grave, and never set foot on anyone’s land.</p>
+    <div class="notebook" id="casenote" data-case="{n}">
+      <h2>Your notebook for this case</h2>
+      <p class="note">Jot down what you find and where. It is saved only on this device, and nobody else can see it. <a href="/notebook/">All your notes</a></p>
+      <textarea id="noteText" rows="7" placeholder="Record · where I found it (book, page, link) · what it says"></textarea>
+      <p class="nbbtns"><button type="button" class="btn" id="noteCopy">Copy as a Facebook answer</button><button type="button" class="btn" id="noteSave">Download as a text file</button><span class="copied" id="noteOut" aria-live="polite"></span></p>
+    </div>
     {keep}
     <p class="ctas" style="margin-top:1.4rem"><a class="btn primary" href="{FB}">Start on Facebook</a><a class="btn" href="/#cases">All cases</a><button type="button" class="btn" id="sharecase">Share this case</button></p>
     <p class="copied" id="shareout" aria-live="polite"></p>

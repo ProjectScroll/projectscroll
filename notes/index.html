@@ -25,7 +25,7 @@
 <link rel="alternate" type="application/rss+xml" title="Project Scroll field notes" href="/feed.xml">
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
-<link rel="stylesheet" href="/site.css?v=25">
+<link rel="stylesheet" href="/site.css?v=26">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
@@ -38,16 +38,23 @@
     <nav aria-label="Sections" id="sitenav">
       <a href="/#hunt">Hunt</a><a href="/#cases">Cases</a><a href="/#services">Research</a><a href="/notes/">Field notes</a><a href="/#contact">Contact</a>
     </nav>
+    <button class="searchbtn" type="button" id="searchBtn" aria-label="Search the site" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     <button class="menu" type="button" id="menu" aria-expanded="false" aria-controls="sitenav">Menu</button>
     <button class="theme" type="button" aria-label="Switch between light and dark" id="theme">Dark</button>
   </div>
 </header>
+<dialog class="search" id="searchDlg" aria-label="Search the site">
+  <form method="dialog" class="search-in" onsubmit="return false"><input type="search" id="searchQ" placeholder="Search cases, field notes, guides…" autocomplete="off" aria-label="Search"><button type="button" class="linkbtn" id="searchClose">Close</button></form>
+  <ol class="search-res" id="searchRes" aria-live="polite"></ol>
+  <p class="note search-tip">Tip: press <kbd>/</kbd> anywhere to search.</p>
+</dialog>
 <div class="sheet" id="top">
   <main id="main" class="page">
     <p class="kicker">From the desk</p>
         <h1>Field notes</h1>
         <p>Short lessons from real cases: how to read an old record, weigh it against another, and know when a question is settled. A new one is added each time one is posted.</p>
-        <ul class="notelist">
+        <p><a class="btn" href="/notes/book/">Open the field notes as a book</a></p>
+    <ul class="notelist">
           <li><a href="/notes/one-letter-two-certificates/">One Letter, Two Certificates</a><span>No. 1 · 17 October 2026 · What to do when two old records tell you two different things.</span></li>
         </ul>
         <p><a class="btn dl" href="/worksheet/project-scroll-hunters-worksheet.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The hunter’s worksheet (PDF)</a></p>
@@ -58,11 +65,11 @@
       <p>Project Scroll is independent historical research. Some mysteries open in an afternoon. Some take a season.</p>
     </div>
     <nav aria-label="Footer">
-      <a href="/">Home</a><a href="/#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
+      <a href="/">Home</a><a href="/#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
     </nav>
     <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a></p>
   </footer>
 </div>
-<script src="/site.js?v=25" defer></script>
+<script src="/site.js?v=26" defer></script>
 </body>
 </html>

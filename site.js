@@ -7,7 +7,7 @@
   btn.addEventListener('click', function(){
     let next = themeNow()==='dark' ? 'light' : 'dark';
     let apply = function(){ root.dataset.theme=next; try{localStorage.setItem('ps-theme',next);}catch(e){} label(); };
-    if (document.startViewTransition && document.visibilityState==='visible' && !matchMedia('(prefers-reduced-motion: reduce)').matches){ let done=false; const go=function(){ if (!done){ done=true; apply(); } }; try{ document.startViewTransition(go); }catch(e){ go(); } setTimeout(go, 350); } else apply();
+    if (document.startViewTransition && document.visibilityState==='visible' && !matchMedia('(prefers-reduced-motion: reduce)').matches){ let done=false; const go=function(){ if (!done){ done=true; apply(); } }; try{ const vt=document.startViewTransition(go); [vt.ready, vt.finished, vt.updateCallbackDone].forEach(function(pr){ if (pr && pr.catch) pr.catch(function(){}); }); }catch(e){ go(); } setTimeout(go, 350); } else apply();
   });
 
   /* mobile menu */
@@ -316,6 +316,50 @@
       });
     });
     addEventListener('pagehide', stop);
+  }
+
+  /* search the whole site */
+  const sdlg=document.getElementById('searchDlg'), sbtn=document.getElementById('searchBtn');
+  if (sdlg && sbtn && sdlg.showModal){
+    let idx=null; const q=document.getElementById('searchQ'), res=document.getElementById('searchRes');
+    const esc=function(t){ return t.replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+    const open=function(){ sdlg.showModal(); q.focus(); if (!idx) fetch('/search.json').then(function(r){ return r.json(); }).then(function(d){ idx=d; run(); }).catch(function(){ res.innerHTML='<li class="note">Search is not available offline yet.</li>'; }); };
+    const run=function(){
+      const v=q.value.trim().toLowerCase(); if (!idx){ return; } if (!v){ res.innerHTML=''; return; }
+      const words=v.split(/\s+/);
+      const hits=idx.map(function(d){ const T=d.t.toLowerCase(), X=d.x.toLowerCase(); let sc=0;
+        for (const w of words){ const inT=T.indexOf(w)>-1, inX=X.indexOf(w)>-1; if (!inT && !inX) return null; sc+= (inT?10:0) + (inX?1:0); }
+        return {d:d, sc:sc}; }).filter(Boolean).sort(function(a,b){ return b.sc-a.sc; }).slice(0,8);
+      if (!hits.length){ res.innerHTML='<li class="note">Nothing found for “'+esc(q.value)+'”.</li>'; return; }
+      res.innerHTML=hits.map(function(h){ const X=h.d.x, i=Math.max(0, X.toLowerCase().indexOf(words[0])-60); let snip=(i>0?'…':'')+X.slice(i, i+170)+'…';
+        snip=esc(snip); words.forEach(function(w){ if (w.length>1) snip=snip.replace(new RegExp('('+w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark class="hl">$1</mark>'); });
+        return '<li><a href="'+h.d.u+'"><b>'+esc(h.d.t)+'</b><span>'+snip+'</span></a></li>'; }).join('');
+    };
+    sbtn.addEventListener('click', open); q.addEventListener('input', run);
+    document.getElementById('searchClose').addEventListener('click', function(){ sdlg.close(); });
+    sdlg.addEventListener('click', function(e){ if (e.target===sdlg) sdlg.close(); });
+    res.addEventListener('click', function(e){ if (e.target.closest('a')) sdlg.close(); });
+    addEventListener('keydown', function(e){ if (e.key==='/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) && !sdlg.open){ e.preventDefault(); open(); } });
+  }
+
+  /* a private notebook on each case page */
+  const nb=document.getElementById('casenote');
+  if (nb){
+    const n=nb.dataset.case, key='ps-note-'+n, ta=document.getElementById('noteText'), nout=document.getElementById('noteOut');
+    try{ ta.value=localStorage.getItem(key)||''; }catch(e){}
+    ta.addEventListener('input', function(){ try{ localStorage.setItem(key, ta.value); }catch(e){} });
+    const say=function(t){ nout.textContent=t; setTimeout(function(){ nout.textContent=''; },3500); };
+    document.getElementById('noteCopy').addEventListener('click', function(){ const txt='My answer to Project Scroll case '+n+':\n\n'+ta.value.trim(); if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function(){ say('Copied. Paste it in the comments on Facebook.'); }, function(){ say('Copying was blocked; select the text and copy it.'); }); });
+    document.getElementById('noteSave').addEventListener('click', function(){ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([document.title+'\n\n'+ta.value],{type:'text/plain'})); a.download='project-scroll-case-'+n+'-notes.txt'; a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); },2000); });
+  }
+  const nbl=document.getElementById('nbList');
+  if (nbl){
+    const notes=[]; try{ for (let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); if (/^ps-note-\d+$/.test(k) && localStorage.getItem(k).trim()) notes.push([+k.split('-')[2], localStorage.getItem(k)]); } }catch(e){}
+    notes.sort(function(a,b){ return a[0]-b[0]; });
+    if (notes.length){ nbl.innerHTML=''; notes.forEach(function(x){ const d=document.createElement('div'); d.className='nbitem'; const h=document.createElement('h2'); const a=document.createElement('a'); a.href='/cases/'+x[0]+'/'; a.textContent='Case '+x[0]; h.appendChild(a); const p=document.createElement('pre'); p.textContent=x[1]; d.appendChild(h); d.appendChild(p); nbl.appendChild(d); });
+      document.getElementById('nbAll').hidden=false;
+      document.getElementById('nbDl').addEventListener('click', function(){ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([notes.map(function(x){ return 'CASE '+x[0]+'\n'+x[1]; }).join('\n\n---\n\n')],{type:'text/plain'})); a.download='project-scroll-notes.txt'; a.click(); });
+      document.getElementById('nbClear').addEventListener('click', function(){ notes.forEach(function(x){ try{ localStorage.removeItem('ps-note-'+x[0]); }catch(e){} }); location.reload(); }); }
   }
 
   /* for anyone who opens the browser's console */

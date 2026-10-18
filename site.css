@@ -618,6 +618,87 @@ main > section > .part{flex-wrap:wrap}
 .cert-case{font-family:"Libre Caslon Display",serif; font-size:1.3rem; line-height:1.3; text-wrap:balance}
 .cert-d{font-size:.9rem; color:var(--ink-soft)} .cert-motto{margin-top:1rem!important; font-family:"Libre Caslon Display",serif}
 .cert-note{font-size:.75rem; color:var(--ink-soft); margin-top:1.2rem!important}
+/* ---------- Draft 26 ---------- */
+.searchbtn{display:inline-grid; place-items:center; width:2.1rem; height:2.1rem; margin-left:.4rem; border:1px solid var(--line); border-radius:999px; background:none; color:var(--ink-soft); cursor:pointer}
+.searchbtn:hover{color:var(--ink); border-color:var(--ink-soft)} .searchbtn svg{width:1rem; height:1rem}
+.bar nav + .searchbtn{margin-left:.8rem}
+@media (max-width:880px){ .searchbtn{margin-left:auto} .menu{margin-left:.4rem} }
+dialog.search{width:min(40rem, calc(100vw - 2rem)); max-height:80vh; margin:8vh auto auto; padding:0; border:1px solid var(--line); border-radius:8px; background:var(--paper); color:var(--ink); box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
+dialog.search::backdrop{background:rgba(20,24,28,.45); backdrop-filter:blur(3px)}
+.search-in{display:flex; gap:.6rem; align-items:center; padding:.8rem 1rem; border-bottom:1px solid var(--line)}
+.search-in input{flex:1; font:inherit; font-size:1.1rem; border:0; background:none; color:var(--ink); padding:.3rem 0}
+.search-in input:focus{outline:none}
+.search-res{list-style:none; margin:0; padding:.3rem 0; overflow:auto; max-height:60vh}
+.search-res li a{display:block; padding:.6rem 1rem; text-decoration:none; color:inherit; border-bottom:1px dotted var(--line)}
+.search-res li a:hover, .search-res li a:focus{background:color-mix(in srgb, var(--rule) 7%, transparent)}
+.search-res b{display:block; font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.1rem}
+.search-res span{display:block; font-size:.88rem; color:var(--ink-soft); line-height:1.45}
+.search-res .note{padding:.8rem 1rem}
+.search-tip{padding:.4rem 1rem .7rem; margin:0}
+kbd{font:inherit; font-size:.85em; border:1px solid var(--line); border-bottom-width:2px; border-radius:3px; padding:0 .3em}
+.explore{grid-template-columns:1fr 1fr}
+
+/* toolkit */
+.toc{display:flex; flex-wrap:wrap; gap:.4rem .9rem; margin:1rem 0 .5rem; font-size:.95rem}
+.tool{border-top:1px solid var(--line); padding:1.6rem 0 1rem}
+.tool h2{margin-top:0}
+.formrow{display:flex; flex-wrap:wrap; gap:.7rem 1rem; align-items:flex-end; margin:.6rem 0}
+.formrow label, .sliders label{display:grid; gap:.2rem; font-size:.85rem; color:var(--ink-soft)}
+.formrow input, .formrow select{font:inherit; font-size:1rem; color:var(--ink); background:var(--paper); border:1px solid var(--line); border-radius:4px; padding:.4rem .55rem; min-width:6rem}
+.formrow input[type=number]{width:6rem; min-width:0}
+.result{font-size:1.1rem; margin:.4rem 0}
+.result b{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.3rem; color:var(--rule)}
+.inkui{display:grid; grid-template-columns:15rem minmax(0,1fr); gap:1rem; align-items:start; margin-top:.8rem}
+.sliders{display:grid; gap:.6rem}
+.sliders input[type=range]{width:100%; accent-color:var(--rule)}
+.sliders label.chk{display:flex; gap:.4rem; align-items:center}
+.inkbtns{display:flex; flex-wrap:wrap; gap:.4rem; margin:.4rem 0 0}
+#inkc{max-width:100%; height:auto; border:1px solid var(--line); border-radius:4px; background:#fff}
+@media (max-width:760px){ .inkui{grid-template-columns:1fr} }
+label.btn{cursor:pointer}
+
+/* old hand */
+.hcards{display:grid; grid-template-columns:repeat(auto-fill, minmax(15rem,1fr)); gap:.8rem; margin:1.4rem 0}
+.hcard{border:1px solid var(--line); border-radius:6px; padding:.9rem 1rem 1rem; background:var(--paper)}
+.hcard .glyph{font-family:Georgia,"Libre Caslon Text",serif; font-style:italic; font-size:2rem; line-height:1.1; color:var(--rule); margin:0 0 .3rem}
+.hcard h3{margin:0 0 .3rem} .hcard p{font-size:.95rem; margin:0}
+.hquiz{padding-left:1.3rem} .hquiz > li{padding:.6rem 0; border-bottom:1px dotted var(--line)}
+.qopts2{display:flex; flex-wrap:wrap; gap:.4rem}
+.qopts2 button{font:inherit; font-size:.92rem; background:var(--paper); color:var(--ink); border:1px solid var(--line); border-radius:999px; padding:.25rem .85rem; cursor:pointer}
+.qopts2 button:hover{border-color:var(--ink-soft)} .qopts2 button.right{background:var(--ledger); color:#fff; border-color:var(--ledger)} .qopts2 button.wrong{border-color:var(--rule); color:var(--rule)}
+.qopts2 button:disabled{cursor:default}
+
+/* the book */
+.book-wrap{perspective:2200px; display:flex; justify-content:center; margin:1.2rem 0 .6rem; padding:0 0 1rem}
+.book{position:relative; width:min(46rem, 92vw); aspect-ratio:3/2; outline:none}
+.book:focus-visible{outline:3px solid var(--rule); outline-offset:6px}
+.leaf{position:absolute; left:50%; top:0; width:50%; height:100%; transform-origin:left center; transform-style:preserve-3d; transition:transform .9s cubic-bezier(.4,.1,.2,1)}
+.book:not(.opened) .leaf{left:25%} .book.closed-end .leaf{left:75%}
+.book{transition:none} .leaf{will-change:transform}
+.leaf.turned{transform:rotateY(-180deg)}
+.face{position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; padding:8% 9% 10%; overflow:hidden; background:#f6f0e1; color:#2a2418; font-size:clamp(.72rem, 1.55vw, .98rem); line-height:1.55; box-shadow:inset 12px 0 18px -14px rgba(0,0,0,.35); border:1px solid #d9ccae; cursor:pointer}
+.face.back{transform:rotateY(180deg); box-shadow:inset -12px 0 18px -14px rgba(0,0,0,.35)}
+.face h2{font-size:1.7em; margin:.2em 0 .4em; line-height:1.1; color:#2a2418} .face h3{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.35em; margin:0 0 .4em; color:#7a1810}
+.face p{margin:0 0 .6em} .face ol{padding-left:1.2em; margin:0} .face a{color:#2B4A41}
+.face .pg{position:absolute; bottom:4%; left:0; right:0; text-align:center; font-size:.8em; color:#8a7a5a}
+.face .bk-k{font-size:.75em; letter-spacing:.12em; text-transform:uppercase; color:#a3261a}
+.face .drop::first-letter{font-family:"Libre Caslon Display",serif; float:left; font-size:3.4em; line-height:.8; padding:.08em .08em 0 0; color:#a3261a}
+.face .bk-end{font-style:italic; color:#6d5f44}
+.bk-cover{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background:radial-gradient(circle at 40% 30%, #6a2a1c, #3b1610 70%); color:#e9d9a8; border:1px solid #2a0f0a}
+.bk-cover .bk-k{color:#e9d9a8; opacity:.8} .bk-cover .bk-t{font-family:"Libre Caslon Display",serif; font-size:2.6em; margin:.2em 0 0; color:#f3e3b3} .bk-cover .bk-s{font-style:italic; margin:.1em 0 1em} .bk-cover .bk-m{font-size:.8em; letter-spacing:.1em; text-transform:uppercase; border-top:1px solid rgba(233,217,168,.5); padding-top:.6em}
+.leaf:first-child .front{padding:0}
+.bk-nav{display:flex; justify-content:center; align-items:center; gap:.8rem}
+@media (prefers-reduced-motion: reduce){ .leaf{transition:none} }
+
+/* notebook */
+.notebook{margin:1.6rem 0; padding:1rem 1.2rem; border:1px solid var(--line); border-left:3px solid var(--kI); border-radius:4px; background:var(--paper)}
+.notebook h2{margin-top:0; font-size:1.4rem}
+.notebook textarea{width:100%; font:inherit; font-size:1rem; color:var(--ink); background:repeating-linear-gradient(var(--paper), var(--paper) 1.65rem, color-mix(in srgb, var(--line) 70%, transparent) 1.65rem, color-mix(in srgb, var(--line) 70%, transparent) calc(1.65rem + 1px)); line-height:1.65rem; border:1px solid var(--line); border-radius:4px; padding:0 .6rem; resize:vertical}
+.nbbtns{display:flex; flex-wrap:wrap; align-items:center; gap:.5rem; margin:.6rem 0 0}
+.nbitem{border-top:1px solid var(--line); padding:.8rem 0}
+.nbitem h2{font-size:1.3rem; margin:0 0 .3rem} .nbitem pre{font:inherit; white-space:pre-wrap; margin:0; color:var(--ink-soft)}
+@media print{ .searchbtn, dialog.search, .notebook .nbbtns{display:none!important} }
+
 @media print{ .no-print{display:none!important} .cert{border-color:#a3261a; -webkit-print-color-adjust:exact; print-color-adjust:exact} }
 
 /* death-certificate guide */

@@ -20,7 +20,7 @@ for (const [w,cs,lab] of [[1280,'light','computer'],[390,'dark','phone']]){
  // ornaments
  const orn=await q.evaluate(()=>getComputedStyle(document.querySelector('#cases'),'::before').backgroundImage.includes('svg')); ok(P+'engraved flourish between sections', orn);
  // explore cards + case links
- ok(P+'map room and guide cards present', await q.evaluate(()=>document.querySelectorAll('.explore a').length===2));
+ ok(P+'four explore cards present', await q.evaluate(()=>document.querySelectorAll('.explore a').length===4));
  await q.click('#case-4 .qlink'); await q.waitForLoadState(); ok(P+'case question opens its own page', /\/cases\/4\/$/.test(q.url()));
  ok(P+'case page has its own share card', (await q.getAttribute('meta[property="og:image"]','content')).endsWith('/cases/4/card.png'));
  ok(P+'case page shows Open status', /Open/.test(await q.textContent('.casestatus')));
