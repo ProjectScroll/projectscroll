@@ -113,16 +113,13 @@ p,li{text-wrap:pretty}
 
 .hero{padding:5rem 0 3rem; max-width:calc(var(--measure) + 12rem)}
 /* the plate: a mounted picture beside the title, like a print tipped into a field book */
-.plate{margin:2.4rem 0 0}
-.plate img{display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; object-position:50% 58%;
+.plate{margin:2.4rem auto 0; width:min(100%, 18rem)}
+.plate img{display:block; width:100%; height:auto; aspect-ratio:9/16;
   border:1px solid var(--line); border-radius:3px; box-shadow:0 1px 2px rgba(0,0,0,.06), 0 12px 32px -14px rgba(0,0,0,.35)}
-.plate figcaption{margin-top:.55rem; font-size:.82rem; line-height:1.4; color:var(--ink-soft); letter-spacing:.01em}
-.plate figcaption b{font-weight:400; font-variant:small-caps; letter-spacing:.06em; color:var(--rule)}
 @media (min-width:900px){
   .hero{display:grid; grid-template-columns:minmax(0,1fr) 15.5rem; column-gap:3rem; align-items:start; grid-template-rows:auto auto auto auto 1fr}
   .hero > :not(.plate){grid-column:1}
-  .plate{grid-column:2; grid-row:1 / span 5; margin:.6rem 0 0}
-  .plate img{aspect-ratio:4/5; object-position:50% 50%}
+  .plate{grid-column:2; grid-row:1 / span 5; margin:.6rem 0 0; width:100%}
 }
 @media (prefers-reduced-motion: no-preference){
   .plate img{animation:develop 1.6s ease-out both}
@@ -262,11 +259,7 @@ footer{max-width:var(--measure); padding-top:2.4rem; font-size:.9rem; color:var(
       <p class="ctas"><a class="btn primary" href="#hunt">Start the hunt</a><a class="btn" href="#services">Bring us a mystery</a></p>
       <p class="foot" id="foot"><span>*</span> And every answer is in the record.</p>
       <figure class="plate">
-        <picture>
-          <source type="image/webp" srcset="img/heron-dawn-480.webp 480w, img/heron-dawn-800.webp 800w" sizes="(min-width:900px) 248px, 92vw">
-          <img src="img/heron-dawn-800.jpg" width="800" height="1000" alt="A great blue heron wading in a misty lake at sunrise, autumn trees glowing red and gold on the far shore, mossy boulders in the foreground." fetchpriority="high">
-        </picture>
-        <figcaption><b>Plate i.</b> Dawn on a southwest Michigan lake. Illustration.</figcaption>
+        <img src="img/heron-dawn.png" width="576" height="1024" alt="A great blue heron wading in a misty lake at sunrise, autumn trees glowing red and gold on the far shore, mossy boulders in the foreground." fetchpriority="high">
       </figure>
     </div>
 
