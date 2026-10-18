@@ -1115,3 +1115,23 @@ main > .clue{margin-top:3.4rem!important}
   .partrail a[aria-current="true"]{color:var(--rule); border-right-color:var(--rule)}
 }
 @media print{ .partrail, .nextpart{display:none!important} }
+
+/* ---------- Draft 41: finer detail inside the panels ---------- */
+/* sub-sections inside a part get their own headings with rules */
+main > section > h3{display:flex; align-items:center; justify-content:center; gap:.9rem; margin:3rem 0 1.1rem!important; text-align:center}
+main > section > h3::before, main > section > h3::after{content:""; flex:1 1 0; max-width:5.5rem; height:1px; background:color-mix(in srgb, var(--rule) 45%, transparent)}
+/* service cards carry an icon, like the explore cards */
+#services ul.svc li{position:relative; padding-right:3rem!important}
+#services ul.svc li .ic{position:absolute; top:.85rem; right:.9rem; width:1.6rem; height:1.6rem; color:var(--rule); opacity:.5; transition:opacity .2s, transform .25s}
+#services ul.svc li:hover .ic{opacity:1; transform:rotate(-6deg) scale(1.08)}
+/* the first lesson is written on a field-book page */
+ol.fieldpage{position:relative; list-style:none; counter-reset:fp; margin:1.6rem auto 1.2rem; max-width:40rem; padding:1.3rem 1.4rem 1.2rem 3.4rem; border:1px solid var(--panel-edge); border-radius:4px;
+  background:linear-gradient(90deg, transparent 2.45rem, color-mix(in srgb, var(--rule) 55%, transparent) 2.45rem, color-mix(in srgb, var(--rule) 55%, transparent) calc(2.45rem + 1px), transparent calc(2.45rem + 1px)),
+  repeating-linear-gradient(180deg, transparent 0 calc(1.9rem - 1px), color-mix(in srgb, var(--ledger) 22%, transparent) calc(1.9rem - 1px) 1.9rem), var(--paper);
+  background-position:0 0, 0 1.25rem; box-shadow:0 14px 30px -24px rgba(0,0,0,.5); transform:rotate(-.35deg)}
+ol.fieldpage li{counter-increment:fp; position:relative; font-style:italic; line-height:1.9rem; margin:0; padding:0}
+ol.fieldpage li::before{content:counter(fp) "."; position:absolute; left:-2.25rem; width:1.5rem; text-align:right; font-style:normal; font-family:"Libre Caslon Display",serif; color:var(--rule)}
+@media (max-width:640px){ ol.fieldpage{padding-left:2.9rem; transform:none} ol.fieldpage{background-position:-.4rem 0, 0 1.25rem} }
+/* case board rows light up under the pointer */
+@media (hover:hover){ .ledger tbody tr:not(.group){transition:background .15s} .ledger tbody tr:not(.group):hover{background:color-mix(in srgb, var(--rule) 6%, transparent)} }
+@media print{ ol.fieldpage{background:none!important; box-shadow:none!important; transform:none!important} #services ul.svc li .ic{display:none!important} }

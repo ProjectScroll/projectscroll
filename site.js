@@ -432,6 +432,17 @@
   } else rail.classList.add('show');
 })();
 
+/* the numbers strip counts up the first time it comes into view */
+(function(){
+  const nums=[].slice.call(document.querySelectorAll('.stats b')); if (!nums.length || !('IntersectionObserver' in window)) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const io=new IntersectionObserver(function(es){ es.forEach(function(e){ if (!e.isIntersecting) return; io.unobserve(e.target);
+    const el=e.target, end=parseInt(el.textContent,10); if (!(end>1)) return; const t0=performance.now(), d=900;
+    const tick=function(t){ const k=Math.min(1,(t-t0)/d), v=Math.round(end*(1-Math.pow(1-k,3))); el.textContent=v; if (k<1) requestAnimationFrame(tick); else el.textContent=end; };
+    el.textContent='0'; requestAnimationFrame(tick); }); }, {threshold:.6});
+  nums.forEach(function(n){ io.observe(n); });
+})();
+
 /* lantern: a warm glow that follows the pointer on computers */
   (function(){
     if (!window.matchMedia || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
