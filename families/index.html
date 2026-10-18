@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Family histories and registers · Project Scroll</title>
+<meta name="description" content="Family registers, ancestral monographs and full family histories, built from the records with every statement marked and every gap shown honestly.">
+<link rel="canonical" href="https://projectscroll.com/families/">
+<meta name="theme-color" content="#E8ECE6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151B21" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Family histories and registers · Project Scroll">
+<meta property="og:description" content="Family registers, ancestral monographs and full family histories, built from the records with every statement marked and every gap shown honestly.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Project Scroll">
+<meta property="og:url" content="https://projectscroll.com/families/">
+<meta property="og:image" content="https://projectscroll.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/icons/icon-32.png" type="image/png" sizes="32x32">
+<link rel="alternate icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="Project Scroll field notes" href="/feed.xml">
+<link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script>try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="/site.css?v=28">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+<header class="bar">
+  <div class="bar-in">
+    <a class="mark" href="/" aria-label="Project Scroll home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="4" width="18" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 4v24" stroke="#B3362B" stroke-width="2"/><path d="M14 11h7M14 15h7M14 19h5" stroke="currentColor" stroke-width="1.6"/></svg>
+      Project Scroll
+    </a>
+    <nav aria-label="Sections" id="sitenav">
+      <a href="/#hunt">Hunt</a><a href="/#cases">Cases</a><a href="/#services">Research</a><a href="/notes/">Field notes</a><a href="/#contact">Contact</a>
+    </nav>
+    <button class="searchbtn" type="button" id="searchBtn" aria-label="Search the site" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <button class="menu" type="button" id="menu" aria-expanded="false" aria-controls="sitenav">Menu</button>
+    <button class="theme" type="button" aria-label="Switch between light and dark" id="theme">Dark</button>
+  </div>
+</header>
+<dialog class="search" id="searchDlg" aria-label="Search the site">
+  <form method="dialog" class="search-in" onsubmit="return false"><input type="search" id="searchQ" placeholder="Search cases, field notes, guides…" autocomplete="off" aria-label="Search"><button type="button" class="linkbtn" id="searchClose">Close</button></form>
+  <ol class="search-res" id="searchRes" aria-live="polite"></ol>
+  <p class="note search-tip">Tip: press <kbd>/</kbd> anywhere to search.</p>
+</dialog>
+<div class="sheet" id="top">
+  <main id="main" class="page">
+    <p class="crumb"><a href="/#services">← Research services</a></p>
+    <p class="kicker">Research services</p>
+    <h1>Family histories, built to be checked</h1>
+    <p class="lede" style="font-size:1.15rem">Most family trees are copied from other family trees. Ours are built from the records themselves: every name, date and place marked with where it came from, every gap shown honestly, and every family story kept exactly as it was told, beside the evidence that tests it.</p>
+
+    <h2>What we make</h2>
+    <div class="fammakes">
+      <div><p class="k">Looking down</p><h3>A family register</h3><p>Every descendant of one couple, generation by generation, each person given a number, so that a reader can follow any branch from the first settlers to the present day. The form genealogists have trusted for 150 years.</p></div>
+      <div><p class="k">Looking back</p><h3>An ancestral monograph</h3><p>Your ancestors, back as far as the records honestly go, on a single chart. Where a line stops, it says whose parents are wanting, so you can see at a glance what is known, what is not, and where to look next.</p></div>
+      <div><p class="k">The whole story</p><h3>A family history</h3><p>Every line written up as a story, with the evidence beneath it: maps, records, a list of every source, an index of names and places, and the open questions set out for the next person to take up.</p></div>
+    </div>
+
+    <h2>A specimen monograph</h2>
+    <p>Here is how an ancestral monograph works, using an invented family. Tap anyone to see what we know about them, and how we know it.</p>
+    <div class="mono" id="mono">
+      <p class="mono-tag">Specimen. The names are invented; the method is real.</p>
+      <div class="mono-scroll"><div class="mono-grid" id="monoGrid" role="group" aria-label="Specimen pedigree chart, four generations"></div></div>
+      <div class="mono-panel" id="monoPanel" aria-live="polite"><p class="note" style="margin:0">Tap a name in the chart.</p></div>
+      <div class="mono-gaps" id="monoGaps"></div>
+    </div>
+    <ul class="dis monokey">
+      <li><b>“Clara ?”</b> A question mark means the marriage is recorded but her own surname is not. Women are usually recorded under their husbands’ names, which is not the same as being born with them.</li>
+      <li><b>“Wanting”</b> An empty box beside a known person is a real gap: someone we could find tomorrow. The boxes beyond the edge of the chart, behind Clara’s missing parents, are not gaps at all. There is nothing to look for there until her parents are found.</li>
+      <li><b>The warning sign.</b> When two records cannot both be true, the chart flags the joint and leaves it in. Never solve a problem by deleting the evidence.</li>
+    </ul>
+
+    <h2>How a register reads</h2>
+    <div class="regsample">
+      <p><b>1. AUGUST¹ BRANDT</b> was born about 1862 <span class="mk sm kI">Inference</span> and died in 1931 <span class="mk sm kD">Document</span>. He married <b>WILHELMINA KRAUSE</b>, born in 1866 <span class="mk sm kD">Document</span>.</p>
+      <p class="regkids">Children of August and Wilhelmina:</p>
+      <p class="regkid"><span>+ 2</span><span>i.</span><span><b>OTTO²</b>, born 1890; married <b>CLARA ?</b></span></p>
+      <p class="regkid"><span></span><span>ii.</span><span>Emma, born 1893; died 1894, aged one.</span></p>
+      <p class="note" style="margin:.6rem 0 0">The small raised number is the generation. The plus sign means Otto’s own family is carried forward under his number, 2, so a reader can follow his line on down without losing the thread. (The same invented family as the chart above.)</p>
+    </div>
+
+    <h2>Lessons from our own desk</h2>
+    <p>Real lessons, every one learned the hard way on a family history built at this desk.</p>
+    <ol class="lessons">
+      <li><b>A woman dies under her married name.</b> For years a death certificate went unfound because everyone searched for her under her maiden name. It was filed under her husband’s.</li>
+      <li><b>Search the unusual name.</b> A rare surname finds the family and almost nobody else. A common one needs a place and a date beside it, or it finds thousands.</li>
+      <li><b>A strong lead in the right county is still not a parent.</b> A well-documented man of the right name, in the right place, at the right time, turned out to be no relation at all. The answer was in a different family.</li>
+      <li><b>An abstract is not a record.</b> A published summary of a colonial will gave two witnesses’ names and a probate date. The court’s own record disagreed on both.</li>
+      <li><b>“About” must stay “about”.</b> A birth year worked out from an age at death was printed beside real dates, and soon looked like one. Estimates are marked as estimates, always.</li>
+      <li><b>The best finds are in free books nobody opened.</b> Lines written off as dead ends turned out to be answered in county histories and family genealogies that had been free online for years. Dead ends don’t get searched.</li>
+    </ol>
+
+    <h2>Starting your family’s history</h2>
+    <ol class="steps">
+      <li><b>Tell us who.</b> One couple to work down from, or one person to work back from. Names, places, rough dates.</li>
+      <li><b>Send what the family has.</b> Bible pages, letters, photographs, obituaries, old trees. We read every one, and we keep every family story exactly as it was told.</li>
+      <li><b>Agree on the shape.</b> A register, a monograph, a full history, or a single line to begin with.</li>
+      <li><b>We build it from the records.</b> Certificates, censuses, deeds, wills, church books, newspapers and county histories.</li>
+      <li><b>You get a book you can trust.</b> Every statement marked, every source listed, every gap honest, ready to print, share and add to.</li>
+    </ol>
+    <p class="center"><a class="btn" href="/#contact">Tell us about your family</a> <a class="btn" href="/legends/">Test a family legend</a></p>
+    <script>
+    (function(){ "use strict";
+      const F={"1": {"n": "You", "d": "The person the history is written for", "f": []}, "2": {"n": "Walter J. Brandt", "d": "1921 – 1988", "f": [["Born 3 March 1921, Toledo, Ohio", "D", "His birth certificate, filed the same week."], ["Died 14 November 1988", "D", "His death certificate."], ["Served in the Navy, 1942–1945", "D", "His discharge paper, kept by the family."]]}, "3": {"n": "Ruth E. Lindqvist", "d": "1924 – 2009", "f": [["Born 1924, Ishpeming, Michigan", "P", "Her obituary. Her birth record has not yet been seen."], ["Married Walter Brandt, 1947", "D", "The county marriage record, which names both sets of parents."]]}, "4": {"n": "Otto Brandt", "d": "1890 – 1957", "f": [["Born 1890, Ohio", "D", "The 1900, 1910 and 1920 censuses agree on the year and the state."], ["A cabinetmaker all his working life", "C", "A county history of 1915 has a short sketch of him, written while he was alive."]]}, "5": {"n": "Clara ?", "d": "1894 – 1971", "q": 1, "f": [["Wife of Otto Brandt", "D", "Their marriage record."], ["Her own surname is not recorded", "I", "Every record we have found names her under her husband’s surname, which tells us nothing about her father’s. So she is shown as “Clara ?”, never as “Clara Brandt” by birth."], ["The family says she was “a Miller from Indiana”", "T", "Recorded exactly as told. Worth testing, not yet a fact."], ["Her death certificate should name her father", "H", "Filed under Brandt, her married name. That is where we would look first."]]}, "6": {"n": "Nils Lindqvist", "d": "1888 – 1960", "f": [["Born 1888, Sweden", "D", "His naturalization papers."], ["Came to Michigan to work in the iron mines", "R", "Our reading of the 1910 census, which lists him as a miner in an iron-mining town."]]}, "7": {"n": "Hanna Bergström", "d": "1891 – 1983", "f": [["Born 1891, Sweden", "D", "Her naturalization papers, and her parish’s own birth register."]]}, "8": {"n": "August Brandt", "d": "about 1862 – 1931", "f": [["Born about 1862", "I", "Worked out from his age at death. No birth record has been found, so the year is printed with “about”, and it stays that way until a record turns up."], ["Died 1931", "D", "His death certificate."]]}, "9": {"n": "Wilhelmina Krause", "d": "1866 – 1940", "f": [["Her maiden name is Krause", "D", "The baptism record of her son Otto names both parents in full."]]}, "12": {"n": "Per Lindqvist", "d": "1855 – 1922", "f": [["Father of Nils", "D", "The parish register in Sweden."]]}, "14": {"n": "Johan Bergström", "d": "1859 – 1931", "f": [["Father of Hanna", "D", "Hanna’s entry in the parish birth register."]]}, "15": {"n": "Elin ?", "d": "? – 1889 ⚠", "q": 1, "warn": "A mother cannot die before her child is born. An online family tree gives Elin’s death as 1889, but her daughter Hanna was born in 1891. One of the two dates is wrong, and until we know which, the chart says so rather than hiding it.", "f": [["Mother of Hanna", "D", "Hanna’s entry in the parish birth register names her mother only as Elin."], ["Died 1889", "M", "An online family tree, which cites no source for the date."]]}};
+      const M={"D": ["kD", "Document"], "P": ["kP", "Period print"], "C": ["kC", "County history"], "M": ["kM", "Compiled"], "T": ["kT", "Tradition"], "I": ["kI", "Inference"], "R": ["kR", "Reading"], "H": ["kH", "Hypothesis"], "F": ["kF", "Field"]};
+      const grid=document.getElementById('monoGrid'), panel=document.getElementById('monoPanel'), gapsBox=document.getElementById('monoGaps');
+      const rel=n=>({1:'You',2:'Father',3:'Mother',4:'Grandfather',5:'Grandmother',6:'Grandfather',7:'Grandmother'}[n]||(n%2?'Great-grandmother':'Great-grandfather'));
+      const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+      // which generation (column) and which row span each number takes in an 8-row grid
+      for(let n=1;n<16;n++){
+        const g=Math.floor(Math.log2(n)), span=8>>g, row=(n-(1<<g))*span+1;
+        const p=F[n], el=document.createElement(p?'button':'div');
+        el.className='mono-box g'+g+(p?'':' empty')+(p&&p.q?' q':'')+(p&&p.warn?' warn':'');
+        el.style.gridColumn=String(g+1); el.style.gridRow=row+' / span '+span;
+        if(p){ el.type='button'; el.dataset.n=n; el.innerHTML='<span class="r">'+rel(n)+'</span><b>'+esc(p.n)+'</b><span class="dt">'+esc(p.d)+'</span>'; }
+        else { const child=F[n>>1]; el.innerHTML='<span class="r">'+rel(n)+'</span><b>Wanting</b><span class="dt">'+(child?(n%2?'the mother of ':'the father of ')+esc(child.n):'')+'</span>'; }
+        grid.appendChild(el);
+      }
+      function show(n){
+        const p=F[n]; grid.querySelectorAll('.mono-box').forEach(b=>b.classList.toggle('on',b.dataset.n==n));
+        let h='<p class="mono-who"><span class="r">'+rel(n)+' · number '+n+'</span><b>'+esc(p.n)+'</b> '+esc(p.d)+'</p>';
+        if(p.warn) h+='<p class="mono-warn">⚠ '+esc(p.warn)+'</p>';
+        if(p.f.length){ h+='<ul class="mono-facts">'; for(const [t,m,why] of p.f) h+='<li><span class="mk sm '+M[m][0]+'">'+M[m][1]+'</span> <b>'+esc(t)+'.</b> '+esc(why)+'</li>'; h+='</ul>'; }
+        else h+='<p class="note" style="margin:0">Every chart starts with the person it is for, and works back one generation at a time: number 2 is your father, number 3 your mother, and every father’s number is double his child’s.</p>';
+        panel.innerHTML=h;
+      }
+      grid.addEventListener('click',e=>{ const b=e.target.closest('button.mono-box'); if(b) show(+b.dataset.n); });
+      const gaps=[]; for(let n=2;n<8;n++) if(F[n]){ if(!F[2*n]) gaps.push('the father of '+F[n].n); if(!F[2*n+1]) gaps.push('the mother of '+F[n].n); }
+      gapsBox.innerHTML='<p><b>Wanting, in this chart:</b> '+gaps.map(esc).join(' · ')+'. <span class="note">'+gaps.length+' real gaps, each one a named person whose parents could be found.</span></p>';
+      show(5);
+    })();
+    </script>
+  </main>
+  <footer class="site">
+    <div>
+      <p class="motto">Every clue is true. Every answer is in the record.</p>
+      <p>Project Scroll is independent historical research. Some mysteries open in an afternoon. Some take a season.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="/">Home</a><a href="/#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
+    </nav>
+    <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a></p>
+  </footer>
+</div>
+<script src="/site.js?v=28" defer></script>
+</body>
+</html>
