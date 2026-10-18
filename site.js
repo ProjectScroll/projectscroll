@@ -473,8 +473,10 @@ window.PS_BADGES=[
   ['legend','Legend tester','Test a family legend.'],
   ['toolkit','Toolmaker','Use a tool in the hunter’s toolkit.'],
   ['lantern','Lamplighter','Put out the lantern, then light it again.'],
-  ['hewgag','Cipher breaker','Decode the hidden line, and say the word in your badge book.']
+  ['hewgag','Cipher breaker','Decode the hidden line, and say the word in your badge book.'],
+  ['credo','Second cipher','Break the second line, which appears in your badge book once the first is broken.']
 ];
+window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the Badge'],[15,'Recorder of the Hall'],[19,'Noble Grand Humbug']];
 (function(){
   const KEY='ps-badges'; let got={};
   try{ got=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ got={}; }
@@ -554,6 +556,60 @@ window.PS_BADGES=[
   };
   document.querySelectorAll('a[href]').forEach(mark);
   document.addEventListener('click', function(e){ const a=e.target.closest && e.target.closest('a[href]'); if (a) mark(a); }, true);
+})();
+
+/* ---------- then and now: the hotel corner slider ---------- */
+(function(){ const f=document.getElementById('tnc'), r=document.getElementById('tncRange'); if (!f||!r) return;
+  const set=function(){ f.style.setProperty('--x', r.value+'%'); }; r.addEventListener('input', set); set(); })();
+
+/* ---------- the trail map: a soft hewgag note when a lit hall is tapped ---------- */
+(function(){
+  const halls=document.querySelectorAll('.trailmap .tm-hall'); if (!halls.length) return; let ac=null;
+  const horn=function(){
+    try{ ac=ac||new (window.AudioContext||window.webkitAudioContext)(); const t=ac.currentTime, g=ac.createGain(), lp=ac.createBiquadFilter();
+      lp.type='lowpass'; lp.frequency.setValueAtTime(900,t); lp.frequency.linearRampToValueAtTime(1600,t+.25); lp.frequency.linearRampToValueAtTime(700,t+1.1);
+      g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.12,t+.08); g.gain.setValueAtTime(.12,t+.7); g.gain.exponentialRampToValueAtTime(.0001,t+1.25);
+      [1,1.5].forEach(function(m,k){ const o=ac.createOscillator(); o.type='sawtooth'; o.frequency.setValueAtTime(174*m,t); o.frequency.linearRampToValueAtTime(196*m,t+.18); o.connect(lp); o.start(t+(k?.03:0)); o.stop(t+1.3); });
+      lp.connect(g); g.connect(ac.destination); }catch(e){}
+  };
+  halls.forEach(function(h){ h.setAttribute('tabindex','0'); h.setAttribute('role','button'); h.setAttribute('aria-label', (h.querySelector('.tm-name')||{}).textContent+': sound the horn');
+    const go=function(){ horn(); h.classList.add('blow'); setTimeout(function(){ h.classList.remove('blow'); }, 900); };
+    h.addEventListener('click', go); h.addEventListener('keydown', function(e){ if (e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } }); });
+})();
+
+/* ---------- unsealing: a date that opens cracks its wax seal the first time a visitor sees it ---------- */
+(function(){
+  const lis=document.querySelectorAll('#tl > li.unsealed'); if (!lis.length || !('IntersectionObserver' in window)) return;
+  const io=new IntersectionObserver(function(es){ es.forEach(function(e){ if (!e.isIntersecting) return; io.unobserve(e.target);
+    const k='ps-unsealed-'+(e.target.dataset.year||''); let seen=false; try{ seen=!!localStorage.getItem(k); localStorage.setItem(k,'1'); }catch(x){}
+    if (!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) e.target.classList.add('cracking'); }); }, {threshold:.6});
+  lis.forEach(function(li){ io.observe(li); });
+})();
+
+/* ---------- the margins change with the season: leaves, snow, petals, fireflies ---------- */
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || innerWidth<1000 || !document.querySelector('.sheet')) return;
+  const m=new Date().getMonth(), kind= (m===8||m===9||m===10)?'leaf' : (m===11||m===0||m===1)?'snow' : (m===3||m===4)?'petal' : (m>=5&&m<=7)?'fly' : null; if (!kind) return;
+  const cv=document.createElement('canvas'); cv.className='season'; cv.setAttribute('aria-hidden','true'); document.body.appendChild(cv);
+  const x=cv.getContext('2d'); let W,H; const fit=function(){ W=cv.width=innerWidth; H=cv.height=innerHeight; }; fit(); addEventListener('resize', fit);
+  const N= kind==='snow'?60 : kind==='fly'?22 : 26, P=[];
+  const C= kind==='leaf'?['#c8642a','#d99a2b','#a8432a','#e0b04a'] : kind==='petal'?['#f2d3dc','#f7e6ea','#e8bfcb'] : ['#ffffff'];
+  const add=function(init){ P.push({x:Math.random()*W, y:init?Math.random()*H:-20, s:kind==='snow'?1+Math.random()*2.2:kind==='fly'?1.6:5+Math.random()*5, vy:kind==='snow'?.3+Math.random()*.6:kind==='fly'?0:.5+Math.random()*.7, ph:Math.random()*6.28, c:C[Math.floor(Math.random()*C.length)], r:Math.random()*6.28}); };
+  for (let i=0;i<N;i++) add(true);
+  const tick=function(t){
+    x.clearRect(0,0,W,H);
+    P.forEach(function(p){
+      p.ph+=.01; if (kind==='fly'){ p.x+=Math.cos(p.ph*1.3)*.4; p.y+=Math.sin(p.ph)*.3; } else { p.y+=p.vy; p.x+=Math.sin(p.ph)*.5; p.r+=.01; }
+      if (p.y>H+20){ p.y=-20; p.x=Math.random()*W; }
+      x.save(); x.translate(p.x,p.y); x.rotate(p.r);
+      if (kind==='snow'){ x.globalAlpha=.75; x.fillStyle='#fff'; x.beginPath(); x.arc(0,0,p.s,0,6.28); x.fill(); }
+      else if (kind==='fly'){ x.globalAlpha=.35+.35*Math.sin(t/400+p.ph*5); x.fillStyle='#fff3a6'; x.shadowColor='#ffe066'; x.shadowBlur=10; x.beginPath(); x.arc(0,0,p.s,0,6.28); x.fill(); }
+      else { x.globalAlpha=.8; x.fillStyle=p.c; x.beginPath(); x.ellipse(0,0,p.s,p.s*.55,0,0,6.28); x.fill(); x.strokeStyle='rgba(0,0,0,.25)'; x.lineWidth=.6; x.beginPath(); x.moveTo(-p.s,0); x.lineTo(p.s,0); x.stroke(); }
+      x.restore();
+    });
+    if (!document.hidden) requestAnimationFrame(tick); else setTimeout(function(){ requestAnimationFrame(tick); }, 500);
+  };
+  requestAnimationFrame(tick);
 })();
 
 /* lantern: a warm glow that follows the pointer on computers */

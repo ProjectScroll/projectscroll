@@ -182,6 +182,7 @@ badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Your field book</p>
     <h1>Your tin badges</h1>
     <p class="lede">In the winter of 1846–47, two hundred badges of the “Ancient and Honorable Order” were worn at a ball in Cassopolis. Not one is known to survive. Here, you can earn your own, one for each thing you do as you explore the site.</p>
+    <p class="brank" id="brank"></p>
     <p class="bcount" id="bcount" aria-live="polite"></p>
     <ol class="badgebook" id="badgebook"></ol>
     <div class="sayword" id="sayword">
@@ -190,6 +191,20 @@ badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <form id="wordform" class="formrow" autocomplete="off"><label>The word <input type="text" id="word" spellcheck="false"></label><button type="submit" class="btn primary">Say it</button></form>
       <p class="note" id="wordmsg" aria-live="polite"></p>
     </div>
+    <div class="sayword" id="second" hidden>
+      <h2>The second line</h2>
+      <p>You broke the first. Here is a harder one, and the cipher wheel alone will not open it. Look at the wheel’s other setting.</p>
+      <p class="cipherline big">GSV HVXLMW DLIW RH XIVWL. ML DSVVO DROO GFIM RG. SLOW RG GL Z NRIILI.</p>
+      <form id="word2form" class="formrow" autocomplete="off"><label>The second word <input type="text" id="word2" spellcheck="false"></label><button type="submit" class="btn primary">Say it</button></form>
+      <p class="note" id="word2msg" aria-live="polite"></p>
+    </div>
+    <div class="charterbox" id="charterbox" hidden>
+      <h2>Your charter</h2>
+      <p>Every badge earned. You may print your charter: type your name as you want it written, then print.</p>
+      <form id="charterform" class="formrow" autocomplete="off"><label>Your name <input type="text" id="cname" maxlength="60"></label><button type="submit" class="btn primary">Print my charter</button></form>
+      <p class="note">Your charter is made on this device. Nothing is sent anywhere.</p>
+    </div>
+    <div class="charter" id="charter" aria-hidden="true"><p class="ch-top">Project Scroll</p><p class="ch-h">Charter of the Hall</p><p class="ch-b">Know all by these presents that</p><p class="ch-name" id="chName"></p><p class="ch-b">having read the walls, followed the record, broken both ciphers and earned every one of the tin badges, is hereby received as</p><p class="ch-rank">Noble Grand Humbug</p><p class="ch-b">of the Hall, with all the honor and none of the dignity that the title has ever carried.</p><p class="ch-date" id="chDate"></p><p class="ch-motto">Every clue is true. Every answer is in the record.</p></div>
     <p class="note">Your badges are kept only in this browser, on this device. Nobody else can see them, and we never receive them. <button type="button" class="linkbtn" id="breset">Start the field book over</button></p>
     <script>
     document.addEventListener('DOMContentLoaded', function(){
@@ -202,6 +217,10 @@ badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
           li.querySelector('small').textContent=has?('Earned '+got[b[0]]):'Not yet';
           ol.appendChild(li); });
         cnt.textContent=n+' of '+window.PS_BADGES.length+' badges earned';
+        let rk=window.PS_RANKS[0][1]; window.PS_RANKS.forEach(function(r){ if (n>=r[0]) rk=r[1]; });
+        document.getElementById('brank').innerHTML='Your rank: <b></b>'; document.querySelector('#brank b').textContent=rk;
+        document.getElementById('second').hidden=!got.hewgag;
+        document.getElementById('charterbox').hidden=(n<window.PS_BADGES.length);
       };
       draw(); document.addEventListener('ps-badge', function(){ setTimeout(draw,50); });
       document.getElementById('wordform').addEventListener('submit', function(e){ e.preventDefault();
@@ -209,6 +228,16 @@ badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
         if (!w){ m.textContent='Type the word first.'; return; }
         if (w==='hewgag'){ window.psEarn('hewgag'); m.textContent='That is the word. Blow it loud.'; draw(); }
         else m.textContent='That is not the word. Turn the wheel again.'; });
+      document.getElementById('word2form').addEventListener('submit', function(e){ e.preventDefault();
+        const w=document.getElementById('word2').value.trim().toLowerCase(), m=document.getElementById('word2msg');
+        if (!w){ m.textContent='Type the word first.'; return; }
+        if (w==='credo'){ window.psEarn('credo'); m.textContent='That is the word. Credo quia absurdum.'; draw(); }
+        else m.textContent='Not that one. Try the mirror.'; });
+      document.body.appendChild(document.getElementById('charter'));
+      document.getElementById('charterform').addEventListener('submit', function(e){ e.preventDefault();
+        const nm=document.getElementById('cname').value.trim(); document.getElementById('chName').textContent=nm||'________________________';
+        document.getElementById('chDate').textContent='Given this '+new Date().toLocaleDateString('en-US',{day:'numeric',month:'long',year:'numeric'});
+        document.body.classList.add('printing-charter'); window.print(); setTimeout(function(){ document.body.classList.remove('printing-charter'); }, 500); });
       document.getElementById('breset').addEventListener('click', function(){ window.psResetBadges(); draw(); });
     });
     </script>

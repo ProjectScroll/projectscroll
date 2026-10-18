@@ -91,7 +91,8 @@ document.getElementById('cA').value=3; document.getElementById('cB').value=4; co
 (function(){
   const inp=document.getElementById('cyIn'), k=document.getElementById('cyK'), out=document.getElementById('cyOut'); if (!inp) return;
   const shift=function(str,n){ return str.replace(/[a-z]/gi,function(ch){ const b=ch<='Z'?65:97; return String.fromCharCode((ch.charCodeAt(0)-b+n)%26+b); }); };
-  const draw=function(){ const n=+k.value; out.innerHTML=''; const b=document.createElement('b'); b.textContent=shift(inp.value, (26-n)%26); out.append('Turned '+n+': ', b); };
-  inp.addEventListener('input',draw); k.addEventListener('input',draw); draw();
+  const mir=document.getElementById('cyM'); const mirror=function(str){ return str.replace(/[a-z]/gi,function(ch){ const b=ch<='Z'?65:97; return String.fromCharCode(b+25-(ch.charCodeAt(0)-b)); }); };
+  const draw=function(){ const n=+k.value; out.innerHTML=''; const b=document.createElement('b'); let v=inp.value; if (mir && mir.checked) v=mirror(v); b.textContent=shift(v, (26-n)%26); out.append((mir&&mir.checked?'In the mirror, turned ':'Turned ')+n+': ', b); };
+  inp.addEventListener('input',draw); k.addEventListener('input',draw); if (mir) mir.addEventListener('change',draw); draw();
 })();
 })();

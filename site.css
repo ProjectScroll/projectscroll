@@ -1221,3 +1221,75 @@ footer.site{padding-bottom:1rem}
 .cipherline{margin:.6rem 0 0; font-family:"Libre Caslon Display",serif; font-size:.7rem; letter-spacing:.32em; color:var(--ink-soft); opacity:1; user-select:all}
 .cipherline:hover{color:var(--rule)}
 @media print{ .btoast, .clue-next, .otd{display:none!important} }
+
+/* ---------- Draft 47 ---------- */
+/* what's new, under the hero footnote */
+.whatsnew{grid-column:1; margin:1.4rem 0 0; padding:.8rem 1rem .7rem; border-left:3px solid var(--rule); background:color-mix(in srgb, var(--paper-2) 60%, transparent); max-width:46ch}
+.whatsnew h2{font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:var(--rule); margin:0 0 .35rem; font-family:inherit; font-weight:400; text-align:left!important}
+.whatsnew ul{list-style:none; margin:0; padding:0; display:grid; gap:.35rem; font-size:.92rem; line-height:1.45}
+.whatsnew time{display:inline-block; min-width:6.6rem; font-family:"Libre Caslon Display",serif; color:var(--ink-soft)}
+/* the hotel corner slider */
+.tncorner{margin:1.6rem auto 1.2rem; width:min(100%, 40rem)}
+.tnc-frame{position:relative; overflow:hidden; border:1px solid var(--line); border-radius:4px; box-shadow:0 14px 34px -18px rgba(0,0,0,.45); aspect-ratio:900/606; background:#f1efe8}
+.tnc-frame img{display:block; width:100%; height:100%; object-fit:cover}
+.tnc-old{position:absolute; inset:0; clip-path:inset(0 calc(100% - var(--x)) 0 0)}
+.tnc-frame::after{content:""; position:absolute; top:0; bottom:0; left:var(--x); width:2px; margin-left:-1px; background:var(--rule); box-shadow:0 0 0 1px rgba(255,255,255,.6); pointer-events:none}
+.tnc-range{position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:ew-resize}
+.tnc-range:focus-visible + .tnc-lab{outline:none}
+.tnc-frame:focus-within{outline:3px solid var(--rule); outline-offset:3px}
+.tnc-ring{position:absolute; left:45.7%; top:61.7%; width:3.2rem; height:3.2rem; margin:-1.6rem 0 0 -1.6rem; border:2px solid var(--rule); border-radius:50%; box-shadow:0 0 0 3px rgba(255,255,255,.5); pointer-events:none}
+.tnc-tag{position:absolute; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:#4b4a44; background:rgba(241,239,232,.85); padding:.05rem .4rem; border-radius:3px; pointer-events:none}
+.tnc-b{left:calc(49.5% + .4rem); top:20%} .tnc-s{left:6%; top:calc(71.5% + .35rem)}
+.tnc-lab{position:absolute; bottom:.5rem; font-family:"Libre Caslon Display",serif; font-size:.95rem; color:#fff; background:rgba(29,39,51,.7); padding:.05rem .5rem; border-radius:3px; pointer-events:none}
+.tnc-lab.l{left:.5rem} .tnc-lab.r{right:.5rem}
+.tncorner figcaption{font-size:.85rem; color:var(--ink-soft); text-align:center; margin-top:.55rem; line-height:1.45}
+/* person of the month */
+.pom{margin:1.8rem 0; padding:1.2rem 1.3rem 1rem; border:1px solid var(--line); border-top:3px solid var(--rule); border-radius:6px; background:var(--paper)}
+.pom .kicker{margin:0 0 .2rem; text-align:left}
+.pom h3{margin:0 0 .6rem!important; display:block!important; text-align:left!important}
+.pom h3::before,.pom h3::after{content:none!important}
+.pom p{margin:0 0 .7rem}
+.pom-q{border-left:3px solid var(--rule); padding-left:.8rem}
+.pom-s{font-size:.82rem; color:var(--ink-soft); margin:0!important}
+/* trail map: lit halls answer a tap */
+.tm-hall{cursor:pointer; outline:none}
+.tm-hall:focus-visible circle{stroke:var(--ink); stroke-width:3}
+.tm-hall.blow circle{animation:blow .9s ease-out}
+@keyframes blow{0%{r:17}30%{r:21}100%{r:17}}
+/* unsealing */
+.tl li.unsealed::before{background:var(--rule); border-color:var(--rule)}
+.tl li.cracking::before{animation:crack 1.4s ease-out both}
+.tl li.cracking .yr, .tl li.cracking p{animation:reveal 1.4s .5s ease-out both}
+@keyframes crack{0%{transform:scale(1); background:radial-gradient(circle at 35% 30%, #d0634f 0 12%, #a3352a 38%, #6e1d16 100%)}35%{transform:scale(1.35) rotate(-8deg)}60%{transform:scale(.6) rotate(14deg); opacity:.4}100%{transform:none; opacity:1}}
+@keyframes reveal{from{opacity:0; transform:translateY(6px)}to{opacity:1; transform:none}}
+/* the season in the margins */
+.season{position:fixed; inset:0; z-index:0; pointer-events:none}
+/* night sky over the map in dark mode */
+:root[data-theme="dark"]::after{content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.55;
+  background-image:radial-gradient(1px 1px at 12% 18%, #fff, transparent), radial-gradient(1px 1px at 27% 62%, #fff, transparent), radial-gradient(1.5px 1.5px at 41% 33%, #fff, transparent), radial-gradient(1px 1px at 63% 12%, #fff, transparent), radial-gradient(1px 1px at 78% 71%, #fff, transparent), radial-gradient(1.5px 1.5px at 88% 28%, #fff, transparent), radial-gradient(1px 1px at 6% 84%, #fff, transparent), radial-gradient(1px 1px at 93% 90%, #fff, transparent), radial-gradient(1px 1px at 52% 88%, #fff, transparent), radial-gradient(1px 1px at 34% 8%, #fff, transparent);
+  background-size:420px 420px}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"])::after{content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.55;
+  background-image:radial-gradient(1px 1px at 12% 18%, #fff, transparent), radial-gradient(1px 1px at 27% 62%, #fff, transparent), radial-gradient(1.5px 1.5px at 41% 33%, #fff, transparent), radial-gradient(1px 1px at 63% 12%, #fff, transparent), radial-gradient(1px 1px at 78% 71%, #fff, transparent), radial-gradient(1.5px 1.5px at 88% 28%, #fff, transparent), radial-gradient(1px 1px at 6% 84%, #fff, transparent), radial-gradient(1px 1px at 93% 90%, #fff, transparent), radial-gradient(1px 1px at 52% 88%, #fff, transparent), radial-gradient(1px 1px at 34% 8%, #fff, transparent);
+  background-size:420px 420px} }
+/* badge book: rank, second line, charter */
+.brank{margin:.2rem 0 0; font-size:1rem; color:var(--ink-soft)} .brank b{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.35rem; color:var(--rule)}
+.cipherline.big{font-size:1rem; letter-spacing:.2em; opacity:1; color:var(--ink); line-height:1.8}
+.charterbox{border:1px solid var(--rule); border-radius:8px; padding:1rem 1.2rem; margin:0 0 1.6rem; background:color-mix(in srgb, var(--rule) 5%, var(--paper))}
+.charter{display:none}
+@page charter{size:landscape; margin:.5in}
+.charter{page:charter}
+@media print{
+  html:has(body.printing-charter)::before, html:has(body.printing-charter)::after{display:none!important}
+  body.printing-charter > :not(.charter){display:none!important}
+  body.printing-charter{background:#fff!important}
+  body.printing-charter .charter{display:block!important; box-sizing:border-box; width:100%; margin:0; padding:.45in .5in .4in; border:6px double #8a2a20; text-align:center; font-family:"Libre Caslon Text",serif; color:#1d2733; background:#fff; break-inside:avoid}
+  .charter .ch-top{font-size:12pt; letter-spacing:.3em; text-transform:uppercase; color:#8a2a20; margin:0}
+  .charter .ch-h{font-family:"Libre Caslon Display",serif; font-size:32pt; margin:.12in 0 .22in}
+  .charter .ch-b{font-size:13pt; line-height:1.6; margin:.12in auto; max-width:5.5in}
+  .charter .ch-name{font-family:"Libre Caslon Display",serif; font-size:28pt; border-bottom:1px solid #1d2733; display:inline-block; min-width:4in; margin:.15in 0 .2in; padding:0 .2in}
+  .charter .ch-rank{font-family:"Libre Caslon Display",serif; font-size:24pt; color:#8a2a20; margin:.15in 0}
+  .charter .ch-date{margin-top:.25in; font-style:italic}
+  .charter .ch-motto{margin-top:.15in; font-size:10pt; letter-spacing:.12em; text-transform:uppercase}
+  .season, .whatsnew .x{display:none!important}
+}
+@media (max-width:640px){ .whatsnew time{display:block; min-width:0} }

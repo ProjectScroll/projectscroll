@@ -43,7 +43,7 @@
 /* apply a saved theme before first paint, so there is no flash */
 try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}
 </script>
-<link rel="stylesheet" href="/site.css?v=46">
+<link rel="stylesheet" href="/site.css?v=47">
 </head>
 <body>
 <!--
@@ -87,6 +87,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <p class="ctas"><a class="btn primary" href="#hunt">Start the hunt</a><a class="btn" href="#services">Bring us a mystery</a></p>
       <ul class="trust"><li>Free to play</li><li>Solved with clues</li><li>Open to anyone, anywhere</li></ul>
       <p class="foot" id="foot"><span>*</span> And every answer is in the record.</p>
+      <aside class="whatsnew" aria-label="What’s new on the trail"><h2>What’s new on the trail</h2><ul><li><time>18 Oct 2026</time> Tin badges, a trail map, a countdown to the next clue and a line in code arrive on the site. Find the line.</li><li><time>17 Oct 2026</time> The second hall opens: a lake with no stream in and no stream out, and seven new cases on the board.</li><li><time>17 Oct 2026</time> Clue of the week: one man gave away forty acres of lakefront.</li></ul></aside>
       <figure class="plate">
         <picture><source type="image/webp" srcset="/img/heron-dawn.webp"><img src="/img/heron-dawn.jpg" width="576" height="1024" alt="A great blue heron wading in a misty lake at sunrise, autumn trees glowing red and gold on the far shore, mossy boulders in the foreground." fetchpriority="high" decoding="async"></picture>
       </figure>
@@ -238,6 +239,17 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <p class="note" style="margin-top:1rem">Post answers in the comments on <a href="https://www.facebook.com/projectscroll/">Facebook</a>, with the page you found them on. The rules above still apply: everything here is solved on paper.</p>
           <figure class="secfig map">
         <a href="/map/" class="figlink"><picture><source srcset="/img/wall-map-1860.webp" type="image/webp"><img src="/img/wall-map-1860.jpg" width="1100" height="1188" loading="lazy" decoding="async" alt="The 1860 wall map of Cass, Van Buren and Berrien counties, Michigan: hand-colored townships in a grid, with town plans and engraved pictures of houses and farms around the border."></picture></a><figcaption>The 1860 wall map of Cass, Van Buren and Berrien counties, where the hunt began. <a href="/map/">Walk every inch of it in the map room</a>.</figcaption>
+      </figure>
+      <figure class="tncorner" aria-label="The hotel corner in 1860 and today">
+        <div class="tnc-frame" id="tnc" style="--x:50%">
+          <picture><source srcset="/img/tn-corner-today.webp" type="image/webp"><img class="tnc-now" src="/img/tn-corner-today.jpg" width="900" height="606" loading="lazy" decoding="async" alt="Today’s streets around Broadway and State Street in Cassopolis, drawn as plain lines."></picture>
+          <span class="tnc-tag tnc-b">Broadway</span><span class="tnc-tag tnc-s">State Street</span>
+          <div class="tnc-old"><picture><source srcset="/img/tn-corner-1860.webp" type="image/webp"><img src="/img/tn-corner-1860.jpg" width="900" height="606" loading="lazy" decoding="async" alt="The same blocks on the 1860 town plan of Cassopolis, with HOTEL, Court House and Jail engraved near the corner of Broadway and State."></picture></div>
+          <span class="tnc-ring" aria-hidden="true"></span>
+          <input type="range" class="tnc-range" id="tncRange" min="0" max="100" value="50" aria-label="Slide between 1860 and today">
+          <span class="tnc-lab l" aria-hidden="true">1860</span><span class="tnc-lab r" aria-hidden="true">Today</span>
+        </div>
+        <figcaption>The hotel corner, then and now. Slide to see the 1860 plan give way to today’s streets. The ring marks where the engraver wrote HOTEL. <a href="/map/cassopolis/">Explore the whole town</a>.</figcaption>
       </figure>
     </section>
 
@@ -409,6 +421,14 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
         <li>Call it settled only when the evidence settles it. Until then, it’s an open question.</li>
       </ol>
       <p class="note center">From “One Letter, Two Certificates.” <a href="/notes/one-letter-two-certificates/">Read the whole case</a> · <a href="/notes/">All field notes</a></p>
+      <aside class="pom" aria-labelledby="pomH">
+        <p class="kicker">Person of the month · October</p>
+        <h3 id="pomH">James M. Shepard, the man who wrote it down</h3>
+        <p>He was three years old when the joke lodge was founded in his village. He came to Cassopolis in 1868 and worked there as a dentist. In September 1870 the village’s reading room was organized in his dental office, and a year later he was one of the incorporators of its library association.</p>
+        <p>When Howard Rogers wrote the county’s first history in 1875, it was Shepard who wrote down the story of the lodge: the halters, the blindfolds, the ball and the two hundred badges. Seven years later, Alfred Mathews reprinted it and named him in a footnote.</p>
+        <p class="pom-q"><b>The open question.</b> He was three in 1846. Who told him?</p>
+        <p class="pom-s">Sources: H. S. Rogers, <i>History of Cass County</i> (1875), pp. 253–254 and 258; A. Mathews, <i>History of Cass County, Michigan</i> (1882), p. 174.</p>
+      </aside>
       <p class="center"><a class="btn dl" href="/worksheet/project-scroll-hunters-worksheet.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The hunter’s worksheet (PDF, one page)</a></p>
 
       <div class="explore">
@@ -499,6 +519,6 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
   </footer>
 </div>
 
-<script src="/site.js?v=46" defer></script>
+<script src="/site.js?v=47" defer></script>
 </body>
 </html>
