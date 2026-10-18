@@ -559,3 +559,18 @@ details.faq[open]{background:color-mix(in srgb, var(--paper) 60%, transparent)}
 .trust{list-style:none; padding:0; margin:-.8rem 0 1.6rem; display:flex; flex-wrap:wrap; gap:.3rem 1.2rem; font-size:.88rem; color:var(--ink-soft)}
 .trust li::before{content:"✓"; color:var(--ledger); margin-right:.4rem}
 @media print{ .progress, .linkbtn, #msgform .btn{display:none!important} form.tmpl input, form.tmpl textarea{border:0!important; border-bottom:1px solid #999!important; border-radius:0!important} }
+
+/* ---------- research services, advertised near the top ---------- */
+.promo{max-width:calc(var(--measure) + 12rem); margin:0 0 2rem; padding:1.6rem 1.6rem 1.5rem; border:1px solid var(--line); border-radius:6px; background:var(--paper-2); position:relative; overflow:hidden; text-align:center}
+.promo::before{content:""; position:absolute; left:0; right:0; top:0; height:4px; background:linear-gradient(90deg, var(--kD) 0 11.1%, var(--kP) 0 22.2%, var(--kC) 0 33.3%, var(--kM) 0 44.4%, var(--kT) 0 55.5%, var(--kF) 0 66.6%, var(--kI) 0 77.7%, var(--kR) 0 88.8%, var(--kH) 0)}
+.promo .kicker{font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--rule); margin:0 0 .35rem}
+.promo-h{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:clamp(1.7rem, 3.6vw, 2.3rem); line-height:1.15; margin:0 0 .7rem; text-wrap:balance}
+.promo-lede{max-width:44rem; margin:0 auto 1.1rem; text-wrap:balance}
+.promo-scale{display:flex; gap:3px; height:.55rem; max-width:26rem; margin:0 auto 1rem}
+.promo-scale span{flex:1; border-radius:2px} .promo-scale i{flex:0 0 .6rem}
+.promo-scale .kD{background:var(--kD)} .promo-scale .kP{background:var(--kP)} .promo-scale .kC{background:var(--kC)} .promo-scale .kM{background:var(--kM)} .promo-scale .kT{background:var(--kT)} .promo-scale .kF{background:var(--kF)} .promo-scale .kI{background:var(--kI)} .promo-scale .kR{background:var(--kR)} .promo-scale .kH{background:var(--kH)}
+.promo-sample{max-width:40rem; margin:0 auto 1.2rem; padding:.8rem 1rem; background:var(--paper); border:1px dashed var(--line); border-radius:4px; font-size:.97rem; line-height:1.8; text-align:left}
+.promo-ctas{display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem; margin:0}
+@media (max-width:640px){ .promo{padding:1.3rem 1rem 1.2rem} .promo-ctas .btn{flex:1 1 100%; text-align:center} }
+@media print{ .promo{break-inside:avoid; background:#fff!important} .promo-ctas{display:none!important} .promo::before{-webkit-print-color-adjust:exact; print-color-adjust:exact} }
+.clue{max-width:calc(var(--measure) + 12rem)}
