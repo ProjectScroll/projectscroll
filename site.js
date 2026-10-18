@@ -24,14 +24,22 @@
   });
 
 
-  /* copy the message outline */
-  var copyBtn=document.getElementById('copy');
-  if (copyBtn) copyBtn.addEventListener('click', function(){
-    var txt=document.getElementById('tmpl').textContent, out=document.getElementById('copied');
-    var done=function(){ out.textContent='Copied. Paste it into your Facebook message.'; setTimeout(function(){out.textContent='';},4000); };
-    if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, function(){ out.textContent='Select the outline and copy it.'; });
-    else out.textContent='Select the outline and copy it.';
-  });
+  /* the message builder: fill in, copy, paste into Facebook (kept only in this browser as a draft) */
+  var form=document.getElementById('msgform');
+  if (form){
+    var DK='ps-msg', fields=[].slice.call(form.querySelectorAll('input,textarea')), out=document.getElementById('copied');
+    try{ var d=JSON.parse(localStorage.getItem(DK)||'{}'); fields.forEach(function(f){ if (d[f.name]) f.value=d[f.name]; }); }catch(e){}
+    var store=function(){ var d={}; fields.forEach(function(f){ d[f.name]=f.value; }); try{ localStorage.setItem(DK, JSON.stringify(d)); }catch(e){} };
+    fields.forEach(function(f){ f.addEventListener('input', store); });
+    document.getElementById('copy').addEventListener('click', function(){
+      var lines=fields.map(function(f){ return f.closest('label').querySelector('span').textContent+': '+f.value.trim(); });
+      var txt='Hello Project Scroll,\n\n'+lines.join('\n');
+      var done=function(){ out.textContent='Copied. Now paste it into your message to Project Scroll on Facebook.'; setTimeout(function(){ out.textContent=''; },5000); };
+      if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, function(){ out.textContent='Your browser blocked copying. Select the text and copy it by hand.'; });
+      else out.textContent='Your browser blocked copying. Select the text and copy it by hand.';
+    });
+    document.getElementById('clearmsg').addEventListener('click', function(){ fields.forEach(function(f){ f.value=''; }); store(); out.textContent='Cleared.'; setTimeout(function(){ out.textContent=''; },2000); });
+  }
 
   /* the "try it yourself" record puzzle */
   var verdict=document.getElementById('verdict');
@@ -43,7 +51,7 @@
     c.setAttribute('aria-pressed','false');
     c.addEventListener('click', function(){
       document.querySelectorAll('.card').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
-      c.setAttribute('aria-pressed','true'); verdict.textContent=answers[c.dataset.pick];
+      c.setAttribute('aria-pressed','true'); verdict.textContent=answers[c.dataset.pick]; var tm=document.getElementById('trymore'); if (tm) tm.hidden=false;
     });
   });
 
@@ -102,7 +110,9 @@
   /* ---------- marking quiz ---------- */
   var quiz=document.getElementById('quiz');
   if (quiz){
-    var items=[].slice.call(quiz.querySelectorAll('.qlist > li')), score=0, done=0, out=document.getElementById('qscore');
+    var items=[].slice.call(quiz.querySelectorAll('.qlist > li')), score=0, done=0, out=document.getElementById('qscore'), rs=document.getElementById('qreset');
+    if (rs) rs.addEventListener('click', function(){ score=0; done=0; out.textContent=''; rs.hidden=true;
+      items.forEach(function(li){ delete li.dataset.done; li.querySelectorAll('.qopts .mk').forEach(function(x){ x.classList.remove('right','wrong','dim'); x.removeAttribute('aria-disabled'); }); var w=li.querySelector('.qwhy'); w.hidden=true; var b=w.querySelector('b'); if (b) b.remove(); }); });
     items.forEach(function(li){
       var opts=[].slice.call(li.querySelectorAll('.qopts .mk'));
       opts.forEach(function(o){
@@ -111,7 +121,7 @@
           var ok=o.classList.contains(li.dataset.a); if (ok) score++;
           opts.forEach(function(x){ if (x.classList.contains(li.dataset.a)) x.classList.add('right'); else if (x===o) x.classList.add('wrong'); else x.classList.add('dim'); x.setAttribute('aria-disabled','true'); });
           var why=li.querySelector('.qwhy'); why.hidden=false; why.insertAdjacentHTML('afterbegin', ok?'<b>Right.</b> ':'<b>Not quite.</b> ');
-          out.textContent = done===items.length ? ('You marked '+score+' of '+items.length+' the way we would.') : (score+' of '+done+' so far.');
+          out.textContent = done===items.length ? ('You marked '+score+' of '+items.length+' the way we would.'+(score===items.length?' A born record-keeper.':'')) : (score+' of '+done+' so far.'); if (done===items.length && rs) rs.hidden=false;
         });
       });
     });
@@ -126,6 +136,10 @@
     if (nx) nx.addEventListener('click', function(){ step(1); });
     tl.addEventListener('keydown', function(e){ if (e.key==='ArrowRight'){ step(1); e.preventDefault(); } if (e.key==='ArrowLeft'){ step(-1); e.preventDefault(); } });
   }
+
+  /* questions: open all, and open the one a link points at */
+  var fa=document.getElementById('faqall'), faqs=[].slice.call(document.querySelectorAll('details.faq'));
+  if (fa){ fa.addEventListener('click', function(){ var openAll=faqs.some(function(d){ return !d.open; }); faqs.forEach(function(d){ d.open=openAll; }); fa.textContent=openAll?'Close all answers':'Open all answers'; }); }
 
   /* back-to-top button appears once you are well down the scroll */
   var tt=document.querySelector('.totop');

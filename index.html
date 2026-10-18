@@ -45,7 +45,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
   (https://www.facebook.com/projectscroll/) that you came in through the back door.
 -->
 <a class="skip" href="#main">Skip to the content</a>
-<header class="bar">
+<header class="bar"><span class="progress" aria-hidden="true"></span>
   <div class="bar-in">
     <a class="mark" href="/" aria-label="Project Scroll home">
       <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="4" width="18" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 4v24" stroke="#B3362B" stroke-width="2"/><path d="M14 11h7M14 15h7M14 19h5" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -65,6 +65,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <h1>Every clue is true.<button class="fn" type="button" id="star" aria-label="Read the footnote">*</button></h1>
       <p class="lede">Project Scroll is a history hunt played on paper. Real mysteries hide in old county histories, survey maps, death certificates and forgotten newspapers, and every one of them can be solved without a shovel.</p>
       <p class="ctas"><a class="btn primary" href="#hunt">Start the hunt</a><a class="btn" href="#services">Bring us a mystery</a></p>
+      <ul class="trust"><li>Free to play</li><li>Solved on paper</li><li>Open to anyone, anywhere</li></ul>
       <p class="foot" id="foot"><span>*</span> And every answer is in the record.</p>
       <figure class="plate">
         <img src="/img/heron-dawn.png" width="576" height="1024" alt="A great blue heron wading in a misty lake at sunrise, autumn trees glowing red and gold on the far shore, mossy boulders in the foreground." fetchpriority="high" decoding="async">
@@ -159,7 +160,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <p class="note center">Real cases, every one begun as a single question. Some are answered, some are still open, and we always say which. Now we’re taking on yours.</p>
 
       <h3 class="sub">What we research</h3>
-      <ul class="plain">
+      <ul class="plain svc">
         <li><b>A lost ancestor</b>Census rolls, death certificates, deeds, wills, church books and old newspapers, compared line by line. When the records disagree, we work out who was remembering, and when.</li>
         <li><b>Who said it first</b>A family story, a famous quote or a local legend, traced back to the first time it was printed. Who wrote it down? Were they there? Who told them? What changed each time it was retold?</li>
         <li><b>A forgotten place</b>A vanished mill, a schoolhouse, a cabin or a whole village, found again on old plat maps, surveyors’ field notes and county atlases.</li>
@@ -171,7 +172,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
 
       <h3 class="sub">What happens when you bring us one</h3>
       <ol class="steps">
-        <li><b>Tell us what you know.</b> A name, a place, rough dates, and whatever the family says. <a href="#contact">The outline</a> makes it easy.</li>
+        <li><b>Tell us what you know.</b> A name, a place, rough dates, and whatever the family says. <a href="#contact">Our message form</a> makes it easy.</li>
         <li><b>Get an honest first read.</b> We tell you what the records are likely to show, and what they probably can’t, before you commit to anything.</li>
         <li><b>Agree on the question.</b> One clear question, and where we will look to answer it.</li>
         <li><b>We search the record.</b> Certificates, deeds, censuses, old newspapers, county histories and maps, compared line by line.</li>
@@ -235,7 +236,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
 
       <div class="quiz" id="quiz">
         <h3>Try marking these yourself</h3>
-        <p class="note" style="margin:0 0 .6rem">Pick the mark you would give each one. <span id="qscore" aria-live="polite"></span></p>
+        <p class="note" style="margin:0 0 .6rem">Pick the mark you would give each one. <span id="qscore" aria-live="polite"></span> <button type="button" class="linkbtn" id="qreset" hidden>Try again</button></p>
         <ol class="qlist">
           <li data-a="kP"><p>A notice in the local paper, the week after he died.</p><div class="qopts"><button type="button" class="mk kD">Document</button><button type="button" class="mk kP">Period print</button><button type="button" class="mk kT">Tradition</button></div><p class="qwhy" hidden>Period print. It was printed at the time, but by a newspaper, not by an office whose job was to record the death.</p></li>
           <li data-a="kT"><p>“Great-aunt Ruth always said the family came from Ohio.”</p><div class="qopts"><button type="button" class="mk kC">County history</button><button type="button" class="mk kT">Tradition</button><button type="button" class="mk kR">Reading</button></div><p class="qwhy" hidden>Tradition. Write it down exactly as she said it, then go and test it.</p></li>
@@ -264,16 +265,16 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <div class="tl-wrap">
         <button type="button" class="tl-nav prev" aria-label="Earlier">‹</button>
         <ol class="tl" id="tl" tabindex="0" aria-label="Timeline">
-          <li><span class="yr">1831</span><p>The village is laid out. Broadway and State are already on the plat.</p><span class="mk sm kD">Document</span></li>
-          <li><span class="yr">1846</span><p>In the spring, a joke secret society is founded in a village hotel.</p><span class="mk sm kC">County history</span> <a href="#case-1">Case 1</a></li>
-          <li><span class="yr">1849</span><p>A small-town doctor sets out for the California gold fields, and writes it down.</p><span class="mk sm kC">County history</span></li>
-          <li><span class="yr">1852</span><p>12 June: the Masons hold their first meeting under the same hotel roof.</p><span class="mk sm kC">County history</span></li>
-          <li><span class="yr">1860</span><p>A Philadelphia wall map engraves one word on the hotel’s block: HOTEL.</p><span class="mk sm kD">Document</span></li>
-          <li><span class="yr">1867</span><p>The old hotel is hauled across the village and turned into a mill. A new hotel rises on its ground.</p><span class="mk sm kC">County history</span> <a href="#case-2">Case 2</a></li>
-          <li><span class="yr">1882</span><p>The county history records that “many people” believe a lake is fed by a river from Lake Superior.</p><span class="mk sm kC">County history</span> <span class="mk sm kT">Tradition</span></li>
-          <li><span class="yr">1906</span><p>A county historian hears in the lakes “the distant echoes … of the glacial age.”</p><span class="mk sm kC">County history</span></li>
-          <li><span class="yr">1912</span><p>A pioneer dies. His death certificate gives no middle initial.</p><span class="mk sm kD">Document</span> <a href="#case-10">Case 10</a></li>
-          <li><span class="yr">1935</span><p>His son’s certificate gives the father an initial: the son’s own.</p><span class="mk sm kD">Document</span></li>
+          <li class="dkD"><span class="yr">1831</span><p>The village is laid out. Broadway and State are already on the plat.</p><span class="mk sm kD">Document</span></li>
+          <li class="dkC"><span class="yr">1846</span><p>In the spring, a joke secret society is founded in a village hotel.</p><span class="mk sm kC">County history</span> <a href="#case-1">Case 1</a></li>
+          <li class="dkC"><span class="yr">1849</span><p>A small-town doctor sets out for the California gold fields, and writes it down.</p><span class="mk sm kC">County history</span></li>
+          <li class="dkC"><span class="yr">1852</span><p>12 June: the Masons hold their first meeting under the same hotel roof.</p><span class="mk sm kC">County history</span></li>
+          <li class="dkD"><span class="yr">1860</span><p>A Philadelphia wall map engraves one word on the hotel’s block: HOTEL.</p><span class="mk sm kD">Document</span></li>
+          <li class="dkC"><span class="yr">1867</span><p>The old hotel is hauled across the village and turned into a mill. A new hotel rises on its ground.</p><span class="mk sm kC">County history</span> <a href="#case-2">Case 2</a></li>
+          <li class="dkC"><span class="yr">1882</span><p>The county history records that “many people” believe a lake is fed by a river from Lake Superior.</p><span class="mk sm kC">County history</span> <span class="mk sm kT">Tradition</span></li>
+          <li class="dkC"><span class="yr">1906</span><p>A county historian hears in the lakes “the distant echoes … of the glacial age.”</p><span class="mk sm kC">County history</span></li>
+          <li class="dkD"><span class="yr">1912</span><p>A pioneer dies. His death certificate gives no middle initial.</p><span class="mk sm kD">Document</span> <a href="#case-10">Case 10</a></li>
+          <li class="dkD"><span class="yr">1935</span><p>His son’s certificate gives the father an initial: the son’s own.</p><span class="mk sm kD">Document</span></li>
           <li class="now"><span class="yr">Now</span><p>The scroll is open. The next date on it may be one you find.</p><a href="#cases">The case board</a></li>
         </ol>
         <button type="button" class="tl-nav next" aria-label="Later">›</button>
@@ -304,12 +305,14 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
           <button type="button" class="card" data-pick="b"><span class="kind">Record B</span>His son’s death certificate, filled in twenty-three years later. <em>Gives him one.</em></button>
         </div>
         <p class="verdict" id="verdict" aria-live="polite"></p>
+        <p class="note" id="trymore" hidden>Where the real case stands now: <a href="/notes/one-letter-two-certificates/">One Letter, Two Certificates</a>.</p>
       </div>
     </section>
 
     <section id="faq">
       <p class="part">Part VIII</p>
       <h2>Questions</h2>
+      <p class="center" style="margin:-.3rem 0 .8rem"><button type="button" class="linkbtn" id="faqall">Open all answers</button></p>
       <details class="faq"><summary>Does the hunt cost anything?</summary><p>No. The hunt is free to follow and free to play. All you need is curiosity and, now and then, a library card.</p></details>
       <details class="faq"><summary>Do I have to go anywhere?</summary><p>No. Every clue is solved on paper: in books, maps and records, many of them free online. The hunt never sends anyone onto private land or near a grave.</p></details>
       <details class="faq"><summary>I solved one. Now what?</summary><p>Post your answer in the comments on <a href="https://www.facebook.com/projectscroll/">Facebook</a>, and say where you found it. Solvers are named in the next post.</p></details>
@@ -324,16 +327,19 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <h2>Start with a question</h2>
       <p class="intro">Send a message to <a href="https://www.facebook.com/projectscroll/">Project Scroll on Facebook</a> with the name, the place and the rough dates, plus whatever the family says. A photo of any paper you already have helps. We’ll write back with an honest read on what the records are likely to show, before you commit to anything.</p>
       <p class="ctas" style="margin:0 0 .4rem"><a class="btn primary" href="https://m.me/projectscroll">Message us on Facebook</a><a class="btn" href="https://www.facebook.com/projectscroll/">Visit the page</a></p>
-      <div class="tmpl">
-        <pre id="tmpl">My mystery:
-Name(s):
-Place:
-Rough dates:
-What the family says:
-Papers or photos I already have:</pre>
-        <button type="button" class="btn" id="copy">Copy this outline</button>
-        <span class="copied" id="copied" aria-live="polite"></span>
-      </div>
+      <form class="tmpl" id="msgform" onsubmit="return false">
+        <p class="note center" style="margin:0 0 .6rem">Fill in what you can, copy it, and paste it into your Facebook message. Nothing is sent from this page.</p>
+        <label><span>My mystery</span><textarea name="mystery" rows="2" placeholder="In a sentence or two: what do you want to know?"></textarea></label>
+        <div class="row2">
+          <label><span>Name(s)</span><input name="names" placeholder="Who is it about?"></label>
+          <label><span>Place</span><input name="place" placeholder="Town, county, state or country"></label>
+        </div>
+        <label><span>Rough dates</span><input name="dates" placeholder="For example: born about 1840, died 1912"></label>
+        <label><span>What the family says</span><textarea name="family" rows="2" placeholder="The story as it was told to you"></textarea></label>
+        <label><span>Papers or photos I already have</span><input name="papers" placeholder="Certificates, letters, a photograph…"></label>
+        <p class="center" style="margin:.8rem 0 0"><button type="button" class="btn primary" id="copy">Copy my message</button> <button type="button" class="btn" id="clearmsg">Clear</button></p>
+        <p class="copied center" id="copied" aria-live="polite" style="margin:.5rem 0 0"></p>
+      </form>
       <p class="note center">An email address is coming soon.</p>
     </section>
   </main>

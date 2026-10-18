@@ -514,3 +514,48 @@ ol.promises b{display:block}
 .plate2{padding-bottom:2.8rem}
 main > .contact{margin-top:2.4rem}
 footer.site{margin-left:auto; margin-right:auto}
+
+/* ---------- R1: the message builder ---------- */
+form.tmpl{display:grid; gap:.65rem; text-align:left; margin:1.2rem auto 1rem; max-width:36rem}
+form.tmpl label{display:grid; gap:.2rem; font-size:.85rem; color:var(--ink-soft); letter-spacing:.02em}
+form.tmpl input, form.tmpl textarea{font:inherit; font-size:1rem; color:var(--ink); background:var(--paper); border:1px solid var(--line); border-radius:4px; padding:.5rem .65rem; width:100%; resize:vertical}
+form.tmpl input:focus, form.tmpl textarea:focus{outline:2px solid var(--rule); outline-offset:1px; border-color:transparent}
+form.tmpl ::placeholder{color:color-mix(in srgb, var(--ink-soft) 70%, transparent); font-style:italic}
+form.tmpl .row2{display:grid; grid-template-columns:1fr 1fr; gap:.65rem}
+@media (max-width:560px){ form.tmpl .row2{grid-template-columns:1fr} }
+
+/* ---------- R2: reading progress along the top bar ---------- */
+.progress{position:absolute; left:0; bottom:-1px; height:2px; width:100%; background:var(--rule); transform-origin:left; transform:scaleX(0)}
+@supports (animation-timeline: scroll()){ @media (prefers-reduced-motion: no-preference){ .progress{animation:prog linear both; animation-timeline:scroll(root)} @keyframes prog{to{transform:scaleX(1)}} } }
+@supports not (animation-timeline: scroll()){ .progress{display:none} }
+
+/* ---------- R3/R5: small text buttons ---------- */
+.linkbtn{font:inherit; font-size:.9rem; background:none; border:0; padding:0; color:var(--ledger); text-decoration:underline; text-underline-offset:.18em; cursor:pointer}
+.linkbtn:hover{text-decoration-thickness:2px}
+details.faq summary{transition:color .2s}
+details.faq summary:hover{color:var(--rule)}
+details.faq[open]{background:color-mix(in srgb, var(--paper) 60%, transparent)}
+
+/* ---------- R4: timeline dots take their mark's color; cards lift ---------- */
+.tl li.dkD::before{border-color:var(--kD)} .tl li.dkC::before{border-color:var(--kC)} .tl li.dkP::before{border-color:var(--kP)} .tl li.dkT::before{border-color:var(--kT)}
+.tl li{border-radius:4px; transition:background .2s}
+.tl li:hover{background:color-mix(in srgb, var(--paper) 70%, transparent)}
+
+/* ---------- R7: case board rows ---------- */
+.ledger tr[id^="case-"]{transition:background .2s}
+.ledger tr[id^="case-"]:hover{background:color-mix(in srgb, var(--paper) 75%, transparent)}
+.ledger tr[id^="case-"]:target{background:color-mix(in srgb, var(--rule) 9%, transparent); box-shadow:inset 3px 0 0 var(--rule)}
+.ledger tr[id^="case-"]{scroll-margin-top:6rem}
+
+/* ---------- R8: research services as cards ---------- */
+#services ul.svc{display:grid; grid-template-columns:1fr 1fr; gap:.7rem; column-gap:.7rem}
+#services ul.svc li, #services ul.svc li:nth-last-child(2), #services ul.svc li:last-child{border:1px solid var(--line); border-radius:4px; padding:.85rem 1rem .9rem; background:var(--paper); font-size:.95rem; line-height:1.5; transition:border-color .2s, transform .2s}
+#services ul.svc li:hover{border-color:var(--ink-soft); transform:translateY(-1px)}
+#services ul.svc li:last-child{grid-column:1 / -1}
+#services ul.svc b{color:var(--rule); font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.12rem; margin-bottom:.15rem}
+@media (max-width:640px){ #services ul.svc{grid-template-columns:1fr} }
+
+/* ---------- R9: hero trust line ---------- */
+.trust{list-style:none; padding:0; margin:-.8rem 0 1.6rem; display:flex; flex-wrap:wrap; gap:.3rem 1.2rem; font-size:.88rem; color:var(--ink-soft)}
+.trust li::before{content:"✓"; color:var(--ledger); margin-right:.4rem}
+@media print{ .progress, .linkbtn, #msgform .btn{display:none!important} form.tmpl input, form.tmpl textarea{border:0!important; border-bottom:1px solid #999!important; border-radius:0!important} }
