@@ -41,7 +41,7 @@
 /* apply a saved theme before first paint, so there is no flash */
 try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}
 </script>
-<link rel="stylesheet" href="/site.css?v=29">
+<link rel="stylesheet" href="/site.css?v=30">
 </head>
 <body>
 <!--
@@ -93,10 +93,20 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     <aside class="promo" aria-label="Research services">
       <p class="kicker">Research services</p>
       <h2 class="promo-h">Research you can check, line by line.</h2>
-      <p class="promo-lede">Bring us a lost ancestor, a forgotten place or an heirloom no one can explain. Every statement in your report carries one of nine marks, so you can see at a glance what the record says, and what we are arguing from it.</p>
+      <p class="promo-lede">Bring us a lost ancestor, a family history, a family story you want tested, a forgotten place or an heirloom no one can explain. Every statement in your report carries one of nine marks, so you can see at a glance what the record says, and what we are arguing from it.</p>
+      <ul class="promo-svcs" aria-label="What we research">
+        <li><a href="#services">Lost ancestors</a></li>
+        <li><a href="/families/">Family histories &amp; registers</a></li>
+        <li><a href="/legends/">Family legends, tested</a></li>
+        <li><a href="#services">Forgotten places</a></li>
+        <li><a href="#services">Heirlooms</a></li>
+        <li><a href="#services">Lodges &amp; old societies</a></li>
+        <li><a href="#services">Who said it first</a></li>
+        <li><a href="#services">A second pair of eyes</a></li>
+      </ul>
       <p class="promo-marks"><span class="lbl">The nine marks, strongest first:</span> <a class="mk kD" href="#mk-document">Document</a><a class="mk kP" href="#mk-period-print">Period print</a><a class="mk kC" href="#mk-county-history">County history</a><a class="mk kM" href="#mk-compiled">Compiled</a><a class="mk kT" href="#mk-tradition">Tradition</a><a class="mk kI" href="#mk-inference">Inference</a><a class="mk kR" href="#mk-reading">Reading</a><a class="mk kH" href="#mk-hypothesis">Hypothesis</a><a class="mk kF" href="#mk-field">Field (our own survey)</a></p>
       <p class="promo-sample">His death certificate gives no middle initial <a class="mk sm kD" href="#mk-document">Document</a>. His son’s, twenty-three years later, gives him one <a class="mk sm kD" href="#mk-document">Document</a>. In 1935, someone gave the father his son’s initial <a class="mk sm kR" href="#mk-reading">Reading</a>.</p>
-      <p class="promo-ctas"><a class="btn primary" href="#contact">Bring us your mystery</a><a class="btn" href="#marks">How we mark the evidence</a><a class="btn" href="/sample/project-scroll-sample-report.pdf">Sample report (PDF)</a></p>
+      <p class="promo-ctas"><a class="btn primary" href="#contact">Bring us your mystery</a><a class="btn" href="#marks">How we mark the evidence</a><a class="btn" href="/sample/project-scroll-sample-report.pdf">Sample report (PDF)</a><a class="btn" href="/sample/project-scroll-sample-family-register.pdf">Sample family register (PDF)</a></p>
     </aside>
 
     <script type="application/json" id="clues">[["2026-10-17", "17 October", "One man gave away forty acres of lakefront. Try to picture anyone doing that today. Who was he?", 3], ["2026-10-24", "24 October", "In 1867 a village hotel was hauled across town and turned into a mill. Nobody has pinned down where it went.", 2], ["2026-10-31", "31 October", "A lake with no stream in and no stream out once had a flour mill on its shore. What turned the wheel?", 7], ["2026-11-07", "7 November", "A deed written on parchment in 1831 has vanished. Somewhere, someone may have it in a drawer.", 4], ["2026-11-14", "14 November", "The man who first wrote down the joke lodge’s story put a question mark after the word “charter.” Was there ever one?", 1], ["2026-11-21", "21 November", "Old shores were stony. Where did all the boulders go?", 6], ["2026-11-28", "28 November", "A county history said a lake was fed by a river running underground from Lake Superior. Where does its water really come from?", 5]]</script>
@@ -116,6 +126,9 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
         <li><b>Post your answer.</b> Put it in the comments, and say where you found it.</li>
         <li><b>Get named.</b> When someone cracks one, the next post says who.</li>
       </ol>
+      <figure class="secfig tall">
+        <picture><source srcset="/img/county-survey-map.webp" type="image/webp"><img src="/img/county-survey-map.jpg" width="760" height="996" loading="lazy" decoding="async" alt="An old hand-drawn county land map on aged paper, divided into numbered survey tracts, with rivers and roads winding across it."></picture><figcaption>A county land map drawn from the original surveys. Every answer in the hunt is on paper like this.</figcaption>
+      </figure>
       <figure class="halls" aria-label="The halls of the hunt so far: two of three open">
         <ol>
           <li class="open"><span class="seal">I</span><b>The first hall</b><small>Open · start in the pinned post</small></li>
@@ -200,6 +213,9 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
         <li><b>Is the family story true?</b>The Ellis Island name change, the famous ancestor, the three brothers who came over together. We find where the story began and what the records say. <a href="/legends/">Test a family legend</a>.</li>
         <li><b>A second pair of eyes</b>A family history, a book chapter or an article checked against its sources before it goes out into the world.</li>
       </ul>
+      <figure class="secfig land">
+        <picture><source srcset="/img/schoolhouse.webp" type="image/webp"><img src="/img/schoolhouse.jpg" width="1400" height="763" loading="lazy" decoding="async" alt="An old photograph of a white one-room schoolhouse with a bell cupola and a small porch, standing among trees behind a split-rail fence at a dirt crossroads."></picture>
+      </figure>
       <div class="morework">
         <a href="/families/"><span class="k">Family histories</span><b>Registers, monographs and family books</b><span class="d">Built from the records, not copied from other trees. Tap through a specimen ancestral chart.</span></a>
         <a href="/legends/"><span class="k">Mysteries in the family</span><b>Is the family story true?</b><span class="d">Pick the story your family tells and see what the records usually say about it.</span></a>
@@ -239,6 +255,9 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
         <li><b>No guarantees, just the record.</b> Some questions have answers on paper and some don’t. We’ll tell you up front which kind yours looks like.</li>
         <li><b>We research the past.</b> No locating living people, no legal or title opinions, no appraisals. No digging, no trespassing, and care with every family’s story.</li>
       </ol>
+      <figure class="secfig small">
+        <picture><source srcset="/img/death-register.webp" type="image/webp"><img src="/img/death-register.jpg" width="512" height="362" loading="lazy" decoding="async" alt="An open ledger, the State of Michigan record of deaths for Allegan County, with handwritten entries in ruled columns across two pages."></picture><figcaption>State of Michigan, record of deaths, Allegan County. We read the page itself, not someone’s summary of it.</figcaption>
+      </figure>
       <div class="getbox">
       <h3>What you get</h3>
       <p>A written report in plain English: what we found, where we found it, what is still open, and where to look next. Where the old books and maps are free online, we include the links so you can turn the pages yourself. <a href="/sample/project-scroll-sample-report.pdf">See a sample report</a>.</p>
@@ -347,6 +366,9 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
         </ol>
         <button type="button" class="tl-nav next" aria-label="Later">›</button>
       </div>
+      <figure class="secfig land">
+        <picture><source srcset="/img/bellin-great-lakes-1744.webp" type="image/webp"><img src="/img/bellin-great-lakes-1744.jpg" width="1024" height="638" loading="lazy" decoding="async" alt="An eighteenth-century French engraved map of the Great Lakes, Carte des Lacs du Canada, showing Lakes Superior, Michigan, Huron, Erie and Ontario with rivers and place names."></picture><figcaption>Bellin’s <i>Carte des Lacs du Canada</i>, 1744. Long before the first county was drawn, the lakes were already on the map.</figcaption>
+      </figure>
     </section>
 
     <section id="notes" class="notes">
@@ -437,6 +459,6 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
   </footer>
 </div>
 
-<script src="/site.js?v=29" defer></script>
+<script src="/site.js?v=30" defer></script>
 </body>
 </html>

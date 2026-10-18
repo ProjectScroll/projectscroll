@@ -395,6 +395,14 @@ footer.site .fine{font-size:.82rem; margin-top:.8rem}
   .plate2 .pull{padding:0 0 0 3.2rem}
 }
 .wide{margin:1.8rem auto 0; width:min(100%, 24rem)}
+.secfig{margin:1.6rem auto 1.4rem; width:min(100%, 30rem)}
+.secfig.tall{width:min(100%, 16rem)}
+.secfig.small{width:min(100%, 26rem)}
+.secfig img{display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:3px; box-shadow:0 1px 2px rgba(0,0,0,.06), 0 14px 34px -16px rgba(0,0,0,.4)}
+.secfig figcaption{font-size:.85rem; color:var(--ink-soft); text-align:center; margin-top:.55rem; line-height:1.45}
+.promo-svcs{list-style:none; padding:0; margin:.9rem 0 1rem; display:flex; flex-wrap:wrap; justify-content:center; gap:.4rem}
+.promo-svcs a{display:inline-block; font-size:.9rem; padding:.25rem .7rem; border:1px solid var(--line); border-radius:20px; text-decoration:none; color:var(--ink); background:var(--paper)}
+.promo-svcs a:hover{border-color:var(--rule); color:var(--rule)}
 /* images fade up gently as they scroll into view */
 @supports (animation-timeline: view()){
   @media (prefers-reduced-motion: no-preference){
@@ -843,6 +851,8 @@ label.btn{cursor:pointer}
   img{max-width:100%!important; height:auto!important; break-inside:avoid!important; animation:none!important; opacity:1!important; transform:none!important; box-shadow:none!important}
   .still{width:3in!important; margin:0 auto 1rem!important}
   .wide{width:3.4in!important; margin:1rem auto 0!important}
+  .secfig{width:3.2in!important; margin:.8rem auto!important} .secfig.tall{width:2.2in!important} .secfig.small{width:3in!important}
+  .promo-svcs a{border-color:#999!important}
   .plate2{display:block!important}
   figure, table.ledger tr, .try, .worked, .quiz, dl.marks > div, .tl li, .clue{break-inside:avoid!important}
   h2, h3, .part{break-after:avoid!important}
