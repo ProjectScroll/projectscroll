@@ -42,7 +42,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="alternate" type="application/rss+xml" title="Project Scroll field notes" href="/feed.xml">
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.css?v=32">
+<link rel="stylesheet" href="/site.css?v=33">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
@@ -78,10 +78,10 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <nav aria-label="Footer">
       <a href="/">Home</a><a href="/#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/records/">Where the records are</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter's worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
     </nav>
-    <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a></p>
+    <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a> · <button type="button" class="lanternbtn" id="lanternBtn" hidden>Put out the lantern</button></p>
   </footer>
 </div>
-<script src="/site.js?v=32" defer></script>
+<script src="/site.js?v=33" defer></script>
 </body>
 </html>
 '''

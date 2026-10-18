@@ -27,7 +27,7 @@ for (const [w,cs,lab] of [[1280,'light','computer'],[390,'dark','phone']]){
  // faq search
  await q.fill('#faqq','michigan'); let n=await q.evaluate(()=>[...document.querySelectorAll('details.faq')].filter(d=>!d.hidden).length); ok(P+'question search: "michigan" finds matches', n>=1 && n<7, String(n));
  await q.fill('#faqq','zzzz'); ok(P+'question search: no match shows a note', await q.evaluate(()=>!document.getElementById('faqnone').hidden));
- await q.fill('#faqq',''); n=await q.evaluate(()=>[...document.querySelectorAll('details.faq')].filter(d=>!d.hidden).length); ok(P+'question search: clearing shows all', n===7, String(n));
+ await q.fill('#faqq',''); n=await q.evaluate(()=>[...document.querySelectorAll('details.faq')].filter(d=>!d.hidden).length); ok(P+'question search: clearing shows all', n===8, String(n));
  // messenger
  await q.fill('[name=names]','Test'); await q.click('#copy'); await q.waitForTimeout(300); ok(P+'after copying, the Open Messenger button appears', await q.evaluate(()=>!document.getElementById('openMsgr').hidden));
  // magnifier

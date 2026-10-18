@@ -363,6 +363,20 @@
   }
 
   /* for anyone who opens the browser's console */
+
+  /* lantern: a warm glow that follows the pointer on computers */
+  (function(){
+    if (!window.matchMedia || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    let off=false; try{ off=localStorage.getItem('ps-lantern')==='off'; }catch(e){}
+    const l=document.createElement('div'); l.className='lantern'; l.setAttribute('aria-hidden','true'); document.body.appendChild(l);
+    let x=0, y=0, raf=0;
+    const paint=function(){ raf=0; l.style.setProperty('--lx', x+'px'); l.style.setProperty('--ly', y+'px'); };
+    document.addEventListener('pointermove', function(e){ if (e.pointerType!=='mouse') return; x=e.clientX; y=e.clientY; if (!off) l.classList.add('on'); if (!raf) raf=requestAnimationFrame(paint); }, {passive:true});
+    document.documentElement.addEventListener('mouseleave', function(){ l.classList.remove('on'); });
+    const btn=document.getElementById('lanternBtn');
+    if (btn){ btn.hidden=false; const sync=function(){ btn.setAttribute('aria-pressed', String(!off)); btn.textContent = off ? 'Light the lantern' : 'Put out the lantern'; };
+      sync(); btn.addEventListener('click', function(){ off=!off; try{ localStorage.setItem('ps-lantern', off?'off':'on'); }catch(e){} if (off) l.classList.remove('on'); sync(); }); }
+  })();
   try{
     console.log('%cProject Scroll','font:28px Georgia,serif;color:#B3362B');
     console.log('%cYou found a back door. Every page has another side: view the page source, and read the note at the top.','font:14px Georgia,serif');

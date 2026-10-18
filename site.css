@@ -993,4 +993,22 @@ details.faq[open]{background:color-mix(in srgb, var(--paper) 60%, transparent)}
 @media print{ #msgform{display:none!important} .contact{break-inside:avoid} }
 .plate picture{display:block}
 
+/* ---------- the lantern: warm light that follows the pointer ---------- */
+.lantern{position:fixed; inset:0; pointer-events:none; z-index:90; opacity:0; transition:opacity .5s ease;
+  background:radial-gradient(circle 210px at var(--lx,-500px) var(--ly,-500px), rgba(255,186,60,.34) 0%, rgba(255,170,50,.17) 36%, rgba(255,150,40,.05) 62%, transparent 76%);
+  mix-blend-mode:multiply}
+.lantern.on{opacity:1}
+:root[data-theme="dark"] .lantern{mix-blend-mode:screen; background:radial-gradient(circle 230px at var(--lx,-500px) var(--ly,-500px), rgba(255,196,90,.17) 0%, rgba(255,170,60,.08) 40%, rgba(255,150,40,.025) 64%, transparent 76%)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .lantern{mix-blend-mode:screen; background:radial-gradient(circle 230px at var(--lx,-500px) var(--ly,-500px), rgba(255,196,90,.17) 0%, rgba(255,170,60,.08) 40%, rgba(255,150,40,.025) 64%, transparent 76%)} }
+@media (prefers-reduced-motion: no-preference){ .lantern.on{animation:flicker 4.5s ease-in-out infinite} }
+@keyframes flicker{0%,100%{opacity:1} 22%{opacity:.88} 41%{opacity:.97} 63%{opacity:.84} 80%{opacity:.95}}
+.lanternbtn{background:none; border:0; padding:0; font:inherit; font-size:.85rem; color:var(--ink-soft); text-decoration:underline; text-underline-offset:3px; cursor:pointer}
+.lanternbtn:hover{color:var(--rule)}
+::selection{background:rgba(255,190,70,.38); color:inherit}
+html{scrollbar-color:color-mix(in srgb, var(--ink-soft) 55%, transparent) transparent}
+.morework a{transition:transform .2s, box-shadow .2s, border-color .2s}
+.morework a:hover{transform:translateY(-2px); box-shadow:0 12px 26px -18px rgba(0,0,0,.5)}
+.secfig img{transition:transform .35s ease, box-shadow .35s ease}
+.secfig a.figlink:hover img, .secfig:hover img{transform:translateY(-2px)}
+@media print{ .lantern, .lanternbtn{display:none!important} }
 @media print{ html.reveal main > section > *, html.reveal .plate2 > *{opacity:1!important; transform:none!important} .hero h1{clip-path:none!important; animation:none!important} .lens, .lens-tip, .checker, .weigh, .tl-filters, .faqbar, .meter, #openMsgr{display:none!important} body::after{display:none!important} }
