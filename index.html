@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Scroll · A history hunt</title>
+<meta name="description" content="A history hunt where every clue is true and every answer is in the record. Research services for lost ancestors, forgotten places and heirlooms no one can explain.">
+<meta property="og:title" content="Project Scroll">
+<meta property="og:description" content="A history hunt. Every clue is true. Every answer is in the record.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://projectscroll.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E8ECE6;      /* survey-book paper, cool */
+  --paper-2:#DCE2DA;
+  --ink:#1D2733;        /* iron-gall blue-black */
+  --ink-soft:#4B5663;
+  --rule:#B3362B;       /* red-pencil margin rule */
+  --ledger:#2B4A41;     /* ledger-cloth green */
+  --line:#B9C2B8;
+  --measure:64ch;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#151B21; --paper-2:#1C242C; --ink:#E4E8E2; --ink-soft:#A9B2AC;
+    --rule:#E0675A; --ledger:#8DB8A8; --line:#34404A;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Libre Caslon Text", Georgia, serif;
+  font-size:1.0625rem; line-height:1.7;
+}
+a{color:var(--ledger); text-underline-offset:.18em; text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--rule); outline-offset:3px; border-radius:2px}
+.sheet{
+  position:relative; max-width:calc(var(--measure) + 14rem); margin:0 auto;
+  padding:0 1rem 4rem 2.75rem;
+}
+/* the red margin rule of a field book, running the length of the page */
+.sheet::before{
+  content:""; position:absolute; top:0; bottom:0; left:1.6rem; width:2px; background:var(--rule); opacity:.85;
+}
+header.top{display:flex; justify-content:space-between; align-items:baseline; gap:1rem; padding:1.4rem 0 0; font-size:.95rem}
+header.top .mark{font-family:"Libre Caslon Display", serif; font-size:1.35rem; letter-spacing:.01em}
+header.top nav a{margin-left:1.1rem; color:var(--ink-soft)}
+.hero{padding:4.5rem 0 3rem; max-width:calc(var(--measure) + 12rem)}
+.hero h1{
+  font-family:"Libre Caslon Display", serif; font-weight:400;
+  font-size:clamp(2.6rem, 7vw, 4.9rem); line-height:1.02; margin:0 0 1.6rem; letter-spacing:-.01em;
+}
+.hero h1 sup{font-family:"Libre Caslon Text",serif; font-size:.32em; color:var(--rule); vertical-align:super; margin-left:.08em}
+.hero p.lede{font-size:1.25rem; line-height:1.6; max-width:52ch; margin:0 0 2rem}
+.hero .foot{
+  border-top:1px solid var(--line); padding-top:.8rem; font-size:.95rem; color:var(--ink-soft); max-width:46ch;
+}
+.hero .foot span{color:var(--rule)}
+section{padding:2.6rem 0; border-top:1px solid var(--line); max-width:var(--measure)}
+h2{font-family:"Libre Caslon Display", serif; font-weight:400; font-size:2.1rem; line-height:1.15; margin:0 0 1rem}
+h3{font-size:1.06rem; margin:1.6rem 0 .3rem}
+p{margin:0 0 1rem}
+.note{
+  font-size:.9rem; color:var(--ink-soft); line-height:1.55;
+}
+@media (min-width:1100px){
+  .has-note{position:relative}
+  .has-note .note{position:absolute; left:calc(100% + 2.2rem); top:.4rem; width:12rem; margin:0}
+}
+ul.plain{list-style:none; padding:0; margin:0}
+ul.plain li{padding:.85rem 0; border-bottom:1px dotted var(--line)}
+ul.plain li:last-child{border-bottom:0}
+ul.plain b{display:block; font-weight:700}
+.cases p{margin-bottom:.7rem}
+.cases p::before{content:"¶ "; color:var(--rule)}
+.rules li{margin-bottom:.45rem}
+.contact{background:var(--paper-2); margin:1rem 0 0; padding:2rem 1.2rem; border-top:0; max-width:calc(var(--measure) + 2rem)}
+.contact .addr{font-size:1.35rem; font-family:"Libre Caslon Display",serif}
+footer{max-width:var(--measure); padding-top:2.4rem; font-size:.9rem; color:var(--ink-soft)}
+@media (max-width:560px){
+  .sheet{padding-left:2.1rem}
+  .sheet::before{left:1rem}
+  header.top nav{display:none}
+  .hero{padding-top:3rem}
+}
+@media (prefers-reduced-motion: no-preference){
+  .hero h1{animation:ink 900ms ease-out both}
+  @keyframes ink{from{opacity:0; filter:blur(3px)} to{opacity:1; filter:none}}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <header class="top">
+    <span class="mark">Project Scroll</span>
+    <nav aria-label="Sections"><a href="#hunt">The hunt</a><a href="#services">Research</a><a href="#contact">Contact</a></nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>Every clue is true.<sup>*</sup></h1>
+      <p class="lede">Project Scroll is a history hunt played on paper. Old county histories, survey maps, death certificates and forgotten newspapers hold real mysteries, and every one of them can be solved without a shovel.</p>
+      <p class="foot"><span>*</span> And every answer is in the record.</p>
+    </div>
+
+    <section id="hunt" class="has-note">
+      <h2>The hunt</h2>
+      <p>It began in one small Michigan county, with a lake that has no stream in and no stream out, a secret society from 1846, and a doctor who kept a bone. It is growing from there, one hall at a time.</p>
+      <p>Each mystery is posted on Facebook. Follow the clues, read the sources, and tell us what you find. When someone cracks one, we name them.</p>
+      <p class="note">Start with Project Scroll on Facebook. The first door is in the pinned post.</p>
+      <h3>The rules</h3>
+      <ul class="rules">
+        <li>Read the record. Every answer is in a book, on a map, or on a page.</li>
+        <li>Show your work. A name without the page it came from is only a guess.</li>
+        <li>Never dig, never go near a grave, and never set foot on anyone's land.</li>
+        <li>Be kind. These are real people, and their families are still here.</li>
+      </ul>
+    </section>
+
+    <section id="services">
+      <h2>Bring us your mystery</h2>
+      <div class="cases">
+        <p>A pioneer whose death certificate and his son's can't agree on his middle initial.</p>
+        <p>A lake the 1882 county history said was fed by a river running underground from Lake Superior.</p>
+        <p>A small-town doctor's 1849 trek to the California gold fields, and a typescript of it waiting, unread, in a museum's collection.</p>
+      </div>
+      <p>These are real cases from the Project Scroll desk. Every one began as a single question. Some are answered, some are still open, and we always say which. Now we're taking on yours.</p>
+
+      <ul class="plain">
+        <li><b>A lost ancestor</b>Census rolls, death certificates, deeds, wills, church books and old newspapers, compared line by line. When the records disagree, we work out who was remembering, and when.</li>
+        <li><b>Who said it first</b>A family story, a famous quote or a local legend, traced back to the first time it was printed. Who wrote it down? Were they there? Who told them? What changed each time it was retold?</li>
+        <li><b>A forgotten place</b>A vanished mill, a schoolhouse, a cabin or a whole village, found again on old plat maps, surveyors' field notes and county atlases.</li>
+        <li><b>A legend worth testing</b>Giant bones, underground rivers, buried treasure. We read the story against the records and tell you which parts hold up and which don't.</li>
+        <li><b>An heirloom no one can explain</b>An old photograph, a lodge badge, a deed, a letter or a piece of jewelry, traced through the people who owned it.</li>
+        <li><b>Lodges, churches and old societies</b>Rosters, proceedings and minute books, where they survive and their keepers allow access, to learn who belonged, when, and what they did.</li>
+        <li><b>A second pair of eyes</b>A family history, a book chapter or an article checked against its sources before it goes out into the world.</li>
+      </ul>
+    </section>
+
+    <section id="method">
+      <h2>How we work</h2>
+      <p><b>Every claim comes with its source.</b> You'll know exactly where each fact came from, so you can check it yourself.</p>
+      <p><b>Disagreements are clues, not failures.</b> When two records argue, we show you both and explain why.</p>
+      <p><b>Open questions stay open.</b> If something might be true but can't be proven yet, we say so, and we keep looking instead of throwing it away.</p>
+      <p><b>No guarantees, just the record.</b> Some questions have answers on paper and some don't. We'll tell you up front which kind yours looks like.</p>
+      <p><b>We research the past.</b> No locating living people, no legal or title opinions, no appraisals. No digging, no trespassing, and care with every family's story.</p>
+      <h3>What you get</h3>
+      <p>A written report in plain English: what we found, where we found it, what is still open, and where to look next. Where the old books and maps are free online, we include the links so you can turn the pages yourself.</p>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Start with a question</h2>
+      <p>Send a message to Project Scroll on Facebook with the name, the place and the rough dates, plus whatever the family says. A photo of any paper you already have helps. We'll write back with an honest read on what the records are likely to show, before you commit to anything.</p>
+      <p class="addr">Message Project Scroll on Facebook</p>
+      <p class="note">An email address is coming soon.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Project Scroll is independent historical research. Some mysteries open in an afternoon. Some take a season.</p>
+  </footer>
+</div>
+</body>
+</html>
