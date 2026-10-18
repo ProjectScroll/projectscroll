@@ -9,7 +9,7 @@ for (const [w,cs,label] of [[1280,'light','computer/light'],[1280,'dark','comput
  await q.goto(''+BASE+'/'); await q.waitForTimeout(700);
  const P=label+': ';
  // theme
- const bg=()=>q.evaluate(()=>getComputedStyle(document.body).backgroundColor);
+ const bg=()=>q.evaluate(()=>getComputedStyle(document.querySelector('.sheet')||document.body).backgroundColor);
  const b0=await bg(); await q.click('#theme'); await q.waitForTimeout(500); const b1=await bg();
  ok(P+'Light/Dark switches colors', b0!==b1, b0+' → '+b1);
  await q.reload(); await q.waitForTimeout(500); ok(P+'Light/Dark choice remembered after reload', (await bg())===b1);
@@ -63,7 +63,7 @@ for (const [w,cs,label] of [[1280,'light','computer/light'],[1280,'dark','comput
 const q=await b.newPage(); const urls=['/','/notes/','/notes/one-letter-two-certificates/','/404.html','/sample/project-scroll-sample-report.pdf','/worksheet/project-scroll-hunters-worksheet.pdf','/og.png','/favicon.svg','/robots.txt','/sitemap.xml','/site.css?v=29','/site.js?v=29','/img/heron-dawn.png','/img/doctors-window.jpg','/img/two-certificates.jpg','/img/heron-dawn.webp','/sw.js','/favicon.ico','/site.webmanifest','/feed.xml','/icons/icon-32.png','/icons/apple-touch-icon.png','/icons/icon-192.png','/icons/icon-512.png','/icons/icon-maskable-512.png'];
 for (const u of urls){ const r=await q.request.get(BASE+u); ok('file '+u, r.status()===200, String(r.status())); }
 for (const u of ['/notes/','/notes/one-letter-two-certificates/','/404.html']){ const p=await b.newPage(); const e=[]; p.on('pageerror',x=>e.push(x.message)); await p.goto(BASE+u); await p.waitForTimeout(400);
-  const b0=await p.evaluate(()=>getComputedStyle(document.body).backgroundColor); await p.click('#theme'); await p.waitForTimeout(400); const b1=await p.evaluate(()=>getComputedStyle(document.body).backgroundColor);
+  const b0=await p.evaluate(()=>getComputedStyle(document.querySelector('.sheet')||document.body).backgroundColor); await p.click('#theme'); await p.waitForTimeout(400); const b1=await p.evaluate(()=>getComputedStyle(document.querySelector('.sheet')||document.body).backgroundColor);
   const links=await p.evaluate(()=>[...document.querySelectorAll('a[href^="/"]')].map(a=>a.getAttribute('href').split('#')[0]));
   let badl=[]; for (const l of [...new Set(links)]){ const r=await p.request.get(BASE+l); if(r.status()!==200) badl.push(l); }
   ok('page '+u+' Light/Dark works', b0!==b1); ok('page '+u+' links all work', badl.length===0, badl.join(' ')); ok('page '+u+' no script errors', e.length===0, e.join('|')); await p.close(); }

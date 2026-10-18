@@ -8,7 +8,7 @@ for (const [w,cs,lab] of [[1280,'light','computer'],[390,'dark','phone']]){
  await q.goto(''+BASE+'/'); await q.waitForTimeout(600);
  // theme fix while hidden
  const vis=await q.evaluate(()=>document.visibilityState);
- const bg=()=>q.evaluate(()=>getComputedStyle(document.body).backgroundColor); const a=await bg(); await q.click('#theme'); await q.waitForTimeout(500); ok(P+'Light/Dark switches on first press', a!==await bg(), vis);
+ const bg=()=>q.evaluate(()=>getComputedStyle(document.querySelector('.sheet')||document.body).backgroundColor); const a=await bg(); await q.click('#theme'); await q.waitForTimeout(500); ok(P+'Light/Dark switches on first press', a!==await bg(), vis);
  await q.click('#theme'); await q.waitForTimeout(500);
  // glossary
  const gls=await q.evaluate(()=>[...document.querySelectorAll('.gl')].map(g=>g.textContent)); ok(P+'glossary terms marked', gls.length>=4, gls.join(', '));

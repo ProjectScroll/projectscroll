@@ -210,7 +210,7 @@ LEG = [
   'odds': 'Often half-true: the men were real; the brotherhood is the part to test.'},
  {'k': 'burned', 't': 'The courthouse burned, so there are no records',
   'say': 'Everything was lost in the fire, so there is no point looking.',
-  'rec': 'Courthouses did burn, and records were lost. But deeds were often re-recorded afterwards by the owners, and copies survive in state archives, churches, newspapers, tax rolls, military files and the records of neighbouring counties.',
+  'rec': 'Courthouses did burn, and records were lost. But deeds were often re-recorded afterward by the owners, and copies survive in state archives, churches, newspapers, tax rolls, military files and the records of neighboring counties.',
   'how': ['Find out exactly which years and which books were lost: it is rarely everything.', 'Look for deeds re-recorded after the fire.', 'Go around it: state census, tax lists, church registers, newspapers, pension files.'],
   'odds': 'The fire is usually real. “No records at all” almost never is.'},
  {'k': 'spelled', 't': 'Our name was always spelled this way',

@@ -1141,3 +1141,26 @@ ol.fieldpage li::before{content:counter(fp) "."; position:absolute; left:-2.25re
 /* Draft 43: the top bar fits the smallest phones */
 @media (max-width:400px){ .bar-in{gap:.35rem!important; padding-left:1.7rem!important; padding-right:.55rem!important} .bar .brand{font-size:.92em} .theme,.menu{padding:.18rem .6rem!important; font-size:.85rem} .searchbtn{width:1.9rem; height:1.9rem} .menu{margin-left:.3rem} }
 @media (max-width:340px){ .bar .brand{font-size:.84em} .bar-in{gap:.25rem!important; padding-left:1.55rem!important} .theme,.menu{padding:.15rem .5rem!important} }
+
+/* ---------- Draft 45: the blue map of New France behind every page ---------- */
+html{background:#0f2433}
+html::before{content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background:#0f2433 url("/img/bg-new-france-blue.jpg") center/cover no-repeat}
+@supports (background-image:image-set(url("a.webp") type("image/webp"))){
+  html::before{background-image:image-set(url("/img/bg-new-france-blue.webp") type("image/webp"), url("/img/bg-new-france-blue.jpg") type("image/jpeg"))}
+}
+body{background:transparent!important}
+/* the page itself is a sheet laid on the map */
+.sheet{background:var(--paper); box-shadow:0 0 0 1px rgba(0,0,0,.18), 0 30px 80px -20px rgba(0,0,0,.65)}
+footer.site{padding-bottom:1rem}
+.bar{background:color-mix(in srgb, var(--paper) 92%, transparent)!important}
+/* the map in the services panel */
+.promofig{margin:1.6rem auto .2rem!important; width:min(100%, 34rem)!important}
+@media print{ html::before{display:none!important} html{background:#fff!important} .sheet{box-shadow:none!important} }
+/* the parts rail now stands on the map, just outside the sheet */
+@media (min-width:1220px){
+  .partrail{left:calc(50% - (48rem + 6rem)/2 - 5rem)}
+  .partrail a{color:#b9cad6; text-shadow:0 1px 2px rgba(0,0,0,.6)}
+  .partrail a:hover{color:#fff}
+  .partrail a[aria-current="true"]{color:#ff8f80; border-right-color:#ff8f80}
+}

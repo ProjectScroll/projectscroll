@@ -80,7 +80,7 @@ G = [
  ('Census', 'A count of the population. The United States has taken one every ten years since 1790; from 1850 it names every free person in the household (enslaved people were counted on separate schedules, usually without names, until 1870). Most of the 1890 census was destroyed after a fire in 1921. Each census is opened to the public 72 years after it was taken.'),
  ('Consort', 'A husband or wife. Often seen on old gravestones: “Mary, consort of John Smith.”'),
  ('County history', 'The big county histories printed from the 1870s to the 1910s. Many biographies in them were paid for by the people they describe, so they tend to be accurate on names and dates and generous on everything else.'),
- ('Deed', 'The written record of land changing hands, copied into the county’s deed books. Deeds often name wives, heirs and neighbours, and sometimes say where a seller had moved to.'),
+ ('Deed', 'The written record of land changing hands, copied into the county’s deed books. Deeds often name wives, heirs and neighbors, and sometimes say where a seller had moved to.'),
  ('Double dating', 'Dates such as “10 February 1731/2.” Before 1752, England and its colonies began the new year on 25 March, so January to March dates were often written with both years.'),
  ('Et ux.', 'Latin, “and wife,” in deeds and court records: “John Smith et ux.” means John and his wife.'),
  ('Executor', 'The person named in a will to carry it out. Compare administrator.'),
