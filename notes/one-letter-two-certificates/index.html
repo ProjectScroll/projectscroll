@@ -29,9 +29,10 @@
       <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="4" width="18" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 4v24" stroke="#B3362B" stroke-width="2"/><path d="M14 11h7M14 15h7M14 19h5" stroke="currentColor" stroke-width="1.6"/></svg>
       Project Scroll
     </a>
-    <nav aria-label="Sections">
+    <nav aria-label="Sections" id="sitenav">
       <a href="/#hunt">The hunt</a><a href="/#cases">Case board</a><a href="/#services">Research</a><a href="/notes/">Field notes</a><a href="/#contact">Contact</a>
     </nav>
+    <button class="menu" type="button" id="menu" aria-expanded="false" aria-controls="sitenav">Menu</button>
     <button class="theme" type="button" aria-label="Switch between light and dark" id="theme">Dark</button>
   </div>
 </header>
@@ -85,11 +86,17 @@
 
     <h2>Your turn</h2>
     <p>Pick someone in your family who died long ago. Find two records that name them and compare every box: name, dates, parents, birthplaces. Do they disagree? Which would you believe, and why? The best mysteries start at home.</p>
-    <p>Want to test yourself first? <a href="/#try">Try the two-record puzzle</a>. Got a mystery you can't crack? <a href="/#contact">Bring it to us</a>.</p>
+    <p>Want to test yourself first? <a href="/#try">Try the two-record puzzle</a>. Got a mystery you can't crack? <a href="https://m.me/projectscroll">Message us on Facebook</a>, or see <a href="/#contact">how to start</a>. Tell us how you did in the comments on <a href="https://www.facebook.com/projectscroll/">Project Scroll's page</a>.</p>
   </main>
-  <footer>
-    <p>Project Scroll is independent historical research. Some mysteries open in an afternoon. Some take a season.</p>
-    <p><a href="/">Home</a> · <a href="/#cases">Case board</a> · <a href="#top">Back to the top</a></p>
+  <footer class="site">
+    <div>
+      <p class="motto">Every clue is true. Every answer is in the record.</p>
+      <p>Project Scroll is independent historical research. Some mysteries open in an afternoon. Some take a season.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="/">Home</a><a href="/#cases">Case board</a><a href="/notes/">Field notes</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter's worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
+    </nav>
+    <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a></p>
   </footer>
 </div>
 <script src="/site.js" defer></script>

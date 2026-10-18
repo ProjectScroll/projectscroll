@@ -9,6 +9,13 @@
     if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.startViewTransition(apply); else apply();
   });
 
+  /* mobile menu */
+  var menu=document.getElementById('menu'), bar=document.querySelector('.bar');
+  if (menu && bar){
+    menu.addEventListener('click', function(){ var o=bar.classList.toggle('open'); menu.setAttribute('aria-expanded', o?'true':'false'); menu.textContent=o?'Close':'Menu'; });
+    bar.querySelectorAll('nav a').forEach(function(a){ a.addEventListener('click', function(){ bar.classList.remove('open'); menu.setAttribute('aria-expanded','false'); menu.textContent='Menu'; }); });
+  }
+
   /* the asterisk leads to its footnote */
   var star=document.getElementById('star'), foot=document.getElementById('foot');
   if (star && foot) star.addEventListener('click', function(){
