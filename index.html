@@ -100,11 +100,11 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
         <a class="btn primary" href="https://www.facebook.com/projectscroll/">Start the hunt on Facebook</a>
       </div>
       <h3>The rules</h3>
-      <ul class="rules">
-        <li>Read the record. Every answer is in a book, on a map, or on a page.</li>
-        <li>Show your work. A name without the page it came from is only a guess.</li>
-        <li>Never dig, never go near a grave, and never set foot on anyone’s land.</li>
-        <li>Be kind. These are real people, and their families are still here.</li>
+      <ul class="rulecards">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><b>Read the record.</b> Every answer is in a book, on a map, or on a page.</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l5 5v15H6zM15 2v5h5M9 12h8M9 16h8M9 8h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><b>Show your work.</b> A name without the page it came from is only a guess.</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5.6 5.6l12.8 12.8" stroke="currentColor" stroke-width="1.6"/></svg><b>Stay on paper.</b> Never dig, never go near a grave, and never set foot on anyone’s land.</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><b>Be kind.</b> These are real people, and their families are still here.</li>
       </ul>
     </section>
 
@@ -146,6 +146,8 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     <section id="services">
       <p class="part">Part III</p>
       <h2>Bring us your mystery</h2>
+      <p class="intro">A lost ancestor, a forgotten place, an heirloom no one can explain. If the answer was ever written down, we will look for it, and tell you honestly what we find.</p>
+      <h3 class="sub">Cases from our desk</h3>
       <div class="cases">
         <p>A pioneer whose death certificate and his son’s can’t agree on his middle initial.<button class="src" type="button" popovertarget="s1" aria-label="Source for this case">source</button></p>
         <p>A lake the 1882 county history said was fed by a river running underground from Lake Superior.<button class="src" type="button" popovertarget="s2" aria-label="Source for this case">source</button></p>
@@ -154,8 +156,9 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <div popover id="s1" class="source"><button class="close" popovertarget="s1" popovertargetaction="hide" aria-label="Close">×</button><b>Two certificates</b>Michigan death certificates, 1912 and 1935, Archives of Michigan. The father’s own certificate gives no middle initial; his son’s, filled in twenty-three years later, gives him one.</div>
       <div popover id="s2" class="source"><button class="close" popovertarget="s2" popovertargetaction="hide" aria-label="Close">×</button><b>The underground river</b><i>History of Cass County, Michigan</i> (1882): “It is supposed by many people” that the lake is a surface spot of a great subterranean stream from Lake Superior. Free on archive.org.</div>
       <div popover id="s3" class="source"><button class="close" popovertarget="s3" popovertargetaction="hide" aria-label="Close">×</button><b>The gold-rush doctor</b><i>Portrait and Biographical Record of Berrien and Cass Counties, Michigan</i> (1893), quoting his 1892 obituary; and the Oregon-California Trails Association’s trail-diary bibliography, which lists his “Journey to California” typescript.</div>
-      <p>These are real cases from the Project Scroll desk. Every one began as a single question. Some are answered, some are still open, and we always say which. Now we’re taking on yours.</p>
+      <p class="note center">Real cases, every one begun as a single question. Some are answered, some are still open, and we always say which. Now we’re taking on yours.</p>
 
+      <h3 class="sub">What we research</h3>
       <ul class="plain">
         <li><b>A lost ancestor</b>Census rolls, death certificates, deeds, wills, church books and old newspapers, compared line by line. When the records disagree, we work out who was remembering, and when.</li>
         <li><b>Who said it first</b>A family story, a famous quote or a local legend, traced back to the first time it was printed. Who wrote it down? Were they there? Who told them? What changed each time it was retold?</li>
@@ -166,7 +169,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
         <li><b>A second pair of eyes</b>A family history, a book chapter or an article checked against its sources before it goes out into the world.</li>
       </ul>
 
-      <h3>What happens when you bring us one</h3>
+      <h3 class="sub">What happens when you bring us one</h3>
       <ol class="steps">
         <li><b>Tell us what you know.</b> A name, a place, rough dates, and whatever the family says. <a href="#contact">The outline</a> makes it easy.</li>
         <li><b>Get an honest first read.</b> We tell you what the records are likely to show, and what they probably can’t, before you commit to anything.</li>
@@ -180,13 +183,18 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     <section id="method">
       <p class="part">Part IV</p>
       <h2>How we work</h2>
-      <p><b>Every claim comes with its source.</b> You’ll know exactly where each fact came from, so you can check it yourself.</p>
-      <p><b>Disagreements are clues, not failures.</b> When two records argue, we show you both and explain why.</p>
-      <p><b>Open questions stay open.</b> If something might be true but can’t be proven yet, we say so, and we keep looking instead of throwing it away.</p>
-      <p><b>No guarantees, just the record.</b> Some questions have answers on paper and some don’t. We’ll tell you up front which kind yours looks like.</p>
-      <p><b>We research the past.</b> No locating living people, no legal or title opinions, no appraisals. No digging, no trespassing, and care with every family’s story.</p>
+      <p class="intro">Five promises we keep on every case, whether it takes an afternoon or a season.</p>
+      <ol class="promises">
+        <li><b>Every claim comes with its source.</b> You’ll know exactly where each fact came from, so you can check it yourself.</li>
+        <li><b>Disagreements are clues, not failures.</b> When two records argue, we show you both and explain why.</li>
+        <li><b>Open questions stay open.</b> If something might be true but can’t be proven yet, we say so, and we keep looking instead of throwing it away.</li>
+        <li><b>No guarantees, just the record.</b> Some questions have answers on paper and some don’t. We’ll tell you up front which kind yours looks like.</li>
+        <li><b>We research the past.</b> No locating living people, no legal or title opinions, no appraisals. No digging, no trespassing, and care with every family’s story.</li>
+      </ol>
+      <div class="getbox">
       <h3>What you get</h3>
       <p>A written report in plain English: what we found, where we found it, what is still open, and where to look next. Where the old books and maps are free online, we include the links so you can turn the pages yourself. <a href="/sample/project-scroll-sample-report.pdf">See a sample report</a>.</p>
+      </div>
 
     </section>
 
@@ -309,6 +317,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <details class="faq"><summary>What should I keep notes on?</summary><p>Use <a href="/worksheet/project-scroll-hunters-worksheet.pdf">the hunter’s worksheet</a>: one page to log each record, who made it, when, and where you found it. Print as many as you need.</p></details>
       <details class="faq"><summary>Is anything hidden on this website?</summary><p>Perhaps. Every page has a back side, and curious hunters know where to look.</p></details>
       <details class="faq"><summary>Is Project Scroll only about Michigan?</summary><p>It started in one Michigan county, but the methods work anywhere, and so does our research. Mysteries are welcome from wherever you are.</p></details>
+      <p class="note center" style="margin-top:1.2rem">Still wondering about something? <a href="https://m.me/projectscroll">Ask us on Facebook</a>.</p>
     </section>
 
     <section id="contact" class="contact">
@@ -341,6 +350,7 @@ Papers or photos I already have:</pre>
   </footer>
 </div>
 
+<a class="totop" href="#top" aria-label="Back to the top" hidden>↑</a>
 <script src="/site.js" defer></script>
 </body>
 </html>

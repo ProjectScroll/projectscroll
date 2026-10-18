@@ -127,6 +127,10 @@
     tl.addEventListener('keydown', function(e){ if (e.key==='ArrowRight'){ step(1); e.preventDefault(); } if (e.key==='ArrowLeft'){ step(-1); e.preventDefault(); } });
   }
 
+  /* back-to-top button appears once you are well down the scroll */
+  var tt=document.querySelector('.totop');
+  if (tt){ var onS=function(){ tt.hidden = scrollY < innerHeight*1.5; }; addEventListener('scroll', onS, {passive:true}); onS(); }
+
   /* for anyone who opens the browser's console */
   try{
     console.log('%cProject Scroll','font:28px Georgia,serif;color:#B3362B');
