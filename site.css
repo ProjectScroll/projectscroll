@@ -393,7 +393,7 @@ footer.site .fine{font-size:.82rem; margin-top:.8rem}
   .still{width:100%; margin:0}
   .plate2 .pull{padding:0 0 0 3.2rem}
 }
-.wide{margin:1.8rem auto 0; width:min(100%, 34rem)}
+.wide{margin:1.8rem auto 0; width:min(100%, 24rem)}
 /* images fade up gently as they scroll into view */
 @supports (animation-timeline: view()){
   @media (prefers-reduced-motion: no-preference){
@@ -426,6 +426,24 @@ footer.site .fine{font-size:.82rem; margin-top:.8rem}
 .start{display:flex; flex-wrap:wrap; align-items:center; gap:.8rem 1.4rem; margin:1.4rem 0 1.8rem; padding:1rem 1.2rem; border:1px solid var(--line); border-left:3px solid var(--rule); border-radius:4px; background:color-mix(in srgb, var(--paper-2) 55%, transparent)}
 .start p{margin:0; flex:1 1 18rem}
 
+/* ---------- formal centering: part numerals, section titles and their opening lines ---------- */
+main > section > .part{justify-content:center}
+main > section > .part::before{content:""; flex:0 0 2.5rem; height:1px; background:var(--rule); opacity:.6}
+main > section > h2{text-align:center}
+main > section > p.intro{text-align:center; max-width:40rem; margin-left:auto; margin-right:auto; text-wrap:balance}
+#cases .seals, #cases .filters, #cases .tally{justify-content:center}
+#cases .ledger caption{text-align:center}
+#timeline .swipe{text-align:center}
+.contact > h2{text-align:center}
+.contact > .ctas{justify-content:center}
+footer.site{text-align:center; justify-items:center}
+footer.site nav{justify-content:center}
+.pull cite{display:block}
+
+.center{text-align:center}
+.tmpl{text-align:center}
+.tmpl pre{text-align:left}
+
 @media print{
   @page{margin:.6in}
   .bar,.theme,.menu,.src,.skip,body::before,.sheet::before,.sheet::after,.tools,.filters,.tl-nav,.swipe,.seals,#copy,.copied,.ctas,.start .btn,.dl{display:none!important}
@@ -436,7 +454,7 @@ footer.site .fine{font-size:.82rem; margin-top:.8rem}
   .plate{width:2.2in!important; float:right!important; margin:0 0 .5rem 1rem!important}
   img{max-width:100%!important; height:auto!important; break-inside:avoid!important; animation:none!important; opacity:1!important; transform:none!important; box-shadow:none!important}
   .still{width:3in!important; margin:0 auto 1rem!important}
-  .wide{width:5in!important; margin:1rem auto 0!important}
+  .wide{width:3.4in!important; margin:1rem auto 0!important}
   .plate2{display:block!important}
   figure, table.ledger tr, .try, .worked, .quiz, dl.marks > div, .tl li, .clue{break-inside:avoid!important}
   h2, h3, .part{break-after:avoid!important}
