@@ -444,6 +444,36 @@ footer.site nav{justify-content:center}
 .tmpl{text-align:center}
 .tmpl pre{text-align:left}
 
+/* ==========================================================
+   ONE CENTERED COLUMN: every block shares the same width and centre line
+   ========================================================== */
+:root{--col:min(48rem, 100%)}
+.sheet{max-width:calc(48rem + 6rem); padding-left:2.75rem; padding-right:2.75rem}
+.bar-in{max-width:calc(48rem + 14rem)}
+.mark{white-space:nowrap}
+.hero, .promo, .clue, main > section, .plate2, footer.site{max-width:var(--col)!important; margin-left:auto!important; margin-right:auto!important}
+.hero{padding-top:4rem}
+@media (min-width:900px){ .hero{grid-template-columns:minmax(0,1fr) 13.5rem; column-gap:2.4rem} }
+/* banded sections: the band is a little wider than the column, centred on it */
+main > section:nth-of-type(even):not(.contact){max-width:calc(48rem + 3rem)!important; padding-left:1.5rem; padding-right:1.5rem; border-radius:6px}
+.contact{max-width:calc(48rem + 3rem)!important; padding-left:1.5rem; padding-right:1.5rem}
+@media (max-width:640px){
+  .sheet{padding-left:2.1rem; padding-right:1rem}
+  main > section:nth-of-type(even):not(.contact), .contact{max-width:none!important; margin-left:-.8rem!important; margin-right:-.8rem!important; padding-left:.8rem; padding-right:.8rem}
+}
+/* the red margin rule stays at the sheet's left edge */
+.sheet::before{left:1.6rem}
+@supports (animation-timeline: scroll()){ @media (prefers-reduced-motion: no-preference){ .sheet::after{left:max(1.6rem, calc((100vw - (48rem + 6rem)) / 2 + 1.6rem))} } }
+/* tables, cards and timelines fill the column exactly */
+table.ledger, .cards, .cases, ul.svc, ol.promises, .rulecards, dl.marks, .tl-wrap, .worked, .quiz, .try, .getbox, .start, .halls{width:100%; max-width:100%}
+.wide, .still{margin-left:auto; margin-right:auto}
+
+/* ---------- the rules, without icons: numbered in small red capitals ---------- */
+.rulecards{counter-reset:rule}
+.rulecards li{counter-increment:rule; padding:.85rem 1rem .9rem 2.6rem}
+.rulecards li::before{content:counter(rule, upper-roman); position:absolute; left:.9rem; top:.85rem; font-family:"Libre Caslon Display",serif; font-size:1rem; color:var(--rule); letter-spacing:.04em}
+.rulecards svg{display:none!important}
+
 @media print{
   @page{margin:.6in}
   .bar,.theme,.menu,.src,.skip,body::before,.sheet::before,.sheet::after,.tools,.filters,.tl-nav,.swipe,.seals,#copy,.copied,.ctas,.start .btn,.dl{display:none!important}
