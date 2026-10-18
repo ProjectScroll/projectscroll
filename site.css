@@ -257,12 +257,23 @@ table.ledger{width:100%; border-collapse:collapse; font-size:.95rem; line-height
 .dl{display:inline-flex; align-items:center; gap:.5rem}
 .dl svg{width:1.05em; height:1.05em}
 
-/* ---------- evidence marks ---------- */
-.mk{display:inline-block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; line-height:1.5; padding:.05rem .5rem; border-radius:3px; border:1px solid var(--ledger); color:var(--ledger); white-space:nowrap; background:color-mix(in srgb, var(--ledger) 7%, transparent)}
-.mk.arg, .marks.arg .mk{border-color:var(--rule); color:var(--rule); background:color-mix(in srgb, var(--rule) 7%, transparent)}
-.mk.sm{font-size:.64rem; padding:0 .4rem; vertical-align:.12em; margin-left:.15rem}
-.mgroup{font-size:.8rem; letter-spacing:.09em; text-transform:uppercase; color:var(--ledger); margin:1.6rem 0 .4rem}
-.mgroup.arg{color:var(--rule)}
+/* ---------- evidence marks: the same nine colors as our research reports ---------- */
+:root{--kD:#1e3f27; --kP:#2d4c73; --kC:#6b5a2a; --kM:#7d7d7d; --kT:#5c3a6b; --kI:#9a8140; --kR:#a3261a; --kH:#b5533f; --kF:#2f7f8a}
+.mk{display:inline-block; font-family:Arial, Helvetica, sans-serif; font-weight:700; font-size:.7rem; letter-spacing:.04em; text-transform:uppercase; line-height:1.55; padding:.05rem .4rem; border-radius:2px; color:#fff; background:var(--kM); white-space:nowrap}
+.kD{background:var(--kD)} .kP{background:var(--kP)} .kC{background:var(--kC)} .kM{background:var(--kM)} .kT{background:var(--kT)} .kI{background:var(--kI)} .kR{background:var(--kR)} .kH{background:var(--kH)} .kF{background:var(--kF)}
+.mk.sm{font-size:.62rem; padding:0 .32rem; vertical-align:.14em; margin-left:.15rem}
+/* the marks strip, as it runs along the foot of every page of a report */
+.mstrip{margin:1.4rem 0 0; padding:.55rem 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); font-size:.82rem; line-height:1.9; color:var(--ink-soft)}
+.mstrip span{font-family:Arial, Helvetica, sans-serif; font-weight:700; font-size:.72rem; letter-spacing:.03em; text-transform:uppercase; margin-right:.45rem; white-space:nowrap}
+.mstrip i{font-size:.8rem}
+.tD{color:var(--kD)} .tP{color:var(--kP)} .tC{color:var(--kC)} .tM{color:var(--kM)} .tT{color:var(--kT)} .tI{color:var(--kI)} .tR{color:var(--kR)} .tH{color:var(--kH)} .tF{color:var(--kF)}
+/* on dark paper the strip's words become chips, so the colors stay exactly the same and stay readable */
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .mstrip span{color:#fff; padding:.02rem .35rem; border-radius:2px} }
+:root[data-theme="dark"] .mstrip span{color:#fff; padding:.02rem .35rem; border-radius:2px}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .mstrip .tD{background:var(--kD)} :root:not([data-theme="light"]) .mstrip .tP{background:var(--kP)} :root:not([data-theme="light"]) .mstrip .tC{background:var(--kC)} :root:not([data-theme="light"]) .mstrip .tM{background:var(--kM)} :root:not([data-theme="light"]) .mstrip .tT{background:var(--kT)} :root:not([data-theme="light"]) .mstrip .tI{background:var(--kI)} :root:not([data-theme="light"]) .mstrip .tR{background:var(--kR)} :root:not([data-theme="light"]) .mstrip .tH{background:var(--kH)} :root:not([data-theme="light"]) .mstrip .tF{background:var(--kF)} }
+:root[data-theme="dark"] .mstrip .tD{background:var(--kD)} :root[data-theme="dark"] .mstrip .tP{background:var(--kP)} :root[data-theme="dark"] .mstrip .tC{background:var(--kC)} :root[data-theme="dark"] .mstrip .tM{background:var(--kM)} :root[data-theme="dark"] .mstrip .tT{background:var(--kT)} :root[data-theme="dark"] .mstrip .tI{background:var(--kI)} :root[data-theme="dark"] .mstrip .tR{background:var(--kR)} :root[data-theme="dark"] .mstrip .tH{background:var(--kH)} :root[data-theme="dark"] .mstrip .tF{background:var(--kF)}
+.mgroup{font-size:.8rem; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-soft); margin:1.6rem 0 .4rem}
+.mgroup.arg{color:var(--ink-soft)}
 dl.marks{margin:0; display:grid; gap:0}
 dl.marks > div{display:grid; grid-template-columns:9.5rem 1fr; gap:.2rem 1rem; padding:.7rem 0; border-bottom:1px dotted var(--line)}
 dl.marks dt{margin:0; padding-top:.15rem}
@@ -293,7 +304,7 @@ dl.marks dd i{display:block; color:var(--ink-soft); font-size:.9rem; margin-top:
 a.mk{text-decoration:none}
 a.mk:hover{filter:brightness(.9); text-decoration:none}
 dl.marks > div{scroll-margin-top:6rem; transition:background .6s}
-dl.marks > div:target{background:color-mix(in srgb, var(--rule) 10%, transparent); border-radius:3px}
+dl.marks > div:target{background:color-mix(in srgb, var(--ink) 7%, transparent); border-radius:3px; box-shadow:inset 3px 0 0 var(--ink-soft)}
 /* ---------- footer ---------- */
 footer.site{max-width:var(--measure); display:grid; gap:.4rem 2rem; border-top:1px solid var(--line); margin-top:2.6rem}
 footer.site .motto{font-family:"Libre Caslon Display",serif; font-size:1.25rem; color:var(--ink); margin-bottom:.4rem}
