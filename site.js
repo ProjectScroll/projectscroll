@@ -473,7 +473,7 @@ window.PS_BADGES=[
   ['legend','Legend tester','Test a family legend.'],
   ['toolkit','Toolmaker','Use a tool in the hunter’s toolkit.'],
   ['lantern','Lamplighter','Put out the lantern, then light it again.'],
-  ['hewgag','Hewgag','Decode the hidden line, and say the word in your badge book.']
+  ['hewgag','Cipher breaker','Decode the hidden line, and say the word in your badge book.']
 ];
 (function(){
   const KEY='ps-badges'; let got={};
