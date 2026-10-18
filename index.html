@@ -41,7 +41,7 @@
 /* apply a saved theme before first paint, so there is no flash */
 try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}
 </script>
-<link rel="stylesheet" href="/site.css?v=34">
+<link rel="stylesheet" href="/site.css?v=35">
 </head>
 <body>
 <!--
@@ -64,7 +64,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       Project Scroll
     </a>
     <nav aria-label="Sections" id="sitenav">
-      <a href="#hunt">Hunt</a><a href="#cases">Cases</a><a href="#services">Research</a><a href="#method">Method</a><a href="#marks">Evidence</a><a href="#faq">Questions</a><a href="#contact">Contact</a>
+      <a href="#timeline">Record</a><a href="#hunt">Hunt</a><a href="#cases">Cases</a><a href="#services">Research</a><a href="#method">Method</a><a href="#marks">Evidence</a><a href="#faq">Questions</a><a href="#contact">Contact</a>
     </nav>
     <button class="searchbtn" type="button" id="searchBtn" aria-label="Search the site" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     <button class="menu" type="button" id="menu" aria-expanded="false" aria-controls="sitenav">Menu</button>
@@ -104,7 +104,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
         <li><a href="#services">Who said it first</a></li>
         <li><a href="#services">A second pair of eyes</a></li>
       </ul>
-      <p class="promo-marks"><span class="lbl">The nine marks, strongest first:</span> <a class="mk kD" href="#mk-document">Document</a><a class="mk kP" href="#mk-period-print">Period print</a><a class="mk kC" href="#mk-county-history">County history</a><a class="mk kM" href="#mk-compiled">Compiled</a><a class="mk kT" href="#mk-tradition">Tradition</a><a class="mk kI" href="#mk-inference">Inference</a><a class="mk kR" href="#mk-reading">Reading</a><a class="mk kH" href="#mk-hypothesis">Hypothesis</a><a class="mk kF" href="#mk-field">Field (our own survey)</a></p>
+      <p class="promo-marks"><span class="lbl">The nine marks, strongest first:</span> <a class="mk kD" href="#mk-document">Document</a><a class="mk kP" href="#mk-period-print">Period print</a><a class="mk kC" href="#mk-county-history">County history</a><a class="mk kM" href="#mk-compiled">Compiled</a><a class="mk kT" href="#mk-tradition">Tradition</a><a class="mk kF" href="#mk-field">Field (our own survey)</a><a class="mk kI" href="#mk-inference">Inference</a><a class="mk kR" href="#mk-reading">Reading</a><a class="mk kH" href="#mk-hypothesis">Hypothesis</a></p>
       <p class="promo-sample">His death certificate gives no middle initial <a class="mk sm kD" href="#mk-document">Document</a>. His son’s, twenty-three years later, gives him one <a class="mk sm kD" href="#mk-document">Document</a>. In 1935, someone gave the father his son’s initial <a class="mk sm kR" href="#mk-reading">Reading</a>.</p>
       <p class="promo-ctas"><a class="btn primary" href="#contact">Bring us your mystery</a><a class="btn" href="#marks">How we mark the evidence</a><a class="btn" href="/sample/project-scroll-sample-report.pdf">Sample report (PDF)</a><a class="btn" href="/sample/project-scroll-sample-family-register.pdf">Sample family register (PDF)</a></p>
     </aside>
@@ -149,6 +149,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
 
     <script type="application/json" id="clues">[["2026-10-17", "17 October", "One man gave away forty acres of lakefront. Try to picture anyone doing that today. Who was he?", 3], ["2026-10-24", "24 October", "In 1867 a village hotel was hauled across town and turned into a mill. Nobody has pinned down where it went.", 2], ["2026-10-31", "31 October", "A lake with no stream in and no stream out once had a flour mill on its shore. What turned the wheel?", 7], ["2026-11-07", "7 November", "A deed written on parchment in 1831 has vanished. Somewhere, someone may have it in a drawer.", 4], ["2026-11-14", "14 November", "The man who first wrote down the joke lodge’s story put a question mark after the word “charter.” Was there ever one?", 1], ["2026-11-21", "21 November", "Old shores were stony. Where did all the boulders go?", 6], ["2026-11-28", "28 November", "A county history said a lake was fed by a river running underground from Lake Superior. Where does its water really come from?", 5]]</script>
     <aside class="clue" aria-label="Clue of the week">
+      <svg class="clue-ic" viewBox="0 0 64 64" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="26" cy="26" r="16"/><circle cx="26" cy="26" r="11" stroke-width="1" opacity=".5"/><path d="M38 38l16 16" stroke-width="5"/><path d="M19 20a9 9 0 0 1 8-5" stroke-width="1.6" opacity=".7"/></svg>
       <span class="lbl" id="clueLbl">Clue of the week · 17 October</span>
       <p id="clueText">One man gave away forty acres of lakefront. Try to picture anyone doing that today. Who was he?</p>
       <a href="#case-3" id="clueLink">It’s case 3 on the board</a> · <a href="https://www.facebook.com/projectscroll/">Follow the hunt on Facebook</a>
@@ -339,7 +340,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
         <div id="mk-hypothesis"><dt><span class="mk kH">Hypothesis</span></dt><dd>An idea worth testing that the records don’t yet support. We say what would prove or disprove it. <i>Example: he never used a middle initial at all; his obituary and gravestone would tell.</i></dd></div>
       </dl>
 
-      <p class="mstrip"><i>Marks, strongest first:</i> <span class="tD">Document</span> <span class="tP">Period print</span> <span class="tC">County history</span> <span class="tM">Compiled</span> <span class="tT">Tradition</span> <span class="tI">Inference</span> <span class="tR">Reading</span> <span class="tH">Hypothesis</span> <span class="tF">Field (our own survey)</span> <i>— everything in red is our reading, offered for correction</i></p>
+      <p class="mstrip"><i>Marks, strongest first:</i> <span class="tD">Document</span> <span class="tP">Period print</span> <span class="tC">County history</span> <span class="tM">Compiled</span> <span class="tT">Tradition</span> <span class="tF">Field (our own survey)</span> <span class="tI">Inference</span> <span class="tR">Reading</span> <span class="tH">Hypothesis</span> <i>— everything in red is our reading, offered for correction</i></p>
 
       <div class="worked">
         <p class="mgroup">How it looks in a report</p>
@@ -404,14 +405,14 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <p class="center"><a class="btn dl" href="/worksheet/project-scroll-hunters-worksheet.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The hunter’s worksheet (PDF, one page)</a></p>
 
       <div class="explore">
-        <a href="/map/cassopolis/"><span class="k">Then and now</span><b>Four towns, 1860 and today</b><span class="d">Cassopolis, Niles, Dowagiac and Paw Paw: the 1860 town plans laid over today’s streets.</span></a>
-      <a href="/map/"><span class="k">The map room</span><b>Walk the 1860 wall map</b><span class="d">Zoom into every farm, town plan and engraved house on the great county map, straight from the Library of Congress.</span></a>
-        <a href="/guide/death-certificate/"><span class="k">A guide from the desk</span><b>How to read a death certificate</b><span class="d">Tap each box to see who filled it in, and how far to trust it.</span></a>
-        <a href="/toolkit/"><span class="k">The hunter’s toolkit</span><b>Tools for reading the record</b><span class="d">Bring faded ink back to life, turn an age at death into a birth date, find Soundex codes and name any cousin.</span></a>
-        <a href="/guide/old-handwriting/"><span class="k">A guide from the desk</span><b>Reading the old hand</b><span class="d">The long s, ye, inst. and ult., double dates and the other tricks of old handwriting.</span></a>
-        <a href="/records/"><span class="k">From the desk</span><b>Where the records are</b><span class="d">The free archives, newspapers and maps we search first, from Michigan to Sweden.</span></a>
-        <a href="/glossary/"><span class="k">Plain English</span><b>The glossary</b><span class="d">Relict, probate, plat, ahnentafel: the words old records use, explained.</span></a>
-        <a href="/notes/book/"><span class="k">Bound in leather</span><b>The book of field notes</b><span class="d">Every lesson from the desk, in a small book whose pages turn.</span></a>
+        <a href="/map/cassopolis/"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="8" height="16" rx="1"/><rect x="13" y="4" width="8" height="16" rx="1"/><path d="M5 8h4M5 12h4M5 16h4M15 8l4 4M19 8l-4 4"/></svg><span class="k">Then and now</span><b>Four towns, 1860 and today</b><span class="d">Cassopolis, Niles, Dowagiac and Paw Paw: the 1860 town plans laid over today’s streets.</span></a>
+      <a href="/map/"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg><span class="k">The map room</span><b>Walk the 1860 wall map</b><span class="d">Zoom into every farm, town plan and engraved house on the great county map, straight from the Library of Congress.</span></a>
+        <a href="/guide/death-certificate/"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M8 7h8M8 10.5h8M8 14h5"/><circle cx="15.5" cy="17" r="1.6"/></svg><span class="k">A guide from the desk</span><b>How to read a death certificate</b><span class="d">Tap each box to see who filled it in, and how far to trust it.</span></a>
+        <a href="/toolkit/"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="5.5"/><path d="M14 14l6 6"/></svg><span class="k">The hunter’s toolkit</span><b>Tools for reading the record</b><span class="d">Bring faded ink back to life, turn an age at death into a birth date, find Soundex codes and name any cousin.</span></a>
+        <a href="/guide/old-handwriting/"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-7 1-12 6-14 14l2 2c3-1 6-3 8-6"/><path d="M6 18l-2 3"/><path d="M11 13c2-2 5-5 9-9"/></svg><span class="k">A guide from the desk</span><b>Reading the old hand</b><span class="d">The long s, ye, inst. and ult., double dates and the other tricks of old handwriting.</span></a>
+        <a href="/records/"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9l8-5 8 5v11"/><path d="M7 20v-7M12 20v-7M17 20v-7M3 20h18"/></svg><span class="k">From the desk</span><b>Where the records are</b><span class="d">The free archives, newspapers and maps we search first, from Michigan to Sweden.</span></a>
+        <a href="/glossary/"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 1-4-4z"/><path d="M8.5 15l2.5-7 2.5 7M9.5 12.5h3"/></svg><span class="k">Plain English</span><b>The glossary</b><span class="d">Relict, probate, plat, ahnentafel: the words old records use, explained.</span></a>
+        <a href="/notes/book/"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.5-5-2-8-1.5v14c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-14c-3-.5-6 0-8 1.5z"/><path d="M12 6v14"/></svg><span class="k">Bound in leather</span><b>The book of field notes</b><span class="d">Every lesson from the desk, in a small book whose pages turn.</span></a>
       </div>
 
       <figure class="wide lens-wrap" id="lensFig">
@@ -487,6 +488,6 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
   </footer>
 </div>
 
-<script src="/site.js?v=34" defer></script>
+<script src="/site.js?v=35" defer></script>
 </body>
 </html>
