@@ -993,6 +993,37 @@ details.faq[open]{background:color-mix(in srgb, var(--paper) 60%, transparent)}
 @media print{ #msgform{display:none!important} .contact{break-inside:avoid} }
 .plate picture{display:block}
 
+/* ---------- the record so far: tally, wax seals, rolled ends, soft edges, ribbon ---------- */
+.tl-tally{display:flex; flex-wrap:wrap; justify-content:center; gap:.35rem 1.4rem; margin:.2rem 0 .9rem; font-size:.92rem; color:var(--ink-soft)}
+.tl-tally b{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.45rem; color:var(--ink); margin-right:.3rem; vertical-align:-.12rem}
+.tl-tally .sl b{color:#9a2f24}
+.tl-filters button .n{display:inline-block; min-width:1.35em; padding:0 .3em; margin-left:.1rem; border-radius:999px; font-size:.75em; line-height:1.45; background:color-mix(in srgb, var(--ink) 9%, transparent); color:var(--ink-soft)}
+.tl-filters button[aria-pressed="true"] .n{background:color-mix(in srgb, var(--paper) 25%, transparent); color:inherit}
+.tl-wrap{margin-bottom:.6rem; padding:0 1.15rem}
+.tl-wrap::before, .tl-wrap::after{content:""; position:absolute; top:.4rem; bottom:.2rem; width:.8rem; border-radius:.45rem; pointer-events:none;
+  background:linear-gradient(90deg, #5b3a22, #a87a4c 35%, #d9b083 50%, #a87a4c 65%, #5b3a22); box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.tl-wrap::before{left:0} .tl-wrap::after{right:0}
+.tl{-webkit-mask-image:none; mask-image:none}
+.tl.fl{-webkit-mask-image:linear-gradient(90deg, transparent, #000 2.5rem); mask-image:linear-gradient(90deg, transparent, #000 2.5rem)}
+.tl.fr{-webkit-mask-image:linear-gradient(270deg, transparent, #000 2.5rem); mask-image:linear-gradient(270deg, transparent, #000 2.5rem)}
+.tl.fl.fr{-webkit-mask-image:linear-gradient(90deg, transparent, #000 2.5rem, #000 calc(100% - 2.5rem), transparent); mask-image:linear-gradient(90deg, transparent, #000 2.5rem, #000 calc(100% - 2.5rem), transparent)}
+.tl li.sealed::before{width:.95rem; height:.95rem; top:.22rem; left:-.1rem; border:0; border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #d0634f 0 12%, #a3352a 38%, #6e1d16 100%);
+  box-shadow:0 1px 2px rgba(0,0,0,.35), inset 0 0 0 2px rgba(255,255,255,.08)}
+.tl li.sealed{transition:background .2s, transform .2s}
+.tl li.sealed:hover{transform:translateY(-2px)}
+.tl-ribbon{display:flex; align-items:center; gap:.6rem; margin:0 5.6rem 2.6rem 1.15rem; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); user-select:none}
+.tl-ribbon .rail{position:relative; flex:1; height:1.4rem; cursor:pointer; touch-action:none}
+.tl-ribbon .rail::before{content:""; position:absolute; left:0; right:0; top:50%; border-top:1px solid var(--line)}
+.tl-ribbon .win{position:absolute; top:.15rem; bottom:.15rem; border-radius:.3rem; background:color-mix(in srgb, var(--rule) 14%, transparent); border:1px solid color-mix(in srgb, var(--rule) 45%, transparent); transition:left .12s linear}
+.tl-ribbon .tick{position:absolute; top:50%; width:.5rem; height:.5rem; margin:-.25rem 0 0 -.25rem; border-radius:50%; background:var(--paper); border:1.5px solid var(--rule); cursor:pointer; z-index:1}
+.tl-ribbon .tick.s{background:#a3352a; border-color:#6e1d16}
+.tl-ribbon .tick.now{background:var(--rule)}
+.tl-ribbon .tick.tkD{border-color:var(--kD)} .tl-ribbon .tick.tkC{border-color:var(--kC)} .tl-ribbon .tick.tkT{border-color:var(--kT)} .tl-ribbon .tick.tkP{border-color:var(--kP)}
+.tl-ribbon .tick:hover{transform:scale(1.5)}
+@media (max-width:640px){ .tl-ribbon{margin-right:1.15rem; gap:.4rem; font-size:.65rem} .tl-ribbon .tick{width:.38rem; height:.38rem; margin:-.19rem 0 0 -.19rem; border-width:1px} .tl-wrap::before, .tl-wrap::after{width:.6rem} }
+@media print{ .tl-ribbon, .tl-wrap::before, .tl-wrap::after{display:none!important} .tl{-webkit-mask-image:none!important; mask-image:none!important} .tl-wrap{padding:0!important} }
+
 /* ---------- the lantern: warm light that follows the pointer ---------- */
 .lantern{position:fixed; inset:0; pointer-events:none; z-index:90; opacity:0; transition:opacity .5s ease;
   background:radial-gradient(circle 210px at var(--lx,-500px) var(--ly,-500px), rgba(255,186,60,.34) 0%, rgba(255,170,50,.17) 36%, rgba(255,150,40,.05) 62%, transparent 76%);

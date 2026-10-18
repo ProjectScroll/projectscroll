@@ -41,7 +41,7 @@
 /* apply a saved theme before first paint, so there is no flash */
 try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}
 </script>
-<link rel="stylesheet" href="/site.css?v=33">
+<link rel="stylesheet" href="/site.css?v=34">
 </head>
 <body>
 <!--
@@ -109,6 +109,44 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <p class="promo-ctas"><a class="btn primary" href="#contact">Bring us your mystery</a><a class="btn" href="#marks">How we mark the evidence</a><a class="btn" href="/sample/project-scroll-sample-report.pdf">Sample report (PDF)</a><a class="btn" href="/sample/project-scroll-sample-family-register.pdf">Sample family register (PDF)</a></p>
     </aside>
 
+    <section id="timeline">
+      <p class="part">Part I</p>
+      <h2>On the record, so far</h2>
+      <p class="intro">Every date the hunt has touched, in order, with the mark each one carries. Read it left to right, like a scroll. The sealed dates are real; each one opens when the hunt reaches it.</p>
+      <p class="tl-tally" id="tlTally"><span><b>18</b> dates on the scroll</span><span><b>10</b> on the record</span><span class="sl"><b>8</b> still sealed</span></p>
+      <p class="swipe" aria-hidden="true">Swipe sideways →</p>
+      <div class="filters tl-filters" role="group" aria-label="Show dates by mark"><button type="button" data-m="all" aria-pressed="true">All</button><button type="button" data-m="kD" aria-pressed="false">Documents</button><button type="button" data-m="kC" aria-pressed="false">County histories</button><button type="button" data-m="kT" aria-pressed="false">Traditions</button><button type="button" data-m="sealedmk" aria-pressed="false">Sealed</button></div>
+      <div class="tl-wrap">
+        <button type="button" class="tl-nav prev" aria-label="Earlier">‹</button>
+        <ol class="tl" id="tl" tabindex="0" aria-label="Timeline">
+          <li class="sealed"><span class="yr">c. 11,000 BC</span><p>Sealed. This date opens with a later hall.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
+          <li class="sealed"><span class="yr">c. 200 BC</span><p>Sealed. The record holds it; the hunt has not reached it yet.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
+          <li class="sealed"><span class="yr">1695</span><p>Sealed until its hall is opened.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
+          <li class="sealed"><span class="yr">1741</span><p>Sealed. The record holds it; the hunt has not reached it yet.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
+          <li class="sealed"><span class="yr">1759</span><p>Sealed. This date opens with a later hall.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
+          <li class="sealed"><span class="yr">1821</span><p>Sealed. The record holds it; the hunt has not reached it yet.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
+          <li class="sealed"><span class="yr">1828</span><p>Sealed until its hall is opened.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
+          <li class="dkD"><span class="yr">1831</span><p>The village is laid out. Broadway and State are already on the plat.</p><span class="mk sm kD">Document</span></li>
+          <li class="sealed"><span class="yr">1834</span><p>Sealed. This date opens with a later hall.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
+          <li class="dkC"><span class="yr">1846</span><p>In the spring, a joke secret society is founded in a village hotel.</p><span class="mk sm kC">County history</span> <a href="#case-1">Case 1</a></li>
+          <li class="dkC"><span class="yr">1849</span><p>A small-town doctor sets out for the California gold fields, and writes it down.</p><span class="mk sm kC">County history</span></li>
+          <li class="dkC"><span class="yr">1852</span><p>12 June: the Masons hold their first meeting under the same hotel roof.</p><span class="mk sm kC">County history</span></li>
+          <li class="dkD"><span class="yr">1860</span><p>A Philadelphia wall map engraves one word on the hotel’s block: HOTEL.</p><span class="mk sm kD">Document</span></li>
+          <li class="dkC"><span class="yr">1867</span><p>The old hotel is hauled across the village and turned into a mill. A new hotel rises on its ground.</p><span class="mk sm kC">County history</span> <a href="#case-2">Case 2</a></li>
+          <li class="dkC"><span class="yr">1882</span><p>The county history records that “many people” believe a lake is fed by a river from Lake Superior.</p><span class="mk sm kC">County history</span> <span class="mk sm kT">Tradition</span></li>
+          <li class="dkC"><span class="yr">1906</span><p>A county historian hears in the lakes “the distant echoes … of the glacial age.”</p><span class="mk sm kC">County history</span></li>
+          <li class="dkD"><span class="yr">1912</span><p>A pioneer dies. His death certificate gives no middle initial.</p><span class="mk sm kD">Document</span> <a href="#case-10">Case 10</a></li>
+          <li class="dkD"><span class="yr">1935</span><p>His son’s certificate gives the father an initial: the son’s own.</p><span class="mk sm kD">Document</span></li>
+          <li class="now"><span class="yr">Now</span><p>The scroll is open. The next date on it may be one you find.</p><a href="#cases">The case board</a></li>
+        </ol>
+        <button type="button" class="tl-nav next" aria-label="Later">›</button>
+      </div>
+      <div class="tl-ribbon" id="tlRibbon" aria-hidden="true"><span class="end">Earliest</span><div class="rail"><i class="win"></i></div><span class="end">Now</span></div>
+      <figure class="secfig land">
+        <picture><source srcset="/img/bellin-great-lakes-1744.webp" type="image/webp"><img src="/img/bellin-great-lakes-1744.jpg" width="1024" height="638" loading="lazy" decoding="async" alt="An eighteenth-century French engraved map of the Great Lakes, Carte des Lacs du Canada, showing Lakes Superior, Michigan, Huron, Erie and Ontario with rivers and place names."></picture><figcaption>Bellin’s <i>Carte des Lacs du Canada</i>, 1744. Long before the first county was drawn, the lakes were already on the map.</figcaption>
+      </figure>
+    </section>
+
     <script type="application/json" id="clues">[["2026-10-17", "17 October", "One man gave away forty acres of lakefront. Try to picture anyone doing that today. Who was he?", 3], ["2026-10-24", "24 October", "In 1867 a village hotel was hauled across town and turned into a mill. Nobody has pinned down where it went.", 2], ["2026-10-31", "31 October", "A lake with no stream in and no stream out once had a flour mill on its shore. What turned the wheel?", 7], ["2026-11-07", "7 November", "A deed written on parchment in 1831 has vanished. Somewhere, someone may have it in a drawer.", 4], ["2026-11-14", "14 November", "The man who first wrote down the joke lodge’s story put a question mark after the word “charter.” Was there ever one?", 1], ["2026-11-21", "21 November", "Old shores were stony. Where did all the boulders go?", 6], ["2026-11-28", "28 November", "A county history said a lake was fed by a river running underground from Lake Superior. Where does its water really come from?", 5]]</script>
     <aside class="clue" aria-label="Clue of the week">
       <span class="lbl" id="clueLbl">Clue of the week · 17 October</span>
@@ -123,7 +161,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     </ul>
 
     <section id="hunt">
-      <p class="part">Part I</p>
+      <p class="part">Part II</p>
       <h2>The hunt</h2>
       <p class="intro">It began in one small Michigan county, with a lake that has no stream in and no stream out, a secret society from 1846, and a doctor who kept a bone. It is growing from there, one hall at a time.</p>
       <ol class="steps">
@@ -157,7 +195,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     </section>
 
     <section id="cases">
-      <p class="part">Part II</p>
+      <p class="part">Part III</p>
       <h2>The case board</h2>
       <p class="intro">Every mystery the hunt has posted, and where each one stands. Crack one, and your name goes here and in the next post.</p>
       <nav class="seals" aria-label="Jump to a case"><a href="#case-1" title="Case 1: open">1</a><a href="#case-2" title="Case 2: open">2</a><a href="#case-3" title="Case 3: open">3</a><a href="#case-4" title="Case 4: open">4</a><a href="#case-5" title="Case 5: open">5</a><a href="#case-6" title="Case 6: open">6</a><a href="#case-7" title="Case 7: open">7</a><a href="#case-8" title="Case 8: open">8</a><a href="#case-9" title="Case 9: open">9</a><a href="#case-10" title="Case 10: open">10</a></nav>
@@ -196,7 +234,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     </section>
 
     <section id="services">
-      <p class="part">Part III</p>
+      <p class="part">Part IV</p>
       <h2>Bring us your mystery</h2>
       <p class="intro">Some questions have waited a hundred years for someone to look properly. If the answer was ever written down, we will look for it, and tell you honestly what we find.</p>
       <h3 class="sub">Cases from our desk</h3>
@@ -254,7 +292,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     </section>
 
     <section id="method">
-      <p class="part">Part IV</p>
+      <p class="part">Part V</p>
       <h2>How we work</h2>
       <p class="intro">Five promises we keep on every case, whether it takes an afternoon or a season.</p>
       <ol class="promises">
@@ -275,7 +313,7 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
     </section>
 
     <section id="marks">
-      <p class="part">Part V</p>
+      <p class="part">Part VI</p>
       <h2>How we mark the evidence</h2>
       <p class="intro">Not every source is worth the same. A death certificate filed the week a man died is not a story his grandson told sixty years later, and neither of them is our own opinion. So in our longer research reports, every statement carries one of nine marks, strongest first. You can see at a glance what the record says, and what we are arguing from it.</p>
       <figure class="scale" aria-label="The nine marks, from strongest to weakest">
@@ -351,42 +389,6 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
       <cite>A county historian on the lakes of southwest Michigan, 1906</cite>
     </blockquote>
     </div>
-
-    <section id="timeline">
-      <p class="part">Part VI</p>
-      <h2>On the record, so far</h2>
-      <p class="intro">Every date the hunt has touched, in order, with the mark each one carries. Read it left to right, like a scroll. The sealed dates are real; each one opens when the hunt reaches it.</p>
-      <p class="swipe" aria-hidden="true">Swipe sideways →</p>
-      <div class="filters tl-filters" role="group" aria-label="Show dates by mark"><button type="button" data-m="all" aria-pressed="true">All</button><button type="button" data-m="kD" aria-pressed="false">Documents</button><button type="button" data-m="kC" aria-pressed="false">County histories</button><button type="button" data-m="kT" aria-pressed="false">Traditions</button><button type="button" data-m="sealedmk" aria-pressed="false">Sealed</button></div>
-      <div class="tl-wrap">
-        <button type="button" class="tl-nav prev" aria-label="Earlier">‹</button>
-        <ol class="tl" id="tl" tabindex="0" aria-label="Timeline">
-          <li class="sealed"><span class="yr">c. 11,000 BC</span><p>Sealed. This date opens with a later hall.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
-          <li class="sealed"><span class="yr">c. 200 BC</span><p>Sealed. The record holds it; the hunt has not reached it yet.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
-          <li class="sealed"><span class="yr">1695</span><p>Sealed until its hall is opened.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
-          <li class="sealed"><span class="yr">1741</span><p>Sealed. The record holds it; the hunt has not reached it yet.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
-          <li class="sealed"><span class="yr">1759</span><p>Sealed. This date opens with a later hall.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
-          <li class="sealed"><span class="yr">1821</span><p>Sealed. The record holds it; the hunt has not reached it yet.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
-          <li class="sealed"><span class="yr">1828</span><p>Sealed until its hall is opened.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
-          <li class="dkD"><span class="yr">1831</span><p>The village is laid out. Broadway and State are already on the plat.</p><span class="mk sm kD">Document</span></li>
-          <li class="sealed"><span class="yr">1834</span><p>Sealed. This date opens with a later hall.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
-          <li class="dkC"><span class="yr">1846</span><p>In the spring, a joke secret society is founded in a village hotel.</p><span class="mk sm kC">County history</span> <a href="#case-1">Case 1</a></li>
-          <li class="dkC"><span class="yr">1849</span><p>A small-town doctor sets out for the California gold fields, and writes it down.</p><span class="mk sm kC">County history</span></li>
-          <li class="dkC"><span class="yr">1852</span><p>12 June: the Masons hold their first meeting under the same hotel roof.</p><span class="mk sm kC">County history</span></li>
-          <li class="dkD"><span class="yr">1860</span><p>A Philadelphia wall map engraves one word on the hotel’s block: HOTEL.</p><span class="mk sm kD">Document</span></li>
-          <li class="dkC"><span class="yr">1867</span><p>The old hotel is hauled across the village and turned into a mill. A new hotel rises on its ground.</p><span class="mk sm kC">County history</span> <a href="#case-2">Case 2</a></li>
-          <li class="dkC"><span class="yr">1882</span><p>The county history records that “many people” believe a lake is fed by a river from Lake Superior.</p><span class="mk sm kC">County history</span> <span class="mk sm kT">Tradition</span></li>
-          <li class="dkC"><span class="yr">1906</span><p>A county historian hears in the lakes “the distant echoes … of the glacial age.”</p><span class="mk sm kC">County history</span></li>
-          <li class="dkD"><span class="yr">1912</span><p>A pioneer dies. His death certificate gives no middle initial.</p><span class="mk sm kD">Document</span> <a href="#case-10">Case 10</a></li>
-          <li class="dkD"><span class="yr">1935</span><p>His son’s certificate gives the father an initial: the son’s own.</p><span class="mk sm kD">Document</span></li>
-          <li class="now"><span class="yr">Now</span><p>The scroll is open. The next date on it may be one you find.</p><a href="#cases">The case board</a></li>
-        </ol>
-        <button type="button" class="tl-nav next" aria-label="Later">›</button>
-      </div>
-      <figure class="secfig land">
-        <picture><source srcset="/img/bellin-great-lakes-1744.webp" type="image/webp"><img src="/img/bellin-great-lakes-1744.jpg" width="1024" height="638" loading="lazy" decoding="async" alt="An eighteenth-century French engraved map of the Great Lakes, Carte des Lacs du Canada, showing Lakes Superior, Michigan, Huron, Erie and Ontario with rivers and place names."></picture><figcaption>Bellin’s <i>Carte des Lacs du Canada</i>, 1744. Long before the first county was drawn, the lakes were already on the map.</figcaption>
-      </figure>
-    </section>
 
     <section id="notes" class="notes">
       <p class="part">Part VII</p>
@@ -485,6 +487,6 @@ try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.datas
   </footer>
 </div>
 
-<script src="/site.js?v=33" defer></script>
+<script src="/site.js?v=34" defer></script>
 </body>
 </html>
