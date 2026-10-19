@@ -2082,3 +2082,17 @@ p,li,dd,figcaption,.lede{text-wrap:pretty}
 @media (max-width:700px){ .masthead{height:64px} .masthead.open{height:150px} .masthead .mh-cap{font-size:.62rem; right:.6rem} }
 @media (prefers-reduced-motion: reduce){ .masthead{transition:none} .masthead .mh-pic{transition:none} }
 @media print{ .masthead{display:none!important} }
+
+/* ===== Draft 82: the strip, second and third passes ===== */
+/* a gold glint crosses the strip as a new plate arrives */
+.masthead .mh-glint{display:none}
+@media (prefers-reduced-motion: no-preference){
+  .masthead::before{content:""; position:absolute; top:0; bottom:0; left:-30%; width:22%; z-index:2; pointer-events:none; opacity:0; background:linear-gradient(100deg, transparent, rgba(255,246,214,.28) 50%, transparent); transform:skewX(-14deg)}
+  .masthead.glint::before{animation:mhglint 2.4s ease-out 1.2s both}
+  @keyframes mhglint{0%{opacity:0; left:-30%} 15%{opacity:1} 100%{opacity:0; left:110%}}
+}
+/* a keyboard hint for people who arrive at the strip by Tab */
+.masthead .mh-hint{position:absolute; left:50%; bottom:.4rem; transform:translateX(-50%); z-index:3; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:#EAE6DC; text-shadow:0 1px 3px rgba(0,0,0,.7); opacity:0; transition:opacity .3s; pointer-events:none}
+.masthead:focus-visible .mh-hint{opacity:1}
+/* the bar sits a touch lighter over the strip's shadow; the gold rule picks up its glint on load */
+.bar{box-shadow:0 1px 0 color-mix(in srgb, var(--paper) 70%, transparent)}
