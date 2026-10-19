@@ -1762,3 +1762,23 @@ html{scroll-padding-top:5.8rem}
 @media (max-width:640px){ .hero-k .hk1{white-space:normal} .placeband + .hero{padding-top:2.2rem} }
 .placeband.still .pb-track{flex-wrap:nowrap; width:max-content}
 .placeband.still .pb-view{overflow-x:auto; scrollbar-width:thin}
+
+/* ===== Draft 58 ===== */
+/* the top bar: on wide screens, Services wears a gold pill, so the commissions are easy to find */
+@media (min-width:1360px){
+  .bar nav a[href="#services"]{padding:.12rem .7rem; border:1px solid var(--gold); border-radius:999px; background:color-mix(in srgb, var(--gold-hi) 14%, transparent)}
+  .has-navink .bar nav a[href="#services"][aria-current="true"]{background:color-mix(in srgb, var(--gold-hi) 28%, transparent)}
+}
+/* Part I: a link button on each date */
+.tl-link{position:absolute; top:1.55rem; right:2rem; width:1.5rem; height:1.5rem; display:grid; place-items:center; padding:0; border:0; border-radius:50%; background:none; color:var(--ink-soft); cursor:pointer; opacity:0; transition:opacity .2s, color .2s}
+.tl-link svg{width:.95rem; height:.95rem}
+.tl li:hover .tl-link, .tl-link:focus-visible{opacity:.85}
+.tl-link:hover{color:var(--gold-lo)}
+.tl-link.ok{opacity:1; color:var(--gold-lo)}
+.tl-link.ok::after{content:"Copied"; position:absolute; top:-1.3rem; right:0; font-size:.68rem; color:var(--gold-lo); white-space:nowrap}
+@media (hover:none){ .tl-link{opacity:.55} }
+.tl li:not(.sealed) .tl-link{right:.3rem}
+/* the ad: where the commissions come from */
+.ad-serve{margin:.15rem auto .35rem; font-style:italic; font-size:.9rem; color:var(--ink-soft)}
+@media print{ .tl-link{display:none!important} }
+@media (min-width:1360px){ .bar nav a[href="#services"]{padding:.1rem .45rem; margin:0 -.2rem} }

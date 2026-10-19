@@ -735,7 +735,7 @@ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key=
   f.addEventListener('submit', function(e){ e.preventDefault(); const y=parseInt(inp.value,10); if (isNaN(y)) return;
     const lis=[].slice.call(t.children).filter(function(li){ return !li.hidden && !li.classList.contains('now'); }); if (!lis.length) return;
     let best=lis[0]; lis.forEach(function(li){ if (Math.abs(yearOf(li)-y)<Math.abs(yearOf(best)-y)) best=li; });
-    t.scrollTo({left:Math.max(0,best.offsetLeft-8), behavior:smooth}); best.classList.remove('lit'); void best.offsetWidth; best.classList.add('lit'); });
+    t.scrollTo({left:Math.max(0,best.offsetLeft-(t.clientWidth-best.offsetWidth)/2), behavior:smooth}); best.classList.remove('lit'); void best.offsetWidth; best.classList.add('lit'); });
 })();
 
 /* ---------- where the hunt began: the place names drift past ---------- */
@@ -745,6 +745,25 @@ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key=
   [].slice.call(tr.children).forEach(function(li){ const c=li.cloneNode(true); c.setAttribute('aria-hidden','true'); tr.appendChild(c); });
   const speed=function(){ box.style.setProperty('--pbdur', Math.max(40, Math.round(tr.scrollWidth/2/38))+'s'); };
   speed(); addEventListener('resize', speed, {passive:true}); box.classList.add('run');
+})();
+
+/* ---------- Part I: every date has its own link, so a date can be shared ---------- */
+(function(){
+  const t=document.getElementById('tl'); if (!t) return;
+  const slug=function(y){ return 'y-'+y.toLowerCase().replace(/c\.\s*/,'c').replace(/[^0-9a-z]+/g,''); };
+  const smooth=matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
+  [].slice.call(t.children).forEach(function(li){ const yr=li.querySelector('.yr'); if (!yr || li.classList.contains('now')) return;
+    li.id=slug(yr.textContent);
+    const b=document.createElement('button'); b.type='button'; b.className='tl-link'; b.setAttribute('aria-label','Copy a link to '+yr.textContent); b.title='Copy a link to this date';
+    b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+    b.addEventListener('click', function(e){ e.stopPropagation(); const url=location.origin+location.pathname+'#'+li.id;
+      const done=function(){ b.classList.add('ok'); b.title='Link copied'; setTimeout(function(){ b.classList.remove('ok'); b.title='Copy a link to this date'; }, 1600); };
+      if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, function(){}); else done(); history.replaceState(null,'','#'+li.id); });
+    yr.insertAdjacentElement('afterend', b); });
+  const go=function(){ const id=location.hash.slice(1); if (!/^y-/.test(id)) return; const li=document.getElementById(id); if (!li) return;
+    const sec=document.getElementById('timeline'); if (sec) sec.scrollIntoView({behavior:smooth, block:'start'});
+    setTimeout(function(){ t.scrollTo({left:Math.max(0,li.offsetLeft-(t.clientWidth-li.offsetWidth)/2), behavior:smooth}); li.classList.remove('lit'); void li.offsetWidth; li.classList.add('lit'); }, 500); };
+  addEventListener('hashchange', go); if (location.hash) setTimeout(go, 400);
 })();
 
 /* ---------- what's new on the trail: a moving ticker ---------- */
