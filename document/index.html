@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Project Scroll">
 <meta property="fb:app_id" content="2627955700977491">
 <meta property="og:url" content="https://projectscroll.com/document/">
-<meta property="og:image" content="https://projectscroll.com/og/document.png">
+<meta property="og:image" content="https://projectscroll.com/og/document.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -28,8 +28,8 @@
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
-<link rel="stylesheet" href="/site.min.css?v=25cf4fd8">
-<script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/sample/*"}},{"not":{"href_matches":"/*.pdf"}}]},"eagerness":"moderate"}]}</script>
+<link rel="stylesheet" href="/site.min.css?v=c9c242c0">
+<script type="speculationrules">{"prefetch":[{"where":{"and":[{"selector_matches":".bar a, footer nav a, .partrail a, .search-res a, .crumb a"},{"href_matches":"/*"},{"not":{"href_matches":"/*.pdf"}}]},"eagerness":"moderate"}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
@@ -49,7 +49,7 @@
   </div>
 </header>
 <dialog class="search" id="searchDlg" aria-label="Search the site">
-  <form method="dialog" class="search-in" onsubmit="return false"><input type="search" id="searchQ" placeholder="Search cases, field notes, guides…" autocomplete="off" aria-label="Search"><button type="button" class="linkbtn" id="searchClose">Close</button></form>
+  <form method="dialog" class="search-in"><input type="search" id="searchQ" placeholder="Search cases, field notes, guides…" autocomplete="off" aria-label="Search"><button type="submit" class="vh">Search</button><button type="button" class="linkbtn" id="searchClose">Close</button></form>
   <p class="vh" id="searchCount" aria-live="polite"></p>
   <ol class="search-res" id="searchRes"></ol>
   <p class="note search-tip">Tip: press <kbd>/</kbd> or <kbd>Ctrl</kbd> <kbd>K</kbd> anywhere to search.</p>
@@ -61,7 +61,7 @@
     <h1>One page of Rogers, 1875</h1>
     <p class="lede">Every month we put one real page on the table and read it slowly. This month: page 253 of Howard S. Rogers’s <i>History of Cass County, from 1825 to 1875</i>, the first time the joke lodge of 1846 was ever printed, with the man who told it to Rogers only a footnote away.</p>
     <figure class="docfig">
-      <a href="/img/pages/rogers-1875-p253-1200.jpg"><picture><source type="image/webp" srcset="/img/pages/rogers-1875-p253-700.webp 700w, /img/pages/rogers-1875-p253-1200.webp 1200w" sizes="(min-width:900px) 700px, 92vw"><img src="/img/pages/rogers-1875-p253-700.jpg" width="700" height="1091" alt="Page 253 of Rogers’s 1875 History of Cass County, with the paragraphs on the 1846 lodge boxed in red." loading="lazy" decoding="async"></picture></a>
+      <a href="/img/pages/rogers-1875-p253-1200.jpg"><picture><source type="image/webp" srcset="/img/pages/rogers-1875-p253-700.webp 700w, /img/pages/rogers-1875-p253-1200.webp 1200w" sizes="(min-width:900px) 700px, 92vw"><img src="/img/pages/rogers-1875-p253-700.jpg" width="700" height="1091" alt="Page 253 of Rogers’s 1875 History of Cass County, with the paragraphs on the 1846 lodge boxed in red." fetchpriority="high" decoding="async"></picture></a>
       <figcaption>Rogers, 1875, p. 253. The boxed paragraphs are the lodge story. Click the page to see it full size.</figcaption>
     </figure>
     <h2>What it is</h2>
@@ -74,7 +74,7 @@
       <li><b>Count what can be counted.</b> Two hundred badges, one ball, one winter. Each number is a thing that might have left a record somewhere else: a newspaper, a bill, a diary, a badge in a drawer.</li>
     </ul>
     <h2>Read it yourself</h2>
-    <p>The whole book is free online in the University of Michigan’s county-histories collection: <a href="http://name.umdl.umich.edu/BAD0871.0001.001" target="_blank" rel="noopener">Rogers, <i>History of Cass County, from 1825 to 1875</i></a>. Go to pages 253–254. Then compare <a href="http://name.umdl.umich.edu/BAD0870.0001.001" target="_blank" rel="noopener">Mathews, 1882</a>, page 174, where the same story is printed again, and notice what is missing.</p>
+    <p>The whole book is free online in the University of Michigan’s county-histories collection: <a href="https://name.umdl.umich.edu/BAD0871.0001.001" target="_blank" rel="noopener">Rogers, <i>History of Cass County, from 1825 to 1875</i></a>. Go to pages 253–254. Then compare <a href="https://name.umdl.umich.edu/BAD0870.0001.001" target="_blank" rel="noopener">Mathews, 1882</a>, page 174, where the same story is printed again, and notice what is missing.</p>
     <p>This page is the opening clue of <a href="/cases/1/">Case 1</a>. If you read it closely enough, you may not need the rest.</p>
     <h2>Last month</h2>
     <p>This is the first document of the month. The next is chosen on the first of November.</p>
@@ -94,6 +94,6 @@
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=25cf4fd8" defer></script>
+<script src="/site.min.js?v=c9c242c0" defer></script>
 </body>
 </html>

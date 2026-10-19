@@ -2,6 +2,8 @@
 @font-face{font-family:"Libre Caslon Text";src:url(/fonts/libre-caslon-text-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Libre Caslon Text";src:url(/fonts/libre-caslon-text-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
 @font-face{font-family:"Libre Caslon Text";src:url(/fonts/libre-caslon-text-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Caslon Text Fallback";src:local("Times New Roman"),local("TimesNewRomanPSMT"),local("Liberation Serif"),local("Tinos");size-adjust:116.8%;ascent-override:83%;descent-override:22.3%;line-gap-override:0%}
+@font-face{font-family:"Caslon Display Fallback";src:local("Times New Roman"),local("TimesNewRomanPSMT"),local("Liberation Serif"),local("Tinos");size-adjust:91%;ascent-override:106.6%;descent-override:29.2%;line-gap-override:0%}
 :root{
   --paper:#E8ECE6;      /* survey-book paper, cool */
   --paper-2:#DCE2DA;
@@ -29,7 +31,7 @@ html{-webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:4
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 body{
   margin:0; background:var(--paper); color:var(--ink);
-  font-family:"Libre Caslon Text", Georgia, serif;
+  font-family:"Libre Caslon Text","Caslon Text Fallback",serif;
   font-size:1.0625rem; line-height:1.7;
 }
 /* a faint paper grain, drawn by the browser, no image file */
@@ -51,7 +53,7 @@ p,li{text-wrap:pretty}
   border-bottom:1px solid color-mix(in srgb, var(--line) 60%, transparent);
 }
 .bar-in{max-width:calc(var(--measure) + 14rem); margin:0 auto; padding:.7rem 1rem .7rem 2.75rem; display:flex; align-items:center; gap:1rem}
-.mark{display:flex; align-items:center; gap:.55rem; font-family:"Libre Caslon Display",serif; font-size:1.3rem; color:var(--ink); text-decoration:none}
+.mark{display:flex; align-items:center; gap:.55rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.3rem; color:var(--ink); text-decoration:none}
 .mark svg{width:22px; height:22px}
 .bar nav{margin-left:auto; display:flex; gap:1.1rem; font-size:.95rem}
 .bar nav a{white-space:nowrap; color:var(--ink-soft); text-decoration:none; padding:.15rem 0; border-bottom:2px solid transparent; transition:color .2s, border-color .2s}
@@ -99,11 +101,11 @@ p,li{text-wrap:pretty}
   @keyframes develop{from{opacity:0; filter:saturate(.2) brightness(1.1)} to{opacity:1; filter:none}}
 }
 .hero h1{
-  font-family:"Libre Caslon Display", serif; font-weight:400;
+  font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400;
   font-size:clamp(2.6rem, 7vw, 4.3rem); line-height:1.02; margin:0 0 1.6rem; letter-spacing:-.01em;
 }
 .fn{
-  font-family:"Libre Caslon Text",serif; font-size:.32em; color:var(--rule); vertical-align:super;
+  font-family:"Libre Caslon Text","Caslon Text Fallback",serif; font-size:.32em; color:var(--rule); vertical-align:super;
   margin-left:.08em; background:none; border:0; padding:0 .1em; cursor:pointer; line-height:1;
 }
 .hero p.lede{font-size:1.25rem; line-height:1.6; max-width:52ch; margin:0 0 2rem}
@@ -112,7 +114,7 @@ p,li{text-wrap:pretty}
 .hero .foot.lit{color:var(--ink)}
 
 section{padding:2.6rem 0; border-top:1px solid var(--line); max-width:var(--measure)}
-h2{font-family:"Libre Caslon Display", serif; font-weight:400; font-size:2.1rem; line-height:1.15; margin:0 0 1rem}
+h2{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:2.1rem; line-height:1.15; margin:0 0 1rem}
 h3{font-size:1.06rem; margin:1.6rem 0 .3rem}
 p{margin:0 0 1rem}
 .note{font-size:.9rem; color:var(--ink-soft); line-height:1.55}
@@ -158,12 +160,12 @@ ol.steps{list-style:none; counter-reset:step; padding:0; margin:1.2rem 0 1.4rem}
 ol.steps li{counter-increment:step; position:relative; padding:0 0 .9rem 2.6rem}
 ol.steps li::before{
   content:counter(step); position:absolute; left:0; top:.05rem; width:1.75rem; height:1.75rem; border-radius:50%;
-  border:1.5px solid var(--rule); color:var(--rule); font-family:"Libre Caslon Display",serif; font-size:1rem;
+  border:1.5px solid var(--rule); color:var(--rule); font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1rem;
   display:grid; place-items:center; line-height:1;
 }
 ol.steps li:not(:last-child)::after{content:""; position:absolute; left:.85rem; top:2rem; bottom:.1rem; border-left:1px dotted var(--line)}
 .pull{margin:0; padding:3rem 0; border-top:1px solid var(--line); max-width:var(--measure)}
-.pull p{font-family:"Libre Caslon Display",serif; font-size:clamp(1.5rem,3.2vw,2.05rem); line-height:1.3; margin:0 0 .8rem; text-wrap:balance}
+.pull p{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:clamp(1.5rem,3.2vw,2.05rem); line-height:1.3; margin:0 0 .8rem; text-wrap:balance}
 .pull cite{font-style:normal; font-size:.9rem; color:var(--ink-soft)}
 .try{margin-top:2rem; padding:1.4rem 1.2rem; border:1px solid var(--line); border-left:3px solid var(--ledger); border-radius:4px}
 .try h3{margin-top:0}
@@ -175,13 +177,13 @@ ol.steps li:not(:last-child)::after{content:""; position:absolute; left:.85rem; 
   transition:border-color .2s, transform .2s, box-shadow .2s;
 }
 .card:hover{border-color:var(--ink-soft); transform:translateY(-2px); box-shadow:0 10px 24px -18px rgba(0,0,0,.5)}
-.card .kind{display:block; font-family:"Libre Caslon Display",serif; font-size:1.15rem; margin-bottom:.25rem}
+.card .kind{display:block; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.15rem; margin-bottom:.25rem}
 .card[aria-pressed="true"]{border-color:var(--rule); box-shadow:inset 0 0 0 1px var(--rule)}
 .verdict{min-height:1.5em; margin:.6rem 0 0}
 @media (prefers-reduced-motion: reduce){.card,.card:hover{transition:none; transform:none}}
 .notes ol{padding-left:1.3rem; margin:0}
 .notes li{margin-bottom:.7rem}
-.notes li::marker{color:var(--rule); font-family:"Libre Caslon Display",serif}
+.notes li::marker{color:var(--rule); font-family:"Libre Caslon Display","Caslon Display Fallback",serif}
 details.faq{border-bottom:1px dotted var(--line); padding:.7rem 0}
 details.faq summary{cursor:pointer; font-weight:700; list-style:none}
 details.faq summary::-webkit-details-marker{display:none}
@@ -190,7 +192,7 @@ details.faq[open] summary::before{content:"–"}
 details.faq p{margin:.5rem 0 0 1.1rem}
 
 .contact{background:var(--paper-2); margin:1rem 0 0; padding:2rem 1.2rem; border-top:0; max-width:calc(var(--measure) + 2rem)}
-.contact .addr{font-size:1.35rem; font-family:"Libre Caslon Display",serif}
+.contact .addr{font-size:1.35rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif}
 footer{max-width:var(--measure); padding-top:2.4rem; font-size:.9rem; color:var(--ink-soft)}
 @media (max-width:880px){
   .bar nav{display:none}
@@ -210,20 +212,20 @@ footer{max-width:var(--measure); padding-top:2.4rem; font-size:.9rem; color:var(
 /* ---------- clue of the week ---------- */
 .clue{max-width:var(--measure); margin:0 0 2.6rem; padding:1.1rem 1.2rem 1.15rem; border:1px solid var(--line); border-left:3px solid var(--rule); border-radius:4px; background:color-mix(in srgb, var(--paper-2) 55%, transparent)}
 .clue .lbl{display:block; font-size:.8rem; letter-spacing:.09em; text-transform:uppercase; color:var(--rule); margin-bottom:.35rem}
-.clue p{margin:0; font-family:"Libre Caslon Display",serif; font-size:1.35rem; line-height:1.35; text-wrap:balance}
+.clue p{margin:0; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.35rem; line-height:1.35; text-wrap:balance}
 .clue a{font-size:.95rem; display:inline-block; margin-top:.55rem}
 
 /* ---------- the case board: a ledger ---------- */
 .tally{display:flex; flex-wrap:wrap; align-items:baseline; gap:.4rem 1.4rem; margin:0 0 1.1rem; font-size:.95rem; color:var(--ink-soft)}
-.tally b{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.6rem; color:var(--ink); margin-right:.25rem; vertical-align:-.12em}
+.tally b{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.6rem; color:var(--ink); margin-right:.25rem; vertical-align:-.12em}
 table.ledger{width:100%; border-collapse:collapse; font-size:.95rem; line-height:1.45}
 .ledger caption{text-align:left; font-size:.85rem; color:var(--ink-soft); padding-bottom:.5rem}
 .ledger th{text-align:left; font-weight:400; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); border-bottom:1.5px solid var(--ink); padding:.35rem .5rem .35rem 0}
 .ledger td{padding:.7rem .6rem .7rem 0; border-bottom:1px dotted var(--line); vertical-align:top}
-.ledger td.no{font-family:"Libre Caslon Display",serif; color:var(--rule); width:2.2rem}
+.ledger td.no{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; color:var(--rule); width:2.2rem}
 .ledger td.hall{color:var(--ink-soft); font-size:.88rem; width:9.5rem}
-.ledger tr.group td{padding-top:1.3rem; border-bottom:1px solid var(--line); font-family:"Libre Caslon Display",serif; font-size:1.12rem}
-.ledger tr.group td small{font-family:"Libre Caslon Text",serif; font-size:.82rem; color:var(--ink-soft); margin-left:.5rem}
+.ledger tr.group td{padding-top:1.3rem; border-bottom:1px solid var(--line); font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.12rem}
+.ledger tr.group td small{font-family:"Libre Caslon Text","Caslon Text Fallback",serif; font-size:.82rem; color:var(--ink-soft); margin-left:.5rem}
 .status{display:inline-block; font-size:.75rem; letter-spacing:.06em; text-transform:uppercase; padding:.08rem .5rem; border-radius:999px; border:1px solid var(--rule); color:var(--rule); white-space:nowrap}
 .status.solved{background:var(--ledger); border-color:var(--ledger); color:var(--paper)}
 .ledger .by{display:block; font-size:.85rem; color:var(--ink-soft); margin-top:.2rem}
@@ -241,14 +243,14 @@ table.ledger{width:100%; border-collapse:collapse; font-size:.95rem; line-height
 
 /* ---------- inner pages ---------- */
 .page{padding:3.5rem 0 1rem; max-width:var(--measure)}
-.page h1{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:clamp(2.2rem,6vw,3.6rem); line-height:1.05; margin:0 0 1rem; text-wrap:balance}
+.page h1{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:clamp(2.2rem,6vw,3.6rem); line-height:1.05; margin:0 0 1rem; text-wrap:balance}
 .kicker{font-size:.82rem; letter-spacing:.09em; text-transform:uppercase; color:var(--rule); margin:0 0 .6rem}
 .page h2{margin-top:2.2rem; font-size:1.6rem}
 .page ul.dis li{margin-bottom:.35rem}
 .crumb{font-size:.9rem}
 .notelist{list-style:none; padding:0; margin:1.5rem 0}
 .notelist li{padding:1rem 0; border-bottom:1px dotted var(--line)}
-.notelist a{font-family:"Libre Caslon Display",serif; font-size:1.35rem; text-decoration:none}
+.notelist a{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.35rem; text-decoration:none}
 .notelist a:hover{text-decoration:underline}
 .notelist span{display:block; font-size:.9rem; color:var(--ink-soft)}
 .dl{display:inline-flex; align-items:center; gap:.5rem}
@@ -305,12 +307,12 @@ dl.marks > div{scroll-margin-top:6rem; transition:background .6s}
 dl.marks > div:target{background:color-mix(in srgb, var(--ink) 7%, transparent); border-radius:3px; box-shadow:inset 3px 0 0 var(--ink-soft)}
 /* ---------- footer ---------- */
 footer.site{max-width:var(--measure); display:grid; gap:.4rem 2rem; border-top:1px solid var(--line); margin-top:2.6rem}
-footer.site .motto{font-family:"Libre Caslon Display",serif; font-size:1.25rem; color:var(--ink); margin-bottom:.4rem}
+footer.site .motto{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.25rem; color:var(--ink); margin-bottom:.4rem}
 footer.site nav{display:flex; flex-wrap:wrap; gap:.3rem 1.1rem}
 footer.site .fine{font-size:.82rem; margin-top:.8rem}
 
 /* ---------- part numerals, like the parts of a field book ---------- */
-.part{font-family:"Libre Caslon Display",serif; font-size:.95rem; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); margin:0 0 .2rem; display:flex; align-items:center; gap:.7rem}
+.part{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:.95rem; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); margin:0 0 .2rem; display:flex; align-items:center; gap:.7rem}
 .part::after{content:""; flex:0 0 2.5rem; height:1px; background:var(--rule); opacity:.6}
 
 /* ---------- the evidence scale ---------- */
@@ -327,13 +329,13 @@ footer.site .fine{font-size:.82rem; margin-top:.8rem}
 
 /* ---------- case seals ---------- */
 .seals{display:flex; flex-wrap:wrap; gap:.4rem; margin:.2rem 0 .9rem}
-.seals a{width:2rem; height:2rem; border-radius:50%; display:grid; place-items:center; font-family:"Libre Caslon Display",serif; font-size:.85rem; text-decoration:none; color:var(--rule); border:1.5px solid var(--rule); transition:background .2s, color .2s}
+.seals a{width:2rem; height:2rem; border-radius:50%; display:grid; place-items:center; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:.85rem; text-decoration:none; color:var(--rule); border:1.5px solid var(--rule); transition:background .2s, color .2s}
 .seals a:hover{background:var(--rule); color:#fff}
 .seals a.solved{background:var(--ledger); border-color:var(--ledger); color:#fff}
 
 /* ---------- pull quote: a large opening mark ---------- */
 .pull{position:relative; padding-left:3.2rem}
-.pull::before{content:"\201C"; position:absolute; left:-.3rem; top:2.2rem; font-family:"Libre Caslon Display",serif; font-size:7.5rem; line-height:.8; color:var(--rule); opacity:.85}
+.pull::before{content:"\201C"; position:absolute; left:-.3rem; top:2.2rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:7.5rem; line-height:.8; color:var(--rule); opacity:.85}
 
 @media (max-width:640px){ .scale figcaption{font-size:.64rem; letter-spacing:.04em} .pull{padding-left:2.4rem} .pull::before{font-size:5.5rem; top:2.4rem} }
 
@@ -358,7 +360,7 @@ footer.site .fine{font-size:.82rem; margin-top:.8rem}
 .qlist{margin:0; padding-left:1.3rem}
 .qlist > li{padding:.6rem 0; border-bottom:1px dotted var(--line)}
 .qlist > li:last-child{border-bottom:0}
-.qlist > li::marker{color:var(--ink-soft); font-family:"Libre Caslon Display",serif}
+.qlist > li::marker{color:var(--ink-soft); font-family:"Libre Caslon Display","Caslon Display Fallback",serif}
 .qlist p{margin:0 0 .45rem}
 .qopts{display:flex; flex-wrap:wrap; gap:.4rem}
 .qopts .mk{border:0; cursor:pointer; font-size:.72rem; padding:.3rem .6rem; opacity:.9; transition:opacity .2s, transform .15s, box-shadow .2s}
@@ -385,7 +387,7 @@ footer.site .fine{font-size:.82rem; margin-top:.8rem}
 .stats li + li{border-left:1px solid var(--line)}
 .stats a{display:block; text-align:center; padding:1rem .5rem; text-decoration:none; color:var(--ink)}
 .stats a:hover b{color:var(--rule)}
-.stats b{display:block; font-family:"Libre Caslon Display", Georgia, serif; font-weight:400; font-size:2.4rem; line-height:1; color:var(--ink)}
+.stats b{display:block; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:2.4rem; line-height:1; color:var(--ink)}
 .stats span{display:block; font-size:.82rem; color:var(--ink-soft); margin-top:.35rem; line-height:1.3}
 @media (max-width:640px){ .stats{grid-template-columns:repeat(2,1fr)} .stats li:nth-child(3){border-left:0} .stats li:nth-child(n+3){border-top:1px solid var(--line)} .stats b{font-size:2rem} }
 @media print{ .stats{break-inside:avoid} }
@@ -419,7 +421,7 @@ footer.site .fine{font-size:.82rem; margin-top:.8rem}
 .mk.sealedmk svg{width:.75rem; height:.75rem}
 .tl li::before{content:""; position:absolute; z-index:1; top:.32rem; left:0; width:.75rem; height:.75rem; border-radius:50%; background:var(--paper); border:2px solid var(--rule)}
 .tl li.now::before{background:var(--rule); box-shadow:0 0 0 4px color-mix(in srgb, var(--rule) 25%, transparent)}
-.tl .yr{display:block; font-family:"Libre Caslon Display",serif; font-size:1.7rem; line-height:1; color:var(--ink); margin:0 0 .35rem}
+.tl .yr{display:block; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.7rem; line-height:1; color:var(--ink); margin:0 0 .35rem}
 .tl p{margin:0 0 .45rem}
 .tl a{font-size:.85rem; margin-left:.2rem}
 .tl-nav{position:absolute; bottom:-2.3rem; width:2rem; height:2rem; border-radius:50%; border:1px solid var(--line); background:var(--paper); color:var(--ink); font-size:1.2rem; line-height:1; cursor:pointer}
@@ -479,7 +481,7 @@ table.ledger, .cards, .cases, ul.svc, ol.promises, .rulecards, dl.marks, .tl-wra
 /* ---------- the rules, without icons: numbered in small red capitals ---------- */
 .rulecards{counter-reset:rule}
 .rulecards li{counter-increment:rule; padding:.85rem 1rem .9rem 2.6rem}
-.rulecards li::before{content:counter(rule, upper-roman); position:absolute; left:.9rem; top:.85rem; font-family:"Libre Caslon Display",serif; font-size:1rem; color:var(--rule); letter-spacing:.04em}
+.rulecards li::before{content:counter(rule, upper-roman); position:absolute; left:.9rem; top:.85rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1rem; color:var(--rule); letter-spacing:.04em}
 .rulecards svg{display:none!important}
 
 
@@ -542,7 +544,7 @@ main.page{max-width:var(--col); margin-left:auto; margin-right:auto}
 .ck{list-style:none; counter-reset:ck; padding:0; margin:0}
 .ck li{counter-increment:ck; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:.5rem 1rem; padding:.6rem 0; border-bottom:1px dotted var(--line)}
 .ck li:last-child{border-bottom:0}
-.ck li > span::before{content:counter(ck) ". "; color:var(--rule); font-family:"Libre Caslon Display",serif}
+.ck li > span::before{content:counter(ck) ". "; color:var(--rule); font-family:"Libre Caslon Display","Caslon Display Fallback",serif}
 .ck li div{display:flex; gap:.35rem}
 .ck button{font:inherit; font-size:.88rem; color:var(--ink); background:none; border:1px solid var(--line); border-radius:999px; padding:.18rem .8rem; cursor:pointer}
 .ck button:hover{border-color:var(--ink-soft)}
@@ -558,11 +560,11 @@ main.page{max-width:var(--col); margin-left:auto; margin-right:auto}
 #beam{transform-origin:160px 28px; transition:transform .8s cubic-bezier(.3,1.4,.5,1)}
 #panL{transform-origin:55px 31px; transition:transform .8s cubic-bezier(.3,1.4,.5,1)} #panR{transform-origin:265px 31px; transition:transform .8s cubic-bezier(.3,1.4,.5,1)}
 .sides{display:grid; grid-template-columns:1fr 1fr; gap:1rem}
-.side-h{font-family:"Libre Caslon Display",serif; font-size:1.1rem; text-align:center; margin:0 0 .4rem}
+.side-h{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.1rem; text-align:center; margin:0 0 .4rem}
 .adds{display:flex; flex-wrap:wrap; justify-content:center; gap:.3rem}
 .adds .mk{border:0; cursor:pointer; font-size:.66rem; padding:.25rem .45rem}
 .pile{min-height:1.4em; text-align:center; font-size:.85rem; color:var(--ink-soft); margin:.5rem 0 0}
-.weigh-out{font-family:"Libre Caslon Display",serif; font-size:1.15rem; margin:.6rem 0 .2rem}
+.weigh-out{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.15rem; margin:.6rem 0 .2rem}
 @media (max-width:560px){ .sides{grid-template-columns:1fr} }
 
 /* 10 timeline filter */
@@ -584,7 +586,7 @@ main > section + section::before, main > .plate2 + section::before, .plate2::bef
 .gl{font:inherit; color:inherit; background:none; border:0; padding:0; cursor:help; text-decoration:underline dotted color-mix(in srgb, var(--rule) 70%, transparent); text-underline-offset:.22em; text-decoration-thickness:1.5px}
 .gl:hover{color:var(--rule)}
 [popover].gloss{margin:0; inset:auto; position:fixed; max-width:min(19rem, calc(100vw - 2rem)); padding:.7rem .9rem; font-size:.9rem; line-height:1.5; background:var(--ink); color:var(--paper); border:0; border-radius:5px; box-shadow:0 14px 30px -12px rgba(0,0,0,.5)}
-[popover].gloss b{display:block; font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.05rem; margin-bottom:.15rem; color:color-mix(in srgb, var(--paper) 80%, var(--rule))}
+[popover].gloss b{display:block; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.05rem; margin-bottom:.15rem; color:color-mix(in srgb, var(--paper) 80%, var(--rule))}
 
 /* read aloud */
 .listen{font:inherit; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); background:none; border:1px solid var(--line); border-radius:999px; padding:.12rem .6rem .1rem; cursor:pointer; margin-left:.4rem; vertical-align:.15em}
@@ -597,7 +599,7 @@ main > section > .part{flex-wrap:wrap}
 .explore a{display:block; text-decoration:none; color:inherit; border:1px solid var(--line); border-radius:6px; padding:1rem 1.1rem 1.05rem; background:var(--paper); transition:border-color .2s, transform .2s, box-shadow .2s}
 .explore a:hover{border-color:var(--ink-soft); transform:translateY(-2px); box-shadow:0 12px 26px -18px rgba(0,0,0,.5)}
 .explore .k{display:block; font-size:.76rem; letter-spacing:.1em; text-transform:uppercase; color:var(--rule); margin-bottom:.2rem}
-.explore b{display:block; font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.3rem; margin-bottom:.25rem}
+.explore b{display:block; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.3rem; margin-bottom:.25rem}
 .explore span.d{font-size:.93rem; color:var(--ink-soft); line-height:1.5}
 @media (max-width:640px){ .explore{grid-template-columns:1fr} }
 /* case pages */
@@ -608,11 +610,11 @@ main > section > .part{flex-wrap:wrap}
 .cert{margin:1.5rem auto; max-width:40rem; text-align:center; padding:2.6rem 2rem 2rem; border:2px solid var(--rule); outline:1px solid var(--rule); outline-offset:5px; background:var(--paper); position:relative}
 .cert::before{content:""; position:absolute; left:50%; bottom:-1.6rem; width:3.4rem; height:3.4rem; transform:translateX(-50%); border-radius:50%; background:radial-gradient(circle at 35% 30%, #d3554a 0 18%, #a3261a 45%, #7a1810 100%); box-shadow:inset 0 -2px 3px rgba(0,0,0,.35)}
 .cert p{margin:.3rem 0}
-.cert-k{font-family:"Libre Caslon Display",serif; font-size:1.1rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rule)}
+.cert-k{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.1rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rule)}
 .cert-s{font-style:italic; color:var(--ink-soft)}
-.cert-name{font-family:"Libre Caslon Display",serif; font-size:clamp(2rem,6vw,3rem); line-height:1.1; margin:.4rem 0!important}
-.cert-case{font-family:"Libre Caslon Display",serif; font-size:1.3rem; line-height:1.3; text-wrap:balance}
-.cert-d{font-size:.9rem; color:var(--ink-soft)} .cert-motto{margin-top:1rem!important; font-family:"Libre Caslon Display",serif}
+.cert-name{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:clamp(2rem,6vw,3rem); line-height:1.1; margin:.4rem 0!important}
+.cert-case{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.3rem; line-height:1.3; text-wrap:balance}
+.cert-d{font-size:.9rem; color:var(--ink-soft)} .cert-motto{margin-top:1rem!important; font-family:"Libre Caslon Display","Caslon Display Fallback",serif}
 .cert-note{font-size:.75rem; color:var(--ink-soft); margin-top:1.2rem!important}
 /* ---------- Draft 26 ---------- */
 .searchbtn{display:inline-grid; place-items:center; width:2.1rem; height:2.1rem; margin-left:.4rem; border:1px solid var(--line); border-radius:999px; background:none; color:var(--ink-soft); cursor:pointer}
@@ -628,7 +630,7 @@ dialog.search::backdrop{background:rgba(20,24,28,.45); backdrop-filter:blur(3px)
 .search-res{list-style:none; margin:0; padding:.3rem 0; overflow:auto; max-height:60vh}
 .search-res li a{display:block; padding:.6rem 1rem; text-decoration:none; color:inherit; border-bottom:1px dotted var(--line)}
 .search-res li a:hover, .search-res li a:focus{background:color-mix(in srgb, var(--rule) 7%, transparent)}
-.search-res b{display:block; font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.1rem}
+.search-res b{display:block; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.1rem}
 .search-res span{display:block; font-size:.88rem; color:var(--ink-soft); line-height:1.45}
 .search-res .note{padding:.8rem 1rem}
 .search-tip{padding:.4rem 1rem .7rem; margin:0}
@@ -644,7 +646,7 @@ kbd{font:inherit; font-size:.85em; border:1px solid var(--line); border-bottom-w
 .formrow input, .formrow select{font:inherit; font-size:1rem; color:var(--ink); background:var(--paper); border:1px solid var(--line); border-radius:4px; padding:.4rem .55rem; min-width:6rem}
 .formrow input[type=number]{width:6rem; min-width:0}
 .result{font-size:1.1rem; margin:.4rem 0}
-.result b{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.3rem; color:var(--rule)}
+.result b{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.3rem; color:var(--rule)}
 .inkui{display:grid; grid-template-columns:15rem minmax(0,1fr); gap:1rem; align-items:start; margin-top:.8rem}
 .sliders{display:grid; gap:.6rem}
 .sliders input[type=range]{width:100%; accent-color:var(--rule)}
@@ -657,7 +659,7 @@ label.btn{cursor:pointer}
 /* old hand */
 .hcards{display:grid; grid-template-columns:repeat(auto-fill, minmax(15rem,1fr)); gap:.8rem; margin:1.4rem 0}
 .hcard{border:1px solid var(--line); border-radius:6px; padding:.9rem 1rem 1rem; background:var(--paper)}
-.hcard .glyph{font-family:Georgia,"Libre Caslon Text",serif; font-style:italic; font-size:2rem; line-height:1.1; color:var(--rule); margin:0 0 .3rem}
+.hcard .glyph{font-family:Georgia,"Libre Caslon Text","Caslon Text Fallback",serif; font-style:italic; font-size:2rem; line-height:1.1; color:var(--rule); margin:0 0 .3rem}
 .hcard h3{margin:0 0 .3rem} .hcard p{font-size:.95rem; margin:0}
 .hquiz{padding-left:1.3rem} .hquiz > li{padding:.6rem 0; border-bottom:1px dotted var(--line)}
 .qopts2{display:flex; flex-wrap:wrap; gap:.4rem}
@@ -675,14 +677,14 @@ label.btn{cursor:pointer}
 .leaf.turned{transform:rotateY(-180deg)}
 .face{position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; padding:8% 9% 10%; overflow:hidden; background:#f6f0e1; color:#2a2418; font-size:clamp(.72rem, 1.55vw, .98rem); line-height:1.55; box-shadow:inset 12px 0 18px -14px rgba(0,0,0,.35); border:1px solid #d9ccae; cursor:pointer}
 .face.back{transform:rotateY(180deg); box-shadow:inset -12px 0 18px -14px rgba(0,0,0,.35)}
-.face h2{font-size:1.7em; margin:.2em 0 .4em; line-height:1.1; color:#2a2418} .face h3{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.35em; margin:0 0 .4em; color:#7a1810}
+.face h2{font-size:1.7em; margin:.2em 0 .4em; line-height:1.1; color:#2a2418} .face h3{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.35em; margin:0 0 .4em; color:#7a1810}
 .face p{margin:0 0 .6em} .face ol{padding-left:1.2em; margin:0} .face a{color:#2B4A41}
 .face .pg{position:absolute; bottom:4%; left:0; right:0; text-align:center; font-size:.8em; color:#8a7a5a}
 .face .bk-k{font-size:.75em; letter-spacing:.12em; text-transform:uppercase; color:#a3261a}
-.face .drop::first-letter{font-family:"Libre Caslon Display",serif; float:left; font-size:3.4em; line-height:.8; padding:.08em .08em 0 0; color:#a3261a}
+.face .drop::first-letter{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; float:left; font-size:3.4em; line-height:.8; padding:.08em .08em 0 0; color:#a3261a}
 .face .bk-end{font-style:italic; color:#6d5f44}
 .bk-cover{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background:radial-gradient(circle at 40% 30%, #6a2a1c, #3b1610 70%); color:#e9d9a8; border:1px solid #2a0f0a}
-.bk-cover .bk-k{color:#e9d9a8; opacity:.8} .bk-cover .bk-t{font-family:"Libre Caslon Display",serif; font-size:2.6em; margin:.2em 0 0; color:#f3e3b3} .bk-cover .bk-s{font-style:italic; margin:.1em 0 1em} .bk-cover .bk-m{font-size:.8em; letter-spacing:.1em; text-transform:uppercase; border-top:1px solid rgba(233,217,168,.5); padding-top:.6em}
+.bk-cover .bk-k{color:#e9d9a8; opacity:.8} .bk-cover .bk-t{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:2.6em; margin:.2em 0 0; color:#f3e3b3} .bk-cover .bk-s{font-style:italic; margin:.1em 0 1em} .bk-cover .bk-m{font-size:.8em; letter-spacing:.1em; text-transform:uppercase; border-top:1px solid rgba(233,217,168,.5); padding-top:.6em}
 .leaf:first-child .front{padding:0}
 .bk-nav{display:flex; justify-content:center; align-items:center; gap:.8rem}
 @media (prefers-reduced-motion: reduce){ .leaf{transition:none} }
@@ -865,7 +867,7 @@ main > section:nth-of-type(even):not(.contact){background:color-mix(in srgb, var
 .plate2{position:relative}
 .plate2::before{content:"❧"; position:absolute; top:-.95rem; left:50%; transform:translateX(-50%); font-size:1.3rem; line-height:1; color:var(--rule); background:var(--paper); padding:0 .9rem}
 @media (max-width:640px){ main > section:nth-of-type(even):not(.contact){margin-left:-.9rem; padding-left:.9rem; padding-right:.9rem; max-width:none} }
-h3.sub{text-align:center; font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.4rem; margin:2.2rem 0 .9rem}
+h3.sub{text-align:center; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.4rem; margin:2.2rem 0 .9rem}
 
 /* ---------- rule cards ---------- */
 .rulecards{list-style:none; padding:0; margin:.6rem 0 0; display:grid; grid-template-columns:1fr 1fr; gap:.7rem}
@@ -886,7 +888,7 @@ h3.sub{text-align:center; font-family:"Libre Caslon Display",serif; font-weight:
 ol.promises{list-style:none; counter-reset:pr; padding:0; margin:1rem 0 0; display:grid; grid-template-columns:1fr 1fr; gap:.8rem}
 ol.promises li{counter-increment:pr; position:relative; padding:.9rem 1rem .95rem 3.2rem; border:1px solid var(--line); border-radius:4px; background:var(--paper); font-size:.95rem; line-height:1.5}
 ol.promises li:last-child{grid-column:1 / -1}
-ol.promises li::before{content:counter(pr); position:absolute; left:1rem; top:.85rem; font-family:"Libre Caslon Display",serif; font-size:1.6rem; line-height:1; color:var(--rule)}
+ol.promises li::before{content:counter(pr); position:absolute; left:1rem; top:.85rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.6rem; line-height:1; color:var(--rule)}
 ol.promises b{display:block}
 @media (max-width:640px){ ol.promises{grid-template-columns:1fr} }
 .getbox{margin-top:1.4rem; padding:1rem 1.2rem; border-left:3px solid var(--ledger); background:color-mix(in srgb, var(--ledger) 6%, transparent); border-radius:0 4px 4px 0}
@@ -938,7 +940,7 @@ details.faq[open]{background:color-mix(in srgb, var(--paper) 60%, transparent)}
 #services ul.svc li, #services ul.svc li:nth-last-child(2), #services ul.svc li:last-child{border:1px solid var(--line); border-radius:4px; padding:.85rem 1rem .9rem; background:var(--paper); font-size:.95rem; line-height:1.5; transition:border-color .2s, transform .2s}
 #services ul.svc li:hover{border-color:var(--ink-soft); transform:translateY(-1px)}
 #services ul.svc li:last-child{grid-column:1 / -1}
-#services ul.svc b{color:var(--rule); font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.12rem; margin-bottom:.15rem}
+#services ul.svc b{color:var(--rule); font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.12rem; margin-bottom:.15rem}
 @media (max-width:640px){ #services ul.svc{grid-template-columns:1fr} }
 
 /* ---------- R9: hero trust line ---------- */
@@ -949,7 +951,7 @@ details.faq[open]{background:color-mix(in srgb, var(--paper) 60%, transparent)}
 /* ---------- research services, advertised near the top ---------- */
 .promo{max-width:calc(var(--measure) + 12rem); margin:0 0 2rem; padding:1.6rem 1.6rem 1.5rem; border:1px solid var(--line); border-radius:6px; background:var(--paper-2); position:relative; overflow:hidden; text-align:center}
 .promo::before{display:none; content:""; position:absolute; left:0; right:0; top:0; height:4px; background:linear-gradient(90deg, var(--kD) 0 11.1%, var(--kP) 0 22.2%, var(--kC) 0 33.3%, var(--kM) 0 44.4%, var(--kT) 0 55.5%, var(--kF) 0 66.6%, var(--kI) 0 77.7%, var(--kR) 0 88.8%, var(--kH) 0)}
-.promo-h{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:clamp(1.7rem, 3.6vw, 2.3rem); line-height:1.15; margin:0 0 .7rem; text-wrap:balance}
+.promo-h{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:clamp(1.7rem, 3.6vw, 2.3rem); line-height:1.15; margin:0 0 .7rem; text-wrap:balance}
 .promo-lede{max-width:44rem; margin:0 auto 1.1rem; text-wrap:balance}
 .promo-ctas{display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem; margin:0}
 @media (max-width:640px){ .promo{padding:1.3rem 1rem 1.2rem} .promo-ctas .btn{flex:1 1 100%; text-align:center} }
@@ -961,7 +963,7 @@ details.faq[open]{background:color-mix(in srgb, var(--paper) 60%, transparent)}
 
 /* ---------- the record so far: tally, wax seals, rolled ends, soft edges, ribbon ---------- */
 .tl-tally{display:flex; flex-wrap:wrap; justify-content:center; gap:.35rem 1.4rem; margin:.2rem 0 .9rem; font-size:.92rem; color:var(--ink-soft)}
-.tl-tally b{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.45rem; color:var(--ink); margin-right:.3rem; vertical-align:-.12rem}
+.tl-tally b{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.45rem; color:var(--ink); margin-right:.3rem; vertical-align:-.12rem}
 .tl-tally .sl b{color:#9a2f24}
 .tl-filters button .n{display:inline-block; min-width:1.35em; padding:0 .3em; margin-left:.1rem; border-radius:999px; font-size:.75em; line-height:1.45; background:color-mix(in srgb, var(--ink) 9%, transparent); color:var(--ink-soft)}
 .tl-filters button[aria-pressed="true"] .n{background:color-mix(in srgb, var(--paper) 25%, transparent); color:inherit}
@@ -1046,7 +1048,7 @@ main > section, main > section:nth-of-type(even):not(.contact), main > section.c
   background:var(--panel)!important; border:1px solid var(--panel-edge)!important; border-top:3px solid color-mix(in srgb, var(--rule) 70%, var(--panel-edge))!important;
   border-radius:12px!important; box-shadow:var(--panel-shadow); position:relative; isolation:isolate}
 main > section:nth-of-type(even):not(.contact){background:var(--panel-2)!important}
-main > section::after{content:counter(part, upper-roman); position:absolute; z-index:-1; top:.9rem; right:1.3rem; font-family:"Libre Caslon Display",serif; font-size:5.4rem; line-height:1; color:var(--rule); opacity:.075; pointer-events:none}
+main > section::after{content:counter(part, upper-roman); position:absolute; z-index:-1; top:.9rem; right:1.3rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:5.4rem; line-height:1; color:var(--rule); opacity:.075; pointer-events:none}
 main > section.contact::after{content:none}
 /* the flourish now sits in the gap between panels */
 main > section + section::before, main > .plate2 + section::before, main > section + .plate2::before, .plate2::before{top:-2.55rem!important; background-color:transparent!important}
@@ -1065,7 +1067,7 @@ main > .clue{margin-top:3.4rem!important}
 .nextpart{margin:2.4rem 0 0; padding-top:1.1rem; border-top:1px dashed var(--panel-edge); text-align:right!important; font-size:.92rem}
 .nextpart a{text-decoration:none; color:var(--ink-soft)}
 .nextpart a span{font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:var(--rule); margin-right:.3rem}
-.nextpart a b{font-weight:400; font-family:"Libre Caslon Display",serif; color:var(--ink)}
+.nextpart a b{font-weight:400; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; color:var(--ink)}
 .nextpart a i{font-style:normal; display:inline-block; margin-left:.25rem; transition:transform .2s}
 .nextpart a:hover{color:var(--ink)} .nextpart a:hover i{transform:translateY(3px)}
 /* contents rail in the left margin, wide screens only */
@@ -1073,7 +1075,7 @@ main > .clue{margin-top:3.4rem!important}
 @media (min-width:1220px){
   .partrail{display:flex; flex-direction:column; gap:.15rem; position:fixed; z-index:40; top:50%; transform:translateY(-50%); left:calc(50% - var(--col)/2 - 6.2rem); width:4rem; opacity:0; pointer-events:none; transition:opacity .4s}
   .partrail.show{opacity:1; pointer-events:auto}
-  .partrail a{position:relative; display:flex; justify-content:flex-end; align-items:center; text-decoration:none; color:var(--ink-soft); font-family:"Libre Caslon Display",serif; font-size:.92rem; padding:.18rem .5rem .18rem 0; border-right:2px solid transparent; transition:color .2s, border-color .2s}
+  .partrail a{position:relative; display:flex; justify-content:flex-end; align-items:center; text-decoration:none; color:var(--ink-soft); font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:.92rem; padding:.18rem .5rem .18rem 0; border-right:2px solid transparent; transition:color .2s, border-color .2s}
   .partrail a b{font-weight:400}
   .partrail a span{position:absolute; left:calc(100% + .7rem); top:50%; transform:translateY(-50%); white-space:nowrap; font-family:inherit; font-size:.85rem; background:var(--panel); border:1px solid var(--panel-edge); border-radius:6px; padding:.2rem .55rem; color:var(--ink); opacity:0; pointer-events:none; transition:opacity .15s; box-shadow:0 8px 18px -12px rgba(0,0,0,.4)}
   .partrail a:hover span, .partrail a:focus-visible span{opacity:1}
@@ -1096,7 +1098,7 @@ ol.fieldpage{position:relative; list-style:none; counter-reset:fp; margin:1.6rem
   repeating-linear-gradient(180deg, transparent 0 calc(1.9rem - 1px), color-mix(in srgb, var(--ledger) 22%, transparent) calc(1.9rem - 1px) 1.9rem), var(--paper);
   background-position:0 0, 0 1.25rem; box-shadow:0 14px 30px -24px rgba(0,0,0,.5); transform:rotate(-.35deg)}
 ol.fieldpage li{counter-increment:fp; position:relative; font-style:italic; line-height:1.9rem; margin:0; padding:0}
-ol.fieldpage li::before{content:counter(fp) "."; position:absolute; left:-2.25rem; width:1.5rem; text-align:right; font-style:normal; font-family:"Libre Caslon Display",serif; color:var(--rule)}
+ol.fieldpage li::before{content:counter(fp) "."; position:absolute; left:-2.25rem; width:1.5rem; text-align:right; font-style:normal; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; color:var(--rule)}
 @media (max-width:640px){ ol.fieldpage{padding-left:2.9rem; transform:none} ol.fieldpage{background-position:-.4rem 0, 0 1.25rem} }
 /* case board rows light up under the pointer */
 @media (hover:hover){ .ledger tbody tr:not(.group){transition:background .15s} .ledger tbody tr:not(.group):hover{background:color-mix(in srgb, var(--rule) 6%, transparent)} }
@@ -1137,19 +1139,19 @@ footer.site{padding-bottom:1rem}
 .btoast.on{transform:none; opacity:1}
 .btoast svg{width:2.6rem; height:2.6rem; flex:none}
 .btoast small{display:block; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; opacity:.75}
-.btoast b{display:block; font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.15rem; line-height:1.2}
+.btoast b{display:block; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.15rem; line-height:1.2}
 .btoast a{color:inherit; font-size:.82rem}
 .tin{fill:#b8bdbf; stroke:#6f777b; stroke-width:1.2; stroke-linejoin:round}
 .boss{fill:#d9dddf; stroke:#6f777b; stroke-width:.8}
 @media (prefers-reduced-motion: reduce){ .btoast{transition:none} }
 /* the badge book */
-.bcount{font-family:"Libre Caslon Display",serif; font-size:1.3rem; margin:.4rem 0 1rem}
+.bcount{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.3rem; margin:.4rem 0 1rem}
 .badgebook{list-style:none; padding:0; margin:0 0 2rem; display:grid; grid-template-columns:repeat(auto-fill,minmax(9.5rem,1fr)); gap:.8rem}
 .badgebook li{display:grid; justify-items:center; text-align:center; gap:.2rem; padding:1rem .7rem .8rem; border:1px dashed var(--line); border-radius:8px; background:var(--paper)}
 .badgebook svg{width:3.4rem; height:3.4rem; filter:grayscale(1); opacity:.28}
 .badgebook li.won{border-style:solid; border-color:color-mix(in srgb, var(--ink-soft) 40%, transparent); box-shadow:0 10px 24px -18px rgba(0,0,0,.5)}
 .badgebook li.won svg{opacity:1; filter:drop-shadow(0 2px 2px rgba(0,0,0,.25))}
-.badgebook b{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.05rem}
+.badgebook b{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.05rem}
 .badgebook span{font-size:.82rem; color:var(--ink-soft); line-height:1.4}
 .badgebook small{font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft)}
 .badgebook li.won small{color:var(--rule)}
@@ -1159,19 +1161,19 @@ footer.site{padding-bottom:1rem}
 .clue-next{margin:.55rem 0 0!important; font-family:inherit!important; font-size:.85rem!important; letter-spacing:.06em; text-transform:uppercase; color:var(--rule)}
 .otd{max-width:var(--col); margin:1.4rem auto 0; padding:.85rem 1.2rem; border:1px solid var(--line); border-radius:6px; background:var(--paper); display:grid; grid-template-columns:auto 1fr; column-gap:.8rem; align-items:baseline}
 .otd-l{grid-column:1 / -1; font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft)}
-.otd-d{grid-column:1; font-family:"Libre Caslon Display",serif; font-size:1.15rem; color:var(--rule); white-space:nowrap}
+.otd-d{grid-column:1; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.15rem; color:var(--rule); white-space:nowrap}
 .otd-t{grid-column:2; margin:0; font-size:1rem; line-height:1.5}
 .otd-s{grid-column:2; font-size:.8rem; color:var(--ink-soft); font-style:italic}
 @media (max-width:640px){ .otd{grid-template-columns:1fr} .otd-d,.otd-t,.otd-s{grid-column:1} }
 /* the trail map */
 .trailmap{margin:1.6rem 0 1.4rem; padding:.6rem .6rem .2rem; border:1px solid var(--line); border-radius:8px;
   background:radial-gradient(ellipse at 30% 40%, color-mix(in srgb, #d9c7a0 18%, var(--paper)), var(--paper) 70%)}
-.trailmap svg{display:block; width:100%; height:auto; font-family:"Libre Caslon Text",serif}
+.trailmap svg{display:block; width:100%; height:auto; font-family:"Libre Caslon Text","Caslon Text Fallback",serif}
 .tm-trail{fill:none; stroke:var(--ink-soft); stroke-width:1.6; stroke-dasharray:2 6; stroke-linecap:round; opacity:.55}
 .tm-walked{fill:none; stroke:var(--rule); stroke-width:2.2; stroke-dasharray:7 6; stroke-linecap:round}
 .tm-hall circle{fill:var(--rule); stroke:var(--paper); stroke-width:3}
-.tm-n{fill:#fff; font-family:"Libre Caslon Display",serif; font-size:15px}
-.tm-name{fill:var(--ink); font-family:"Libre Caslon Display",serif; font-size:16px}
+.tm-n{fill:#fff; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:15px}
+.tm-name{fill:var(--ink); font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:16px}
 .tm-line{fill:var(--ink-soft); font-size:12px; font-style:italic}
 .tm-sealed circle{fill:var(--paper); stroke:var(--ink-soft); stroke-width:1.2; stroke-dasharray:3 3}
 .tm-sealed text{fill:var(--ink-soft); font-size:13px}
@@ -1185,7 +1187,7 @@ footer.site{padding-bottom:1rem}
 @media (prefers-reduced-motion: no-preference){ .tm-walked{animation:march 9s linear infinite} @keyframes march{to{stroke-dashoffset:-130}} }
 .trailmap:not(.inview) .tm-walked{animation-play-state:paused}
 /* the coded line at the foot of every page */
-.cipherline{margin:.6rem 0 0; font-family:"Libre Caslon Display",serif; font-size:.7rem; letter-spacing:.32em; color:var(--ink-soft); opacity:1; user-select:all}
+.cipherline{margin:.6rem 0 0; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:.7rem; letter-spacing:.32em; color:var(--ink-soft); opacity:1; user-select:all}
 .cipherline:hover{color:var(--rule)}
 @media print{ .btoast, .clue-next, .otd{display:none!important} }
 
@@ -1203,7 +1205,7 @@ footer.site{padding-bottom:1rem}
 .tnc-ring{position:absolute; left:45.7%; top:61.7%; width:3.2rem; height:3.2rem; margin:-1.6rem 0 0 -1.6rem; border:2px solid var(--rule); border-radius:50%; box-shadow:0 0 0 3px rgba(255,255,255,.5); pointer-events:none}
 .tnc-tag{position:absolute; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:#4b4a44; background:rgba(241,239,232,.85); padding:.05rem .4rem; border-radius:3px; pointer-events:none}
 .tnc-b{left:calc(49.5% + .4rem); top:20%} .tnc-s{left:6%; top:calc(71.5% + .35rem)}
-.tnc-lab{position:absolute; bottom:.5rem; font-family:"Libre Caslon Display",serif; font-size:.95rem; color:#fff; background:rgba(29,39,51,.7); padding:.05rem .5rem; border-radius:3px; pointer-events:none}
+.tnc-lab{position:absolute; bottom:.5rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:.95rem; color:#fff; background:rgba(29,39,51,.7); padding:.05rem .5rem; border-radius:3px; pointer-events:none}
 .tnc-lab.l{left:.5rem} .tnc-lab.r{right:.5rem}
 .tncorner figcaption{font-size:.85rem; color:var(--ink-soft); text-align:center; margin-top:.55rem; line-height:1.45}
 /* person of the month */
@@ -1235,7 +1237,7 @@ footer.site{padding-bottom:1rem}
   background-image:radial-gradient(1px 1px at 12% 18%, #fff, transparent), radial-gradient(1px 1px at 27% 62%, #fff, transparent), radial-gradient(1.5px 1.5px at 41% 33%, #fff, transparent), radial-gradient(1px 1px at 63% 12%, #fff, transparent), radial-gradient(1px 1px at 78% 71%, #fff, transparent), radial-gradient(1.5px 1.5px at 88% 28%, #fff, transparent), radial-gradient(1px 1px at 6% 84%, #fff, transparent), radial-gradient(1px 1px at 93% 90%, #fff, transparent), radial-gradient(1px 1px at 52% 88%, #fff, transparent), radial-gradient(1px 1px at 34% 8%, #fff, transparent);
   background-size:420px 420px} }
 /* badge book: rank, second line, charter */
-.brank{margin:.2rem 0 0; font-size:1rem; color:var(--ink-soft)} .brank b{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.35rem; color:var(--rule)}
+.brank{margin:.2rem 0 0; font-size:1rem; color:var(--ink-soft)} .brank b{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.35rem; color:var(--rule)}
 .cipherline.big{font-size:1rem; letter-spacing:.2em; opacity:1; color:var(--ink); line-height:1.8}
 .charterbox{border:1px solid var(--rule); border-radius:8px; padding:1rem 1.2rem; margin:0 0 1.6rem; background:color-mix(in srgb, var(--rule) 5%, var(--paper))}
 .charter{display:none}
@@ -1245,12 +1247,12 @@ footer.site{padding-bottom:1rem}
   html:has(body.printing-charter)::before, html:has(body.printing-charter)::after{display:none!important}
   body.printing-charter > :not(.charter){display:none!important}
   body.printing-charter{background:#fff!important}
-  body.printing-charter .charter{display:block!important; box-sizing:border-box; width:100%; margin:0; padding:.45in .5in .4in; border:6px double #8a2a20; text-align:center; font-family:"Libre Caslon Text",serif; color:#1d2733; background:#fff; break-inside:avoid}
+  body.printing-charter .charter{display:block!important; box-sizing:border-box; width:100%; margin:0; padding:.45in .5in .4in; border:6px double #8a2a20; text-align:center; font-family:"Libre Caslon Text","Caslon Text Fallback",serif; color:#1d2733; background:#fff; break-inside:avoid}
   .charter .ch-top{font-size:12pt; letter-spacing:.3em; text-transform:uppercase; color:#8a2a20; margin:0}
-  .charter .ch-h{font-family:"Libre Caslon Display",serif; font-size:32pt; margin:.12in 0 .22in}
+  .charter .ch-h{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:32pt; margin:.12in 0 .22in}
   .charter .ch-b{font-size:13pt; line-height:1.6; margin:.12in auto; max-width:5.5in}
-  .charter .ch-name{font-family:"Libre Caslon Display",serif; font-size:28pt; border-bottom:1px solid #1d2733; display:inline-block; min-width:4in; margin:.15in 0 .2in; padding:0 .2in}
-  .charter .ch-rank{font-family:"Libre Caslon Display",serif; font-size:24pt; color:#8a2a20; margin:.15in 0}
+  .charter .ch-name{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:28pt; border-bottom:1px solid #1d2733; display:inline-block; min-width:4in; margin:.15in 0 .2in; padding:0 .2in}
+  .charter .ch-rank{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:24pt; color:#8a2a20; margin:.15in 0}
   .charter .ch-date{margin-top:.25in; font-style:italic}
   .charter .ch-motto{margin-top:.15in; font-size:10pt; letter-spacing:.12em; text-transform:uppercase}
   .season{display:none!important}
@@ -1260,7 +1262,7 @@ footer.site{padding-bottom:1rem}
 /* what's new: a ticker across the full width of the page */
 .ticker{position:relative; display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:stretch; margin:1.8rem 0 0; border:1px solid var(--line); border-radius:8px; overflow:hidden;
   background:color-mix(in srgb, var(--paper-2) 70%, var(--paper)); box-shadow:0 10px 24px -22px rgba(0,0,0,.6)}
-.tk-tag{display:flex; align-items:center; gap:.5rem; margin:0; padding:.6rem 1rem; background:var(--rule); color:#fff; font:400 .74rem/1.2 "Libre Caslon Text",serif; letter-spacing:.13em; text-transform:uppercase; white-space:nowrap; text-align:left!important}
+.tk-tag{display:flex; align-items:center; gap:.5rem; margin:0; padding:.6rem 1rem; background:var(--rule); color:#fff; font:400 .74rem/1.2 "Libre Caslon Text","Caslon Text Fallback",serif; letter-spacing:.13em; text-transform:uppercase; white-space:nowrap; text-align:left!important}
 .tk-dot{width:.5rem; height:.5rem; border-radius:50%; background:#fff; flex:none}
 .tk-dot{position:relative}
 @media (prefers-reduced-motion: no-preference){ .tk-dot::after{content:""; position:absolute; inset:0; border-radius:50%; background:rgba(255,255,255,.7); animation:tkpulse 1.8s ease-out infinite} }
@@ -1272,7 +1274,7 @@ footer.site{padding-bottom:1rem}
 .tk-track li::after{content:"✦"; color:var(--rule); font-size:.7rem; opacity:.7}
 .ticker a{color:var(--ink); text-decoration:none; font-size:.98rem}
 .ticker a:hover, .ticker a:focus-visible{color:var(--rule); text-decoration:underline; text-underline-offset:3px}
-.ticker time{font-family:"Libre Caslon Display",serif; color:var(--rule); margin-right:.4rem; font-variant-numeric:oldstyle-nums}
+.ticker time{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; color:var(--rule); margin-right:.4rem; font-variant-numeric:oldstyle-nums}
 .ticker li.fresh a::before{content:"New"; display:inline-block; margin-right:.45rem; padding:0 .4rem; border-radius:999px; background:var(--rule); color:#fff; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; vertical-align:.12em}
 .ticker.run .tk-track{animation:tkroll var(--tkdur,40s) linear infinite}
 .ticker.paused .tk-track, .ticker.expanded .tk-track, .ticker.run .tk-view:has(a:focus-visible) .tk-track{animation-play-state:paused}
@@ -1310,7 +1312,7 @@ footer.site{padding-bottom:1rem}
 .theme svg, .badgelink svg{width:1.05rem; height:1.05rem}
 .badgelink{position:relative; display:inline-grid; place-items:center; flex:none; width:2.1rem; height:2.1rem; border:1px solid var(--line); border-radius:999px; color:var(--ink-soft); text-decoration:none; margin-left:.35rem}
 .badgelink:hover, .theme:hover, .searchbtn:hover{color:var(--rule); border-color:var(--rule)}
-.badgelink .bn{position:absolute; top:-.3rem; right:-.35rem; min-width:1.05rem; height:1.05rem; padding:0 .22rem; border-radius:999px; background:var(--rule); color:#fff; font:400 .66rem/1.05rem "Libre Caslon Text",serif; text-align:center}
+.badgelink .bn{position:absolute; top:-.3rem; right:-.35rem; min-width:1.05rem; height:1.05rem; padding:0 .22rem; border-radius:999px; background:var(--rule); color:#fff; font:400 .66rem/1.05rem "Libre Caslon Text","Caslon Text Fallback",serif; text-align:center}
 .badgelink.ping{animation:bping .9s ease}
 @keyframes bping{30%{transform:scale(1.25) rotate(-12deg)} 60%{transform:scale(.95) rotate(6deg)}}
 .bar-in > .theme{margin-left:.35rem}
@@ -1321,7 +1323,7 @@ footer.site{padding-bottom:1rem}
 @media (max-width:880px){
   .bar.open nav{animation:menudrop .22s ease}
   .bar.open nav a{display:flex; align-items:baseline; gap:.7rem}
-  .bar.open nav a[data-n]::before{content:attr(data-n); min-width:2.2rem; font-family:"Libre Caslon Display",serif; font-size:.85rem; color:var(--rule)}
+  .bar.open nav a[data-n]::before{content:attr(data-n); min-width:2.2rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:.85rem; color:var(--rule)}
   .bar.open nav a[aria-current="true"]{color:var(--rule)}
 }
 @keyframes menudrop{from{opacity:0; transform:translateY(-6px)}}
@@ -1330,7 +1332,7 @@ footer.site{padding-bottom:1rem}
 /* on this day: turn through the calendar */
 .otd{position:relative}
 .otd-nav{position:absolute; top:.55rem; right:.6rem; display:flex; gap:.3rem}
-.otd-b{width:1.8rem; height:1.8rem; border-radius:50%; border:1px solid var(--line); background:var(--paper); color:var(--ink-soft); font:1.05rem/1 "Libre Caslon Text",serif; cursor:pointer}
+.otd-b{width:1.8rem; height:1.8rem; border-radius:50%; border:1px solid var(--line); background:var(--paper); color:var(--ink-soft); font:1.05rem/1 "Libre Caslon Text","Caslon Text Fallback",serif; cursor:pointer}
 .otd-b:hover{color:var(--rule); border-color:var(--rule)}
 .otd.flip .otd-d, .otd.flip .otd-t, .otd.flip .otd-s{animation:otdin .35s ease}
 @keyframes otdin{from{opacity:0; transform:translateY(4px)}}
@@ -1372,7 +1374,7 @@ footer.site{padding-bottom:1rem}
 .ad-cols{display:grid; grid-template-columns:1fr 1fr; gap:0; margin:1.4rem 0 1.2rem; text-align:left; border-top:2px solid var(--ink); border-bottom:2px solid var(--ink)}
 .ad-col{padding:1.1rem 1.3rem 1.2rem; position:relative}
 .ad-col + .ad-col{border-left:1px solid color-mix(in srgb, var(--ink) 40%, transparent)}
-.ad-col h3{display:flex; align-items:center; gap:.55rem; margin:0 0 .35rem; font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.45rem; color:var(--ink); text-align:left!important}
+.ad-col h3{display:flex; align-items:center; gap:.55rem; margin:0 0 .35rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.45rem; color:var(--ink); text-align:left!important}
 .ad-col h3 .ic{width:1.9rem; height:1.9rem; flex:none; color:var(--rule); stroke-width:1.5}
 .ad-d{margin:0 0 .7rem; font-style:italic; color:var(--ink-soft); font-size:.97rem; line-height:1.5}
 .ad-col ul{list-style:none; margin:0; padding:0; display:grid; gap:.3rem}
@@ -1393,7 +1395,7 @@ footer.site{padding-bottom:1rem}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .promo.ad{background:color-mix(in srgb, var(--paper) 90%, #6b5530)} }
 .ad-stamp{position:absolute; top:1.5rem; right:1.6rem; width:6.4rem; height:6.4rem; margin:0; display:grid; place-items:center; border-radius:50%;
   border:2px solid var(--rule); box-shadow:inset 0 0 0 4px var(--paper), inset 0 0 0 5px var(--rule); color:var(--rule); transform:rotate(-12deg);
-  font:400 .72rem/1.25 "Libre Caslon Text",serif; letter-spacing:.12em; text-transform:uppercase; text-align:center; opacity:.9; z-index:1}
+  font:400 .72rem/1.25 "Libre Caslon Text","Caslon Text Fallback",serif; letter-spacing:.12em; text-transform:uppercase; text-align:center; opacity:.9; z-index:1}
 .promo.ad .ad-stamp{box-shadow:inset 0 0 0 4px color-mix(in srgb, var(--paper) 78%, #f2e3c2), inset 0 0 0 5px var(--rule)}
 @media (prefers-reduced-motion: no-preference){ .ad-stamp{animation:stampin .6s cubic-bezier(.2,1.6,.4,1) both; animation-timeline:view(); animation-range:entry 10% cover 30%} }
 @keyframes stampin{from{transform:rotate(-30deg) scale(1.6); opacity:0} to{transform:rotate(-12deg) scale(1); opacity:.9}}
@@ -1434,13 +1436,13 @@ form.tmpl select:focus{outline:2px solid var(--rule); outline-offset:1px; border
 @media (prefers-reduced-motion: reduce){ .tl li.lit{animation:none; outline:2px solid var(--rule)} }
 /* the advertisement, version two */
 .ad-banner{margin:0 auto .7rem; display:flex; justify-content:center}
-.ad-banner span{position:relative; display:inline-block; padding:.32rem 1.6rem; background:var(--rule); color:#fff; font:400 .76rem/1.2 "Libre Caslon Text",serif; letter-spacing:.2em; text-transform:uppercase}
+.ad-banner span{position:relative; display:inline-block; padding:.32rem 1.6rem; background:var(--rule); color:#fff; font:400 .76rem/1.2 "Libre Caslon Text","Caslon Text Fallback",serif; letter-spacing:.2em; text-transform:uppercase}
 .ad-banner span::before, .ad-banner span::after{content:""; position:absolute; top:0; bottom:0; width:.8rem; background:var(--rule)}
 .ad-banner span::before{left:-.7rem; clip-path:polygon(0 0,100% 0,100% 100%,0 100%,45% 50%)}
 .ad-banner span::after{right:-.7rem; clip-path:polygon(0 0,100% 0,55% 50%,100% 100%,0 100%)}
 :root[data-theme="dark"] .ad-banner span, :root[data-theme="dark"] .ad-banner span::before, :root[data-theme="dark"] .ad-banner span::after{background:#8c2a21}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .ad-banner span, :root:not([data-theme="light"]) .ad-banner span::before, :root:not([data-theme="light"]) .ad-banner span::after{background:#8c2a21} }
-.ad-mark{margin:0; font-family:"Libre Caslon Display",serif; font-size:clamp(2.4rem, 7vw, 4.2rem); line-height:1; letter-spacing:.06em; text-transform:uppercase; color:var(--ink);
+.ad-mark{margin:0; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:clamp(2.4rem, 7vw, 4.2rem); line-height:1; letter-spacing:.06em; text-transform:uppercase; color:var(--ink);
   text-shadow:1px 1px 0 var(--paper), 2px 2px 0 color-mix(in srgb, var(--rule) 55%, transparent)}
 .promo.ad .promo-h{font-size:clamp(1.35rem, 3vw, 1.85rem); margin:.55rem auto .4rem; font-style:italic}
 .ad-tag{margin:0 auto .9rem; padding:.35rem 0; max-width:44rem; border-top:1px solid var(--ink); border-bottom:1px solid var(--ink); font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft)}
@@ -1453,7 +1455,7 @@ form.tmpl select:focus{outline:2px solid var(--rule); outline-offset:1px; border
 .promo.ad .ad-d{font-size:.9rem}
 .ad-coupon{position:relative; max-width:42rem; margin:1.3rem auto .4rem; padding:1rem 1.2rem 1.1rem; border:2px dashed color-mix(in srgb, var(--ink) 55%, transparent); border-radius:6px; background:var(--paper)}
 .ad-coupon p{margin:0 0 .8rem; line-height:1.55}
-.ad-coupon b{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.15em; color:var(--rule); display:block; margin-bottom:.2rem}
+.ad-coupon b{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.15em; color:var(--rule); display:block; margin-bottom:.2rem}
 .ad-coupon .promo-ctas{margin:0}
 .promo.ad .ad-more{margin-top:.6rem}
 @media (max-width:900px){ .promo.ad .ad-cols{grid-template-columns:1fr 1fr} .promo.ad .ad-col:nth-child(3){grid-column:1 / -1; border-left:0; border-top:1px solid color-mix(in srgb, var(--ink) 40%, transparent)} }
@@ -1464,7 +1466,7 @@ form.tmpl select:focus{outline:2px solid var(--rule); outline-offset:1px; border
 @media (min-width:721px) and (max-width:900px){ .ad-mark{font-size:2.3rem} .promo.ad .ad-stamp{width:5rem; height:5rem; font-size:.52rem; top:1rem; right:1rem} }
 
 /* ===== Draft 52 ===== */
-:root{--gold:#b8892b; --gold-hi:#e6c46a; --gold-lo:#8f6a1f}
+:root{--gold:#b8892b; --gold-hi:#e6c46a; --gold-lo:#7a5a18}
 :root[data-theme="dark"]{--gold:#d4ab4f; --gold-hi:#f3d98e; --gold-lo:#a7802f}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--gold:#d4ab4f; --gold-hi:#f3d98e; --gold-lo:#a7802f} }
 
@@ -1567,11 +1569,11 @@ p, li, figcaption{text-wrap:pretty}
 .badgelink .bn{background:linear-gradient(180deg, var(--gold-hi), var(--gold-lo)); color:#2a1d05}
 /* Part I: year labels on the ribbon, and wax on the seals */
 .tl-ribbon .tick::after{content:attr(data-y); position:absolute; bottom:calc(100% + .45rem); left:50%; transform:translate(-50%, .2rem); padding:.12rem .4rem; border-radius:3px; white-space:nowrap;
-  background:var(--ink); color:var(--paper); font:400 .7rem/1.2 "Libre Caslon Text",serif; letter-spacing:0; opacity:0; pointer-events:none; transition:opacity .15s, transform .15s}
+  background:var(--ink); color:var(--paper); font:400 .7rem/1.2 "Libre Caslon Text","Caslon Text Fallback",serif; letter-spacing:0; opacity:0; pointer-events:none; transition:opacity .15s, transform .15s}
 .tl-ribbon .tick:hover::after{opacity:1; transform:translate(-50%,0)}
 .tl li.sealed .yr{color:color-mix(in srgb, var(--ink) 75%, var(--gold))}
 /* the ad: numbered departments and an "Ask about this" line in each */
-.ad-no{margin:0 0 .15rem; font:400 .72rem/1 "Libre Caslon Text",serif; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-lo); text-align:left!important}
+.ad-no{margin:0 0 .15rem; font:400 .72rem/1 "Libre Caslon Text","Caslon Text Fallback",serif; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-lo); text-align:left!important}
 :root[data-theme="dark"] .ad-no{color:var(--gold)}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .ad-no{color:var(--gold)} }
 .ad-col{display:flex; flex-direction:column}
@@ -1600,7 +1602,7 @@ kbd{font:400 .78em/1 ui-monospace,SFMono-Regular,Menlo,monospace; padding:.12em 
 @media (pointer:fine){ .tl{cursor:grab} .tl.grabbing{cursor:grabbing; user-select:none} .tl.grabbing *{pointer-events:none} }
 /* the ad: "What do you have?" */
 .ad-finder{max-width:42rem; margin:1.4rem auto 0; padding:.9rem 1rem 1rem; border-top:1px solid color-mix(in srgb, var(--gold) 60%, transparent); border-bottom:1px solid color-mix(in srgb, var(--gold) 60%, transparent)}
-.ad-fq{margin:0 0 .6rem; font-family:"Libre Caslon Display",serif; font-size:1.25rem}
+.ad-fq{margin:0 0 .6rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.25rem}
 .ad-fopts{display:flex; flex-wrap:wrap; justify-content:center; gap:.4rem}
 .ad-fopts button{font:inherit; font-size:.88rem; color:var(--ink); background:var(--paper); border:1px solid var(--line); border-radius:999px; padding:.3rem .8rem; cursor:pointer; transition:border-color .2s, background .2s, color .2s}
 .ad-fopts button:hover{border-color:var(--gold); color:var(--gold-lo)}
@@ -1632,7 +1634,7 @@ kbd{font:400 .78em/1 ui-monospace,SFMono-Regular,Menlo,monospace; padding:.12em 
 @media (max-width:640px){ .bar-in::before{left:1.4rem; right:.4rem} }
 /* the gold tab that names the part you are reading */
 .bar-tab{position:absolute; left:50%; top:100%; transform:translate(-50%, -2px); z-index:3; padding:.16rem .75rem .22rem; border-radius:0 0 8px 8px;
-  background:linear-gradient(180deg, var(--gold-hi), var(--gold) 55%, var(--gold-lo)); color:#2a1d05; font:400 .74rem/1.25 "Libre Caslon Text",serif; letter-spacing:.04em; white-space:nowrap; text-decoration:none;
+  background:linear-gradient(180deg, var(--gold-hi), var(--gold) 55%, var(--gold-lo)); color:#2a1d05; font:400 .74rem/1.25 "Libre Caslon Text","Caslon Text Fallback",serif; letter-spacing:.04em; white-space:nowrap; text-decoration:none;
   box-shadow:0 6px 14px -8px rgba(0,0,0,.55); opacity:0; pointer-events:none; transition:opacity .3s, transform .3s}
 .bar-tab b{font-weight:400; letter-spacing:.12em; text-transform:uppercase; font-size:.92em}
 .bar.has-tab .bar-tab{opacity:1; pointer-events:auto; transform:translate(-50%, 0)}
@@ -1651,7 +1653,7 @@ kbd{font:400 .78em/1 ui-monospace,SFMono-Regular,Menlo,monospace; padding:.12em 
 :root[data-theme="dark"] .tl{background:linear-gradient(180deg, color-mix(in srgb, #6b5530 16%, transparent), transparent)}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .tl{background:linear-gradient(180deg, color-mix(in srgb, #6b5530 16%, transparent), transparent)} }
 .tl-range{margin:.35rem 0 0; text-align:center; font-size:.85rem; color:var(--ink-soft); min-height:1.3em}
-.tl-range b{font-weight:400; color:var(--ink); font-family:"Libre Caslon Display",serif}
+.tl-range b{font-weight:400; color:var(--ink); font-family:"Libre Caslon Display","Caslon Display Fallback",serif}
 /* the ad: a fleuron in each corner of the frame */
 .promo.ad > .ad-orn{position:absolute; z-index:2; font-style:normal; font-size:1.05rem; line-height:1; color:var(--gold); pointer-events:none}
 .ad-orn.o1{top:16px; left:16px} .ad-orn.o2{top:16px; right:16px; transform:scaleX(-1)} .ad-orn.o3{bottom:16px; left:16px; transform:scaleY(-1)} .ad-orn.o4{bottom:16px; right:16px; transform:scale(-1)}
@@ -1713,7 +1715,7 @@ html{scroll-padding-top:5.8rem}
 @media print{ .tl-go{display:none!important} }
 
 /* ===== Draft 57: where the hunt began ===== */
-.hero-k{margin:0 0 .7rem; font:400 .78rem/1.4 "Libre Caslon Text",serif; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-lo)}
+.hero-k{margin:0 0 .7rem; font:400 .78rem/1.4 "Libre Caslon Text","Caslon Text Fallback",serif; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-lo)}
 .hero-k span{color:var(--gold); margin:0 .35rem; font-size:.8em}
 :root[data-theme="dark"] .hero-k{color:var(--gold-hi)}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .hero-k{color:var(--gold-hi)} }
@@ -1723,7 +1725,7 @@ html{scroll-padding-top:5.8rem}
 }
 .placeband{display:flex; align-items:stretch; margin:0 0 0; border-bottom:1px solid color-mix(in srgb, var(--gold) 55%, transparent); overflow:hidden;
   background:linear-gradient(180deg, color-mix(in srgb, var(--gold-hi) 14%, transparent), transparent)}
-.pb-tag{flex:none; display:flex; align-items:center; margin:0; padding:.42rem .9rem .42rem 0; font:400 .68rem/1.2 "Libre Caslon Text",serif; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); white-space:nowrap; text-align:left!important}
+.pb-tag{flex:none; display:flex; align-items:center; margin:0; padding:.42rem .9rem .42rem 0; font:400 .68rem/1.2 "Libre Caslon Text","Caslon Text Fallback",serif; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); white-space:nowrap; text-align:left!important}
 .pb-tag::after{content:""; width:.38rem; height:.38rem; margin-left:.7rem; transform:rotate(45deg); background:var(--gold)}
 .pb-view{flex:1; min-width:0; overflow:hidden; display:flex; align-items:center;
   -webkit-mask-image:linear-gradient(90deg, transparent, #000 1.6rem, #000 calc(100% - 1.6rem), transparent); mask-image:linear-gradient(90deg, transparent, #000 1.6rem, #000 calc(100% - 1.6rem), transparent)}
@@ -1744,7 +1746,7 @@ html{scroll-padding-top:5.8rem}
 .hero-k span{color:inherit; margin:0; font-size:inherit}
 .hero-k .hk1, .hero-k .hk2{white-space:nowrap}
 .hero-k .hk2{display:block; margin-top:.15rem}
-.hero-k i{font-style:normal; color:var(--gold); font-size:.8em; margin-right:.35rem}
+.hero-k i{font-style:normal; color:var(--gold-lo); font-size:.8em; margin-right:.35rem}
 .placeband + .hero{padding-top:3rem}
 @media (max-width:640px){ .hero-k .hk1{white-space:normal} .placeband + .hero{padding-top:2.2rem} }
 .placeband.still .pb-track{flex-wrap:nowrap; width:max-content}
@@ -1768,7 +1770,7 @@ html{scroll-padding-top:5.8rem}
 /* the top bar: each section's part number rises in gold over its link when you point at it */
 @media (min-width:881px) and (hover:hover){
   .bar nav a[data-n]{position:relative}
-  .bar nav a[data-n]::after{content:attr(data-n); position:absolute; left:50%; top:-.62rem; transform:translate(-50%, .25rem); font:400 .56rem/1 "Libre Caslon Text",serif; letter-spacing:.14em; color:var(--gold-lo); opacity:0; pointer-events:none; transition:opacity .2s, transform .2s}
+  .bar nav a[data-n]::after{content:attr(data-n); position:absolute; left:50%; top:-.62rem; transform:translate(-50%, .25rem); font:400 .56rem/1 "Libre Caslon Text","Caslon Text Fallback",serif; letter-spacing:.14em; color:var(--gold-lo); opacity:0; pointer-events:none; transition:opacity .2s, transform .2s}
   .bar nav a[data-n]:hover::after, .bar nav a[data-n][aria-current="true"]::after{opacity:1; transform:translate(-50%,0)}
   :root[data-theme="dark"] .bar nav a[data-n]::after{color:var(--gold-hi)}
 }
@@ -1798,7 +1800,7 @@ html{scroll-padding-top:5.8rem}
 /* the rank ladder on the badges page */
 .rladder{list-style:none; margin:.4rem 0 1.4rem; padding:0; display:flex; flex-wrap:wrap; gap:.35rem; counter-reset:r}
 .rladder li{flex:1 1 9rem; display:flex; flex-direction:column; gap:.1rem; padding:.45rem .7rem; border:1px solid var(--line); border-radius:6px; background:var(--paper); font-size:.85rem; color:var(--ink-soft)}
-.rladder li b{font-weight:400; font-family:"Libre Caslon Display",serif; font-size:1rem; color:var(--ink)}
+.rladder li b{font-weight:400; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1rem; color:var(--ink)}
 .rladder li span{font-size:.78rem}
 .rladder li.past{border-color:color-mix(in srgb, var(--gold) 55%, transparent)}
 .rladder li.here{border-color:var(--gold); background:color-mix(in srgb, var(--gold-hi) 16%, var(--paper)); box-shadow:inset 0 3px 0 var(--gold)}
@@ -1811,7 +1813,7 @@ html{scroll-padding-top:5.8rem}
 .starthere li{line-height:1.5}
 .starthere a{white-space:nowrap}
 .starthere .note{margin:0}
-main .starthere h2{font-family:"Libre Caslon Display",serif; font-size:1.4rem; font-weight:400; color:var(--ink); letter-spacing:0; text-transform:none}
+main .starthere h2{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.4rem; font-weight:400; color:var(--ink); letter-spacing:0; text-transform:none}
 figcaption .credit{display:block; margin-top:.25rem; font-size:.78rem; font-style:normal; letter-spacing:.02em; color:var(--ink-soft); opacity:.85}
 
 /* ===== Draft 62 ===== */
@@ -1821,7 +1823,7 @@ figcaption .credit{display:block; margin-top:.25rem; font-size:.78rem; font-styl
 
 /* ===== Draft 63 ===== */
 .firsthunt{margin:1.6rem auto 1.4rem; max-width:40rem; padding:1rem 1.3rem 1.1rem; border:1px solid color-mix(in srgb, var(--gold) 60%, transparent); border-left:4px solid var(--gold); border-radius:6px; background:color-mix(in srgb, var(--gold-hi) 9%, var(--paper)); text-align:left}
-.firsthunt h3{margin:0 0 .5rem; font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.3rem; text-align:left!important}
+.firsthunt h3{margin:0 0 .5rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.3rem; text-align:left!important}
 .firsthunt ol{margin:0; padding-left:1.25rem; display:grid; gap:.35rem; line-height:1.5}
 .goodanswer{margin:.8rem 0; padding:.7rem 1rem; border:1px dashed var(--line); border-radius:6px; background:var(--paper); font-size:.95rem; line-height:1.55}
 .remember{padding:.7rem 1rem; border-left:3px solid var(--rule); background:color-mix(in srgb, var(--rule) 6%, var(--paper)); border-radius:0 6px 6px 0}
@@ -1836,8 +1838,8 @@ figcaption .credit{display:block; margin-top:.25rem; font-size:.78rem; font-styl
 /* ===== Draft 64: from the post ===== */
 .frompost{margin:1.6rem 0 1.8rem; padding:1.1rem 1.2rem 1.2rem; border:1px solid var(--line); border-top:3px solid var(--gold); border-radius:6px; background:var(--paper)}
 .frompost h2{margin:0 0 .35rem; font-size:1.35rem}
-.fp-lead{margin:0 0 .9rem; font-family:"Libre Caslon Display",serif; font-size:1.15rem; line-height:1.4}
-.fp-lead a{font-family:"Libre Caslon Text",serif; font-size:.9rem; white-space:nowrap}
+.fp-lead{margin:0 0 .9rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.15rem; line-height:1.4}
+.fp-lead a{font-family:"Libre Caslon Text","Caslon Text Fallback",serif; font-size:.9rem; white-space:nowrap}
 .fp-pics{display:grid; gap:.8rem; grid-template-columns:repeat(auto-fit, minmax(13rem, 1fr))}
 .fp-pics figure{margin:0}
 .fp-pics img{display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:4px; background:#fff; box-shadow:0 10px 24px -18px rgba(0,0,0,.6); cursor:zoom-in}
@@ -1854,7 +1856,7 @@ main.page > section.frompost{counter-increment:none}
 .fp-zoom img{max-width:min(100%, 60rem); max-height:100%; width:auto; height:auto; border-radius:4px; box-shadow:0 30px 60px -20px #000}
 .fp-zoom .fp-x{position:absolute; top:.8rem; right:1rem; width:2.4rem; height:2.4rem; border-radius:50%; border:1px solid rgba(255,255,255,.4); background:rgba(0,0,0,.35); color:#fff; font-size:1.4rem; line-height:1; cursor:pointer}
 .solvedbox{margin:1rem 0 1.2rem; padding:.9rem 1.1rem; border:1px solid var(--line); border-left:4px solid var(--gold); border-radius:6px; background:color-mix(in srgb, var(--gold-hi) 8%, var(--paper))}
-.solvedbox h3{margin:0 0 .35rem; font-size:1.1rem; font-family:"Libre Caslon Display",serif; font-weight:400; text-align:left!important}
+.solvedbox h3{margin:0 0 .35rem; font-size:1.1rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; text-align:left!important}
 .solvedbox p{margin:0; font-size:.95rem; line-height:1.55}
 .newhere{max-width:46rem; margin:0 auto 1rem; padding:.7rem 1rem; border:1px dashed color-mix(in srgb, var(--gold) 70%, transparent); border-radius:6px; background:var(--paper); font-size:.95rem; line-height:1.5; text-align:left}
 .mytally{text-align:center; font-size:.88rem; color:var(--ink-soft); margin:-.4rem 0 .9rem}
@@ -1877,3 +1879,11 @@ footer .cite{font-size:.78rem; color:var(--ink-soft); max-width:46rem; margin:.6
 .ad-own b{color:var(--ink)}
 .docfig{margin:1.4rem auto; width:min(100%, 34rem)} .docfig img{width:100%; height:auto; border:1px solid var(--line); box-shadow:0 18px 40px -24px rgba(0,0,0,.6); background:#fff}
 .docfig figcaption{font-size:.86rem; color:var(--ink-soft); margin-top:.5rem}
+/* ===== Draft 69: validator fixes ===== */
+.scale{display:flex; flex-direction:column} .scale .bar9{order:0} .scale figcaption{order:1} .scale .ends{order:2}
+/* Draft 69: the diamond in the hero kicker keeps the brighter gold only on dark pages */
+:root[data-theme="dark"] .hero-k i{color:var(--gold)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .hero-k i{color:var(--gold)} }
+/* Draft 69: the photo zoom is a real modal dialog now (focus stays inside; Escape closes) */
+dialog.fp-zoom{max-width:none; max-height:none; width:100%; height:100%; border:0; margin:0; color:#fff}
+dialog.fp-zoom::backdrop{background:transparent}

@@ -13,7 +13,7 @@ for c in C:
     extra='<p><a href="/notes/one-letter-two-certificates/">Read the full case in the field notes</a>.</p>' if n==10 else ''
     fp=c.get('frompost'); frompost=''
     if fp and c.get('post'):
-        pics=''.join(f'<figure><picture><source type="image/webp" srcset="{x["src"]}{"-700" if "/pages/" in x["src"] else ""}.webp"><img src="{x["src"]}{"-700" if "/pages/" in x["src"] else ""}.jpg" width="{x["w"]}" height="{x["h"]}" loading="lazy" decoding="async" alt="{esc(x["alt"])}"></picture><figcaption>{x["cap"]}</figcaption></figure>' for x in fp['photos'])
+        pics=''.join(f'<figure><picture><source type="image/webp" srcset="{x["src"]}{"-700" if "/pages/" in x["src"] else ""}.webp"><img src="{x["src"]}{"-700" if "/pages/" in x["src"] else ""}.jpg" width="{x["w"]}" height="{x["h"]}" {"loading=\"lazy\"" if k else "fetchpriority=\"high\""} decoding="async" alt="{esc(x["alt"])}"></picture><figcaption>{x["cap"]}</figcaption></figure>' for k,x in enumerate(fp['photos']))
         frompost=f'''    <section class="frompost" aria-labelledby="fp{n}">
       <h2 id="fp{n}">From the post</h2>
       <p class="fp-lead">“{esc(fp['lead'])}” <a href="{esc(c['post'])}">Read the whole post on Facebook ›</a></p>
@@ -49,6 +49,7 @@ for c in C:
     <div class="notebook" id="casenote" data-case="{n}">
       <h2>Your notebook for this case</h2>
       <p class="note">Jot down what you find and where. It is saved only on this device, and nobody else can see it. <a href="/notebook/">All your notes</a></p>
+      <label for="noteText" class="vh">Your notes for this case</label>
       <textarea id="noteText" rows="7" placeholder="Record · where I found it (book, page, link) · what it says"></textarea>
       <p class="nbbtns"><button type="button" class="btn" id="noteCopy">Copy as a Facebook answer</button><button type="button" class="btn" id="noteSave">Download as a text file</button><span class="copied" id="noteOut" aria-live="polite"></span></p>
     </div>
@@ -64,7 +65,7 @@ pathlib.Path(f'{R}/_tools/cards.json').write_text(json.dumps(C, ensure_ascii=Fal
 # keepsake page (reads cases.json in the browser; shows a certificate only for a solved case)
 kbody='''    <p class="crumb no-print"><a href="/#cases">← The case board</a></p>
     <div id="keep"><p class="kicker">Solver’s keepsake</p><h1>No case cracked yet</h1><p>When one is, its solver’s name goes on a keepsake here, ready to print. Could the first one be yours? Choose a solved case on <a href="/#cases">the case board</a>.</p></div>
-    <p class="center no-print" id="keepbtns" hidden><button type="button" class="btn primary" onclick="print()">Print or save as PDF</button></p>
+    <p class="center no-print" id="keepbtns" hidden><button type="button" class="btn primary" id="keepPrint">Print or save as PDF</button></p>
     <script>
     (function(){ var n=+new URLSearchParams(location.search).get('case'); if(!n) return;
       fetch('/cases.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){

@@ -28,8 +28,8 @@
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
-<link rel="stylesheet" href="/site.min.css?v=25cf4fd8">
-<script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/sample/*"}},{"not":{"href_matches":"/*.pdf"}}]},"eagerness":"moderate"}]}</script>
+<link rel="stylesheet" href="/site.min.css?v=c9c242c0">
+<script type="speculationrules">{"prefetch":[{"where":{"and":[{"selector_matches":".bar a, footer nav a, .partrail a, .search-res a, .crumb a"},{"href_matches":"/*"},{"not":{"href_matches":"/*.pdf"}}]},"eagerness":"moderate"}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
@@ -49,7 +49,7 @@
   </div>
 </header>
 <dialog class="search" id="searchDlg" aria-label="Search the site">
-  <form method="dialog" class="search-in" onsubmit="return false"><input type="search" id="searchQ" placeholder="Search cases, field notes, guides…" autocomplete="off" aria-label="Search"><button type="button" class="linkbtn" id="searchClose">Close</button></form>
+  <form method="dialog" class="search-in"><input type="search" id="searchQ" placeholder="Search cases, field notes, guides…" autocomplete="off" aria-label="Search"><button type="submit" class="vh">Search</button><button type="button" class="linkbtn" id="searchClose">Close</button></form>
   <p class="vh" id="searchCount" aria-live="polite"></p>
   <ol class="search-res" id="searchRes"></ol>
   <p class="note search-tip">Tip: press <kbd>/</kbd> or <kbd>Ctrl</kbd> <kbd>K</kbd> anywhere to search.</p>
@@ -64,7 +64,7 @@
     <aside class="starthere" aria-labelledby="sh10"><h2 id="sh10">Start here</h2><ol><li>The post that opened this case, on Project Scroll’s Facebook page: <b>“One Letter, Two Certificates.”</b> <a href="https://www.facebook.com/projectscroll/posts/pfbid0xb5o3WoHejcD9cwgAptCNTpjGwaQHxEs9ZVQ2FBypAqQK63A2aArdWvyTemB5hfyl">Read the post ›</a></li><li>The field note <b>“One Letter, Two Certificates,”</b> which lays out both certificates side by side and shows how to weigh them. <a href="/notes/one-letter-two-certificates/">Read the field note ›</a></li><li>Michigan’s death certificates, 1897 to 1952, free to view at the Archives of Michigan, so you can see what records like these look like. <a href="https://michigan.access.preservica.com/death-certificates-1897-1952/">Browse the certificates ›</a></li></ol><p class="note">These are the first pages to open. The answer is in the record; the rest of the trail is yours.</p></aside>    <section class="frompost" aria-labelledby="fp10">
       <h2 id="fp10">From the post</h2>
       <p class="fp-lead">“One letter. That’s all it was.” <a href="https://www.facebook.com/projectscroll/posts/pfbid0xb5o3WoHejcD9cwgAptCNTpjGwaQHxEs9ZVQ2FBypAqQK63A2aArdWvyTemB5hfyl">Read the whole post on Facebook ›</a></p>
-      <div class="fp-pics n1"><figure><picture><source type="image/webp" srcset="/img/two-certificates.webp"><img src="/img/two-certificates.jpg" width="1400" height="933" loading="lazy" decoding="async" alt="Two Michigan death certificates side by side."></picture><figcaption>Two certificates, twenty-three years apart, and one middle initial that only one of them has.</figcaption></figure></div>
+      <div class="fp-pics n1"><figure><picture><source type="image/webp" srcset="/img/two-certificates.webp"><img src="/img/two-certificates.jpg" width="1400" height="933" fetchpriority="high" decoding="async" alt="Two Michigan death certificates side by side."></picture><figcaption>Two certificates, twenty-three years apart, and one middle initial that only one of them has.</figcaption></figure></div>
       <div class="fp-live" id="fplive10" data-post="https://www.facebook.com/projectscroll/posts/pfbid0xb5o3WoHejcD9cwgAptCNTpjGwaQHxEs9ZVQ2FBypAqQK63A2aArdWvyTemB5hfyl">
         <button type="button" class="btn" id="fpload10">Show the live post, with its likes and comments</button>
         <p class="note">Loads from Facebook only when you ask. <a href="/privacy/">What this site keeps.</a></p>
@@ -84,6 +84,7 @@
     <div class="notebook" id="casenote" data-case="10">
       <h2>Your notebook for this case</h2>
       <p class="note">Jot down what you find and where. It is saved only on this device, and nobody else can see it. <a href="/notebook/">All your notes</a></p>
+      <label for="noteText" class="vh">Your notes for this case</label>
       <textarea id="noteText" rows="7" placeholder="Record · where I found it (book, page, link) · what it says"></textarea>
       <p class="nbbtns"><button type="button" class="btn" id="noteCopy">Copy as a Facebook answer</button><button type="button" class="btn" id="noteSave">Download as a text file</button><span class="copied" id="noteOut" aria-live="polite"></span></p>
     </div>
@@ -106,6 +107,6 @@
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=25cf4fd8" defer></script>
+<script src="/site.min.js?v=c9c242c0" defer></script>
 </body>
 </html>

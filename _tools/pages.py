@@ -13,8 +13,10 @@ def proc(html):
     out.append(smart(html[i:])); return ''.join(out)
 import pathlib
 R=str(pathlib.Path(__file__).resolve().parent.parent)
-def page(path, title, desc, body, canon=None, noindex=False, og='https://projectscroll.com/og-dark.png?v=3'):
+def page(path, title, desc, body, canon=None, noindex=False, og='https://projectscroll.com/og-dark.jpg?v=4'):
     canon = canon or 'https://projectscroll.com/'+path.replace('index.html','')
+    import html as _h
+    title=_h.escape(title, quote=True); desc=_h.escape(desc, quote=True)
     head=f'''<!doctype html>
 <html lang="en">
 <head>
@@ -45,8 +47,8 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=25cf4fd8">
-<script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"href_matches":"/*"}},{{"not":{{"href_matches":"/sample/*"}}}},{{"not":{{"href_matches":"/*.pdf"}}}}]}},"eagerness":"moderate"}}]}}</script>
+<link rel="stylesheet" href="/site.min.css?v=c9c242c0">
+<script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"selector_matches":".bar a, footer nav a, .partrail a, .search-res a, .crumb a"}},{{"href_matches":"/*"}},{{"not":{{"href_matches":"/*.pdf"}}}}]}},"eagerness":"moderate"}}]}}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
@@ -66,7 +68,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
   </div>
 </header>
 <dialog class="search" id="searchDlg" aria-label="Search the site">
-  <form method="dialog" class="search-in" onsubmit="return false"><input type="search" id="searchQ" placeholder="Search cases, field notes, guides…" autocomplete="off" aria-label="Search"><button type="button" class="linkbtn" id="searchClose">Close</button></form>
+  <form method="dialog" class="search-in"><input type="search" id="searchQ" placeholder="Search cases, field notes, guides…" autocomplete="off" aria-label="Search"><button type="submit" class="vh">Search</button><button type="button" class="linkbtn" id="searchClose">Close</button></form>
   <p class="vh" id="searchCount" aria-live="polite"></p>
   <ol class="search-res" id="searchRes"></ol>
   <p class="note search-tip">Tip: press <kbd>/</kbd> or <kbd>Ctrl</kbd> <kbd>K</kbd> anywhere to search.</p>
@@ -89,7 +91,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=25cf4fd8" defer></script>
+<script src="/site.min.js?v=c9c242c0" defer></script>
 </body>
 </html>
 '''

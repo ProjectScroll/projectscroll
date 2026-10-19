@@ -55,5 +55,5 @@ body::before{content:"";position:absolute;inset:0;background:linear-gradient(90d
 <div class="f">${C.f}</div>
 </div><div class="pic"></div></body></html>`);
 await p.goto('file://'+tmp); await p.evaluate(()=>document.fonts.ready); await p.waitForTimeout(300);
-await p.screenshot({path:path.join(R,C.out),type:'png'}); console.log(C.out,'drawn'); }
+await p.screenshot({path:path.join(R,C.out),type:'png'}); await p.screenshot({path:path.join(R,C.out.replace(/\.png$/,'.jpg')),type:'jpeg',quality:86}); console.log(C.out,'drawn (png + jpg)'); }
 await b.close();})();

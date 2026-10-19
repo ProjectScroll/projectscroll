@@ -21,7 +21,7 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
           <label class="chk"><input type="checkbox" id="kI"> Invert (light writing on dark)</label>
           <p class="inkbtns"><button type="button" class="btn" id="kRot">Rotate ↻</button><button type="button" class="btn" id="kReset">Reset</button><button type="button" class="btn primary" id="kSave">Save the clearer copy</button></p>
         </div>
-        <canvas id="inkc" aria-label="Your enhanced photo"></canvas>
+        <canvas id="inkc" role="img" aria-label="Your enhanced photo"></canvas>
       </div>
     </section>
 

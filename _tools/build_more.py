@@ -292,7 +292,7 @@ for slug, title, desc, og, tgt in [
     <p class="center"><a class="btn primary" href="{tgt}">Open it on the main page</a></p>
     <script>location.replace('{tgt}');</script>
 '''
-    page(f'{slug}/index.html', title, desc, body, noindex=True, og=f'https://projectscroll.com/og/{og}.png')
+    page(f'{slug}/index.html', title, desc, body, noindex=True, og=f'https://projectscroll.com/og/{og}.jpg')
 
 # ------------------------------------------------------------------ document of the month
 doc = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
@@ -300,7 +300,7 @@ doc = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <h1>One page of Rogers, 1875</h1>
     <p class="lede">Every month we put one real page on the table and read it slowly. This month: page 253 of Howard S. Rogers’s <i>History of Cass County, from 1825 to 1875</i>, the first time the joke lodge of 1846 was ever printed, with the man who told it to Rogers only a footnote away.</p>
     <figure class="docfig">
-      <a href="/img/pages/rogers-1875-p253-1200.jpg"><picture><source type="image/webp" srcset="/img/pages/rogers-1875-p253-700.webp 700w, /img/pages/rogers-1875-p253-1200.webp 1200w" sizes="(min-width:900px) 700px, 92vw"><img src="/img/pages/rogers-1875-p253-700.jpg" width="700" height="1091" alt="Page 253 of Rogers’s 1875 History of Cass County, with the paragraphs on the 1846 lodge boxed in red." loading="lazy" decoding="async"></picture></a>
+      <a href="/img/pages/rogers-1875-p253-1200.jpg"><picture><source type="image/webp" srcset="/img/pages/rogers-1875-p253-700.webp 700w, /img/pages/rogers-1875-p253-1200.webp 1200w" sizes="(min-width:900px) 700px, 92vw"><img src="/img/pages/rogers-1875-p253-700.jpg" width="700" height="1091" alt="Page 253 of Rogers’s 1875 History of Cass County, with the paragraphs on the 1846 lodge boxed in red." fetchpriority="high" decoding="async"></picture></a>
       <figcaption>Rogers, 1875, p. 253. The boxed paragraphs are the lodge story. Click the page to see it full size.</figcaption>
     </figure>
     <h2>What it is</h2>
@@ -313,7 +313,7 @@ doc = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li><b>Count what can be counted.</b> Two hundred badges, one ball, one winter. Each number is a thing that might have left a record somewhere else: a newspaper, a bill, a diary, a badge in a drawer.</li>
     </ul>
     <h2>Read it yourself</h2>
-    <p>The whole book is free online in the University of Michigan’s county-histories collection: <a href="http://name.umdl.umich.edu/BAD0871.0001.001" target="_blank" rel="noopener">Rogers, <i>History of Cass County, from 1825 to 1875</i></a>. Go to pages 253–254. Then compare <a href="http://name.umdl.umich.edu/BAD0870.0001.001" target="_blank" rel="noopener">Mathews, 1882</a>, page 174, where the same story is printed again, and notice what is missing.</p>
+    <p>The whole book is free online in the University of Michigan’s county-histories collection: <a href="https://name.umdl.umich.edu/BAD0871.0001.001" target="_blank" rel="noopener">Rogers, <i>History of Cass County, from 1825 to 1875</i></a>. Go to pages 253–254. Then compare <a href="https://name.umdl.umich.edu/BAD0870.0001.001" target="_blank" rel="noopener">Mathews, 1882</a>, page 174, where the same story is printed again, and notice what is missing.</p>
     <p>This page is the opening clue of <a href="/cases/1/">Case 1</a>. If you read it closely enough, you may not need the rest.</p>
     <h2>Last month</h2>
     <p>This is the first document of the month. The next is chosen on the first of November.</p>
@@ -321,4 +321,4 @@ doc = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
 '''
 page('document/index.html', 'Document of the month · Project Scroll',
      'One real page, read slowly, every month. October 2026: page 253 of Rogers’s 1875 History of Cass County, the first printing of the joke lodge of 1846.', doc,
-     og='https://projectscroll.com/og/document.png')
+     og='https://projectscroll.com/og/document.jpg')
