@@ -24,7 +24,7 @@ REC = [
  ]),
  ('Indiana', 'Next door', [
   ('Hoosier State Chronicles', 'https://newspapers.library.in.gov/', 'Indiana’s free digital historic newspaper program.', 'free'),
-  ('INGenWeb', 'https://ingenweb.org/', 'Indiana’s county volunteer sites, many with transcribed county-history biographies.', 'free'),
+  ('INGenWeb', 'https://www.ingenweb.org/', 'Indiana’s county volunteer sites, many with transcribed county-history biographies.', 'free'),
  ]),
  ('Ohio', 'Where so many Michigan and Indiana families came from', [
   ('Ohio death records guide', 'https://ohiohistory.libguides.com/vital/death', 'The Ohio History Connection’s guide to Ohio death certificates and indexes, by period.', 'free'),
@@ -36,7 +36,7 @@ REC = [
   ('Matricula', 'https://data.matricula-online.eu/', 'Catholic parish registers from Germany, Austria, Poland and elsewhere, free to view.', 'free'),
   ('Archion', 'https://www.archion.de/', 'Protestant church books of Germany. Paid, and worth it when a German village is known.', 'paid'),
   ('ScotlandsPeople', 'https://www.scotlandspeople.gov.uk/', 'Scotland’s official records: parish registers, statutory registers, wills. Pay per view.', 'paid'),
-  ('Library and Archives Canada', 'https://www.bac-lac.gc.ca/', 'Canadian census, immigration and military records.', 'free'),
+  ('Library and Archives Canada', 'https://library-archives.canada.ca/eng', 'Canadian census, immigration and military records.', 'free'),
  ]),
 ]
 def recsec(name, sub, items):

@@ -1361,7 +1361,7 @@ footer.site{padding-bottom:1rem}
 :root[data-theme="dark"] .tk-fresh{color:#8c2a21}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .tk-fresh{color:#8c2a21} }
 @media (max-width:880px){ .bar.open nav a:not([data-n])::before{content:""; min-width:2.2rem} }
-.tk-long{margin-left:0}
+.tk-long{margin-left:.32em}
 
 
 /* ===== Draft 50: research services as an advertisement ===== */
