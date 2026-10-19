@@ -8,7 +8,7 @@ const CORE = ['/', '/notes/', '/notes/one-letter-two-certificates/', '/404.html'
   '/fonts/libre-caslon-text-latin-400-italic.woff2', '/fonts/libre-caslon-text-latin-700-normal.woff2'];
 const save = (req, res) => (res && res.ok) ? caches.open(CACHE).then(c => c.put(req, res)) : Promise.resolve();
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => Promise.allSettled(CORE.map(u => c.add(new Request(u, {cache: 'reload'}))))).then(() => self.skipWaiting())); });
-self.addEventListener('activate', e => { e.waitUntil(Promise.all([caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE && k !== 'ps-74773b18').map(k => caches.delete(k)))), self.registration.navigationPreload ? self.registration.navigationPreload.enable().catch(() => {}) : Promise.resolve()]).then(() => self.clients.claim())); });
+self.addEventListener('activate', e => { e.waitUntil(Promise.all([caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE && k !== 'ps-files').map(k => caches.delete(k)))), self.registration.navigationPreload ? self.registration.navigationPreload.enable().catch(() => {}) : Promise.resolve()]).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {
   const req = e.request; const url = new URL(req.url);
   if (req.method !== 'GET' || url.origin !== location.origin) return;
