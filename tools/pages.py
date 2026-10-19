@@ -13,7 +13,7 @@ def proc(html):
     out.append(smart(html[i:])); return ''.join(out)
 import pathlib
 R=str(pathlib.Path(__file__).resolve().parent.parent)
-def page(path, title, desc, body, canon=None, noindex=False, og='https://projectscroll.com/og-dark.png'):
+def page(path, title, desc, body, canon=None, noindex=False, og='https://projectscroll.com/og-dark.png?v=3'):
     canon = canon or 'https://projectscroll.com/'+path.replace('index.html','')
     head=f'''<!doctype html>
 <html lang="en">
