@@ -2032,3 +2032,28 @@ p,li,dd,figcaption,.lede{text-wrap:pretty}
 .ledgerbox .formrow{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center}
 .ledgerbox label.btn{cursor:pointer}
 .casekeep{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:1rem 0}
+
+/* ===== Draft 77 ===== */
+/* 12 the case question writes itself on a first visit */
+@media (prefers-reduced-motion: no-preference){
+  html.ink-case main.page h1{animation:write 1.7s cubic-bezier(.6,.1,.3,1) both; clip-path:inset(0 100% 0 0)}
+}
+/* 13 the next sealed year glows at the edge */
+.tl li.next{box-shadow:0 0 0 1px color-mix(in srgb, var(--gold) 55%, transparent), 0 0 18px -2px color-mix(in srgb, var(--gold) 55%, transparent)}
+.tl li.next::before{border-color:var(--gold-lo); border-style:solid}
+.nextmk{display:inline-block; margin-left:.4rem; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-lo)}
+@media (prefers-reduced-motion: no-preference){ .tl li.next{animation:nextglow 4s ease-in-out infinite} @keyframes nextglow{0%,100%{box-shadow:0 0 0 1px color-mix(in srgb, var(--gold) 45%, transparent), 0 0 12px -2px color-mix(in srgb, var(--gold) 40%, transparent)} 50%{box-shadow:0 0 0 1px color-mix(in srgb, var(--gold) 80%, transparent), 0 0 24px -2px color-mix(in srgb, var(--gold-hi) 75%, transparent)}} }
+/* 14 dusk: warmer paper in the hour around sunset */
+:root[data-dusk]{--paper:#E9E4D6; --paper-2:#DED6C5; --line:#C1B8A4; --ink-soft:#4F4A42}
+:root[data-dusk] .bar{background:color-mix(in srgb, #E9E4D6 84%, transparent)}
+:root[data-dusk] .hero .plate img{filter:sepia(.12) saturate(1.05)}
+/* 15 the map room: paper grain, a vignette, and a lamp in the dark */
+.maproom{overflow:hidden}
+.maproom::before{content:""; position:absolute; inset:0; pointer-events:none; z-index:2; box-shadow:inset 0 0 50px 6px rgba(70,50,20,.18); border-radius:inherit}
+.maproom.lit::after{content:""; position:absolute; inset:0; pointer-events:none; z-index:2; opacity:0; transition:opacity .4s ease}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .maproom.lit::after{opacity:1; background:radial-gradient(circle at var(--lx,50%) var(--ly,50%), transparent 0 120px, rgba(8,12,18,.55) 420px)} }
+:root[data-theme="dark"] .maproom.lit::after{opacity:1; background:radial-gradient(circle at var(--lx,50%) var(--ly,50%), transparent 0 120px, rgba(8,12,18,.55) 420px)}
+/* 16 last-touched stamps on the board */
+.touched{display:block; font-size:.68rem; letter-spacing:.06em; color:var(--ink-soft); opacity:.75; font-style:italic}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .maproom::before{box-shadow:inset 0 0 50px 6px rgba(0,0,0,.4)} }
+:root[data-theme="dark"] .maproom::before{box-shadow:inset 0 0 50px 6px rgba(0,0,0,.4)}

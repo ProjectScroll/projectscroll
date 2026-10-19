@@ -704,6 +704,35 @@ try{ (function(){
   });
 })(); }catch(err){ psFail(err); }
 
+/* ---------- Draft 77: the visual set ---------- */
+try{ (function(){
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* 12 a case's question writes itself the first time you open that case */
+  const nb=document.getElementById('casenote');
+  if (nb && !reduce){ try{ const k='ps-seen-'+nb.dataset.case; if (!localStorage.getItem(k)){ document.documentElement.classList.add('ink-case'); localStorage.setItem(k,'1'); } }catch(e){} }
+  /* 13 the next sealed year glows: the hunt is coming for it */
+  const tl=document.getElementById('tl');
+  if (tl){ const lis=[].slice.call(tl.children); let first=lis.findIndex(function(li){ return !li.classList.contains('sealed'); }); if (first<0) first=-1;
+    for (let i=first+1;i<lis.length;i++){ if (lis[i].classList.contains('sealed')){ lis[i].classList.add('next'); const m=lis[i].querySelector('.sealedmk'); if (m){ const t=document.createElement('span'); t.className='nextmk'; t.textContent='Next to open'; m.insertAdjacentElement('afterend', t); } break; } } }
+  /* 14 dusk: in the hour either side of sunset on the reader's own clock, the paper warms (only when no theme is chosen and the device is in light) */
+  try{
+    const forced=document.documentElement.dataset.theme || localStorage.getItem('ps-theme');
+    if (!forced && !matchMedia('(prefers-color-scheme: dark)').matches){
+      const SUNSET=[17.5,18.1,18.8,20.2,20.7,21.2,21.1,20.6,19.7,18.9,17.4,17.1]; /* typical sunset, Great Lakes country, by month */
+      const now=new Date(), h=now.getHours()+now.getMinutes()/60, ss=SUNSET[now.getMonth()];
+      if (h>=ss-1 && h<=ss+1.2) document.documentElement.setAttribute('data-dusk','');
+    }
+  }catch(e){}
+  /* 15 the map room: a lamp follows the pointer in the dark */
+  const room=document.querySelector('.maproom');
+  if (room && matchMedia('(hover:hover) and (pointer:fine)').matches){
+    room.addEventListener('pointermove', function(e){ const r=room.getBoundingClientRect(); room.style.setProperty('--lx', ((e.clientX-r.left)/r.width*100).toFixed(1)+'%'); room.style.setProperty('--ly', ((e.clientY-r.top)/r.height*100).toFixed(1)+'%'); room.classList.add('lit'); }, {passive:true});
+    room.addEventListener('pointerleave', function(){ room.classList.remove('lit'); });
+  }
+  /* 16 "last touched" stamps on the board */
+  document.querySelectorAll('tr[data-touched]').forEach(function(tr){ const td=tr.querySelector('td.hall'); if (!td) return; const s=document.createElement('small'); s.className='touched'; s.textContent='touched '+tr.dataset.touched; td.appendChild(s); });
+})(); }catch(err){ psFail(err); }
+
 /* ---------- the gold diamond on the rule answers, if asked ---------- */
 try{ (function(){
   const bar=document.querySelector('.bar-in'); if (!bar) return;

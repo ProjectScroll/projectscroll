@@ -86,7 +86,7 @@ page('keepsake/index.html','Solver’s keepsake · Project Scroll','A keepsake f
 # sync the case board on the home page
 p=f'{R}/index.html'; s=open(p).read()
 for c in C:
-    attrs=f' data-hall="{c["hall"]}"'+(f' data-solved="{esc(c["solved"])}"' if c.get('solved') else '')+(f' data-hint="{esc(c["hint"])}"' if c.get('hint') else '')
+    attrs=f' data-hall="{c["hall"]}"'+(f' data-touched="{esc(c["touched"])}"' if c.get('touched') else '')+(f' data-solved="{esc(c["solved"])}"' if c.get('solved') else '')+(f' data-hint="{esc(c["hint"])}"' if c.get('hint') else '')
     s=re.sub(rf'<tr id="case-{c["n"]}" data-hall="\w+"[^>]*>', f'<tr id="case-{c["n"]}"{attrs}>', s)
     # question text links to its page
     s=re.sub(rf'(<tr id="case-{c["n"]}"[^>]*><td class="no">{c["n"]}</td><td>)(?!<a class="qlink")(.*?)(?=( <a href="/notes/|<span class="tools"|</td>))', lambda m: m.group(1)+f'<a class="qlink" href="/cases/{c["n"]}/" style="view-transition-name:case-{c["n"]}">'+m.group(2).strip()+'</a>', s, count=1, flags=re.S)
