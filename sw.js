@@ -1,14 +1,14 @@
 /* Project Scroll offline support.
    Pages: network first, so visitors always get the newest version when online; the saved copy is used only offline.
    Files with a version tag (?v=) and pictures: saved copy first, since their names change whenever they change. */
-const CACHE = 'ps-f3795532';
-const CORE = ['/', '/notes/', '/notes/one-letter-two-certificates/', '/404.html', '/map/', '/map/cassopolis/', '/map/niles/', '/map/dowagiac/', '/map/paw-paw/', '/families/', '/legends/', '/records/', '/glossary/', '/about/', '/privacy/', '/badges/', '/guide/death-certificate/', '/toolkit/', '/toolkit/toolkit.js?v=3', '/guide/old-handwriting/', '/notes/book/', '/search.json', '/site.min.css?v=f3795532', '/site.min.js?v=f3795532',
+const CACHE = 'ps-74773b18';
+const CORE = ['/', '/notes/', '/notes/one-letter-two-certificates/', '/404.html', '/map/', '/map/cassopolis/', '/map/niles/', '/map/dowagiac/', '/map/paw-paw/', '/families/', '/legends/', '/records/', '/glossary/', '/about/', '/privacy/', '/badges/', '/guide/death-certificate/', '/toolkit/', '/toolkit/toolkit.js?v=3', '/guide/old-handwriting/', '/notes/book/', '/search.json', '/site.min.css?v=74773b18', '/site.min.js?v=74773b18',
   '/img/heron-dawn.webp', '/img/doctors-window.jpg', '/img/two-certificates.jpg', '/favicon.svg', '/icons/icon-192.png',
   '/fonts/libre-caslon-display-latin-400-normal.woff2', '/fonts/libre-caslon-text-latin-400-normal.woff2',
   '/fonts/libre-caslon-text-latin-400-italic.woff2', '/fonts/libre-caslon-text-latin-700-normal.woff2'];
 const save = (req, res) => (res && res.ok) ? caches.open(CACHE).then(c => c.put(req, res)) : Promise.resolve();
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => Promise.allSettled(CORE.map(u => c.add(new Request(u, {cache: 'reload'}))))).then(() => self.skipWaiting())); });
-self.addEventListener('activate', e => { e.waitUntil(Promise.all([caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE && k !== 'ps-f3795532').map(k => caches.delete(k)))), self.registration.navigationPreload ? self.registration.navigationPreload.enable().catch(() => {}) : Promise.resolve()]).then(() => self.clients.claim())); });
+self.addEventListener('activate', e => { e.waitUntil(Promise.all([caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE && k !== 'ps-74773b18').map(k => caches.delete(k)))), self.registration.navigationPreload ? self.registration.navigationPreload.enable().catch(() => {}) : Promise.resolve()]).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {
   const req = e.request; const url = new URL(req.url);
   if (req.method !== 'GET' || url.origin !== location.origin) return;

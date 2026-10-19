@@ -351,7 +351,7 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
     'probate':['Probate','The court process that settles a dead person’s estate. Probate files can hold wills, inventories, heirs’ names and signatures.'],
     'informant':['Informant','The person who answered the questions on a certificate. Their memory, not the dead person’s, is what the form records.'],
     'mysteries':['Mysteries','The hunt’s open cases: questions the county histories left hanging, each with a real answer waiting in a book, a map or a certificate. Crack one and your name goes on the board.'],
-    'pages':['Pages','The printed and handwritten pages the hunt sends you to: county histories, registers, deeds, lodge proceedings and the newspapers of the day. Most are free online; the rest sit in a library.'],
+    'pages':['Pages','Two kinds. The printed and handwritten pages the hunt sends you to: county histories, registers, deeds, lodge proceedings and the newspapers of the day, most free online. And the social media pages where the hunt is played: Project Scroll’s own, and the halls that open as it goes.'],
     'websites':['Websites','The free archives where the record now lives: the Library of Congress, HathiTrust, FamilySearch, the Internet Archive, state archives and county pages. The hunt links the exact page.'],
     'county histories':['County histories','Thick volumes published from the 1870s to the 1910s, mostly from what local families supplied. Rich, but rarely checked.'],
     'lore':['Lore','What a place says about itself: the stories passed around a lake, a township or a lodge, told without a page to point to. Lore is where a hunt often starts; the record is where it ends.'],
