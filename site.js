@@ -733,21 +733,32 @@ try{ (function(){
   document.querySelectorAll('tr[data-touched]').forEach(function(tr){ const td=tr.querySelector('td.hall'); if (!td) return; const s=document.createElement('small'); s.className='touched'; s.textContent='touched '+tr.dataset.touched; td.appendChild(s); });
 })(); }catch(err){ psFail(err); }
 
-/* ---------- the masthead strip: a different plate each visit, and a slow change while it is in view ---------- */
+/* ---------- the masthead strip: the Osborn page first, the heron second, then the rest; a random pause between; click or hover to see more ---------- */
 try{ (function(){
   const mh=document.getElementById('masthead'); if (!mh) return;
-  const set=mh.dataset.set.split(';').map(function(x){ const p=x.split('|'); return {id:p[0], cap:p[1]}; });
-  const cap=mh.querySelector('.mh-cap'); let cur=mh.querySelector('.mh-pic');
-  let i=0; try{ i=(parseInt(localStorage.getItem('ps-strip')||'0',10)+1)%set.length; localStorage.setItem('ps-strip', String(i)); }catch(e){ i=Math.floor(Math.random()*set.length); }
-  const make=function(k){ const p=document.createElement('picture'); p.className='mh-pic'; p.innerHTML='<source media="(max-width:700px)" srcset="/img/strip/'+k.id+'-800.webp"><img width="1600" height="200" alt="" decoding="async" loading="lazy">'; p.querySelector('img').src='/img/strip/'+k.id+'.webp'; return p; };
+  const set=mh.dataset.set.split(';').map(function(x){ const p=x.split('|'); return {id:p[0], cap:p[1], pos:p[2]||'50% 50%', href:p[3]||''}; });
+  const cap=mh.querySelector('.mh-cap'), nbtn=mh.querySelector('.mh-next'); let cur=mh.querySelector('.mh-pic');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let i=0; try{ const seen=localStorage.getItem('ps-strip'); if (seen!==null) i=(parseInt(seen,10)+1)%set.length; localStorage.setItem('ps-strip', String(i)); }catch(e){}
+  const make=function(k){ const p=document.createElement('picture'); p.className='mh-pic'; p.innerHTML='<source media="(max-width:700px)" srcset="/img/strip/'+k.id+'-800.webp"><img width="1600" height="400" alt="" decoding="async">'; const im=p.querySelector('img'); im.src='/img/strip/'+k.id+'.webp'; im.style.objectPosition=k.pos; return p; };
+  const label=function(k){ cap.innerHTML=''; const n=document.createElement('span'); n.className='mh-n'; n.textContent=(set.indexOf(k)+1)+' / '+set.length; cap.appendChild(n); if (k.href){ const a=document.createElement('a'); a.href=k.href; a.textContent=k.cap; a.title='Open the page this comes from'; cap.appendChild(a); } else cap.appendChild(document.createTextNode(k.cap)); };
+  const preload=function(k){ const im=new Image(); im.src='/img/strip/'+k.id+(innerWidth<=700?'-800':'')+'.webp'; };
   const show=function(k){ const n=make(k); mh.insertBefore(n, cap); const img=n.querySelector('img');
-    const go=function(){ n.classList.add('on'); const old=cur; cur=n; cap.textContent=k.cap; setTimeout(function(){ if (old && old!==cur) old.remove(); }, 4200); };
+    const go=function(){ n.classList.add('on'); const old=cur; cur=n; label(k); setTimeout(function(){ if (old && old!==cur) old.remove(); }, reduce?50:4200); };
     if (img.complete) go(); else img.addEventListener('load', go, {once:true}); };
-  if (i!==0) show(set[i]);
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
-  let seen=false, t=null;
-  const tick=function(){ i=(i+1)%set.length; show(set[i]); try{ localStorage.setItem('ps-strip', String(i)); }catch(e){} };
-  new IntersectionObserver(function(es){ seen=es[0].isIntersecting; clearInterval(t); if (seen) t=setInterval(tick, 45000); }, {threshold:.5}).observe(mh);
+  if (i!==0) show(set[i]); else { cur.querySelector('img').style.objectPosition=set[0].pos; label(set[0]); }
+  preload(set[(i+1)%set.length]);
+  let t=null, seen=false;
+  const next=function(){ i=(i+1)%set.length; show(set[i]); preload(set[(i+1)%set.length]); try{ localStorage.setItem('ps-strip', String(i)); }catch(e){} };
+  const arm=function(){ clearTimeout(t); if (!seen || reduce) return; t=setTimeout(function(){ next(); arm(); }, 20000+Math.random()*40000); };
+  if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ seen=es[0].isIntersecting; arm(); }, {threshold:.5}).observe(mh);
+  const prev=function(){ i=(i+set.length-2)%set.length; next(); };
+  nbtn.addEventListener('click', function(e){ e.stopPropagation(); next(); arm(); });
+  mh.addEventListener('pointerenter', function(){ clearTimeout(t); }); mh.addEventListener('pointerleave', function(){ arm(); });
+  mh.tabIndex=0; mh.setAttribute('aria-label','The masthead plates: Enter opens, arrow keys turn the plates');
+  mh.addEventListener('keydown', function(e){ if (e.key==='ArrowRight'){ next(); arm(); e.preventDefault(); } else if (e.key==='ArrowLeft'){ prev(); arm(); e.preventDefault(); } else if (e.key==='Enter' && e.target===mh){ mh.classList.toggle('open'); } });
+  mh.addEventListener('click', function(e){ if (e.target.closest('button')) return; mh.classList.toggle('open'); });
+  mh.addEventListener('keydown', function(e){ if (e.key==='Escape') mh.classList.remove('open'); });
 })(); }catch(err){ psFail(err); }
 
 /* ---------- the gold diamond on the rule answers, if asked ---------- */

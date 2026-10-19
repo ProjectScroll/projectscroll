@@ -2058,14 +2058,27 @@ p,li,dd,figcaption,.lede{text-wrap:pretty}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .maproom::before{box-shadow:inset 0 0 50px 6px rgba(0,0,0,.4)} }
 :root[data-theme="dark"] .maproom::before{box-shadow:inset 0 0 50px 6px rgba(0,0,0,.4)}
 
-/* ===== Draft 79: the masthead strip above the bar ===== */
-.masthead{position:relative; height:100px; max-width:calc(48rem + 6rem); margin:0 auto; overflow:hidden; background:#22364A; border-bottom:1px solid color-mix(in srgb, var(--gold) 70%, transparent)}
+/* ===== Draft 79/80: the masthead strip above the bar ===== */
+.masthead{position:relative; height:100px; max-width:calc(48rem + 6rem); margin:0 auto; overflow:hidden; background:#22364A; border-bottom:1px solid color-mix(in srgb, var(--gold) 70%, transparent); box-shadow:0 6px 14px -10px rgba(0,0,0,.6); transition:height .55s cubic-bezier(.4,0,.2,1); cursor:zoom-in}
+.masthead.open{height:220px; cursor:zoom-out}
+@media (hover:hover){ .masthead:hover{height:220px} }
 .masthead .mh-pic{position:absolute; inset:0; margin:0; opacity:0; transition:opacity 4s ease}
 .masthead .mh-pic.on{opacity:1}
-.masthead img{display:block; width:100%; height:100%; object-fit:cover; filter:saturate(.72) contrast(.96) brightness(.92)}
-.masthead::after{content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(90deg, rgba(34,54,74,.55), rgba(34,54,74,.12) 30%, rgba(34,54,74,.12) 70%, rgba(34,54,74,.55)), linear-gradient(0deg, rgba(34,54,74,.35), transparent 40%)}
-.masthead .mh-cap{position:absolute; right:.9rem; bottom:.35rem; margin:0; z-index:2; font-size:.72rem; letter-spacing:.06em; color:#EAE6DC; text-shadow:0 1px 3px rgba(0,0,0,.7); opacity:0; transition:opacity .3s ease; pointer-events:none}
-.masthead:hover .mh-cap, .masthead:focus-within .mh-cap{opacity:1}
-@media (max-width:700px){ .masthead{height:64px} .masthead .mh-cap{font-size:.62rem} }
-@media (prefers-reduced-motion: reduce){ .masthead .mh-pic{transition:none} }
+.masthead img{display:block; width:100%; height:100%; object-fit:cover; object-position:50% 50%; filter:saturate(.72) contrast(.96) brightness(.92); transform-origin:50% 50%}
+.masthead::after{content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(90deg, rgba(34,54,74,.55), rgba(34,54,74,.1) 25%, rgba(34,54,74,.1) 75%, rgba(34,54,74,.55)), linear-gradient(0deg, rgba(34,54,74,.4), transparent 45%)}
+.masthead .mh-cap{position:absolute; right:.9rem; bottom:.35rem; margin:0; z-index:3; font-size:.72rem; letter-spacing:.06em; color:#EAE6DC; text-shadow:0 1px 3px rgba(0,0,0,.7); opacity:0; transition:opacity .3s ease; pointer-events:none}
+.masthead .mh-cap a{color:inherit; text-decoration:underline; text-decoration-color:rgba(234,230,220,.5); text-underline-offset:.2em; pointer-events:auto}
+.masthead .mh-cap a:hover{color:var(--gold-hi)}
+.masthead:focus-visible{outline:2px solid var(--gold); outline-offset:-2px}
+.masthead .mh-n{display:inline-block; margin-right:.5rem; padding:.05rem .4rem; border:1px solid rgba(234,230,220,.45); border-radius:999px; font-size:.62rem; letter-spacing:.1em}
+.masthead:hover .mh-cap, .masthead.open .mh-cap, .masthead:focus-within .mh-cap{opacity:1}
+.masthead .mh-next{position:absolute; left:.6rem; bottom:.3rem; z-index:3; width:1.7rem; height:1.7rem; border:1px solid rgba(234,230,220,.5); border-radius:50%; background:rgba(34,54,74,.55); color:#EAE6DC; font:1.1rem/1 "Libre Caslon Display","Caslon Display Fallback",serif; cursor:pointer; opacity:0; transition:opacity .3s ease, border-color .2s}
+.masthead:hover .mh-next, .masthead.open .mh-next, .masthead .mh-next:focus-visible{opacity:1}
+.masthead .mh-next:hover, .masthead .mh-next:focus-visible{border-color:var(--gold-hi); color:var(--gold-hi)}
+@media (prefers-reduced-motion: no-preference){
+  .masthead .mh-pic.on img{animation:mhdrift 55s linear forwards}
+  @keyframes mhdrift{from{transform:scale(1.02) translateX(.6%)} to{transform:scale(1.07) translateX(-.6%)}}
+}
+@media (max-width:700px){ .masthead{height:64px} .masthead.open{height:150px} .masthead .mh-cap{font-size:.62rem; right:.6rem} }
+@media (prefers-reduced-motion: reduce){ .masthead{transition:none} .masthead .mh-pic{transition:none} }
 @media print{ .masthead{display:none!important} }
