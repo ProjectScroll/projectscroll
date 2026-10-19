@@ -325,6 +325,23 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
     const cl=document.getElementById('clueLink'); cl.href='#case-'+cur[3]; cl.textContent='It’s case '+cur[3]+' on the board';
   }catch(e){} }
 
+  /* the whisper: the open questions, one at a time, under the hero; and a red dot on Hunt while this week's clue is fresh */
+  try{
+    const W=document.getElementById('whisper'), WQ=document.getElementById('whisperQ'), raw=document.getElementById('clues');
+    if (W && WQ && raw){
+      const all=JSON.parse(raw.textContent), today=new Date().toISOString().slice(0,10);
+      const out=all.filter(function(c){ return c[0]<=today; }); const list=(out.length?out:all.slice(0,1)).slice().reverse();
+      if (list.length){
+        let i=0; const show=function(){ const c=list[i%list.length]; WQ.textContent=c[2]; WQ.href='#case-'+c[3]; W.hidden=false; };
+        show();
+        const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (list.length>1 && !still) setInterval(function(){ W.classList.add('fade'); setTimeout(function(){ i++; show(); W.classList.remove('fade'); }, 480); }, 7000);
+        const latest=out.length?out[out.length-1][0]:null;
+        if (latest && (Date.parse(today)-Date.parse(latest))/864e5<7){ const h=document.querySelector('.bar nav a[href="#hunt"]'); if (h){ h.classList.add('fresh'); h.title='A new clue this week'; } }
+      }
+    }
+  }catch(e){}
+
   /* 14 works offline after a first visit */
   if ('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost' || location.hostname==='127.0.0.1')){ addEventListener('load', function(){ navigator.serviceWorker.register('/sw.js').catch(function(){}); }); }
 

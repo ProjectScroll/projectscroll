@@ -1939,3 +1939,22 @@ dialog.fp-zoom::backdrop{background:transparent}
 }
 @media (forced-colors: active){ .bar nav a::after{background:LinkText} }
 @media (max-width:480px){ .hero-k .hk1, .hero-k .hk2{white-space:normal} }
+/* Draft 74: one marker only — the gliding gold bar; the grown underline serves only where the marker is absent */
+.has-navink .bar nav a::after{display:none}
+
+/* Draft 74: a whisper under the hero — the open questions, one at a time */
+.whisper{margin:.6rem 0 0; font-size:.98rem; line-height:1.5; color:var(--ink-soft); min-height:1.5em}
+.whisper .w-l{font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); margin-right:.4rem}
+.whisper a{color:var(--ink); font-style:italic; text-decoration:underline; text-decoration-color:color-mix(in srgb, var(--gold) 70%, transparent); text-decoration-thickness:1px; text-underline-offset:.22em; transition:opacity .45s ease}
+.whisper a:hover{color:var(--gold-lo)}
+.whisper.fade a{opacity:0}
+/* the Hunt link wears a small red dot while a clue is fresh */
+.bar nav a.fresh::before{content:""; display:inline-block; width:.42rem; height:.42rem; margin-right:.3rem; border-radius:50%; background:var(--rule); vertical-align:.15em; box-shadow:0 0 0 0 color-mix(in srgb, var(--rule) 60%, transparent)}
+@media (prefers-reduced-motion: no-preference){ .bar nav a.fresh::before{animation:freshdot 2.4s ease-out infinite} @keyframes freshdot{0%{box-shadow:0 0 0 0 color-mix(in srgb, var(--rule) 55%, transparent)} 70%{box-shadow:0 0 0 .4rem transparent} 100%{box-shadow:0 0 0 0 transparent}} }
+@media (max-width:880px){ .bar nav a.fresh::before{margin-right:.45rem} }
+/* sealed years: the lock rattles when touched */
+.tl li.sealed{cursor:not-allowed}
+@media (prefers-reduced-motion: no-preference){
+  .tl li.sealed:hover .sealedmk svg, .tl li.sealed:focus-within .sealedmk svg{animation:rattle .5s ease}
+  @keyframes rattle{0%,100%{transform:rotate(0)} 20%{transform:rotate(-14deg)} 40%{transform:rotate(12deg)} 60%{transform:rotate(-8deg)} 80%{transform:rotate(5deg)}}
+}
