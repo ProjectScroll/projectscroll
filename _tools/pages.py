@@ -52,7 +52,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
-<div class="masthead" id="masthead" data-set="wallmap|The 1860 wall map of the county, at the Library of Congress;bellin|Bellin’s Carte des Lacs du Canada, 1744;rogers|Rogers, History of Cass County, 1875, p. 253;wallmap2|The 1860 wall map, lower sheet;packtrain|Four men, a string of mules and a dusty street;school|A country schoolhouse in the oaks">
+<div class="masthead" id="masthead" data-set="wallmap|The 1860 wall map of the county, at the Library of Congress;roadtotown|The road to town, Cassopolis, on an old postcard;bellin|Bellin’s Carte des Lacs du Canada, 1744;broadway1|Broadway, Cassopolis, in the days of wagons;rogers|Rogers, History of Cass County, 1875, p. 253;heron-leaves|A heron in the lily pads, autumn;carriages|Carriages drawn up on Broadway, Cassopolis;wallmap2|The 1860 wall map, lower sheet;yerty|West side of Broadway looking south, Cassopolis, a Yerty postcard;squirrel|A flying squirrel over the water at night;broadway3|Broadway, Cassopolis, when the first cars came;packtrain|Four men, a string of mules and a dusty street;spark|Light and fire meet;broadway2|A Cassopolis street, early 1900s;school|A country schoolhouse in the oaks">
   <picture class="mh-pic on"><source media="(max-width:700px)" srcset="/img/strip/wallmap-800.webp"><img src="/img/strip/wallmap.webp" width="1600" height="200" alt="" fetchpriority="low" decoding="async"></picture>
   <p class="mh-cap" aria-hidden="true">The 1860 wall map of the county, at the Library of Congress</p>
 </div>
