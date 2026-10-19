@@ -599,6 +599,46 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
   filters.insertAdjacentElement('afterend', row);
 })();
 
+/* ---------- the top bar: a gold marker glides to the section you are reading, and follows the pointer ---------- */
+(function(){
+  const nav=document.querySelector('.bar nav'); if (!nav) return;
+  const ink=document.createElement('span'); ink.className='navink'; ink.setAttribute('aria-hidden','true'); nav.appendChild(ink);
+  let hover=null;
+  const place=function(){
+    const a=hover || nav.querySelector('a[aria-current="true"]');
+    if (!a || !a.offsetParent || getComputedStyle(nav).flexDirection==='column'){ ink.style.opacity='0'; return; }
+    ink.style.opacity='1'; ink.style.width=a.offsetWidth+'px'; ink.style.transform='translateX('+a.offsetLeft+'px)';
+  };
+  new MutationObserver(place).observe(nav, {subtree:true, attributes:true, attributeFilter:['aria-current']});
+  nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('pointerenter', function(){ hover=a; place(); }); a.addEventListener('focus', function(){ hover=a; place(); }); a.addEventListener('blur', function(){ hover=null; place(); }); });
+  nav.addEventListener('pointerleave', function(){ hover=null; place(); });
+  addEventListener('resize', place, {passive:true}); if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+  place(); document.documentElement.classList.add('has-navink');
+})();
+
+/* ---------- the scroll: the era buttons follow along as you read ---------- */
+(function(){
+  const t=document.getElementById('tl'), row=document.querySelector('.tl-eras'); if (!t || !row) return;
+  const btns=[].slice.call(row.querySelectorAll('button')); if (!btns.length) return;
+  const yearOf=function(li){ const y=(li.querySelector('.yr')||{}).textContent||''; if (/now/i.test(y)) return 99999; const n=parseInt(y.replace(/[^0-9]/g,''),10); return /BC/.test(y) ? -n : n; };
+  const eraOf=function(y){ return y<1500?'Deep time': y<1800?'1500s–1700s': y<1900?'1800s': y<2000?'1900s':'Now'; };
+  let q=0; const spy=function(){ q=0; const lis=[].slice.call(t.children).filter(function(li){ return !li.hidden; });
+    const mid=t.scrollLeft+t.clientWidth*0.35; let cur=lis[0];
+    lis.forEach(function(li){ if (li.offsetLeft<=mid) cur=li; });
+    if (t.scrollLeft+t.clientWidth>=t.scrollWidth-4) cur=lis[lis.length-1];
+    const e=cur?eraOf(yearOf(cur)):''; btns.forEach(function(b){ if (b.textContent===e) b.setAttribute('aria-current','true'); else b.removeAttribute('aria-current'); }); };
+  t.addEventListener('scroll', function(){ if (!q) q=requestAnimationFrame(spy); }, {passive:true}); spy();
+})();
+
+/* ---------- the advertisement: a light catches the paper as the pointer moves ---------- */
+(function(){
+  const ad=document.querySelector('.promo.ad'); if (!ad || !matchMedia('(hover: hover) and (pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let q=0, x=0, y=0;
+  ad.addEventListener('pointermove', function(e){ const r=ad.getBoundingClientRect(); x=(e.clientX-r.left)/r.width*100; y=(e.clientY-r.top)/r.height*100;
+    if (!q) q=requestAnimationFrame(function(){ q=0; ad.style.setProperty('--gx', x.toFixed(1)+'%'); ad.style.setProperty('--gy', y.toFixed(1)+'%'); ad.classList.add('glow'); }); }, {passive:true});
+  ad.addEventListener('pointerleave', function(){ ad.classList.remove('glow'); });
+})();
+
 /* ---------- what's new on the trail: a moving ticker ---------- */
 (function(){
   const tk=document.querySelector('.ticker'), track=document.getElementById('tkTrack'); if (!tk || !track) return;
