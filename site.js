@@ -642,14 +642,47 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
 /* ---------- the advertisement: "Ask about this" fills in the message form for you ---------- */
 (function(){
   const sel=document.querySelector('#msgform select[name="need"]'); if (!sel) return;
-  document.querySelectorAll('[data-need]').forEach(function(a){
-    a.addEventListener('click', function(){
-      const want=a.dataset.need; [].slice.call(sel.options).forEach(function(o){ if (o.textContent===want) sel.value=o.value||o.textContent; });
-      sel.dispatchEvent(new Event('change', {bubbles:true}));
-      setTimeout(function(){ const t=document.querySelector('#msgform textarea[name="mystery"]'); if (t) t.focus({preventScroll:true}); sel.classList.remove('flash'); void sel.offsetWidth; sel.classList.add('flash'); }, 650);
+  document.addEventListener('click', function(e){
+    const a=e.target.closest && e.target.closest('[data-need]'); if (!a) return;
+    const want=a.dataset.need; [].slice.call(sel.options).forEach(function(o){ if (o.textContent===want) sel.value=o.value||o.textContent; });
+    sel.dispatchEvent(new Event('change', {bubbles:true}));
+    setTimeout(function(){ const t=document.querySelector('#msgform textarea[name="mystery"]'); if (t) t.focus({preventScroll:true}); sel.classList.remove('flash'); void sel.offsetWidth; sel.classList.add('flash'); }, 650);
+  });
+})();
+
+/* ---------- the advertisement: "What do you have?" points to the right service ---------- */
+(function(){
+  const box=document.getElementById('adFinder'), out=document.getElementById('adFa'); if (!box || !out) return;
+  const A={
+    q:['The research desk traces it through the record: certificates, deeds, censuses, county histories and old newspapers, every statement marked.','Research: a mystery or an ancestor'],
+    photo:['The studio images it at high resolution, repairs what time has done to it, and studies its details: the clothes, the buildings, the signs in a window.','Image creation or restoration'],
+    doc:['Imaging analysis brings faded ink back and makes a damaged or water-stained page readable again, and the desk reads what it says.','Imaging analysis'],
+    place:['Old plats, survey notes and county atlases show what was there, and a 3D LiDAR model from public elevation surveys shows what the ground still remembers.','3D LiDAR imaging'],
+    story:['We test it against the record and tell you honestly which parts hold up, which do not, and which are still open.','Testing a family legend'],
+    book:['Historical research and fact-checking for authors, filmmakers and local groups, and a living document that keeps growing with the work.','Research for a book, film or group']
+  };
+  box.querySelectorAll('button[data-k]').forEach(function(b){
+    b.addEventListener('click', function(){
+      box.querySelectorAll('button[data-k]').forEach(function(x){ x.setAttribute('aria-pressed', String(x===b)); });
+      const r=A[b.dataset.k]; out.textContent=r[0]+' ';
+      const a=document.createElement('a'); a.href='#contact'; a.dataset.need=r[1]; a.textContent='Ask about this ›'; out.appendChild(a);
+      out.hidden=false; out.classList.remove('in'); void out.offsetWidth; out.classList.add('in');
     });
   });
 })();
+
+/* ---------- Part I: drag the scroll sideways with the mouse ---------- */
+(function(){
+  const t=document.getElementById('tl'); if (!t || !matchMedia('(pointer: fine)').matches) return;
+  let down=false, x0=0, s0=0, moved=false;
+  t.addEventListener('pointerdown', function(e){ if (e.pointerType!=='mouse' || e.button!==0 || e.target.closest('a,button')) return; down=true; moved=false; x0=e.clientX; s0=t.scrollLeft; t.classList.add('grabbing'); });
+  addEventListener('pointermove', function(e){ if (!down) return; const dx=e.clientX-x0; if (Math.abs(dx)>4) moved=true; if (moved){ t.style.scrollSnapType='none'; t.scrollLeft=s0-dx; } }, {passive:true});
+  addEventListener('pointerup', function(){ if (!down) return; down=false; t.classList.remove('grabbing'); t.style.scrollSnapType=''; });
+  t.addEventListener('click', function(e){ if (moved){ e.preventDefault(); e.stopPropagation(); moved=false; } }, true);
+})();
+
+/* ---------- Ctrl+K or Cmd+K opens the search, as in most modern apps ---------- */
+addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key==='k' || e.key==='K')){ const b=document.getElementById('searchBtn'); if (b){ e.preventDefault(); b.click(); } } });
 
 /* ---------- what's new on the trail: a moving ticker ---------- */
 (function(){

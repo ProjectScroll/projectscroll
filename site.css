@@ -1597,3 +1597,42 @@ p, li, figcaption{text-wrap:pretty}
   background:radial-gradient(circle at 35% 32%, #d4574b 0 18%, #a3271f 45%, #6d1712 100%); box-shadow:0 1px 2px rgba(0,0,0,.35), inset 0 0 0 2px rgba(255,255,255,.08), inset 0 0 0 4px rgba(0,0,0,.12); opacity:.85}
 .keyhint{display:none}
 @media (hover:hover) and (pointer:fine){ .keyhint{display:inline} }
+
+/* ===== Draft 54 ===== */
+/* the top bar: a gold diamond at the middle of the gold rule, and one under the section you are reading */
+.bar-in{position:relative}
+.bar-in::after{content:""; position:absolute; left:50%; bottom:-1px; width:.55rem; height:.55rem; transform:translate(-50%,50%) rotate(45deg); z-index:2; pointer-events:none;
+  background:linear-gradient(135deg, var(--gold-hi), var(--gold-lo)); box-shadow:0 0 0 2px var(--paper), 0 0 6px color-mix(in srgb, var(--gold) 70%, transparent)}
+@media (min-width:881px){ .navink::after{content:""; position:absolute; left:50%; top:50%; width:.32rem; height:.32rem; transform:translate(-50%,-50%) rotate(45deg); background:var(--gold-hi); box-shadow:0 0 6px var(--gold-hi)} }
+kbd{font:400 .78em/1 ui-monospace,SFMono-Regular,Menlo,monospace; padding:.12em .38em; border:1px solid var(--line); border-bottom-width:2px; border-radius:4px; background:var(--paper)}
+/* back to the top: a gold ring that fills as you read */
+@property --sp{syntax:'<number>'; inherits:false; initial-value:0}
+.totop{background:radial-gradient(closest-side, var(--ink) 82%, transparent 84% 100%), conic-gradient(var(--gold) calc(var(--sp) * 1%), color-mix(in srgb, var(--ink) 25%, transparent) 0)}
+@supports (animation-timeline: scroll()){ .totop{animation:sp linear both; animation-timeline:scroll(root)} @keyframes sp{to{--sp:100}} }
+/* Part I: the scroll can be dragged with the mouse */
+@media (pointer:fine){ .tl{cursor:grab} .tl.grabbing{cursor:grabbing; user-select:none} .tl.grabbing *{pointer-events:none} }
+/* the ad: "What do you have?" */
+.ad-finder{max-width:42rem; margin:1.4rem auto 0; padding:.9rem 1rem 1rem; border-top:1px solid color-mix(in srgb, var(--gold) 60%, transparent); border-bottom:1px solid color-mix(in srgb, var(--gold) 60%, transparent)}
+.ad-fq{margin:0 0 .6rem; font-family:"Libre Caslon Display",serif; font-size:1.25rem}
+.ad-fopts{display:flex; flex-wrap:wrap; justify-content:center; gap:.4rem}
+.ad-fopts button{font:inherit; font-size:.88rem; color:var(--ink); background:var(--paper); border:1px solid var(--line); border-radius:999px; padding:.3rem .8rem; cursor:pointer; transition:border-color .2s, background .2s, color .2s}
+.ad-fopts button:hover{border-color:var(--gold); color:var(--gold-lo)}
+.ad-fopts button[aria-pressed="true"]{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+.ad-fa{margin:.85rem auto 0; max-width:36rem; line-height:1.55; font-size:.98rem}
+.ad-fa a{color:var(--rule); white-space:nowrap}
+.ad-fa.in{animation:otdin .35s ease}
+@media (prefers-reduced-motion: reduce){ .ad-fa.in{animation:none} }
+/* stronger edges for people who ask their device for more contrast */
+@media (prefers-contrast: more){
+  :root{--line:color-mix(in srgb, var(--ink) 55%, transparent)}
+  .bar::after{height:3px; background:var(--gold-lo)}
+  .bar::before{display:none}
+  .ad-col a, .tl-eras button{text-decoration:underline}
+}
+/* Windows high-contrast mode: keep the rules and marks visible */
+@media (forced-colors: active){
+  .bar::after{background:CanvasText} .bar::before, .bar-in::after, .navink, .promo.ad::before{display:none}
+  .tl li.sealed .yr::after{forced-color-adjust:none}
+}
+@media print{ .bar-in::after, .ad-finder{display:none!important} }
+.totop{background:radial-gradient(closest-side, var(--ink) 76%, transparent 79% 100%), conic-gradient(var(--gold) calc(var(--sp) * 1%), color-mix(in srgb, var(--paper) 35%, transparent) 0); opacity:.92}
