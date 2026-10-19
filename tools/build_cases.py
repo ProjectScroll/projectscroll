@@ -38,7 +38,7 @@ for c in C:
       <p class="nbbtns"><button type="button" class="btn" id="noteCopy">Copy as a Facebook answer</button><button type="button" class="btn" id="noteSave">Download as a text file</button><span class="copied" id="noteOut" aria-live="polite"></span></p>
     </div>
     {keep}
-    <p class="ctas" style="margin-top:1.4rem"><a class="btn primary" href="{HALLFB if c['hall']=='h1' else FB}">Start on Facebook</a><a class="btn" href="/#cases">All cases</a><button type="button" class="btn" id="sharecase">Share this case</button></p>
+    <p class="ctas" style="margin-top:1.4rem"><a class="btn primary" href="{c.get('post') or (HALLFB if c['hall']=='h1' else FB)}">{'Read the post on Facebook' if c.get('post') else 'Start on Facebook'}</a><a class="btn" href="/#cases">All cases</a><button type="button" class="btn" id="sharecase">Share this case</button></p>
     <p class="copied" id="shareout" aria-live="polite"></p>
     <script>document.getElementById('sharecase').addEventListener('click',function(){{var u=location.href.split('#')[0],t=document.title;if(navigator.share){{navigator.share({{title:t,url:u}}).catch(function(){{}});}}else if(navigator.clipboard){{navigator.clipboard.writeText(u).then(function(){{document.getElementById('shareout').textContent='Link copied.';}});}}}});</script>
 '''
