@@ -30,6 +30,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Project Scroll">
+<meta property="fb:app_id" content="2627955700977491">
 <meta property="og:url" content="{canon}">
 <meta property="og:image" content="{og}">
 <meta property="og:image:width" content="1200">
@@ -44,7 +45,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=66">
+<link rel="stylesheet" href="/site.min.css?v=67">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"href_matches":"/*"}},{{"not":{{"href_matches":"/sample/*"}}}},{{"not":{{"href_matches":"/*.pdf"}}}}]}},"eagerness":"moderate"}}]}}</script>
 </head>
 <body>
@@ -88,7 +89,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=66" defer></script>
+<script src="/site.min.js?v=67" defer></script>
 </body>
 </html>
 '''

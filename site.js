@@ -999,6 +999,39 @@ try{ (function(){
       if (navigator.clipboard) navigator.clipboard.writeText(url).then(ok, function(){}); });
   })(); }catch(err){ psFail(err); }
 
+  /* ---------- the visit counter (Meta Pixel), off until the visitor says yes ---------- */
+  try{ (function(){
+    const PIXEL='3323345988054026', KEY='ps-consent';
+    let state=null; try{ state=localStorage.getItem(KEY); }catch(e){}
+    let loaded=false;
+    function load(){
+      if (loaded || typeof window.fbq==='function') return; loaded=true;
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', PIXEL); fbq('track', 'PageView');
+      const svc=document.getElementById('services');
+      if (svc && 'IntersectionObserver' in window){ const io=new IntersectionObserver(function(es){ if (es.some(function(e){ return e.isIntersecting; })){ fbq('track','ViewContent',{content_name:'Professional services'}); io.disconnect(); } },{threshold:.4}); io.observe(svc); }
+      document.addEventListener('click', function(ev){ const a=ev.target.closest && ev.target.closest('a[href^="https://m.me/"]'); if (a) fbq('track','Lead',{content_name:'Messenger'}); }, true);
+    }
+    function set(v){ state=v; try{ localStorage.setItem(KEY, v); }catch(e){} document.dispatchEvent(new CustomEvent('ps-consent',{detail:v})); if (v==='yes') load(); }
+    window.psConsent=function(v){ if (v===undefined) return state; set(v); };
+    if (state==='yes') load();
+    /* the privacy page's own switch */
+    const box=document.getElementById('consentbox');
+    if (box){ const st=document.getElementById('consentState');
+      const show=function(){ st.textContent = state==='yes' ? 'allowed' : state==='no' ? 'kept off' : 'not made yet (the counter is off)'; };
+      show(); document.getElementById('consentYes').addEventListener('click', function(){ set('yes'); show(); });
+      document.getElementById('consentNo').addEventListener('click', function(){ set('no'); show(); });
+      document.addEventListener('ps-consent', show); }
+    /* first-visit question, not on the privacy page itself */
+    if (state===null && !box && !matchMedia('print').matches){
+      const d=document.createElement('div'); d.className='consent'; d.setAttribute('role','region'); d.setAttribute('aria-label','Visit counter');
+      d.innerHTML='<p>May we count your visit? A small Meta script would tell us which pages are read. Nothing you type is seen, and nothing loads until you say yes. <a href="/privacy/">What it does</a></p><p class="cbtns"><button type="button" class="btn primary" id="cYes">Allow</button><button type="button" class="btn" id="cNo">No thanks</button></p>';
+      document.body.appendChild(d); requestAnimationFrame(function(){ requestAnimationFrame(function(){ d.classList.add('on'); }); });
+      const go=function(v){ return function(){ set(v); d.classList.remove('on'); setTimeout(function(){ d.remove(); }, 400); }; };
+      d.querySelector('#cYes').addEventListener('click', go('yes')); d.querySelector('#cNo').addEventListener('click', go('no'));
+    }
+  })(); }catch(err){ psFail(err); }
+
   try{
     console.log('%cProject Scroll','font:28px Georgia,serif;color:#B3362B');
     console.log('%cYou found a back door. Every page has another side: view the page source, and read the note at the top.','font:14px Georgia,serif');

@@ -172,7 +172,11 @@ page('about/index.html', 'About · Project Scroll',
 priv = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Privacy</p>
     <h1>What this site keeps</h1>
-    <p class="lede">Almost nothing, and none of it leaves your device. Project Scroll has no ads, no analytics, no tracking and no accounts.</p>
+    <p class="lede">Almost nothing. Project Scroll has no accounts and no ads of its own. One thing is optional and off until you say yes: a visit counter from Meta, used to see how the hunt is found and, later, to show Project Scroll’s own advertisements to people who have been here. You choose on your first visit, and you can change your mind here.</p>
+    <div class="consentbox" id="consentbox">
+      <p><b>Your choice on this device:</b> <span id="consentState">not made yet</span></p>
+      <p><button type="button" class="btn" id="consentYes">Allow the visit counter</button> <button type="button" class="btn" id="consentNo">Keep it off</button></p>
+    </div>
     <h2>Kept in your own browser</h2>
     <p>A few things are remembered so the site works the way you left it. They are stored in your browser on this device, nobody else can see them, and we never receive them.</p>
     <ul class="dis">
@@ -182,6 +186,7 @@ priv = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li><b>Your tin badges.</b> The badges you have earned around the site, and the days you visited, so the “Regular” badge can count them.</li>
       <li><b>Your followed cases.</b> The cases you starred on the case board.</li>
       <li><b>Your case notes.</b> Anything you write in a case notebook. <a href="/notebook/">See all your notes</a>.</li>
+      <li><b>Your answer about the visit counter.</b> Allow or keep off, so you are not asked again.</li>
       <li><b>Your drafts.</b> What you type into the message form and the family-history and family-legend forms, so it survives a reload. Nothing is sent from those forms; you copy the text and send it yourself.</li>
     </ul>
     <p>To clear all of it, clear this site’s data in your browser settings.</p>
@@ -189,13 +194,14 @@ priv = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <ul class="dis">
       <li><b>The map room.</b> The 1860 wall map is shown straight from the Library of Congress, so your browser asks the Library’s image server (tile.loc.gov) for the pieces of the map you look at.</li>
       <li><b>Facebook.</b> Links to Project Scroll’s Facebook pages and Messenger simply take you there. On a case page you can choose to show the live Facebook post; only then does your browser load it from Facebook, under Facebook’s own terms. Until you click, nothing from Facebook is loaded.</li>
+      <li><b>The Meta visit counter (only if you allow it).</b> If you choose “Allow”, your browser loads a small script from Meta (the Meta Pixel) that tells Meta which pages of this site you looked at, and when. Meta may match that to a Facebook or Instagram account if you have one, under <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Meta’s privacy policy</a>. We use it to see which parts of the hunt and the studio are visited, and later to show Project Scroll’s own advertisements on Facebook and Instagram to people who have been here. It records page views, when the Services section is read, and when the Messenger button is pressed. It never sees what you type: your notes, drafts and messages stay in your browser as before. If you choose “Keep it off”, or make no choice, nothing from Meta is loaded, and nothing is counted.</li>
     </ul>
     <h2>When you write to us</h2>
     <p>Messages reach us through Facebook, under Facebook’s own privacy terms. What you tell us about your family is used to answer your question and for nothing else.</p>
     <p class="center"><a class="btn" href="/">Back to Project Scroll</a> <a class="btn" href="/#contact">Get in touch</a></p>
 '''
 page('privacy/index.html', 'Privacy · Project Scroll',
-     'What projectscroll.com keeps: no ads, no analytics, no tracking. A few settings and notes stay in your own browser.', priv)
+     'What projectscroll.com keeps: no accounts, no ads of its own, and a Meta visit counter that stays off until you allow it. Your settings and notes stay in your own browser.', priv)
 
 # ------------------------------------------------------------------ badges
 badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
