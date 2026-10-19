@@ -229,6 +229,12 @@ badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <form id="word2form" class="formrow" autocomplete="off"><label>The second word <input type="text" id="word2" spellcheck="false"></label><button type="submit" class="btn primary">Say it</button></form>
       <p class="note" id="word2msg" aria-live="polite"></p>
     </div>
+    <div class="ledgerbox" id="ledgerbox">
+      <h2>Carry your ledger</h2>
+      <p>Your badges, followed cases and notebook live only in this browser. To carry them to another device, take your ledger with you: a small file, made here, that another copy of Project Scroll can read back. Nothing is sent to us.</p>
+      <p class="formrow"><button type="button" class="btn primary" id="ledgerOut">Take my ledger</button> <label class="btn" for="ledgerIn">Bring a ledger back</label><input type="file" id="ledgerIn" accept=".json,application/json" class="vh"></p>
+      <p class="note" id="ledgerMsg" aria-live="polite"></p>
+    </div>
     <div class="charterbox" id="charterbox" hidden>
       <h2>Your charter</h2>
       <p>Every badge earned. You may print your charter: type your name as you want it written, then print.</p>

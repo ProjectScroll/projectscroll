@@ -45,6 +45,7 @@ for c in C:
     <div class="solvedbox"><h3>What counts as solved</h3><p>A case is solved when an answer is posted with the record it came from: the book or document, the page, and a link if there is one. The desk checks the page. If it says what you say it says, your name goes on the board, the case is marked Solved with your source beside it, and the next post names you. An answer without the page stays a guess, however right it is.</p></div>
     <p class="goodanswer"><b>A good answer looks like this:</b> “Case {n}: [your answer]. Found in [the book or record], p. [page], [link].” Use <b>Copy as a Facebook answer</b> in your notebook below, and it is laid out for you.</p>
     <p class="note">Everything is solved on paper. Never dig, never go near a grave, and never set foot on anyone’s land.</p>
+    <p class="casekeep no-print"><button type="button" class="btn" id="saveOff" hidden>Save this case for offline</button><button type="button" class="btn" id="printCase">Print this case</button><span class="copied" id="saveOffMsg" aria-live="polite"></span></p>
     <p class="casetools"><span>Tools for the hunt:</span> <a href="/records/">Where the records are</a> <a href="/glossary/">The glossary</a> <a href="/toolkit/">The toolkit</a> <a href="/guide/old-handwriting/">Reading the old hand</a> <a href="/worksheet/project-scroll-hunters-worksheet.pdf">The hunter’s worksheet (PDF)</a></p>
     <div class="notebook" id="casenote" data-case="{n}">
       <h2>Your notebook for this case</h2>

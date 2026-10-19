@@ -16,15 +16,26 @@
   --measure:64ch;
   color-scheme:light;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
+/* one set of tokens for both themes: light-dark() picks by color-scheme, which the lantern and the device setting control */
+@supports (color: light-dark(#000, #fff)){
+  :root{
+    --paper:light-dark(#E8ECE6, #151B21); --paper-2:light-dark(#DCE2DA, #1C242C); --ink:light-dark(#1D2733, #E4E8E2); --ink-soft:light-dark(#4B5663, #A9B2AC);
+    --rule:light-dark(#B3362B, #E0675A); --ledger:light-dark(#2B4A41, #8DB8A8); --line:light-dark(#B9C2B8, #34404A);
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ color-scheme:dark; --grain:.07 } }
+  :root[data-theme="dark"]{ color-scheme:dark; --grain:.07 }
+}
+@supports not (color: light-dark(#000, #fff)){
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#151B21; --paper-2:#1C242C; --ink:#E4E8E2; --ink-soft:#A9B2AC;
+      --rule:#E0675A; --ledger:#8DB8A8; --line:#34404A; --grain:.07; color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
     --paper:#151B21; --paper-2:#1C242C; --ink:#E4E8E2; --ink-soft:#A9B2AC;
     --rule:#E0675A; --ledger:#8DB8A8; --line:#34404A; --grain:.07; color-scheme:dark;
   }
-}
-:root[data-theme="dark"]{
-  --paper:#151B21; --paper-2:#1C242C; --ink:#E4E8E2; --ink-soft:#A9B2AC;
-  --rule:#E0675A; --ledger:#8DB8A8; --line:#34404A; --grain:.07; color-scheme:dark;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:4.5rem}
@@ -1599,7 +1610,7 @@ kbd{font:400 .78em/1 ui-monospace,SFMono-Regular,Menlo,monospace; padding:.12em 
 /* back to the top: a gold ring that fills as you read */
 @property --sp{syntax:'<number>'; inherits:false; initial-value:0}
 .totop{background:radial-gradient(closest-side, var(--ink) 82%, transparent 84% 100%), conic-gradient(var(--gold) calc(var(--sp) * 1%), color-mix(in srgb, var(--ink) 25%, transparent) 0)}
-@supports (animation-timeline: scroll()){ .totop{animation:sp linear both; animation-timeline:scroll(root)} @keyframes sp{to{--sp:100}} }
+@supports (animation-timeline: scroll()){ .totop{animation:sp linear both} body > .totop, body .totop{animation-timeline:scroll(root)} @keyframes sp{to{--sp:100}} }
 /* Part I: the scroll can be dragged with the mouse */
 @media (pointer:fine){ .tl{cursor:grab} .tl.grabbing{cursor:grabbing; user-select:none} .tl.grabbing *{pointer-events:none} }
 /* the ad: "What do you have?" */
@@ -1986,3 +1997,38 @@ p,li,dd,figcaption,.lede{text-wrap:pretty}
 @media (prefers-reduced-motion: no-preference){ .bar-in:has(.diamond:hover)::after{filter:brightness(1.25) drop-shadow(0 0 4px var(--gold-hi))} }
 .riddle{position:absolute; left:0; right:0; top:100%; margin:0; padding:.45rem 1rem; text-align:center; font-style:italic; font-size:.92rem; color:var(--ink); background:color-mix(in srgb, var(--paper) 94%, var(--gold)); border-bottom:1px solid var(--gold); opacity:0; transform:translateY(-6px); pointer-events:none; transition:opacity .35s ease, transform .35s ease; z-index:1}
 .riddle.on{opacity:1; transform:none}
+
+/* ===== Draft 76 ===== */
+/* 5 less glass for people who ask their device for reduced transparency */
+@media (prefers-reduced-transparency: reduce){ .bar{background:var(--paper); -webkit-backdrop-filter:none; backdrop-filter:none} [popover].gloss, .btoast, .consent{backdrop-filter:none; -webkit-backdrop-filter:none} }
+/* 8 a gold thread under the scroll that fills as you read along it, driven by the scroll itself */
+@supports (animation-timeline: scroll()){
+  .tl-wrap{timeline-scope:--tl}
+  .tl{scroll-timeline:--tl x}
+  .tl-thread{position:absolute; left:.2rem; right:.2rem; bottom:-.55rem; height:2px; background:linear-gradient(90deg, var(--gold-lo), var(--gold-hi), var(--gold-lo)); transform-origin:0 50%; transform:scaleX(0); animation:tlfill linear both; pointer-events:none}
+  .tl-wrap > .tl-thread{animation-timeline:--tl}
+  @keyframes tlfill{to{transform:scaleX(1)}}
+}
+/* 9 a case printed is a dossier: links show where they go, nothing interactive, clean page breaks */
+@media print{
+  .casekeep, .notebook .nbbtns, .fp-live, .casetools, .ctas, .copied, .crumb, .listen, .diamond, .riddle{display:none!important}
+  main.page a[href^="http"]::after{content:" (" attr(href) ")"; font-size:.85em; color:#555; word-break:break-all}
+  main.page a{color:inherit; text-decoration:none}
+  .starthere, .solvedbox, .notebook{break-inside:avoid; border:1px solid #999; padding:.6rem .8rem}
+  .notebook textarea{border:1px solid #999; min-height:12rem; font:inherit}
+  h2{break-after:avoid}
+  main.page::after{content:"projectscroll.com · Every clue is true. Every answer is in the record."; display:block; margin-top:1.5rem; font-size:.8rem; color:#555; text-align:center}
+}
+/* 10 the microphone in the search box */
+.search-in{position:relative}
+.mic{position:absolute; right:3.1rem; top:50%; transform:translateY(-50%); width:2rem; height:2rem; border:0; border-radius:50%; background:transparent; color:var(--ink-soft); cursor:pointer; display:inline-flex; align-items:center; justify-content:center}
+.mic svg{width:1.15rem; height:1.15rem}
+.mic:hover, .mic:focus-visible{color:var(--rule)}
+.mic.listening{color:var(--rule)}
+@media (prefers-reduced-motion: no-preference){ .mic.listening{animation:micpulse 1.2s ease-in-out infinite} @keyframes micpulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb, var(--rule) 45%, transparent)} 50%{box-shadow:0 0 0 .45rem transparent}} }
+/* 3 the ledger box */
+.ledgerbox{margin:1.6rem 0; padding:1rem 1.2rem; border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:4px; background:var(--paper-2)}
+.ledgerbox h2{margin-top:0}
+.ledgerbox .formrow{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center}
+.ledgerbox label.btn{cursor:pointer}
+.casekeep{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:1rem 0}

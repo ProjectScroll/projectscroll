@@ -638,6 +638,72 @@ try{ (function(){
   filters.insertAdjacentElement('afterend', row);
 })(); }catch(err){ psFail(err); }
 
+/* ---------- a case saved for offline: the page and its papers go into a cache that survives updates ---------- */
+try{ (function(){
+  const b=document.getElementById('saveOff'), msg=document.getElementById('saveOffMsg'); if (!b) return;
+  if (!('caches' in window) || !('serviceWorker' in navigator)) return;
+  const files=[location.pathname].concat([].slice.call(document.querySelectorAll('a[href$=".pdf"]')).map(function(a){ return a.getAttribute('href'); }));
+  const tick=function(){ b.textContent='Saved for offline ✓'; b.disabled=true; };
+  caches.open('ps-files').then(function(c){ return c.match(location.pathname); }).then(function(hit){ b.hidden=false; if (hit) tick(); }).catch(function(){ b.hidden=false; });
+  b.addEventListener('click', function(){
+    b.disabled=true; msg.textContent='Saving…';
+    caches.open('ps-files').then(function(c){ return c.addAll(files.filter(function(u,i,a){ return a.indexOf(u)===i; })); })
+      .then(function(){ tick(); msg.textContent='This case and its papers now open without a signal.'; setTimeout(function(){ msg.textContent=''; }, 5000); })
+      .catch(function(){ b.disabled=false; msg.textContent='Could not save it. Try again when you are online.'; });
+  });
+  const pc=document.getElementById('printCase'); if (pc) pc.addEventListener('click', function(){ window.print(); });
+})(); }catch(err){ psFail(err); }
+
+/* ---------- search by voice, where the browser can listen ---------- */
+try{ (function(){
+  const SR=window.SpeechRecognition || window.webkitSpeechRecognition, q=document.getElementById('searchQ'); if (!SR || !q) return;
+  const form=q.closest('form'); const m=document.createElement('button'); m.type='button'; m.className='mic'; m.setAttribute('aria-label','Search by voice'); m.title='Search by voice';
+  m.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></svg>';
+  q.insertAdjacentElement('afterend', m);
+  let rec=null;
+  m.addEventListener('click', function(){
+    if (rec){ rec.stop(); return; }
+    rec=new SR(); rec.lang='en-US'; rec.interimResults=true; rec.maxAlternatives=1; m.classList.add('listening'); q.placeholder='Listening…';
+    rec.onresult=function(e){ let t=''; for (let i=0;i<e.results.length;i++) t+=e.results[i][0].transcript; q.value=t.trim(); q.dispatchEvent(new Event('input',{bubbles:true})); };
+    rec.onend=function(){ rec=null; m.classList.remove('listening'); q.placeholder='Search cases, field notes, guides…'; q.focus(); };
+    rec.onerror=rec.onend;
+    try{ rec.start(); }catch(e){ rec.onend(); }
+  });
+})(); }catch(err){ psFail(err); }
+
+/* ---------- the ledger that travels: badges, follows and notes as one checked file, read back on another device ---------- */
+try{ (function(){
+  const out=document.getElementById('ledgerOut'), inp=document.getElementById('ledgerIn'), msg=document.getElementById('ledgerMsg'); if (!out || !inp) return;
+  const KEYS=/^(ps-badges|ps-mine|ps-days|ps-note-\d+|ps-lantern|ps-inked)$/;
+  const gather=function(){ const d={}; for (let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); if (KEYS.test(k)) d[k]=localStorage.getItem(k); } return d; };
+  const sum=function(txt){ if (!(crypto && crypto.subtle)) return Promise.resolve(''); return crypto.subtle.digest('SHA-256', new TextEncoder().encode(txt)).then(function(h){ return [].slice.call(new Uint8Array(h)).map(function(b){ return ('0'+b.toString(16)).slice(-2); }).join(''); }); };
+  out.addEventListener('click', function(){
+    const data=gather(), body=JSON.stringify(data);
+    sum(body).then(function(h){
+      const file=JSON.stringify({site:'projectscroll.com', kind:'ledger', made:new Date().toISOString().slice(0,10), sha256:h, data:data}, null, 1);
+      const blob=new Blob([file], {type:'application/json'}), name='project-scroll-ledger-'+new Date().toISOString().slice(0,10)+'.json';
+      const f=new File([blob], name, {type:'application/json'});
+      if (navigator.canShare && navigator.canShare({files:[f]})) return navigator.share({files:[f], title:'My Project Scroll ledger'}).catch(function(){});
+      const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 2000);
+    }).then(function(){ msg.textContent='Your ledger is made. Open it on the other device from this same page.'; });
+  });
+  inp.addEventListener('change', function(){
+    const f=inp.files && inp.files[0]; if (!f) return;
+    f.text().then(function(t){
+      let j; try{ j=JSON.parse(t); }catch(e){ msg.textContent='That file is not a ledger.'; return; }
+      if (!j || j.kind!=='ledger' || !j.data){ msg.textContent='That file is not a Project Scroll ledger.'; return; }
+      return sum(JSON.stringify(j.data)).then(function(h){
+        if (j.sha256 && h && j.sha256!==h){ msg.textContent='That ledger has been altered since it was made, so it was not read.'; return; }
+        let n=0; Object.keys(j.data).forEach(function(k){ if (!KEYS.test(k)) return;
+          if (k==='ps-badges' || k==='ps-mine'){ try{ const cur=JSON.parse(localStorage.getItem(k)||(k==='ps-mine'?'[]':'{}')), add=JSON.parse(j.data[k]); if (Array.isArray(cur)){ add.forEach(function(x){ if (cur.indexOf(x)<0) cur.push(x); }); localStorage.setItem(k, JSON.stringify(cur)); } else { Object.keys(add).forEach(function(b){ if (!cur[b]) cur[b]=add[b]; }); localStorage.setItem(k, JSON.stringify(cur)); } n++; return; }catch(e){} }
+          if (/^ps-note-/.test(k) && (localStorage.getItem(k)||'').trim()){ localStorage.setItem(k, (localStorage.getItem(k)+'\n\n'+j.data[k]).trim()); n++; return; }
+          localStorage.setItem(k, j.data[k]); n++; });
+        msg.textContent='Ledger read: '+n+' entries brought over, merged with what was already here.'; setTimeout(function(){ location.reload(); }, 1400);
+      });
+    });
+  });
+})(); }catch(err){ psFail(err); }
+
 /* ---------- the gold diamond on the rule answers, if asked ---------- */
 try{ (function(){
   const bar=document.querySelector('.bar-in'); if (!bar) return;
