@@ -172,7 +172,7 @@
       vis.forEach(function(li,i){
         const k=document.createElement('b'); k.className='tick'+(li.classList.contains('sealed')?' s':'')+(li.classList.contains('now')?' now':'');
         const mk=li.querySelector('.mk'); if (mk && !li.classList.contains('sealed')) k.classList.add('t'+[].slice.call(mk.classList).filter(function(c){ return /^k[A-Z]$/.test(c); })[0]);
-        k.style.left=((i+.5)/n*100)+'%'; k.title=li.querySelector('.yr').textContent;
+        k.style.left=((i+.5)/n*100)+'%'; k.title=li.querySelector('.yr').textContent; k.dataset.y=k.title;
         k.addEventListener('click', function(e){ e.stopPropagation(); t.scrollTo({left:Math.max(0,li.offsetLeft-8), behavior:smooth()}); });
         rail.appendChild(k);
       });
@@ -637,6 +637,18 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
   ad.addEventListener('pointermove', function(e){ const r=ad.getBoundingClientRect(); x=(e.clientX-r.left)/r.width*100; y=(e.clientY-r.top)/r.height*100;
     if (!q) q=requestAnimationFrame(function(){ q=0; ad.style.setProperty('--gx', x.toFixed(1)+'%'); ad.style.setProperty('--gy', y.toFixed(1)+'%'); ad.classList.add('glow'); }); }, {passive:true});
   ad.addEventListener('pointerleave', function(){ ad.classList.remove('glow'); });
+})();
+
+/* ---------- the advertisement: "Ask about this" fills in the message form for you ---------- */
+(function(){
+  const sel=document.querySelector('#msgform select[name="need"]'); if (!sel) return;
+  document.querySelectorAll('[data-need]').forEach(function(a){
+    a.addEventListener('click', function(){
+      const want=a.dataset.need; [].slice.call(sel.options).forEach(function(o){ if (o.textContent===want) sel.value=o.value||o.textContent; });
+      sel.dispatchEvent(new Event('change', {bubbles:true}));
+      setTimeout(function(){ const t=document.querySelector('#msgform textarea[name="mystery"]'); if (t) t.focus({preventScroll:true}); sel.classList.remove('flash'); void sel.offsetWidth; sel.classList.add('flash'); }, 650);
+    });
+  });
 })();
 
 /* ---------- what's new on the trail: a moving ticker ---------- */

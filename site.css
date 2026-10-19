@@ -1554,3 +1554,46 @@ form.tmpl select:focus{outline:2px solid var(--rule); outline-offset:1px; border
 .bar::after{height:3px; bottom:-2px; box-shadow:0 1px 6px -1px color-mix(in srgb, var(--gold) 55%, transparent)}
 .bar::before{height:3px; bottom:-2px}
 .progress{bottom:-2px; height:3px}
+
+/* ===== Draft 53 ===== */
+/* smoother typography and motion where the browser supports it */
+p, li, figcaption{text-wrap:pretty}
+@view-transition{navigation:auto}
+@media (prefers-reduced-motion: reduce){ @view-transition{navigation:none} }
+:root{interpolate-size:allow-keywords}
+@media (prefers-reduced-motion: no-preference){
+  details.faq::details-content{block-size:0; overflow:clip; transition:block-size .32s ease, content-visibility .32s allow-discrete}
+  details.faq[open]::details-content{block-size:auto}
+}
+/* the top bar: a gold hairline above, gold on the section you are reading */
+.bar{box-shadow:inset 0 1px 0 color-mix(in srgb, var(--gold) 55%, transparent)}
+.bar.lifted{box-shadow:inset 0 1px 0 color-mix(in srgb, var(--gold) 55%, transparent), 0 8px 22px -16px rgba(0,0,0,.45)}
+@media (min-width:881px){
+  .bar nav a[aria-current="true"]{color:var(--gold-lo)}
+  :root[data-theme="dark"] .bar nav a[aria-current="true"]{color:var(--gold-hi)}
+  .bar nav a:hover{color:var(--gold-lo)}
+  :root[data-theme="dark"] .bar nav a:hover{color:var(--gold-hi)}
+}
+@media (min-width:881px) and (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .bar nav a[aria-current="true"], :root:not([data-theme="light"]) .bar nav a:hover{color:var(--gold-hi)} }
+.bar .mark{transition:color .2s} .bar .mark:hover{color:var(--gold-lo)}
+:root[data-theme="dark"] .bar .mark:hover{color:var(--gold-hi)}
+.badgelink .bn{background:linear-gradient(180deg, var(--gold-hi), var(--gold-lo)); color:#2a1d05}
+/* Part I: year labels on the ribbon, and wax on the seals */
+.tl-ribbon .tick::after{content:attr(data-y); position:absolute; bottom:calc(100% + .45rem); left:50%; transform:translate(-50%, .2rem); padding:.12rem .4rem; border-radius:3px; white-space:nowrap;
+  background:var(--ink); color:var(--paper); font:400 .7rem/1.2 "Libre Caslon Text",serif; letter-spacing:0; opacity:0; pointer-events:none; transition:opacity .15s, transform .15s}
+.tl-ribbon .tick:hover::after{opacity:1; transform:translate(-50%,0)}
+.tl li.sealed .yr{color:color-mix(in srgb, var(--ink) 75%, var(--gold))}
+/* the ad: numbered departments and an "Ask about this" line in each */
+.ad-no{margin:0 0 .15rem; font:400 .72rem/1 "Libre Caslon Text",serif; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-lo); text-align:left!important}
+:root[data-theme="dark"] .ad-no{color:var(--gold)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .ad-no{color:var(--gold)} }
+.ad-col{display:flex; flex-direction:column}
+.ad-ask{margin:auto 0 0; padding-top:.8rem; text-align:left!important}
+.ad-ask a{font-size:.88rem; color:var(--rule); text-decoration:none; border-bottom:1px solid currentColor; background:none!important}
+.ad-ask a:hover{color:var(--gold-lo)}
+#msgform select.flash{animation:selflash 1.4s ease}
+@keyframes selflash{0%,40%{box-shadow:0 0 0 3px color-mix(in srgb, var(--gold) 60%, transparent)} 100%{box-shadow:none}}
+.tl li.sealed .yr::after{content:""; position:absolute; top:1.85rem; right:.35rem; width:1.35rem; height:1.35rem; border-radius:50% 46% 52% 48%;
+  background:radial-gradient(circle at 35% 32%, #d4574b 0 18%, #a3271f 45%, #6d1712 100%); box-shadow:0 1px 2px rgba(0,0,0,.35), inset 0 0 0 2px rgba(255,255,255,.08), inset 0 0 0 4px rgba(0,0,0,.12); opacity:.85}
+.keyhint{display:none}
+@media (hover:hover) and (pointer:fine){ .keyhint{display:inline} }
