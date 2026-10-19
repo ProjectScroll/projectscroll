@@ -142,7 +142,7 @@ page('glossary/index.html', 'The glossary · Project Scroll',
 about = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">About</p>
     <h1>About Project Scroll</h1>
-    <p class="lede" style="font-size:1.15rem">Project Scroll is independent historical research: a history hunt anyone can play, a research desk anyone can hire, and a studio for digital imaging, design, photography, 3D LiDAR, animation and video. All of it runs on one rule. Every clue is true, and every answer is in the record.</p>
+    <p class="lede" style="font-size:1.15rem">Project Scroll is independent historical research: an online treasure hunt anyone can play, a research desk anyone can hire, and a studio for digital imaging, design, photography, 3D LiDAR, animation and video. All of it runs on one rule. Every clue is true, and every answer is in the record.</p>
     <h2>Who we are</h2>
     <p>Project Scroll is run by an independent researcher and author who writes narrative nonfiction about the history of the Great Lakes country, and who trained in visual communications. The research behind those books is the same research we offer you: old certificates, deeds, surveys, county histories and newspapers, read line by line and compared until they agree, or until we can say exactly why they don’t.</p>
     <h2>What we offer</h2>
@@ -167,7 +167,7 @@ about = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="center"><a class="btn" href="/#hunt">Play the hunt</a> <a class="btn" href="/#services">Research services</a> <a class="btn" href="/#studio">Imaging, design and video</a> <a class="btn" href="/#contact">Get in touch</a></p>
 '''
 page('about/index.html', 'About · Project Scroll',
-     'Project Scroll is independent historical research: a history hunt anyone can play, a research desk anyone can hire, and a studio for digital imaging, design, photography, 3D LiDAR, animation and video.', about,
+     'Project Scroll is independent historical research: an online treasure hunt anyone can play, a research desk anyone can hire, and a studio for digital imaging, design, photography, 3D LiDAR, animation and video.', about,
      og='https://projectscroll.com/og/about.jpg')
 
 # ------------------------------------------------------------------ privacy

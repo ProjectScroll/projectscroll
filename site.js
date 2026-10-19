@@ -362,7 +362,9 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
         const id='gl'+gi, after=cur.splitText(m.index); after.nodeValue=after.nodeValue.slice(m[0].length);
         const b=document.createElement('button'); b.type='button'; b.className='gl'; b.textContent=m[0]; b.setAttribute('popovertarget',id); b.setAttribute('aria-label',m[0]+': what this means');
         const pop=document.createElement('div'); pop.id=id; pop.setAttribute('popover',''); pop.className='gloss'; pop.innerHTML='<b></b>'; pop.querySelector('b').textContent=GL[term][0]; pop.appendChild(document.createTextNode(GL[term][1]));
-        cur.parentNode.insertBefore(b, after); document.body.appendChild(pop);
+        const pm=after.nodeValue.match(/^[,.;:!?)’”]+/);
+        if (pm){ const w=document.createElement('span'); w.className='glw'; w.appendChild(b); w.appendChild(document.createTextNode(pm[0])); after.nodeValue=after.nodeValue.slice(pm[0].length); cur.parentNode.insertBefore(w, after); } else cur.parentNode.insertBefore(b, after);
+        document.body.appendChild(pop);
         pop.addEventListener('toggle', function(e){ if (e.newState==='open'){ const r=b.getBoundingClientRect(), w=pop.offsetWidth; pop.style.left=Math.max(8,Math.min(innerWidth-w-8, r.left+r.width/2-w/2))+'px'; const below=r.bottom+8; pop.style.top=(below+pop.offsetHeight>innerHeight? r.top-pop.offsetHeight-8 : below)+'px'; } });
         cur=after;
       }

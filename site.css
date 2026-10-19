@@ -1896,3 +1896,46 @@ dialog.fp-zoom::backdrop{background:transparent}
 .osd{height:min(72vh, 46rem)}
 /* Draft 70: on wide screens the visit-counter question sits in the corner, off the content */
 @media (min-width:700px){ .consent{left:1rem; right:auto; max-width:24rem} }
+
+/* ===== Draft 73 ===== */
+/* the ad, tightened: smaller wordmark and headline, closer columns, no second map */
+.promo.ad{padding:1.6rem 1.6rem 1.3rem; margin-bottom:2rem}
+.promo.ad .ad-mark{font-size:clamp(1.9rem, 5vw, 3.1rem); letter-spacing:.07em}
+.promo.ad .promo-h{font-size:clamp(1.45rem, 3.1vw, 2rem); margin:.3rem 0 .15rem}
+.promo.ad .promo-lede{font-size:1rem; max-width:40rem; margin:.5rem auto .2rem}
+.promo.ad .ad-tag{margin-bottom:.5rem; font-size:.74rem}
+.promo.ad .ad-cols{margin:1rem 0 .9rem}
+.promo.ad .ad-col{padding:.85rem 1rem .9rem}
+.promo.ad .ad-col h3{font-size:1.28rem}
+.promo.ad .ad-col ul{gap:.18rem; font-size:.95rem}
+.promo.ad .ad-d{margin-bottom:.5rem; font-size:.93rem}
+.promo.ad .ad-finder{margin-top:.9rem; padding:.7rem 1rem .8rem}
+.promo.ad .ad-coupon{margin:1rem auto .3rem; padding:.85rem 1.1rem .95rem}
+.promo.ad .ad-own{margin-top:.45rem; font-size:.92rem}
+.promo.ad .ad-more{margin:.6rem 0 0}
+@media (max-width:720px){ .promo.ad{padding:1.3rem .9rem 1.1rem} .promo.ad .ad-col{padding:.8rem .3rem} }
+/* the place band: the hall reads as a name, not an error */
+.pb-track li.pb-hall{color:var(--ink)}
+.pb-track li.pb-hall a{text-decoration-color:color-mix(in srgb, var(--gold) 70%, transparent); text-underline-offset:.2em}
+.pb-track li.pb-hall a:hover{color:var(--gold-lo)}
+/* glossary terms keep their punctuation on the same line */
+.glw{white-space:nowrap}
+/* the top bar: a gold underline grows out from the centre of each link */
+.bar nav a{position:relative; border-bottom:0; padding-bottom:.2rem}
+.bar nav a::after{content:""; position:absolute; left:50%; right:50%; bottom:0; height:2px; background:linear-gradient(90deg, var(--gold-lo), var(--gold-hi), var(--gold-lo)); transition:left .25s ease, right .25s ease}
+.bar nav a:hover::after, .bar nav a:focus-visible::after, .bar nav a[aria-current="true"]::after{left:0; right:0}
+.bar nav a[aria-current="true"]{color:var(--ink)}
+/* the gold diamond breathes as the glint passes under it; the mark's ribbon catches the light on hover */
+@media (prefers-reduced-motion: no-preference){
+  .bar-in::after{animation:diamond 9s ease-in-out infinite}
+  @keyframes diamond{0%,14%{box-shadow:0 0 0 2px var(--paper), 0 0 6px color-mix(in srgb, var(--gold) 70%, transparent)} 24%{box-shadow:0 0 0 2px var(--paper), 0 0 14px 3px color-mix(in srgb, var(--gold-hi) 85%, transparent)} 36%,100%{box-shadow:0 0 0 2px var(--paper), 0 0 6px color-mix(in srgb, var(--gold) 70%, transparent)}}
+  .mark svg{transition:transform .3s ease, filter .3s ease}
+  .mark:hover svg{transform:translateY(-1px) rotate(-3deg); filter:drop-shadow(0 0 4px color-mix(in srgb, var(--gold) 70%, transparent))}
+  .pb-track li::after{animation:twinkle 6s ease-in-out infinite}
+  .pb-track li:nth-child(3n+1)::after{animation-delay:-2s} .pb-track li:nth-child(3n+2)::after{animation-delay:-4s}
+  @keyframes twinkle{0%,100%{background:color-mix(in srgb, var(--gold) 75%, transparent); box-shadow:none} 50%{background:var(--gold-hi); box-shadow:0 0 5px color-mix(in srgb, var(--gold-hi) 80%, transparent)}}
+  .hero-k .hk2 i{display:inline-block; animation:twinkle-i 6s ease-in-out infinite}
+  @keyframes twinkle-i{0%,100%{text-shadow:none} 50%{text-shadow:0 0 6px color-mix(in srgb, var(--gold-hi) 85%, transparent)}}
+}
+@media (forced-colors: active){ .bar nav a::after{background:LinkText} }
+@media (max-width:480px){ .hero-k .hk1, .hero-k .hk2{white-space:normal} }
