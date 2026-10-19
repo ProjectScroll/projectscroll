@@ -55,8 +55,15 @@ records = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <h2>Three habits that find more</h2>
     <ul class="dis">
       <li><b>Search the unusual name.</b> A rare surname, spelled every way it can be said, finds the family and almost nobody else.</li>
-      <li><b>Read the whole page.</b> Neighbours in a census are often in-laws, and witnesses to a deed are often kin.</li>
+      <li><b>Read the whole page.</b> Neighbors in a census are often in-laws, and witnesses to a deed are often kin.</li>
       <li><b>Go back to the original.</b> Indexes and transcriptions are for finding things. The record itself is the evidence.</li>
+    </ul>
+    <h2>Did you know?</h2>
+    <ul class="dis">
+      <li>Most of the 1890 United States census was lost after a fire in Washington in January 1921.</li>
+      <li>Each federal census opens to the public 72 years after it was taken.</li>
+      <li>The 1850 census was the first to name every free person in a household. Before it, only the head of the household was named.</li>
+      <li>Civil registration of births, marriages and deaths in England and Wales began on 1 July 1837.</li>
     </ul>
     <p class="note">This list grows as the desk works further afield. Know a free source we should add? <a href="/#contact">Tell us</a>.</p>
     <script>
@@ -104,12 +111,18 @@ G = [
  ('Transcription', 'A written copy of a record, word for word. Better than an abstract, but every copy is a chance for a new mistake.'),
  ('Vital records', 'Records of births, marriages and deaths. Most states only required them from the late 1800s or early 1900s.'),
 ]
+G += [
+ ('Senior', 'In the 1800s, not always “father.” Sometimes it only meant the older of two men with the same name in town, related or not. Junior was the younger.'),
+ ('Ditto (do.)', '“The same as above.” Census takers and clerks used it, or a pair of marks, for repeated surnames, birthplaces and occupations.'),
+ ('Long s (ſ)', 'An s that looks like an f without the full crossbar, used at the start or in the middle of a word until about 1800. “Congreſs” is Congress.'),
+]
+G.sort(key=lambda x: x[0].lower())
 gl = ''.join(f'<div class="gl" id="g-{re.sub(r"[^a-z]+","-",t.lower()).strip("-")}"><dt>{t}</dt><dd>{d}</dd></div>' for t, d in G)
 letters = sorted({t[0] for t, _ in G})
 glossary = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">From the desk</p>
     <h1>The glossary</h1>
-    <p class="lede" style="font-size:1.15rem">The words old records use, and the words we use about them, in plain English.</p>
+    <p class="lede" style="font-size:1.15rem">The words old records use, and the words we use about them, in plain English. Learn a handful, and an old deed or gravestone starts to talk.</p>
     <p class="recfilter"><label for="glQ">Find a word</label> <input type="search" id="glQ" placeholder="Try “widow” or “survey”" autocomplete="off"></p>
     <dl class="glossary">{gl}</dl>
     <p class="recnone" id="glNone" hidden>No word matches that.</p>
@@ -186,7 +199,7 @@ page('privacy/index.html', 'Privacy · Project Scroll',
 badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Your field book</p>
     <h1>Your tin badges</h1>
-    <p class="lede">In the winter of 1846–47, two hundred badges of the “Ancient and Honorable Order” were worn at a ball in Cassopolis. Not one is known to survive. Here, you can earn your own, one for each thing you do as you explore the site.</p>
+    <p class="lede">In the winter of 1846–47, two hundred badges of the “Ancient and Honorable Order” were worn at a ball in Cassopolis. Not one is known to survive. Here you can earn your own: nineteen of them, one for each thing you do as you explore the site, with five ranks on the way from Candidate to Noble Grand Humbug.</p>
     <p class="brank" id="brank"></p>
     <ol class="rladder" id="rladder" aria-label="The five ranks"></ol>
     <p class="bcount" id="bcount" aria-live="polite"></p>

@@ -15,7 +15,7 @@ for c in C:
         items=''.join(f'<li>{x["text"]} <a href="{esc(x["url"])}">{esc(x.get("label","Read it free online ›"))}</a></li>' for x in c['start'])
         starthere=f'<aside class="starthere" aria-labelledby="sh{n}"><h2 id="sh{n}">Start here</h2><ol>{items}</ol><p class="note">These are the first pages to open. The answer is in the record; the rest of the trail is yours.</p></aside>'
     elif c['hall']=='h2':
-        starthere=f'<aside class="starthere" aria-labelledby="sh{n}"><h2 id="sh{n}">Start here</h2><p>This case belongs to the second hall. Its page is behind the first hall’s last door, and the sources for this case are posted there. Find the door first.</p></aside>'
+        starthere=f'<aside class="starthere" aria-labelledby="sh{n}"><h2 id="sh{n}">Start here</h2><p>This case belongs to the second hall. Its sources are posted on the hall’s own page, and that page is behind the first hall’s last door. Find the door, and the trail starts there.</p></aside>'
     else: starthere=''
     body=f'''    <p class="crumb"><a href="/#cases">← The case board</a></p>
     <p class="kicker">Case {n} · {esc(c['hallName'])}</p>
@@ -25,10 +25,11 @@ for c in C:
     {starthere}{hint}{extra}
     <h2>How to answer</h2>
     <ol class="steps">
-      <li><b>Search the record.</b> Old county histories, maps, certificates and newspapers. Many are free online.</li>
-      <li><b>Post your answer</b> in the comments on <a href="{FB}">Project Scroll’s Facebook page</a>, and say exactly where you found it.</li>
+      <li><b>Search the record.</b> Start with the “Start here” box above, then follow where it leads: old county histories, maps, certificates and newspapers, many of them free online.</li>
+      <li><b>Post your answer</b> in the comments on <a href="{FB}">Project Scroll’s Facebook page</a>, and say exactly where you found it: the book or record, the page, and a link if there is one.</li>
       <li><b>Get named.</b> The first solver with the page to prove it is named in the next post and on this board.</li>
     </ol>
+    <p class="goodanswer"><b>A good answer looks like this:</b> “Case {n}: [your answer]. Found in [the book or record], p. [page], [link].” Use <b>Copy as a Facebook answer</b> in your notebook below, and it is laid out for you.</p>
     <p class="note">Everything is solved on paper. Never dig, never go near a grave, and never set foot on anyone’s land.</p>
     <p class="casetools"><span>Tools for the hunt:</span> <a href="/records/">Where the records are</a> <a href="/glossary/">The glossary</a> <a href="/toolkit/">The toolkit</a> <a href="/guide/old-handwriting/">Reading the old hand</a> <a href="/worksheet/project-scroll-hunters-worksheet.pdf">The hunter’s worksheet (PDF)</a></p>
     <div class="notebook" id="casenote" data-case="{n}">
@@ -48,7 +49,7 @@ pathlib.Path(f'{R}/tools/cards.json').write_text(json.dumps(C, ensure_ascii=Fals
 
 # keepsake page (reads cases.json in the browser; shows a certificate only for a solved case)
 kbody='''    <p class="crumb no-print"><a href="/#cases">← The case board</a></p>
-    <div id="keep"><p class="kicker">Solver’s keepsake</p><h1>Nothing to show yet</h1><p>Keepsakes appear here for solved cases. Choose a solved case on <a href="/#cases">the case board</a>.</p></div>
+    <div id="keep"><p class="kicker">Solver’s keepsake</p><h1>No case cracked yet</h1><p>When one is, its solver’s name goes on a keepsake here, ready to print. Could the first one be yours? Choose a solved case on <a href="/#cases">the case board</a>.</p></div>
     <p class="center no-print" id="keepbtns" hidden><button type="button" class="btn primary" onclick="print()">Print or save as PDF</button></p>
     <script>
     (function(){ var n=+new URLSearchParams(location.search).get('case'); if(!n) return;

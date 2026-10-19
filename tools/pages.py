@@ -44,7 +44,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=62">
+<link rel="stylesheet" href="/site.min.css?v=63">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"href_matches":"/*"}},{{"not":{{"href_matches":"/sample/*"}}}},{{"not":{{"href_matches":"/*.pdf"}}}}]}},"eagerness":"moderate"}}]}}</script>
 </head>
 <body>
@@ -86,7 +86,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline" aria-label="A line written in code">ESP HZCO TD SPHRLR. DLJ TE TY JZFC MLORP MZZV.</p>
   </footer>
 </div>
-<script src="/site.min.js?v=62" defer></script>
+<script src="/site.min.js?v=63" defer></script>
 </body>
 </html>
 '''
@@ -133,7 +133,7 @@ if __name__=='__main__':
         <h2>Where the case stands</h2>
         <p><span class="status">Open</span> Our next witness: a local newspaper notice from the days or weeks after his death. Then his probate file, and the cemetery's burial records or a transcription of his stone. Read the stone on paper. Don't go to it.</p>
 
-        <p class="mstrip"><i>Marks, strongest first:</i> <span class="tD">Document</span> <span class="tP">Period print</span> <span class="tC">County history</span> <span class="tM">Compiled</span> <span class="tT">Tradition</span> <span class="tI">Inference</span> <span class="tR">Reading</span> <span class="tH">Hypothesis</span> <span class="tF">Field (seen at first hand)</span> <i>— <a href="/#marks">what the marks mean</a></i></p>
+        <p class="mstrip"><i>Marks, strongest first:</i> <span class="tD">Document</span> <span class="tP">Period print</span> <span class="tC">County history</span> <span class="tM">Compiled</span> <span class="tT">Tradition</span> <span class="tF">Field (seen at first hand)</span> <span class="tI">Inference</span> <span class="tR">Reading</span> <span class="tH">Hypothesis</span> <i>— <a href="/#marks">what the marks mean</a></i></p>
 
         <h2>Where to look, for free</h2>
         <ul class="dis">
@@ -154,7 +154,7 @@ if __name__=='__main__':
      'Lessons from the Project Scroll research desk: how to read old records, weigh them against each other and know when a question is settled.',
     '''    <p class="kicker">From the desk</p>
         <h1>Field notes</h1>
-        <p>Short lessons from real cases: how to read an old record, weigh it against another, and know when a question is settled. A new one is added each time one is posted.</p>
+        <p>Short lessons from real cases: how to read an old record, weigh it against another, and know when a question is settled. A new lesson is bound in each time a case teaches one.</p>
         <p><a class="btn" href="/notes/book/">Open the field notes as a book</a></p>
     <ul class="notelist">
           <li><a href="/notes/one-letter-two-certificates/">One Letter, Two Certificates</a><span>No. 1 · 17 October 2026 · What to do when two old records tell you two different things.</span></li>
@@ -166,7 +166,7 @@ if __name__=='__main__':
     '''    <p class="kicker">Error 404</p>
         <h1>Not in the record.</h1>
         <p class="lede" style="font-size:1.2rem">We searched the index, the margins and the back pages. This page isn't here.</p>
-        <p>It may have moved, or it may never have existed. A good record-keeper is honest about both.</p>
+        <p>It may have moved, or it may never have existed. A good record-keeper is honest about both. Press / to search the site, or pick up the trail below.</p>
         <p class="ctas" style="margin-top:1.6rem"><a class="btn primary" href="/">Back to the first page</a><a class="btn" href="/#cases">See the case board</a></p>
     ''', noindex=True)
     print('pages written')

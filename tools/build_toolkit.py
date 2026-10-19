@@ -4,7 +4,7 @@ gens=''.join(f'<option value="{i}">{l}</option>' for i,l in [(0,'is the ancestor
 body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">The hunter’s toolkit</p>
     <h1>Tools for reading the record</h1>
-    <p class="lede" style="font-size:1.15rem">Four small tools we use at the desk every day. They run entirely in your browser: nothing you type or load here is sent anywhere.</p>
+    <p class="lede" style="font-size:1.15rem">Four small tools we use at the desk every day, and a cipher wheel for the hunt. They run entirely in your browser: nothing you type or load here is sent anywhere.</p>
     <nav class="toc" aria-label="Tools"><a href="#ink">Faded-ink enhancer</a><a href="#age">Age at death → birth date</a><a href="#soundex">Soundex finder</a><a href="#cousin">Cousin calculator</a><a href="/guide/old-handwriting/">Reading the old hand ›</a></nav>
 
     <section class="tool" id="ink">

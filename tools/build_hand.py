@@ -26,7 +26,7 @@ quiz=''.join(f'<li data-a="{a}"><p>{E(q)}</p><div class="qopts2">'+''.join(f'<bu
 body=f'''    <p class="crumb"><a href="/toolkit/">← The hunter’s toolkit</a></p>
     <p class="kicker">A guide from the desk</p>
     <h1>Reading the old hand</h1>
-    <p class="lede" style="font-size:1.15rem">The writing in old records is not hard once you know a dozen tricks the clerks used. Here they are, with a short quiz at the end.</p>
+    <p class="lede" style="font-size:1.15rem">The writing in old records is not hard once you know ten tricks the clerks used. Here they are, with a short quiz at the end.</p>
     <h2>The clerks’ tricks</h2>
     <div class="hcards">{cards}</div>
     <h2>Test yourself</h2>

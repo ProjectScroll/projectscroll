@@ -40,7 +40,7 @@ for (const [w,cs,lab] of [[1280,'light','computer'],[390,'dark','phone']]){
  const mw=await q.evaluate(()=>[document.documentElement.scrollWidth,innerWidth]); ok(P+'map room: no sideways scrolling', mw[0]<=mw[1], mw.join('/'));
  await q.addStyleTag({content:'.bar{position:static!important}'}); await q.screenshot({path:`D25_map_${lab}.png`});
  // keepsake: none solved → message
- await q.goto(''+BASE+'/keepsake/?case=3'); await q.waitForTimeout(600); ok(P+'keepsake refuses an unsolved case', /Nothing to show/.test(await q.textContent('#keep')));
+ await q.goto(''+BASE+'/keepsake/?case=3'); await q.waitForTimeout(600); ok(P+'keepsake refuses an unsolved case', /No case cracked yet/.test(await q.textContent('#keep')));
  ok(P+'no script errors', errs.length===0, errs.join('|')); await ctx.close(); }
 // keepsake demo with a solved case
 const q=await b.newPage({viewport:{width:1100,height:1000}}); await q.route('**/cases.json', async r=>{ const res=await r.fetch(); const d=await res.json(); d.cases[2].solved='Jane Example'; d.cases[2].solvedOn='25 October 2026'; r.fulfill({response:res,json:d}); });
