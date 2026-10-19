@@ -1636,3 +1636,50 @@ kbd{font:400 .78em/1 ui-monospace,SFMono-Regular,Menlo,monospace; padding:.12em 
 }
 @media print{ .bar-in::after, .ad-finder{display:none!important} }
 .totop{background:radial-gradient(closest-side, var(--ink) 76%, transparent 79% 100%), conic-gradient(var(--gold) calc(var(--sp) * 1%), color-mix(in srgb, var(--paper) 35%, transparent) 0); opacity:.92}
+
+/* ===== Draft 55 ===== */
+/* the top bar: small gold diamonds finish both ends of the gold rule under the menu */
+.bar-in::before{content:""; position:absolute; left:2.2rem; right:.6rem; bottom:-1px; height:.5rem; transform:translateY(50%); pointer-events:none; z-index:2;
+  background:linear-gradient(135deg, var(--gold-hi), var(--gold-lo));
+  clip-path:polygon(0 50%, .25rem 0, .5rem 50%, .25rem 100%, 0 50%, calc(100% - .5rem) 50%, calc(100% - .25rem) 0, 100% 50%, calc(100% - .25rem) 100%, calc(100% - .5rem) 50%)}
+@media (max-width:640px){ .bar-in::before{left:1.4rem; right:.4rem} }
+/* the gold tab that names the part you are reading */
+.bar-tab{position:absolute; left:50%; top:100%; transform:translate(-50%, -2px); z-index:3; padding:.16rem .75rem .22rem; border-radius:0 0 8px 8px;
+  background:linear-gradient(180deg, var(--gold-hi), var(--gold) 55%, var(--gold-lo)); color:#2a1d05; font:400 .74rem/1.25 "Libre Caslon Text",serif; letter-spacing:.04em; white-space:nowrap; text-decoration:none;
+  box-shadow:0 6px 14px -8px rgba(0,0,0,.55); opacity:0; pointer-events:none; transition:opacity .3s, transform .3s}
+.bar-tab b{font-weight:400; letter-spacing:.12em; text-transform:uppercase; font-size:.92em}
+.bar.has-tab .bar-tab{opacity:1; pointer-events:auto; transform:translate(-50%, 0)}
+.bar.has-tab .bar-in::after{opacity:0}
+.bar-in::after{transition:opacity .3s}
+.bar-tab.flip{animation:tabflip .45s ease}
+@keyframes tabflip{0%{transform:translate(-50%,-70%)} 100%{transform:translate(-50%,0)}}
+.bar-tab:hover{filter:brightness(1.06)}
+@media (max-width:880px){ .bar-tab{display:none} .bar.has-tab .bar-in::after{opacity:1} }
+@media (prefers-reduced-motion: reduce){ .bar-tab, .bar-tab.flip{transition:none; animation:none} }
+/* Part I: the scroll itself on paper, and a line saying what is in view */
+.tl-wrap{border-radius:4px}
+.tl{background:
+  url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .45  0 0 0 0 .36  0 0 0 0 .22  0 0 0 .16 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+  linear-gradient(180deg, color-mix(in srgb, #f3e3bf 26%, transparent), color-mix(in srgb, #e9d3a3 14%, transparent))}
+:root[data-theme="dark"] .tl{background:linear-gradient(180deg, color-mix(in srgb, #6b5530 16%, transparent), transparent)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .tl{background:linear-gradient(180deg, color-mix(in srgb, #6b5530 16%, transparent), transparent)} }
+.tl-range{margin:.35rem 0 0; text-align:center; font-size:.85rem; color:var(--ink-soft); min-height:1.3em}
+.tl-range b{font-weight:400; color:var(--ink); font-family:"Libre Caslon Display",serif}
+/* the ad: a fleuron in each corner of the frame */
+.promo.ad > .ad-orn{position:absolute; z-index:2; font-style:normal; font-size:1.05rem; line-height:1; color:var(--gold); pointer-events:none}
+.ad-orn.o1{top:16px; left:16px} .ad-orn.o2{top:16px; right:16px; transform:scaleX(-1)} .ad-orn.o3{bottom:16px; left:16px; transform:scaleY(-1)} .ad-orn.o4{bottom:16px; right:16px; transform:scale(-1)}
+@media (max-width:720px){ .promo.ad > .ad-orn{font-size:.85rem} .ad-orn.o1,.ad-orn.o2{top:14px} .ad-orn.o3,.ad-orn.o4{bottom:14px} .ad-orn.o1,.ad-orn.o3{left:14px} .ad-orn.o2,.ad-orn.o4{right:14px} }
+/* the hero picture drifts gently as the page scrolls */
+@supports (animation-timeline: scroll()){
+  @media (min-width:900px) and (prefers-reduced-motion: no-preference){
+    .hero .plate picture{animation:drift linear both; animation-timeline:scroll(root); animation-range:0 90vh}
+    @keyframes drift{to{transform:translateY(-1.4rem)}}
+  }
+}
+/* the install button, where a browser offers one */
+.installbtn{display:inline-flex; align-items:center; gap:.4rem; margin:.4rem 0 .8rem; font:inherit; font-size:.88rem; color:var(--ink); background:var(--paper); border:1px solid var(--gold); border-radius:999px; padding:.3rem .9rem; cursor:pointer}
+.installbtn::before{content:"＋"; color:var(--gold-lo)}
+.installbtn:hover{background:color-mix(in srgb, var(--gold) 14%, var(--paper))}
+@media print{ .bar-tab, .bar-in::before, .ad-orn, .tl-range, .installbtn{display:none!important} }
+@media (forced-colors: active){ .bar-in::before, .bar-tab{display:none} }
+.tl-ribbon + .tl-range{margin:-2.1rem 0 2.2rem}

@@ -684,6 +684,45 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
 /* ---------- Ctrl+K or Cmd+K opens the search, as in most modern apps ---------- */
 addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key==='k' || e.key==='K')){ const b=document.getElementById('searchBtn'); if (b){ e.preventDefault(); b.click(); } } });
 
+/* ---------- the top bar: a gold tab hangs from the rule and names the part you are reading ---------- */
+(function(){
+  const bi=document.querySelector('.bar-in'), bar=document.querySelector('.bar'); if (!bi || !bar) return;
+  const tab=document.createElement('a'); tab.className='bar-tab'; tab.setAttribute('aria-hidden','true'); tab.tabIndex=-1; bi.appendChild(tab);
+  const sync=function(){ const rail=document.querySelector('.partrail'); const a=rail && rail.classList.contains('show') && rail.querySelector('a[aria-current="true"]');
+    if (!a){ bar.classList.remove('has-tab'); return; }
+    const num=(a.querySelector('b')||{}).textContent||'', title=(a.querySelector('span')||{}).textContent||'';
+    if (tab.dataset.k!==num){ tab.dataset.k=num; tab.innerHTML='<b>Part '+num+'</b> · '+title; tab.href=a.getAttribute('href'); tab.classList.remove('flip'); void tab.offsetWidth; tab.classList.add('flip'); }
+    bar.classList.add('has-tab'); };
+  const watch=function(){ const rail=document.querySelector('.partrail'); if (!rail){ setTimeout(watch, 300); return; }
+    new MutationObserver(sync).observe(rail, {subtree:true, attributes:true, attributeFilter:['aria-current','class']}); sync(); };
+  watch();
+})();
+
+/* ---------- Part I: say which stretch of the scroll is in view ---------- */
+(function(){
+  const t=document.getElementById('tl'), rib=document.getElementById('tlRibbon'); if (!t || !rib) return;
+  const out=document.createElement('p'); out.className='tl-range'; out.setAttribute('aria-live','off'); rib.insertAdjacentElement('afterend', out);
+  let q=0; const read=function(){ q=0; const L=t.scrollLeft, R=L+t.clientWidth;
+    const vis=[].slice.call(t.children).filter(function(li){ return !li.hidden && li.offsetLeft+li.offsetWidth*0.6>L && li.offsetLeft+li.offsetWidth*0.4<R; });
+    if (!vis.length){ out.textContent=''; return; }
+    const y=function(li){ return (li.querySelector('.yr')||{}).textContent||''; }, sealed=vis.filter(function(li){ return li.classList.contains('sealed'); }).length;
+    out.innerHTML='In view: <b>'+y(vis[0])+'</b>'+(vis.length>1?' to <b>'+y(vis[vis.length-1])+'</b>':'')+(sealed?' · '+sealed+' sealed':''); };
+  t.addEventListener('scroll', function(){ if (!q) q=requestAnimationFrame(read); }, {passive:true}); addEventListener('resize', function(){ if (!q) q=requestAnimationFrame(read); }, {passive:true});
+  document.querySelectorAll('.tl-filters button').forEach(function(b){ b.addEventListener('click', function(){ setTimeout(read, 60); }); });
+  read();
+})();
+
+/* ---------- add Project Scroll to a phone's home screen, where the browser offers it ---------- */
+(function(){
+  let ev=null; const foot=document.querySelector('footer.site'); if (!foot) return;
+  addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); ev=e;
+    if (document.getElementById('installBtn')) return;
+    const b=document.createElement('button'); b.type='button'; b.id='installBtn'; b.className='installbtn'; b.textContent='Add Project Scroll to your home screen';
+    b.addEventListener('click', function(){ if (!ev) return; ev.prompt(); ev.userChoice.finally(function(){ ev=null; b.remove(); }); });
+    const m=foot.querySelector('.motto'); (m||foot.firstElementChild||foot).insertAdjacentElement('afterend', b); });
+  addEventListener('appinstalled', function(){ const b=document.getElementById('installBtn'); if (b) b.remove(); });
+})();
+
 /* ---------- what's new on the trail: a moving ticker ---------- */
 (function(){
   const tk=document.querySelector('.ticker'), track=document.getElementById('tkTrack'); if (!tk || !track) return;
