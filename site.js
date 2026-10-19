@@ -579,6 +579,26 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
   document.addEventListener('click', function(e){ const a=e.target.closest && e.target.closest('a[href]'); if (a) mark(a); }, true);
 })();
 
+/* ---------- the scroll: jump to an era ---------- */
+(function(){
+  const t=document.getElementById('tl'), filters=document.querySelector('.tl-filters'); if (!t || !filters) return;
+  const yearOf=function(li){ const y=(li.querySelector('.yr')||{}).textContent||''; if (/now/i.test(y)) return 99999; const n=parseInt(y.replace(/[^0-9]/g,''),10); return /BC/.test(y) ? -n : n; };
+  const ERAS=[['Deep time',-1e9,1499],['1500s–1700s',1500,1799],['1800s',1800,1899],['1900s',1900,1999],['Now',2000,1e9]];
+  const lis=[].slice.call(t.children), smooth=matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
+  const row=document.createElement('div'); row.className='tl-eras'; row.setAttribute('role','group'); row.setAttribute('aria-label','Jump to an era');
+  const lbl=document.createElement('span'); lbl.className='lbl'; lbl.textContent='Jump to'; row.appendChild(lbl);
+  ERAS.forEach(function(e){
+    const first=lis.filter(function(li){ const y=yearOf(li); return y>=e[1] && y<=e[2] && !li.hidden; })[0]; if (!first) return;
+    const b=document.createElement('button'); b.type='button'; b.textContent=e[0];
+    const n=lis.filter(function(li){ const y=yearOf(li); return y>=e[1] && y<=e[2] && li.classList.contains('sealed'); }).length;
+    if (n) b.title=n+(n===1?' sealed date':' sealed dates');
+    b.addEventListener('click', function(){ const f=lis.filter(function(li){ const y=yearOf(li); return y>=e[1] && y<=e[2] && !li.hidden; })[0]||first;
+      t.scrollTo({left:Math.max(0,f.offsetLeft-8), behavior:smooth}); f.classList.remove('lit'); void f.offsetWidth; f.classList.add('lit'); });
+    row.appendChild(b);
+  });
+  filters.insertAdjacentElement('afterend', row);
+})();
+
 /* ---------- what's new on the trail: a moving ticker ---------- */
 (function(){
   const tk=document.querySelector('.ticker'), track=document.getElementById('tkTrack'); if (!tk || !track) return;
