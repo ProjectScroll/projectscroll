@@ -1782,3 +1782,18 @@ html{scroll-padding-top:5.8rem}
 .ad-serve{margin:.15rem auto .35rem; font-style:italic; font-size:.9rem; color:var(--ink-soft)}
 @media print{ .tl-link{display:none!important} }
 @media (min-width:1360px){ .bar nav a[href="#services"]{padding:.1rem .45rem; margin:0 -.2rem} }
+
+/* ===== Draft 59 ===== */
+/* the top bar: each section's part number rises in gold over its link when you point at it */
+@media (min-width:881px) and (hover:hover){
+  .bar nav a[data-n]{position:relative}
+  .bar nav a[data-n]::after{content:attr(data-n); position:absolute; left:50%; top:-.62rem; transform:translate(-50%, .25rem); font:400 .56rem/1 "Libre Caslon Text",serif; letter-spacing:.14em; color:var(--gold-lo); opacity:0; pointer-events:none; transition:opacity .2s, transform .2s}
+  .bar nav a[data-n]:hover::after, .bar nav a[data-n][aria-current="true"]::after{opacity:1; transform:translate(-50%,0)}
+  :root[data-theme="dark"] .bar nav a[data-n]::after{color:var(--gold-hi)}
+}
+@media (min-width:881px) and (hover:hover) and (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .bar nav a[data-n]::after{color:var(--gold-hi)} }
+/* the ad: share it */
+.ad-share{margin:.7rem 0 0!important}
+.ad-share .linkbtn{font-size:.9rem; color:var(--gold-lo)}
+:root[data-theme="dark"] .ad-share .linkbtn{color:var(--gold-hi)}
+@media (min-width:881px) and (hover:hover){ .bar nav a[data-n]::after{top:-.42rem; font-size:.6rem} }

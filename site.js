@@ -1,3 +1,5 @@
+/* each feature below runs inside its own guard: if one ever fails, the rest of the page keeps working */
+function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
 (function(){
   "use strict";
   let root=document.documentElement, btn=document.getElementById('theme');
@@ -148,7 +150,7 @@
   }
 
   /* timeline: tally, counts on the filters, the ribbon below, and soft edges */
-  (function(){
+  try{ (function(){
     const t=document.getElementById('tl'); if (!t) return;
     const all=[].slice.call(t.children), dated=all.filter(function(li){ return !li.classList.contains('now'); });
     const sealed=dated.filter(function(li){ return li.classList.contains('sealed'); }).length;
@@ -191,7 +193,7 @@
     t.addEventListener('scroll', edgesSoon, {passive:true}); window.addEventListener('resize', edgesSoon, {passive:true});
     document.querySelectorAll('.tl-filters button').forEach(function(b){ b.addEventListener('click', function(){ setTimeout(build,0); }); });
     build();
-  })();
+  })(); }catch(err){ psFail(err); }
 
   /* questions: open all, and open the one a link points at */
   let fa=document.getElementById('faqall'), faqs=[].slice.call(document.querySelectorAll('details.faq'));
@@ -430,7 +432,7 @@
   /* for anyone who opens the browser's console */
 
   /* parts: a "next" link at the foot of each part, and a contents rail in the margin */
-(function(){
+try{ (function(){
   const parts=[].slice.call(document.querySelectorAll('main > section')).filter(function(s){ return s.id && s.querySelector(':scope > .part') && s.querySelector(':scope > h2'); });
   if (parts.length<3) return;
   const label=function(s){ return { num:s.querySelector(':scope > .part').firstChild.textContent.replace(/^\s*Part\s*/i,'').trim(), title:s.querySelector(':scope > h2').textContent.trim() }; };
@@ -450,10 +452,10 @@
     parts.forEach(function(s){ io.observe(s); });
     const hero=document.querySelector('.hero'); if (hero){ new IntersectionObserver(function(es){ rail.classList.toggle('show', !es[0].isIntersecting); }).observe(hero); } else rail.classList.add('show');
   } else rail.classList.add('show');
-})();
+})(); }catch(err){ psFail(err); }
 
 /* the numbers strip counts up the first time it comes into view */
-(function(){
+try{ (function(){
   const nums=[].slice.call(document.querySelectorAll('.stats b')); if (!nums.length || !('IntersectionObserver' in window)) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const io=new IntersectionObserver(function(es){ es.forEach(function(e){ if (!e.isIntersecting) return; io.unobserve(e.target);
@@ -461,7 +463,7 @@
     const tick=function(t){ const k=Math.min(1,(t-t0)/d), v=Math.round(end*(1-Math.pow(1-k,3))); el.textContent=v; if (k<1) requestAnimationFrame(tick); else el.textContent=end; };
     el.textContent='0'; requestAnimationFrame(tick); }); }, {threshold:.6});
   nums.forEach(function(n){ io.observe(n); });
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- the tin-badge field book: badges earned around the site, kept in this browser only ---------- */
 window.PS_BADGES=[
@@ -486,7 +488,7 @@ window.PS_BADGES=[
   ['credo','Second cipher','Break the second line, which appears in your badge book once the first is broken.']
 ];
 window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the Badge'],[15,'Recorder of the Hall'],[19,'Noble Grand Humbug']];
-(function(){
+try{ (function(){
   const KEY='ps-badges'; let got={};
   try{ got=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ got={}; }
   const save=function(){ try{ localStorage.setItem(KEY, JSON.stringify(got)); }catch(e){} };
@@ -527,10 +529,10 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
   const lb=document.getElementById('lanternBtn'); if (lb){ let n=0; lb.addEventListener('click', function(){ n++; if (n>=2) earn('lantern'); }); }
   const ct=document.getElementById('contact');
   if (ct && 'IntersectionObserver' in window && document.getElementById('hunt')){ const io=new IntersectionObserver(function(es){ if (es[0].isIntersecting){ earn('scroll'); io.disconnect(); } }, {threshold:.25}); io.observe(ct); }
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- the clue of the week counts down to the next one ---------- */
-(function(){
+try{ (function(){
   const cj=document.getElementById('clues'), box=document.getElementById('clueNext'); if (!cj || !box) return;
   let list=[]; try{ list=JSON.parse(cj.textContent); }catch(e){ return; }
   const tick=function(){
@@ -541,10 +543,10 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
     box.textContent='Next clue in '+(d>0? pl(d,'day')+', '+pl(h,'hour') : h>0? pl(h,'hour')+', '+pl(m,'minute') : pl(Math.max(1,m),'minute'))+' · '+nx[1];
   };
   tick(); setInterval(tick, 30000);
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- on this day in the record ---------- */
-(function(){
+try{ (function(){
   const box=document.getElementById('otd'), dj=document.getElementById('otdData'); if (!box || !dj) return;
   let L=[]; try{ L=JSON.parse(dj.textContent); }catch(e){ return; }
   const now=new Date(), y=now.getFullYear(), MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -563,11 +565,11 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
     const go=function(d){ i=(i+d+S.length)%S.length; const e=S[i]; show(e, e===hit ? lbl : 'Elsewhere in the calendar of the record'); box.classList.remove('flip'); void box.offsetWidth; box.classList.add('flip'); };
     document.getElementById('otdPrev').addEventListener('click', function(){ go(-1); });
     document.getElementById('otdNext').addEventListener('click', function(){ go(1); }); }
-})();
+})(); }catch(err){ psFail(err); }
 
 /* links to other websites open in a new tab. The site's own menu (top bar, logo, footer, search results,
    parts rail) stays in the same tab, so Back works. Other links to the site's own pages still open a new tab. */
-(function(){
+try{ (function(){
   const here=location.origin+location.pathname, MENU='.bar, footer.site nav, #searchRes, .partrail, .skip';
   const mark=function(a){
     const h=a.getAttribute('href'); if (!h || h.charAt(0)==='#' || /^(mailto:|tel:|javascript:)/i.test(h)) return;
@@ -578,10 +580,10 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
   };
   document.querySelectorAll('a[href]').forEach(mark);
   document.addEventListener('click', function(e){ const a=e.target.closest && e.target.closest('a[href]'); if (a) mark(a); }, true);
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- the scroll: jump to an era ---------- */
-(function(){
+try{ (function(){
   const t=document.getElementById('tl'), filters=document.querySelector('.tl-filters'); if (!t || !filters) return;
   const yearOf=function(li){ const y=(li.querySelector('.yr')||{}).textContent||''; if (/now/i.test(y)) return 99999; const n=parseInt(y.replace(/[^0-9]/g,''),10); return /BC/.test(y) ? -n : n; };
   const ERAS=[['Deep time',-1e9,1499],['1500s–1700s',1500,1799],['1800s',1800,1899],['1900s',1900,1999],['Now',2000,1e9]];
@@ -598,10 +600,10 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
     row.appendChild(b);
   });
   filters.insertAdjacentElement('afterend', row);
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- the top bar: a gold marker glides to the section you are reading, and follows the pointer ---------- */
-(function(){
+try{ (function(){
   const nav=document.querySelector('.bar nav'); if (!nav) return;
   const ink=document.createElement('span'); ink.className='navink'; ink.setAttribute('aria-hidden','true'); nav.appendChild(ink);
   let hover=null;
@@ -615,10 +617,10 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
   nav.addEventListener('pointerleave', function(){ hover=null; place(); });
   addEventListener('resize', place, {passive:true}); if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
   place(); document.documentElement.classList.add('has-navink');
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- the scroll: the era buttons follow along as you read ---------- */
-(function(){
+try{ (function(){
   const t=document.getElementById('tl'), row=document.querySelector('.tl-eras'); if (!t || !row) return;
   const btns=[].slice.call(row.querySelectorAll('button')); if (!btns.length) return;
   const yearOf=function(li){ const y=(li.querySelector('.yr')||{}).textContent||''; if (/now/i.test(y)) return 99999; const n=parseInt(y.replace(/[^0-9]/g,''),10); return /BC/.test(y) ? -n : n; };
@@ -629,19 +631,19 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
     if (t.scrollLeft+t.clientWidth>=t.scrollWidth-4) cur=lis[lis.length-1];
     const e=cur?eraOf(yearOf(cur)):''; btns.forEach(function(b){ if (b.textContent===e) b.setAttribute('aria-current','true'); else b.removeAttribute('aria-current'); }); };
   t.addEventListener('scroll', function(){ if (!q) q=requestAnimationFrame(spy); }, {passive:true}); spy();
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- the advertisement: a light catches the paper as the pointer moves ---------- */
-(function(){
+try{ (function(){
   const ad=document.querySelector('.promo.ad'); if (!ad || !matchMedia('(hover: hover) and (pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   let q=0, x=0, y=0;
   ad.addEventListener('pointermove', function(e){ const r=ad.getBoundingClientRect(); x=(e.clientX-r.left)/r.width*100; y=(e.clientY-r.top)/r.height*100;
     if (!q) q=requestAnimationFrame(function(){ q=0; ad.style.setProperty('--gx', x.toFixed(1)+'%'); ad.style.setProperty('--gy', y.toFixed(1)+'%'); ad.classList.add('glow'); }); }, {passive:true});
   ad.addEventListener('pointerleave', function(){ ad.classList.remove('glow'); });
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- the advertisement: "Ask about this" fills in the message form for you ---------- */
-(function(){
+try{ (function(){
   const sel=document.querySelector('#msgform select[name="need"]'); if (!sel) return;
   document.addEventListener('click', function(e){
     const a=e.target.closest && e.target.closest('[data-need]'); if (!a) return;
@@ -649,10 +651,10 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
     sel.dispatchEvent(new Event('change', {bubbles:true}));
     setTimeout(function(){ const t=document.querySelector('#msgform textarea[name="mystery"]'); if (t) t.focus({preventScroll:true}); sel.classList.remove('flash'); void sel.offsetWidth; sel.classList.add('flash'); }, 650);
   });
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- the advertisement: "What do you have?" points to the right service ---------- */
-(function(){
+try{ (function(){
   const box=document.getElementById('adFinder'), out=document.getElementById('adFa'); if (!box || !out) return;
   const A={
     q:['The research desk traces it through the record: certificates, deeds, censuses, county histories and old newspapers, every statement marked.','Research: a mystery or an ancestor'],
@@ -670,23 +672,23 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
       out.hidden=false; out.classList.remove('in'); void out.offsetWidth; out.classList.add('in');
     });
   });
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- Part I: drag the scroll sideways with the mouse ---------- */
-(function(){
+try{ (function(){
   const t=document.getElementById('tl'); if (!t || !matchMedia('(pointer: fine)').matches) return;
   let down=false, x0=0, s0=0, moved=false;
   t.addEventListener('pointerdown', function(e){ if (e.pointerType!=='mouse' || e.button!==0 || e.target.closest('a,button')) return; down=true; moved=false; x0=e.clientX; s0=t.scrollLeft; t.classList.add('grabbing'); });
   addEventListener('pointermove', function(e){ if (!down) return; const dx=e.clientX-x0; if (Math.abs(dx)>4) moved=true; if (moved){ t.style.scrollSnapType='none'; t.scrollLeft=s0-dx; } }, {passive:true});
   addEventListener('pointerup', function(){ if (!down) return; down=false; t.classList.remove('grabbing'); t.style.scrollSnapType=''; });
   t.addEventListener('click', function(e){ if (moved){ e.preventDefault(); e.stopPropagation(); moved=false; } }, true);
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- Ctrl+K or Cmd+K opens the search, as in most modern apps ---------- */
-addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key==='k' || e.key==='K')){ const b=document.getElementById('searchBtn'); if (b){ e.preventDefault(); b.click(); } } });
+try{ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key==='k' || e.key==='K')){ const b=document.getElementById('searchBtn'); if (b){ e.preventDefault(); b.click(); } } }); }catch(err){ psFail(err); }
 
 /* ---------- the top bar: a gold tab hangs from the rule and names the part you are reading ---------- */
-(function(){
+try{ (function(){
   const bi=document.querySelector('.bar-in'), bar=document.querySelector('.bar'); if (!bi || !bar) return;
   const tab=document.createElement('a'); tab.className='bar-tab'; tab.setAttribute('aria-hidden','true'); tab.tabIndex=-1; bi.appendChild(tab);
   const sync=function(){ const rail=document.querySelector('.partrail'); const a=rail && rail.classList.contains('show') && rail.querySelector('a[aria-current="true"]');
@@ -697,10 +699,10 @@ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key=
   const watch=function(){ const rail=document.querySelector('.partrail'); if (!rail){ setTimeout(watch, 300); return; }
     new MutationObserver(sync).observe(rail, {subtree:true, attributes:true, attributeFilter:['aria-current','class']}); sync(); };
   watch();
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- Part I: say which stretch of the scroll is in view ---------- */
-(function(){
+try{ (function(){
   const t=document.getElementById('tl'), rib=document.getElementById('tlRibbon'); if (!t || !rib) return;
   const out=document.createElement('p'); out.className='tl-range'; out.setAttribute('aria-live','off'); rib.insertAdjacentElement('afterend', out);
   let q=0; const read=function(){ q=0; const L=t.scrollLeft, R=L+t.clientWidth;
@@ -711,10 +713,10 @@ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key=
   t.addEventListener('scroll', function(){ if (!q) q=requestAnimationFrame(read); }, {passive:true}); addEventListener('resize', function(){ if (!q) q=requestAnimationFrame(read); }, {passive:true});
   document.querySelectorAll('.tl-filters button').forEach(function(b){ b.addEventListener('click', function(){ setTimeout(read, 60); }); });
   read();
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- add Project Scroll to a phone's home screen, where the browser offers it ---------- */
-(function(){
+try{ (function(){
   let ev=null; const foot=document.querySelector('footer.site'); if (!foot) return;
   addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); ev=e;
     if (document.getElementById('installBtn')) return;
@@ -722,10 +724,10 @@ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key=
     b.addEventListener('click', function(){ if (!ev) return; ev.prompt(); ev.userChoice.finally(function(){ ev=null; b.remove(); }); });
     const m=foot.querySelector('.motto'); (m||foot.firstElementChild||foot).insertAdjacentElement('afterend', b); });
   addEventListener('appinstalled', function(){ const b=document.getElementById('installBtn'); if (b) b.remove(); });
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- Part I: type a year and the scroll goes there ---------- */
-(function(){
+try{ (function(){
   const t=document.getElementById('tl'), row=document.querySelector('.tl-eras'); if (!t || !row) return;
   const yearOf=function(li){ const y=(li.querySelector('.yr')||{}).textContent||''; if (/now/i.test(y)) return 99999; const n=parseInt(y.replace(/[^0-9]/g,''),10); return /BC/.test(y) ? -n : n; };
   const f=document.createElement('form'); f.className='tl-go'; f.setAttribute('role','search'); f.setAttribute('aria-label','Go to a year on the scroll');
@@ -736,19 +738,19 @@ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key=
     const lis=[].slice.call(t.children).filter(function(li){ return !li.hidden && !li.classList.contains('now'); }); if (!lis.length) return;
     let best=lis[0]; lis.forEach(function(li){ if (Math.abs(yearOf(li)-y)<Math.abs(yearOf(best)-y)) best=li; });
     t.scrollTo({left:Math.max(0,best.offsetLeft-(t.clientWidth-best.offsetWidth)/2), behavior:smooth}); best.classList.remove('lit'); void best.offsetWidth; best.classList.add('lit'); });
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- where the hunt began: the place names drift past ---------- */
-(function(){
+try{ (function(){
   const box=document.querySelector('.placeband'), tr=document.getElementById('pbTrack'); if (!box || !tr) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches){ box.classList.add('still'); const v=box.querySelector('.pb-view'); if (v){ v.tabIndex=0; v.setAttribute('role','region'); v.setAttribute('aria-label','Places, scroll sideways'); } return; }
   [].slice.call(tr.children).forEach(function(li){ const c=li.cloneNode(true); c.setAttribute('aria-hidden','true'); tr.appendChild(c); });
   const speed=function(){ box.style.setProperty('--pbdur', Math.max(40, Math.round(tr.scrollWidth/2/38))+'s'); };
   speed(); addEventListener('resize', speed, {passive:true}); box.classList.add('run');
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- Part I: every date has its own link, so a date can be shared ---------- */
-(function(){
+try{ (function(){
   const t=document.getElementById('tl'); if (!t) return;
   const slug=function(y){ return 'y-'+y.toLowerCase().replace(/c\.\s*/,'c').replace(/[^0-9a-z]+/g,''); };
   const smooth=matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
@@ -764,10 +766,10 @@ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key=
     const sec=document.getElementById('timeline'); if (sec) sec.scrollIntoView({behavior:smooth, block:'start'});
     setTimeout(function(){ t.scrollTo({left:Math.max(0,li.offsetLeft-(t.clientWidth-li.offsetWidth)/2), behavior:smooth}); li.classList.remove('lit'); void li.offsetWidth; li.classList.add('lit'); }, 500); };
   addEventListener('hashchange', go); if (location.hash) setTimeout(go, 400);
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- what's new on the trail: a moving ticker ---------- */
-(function(){
+try{ (function(){
   const tk=document.querySelector('.ticker'), track=document.getElementById('tkTrack'); if (!tk || !track) return;
   const items=[].slice.call(track.children), still=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const dt=function(li){ const t=li.querySelector('time'); return t ? t.getAttribute('datetime') : ''; };
@@ -790,10 +792,10 @@ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key=
   const sync=function(){ tk.classList.toggle('paused', paused); if (pb){ pb.setAttribute('aria-pressed', String(paused)); pb.setAttribute('aria-label', paused?'Play the news':'Pause the news'); } };
   if (pb){ pb.hidden=false; pb.addEventListener('click', function(){ paused=!paused; try{ localStorage.setItem('ps-ticker', paused?'paused':'run'); }catch(e){} sync(); }); }
   sync();
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- the case board: "Pick one for me" ---------- */
-(function(){
+try{ (function(){
   const box=document.querySelector('#cases .filters'); if (!box) return;
   const b=document.createElement('button'); b.type='button'; b.className='pickcase'; b.textContent='🎲 Pick one for me'; b.setAttribute('aria-label','Pick a case for me at random'); box.appendChild(b);
   let last=null;
@@ -804,10 +806,10 @@ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key=
     tr.classList.remove('picked'); void tr.offsetWidth; tr.classList.add('picked');
     const a=tr.querySelector('a, button'); if (a) setTimeout(function(){ a.focus({preventScroll:true}); }, 500);
   });
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- then and now: the hotel corner slider ---------- */
-(function(){ const f=document.getElementById('tnc'), r=document.getElementById('tncRange'); if (!f||!r) return;
+try{ (function(){ const f=document.getElementById('tnc'), r=document.getElementById('tncRange'); if (!f||!r) return;
   const set=function(){ f.style.setProperty('--x', r.value+'%'); }; r.addEventListener('input', set); set();
   /* the first time the corner scrolls into view, the slider sweeps once on its own to show what it does */
   if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
@@ -818,10 +820,10 @@ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key=
       const a=keys[i], b=keys[i+1], k=Math.min(1,(t-a[0])/(b[0]-a[0])), e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
       r.value=String(Math.round(a[1]+(b[1]-a[1])*e)); set(); if (t<keys[keys.length-1][0]) requestAnimationFrame(step); };
     setTimeout(function(){ requestAnimationFrame(step); }, 400); }, {threshold:.7});
-  io.observe(f); })();
+  io.observe(f); })(); }catch(err){ psFail(err); }
 
 /* ---------- the trail map: a soft hewgag note when a lit hall is tapped ---------- */
-(function(){
+try{ (function(){
   const halls=document.querySelectorAll('.trailmap .tm-hall'); if (!halls.length) return; let ac=null;
   const tmap=document.querySelector('.trailmap');
   if (tmap && 'IntersectionObserver' in window) new IntersectionObserver(function(es){ tmap.classList.toggle('inview', es[0].isIntersecting); }).observe(tmap); else if (tmap) tmap.classList.add('inview');
@@ -835,19 +837,19 @@ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key=
   halls.forEach(function(h){ h.setAttribute('tabindex','0'); h.setAttribute('role','button'); h.setAttribute('aria-label', (h.querySelector('.tm-name')||{}).textContent+': sound the horn');
     const go=function(){ horn(); h.classList.add('blow'); setTimeout(function(){ h.classList.remove('blow'); }, 900); };
     h.addEventListener('click', go); h.addEventListener('keydown', function(e){ if (e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } }); });
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- unsealing: a date that opens cracks its wax seal the first time a visitor sees it ---------- */
-(function(){
+try{ (function(){
   const lis=document.querySelectorAll('#tl > li.unsealed'); if (!lis.length || !('IntersectionObserver' in window)) return;
   const io=new IntersectionObserver(function(es){ es.forEach(function(e){ if (!e.isIntersecting) return; io.unobserve(e.target);
     const k='ps-unsealed-'+(e.target.dataset.year||''); let seen=false; try{ seen=!!localStorage.getItem(k); localStorage.setItem(k,'1'); }catch(x){}
     if (!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) e.target.classList.add('cracking'); }); }, {threshold:.6});
   lis.forEach(function(li){ io.observe(li); });
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- the margins change with the season: maple and oak leaves, snow, petals, fireflies ---------- */
-(function(){
+try{ (function(){
   if (matchMedia('(prefers-reduced-motion: reduce)').matches || innerWidth<1000 || !document.querySelector('.sheet')) return;
   const m=new Date().getMonth(), kind= (m===8||m===9||m===10)?'leaf' : (m===11||m===0||m===1)?'snow' : (m===3||m===4)?'petal' : (m>=5&&m<=7)?'fly' : null; if (!kind) return;
   const cv=document.createElement('canvas'); cv.className='season'; cv.setAttribute('aria-hidden','true'); document.body.appendChild(cv);
@@ -908,10 +910,10 @@ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key=
     });
   };
   raf=requestAnimationFrame(loop);
-})();
+})(); }catch(err){ psFail(err); }
 
 /* lantern: a warm glow that follows the pointer on computers */
-  (function(){
+  try{ (function(){
     if (!window.matchMedia || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
     let off=false; try{ off=localStorage.getItem('ps-lantern')==='off'; }catch(e){}
     const l=document.createElement('div'); l.className='lantern'; l.setAttribute('aria-hidden','true'); document.body.appendChild(l);
@@ -922,7 +924,29 @@ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key=
     const btn=document.getElementById('lanternBtn');
     if (btn){ btn.hidden=false; const sync=function(){ btn.setAttribute('aria-pressed', String(!off)); btn.textContent = off ? 'Light the lantern' : 'Put out the lantern'; };
       sync(); btn.addEventListener('click', function(){ off=!off; try{ localStorage.setItem('ps-lantern', off?'off':'on'); }catch(e){} if (off) l.classList.remove('on'); sync(); }); }
-  })();
+  })(); }catch(err){ psFail(err); }
+  /* ---------- Part I: the tally counts up when it comes into view ---------- */
+  try{ (function(){
+    const tally=document.getElementById('tlTally'); if (!tally || !('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const bs=[].slice.call(tally.querySelectorAll('b')); let done=false;
+    new IntersectionObserver(function(es, io){ if (done || !es[0].isIntersecting) return; done=true; io.disconnect();
+      bs.forEach(function(b){ const to=parseInt(b.textContent,10)||0, t0=performance.now(), d=900;
+        const step=function(now){ const k=Math.min(1,(now-t0)/d), e=1-Math.pow(1-k,3); b.textContent=Math.round(to*e); if (k<1) requestAnimationFrame(step); };
+        b.textContent='0'; requestAnimationFrame(step); }); }, {threshold:.6}).observe(tally);
+  })(); }catch(err){ psFail(err); }
+
+  /* ---------- the advertisement: share it with someone who needs it ---------- */
+  try{ (function(){
+    const box=document.querySelector('.promo.ad .ad-coupon'); if (!box) return;
+    const p=document.createElement('p'); p.className='ad-share';
+    const b=document.createElement('button'); b.type='button'; b.className='linkbtn'; b.textContent='Know someone who needs this? Share it ›'; p.appendChild(b); box.appendChild(p);
+    const url=location.origin+'/#services', text='Project Scroll: research, imaging, design, 3D and film. Serving the St. Joseph River Valley and anywhere the records reach.';
+    b.addEventListener('click', function(){
+      if (navigator.share){ navigator.share({title:'Project Scroll · Professional services', text:text, url:url}).catch(function(){}); return; }
+      const ok=function(){ b.textContent='Link copied. Paste it anywhere.'; setTimeout(function(){ b.textContent='Know someone who needs this? Share it ›'; }, 2400); };
+      if (navigator.clipboard) navigator.clipboard.writeText(url).then(ok, function(){}); });
+  })(); }catch(err){ psFail(err); }
+
   try{
     console.log('%cProject Scroll','font:28px Georgia,serif;color:#B3362B');
     console.log('%cYou found a back door. Every page has another side: view the page source, and read the note at the top.','font:14px Georgia,serif');
