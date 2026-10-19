@@ -485,15 +485,17 @@ window.PS_BADGES=[
   ['legend','Legend tester','Test a family legend.'],
   ['toolkit','Toolmaker','Use a tool in the hunter’s toolkit.'],
   ['lantern','Lamplighter','Put out the lantern, then light it again.'],
-  ['hewgag','Cipher breaker','Decode the hidden line, and say the word in your badge book.'],
-  ['credo','Second cipher','Break the second line, which appears in your badge book once the first is broken.']
+  ['halter','Cipher breaker','Decode the hidden line, and say the word in your badge book.'],
+  ['charter','Second cipher','Break the second line, which appears in your badge book once the first is broken.'],
+  ['solver','Named on the board','Crack a case and be named as its solver on the case board.']
 ];
-window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the Badge'],[15,'Recorder of the Hall'],[19,'Noble Grand Humbug']];
+window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the Badge'],[15,'Recorder of the Hall'],[19,'Keeper of the Hall']];
 try{ (function(){
   const KEY='ps-badges'; let got={};
-  try{ got=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ got={}; }
+  try{ got=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; if (got.hewgag && !got.halter) got.halter=got.hewgag; if (got.credo && !got.charter) got.charter=got.credo; delete got.hewgag; delete got.credo; }catch(e){ got={}; }
   let canStore=true; try{ localStorage.setItem('ps-t','1'); localStorage.removeItem('ps-t'); }catch(e){ canStore=false; }
   const save=function(){ try{ localStorage.setItem(KEY, JSON.stringify(got)); }catch(e){} };
+  try{ const raw=localStorage.getItem(KEY)||''; if (/hewgag|credo/.test(raw)) save(); }catch(e){}
   const name=function(id){ const b=window.PS_BADGES.filter(function(x){ return x[0]===id; })[0]; return b?b[1]:id; };
   let toastEl=null, tq=[], showing=false;
   const showNext=function(){
@@ -828,7 +830,7 @@ try{ (function(){ const f=document.getElementById('tnc'), r=document.getElementB
     setTimeout(function(){ requestAnimationFrame(step); }, 400); }, {threshold:.7});
   io.observe(f); })(); }catch(err){ psFail(err); }
 
-/* ---------- the trail map: a soft hewgag note when a lit hall is tapped ---------- */
+/* ---------- the trail map: a soft horn note when a lit hall is tapped ---------- */
 try{ (function(){
   const halls=document.querySelectorAll('.trailmap .tm-hall'); if (!halls.length) return; let ac=null;
   const tmap=document.querySelector('.trailmap');

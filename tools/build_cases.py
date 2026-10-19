@@ -75,7 +75,7 @@ kbody='''    <p class="crumb no-print"><a href="/#cases">← The case board</a><
         add('p','cert-s','was named by Project Scroll as the solver of'); add('p','cert-case','Case '+c.n+': '+c.question);
         add('p','cert-d',(c.solvedOn?c.solvedOn+' · ':'')+c.hallName); add('p','cert-motto','Every clue is true. Every answer is in the record.');
         add('p','cert-note','A keepsake, not an official record. The case board at projectscroll.com is the record of who solved what.');
-        document.getElementById('keepbtns').hidden=false; document.title='Keepsake · Case '+c.n+' · '+c.solved; });
+        document.getElementById('keepbtns').hidden=false; document.title='Keepsake · Case '+c.n+' · '+c.solved; if(window.psEarn) window.psEarn('solver'); });
     })();
     </script>
 '''

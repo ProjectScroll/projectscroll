@@ -201,7 +201,7 @@ page('privacy/index.html', 'Privacy · Project Scroll',
 badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Your field book</p>
     <h1>Your tin badges</h1>
-    <p class="lede">In the winter of 1846–47, two hundred badges of the “Ancient and Honorable Order” were worn at a ball in Cassopolis. Not one is known to survive. Here you can earn your own: nineteen of them, one for each thing you do as you explore the site, with five ranks on the way from Candidate to Noble Grand Humbug.</p>
+    <p class="lede">In the winter of 1846–47, two hundred badges of the “Ancient and Honorable Order” were worn at a ball in Cassopolis. Not one is known to survive. Here you can earn your own: twenty of them, one for each thing you do as you explore the site, and one for cracking a case, with five ranks on the way from Candidate to Keeper of the Hall.</p>
     <p class="brank" id="brank"></p>
     <ol class="rladder" id="rladder" aria-label="The five ranks"></ol>
     <p class="bcount" id="bcount" aria-live="polite"></p>
@@ -215,7 +215,7 @@ badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <div class="sayword" id="second" hidden>
       <h2>The second line</h2>
       <p>You broke the first. Here is a harder one, and the cipher wheel alone will not open it. Look at the wheel’s other setting.</p>
-      <p class="cipherline big">GSV HVXLMW DLIW RH XIVWL. ML DSVVO DROO GFIM RG. SLOW RG GL Z NRIILI.</p>
+      <p class="cipherline big">GSV HVXLMW DLIW RH XSZIGVI. ML DSVVO DROO GFIM RG. SLOW RG GL Z NRIILI.</p>
       <form id="word2form" class="formrow" autocomplete="off"><label>The second word <input type="text" id="word2" spellcheck="false"></label><button type="submit" class="btn primary">Say it</button></form>
       <p class="note" id="word2msg" aria-live="polite"></p>
     </div>
@@ -225,7 +225,7 @@ badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <form id="charterform" class="formrow" autocomplete="off"><label>Your name <input type="text" id="cname" maxlength="60"></label><button type="submit" class="btn primary">Print my charter</button></form>
       <p class="note">Your charter is made on this device. Nothing is sent anywhere.</p>
     </div>
-    <div class="charter" id="charter" aria-hidden="true"><p class="ch-top">Project Scroll</p><p class="ch-h">Charter of the Hall</p><p class="ch-b">Know all by these presents that</p><p class="ch-name" id="chName"></p><p class="ch-b">having read the walls, followed the record, broken both ciphers and earned every one of the tin badges, is hereby received as</p><p class="ch-rank">Noble Grand Humbug</p><p class="ch-b">of the Hall, with all the honor and none of the dignity that the title has ever carried.</p><p class="ch-date" id="chDate"></p><p class="ch-motto">Every clue is true. Every answer is in the record.</p></div>
+    <div class="charter" id="charter" aria-hidden="true"><p class="ch-top">Project Scroll</p><p class="ch-h">Charter of the Hall</p><p class="ch-b">Know all by these presents that</p><p class="ch-name" id="chName"></p><p class="ch-b">having read the walls, followed the record, broken both ciphers and earned every one of the tin badges, is hereby received as</p><p class="ch-rank">Keeper of the Hall</p><p class="ch-b">of the Hall, with all the honor and none of the dignity that any such title has ever carried.</p><p class="ch-date" id="chDate"></p><p class="ch-motto">Every clue is true. Every answer is in the record.</p></div>
     <p class="note">Your badges are kept only in this browser, on this device. Nobody else can see them, and we never receive them. <button type="button" class="linkbtn" id="breset">Start the field book over</button></p>
     <script>
     document.addEventListener('DOMContentLoaded', function(){
@@ -243,19 +243,19 @@ badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
         const lad=document.getElementById('rladder'); if (lad){ lad.innerHTML=''; window.PS_RANKS.forEach(function(r,i){ const li=document.createElement('li'); const nx=window.PS_RANKS[i+1];
           li.innerHTML='<b></b><span></span>'; li.querySelector('b').textContent=r[1]; li.querySelector('span').textContent=(r[0]===0?'from the start':r[0]+' badges'+(nx?'':' (every one)'));
           if (r[1]===rk) li.className='here'; else if (n>=r[0]) li.className='past'; lad.appendChild(li); }); }
-        document.getElementById('second').hidden=!got.hewgag;
-        document.getElementById('charterbox').hidden=(n<window.PS_BADGES.length);
+        document.getElementById('second').hidden=!(got.halter||got.hewgag);
+        document.getElementById('charterbox').hidden=(window.PS_BADGES.filter(function(b){ return b[0]!=='solver' && !got[b[0]]; }).length>0);
       };
       draw(); document.addEventListener('ps-badge', function(){ setTimeout(draw,50); });
       document.getElementById('wordform').addEventListener('submit', function(e){ e.preventDefault();
         const w=document.getElementById('word').value.trim().toLowerCase(), m=document.getElementById('wordmsg');
         if (!w){ m.textContent='Type the word first.'; return; }
-        if (w==='hewgag'){ window.psEarn('hewgag'); m.textContent='That is the word. Blow it loud.'; draw(); }
+        if (w==='halter'){ window.psEarn('halter'); m.textContent='That is the word. Two hundred badges were worn to a ball on it.'; draw(); }
         else m.textContent='That is not the word. Turn the wheel again.'; });
       document.getElementById('word2form').addEventListener('submit', function(e){ e.preventDefault();
         const w=document.getElementById('word2').value.trim().toLowerCase(), m=document.getElementById('word2msg');
         if (!w){ m.textContent='Type the word first.'; return; }
-        if (w==='credo'){ window.psEarn('credo'); m.textContent='That is the word. Credo quia absurdum.'; draw(); }
+        if (w==='charter'){ window.psEarn('charter'); m.textContent='That is the word. Even the man who wrote the story wasn’t sure of it.'; draw(); }
         else m.textContent='Not that one. Try the mirror.'; });
       document.body.appendChild(document.getElementById('charter'));
       document.getElementById('charterform').addEventListener('submit', function(e){ e.preventDefault();
