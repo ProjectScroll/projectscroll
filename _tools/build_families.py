@@ -1,4 +1,4 @@
-"""Builds the family-history page and the family-legends page:  python3 tools/build_families.py"""
+"""Builds the family-history page and the family-legends page:  python3 _tools/build_families.py"""
 import sys, pathlib, json; sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
 
 M = {'D': ('kD', 'Document'), 'P': ('kP', 'Period print'), 'C': ('kC', 'County history'), 'M': ('kM', 'Compiled'),

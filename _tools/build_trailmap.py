@@ -1,4 +1,4 @@
-"""Draws the hunt's trail map into index.html: python3 tools/build_trailmap.py
+"""Draws the hunt's trail map into index.html: python3 _tools/build_trailmap.py
 To open a hall, set its 'open' to True (and give it a name and a short line)."""
 import pathlib, re
 HALLS = [

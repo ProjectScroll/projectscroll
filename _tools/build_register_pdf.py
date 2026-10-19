@@ -1,5 +1,5 @@
 """Writes the specimen family register as HTML, then prints it to PDF:
-   python3 tools/build_register_pdf.py && NODE_PATH=$(npm root -g) node tools/print_register.js
+   python3 _tools/build_register_pdf.py && NODE_PATH=$(npm root -g) node _tools/print_register.js
 The Brandt family is invented (the same specimen family as /families/). Every page says so."""
 import pathlib
 R = pathlib.Path(__file__).resolve().parent.parent

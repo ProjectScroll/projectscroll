@@ -1871,3 +1871,9 @@ footer .cite{font-size:.78rem; color:var(--ink-soft); max-width:46rem; margin:.6
 .consentbox p{margin:.3rem 0}
 @media (prefers-reduced-motion:reduce){ .consent{transition:none} }
 @media print{ .consent{display:none!important} }
+
+/* ===== Draft 68 ===== */
+.ad-own{margin:.6rem 0 0; font-size:.95rem; color:var(--ink-soft)}
+.ad-own b{color:var(--ink)}
+.docfig{margin:1.4rem auto; width:min(100%, 34rem)} .docfig img{width:100%; height:auto; border:1px solid var(--line); box-shadow:0 18px 40px -24px rgba(0,0,0,.6); background:#fff}
+.docfig figcaption{font-size:.86rem; color:var(--ink-soft); margin-top:.5rem}

@@ -1,4 +1,4 @@
-"""Builds the notebook page and the search index:  python3 tools/build_misc.py"""
+"""Builds the notebook page and the search index:  python3 _tools/build_misc.py"""
 import sys, pathlib, re, json, html; sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page, R
 page('notebook/index.html','Your notebook · Project Scroll','Your private notes on Project Scroll cases, kept only on this device.','''    <p class="crumb"><a href="/#cases">← The case board</a></p>
     <p class="kicker">Private to this device</p>
@@ -11,7 +11,7 @@ page('notebook/index.html','Your notebook · Project Scroll','Your private notes
 docs=[]
 for f in sorted(pathlib.Path(R).rglob('index.html')):
     rel=f.relative_to(R).as_posix()
-    if rel.startswith(('tools/','keepsake/','notebook/')): continue
+    if rel.startswith(('_tools/','tools/','hunt/','services/','studio/','keepsake/','notebook/')): continue
     t=f.read_text()
     url='/'+rel.replace('index.html','')
     title=re.search(r'<title>(.*?)</title>',t,re.S).group(1)

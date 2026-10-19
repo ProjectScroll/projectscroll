@@ -1,4 +1,4 @@
-"""Builds the records directory, the glossary and the about page:  python3 tools/build_more.py"""
+"""Builds the records directory, the glossary and the about page:  python3 _tools/build_more.py"""
 import sys, pathlib, re; sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
 
 # ------------------------------------------------------------------ records
@@ -158,6 +158,8 @@ about = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li><b>Corrections are welcome.</b> If you know better, tell us. The record is bigger than any one of us.</li>
       <li><b>Places and people are respected.</b> The hunt never asks anyone to dig, to disturb a grave or a mound, or to go looking for anyone’s home.</li>
     </ul>
+    <h2>When we get something wrong</h2>
+    <p>We will. When a reader or a new document shows that a page of this site is mistaken, we change the page, date the change on it, and say what was wrong, rather than quietly replacing the words. A case that was called solved on a bad reading is reopened and says so. If you have found an error, <a href="/#contact">tell us</a>; corrections are credited to the person who sent them, by name or not, as they prefer.</p>
     <h2>The record behind this site</h2>
     <p>The dates on the scroll, the person of the month and the then-and-now maps are built from the same sources the hunt asks you to open: Rogers (1875), Mathews (1882), Glover (1906), the 1860 wall map at the Library of Congress, and Michigan death certificates at the Archives of Michigan. Where a page of this site makes a claim, the source is on the page or one click away. If it is not, that is a correction we owe.</p>
     <h2>Where it started</h2>
@@ -275,3 +277,48 @@ badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
 page('badges/index.html', 'Your tin badges · Project Scroll',
      'Earn tin badges as you explore Project Scroll: read a case, walk the map room, use the toolkit and crack the hidden line. Kept in your own browser.', badges)
 print('records, glossary, about, privacy, badges built')
+
+# ------------------------------------------------------------------ share doors
+# Short addresses with their own share cards. A link to /#services shows the home card on Facebook
+# (the part after # is never sent), so /services/ carries the Services card and steps straight through.
+for slug, title, desc, og, tgt in [
+  ('hunt', 'The hunt · Project Scroll', 'Ten mysteries from one Michigan county, each begun as a single question. Free to play, solved with clues from real pages. Every clue is true, and every answer is in the record.', 'hunt', '/#hunt'),
+  ('services', 'Professional research · Project Scroll', 'Lost ancestors, family histories, legends tested against the record, forgotten places and land. Every source cited, every statement marked. An honest first read before you commit to anything.', 'services', '/#services'),
+  ('studio', 'The studio · Project Scroll', 'Digital imaging, imaging analysis, graphic design, photography, video, 3D LiDAR landscapes, animation and living documents, from the desk that runs the hunt.', 'studio', '/#studio'),
+]:
+    body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
+    <h1>{title.split(' · ')[0]}</h1>
+    <p class="lede">{desc}</p>
+    <p class="center"><a class="btn primary" href="{tgt}">Open it on the main page</a></p>
+    <script>location.replace('{tgt}');</script>
+'''
+    page(f'{slug}/index.html', title, desc, body, noindex=True, og=f'https://projectscroll.com/og/{og}.png')
+
+# ------------------------------------------------------------------ document of the month
+doc = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
+    <p class="kicker">Document of the month · October 2026</p>
+    <h1>One page of Rogers, 1875</h1>
+    <p class="lede">Every month we put one real page on the table and read it slowly. This month: page 253 of Howard S. Rogers’s <i>History of Cass County, from 1825 to 1875</i>, the first time the joke lodge of 1846 was ever printed, with the man who told it to Rogers only a footnote away.</p>
+    <figure class="docfig">
+      <a href="/img/pages/rogers-1875-p253-1200.jpg"><picture><source type="image/webp" srcset="/img/pages/rogers-1875-p253-700.webp 700w, /img/pages/rogers-1875-p253-1200.webp 1200w" sizes="(min-width:900px) 700px, 92vw"><img src="/img/pages/rogers-1875-p253-700.jpg" width="700" height="1091" alt="Page 253 of Rogers’s 1875 History of Cass County, with the paragraphs on the 1846 lodge boxed in red." loading="lazy" decoding="async"></picture></a>
+      <figcaption>Rogers, 1875, p. 253. The boxed paragraphs are the lodge story. Click the page to see it full size.</figcaption>
+    </figure>
+    <h2>What it is</h2>
+    <p>Rogers was Cass County’s first historian. His book came out in 1875, fifty years after the county’s first land entries, while people who had seen 1846 were still alive to be asked. That is the book’s value and its danger at once: it is close to the events, and it is made of what people remembered.</p>
+    <h2>How to read it</h2>
+    <ul class="dis">
+      <li><b>Read past the quotation.</b> Rogers quotes a long passage and then adds a few words of his own. The words after the closing quotation mark are where a careful reader slows down.</li>
+      <li><b>Watch the punctuation.</b> On the next page a single question mark sits inside a parenthesis. A question mark in a county history is a historian telling you, as plainly as he dared, that he is not sure.</li>
+      <li><b>Find the teller.</b> The passage is a quotation, and Rogers was not there in 1846. Seven years later Alfred Mathews reprinted the passage and put the teller’s name in a footnote: James M. Shepard, who was three years old in 1846. <a href="/#pom">Who told him?</a></li>
+      <li><b>Count what can be counted.</b> Two hundred badges, one ball, one winter. Each number is a thing that might have left a record somewhere else: a newspaper, a bill, a diary, a badge in a drawer.</li>
+    </ul>
+    <h2>Read it yourself</h2>
+    <p>The whole book is free online in the University of Michigan’s county-histories collection: <a href="http://name.umdl.umich.edu/BAD0871.0001.001" target="_blank" rel="noopener">Rogers, <i>History of Cass County, from 1825 to 1875</i></a>. Go to pages 253–254. Then compare <a href="http://name.umdl.umich.edu/BAD0870.0001.001" target="_blank" rel="noopener">Mathews, 1882</a>, page 174, where the same story is printed again, and notice what is missing.</p>
+    <p>This page is the opening clue of <a href="/cases/1/">Case 1</a>. If you read it closely enough, you may not need the rest.</p>
+    <h2>Last month</h2>
+    <p>This is the first document of the month. The next is chosen on the first of November.</p>
+    <p class="center"><a class="btn primary" href="/cases/1/">Open Case 1</a> <a class="btn" href="/records/">Where the records are</a> <a class="btn" href="/">Back to Project Scroll</a></p>
+'''
+page('document/index.html', 'Document of the month · Project Scroll',
+     'One real page, read slowly, every month. October 2026: page 253 of Rogers’s 1875 History of Cass County, the first printing of the joke lodge of 1846.', doc,
+     og='https://projectscroll.com/og/document.png')

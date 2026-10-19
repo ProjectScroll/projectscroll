@@ -1,4 +1,4 @@
-"""Builds the map room:  python3 tools/build_map.py"""
+"""Builds the map room:  python3 _tools/build_map.py"""
 import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
 IIIF='https://tile.loc.gov/image-services/iiif/service:gmd:gmd411:g4113:g4113c:la000324'
 body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>

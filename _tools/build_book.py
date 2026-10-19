@@ -1,4 +1,4 @@
-"""Builds the field notes as a book with turning pages:  python3 tools/build_book.py"""
+"""Builds the field notes as a book with turning pages:  python3 _tools/build_book.py"""
 import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
 P=[
  '<div class="bk-cover"><p class="bk-k">Project Scroll</p><p class="bk-t">Field Notes</p><p class="bk-s">Volume I</p><p class="bk-m">Lessons from the desk</p></div>',

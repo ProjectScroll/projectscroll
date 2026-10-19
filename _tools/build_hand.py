@@ -1,4 +1,4 @@
-"""Builds 'Reading the old hand':  python3 tools/build_hand.py"""
+"""Builds 'Reading the old hand':  python3 _tools/build_hand.py"""
 import sys, pathlib, json, html; sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
 E=html.escape
 CARDS=[

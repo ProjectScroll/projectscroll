@@ -1,5 +1,5 @@
 """Builds a page and a share card for every case, the solver keepsake page, and syncs the case board.
-Source of truth: cases.json. Run:  python3 tools/build_cases.py   (then node tools/cards.js to draw the share cards)"""
+Source of truth: cases.json. Run:  python3 _tools/build_cases.py   (then node _tools/cards.js to draw the share cards)"""
 import json, re, html, pathlib, sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from pages import page, R
@@ -59,7 +59,7 @@ for c in C:
 '''
     page(f'cases/{n}/index.html', f'Case {n}: {c["question"][:70]}{"…" if len(c["question"])>70 else ""} · Project Scroll', c['question'], body, og=f'https://projectscroll.com/cases/{n}/card.png')
     # card source for the drawing script
-pathlib.Path(f'{R}/tools/cards.json').write_text(json.dumps(C, ensure_ascii=False))
+pathlib.Path(f'{R}/_tools/cards.json').write_text(json.dumps(C, ensure_ascii=False))
 
 # keepsake page (reads cases.json in the browser; shows a certificate only for a solved case)
 kbody='''    <p class="crumb no-print"><a href="/#cases">← The case board</a></p>

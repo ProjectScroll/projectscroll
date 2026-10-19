@@ -1,4 +1,4 @@
-"""Builds Cassopolis, then and now:  python3 tools/build_thennow.py
+"""Builds Cassopolis, then and now:  python3 _tools/build_thennow.py
 
 The 1860 town plan (img/cass1860.jpg) is the Cassopolis inset of the LOC wall map,
 pixels 7430,1870 to 8740,3778 of g4113c.la000324, assembled from the Library's image

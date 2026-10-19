@@ -992,7 +992,7 @@ try{ (function(){
     const box=document.querySelector('.promo.ad .ad-coupon'); if (!box) return;
     const p=document.createElement('p'); p.className='ad-share';
     const b=document.createElement('button'); b.type='button'; b.className='linkbtn'; b.textContent='Know someone who needs this? Share it ›'; p.appendChild(b); box.appendChild(p);
-    const url=location.origin+'/#services', text='Project Scroll: research, imaging, design, 3D and film. Serving the St. Joseph River Valley and anywhere the records reach.';
+    const url=location.origin+'/services/', text='Project Scroll: research, imaging, design, 3D and film. Serving the St. Joseph River Valley and anywhere the records reach.';
     b.addEventListener('click', function(){
       if (navigator.share){ navigator.share({title:'Project Scroll · Professional services', text:text, url:url}).catch(function(){}); return; }
       const ok=function(){ b.textContent='Link copied. Paste it anywhere.'; setTimeout(function(){ b.textContent='Know someone who needs this? Share it ›'; }, 2400); };

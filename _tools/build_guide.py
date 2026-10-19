@@ -1,4 +1,4 @@
-"""Builds the interactive 'How to read a death certificate' guide:  python3 tools/build_guide.py"""
+"""Builds the interactive 'How to read a death certificate' guide:  python3 _tools/build_guide.py"""
 import sys, pathlib, html
 sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
 E=html.escape

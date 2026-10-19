@@ -1,0 +1,4 @@
+# GitHub Pages builds this site with Jekyll only so that _tools/ (the build scripts) is not published.
+# Every other file is copied as it is: nothing here has front matter.
+exclude: [README.md, _tools, _config.yml, node_modules, Gemfile, Gemfile.lock]
+plugins: []

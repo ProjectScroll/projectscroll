@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /tools/
+Disallow: /_tools/
 
 Sitemap: https://projectscroll.com/sitemap.xml

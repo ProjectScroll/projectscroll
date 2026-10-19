@@ -1,4 +1,4 @@
-"""Builds the hunter's toolkit page:  python3 tools/build_toolkit.py"""
+"""Builds the hunter's toolkit page:  python3 _tools/build_toolkit.py"""
 import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
 gens=''.join(f'<option value="{i}">{l}</option>' for i,l in [(0,'is the ancestor'),(1,'a child'),(2,'a grandchild'),(3,'a great-grandchild'),(4,'a 2× great-grandchild'),(5,'a 3× great-grandchild'),(6,'a 4× great-grandchild'),(7,'a 5× great-grandchild'),(8,'a 6× great-grandchild')])
 body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
