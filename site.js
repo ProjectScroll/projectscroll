@@ -387,7 +387,8 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
         const pm=after.nodeValue.match(/^[,.;:!?)’”]+/);
         if (pm){ const w=document.createElement('span'); w.className='glw'; w.appendChild(b); w.appendChild(document.createTextNode(pm[0])); after.nodeValue=after.nodeValue.slice(pm[0].length); cur.parentNode.insertBefore(w, after); } else cur.parentNode.insertBefore(b, after);
         document.body.appendChild(pop);
-        pop.addEventListener('toggle', function(e){ if (e.newState==='open'){ const r=b.getBoundingClientRect(), w=pop.offsetWidth; pop.style.left=Math.max(8,Math.min(innerWidth-w-8, r.left+r.width/2-w/2))+'px'; const below=r.bottom+8; pop.style.top=(below+pop.offsetHeight>innerHeight? r.top-pop.offsetHeight-8 : below)+'px'; } });
+        if (CSS.supports && CSS.supports('anchor-name','--a')){ b.style.anchorName='--'+id; pop.style.positionAnchor='--'+id; pop.classList.add('anchored'); }
+        pop.addEventListener('toggle', function(e){ if (pop.classList.contains('anchored')) return; if (e.newState==='open'){ const r=b.getBoundingClientRect(), w=pop.offsetWidth; pop.style.left=Math.max(8,Math.min(innerWidth-w-8, r.left+r.width/2-w/2))+'px'; const below=r.bottom+8; pop.style.top=(below+pop.offsetHeight>innerHeight? r.top-pop.offsetHeight-8 : below)+'px'; } });
         cur=after;
       }
     });
@@ -516,9 +517,10 @@ window.PS_BADGES=[
   ['lantern','Lamplighter','Put out the lantern, then light it again.'],
   ['halter','Cipher breaker','Decode the hidden line, and say the word in your badge book.'],
   ['charter','Second cipher','Break the second line, which appears in your badge book once the first is broken.'],
+  ['diamond','Eye for gold','Ask the gold diamond on the rule, and say its answer in your badge book.'],
   ['solver','Named on the board','Crack a case and be named as its solver on the case board.']
 ];
-window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the Badge'],[15,'Recorder of the Hall'],[19,'Keeper of the Hall']];
+window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the Badge'],[15,'Recorder of the Hall'],[20,'Keeper of the Hall']];
 try{ (function(){
   const KEY='ps-badges'; let got={};
   try{ got=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; if (got.hewgag && !got.halter) got.halter=got.hewgag; if (got.credo && !got.charter) got.charter=got.credo; delete got.hewgag; delete got.credo; }catch(e){ got={}; }
@@ -634,6 +636,20 @@ try{ (function(){
     row.appendChild(b);
   });
   filters.insertAdjacentElement('afterend', row);
+})(); }catch(err){ psFail(err); }
+
+/* ---------- the gold diamond on the rule answers, if asked ---------- */
+try{ (function(){
+  const bar=document.querySelector('.bar-in'); if (!bar) return;
+  const d=document.createElement('button'); d.type='button'; d.className='diamond'; d.setAttribute('aria-label','The gold diamond'); d.title='Ask the diamond'; bar.appendChild(d);
+  let strip=null, t=null;
+  const LINES=['A book with a gold ribbon sits at the top of every page. Say what it is in your badge book.','What the lake forgets, I keep, line by line. Say my name in your badge book.','I am opened at the top of every page and closed at the foot. One word. Say it in your badge book.'];
+  let i=0;
+  d.addEventListener('click', function(){
+    if (!strip){ strip=document.createElement('p'); strip.className='riddle'; strip.setAttribute('role','status'); strip.setAttribute('aria-live','polite'); document.querySelector('.bar').appendChild(strip); }
+    strip.textContent=LINES[i++%LINES.length]; strip.classList.add('on'); d.classList.add('asked');
+    clearTimeout(t); t=setTimeout(function(){ strip.classList.remove('on'); }, 9000);
+  });
 })(); }catch(err){ psFail(err); }
 
 /* ---------- the top bar: a gold marker glides to the section you are reading, and follows the pointer ---------- */

@@ -1958,3 +1958,31 @@ dialog.fp-zoom::backdrop{background:transparent}
   .tl li.sealed:hover .sealedmk svg, .tl li.sealed:focus-within .sealedmk svg{animation:rattle .5s ease}
   @keyframes rattle{0%,100%{transform:rotate(0)} 20%{transform:rotate(-14deg)} 40%{transform:rotate(12deg)} 60%{transform:rotate(-8deg)} 80%{transform:rotate(5deg)}}
 }
+
+/* ===== Draft 75 ===== */
+/* 1 the case question glides from the board into the case page's heading (cross-document view transition) */
+::view-transition-group(*){animation-duration:.42s}
+::view-transition-old(root), ::view-transition-new(root){animation-duration:.28s}
+/* 2 glossary popovers pinned to their word by CSS anchor positioning, flipping at the screen's edge */
+@supports (anchor-name: --a){
+  [popover].gloss.anchored{position:fixed; inset:auto; position-area:block-end span-all; justify-self:anchor-center; width:max-content; max-width:min(19rem, calc(100vw - 2rem)); position-try-fallbacks:flip-block; margin:.5rem 0}
+}
+/* 6 the ad's columns and the case cards reflow by the room they have, not the window */
+.ad-cols{container-type:inline-size}
+.promo.ad .ad-cols{grid-template-columns:repeat(3, minmax(0,1fr))}
+@container (max-width:44rem){ .promo.ad .ad-cols{grid-template-columns:1fr 1fr} .promo.ad .ad-col:nth-child(3){grid-column:1 / -1; border-left:0; border-top:1px solid color-mix(in srgb, var(--ink) 40%, transparent)} }
+@container (max-width:30rem){ .promo.ad .ad-cols{grid-template-columns:1fr} .promo.ad .ad-col{grid-column:auto} .promo.ad .ad-col + .ad-col{border-left:0; border-top:1px solid color-mix(in srgb, var(--ink) 40%, transparent)} }
+.cases{container-type:inline-size}
+@container (max-width:42rem){ .cases{grid-template-columns:1fr 1fr} }
+@container (max-width:28rem){ .cases{grid-template-columns:1fr} }
+/* 7 no orphaned last words: balanced headings, pretty paragraphs, hyphenation on narrow screens */
+h1,h2,h3,.promo-h,.ad-fq{text-wrap:balance}
+p,li,dd,figcaption,.lede{text-wrap:pretty}
+@media (max-width:600px){ .lede, main p, .ad-col li, figcaption{hyphens:auto; -webkit-hyphens:auto; hyphenate-limit-chars:8 4 4} }
+/* 11 the diamond that answers */
+.bar-in{position:relative}
+.diamond{position:absolute; left:50%; bottom:-1px; width:1.5rem; height:1.5rem; transform:translate(-50%,50%); border:0; padding:0; background:transparent; cursor:pointer; z-index:3; border-radius:50%}
+.diamond:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+@media (prefers-reduced-motion: no-preference){ .bar-in:has(.diamond:hover)::after{filter:brightness(1.25) drop-shadow(0 0 4px var(--gold-hi))} }
+.riddle{position:absolute; left:0; right:0; top:100%; margin:0; padding:.45rem 1rem; text-align:center; font-style:italic; font-size:.92rem; color:var(--ink); background:color-mix(in srgb, var(--paper) 94%, var(--gold)); border-bottom:1px solid var(--gold); opacity:0; transform:translateY(-6px); pointer-events:none; transition:opacity .35s ease, transform .35s ease; z-index:1}
+.riddle.on{opacity:1; transform:none}

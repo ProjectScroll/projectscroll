@@ -32,7 +32,7 @@ for c in C:
     else: starthere=''
     body=f'''    <p class="crumb"><a href="/#cases">← The case board</a></p>
     <p class="kicker">Case {n} · {esc(c['hallName'])}</p>
-    <h1>{esc(c['question'])}</h1>
+    <h1 style="view-transition-name:case-{c['n']}">{esc(c['question'])}</h1>
     <p class="casestatus">{status}</p>
     <p class="note">Opened {esc(c['opened'])}.</p>
     {starthere}{frompost}{hint}{extra}
@@ -88,7 +88,7 @@ for c in C:
     attrs=f' data-hall="{c["hall"]}"'+(f' data-solved="{esc(c["solved"])}"' if c.get('solved') else '')+(f' data-hint="{esc(c["hint"])}"' if c.get('hint') else '')
     s=re.sub(rf'<tr id="case-{c["n"]}" data-hall="\w+"[^>]*>', f'<tr id="case-{c["n"]}"{attrs}>', s)
     # question text links to its page
-    s=re.sub(rf'(<tr id="case-{c["n"]}"[^>]*><td class="no">{c["n"]}</td><td>)(?!<a class="qlink")(.*?)(?=( <a href="/notes/|<span class="tools"|</td>))', lambda m: m.group(1)+f'<a class="qlink" href="/cases/{c["n"]}/">'+m.group(2).strip()+'</a>', s, count=1, flags=re.S)
+    s=re.sub(rf'(<tr id="case-{c["n"]}"[^>]*><td class="no">{c["n"]}</td><td>)(?!<a class="qlink")(.*?)(?=( <a href="/notes/|<span class="tools"|</td>))', lambda m: m.group(1)+f'<a class="qlink" href="/cases/{c["n"]}/" style="view-transition-name:case-{c["n"]}">'+m.group(2).strip()+'</a>', s, count=1, flags=re.S)
 s=re.sub(r'<caption>Last updated [^<]*</caption>', f'<caption>Last updated {D["updated_text"] if "updated_text" in D else "18 October 2026"}.</caption>', s)
 open(p,'w').write(s)
 print('built', len(C), 'case pages')

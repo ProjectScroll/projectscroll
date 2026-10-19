@@ -261,6 +261,7 @@ badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
         const w=document.getElementById('word').value.trim().toLowerCase(), m=document.getElementById('wordmsg');
         if (!w){ m.textContent='Type the word first.'; return; }
         if (w==='halter'){ window.psEarn('halter'); m.textContent='That is the word. Two hundred badges were worn to a ball on it.'; draw(); }
+        else if (w==='ledger'){ window.psEarn('diamond'); m.textContent='The diamond keeps its word. The book at the top of every page is a ledger, and so is this one.'; draw(); }
         else m.textContent='That is not the word. Turn the wheel again.'; });
       document.getElementById('word2form').addEventListener('submit', function(e){ e.preventDefault();
         const w=document.getElementById('word2').value.trim().toLowerCase(), m=document.getElementById('word2msg');
