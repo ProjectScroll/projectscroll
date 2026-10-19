@@ -9,7 +9,17 @@
    "opened": "15 Oct 2026",
    "solved": null,
    "solvedOn": null,
-   "hint": null
+   "hint": null,
+   "start": [
+    {
+     "text": "Howard S. Rogers, <i>History of Cass County, from 1825 to 1875</i> (1875), pp. 253–254. Read past the quotation, and watch the word “charter.”",
+     "url": "http://name.umdl.umich.edu/BAD0871.0001.001"
+    },
+    {
+     "text": "Alfred Mathews, <i>History of Cass County, Michigan</i> (1882), p. 174, which prints the story again. Compare the two.",
+     "url": "http://name.umdl.umich.edu/BAD0870.0001.001"
+    }
+   ]
   },
   {
    "n": 2,
@@ -19,7 +29,17 @@
    "opened": "15 Oct 2026",
    "solved": null,
    "solvedOn": null,
-   "hint": null
+   "hint": null,
+   "start": [
+    {
+     "text": "Alfred Mathews, <i>History of Cass County, Michigan</i> (1882), the village history of Cassopolis: what became of the old hotel.",
+     "url": "http://name.umdl.umich.edu/BAD0870.0001.001"
+    },
+    {
+     "text": "L. H. Glover, <i>A Twentieth Century History of Cass County, Michigan</i> (1906), for the village as it stood a generation later.",
+     "url": "http://name.umdl.umich.edu/ARH7771.0001.001"
+    }
+   ]
   },
   {
    "n": 3,
@@ -99,7 +119,13 @@
    "opened": "17 Oct 2026",
    "solved": null,
    "solvedOn": null,
-   "hint": null
+   "hint": null,
+   "start": [
+    {
+     "text": "The two Michigan death certificates, 1912 and 1935, at the Archives of Michigan. Search the state’s vital records for the father and the son.",
+     "url": "https://michiganology.org/vital-records/"
+    }
+   ]
   }
  ]
 }

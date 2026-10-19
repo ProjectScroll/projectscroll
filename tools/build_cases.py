@@ -11,12 +11,18 @@ for c in C:
     hint=f'<h2>A hint</h2><p>{esc(c["hint"])}</p>' if c.get('hint') else ''
     keep=f'<p><a class="btn" href="/keepsake/?case={n}">Solver’s keepsake</a></p>' if solved else ''
     extra='<p><a href="/notes/one-letter-two-certificates/">Read the full case in the field notes</a>.</p>' if n==10 else ''
+    if c.get('start'):
+        items=''.join(f'<li>{x["text"]} <a href="{esc(x["url"])}">Read it free online ›</a></li>' for x in c['start'])
+        starthere=f'<aside class="starthere" aria-labelledby="sh{n}"><h2 id="sh{n}">Start here</h2><ol>{items}</ol><p class="note">These are the first pages to open. The answer is in the record; the rest of the trail is yours.</p></aside>'
+    elif c['hall']=='h2':
+        starthere=f'<aside class="starthere" aria-labelledby="sh{n}"><h2 id="sh{n}">Start here</h2><p>This case belongs to the second hall. Its page is behind the first hall’s last door, and the sources for this case are posted there. Find the door first.</p></aside>'
+    else: starthere=''
     body=f'''    <p class="crumb"><a href="/#cases">← The case board</a></p>
     <p class="kicker">Case {n} · {esc(c['hallName'])}</p>
     <h1>{esc(c['question'])}</h1>
     <p class="casestatus">{status}</p>
     <p class="note">Opened {esc(c['opened'])}.</p>
-    {hint}{extra}
+    {starthere}{hint}{extra}
     <h2>How to answer</h2>
     <ol class="steps">
       <li><b>Search the record.</b> Old county histories, maps, certificates and newspapers. Many are free online.</li>
