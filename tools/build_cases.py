@@ -3,7 +3,7 @@ Source of truth: cases.json. Run:  python3 tools/build_cases.py   (then node too
 import json, re, html, pathlib, sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from pages import page, R
-D=json.load(open(f'{R}/cases.json')); C=D['cases']; FB='https://www.facebook.com/projectscroll/'
+D=json.load(open(f'{R}/cases.json')); C=D['cases']; FB='https://www.facebook.com/projectscroll/'; HALLFB='https://www.facebook.com/comparativeovations/'
 esc=html.escape
 for c in C:
     n=c['n']; solved=c.get('solved')
@@ -12,7 +12,7 @@ for c in C:
     keep=f'<p><a class="btn" href="/keepsake/?case={n}">Solver’s keepsake</a></p>' if solved else ''
     extra='<p><a href="/notes/one-letter-two-certificates/">Read the full case in the field notes</a>.</p>' if n==10 else ''
     if c.get('start'):
-        items=''.join(f'<li>{x["text"]} <a href="{esc(x["url"])}">Read it free online ›</a></li>' for x in c['start'])
+        items=''.join(f'<li>{x["text"]} <a href="{esc(x["url"])}">{esc(x.get("label","Read it free online ›"))}</a></li>' for x in c['start'])
         starthere=f'<aside class="starthere" aria-labelledby="sh{n}"><h2 id="sh{n}">Start here</h2><ol>{items}</ol><p class="note">These are the first pages to open. The answer is in the record; the rest of the trail is yours.</p></aside>'
     elif c['hall']=='h2':
         starthere=f'<aside class="starthere" aria-labelledby="sh{n}"><h2 id="sh{n}">Start here</h2><p>This case belongs to the second hall. Its page is behind the first hall’s last door, and the sources for this case are posted there. Find the door first.</p></aside>'
@@ -38,7 +38,7 @@ for c in C:
       <p class="nbbtns"><button type="button" class="btn" id="noteCopy">Copy as a Facebook answer</button><button type="button" class="btn" id="noteSave">Download as a text file</button><span class="copied" id="noteOut" aria-live="polite"></span></p>
     </div>
     {keep}
-    <p class="ctas" style="margin-top:1.4rem"><a class="btn primary" href="{FB}">Start on Facebook</a><a class="btn" href="/#cases">All cases</a><button type="button" class="btn" id="sharecase">Share this case</button></p>
+    <p class="ctas" style="margin-top:1.4rem"><a class="btn primary" href="{HALLFB if c['hall']=='h1' else FB}">Start on Facebook</a><a class="btn" href="/#cases">All cases</a><button type="button" class="btn" id="sharecase">Share this case</button></p>
     <p class="copied" id="shareout" aria-live="polite"></p>
     <script>document.getElementById('sharecase').addEventListener('click',function(){{var u=location.href.split('#')[0],t=document.title;if(navigator.share){{navigator.share({{title:t,url:u}}).catch(function(){{}});}}else if(navigator.clipboard){{navigator.clipboard.writeText(u).then(function(){{document.getElementById('shareout').textContent='Link copied.';}});}}}});</script>
 '''
