@@ -159,7 +159,7 @@ about = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li><b>Places and people are respected.</b> The hunt never asks anyone to dig, to disturb a grave or a mound, or to go looking for anyone’s home.</li>
     </ul>
     <h2>When we get something wrong</h2>
-    <p>We will. When a reader or a new document shows that a page of this site is mistaken, we change the page, date the change on it, and say what was wrong, rather than quietly replacing the words. A case that was called solved on a bad reading is reopened and says so. If you have found an error, <a href="/#contact">tell us</a>; corrections are credited to the person who sent them, by name or not, as they prefer.</p>
+    <p>We will. When a reader or a new document shows that a page of this site is mistaken, we change the page, date the change on it, and say what was wrong, rather than quietly replacing the words. A case that was called solved on a bad reading is reopened and says so. If you have found an error, write to <a href="mailto:research@projectscroll.com?subject=A%20correction">research@projectscroll.com</a> or <a href="/#contact">tell us</a> on Facebook; corrections are credited to the person who sent them, by name or not, as they prefer.</p>
     <h2>The record behind this site</h2>
     <p>The dates on the scroll, the person of the month and the then-and-now maps are built from the same sources the hunt asks you to open: Rogers (1875), Mathews (1882), Glover (1906), the 1860 wall map at the Library of Congress, and Michigan death certificates at the Archives of Michigan. Where a page of this site makes a claim, the source is on the page or one click away. If it is not, that is a correction we owe.</p>
     <h2>Where it started</h2>
@@ -199,7 +199,7 @@ priv = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li><b>The Meta visit counter (only if you allow it).</b> If you choose “Allow”, your browser loads a small script from Meta (the Meta Pixel) that tells Meta which pages of this site you looked at, and when. Meta may match that to a Facebook or Instagram account if you have one, under <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Meta’s privacy policy</a>. We use it to see which parts of the hunt and the studio are visited, and later to show Project Scroll’s own advertisements on Facebook and Instagram to people who have been here. It records page views, when the Services section is read, and when the Messenger button is pressed. It never sees what you type: your notes, drafts and messages stay in your browser as before. If you choose “Keep it off”, or make no choice, nothing from Meta is loaded, and nothing is counted.</li>
     </ul>
     <h2>When you write to us</h2>
-    <p>Messages reach us through Facebook, under Facebook’s own privacy terms. What you tell us about your family is used to answer your question and for nothing else.</p>
+    <p>Email to research@projectscroll.com lands in a mailbox hosted for us by GoDaddy on Microsoft 365, under <a href="https://www.godaddy.com/legal/agreements/privacy-policy" target="_blank" rel="noopener">GoDaddy’s privacy policy</a>; messages sent through Facebook travel under Facebook’s own terms. Either way, what you tell us about your family is used to answer your question and for nothing else, and is never sold or shared.</p>
     <p class="center"><a class="btn" href="/">Back to Project Scroll</a> <a class="btn" href="/#contact">Get in touch</a></p>
 '''
 page('privacy/index.html', 'Privacy · Project Scroll',

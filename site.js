@@ -42,15 +42,17 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
     let DK='ps-msg', fields=[].slice.call(form.querySelectorAll('input,textarea,select')), out=document.getElementById('copied');
     try{ let d=JSON.parse(localStorage.getItem(DK)||'{}'); fields.forEach(function(f){ if (d[f.name]) f.value=d[f.name]; }); }catch(e){}
     let store=function(){ let d={}; fields.forEach(function(f){ d[f.name]=f.value; }); try{ localStorage.setItem(DK, JSON.stringify(d)); }catch(e){} };
-    fields.forEach(function(f){ f.addEventListener('input', store); f.addEventListener('change', store); });
+    let text=function(){ let lines=fields.filter(function(f){ return f.value.trim(); }).map(function(f){ return f.closest('label').querySelector('span').textContent+': '+f.value.trim(); }); return 'Hello Project Scroll,\n\n'+lines.join('\n'); };
+    let em=document.getElementById('emailIt');
+    let mail=function(){ if (!em) return; let need=(form.need&&form.need.value)||'My mystery'; em.href='mailto:research@projectscroll.com?subject='+encodeURIComponent(need)+'&body='+encodeURIComponent(text()); };
+    fields.forEach(function(f){ f.addEventListener('input', function(){ store(); mail(); }); f.addEventListener('change', function(){ store(); mail(); }); }); mail();
     document.getElementById('copy').addEventListener('click', function(){
-      let lines=fields.filter(function(f){ return f.value.trim(); }).map(function(f){ return f.closest('label').querySelector('span').textContent+': '+f.value.trim(); });
-      let txt='Hello Project Scroll,\n\n'+lines.join('\n');
+      let txt=text();
       let done=function(){ const om=document.getElementById('openMsgr'); if (om) om.hidden=false; out.textContent='Copied. Now open Messenger and paste it.'; setTimeout(function(){ out.textContent=''; },5000); };
       if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, function(){ out.textContent='Your browser blocked copying. Select the text and copy it by hand.'; });
       else out.textContent='Your browser blocked copying. Select the text and copy it by hand.';
     });
-    document.getElementById('clearmsg').addEventListener('click', function(){ fields.forEach(function(f){ f.value=''; }); store(); out.textContent='Cleared.'; setTimeout(function(){ out.textContent=''; },2000); });
+    document.getElementById('clearmsg').addEventListener('click', function(){ fields.forEach(function(f){ f.value=''; }); store(); mail(); out.textContent='Cleared.'; setTimeout(function(){ out.textContent=''; },2000); });
   }
 
   /* the "try it yourself" record puzzle */
