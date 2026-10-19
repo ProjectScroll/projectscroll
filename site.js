@@ -372,7 +372,7 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
     const stop=function(){ speechSynthesis.cancel(); if (speaking){ speaking.setAttribute('aria-pressed','false'); speaking.textContent='Listen'; } speaking=null; };
     document.querySelectorAll('main > section > .part, main.page > .kicker').forEach(function(part){
       const sec=part.closest('section') || part.closest('main');
-      const b=document.createElement('button'); b.type='button'; b.className='listen'; b.textContent='Listen'; b.setAttribute('aria-pressed','false'); b.setAttribute('aria-label','Read this section aloud');
+      const b=document.createElement('button'); b.type='button'; b.className='listen'; b.textContent='Listen'; b.setAttribute('aria-pressed','false'); b.title='Read this section aloud';
       part.appendChild(b);
       b.addEventListener('click', function(){
         if (speaking===b){ stop(); return; } stop();
@@ -397,6 +397,7 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
       const hits=idx.map(function(d){ const T=d.t.toLowerCase(), X=d.x.toLowerCase(); let sc=0;
         for (const w of words){ const inT=T.indexOf(w)>-1, inX=X.indexOf(w)>-1; if (!inT && !inX) return null; sc+= (inT?10:0) + (inX?1:0); }
         return {d:d, sc:sc}; }).filter(Boolean).sort(function(a,b){ return b.sc-a.sc; }).slice(0,8);
+      { const sc=document.getElementById('searchCount'); if (sc) sc.textContent=hits.length ? hits.length+(hits.length===1?' result':' results') : 'Nothing found'; }
       if (!hits.length){ res.innerHTML='<li class="note">Nothing found for “'+esc(q.value)+'”.</li>'; return; }
       res.innerHTML=hits.map(function(h){ const X=h.d.x, i=Math.max(0, X.toLowerCase().indexOf(words[0])-60); let snip=(i>0?'…':'')+X.slice(i, i+170)+'…';
         snip=esc(snip); words.forEach(function(w){ if (w.length>1) snip=snip.replace(new RegExp('('+w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark class="hl">$1</mark>'); });
@@ -425,8 +426,8 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
     notes.sort(function(a,b){ return a[0]-b[0]; });
     if (notes.length){ nbl.innerHTML=''; notes.forEach(function(x){ const d=document.createElement('div'); d.className='nbitem'; const h=document.createElement('h2'); const a=document.createElement('a'); a.href='/cases/'+x[0]+'/'; a.textContent='Case '+x[0]; h.appendChild(a); const p=document.createElement('pre'); p.textContent=x[1]; d.appendChild(h); d.appendChild(p); nbl.appendChild(d); });
       document.getElementById('nbAll').hidden=false;
-      document.getElementById('nbDl').addEventListener('click', function(){ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([notes.map(function(x){ return 'CASE '+x[0]+'\n'+x[1]; }).join('\n\n---\n\n')],{type:'text/plain'})); a.download='project-scroll-notes.txt'; a.click(); });
-      document.getElementById('nbClear').addEventListener('click', function(){ notes.forEach(function(x){ try{ localStorage.removeItem('ps-note-'+x[0]); }catch(e){} }); location.reload(); }); }
+      document.getElementById('nbDl').addEventListener('click', function(){ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([notes.map(function(x){ return 'CASE '+x[0]+'\n'+x[1]; }).join('\n\n---\n\n')],{type:'text/plain'})); a.download='project-scroll-notes.txt'; a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000); });
+      document.getElementById('nbClear').addEventListener('click', function(){ if (!confirm('Delete all your case notes on this device?')) return; notes.forEach(function(x){ try{ localStorage.removeItem('ps-note-'+x[0]); }catch(e){} }); location.reload(); }); }
   }
 
   /* for anyone who opens the browser's console */
@@ -491,6 +492,7 @@ window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the 
 try{ (function(){
   const KEY='ps-badges'; let got={};
   try{ got=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ got={}; }
+  let canStore=true; try{ localStorage.setItem('ps-t','1'); localStorage.removeItem('ps-t'); }catch(e){ canStore=false; }
   const save=function(){ try{ localStorage.setItem(KEY, JSON.stringify(got)); }catch(e){} };
   const name=function(id){ const b=window.PS_BADGES.filter(function(x){ return x[0]===id; })[0]; return b?b[1]:id; };
   let toastEl=null, tq=[], showing=false;
@@ -505,7 +507,7 @@ try{ (function(){
     requestAnimationFrame(function(){ toastEl.classList.add('on'); });
     setTimeout(function(){ toastEl.classList.remove('on'); setTimeout(function(){ showing=false; showNext(); }, 450); }, 4200);
   };
-  const earn=window.psEarn=function(id){ if (got[id]) return false; got[id]=new Date().toISOString().slice(0,10); save(); tq.push(id); showNext(); document.dispatchEvent(new CustomEvent('ps-badge',{detail:id})); return true; };
+  const earn=window.psEarn=function(id){ if (!canStore || got[id]) return false; got[id]=new Date().toISOString().slice(0,10); save(); tq.push(id); showNext(); document.dispatchEvent(new CustomEvent('ps-badge',{detail:id})); return true; };
   window.psBadges=function(){ return got; };
   const bl=document.getElementById('badgeLink'), bn=document.getElementById('badgeN');
   const showCount=function(){ if (!bl) return; const n=Object.keys(got).length, all=window.PS_BADGES.length;
@@ -689,7 +691,7 @@ try{ (function(){
 try{ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key==='k' || e.key==='K')){ const b=document.getElementById('searchBtn'); if (b){ e.preventDefault(); b.click(); } } }); }catch(err){ psFail(err); }
 
 /* ---------- the top bar: a gold tab names the part you are in while you scroll, then tucks away ---------- */
-(function(){
+try{ (function(){
   const bi=document.querySelector('.bar-in'), bar=document.querySelector('.bar'); if (!bi || !bar) return;
   const tab=document.createElement('a'); tab.className='bar-tab'; tab.setAttribute('aria-hidden','true'); tab.tabIndex=-1; bi.appendChild(tab);
   const parts=[].slice.call(document.querySelectorAll('main section')).filter(function(s){ return s.id && s.querySelector(':scope > .part'); });
@@ -703,7 +705,7 @@ try{ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e
     bar.classList.add('has-tab'); };
   addEventListener('scroll', function(){ if (!q) q=requestAnimationFrame(sync); bar.classList.add('scrolling'); clearTimeout(hideT); hideT=setTimeout(function(){ bar.classList.remove('scrolling'); }, 1400); }, {passive:true});
   sync();
-})();
+})(); }catch(err){ psFail(err); }
 
 /* ---------- Part I: say which stretch of the scroll is in view ---------- */
 try{ (function(){
@@ -734,7 +736,7 @@ try{ (function(){
 try{ (function(){
   const t=document.getElementById('tl'), row=document.querySelector('.tl-eras'); if (!t || !row) return;
   const yearOf=function(li){ const y=(li.querySelector('.yr')||{}).textContent||''; if (/now/i.test(y)) return 99999; const n=parseInt(y.replace(/[^0-9]/g,''),10); return /BC/.test(y) ? -n : n; };
-  const f=document.createElement('form'); f.className='tl-go'; f.setAttribute('role','search'); f.setAttribute('aria-label','Go to a year on the scroll');
+  const f=document.createElement('form'); f.className='tl-go'; f.setAttribute('aria-label','Go to a year on the scroll');
   f.innerHTML='<label><span>Go to a year</span><input type="number" inputmode="numeric" min="-12000" max="2100" placeholder="1846" aria-label="A year, for example 1846"></label><button type="submit">Go</button>';
   row.insertAdjacentElement('afterend', f);
   const inp=f.querySelector('input'), smooth=matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
@@ -801,10 +803,10 @@ try{ (function(){
 /* ---------- the case board: "Pick one for me" ---------- */
 try{ (function(){
   const box=document.querySelector('#cases .filters'); if (!box) return;
-  const b=document.createElement('button'); b.type='button'; b.className='pickcase'; b.textContent='🎲 Pick one for me'; b.setAttribute('aria-label','Pick a case for me at random'); box.appendChild(b);
+  const b=document.createElement('button'); b.type='button'; b.className='pickcase'; b.textContent='🎲 Pick one for me'; b.title='Pick an open case at random'; box.appendChild(b);
   let last=null;
   b.addEventListener('click', function(){
-    const open=[].slice.call(document.querySelectorAll('#cases tr[id^="case-"]')).filter(function(tr){ return !tr.hidden && !/solved/i.test(tr.textContent.slice(-40)); });
+    const open=[].slice.call(document.querySelectorAll('#cases tr[id^="case-"]')).filter(function(tr){ return !tr.hidden && !tr.querySelector('.status.solved'); });
     if (!open.length) return; let tr; do { tr=open[Math.floor(Math.random()*open.length)]; } while (open.length>1 && tr===last); last=tr;
     tr.scrollIntoView({block:'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
     tr.classList.remove('picked'); void tr.offsetWidth; tr.classList.add('picked');
@@ -892,9 +894,12 @@ try{ (function(){
   /* moving the pointer through the margins stirs the leaves near it, like a breath of wind */
   let gx=-999, gy=-999, gvx=0;
   if (kind!=='fly') addEventListener('pointermove', function(e){ if (e.pointerType!=='mouse') return; gvx=Math.max(-12,Math.min(12,e.clientX-gx)); gx=e.clientX; gy=e.clientY; }, {passive:true});
-  let raf=0;
-  const loop=function(t){ tick(t); raf=requestAnimationFrame(loop); };
-  document.addEventListener('visibilitychange', function(){ cancelAnimationFrame(raf); raf=0; if (!document.hidden) raf=requestAnimationFrame(loop); });
+  let raf=0, last=0, idleAt=performance.now()+15000;
+  /* about 30 frames a second, and the leaves rest after fifteen seconds without a scroll or a pointer move */
+  const loop=function(t){ raf=0; if (t>idleAt || document.hidden) return; if (t-last>=33){ last=t; tick(t); } raf=requestAnimationFrame(loop); };
+  const wake=function(){ idleAt=performance.now()+15000; if (!raf && !document.hidden) raf=requestAnimationFrame(loop); };
+  addEventListener('scroll', wake, {passive:true}); addEventListener('pointermove', wake, {passive:true});
+  document.addEventListener('visibilitychange', function(){ cancelAnimationFrame(raf); raf=0; if (!document.hidden) wake(); });
   const tick=function(t){
     x.clearRect(0,0,W,H);
     gvx*=.9;

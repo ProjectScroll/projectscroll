@@ -49,7 +49,8 @@
 </header>
 <dialog class="search" id="searchDlg" aria-label="Search the site">
   <form method="dialog" class="search-in" onsubmit="return false"><input type="search" id="searchQ" placeholder="Search cases, field notes, guides…" autocomplete="off" aria-label="Search"><button type="button" class="linkbtn" id="searchClose">Close</button></form>
-  <ol class="search-res" id="searchRes" aria-live="polite"></ol>
+  <p class="vh" id="searchCount" aria-live="polite"></p>
+  <ol class="search-res" id="searchRes"></ol>
   <p class="note search-tip">Tip: press <kbd>/</kbd> or <kbd>Ctrl</kbd> <kbd>K</kbd> anywhere to search.</p>
 </dialog>
 <div class="sheet" id="top">
@@ -71,7 +72,7 @@
       <a href="/">Home</a><a href="/#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/#studio">Studio</a><a href="/records/">Where the records are</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/badges/">Your badges</a><a href="/privacy/">Privacy</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
     </nav>
     <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a> · <button type="button" class="lanternbtn" id="lanternBtn" hidden>Put out the lantern</button></p>
-    <p class="cipherline" aria-label="A line written in code">ESP HZCO TD SPHRLR. DLJ TE TY JZFC MLORP MZZV.</p>
+    <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SPHRLR. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
 <script src="/site.min.js?v=63" defer></script>

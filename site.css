@@ -117,8 +117,6 @@ h3{font-size:1.06rem; margin:1.6rem 0 .3rem}
 p{margin:0 0 1rem}
 .note{font-size:.9rem; color:var(--ink-soft); line-height:1.55}
 @media (min-width:1100px){
-  .has-note{position:relative}
-  .has-note .note{position:absolute; left:calc(100% + 2.2rem); top:.4rem; width:12rem; margin:0}
 }
 ul.plain{list-style:none; padding:0; margin:0}
 ul.plain li{padding:.85rem 0; border-bottom:1px dotted var(--line)}
@@ -843,7 +841,6 @@ label.btn{cursor:pointer}
   .still{width:3in!important; margin:0 auto 1rem!important}
   .wide{width:3.4in!important; margin:1rem auto 0!important}
   .secfig{width:3.2in!important; margin:.8rem auto!important} .secfig.tall, .secfig.map{width:2.4in!important} .secfig.small{width:3in!important}
-  .promo-svcs a{border-color:#999!important}
   .plate2{display:block!important}
   figure, table.ledger tr, .try, .worked, .quiz, dl.marks > div, .tl li, .clue{break-inside:avoid!important}
   h2, h3, .part{break-after:avoid!important}
@@ -952,7 +949,6 @@ details.faq[open]{background:color-mix(in srgb, var(--paper) 60%, transparent)}
 /* ---------- research services, advertised near the top ---------- */
 .promo{max-width:calc(var(--measure) + 12rem); margin:0 0 2rem; padding:1.6rem 1.6rem 1.5rem; border:1px solid var(--line); border-radius:6px; background:var(--paper-2); position:relative; overflow:hidden; text-align:center}
 .promo::before{display:none; content:""; position:absolute; left:0; right:0; top:0; height:4px; background:linear-gradient(90deg, var(--kD) 0 11.1%, var(--kP) 0 22.2%, var(--kC) 0 33.3%, var(--kM) 0 44.4%, var(--kT) 0 55.5%, var(--kF) 0 66.6%, var(--kI) 0 77.7%, var(--kR) 0 88.8%, var(--kH) 0)}
-.promo .kicker{font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--rule); margin:0 0 .35rem}
 .promo-h{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:clamp(1.7rem, 3.6vw, 2.3rem); line-height:1.15; margin:0 0 .7rem; text-wrap:balance}
 .promo-lede{max-width:44rem; margin:0 auto 1.1rem; text-wrap:balance}
 .promo-ctas{display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem; margin:0}
@@ -1266,8 +1262,9 @@ footer.site{padding-bottom:1rem}
   background:color-mix(in srgb, var(--paper-2) 70%, var(--paper)); box-shadow:0 10px 24px -22px rgba(0,0,0,.6)}
 .tk-tag{display:flex; align-items:center; gap:.5rem; margin:0; padding:.6rem 1rem; background:var(--rule); color:#fff; font:400 .74rem/1.2 "Libre Caslon Text",serif; letter-spacing:.13em; text-transform:uppercase; white-space:nowrap; text-align:left!important}
 .tk-dot{width:.5rem; height:.5rem; border-radius:50%; background:#fff; flex:none}
-@media (prefers-reduced-motion: no-preference){ .tk-dot{animation:tkpulse 1.8s ease-out infinite} }
-@keyframes tkpulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)} 80%,100%{box-shadow:0 0 0 .45rem rgba(255,255,255,0)}}
+.tk-dot{position:relative}
+@media (prefers-reduced-motion: no-preference){ .tk-dot::after{content:""; position:absolute; inset:0; border-radius:50%; background:rgba(255,255,255,.7); animation:tkpulse 1.8s ease-out infinite} }
+@keyframes tkpulse{0%{transform:scale(1); opacity:.7} 80%,100%{transform:scale(2.8); opacity:0}}
 .tk-fresh{margin-left:.35rem; padding:.1rem .45rem; border-radius:999px; background:#fff; color:var(--rule); letter-spacing:.04em; text-transform:none; font-size:.72rem}
 .tk-view{overflow:hidden; display:flex; align-items:center; -webkit-mask-image:linear-gradient(90deg, transparent, #000 2.2rem, #000 calc(100% - 2.2rem), transparent); mask-image:linear-gradient(90deg, transparent, #000 2.2rem, #000 calc(100% - 2.2rem), transparent)}
 .tk-track{list-style:none; margin:0; padding:0; display:flex; width:max-content}
@@ -1371,9 +1368,6 @@ footer.site{padding-bottom:1rem}
 .promo.ad{padding:2.1rem 2rem 1.8rem; border:0; border-radius:4px; background:var(--paper); outline:1px solid var(--ink); outline-offset:-7px;
   box-shadow:0 0 0 1px var(--ink), 0 18px 40px -26px rgba(0,0,0,.55); margin-bottom:2.4rem}
 .promo.ad::after{content:""; position:absolute; inset:11px; border:1px solid color-mix(in srgb, var(--ink) 35%, transparent); pointer-events:none}
-.ad-kicker{display:flex; align-items:center; gap:.8rem; justify-content:center; margin:0 0 .5rem!important}
-.ad-kicker::before, .ad-kicker::after{content:""; height:1px; width:3.5rem; background:var(--rule)}
-.ad-kicker span{font-size:.82rem; letter-spacing:.2em}
 .promo.ad .promo-h{font-size:clamp(1.9rem, 4.2vw, 2.7rem)}
 .ad-cols{display:grid; grid-template-columns:1fr 1fr; gap:0; margin:1.4rem 0 1.2rem; text-align:left; border-top:2px solid var(--ink); border-bottom:2px solid var(--ink)}
 .ad-col{padding:1.1rem 1.3rem 1.2rem; position:relative}
@@ -1386,15 +1380,12 @@ footer.site{padding-bottom:1rem}
 .ad-col li::before{content:"❧"; position:absolute; left:0; top:.05em; color:var(--rule); font-size:.85em}
 .ad-col a{color:var(--ink); text-decoration:none; background:linear-gradient(var(--rule),var(--rule)) no-repeat 0 100% / 0 1px; transition:background-size .25s, color .2s}
 .ad-col a:hover, .ad-col a:focus-visible{color:var(--rule); background-size:100% 1px}
-.ad-promise{max-width:40rem; margin:0 auto 1.1rem; font-size:1rem; line-height:1.55; text-wrap:balance}
-.ad-promise b{color:var(--rule); font-weight:400; font-family:"Libre Caslon Display",serif; font-size:1.08em}
 .promo.ad .promofig{margin-top:1.5rem}
 @media (max-width:720px){
   .promo.ad{padding:1.6rem 1.1rem 1.4rem}
   .ad-cols{grid-template-columns:1fr}
   .ad-col + .ad-col{border-left:0; border-top:1px solid color-mix(in srgb, var(--ink) 40%, transparent)}
   .ad-col{padding:1rem .4rem}
-  .ad-kicker::before, .ad-kicker::after{width:1.5rem}
 }
 @media print{ .promo.ad{box-shadow:none} }
 .promo.ad{background:color-mix(in srgb, var(--paper) 78%, #f2e3c2)}
@@ -1412,7 +1403,6 @@ footer.site{padding-bottom:1rem}
 @media (max-width:720px){ .ad-stamp{position:static; margin:0 auto .8rem; transform:rotate(-8deg)} @keyframes stampin{from{opacity:0}} }
 .ad-stamp{width:6.6rem; height:6.6rem; letter-spacing:.05em; font-size:.66rem; padding:.6rem; box-sizing:border-box}
 @media (max-width:900px){ .ad-stamp{width:5.4rem; height:5.4rem; font-size:.56rem} }
-@media (max-width:720px){ .ad-kicker span{letter-spacing:.12em; font-size:.74rem; white-space:nowrap} .ad-kicker{gap:.5rem} }
 
 /* ===== Draft 50: review fixes ===== */
 form.tmpl select{font:inherit; font-size:1rem; color:var(--ink); background:var(--paper); border:1px solid var(--line); border-radius:4px; padding:.5rem .65rem; width:100%; min-height:2.6rem; appearance:auto}
@@ -1465,9 +1455,6 @@ form.tmpl select:focus{outline:2px solid var(--rule); outline-offset:1px; border
 .ad-coupon p{margin:0 0 .8rem; line-height:1.55}
 .ad-coupon b{font-family:"Libre Caslon Display",serif; font-weight:400; font-size:1.15em; color:var(--rule); display:block; margin-bottom:.2rem}
 .ad-coupon .promo-ctas{margin:0}
-.ad-cut{position:absolute; top:-.95rem; left:1.2rem; margin:0!important; padding:0 .3rem; background:color-mix(in srgb, var(--paper) 78%, #f2e3c2); color:var(--ink-soft); font-size:1.1rem; line-height:1.6}
-:root[data-theme="dark"] .ad-cut{background:color-mix(in srgb, var(--paper) 90%, #6b5530)}
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .ad-cut{background:color-mix(in srgb, var(--paper) 90%, #6b5530)} }
 .promo.ad .ad-more{margin-top:.6rem}
 @media (max-width:900px){ .promo.ad .ad-cols{grid-template-columns:1fr 1fr} .promo.ad .ad-col:nth-child(3){grid-column:1 / -1; border-left:0; border-top:1px solid color-mix(in srgb, var(--ink) 40%, transparent)} }
 @media (max-width:720px){ .promo.ad .ad-cols{grid-template-columns:1fr} .promo.ad .ad-col + .ad-col{border-left:0; border-top:1px solid color-mix(in srgb, var(--ink) 40%, transparent)} .ad-banner span{font-size:.66rem; letter-spacing:.14em; padding:.3rem 1.1rem} .ad-tag{font-size:.7rem; letter-spacing:.08em} }
@@ -1805,7 +1792,6 @@ html{scroll-padding-top:5.8rem}
 /* the place band, held still: fade its right edge so it reads as more to come */
 .placeband.still .pb-view{-webkit-mask-image:linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent); mask-image:linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent)}
 /* the badge toast: a close button, and smaller on phones */
-.btoast{position:fixed}
 .bt-x{position:absolute; top:.2rem; right:.35rem; width:1.6rem; height:1.6rem; border:0; background:none; color:inherit; opacity:.7; font-size:1.1rem; line-height:1; cursor:pointer}
 .bt-x:hover{opacity:1}
 @media (max-width:640px){ .btoast{left:.75rem; right:4rem; padding:.45rem 2rem .45rem .5rem} .btoast svg{width:1.8rem; height:1.8rem} }
@@ -1840,3 +1826,9 @@ figcaption .credit{display:block; margin-top:.25rem; font-size:.78rem; font-styl
 .goodanswer{margin:.8rem 0; padding:.7rem 1rem; border:1px dashed var(--line); border-radius:6px; background:var(--paper); font-size:.95rem; line-height:1.55}
 .remember{padding:.7rem 1rem; border-left:3px solid var(--rule); background:color-mix(in srgb, var(--rule) 6%, var(--paper)); border-radius:0 6px 6px 0}
 .pom-r{font-size:.95rem; line-height:1.55; color:var(--ink-soft)}
+
+/* ===== Draft 63: code review ===== */
+.vh{position:absolute!important; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+/* the badge toast leaves the tab order once it fades */
+.btoast{visibility:hidden; transition:transform .45s cubic-bezier(.2,.9,.3,1.2), opacity .3s, visibility 0s .45s}
+.btoast.on{visibility:visible; transition-delay:0s}

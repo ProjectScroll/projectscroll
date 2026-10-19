@@ -78,7 +78,8 @@ document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-
 
 <dialog class="search" id="searchDlg" aria-label="Search the site">
   <form method="dialog" class="search-in" onsubmit="return false"><input type="search" id="searchQ" placeholder="Search cases, field notes, guides…" autocomplete="off" aria-label="Search"><button type="button" class="linkbtn" id="searchClose">Close</button></form>
-  <ol class="search-res" id="searchRes" aria-live="polite"></ol>
+  <p class="vh" id="searchCount" aria-live="polite"></p>
+  <ol class="search-res" id="searchRes"></ol>
   <p class="note search-tip">Tip: press <kbd>/</kbd> or <kbd>Ctrl</kbd> <kbd>K</kbd> anywhere to search.</p>
 </dialog>
 <div class="sheet" id="top">
@@ -201,7 +202,7 @@ document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-
       </div>
       <div class="tl-ribbon" id="tlRibbon" aria-hidden="true"><span class="end">Earliest</span><div class="rail"><i class="win"></i></div><span class="end">Now</span></div>
       <figure class="secfig land">
-        <picture><source srcset="/img/bellin-great-lakes-1744.webp" type="image/webp"><img src="/img/bellin-great-lakes-1744.jpg" width="1024" height="638" loading="lazy" decoding="async" alt="An eighteenth-century French engraved map of the Great Lakes, Carte des Lacs du Canada, showing Lakes Superior, Michigan, Huron, Erie and Ontario with rivers and place names."></picture><figcaption>Bellin’s <i>Carte des Lacs du Canada</i>, 1744. Long before the first county was drawn, the lakes were already on the map.</figcaption>
+        <picture><source type="image/webp" srcset="/img/bellin-great-lakes-1744-640.webp 640w, /img/bellin-great-lakes-1744-1000.webp 1000w, /img/bellin-great-lakes-1744.webp 1024w" sizes="(min-width:900px) 768px, 92vw"><img src="/img/bellin-great-lakes-1744.jpg" srcset="/img/bellin-great-lakes-1744-640.jpg 640w, /img/bellin-great-lakes-1744-1000.jpg 1000w, /img/bellin-great-lakes-1744.jpg 1024w" sizes="(min-width:900px) 768px, 92vw" width="1024" height="638" loading="lazy" decoding="async" alt="An eighteenth-century French engraved map of the Great Lakes, Carte des Lacs du Canada, showing Lakes Superior, Michigan, Huron, Erie and Ontario with rivers and place names."></picture><figcaption>Bellin’s <i>Carte des Lacs du Canada</i>, 1744. Long before the first county was drawn, the lakes were already on the map.</figcaption>
       </figure>
     </section>
 
@@ -269,7 +270,7 @@ document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-
       </div>
       <p class="ad-more"><a href="#marks">How we mark the evidence</a> · <a href="#services">What happens when you bring us one</a> · <a href="#studio">The studio</a></p>
       <figure class="secfig land promofig">
-        <picture><source srcset="/img/new-france-map.webp" type="image/webp"><img src="/img/new-france-map.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="An old French engraved map of New France and the Great Lakes, with Lac Supérieur, Lac Huron, Lac Ontario and Lac Erie, the St. Lawrence and the Atlantic coast, and the English colonies outlined in green."></picture><figcaption>An old French map of New France and the Great Lakes. Every family came from somewhere, and somewhere it is on a map.</figcaption>
+        <picture><source type="image/webp" srcset="/img/new-france-map-640.webp 640w, /img/new-france-map-1000.webp 1000w, /img/new-france-map.webp 1200w" sizes="(min-width:900px) 768px, 92vw"><img src="/img/new-france-map.jpg" srcset="/img/new-france-map-640.jpg 640w, /img/new-france-map-1000.jpg 1000w, /img/new-france-map.jpg 1200w" sizes="(min-width:900px) 768px, 92vw" width="1200" height="675" loading="lazy" decoding="async" alt="An old French engraved map of New France and the Great Lakes, with Lac Supérieur, Lac Huron, Lac Ontario and Lac Erie, the St. Lawrence and the Atlantic coast, and the English colonies outlined in green."></picture><figcaption>An old French map of New France and the Great Lakes. Every family came from somewhere, and somewhere it is on a map.</figcaption>
       </figure>
     </aside>
 
@@ -323,7 +324,7 @@ document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-
         <a class="btn primary" href="https://www.facebook.com/projectscroll/posts/pfbid02v8LvpApazxUZnzXDGX9z5WTPJX8LkGDUHDB3iQZyigMWMCuytPBfC6doeLBXbLdKl">Open the first door on Facebook</a>
       </div>
       <figure class="secfig land">
-        <picture><source srcset="/img/pack-train.webp" type="image/webp"><img src="/img/pack-train.jpg" width="1400" height="640" loading="lazy" decoding="async" alt="An old sepia photograph of four men in wide-brimmed hats standing in a dusty street beside a long string of harnessed mules, with frame buildings and a bare hill behind them."></picture><figcaption>Four men, a string of mules and a dusty street. Nobody wrote their names on the back. Somewhere, a record still has them.</figcaption>
+        <picture><source type="image/webp" srcset="/img/pack-train-640.webp 640w, /img/pack-train-1000.webp 1000w, /img/pack-train.webp 1400w" sizes="(min-width:900px) 768px, 92vw"><img src="/img/pack-train.jpg" srcset="/img/pack-train-640.jpg 640w, /img/pack-train-1000.jpg 1000w, /img/pack-train.jpg 1400w" sizes="(min-width:900px) 768px, 92vw" width="1400" height="640" loading="lazy" decoding="async" alt="An old sepia photograph of four men in wide-brimmed hats standing in a dusty street beside a long string of harnessed mules, with frame buildings and a bare hill behind them."></picture><figcaption>Four men, a string of mules and a dusty street. Nobody wrote their names on the back. Somewhere, a record still has them.</figcaption>
       </figure>
       <h3>The rules</h3>
       <ul class="rulecards">
@@ -369,7 +370,7 @@ document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-
       <p class="copied" id="caseCopied" aria-live="polite" style="margin:.6rem 0 0"></p>
       <p class="note" style="margin-top:1rem">Post answers in the comments on <a href="https://www.facebook.com/projectscroll/">Facebook</a>, with the page you found them on. The rules above still apply: everything here is solved on paper.</p>
           <figure class="secfig map">
-        <a href="/map/" class="figlink"><picture><source srcset="/img/wall-map-1860.webp" type="image/webp"><img src="/img/wall-map-1860.jpg" width="1100" height="1188" loading="lazy" decoding="async" alt="The 1860 wall map of Cass, Van Buren and Berrien counties, Michigan: hand-colored townships in a grid, with town plans and engraved pictures of houses and farms around the border."></picture></a><figcaption>The 1860 wall map of Cass, Van Buren and Berrien counties, where the hunt began. <a href="/map/">Walk every inch of it in the map room</a>.</figcaption>
+        <a href="/map/" class="figlink"><picture><source type="image/webp" srcset="/img/wall-map-1860-640.webp 640w, /img/wall-map-1860-1000.webp 1000w, /img/wall-map-1860.webp 1100w" sizes="(min-width:900px) 768px, 92vw"><img src="/img/wall-map-1860.jpg" srcset="/img/wall-map-1860-640.jpg 640w, /img/wall-map-1860-1000.jpg 1000w, /img/wall-map-1860.jpg 1100w" sizes="(min-width:900px) 768px, 92vw" width="1100" height="1188" loading="lazy" decoding="async" alt="The 1860 wall map of Cass, Van Buren and Berrien counties, Michigan: hand-colored townships in a grid, with town plans and engraved pictures of houses and farms around the border."></picture></a><figcaption>The 1860 wall map of Cass, Van Buren and Berrien counties, where the hunt began. <a href="/map/">Walk every inch of it in the map room</a>.</figcaption>
       </figure>
       <figure class="tncorner" aria-label="The hotel corner in 1860 and today">
         <div class="tnc-frame" id="tnc" style="--x:50%">
@@ -412,7 +413,7 @@ document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-
         <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="14" r="3.2"/><circle cx="17" cy="14" r="3.2"/><path d="M10.2 14h3.6M3.8 14L5 8M20.2 14L19 8"/></svg><b>A second pair of eyes</b>A family history, a book chapter or an article checked against its sources before it goes out into the world.</li>
       </ul>
       <figure class="secfig land">
-        <picture><source srcset="/img/schoolhouse.webp" type="image/webp"><img src="/img/schoolhouse.jpg" width="1400" height="763" loading="lazy" decoding="async" alt="An old photograph of a white one-room schoolhouse with a bell cupola and a small porch, standing among trees behind a split-rail fence at a dirt crossroads."></picture>
+        <picture><source type="image/webp" srcset="/img/schoolhouse-640.webp 640w, /img/schoolhouse-1000.webp 1000w, /img/schoolhouse.webp 1400w" sizes="(min-width:900px) 768px, 92vw"><img src="/img/schoolhouse.jpg" srcset="/img/schoolhouse-640.jpg 640w, /img/schoolhouse-1000.jpg 1000w, /img/schoolhouse.jpg 1400w" sizes="(min-width:900px) 768px, 92vw" width="1400" height="763" loading="lazy" decoding="async" alt="An old photograph of a white one-room schoolhouse with a bell cupola and a small porch, standing among trees behind a split-rail fence at a dirt crossroads."></picture>
       </figure>
       <div class="morework">
         <a href="/families/"><span class="k">Family histories</span><b>Registers, monographs and family books</b><span class="d">Built from the records, not copied from other trees. Tap through a specimen ancestral chart.</span></a>
@@ -624,7 +625,7 @@ document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-
       <details class="faq"><summary>Is Project Scroll only about Michigan?</summary><p>It started in one Michigan county, but the methods work anywhere, and so does our research. Mysteries are welcome from wherever you are.</p></details>
       <p class="note center" style="margin-top:1.2rem">Still wondering about something? <a href="https://m.me/projectscroll">Ask us on Facebook</a>.</p>
           <figure class="secfig land">
-        <picture><source srcset="/img/mitchell-north-america-1755.webp" type="image/webp"><img src="/img/mitchell-north-america-1755.jpg" width="1400" height="986" loading="lazy" decoding="async" alt="John Mitchell’s eighteenth-century map of the British and French dominions in North America, hand-colored, with a decorated title cartouche in the lower right corner."></picture><figcaption>John Mitchell’s map of the British and French dominions in North America, first published in 1755. The hunt began in one county; the research goes wherever the records do.</figcaption>
+        <picture><source type="image/webp" srcset="/img/mitchell-north-america-1755-640.webp 640w, /img/mitchell-north-america-1755-1000.webp 1000w, /img/mitchell-north-america-1755.webp 1400w" sizes="(min-width:900px) 768px, 92vw"><img src="/img/mitchell-north-america-1755.jpg" srcset="/img/mitchell-north-america-1755-640.jpg 640w, /img/mitchell-north-america-1755-1000.jpg 1000w, /img/mitchell-north-america-1755.jpg 1400w" sizes="(min-width:900px) 768px, 92vw" width="1400" height="986" loading="lazy" decoding="async" alt="John Mitchell’s eighteenth-century map of the British and French dominions in North America, hand-colored, with a decorated title cartouche in the lower right corner."></picture><figcaption>John Mitchell’s map of the British and French dominions in North America, first published in 1755. The hunt began in one county; the research goes wherever the records do.</figcaption>
       </figure>
     </section>
 
@@ -665,7 +666,7 @@ document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-
     </nav>
     <a class="totop" href="#top" aria-label="Back to the top" hidden>↑</a>
     <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a> · <button type="button" class="lanternbtn" id="lanternBtn" hidden>Put out the lantern</button></p>
-    <p class="cipherline" aria-label="A line written in code">ESP HZCO TD SPHRLR. DLJ TE TY JZFC MLORP MZZV.</p>
+    <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SPHRLR. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
 

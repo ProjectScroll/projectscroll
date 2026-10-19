@@ -7,7 +7,7 @@ const CORE = ['/', '/notes/', '/notes/one-letter-two-certificates/', '/404.html'
   '/fonts/libre-caslon-display-latin-400-normal.woff2', '/fonts/libre-caslon-text-latin-400-normal.woff2',
   '/fonts/libre-caslon-text-latin-400-italic.woff2', '/fonts/libre-caslon-text-latin-700-normal.woff2'];
 const save = (req, res) => (res && res.ok) ? caches.open(CACHE).then(c => c.put(req, res)) : Promise.resolve();
-self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE.map(u => new Request(u, {cache: 'reload'})))).then(() => self.skipWaiting())); });
+self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => Promise.allSettled(CORE.map(u => c.add(new Request(u, {cache: 'reload'}))))).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {
   const req = e.request; const url = new URL(req.url);
@@ -18,6 +18,8 @@ self.addEventListener('fetch', e => {
       .catch(() => caches.match(req).then(r => r || caches.match('/404.html')).then(r => r || caches.match('/'))));
     return;
   }
+  /* a page that asks for a fresh copy, or the case list, goes to the network first */
+  if (req.cache === 'no-store' || url.pathname === '/cases.json') { e.respondWith(fetch(req).catch(() => caches.match(req, {ignoreSearch: true}))); return; }
   /* the search index: the saved copy at once, refreshed in the background, so search works offline */
   if (url.pathname.endsWith('.json')) {
     e.respondWith(caches.match(req, {ignoreSearch: true}).then(hit => {
