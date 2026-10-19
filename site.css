@@ -1887,3 +1887,10 @@ footer .cite{font-size:.78rem; color:var(--ink-soft); max-width:46rem; margin:.6
 /* Draft 69: the photo zoom is a real modal dialog now (focus stays inside; Escape closes) */
 dialog.fp-zoom{max-width:none; max-height:none; width:100%; height:100%; border:0; margin:0; color:#fff}
 dialog.fp-zoom::backdrop{background:transparent}
+/* Draft 70: the Hall leads the place band */
+.pb-track li.pb-hall a{color:inherit; text-decoration-color:color-mix(in srgb, var(--rule) 50%, transparent)}
+/* Draft 70: the map room and the then-and-now maps stay inside the page, like everything else */
+.maproom{width:100%; left:auto; transform:none}
+.osd{height:min(72vh, 46rem)}
+/* Draft 70: on wide screens the visit-counter question sits in the corner, off the content */
+@media (min-width:700px){ .consent{left:1rem; right:auto; max-width:24rem} }
