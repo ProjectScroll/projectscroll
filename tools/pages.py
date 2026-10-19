@@ -44,7 +44,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.css?v=55">
+<link rel="stylesheet" href="/site.css?v=56">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"href_matches":"/*"}},{{"not":{{"href_matches":"/sample/*"}}}},{{"not":{{"href_matches":"/*.pdf"}}}}]}},"eagerness":"moderate"}}]}}</script>
 </head>
 <body>
@@ -86,7 +86,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline" aria-label="A line written in code">ESP HZCO TD SPHRLR. DLJ TE TY JZFC MLORP MZZV.</p>
   </footer>
 </div>
-<script src="/site.js?v=55" defer></script>
+<script src="/site.js?v=56" defer></script>
 </body>
 </html>
 '''

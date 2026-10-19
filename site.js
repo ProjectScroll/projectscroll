@@ -9,6 +9,7 @@
   btn.addEventListener('click', function(){
     let next = themeNow()==='dark' ? 'light' : 'dark';
     let apply = function(){ root.dataset.theme=next; try{localStorage.setItem('ps-theme',next);}catch(e){} label(); };
+    { const r=btn.getBoundingClientRect(); root.style.setProperty('--vx', Math.round(r.left+r.width/2)+'px'); root.style.setProperty('--vy', Math.round(r.top+r.height/2)+'px'); root.classList.add('theme-sweep'); setTimeout(function(){ root.classList.remove('theme-sweep'); }, 900); }
     if (document.startViewTransition && document.visibilityState==='visible' && !matchMedia('(prefers-reduced-motion: reduce)').matches){ let done=false; const go=function(){ if (!done){ done=true; apply(); } }; try{ const vt=document.startViewTransition(go); [vt.ready, vt.finished, vt.updateCallbackDone].forEach(function(pr){ if (pr && pr.catch) pr.catch(function(){}); }); }catch(e){ go(); } setTimeout(go, 350); } else apply();
   });
 
@@ -721,6 +722,20 @@ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key=
     b.addEventListener('click', function(){ if (!ev) return; ev.prompt(); ev.userChoice.finally(function(){ ev=null; b.remove(); }); });
     const m=foot.querySelector('.motto'); (m||foot.firstElementChild||foot).insertAdjacentElement('afterend', b); });
   addEventListener('appinstalled', function(){ const b=document.getElementById('installBtn'); if (b) b.remove(); });
+})();
+
+/* ---------- Part I: type a year and the scroll goes there ---------- */
+(function(){
+  const t=document.getElementById('tl'), row=document.querySelector('.tl-eras'); if (!t || !row) return;
+  const yearOf=function(li){ const y=(li.querySelector('.yr')||{}).textContent||''; if (/now/i.test(y)) return 99999; const n=parseInt(y.replace(/[^0-9]/g,''),10); return /BC/.test(y) ? -n : n; };
+  const f=document.createElement('form'); f.className='tl-go'; f.setAttribute('role','search'); f.setAttribute('aria-label','Go to a year on the scroll');
+  f.innerHTML='<label><span>Go to a year</span><input type="number" inputmode="numeric" min="-12000" max="2100" placeholder="1846" aria-label="A year, for example 1846"></label><button type="submit">Go</button>';
+  row.insertAdjacentElement('afterend', f);
+  const inp=f.querySelector('input'), smooth=matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
+  f.addEventListener('submit', function(e){ e.preventDefault(); const y=parseInt(inp.value,10); if (isNaN(y)) return;
+    const lis=[].slice.call(t.children).filter(function(li){ return !li.hidden && !li.classList.contains('now'); }); if (!lis.length) return;
+    let best=lis[0]; lis.forEach(function(li){ if (Math.abs(yearOf(li)-y)<Math.abs(yearOf(best)-y)) best=li; });
+    t.scrollTo({left:Math.max(0,best.offsetLeft-8), behavior:smooth}); best.classList.remove('lit'); void best.offsetWidth; best.classList.add('lit'); });
 })();
 
 /* ---------- what's new on the trail: a moving ticker ---------- */
