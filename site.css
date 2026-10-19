@@ -1826,3 +1826,4 @@ html{scroll-padding-top:5.8rem}
 .starthere a{white-space:nowrap}
 .starthere .note{margin:0}
 main .starthere h2{font-family:"Libre Caslon Display",serif; font-size:1.4rem; font-weight:400; color:var(--ink); letter-spacing:0; text-transform:none}
+figcaption .credit{display:block; margin-top:.25rem; font-size:.78rem; font-style:normal; letter-spacing:.02em; color:var(--ink-soft); opacity:.85}
