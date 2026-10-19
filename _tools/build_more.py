@@ -97,6 +97,8 @@ G = [
  ('Instant and ultimo', 'Old newspaper shorthand: “the 4th inst.” means the 4th of this month; “the 20th ult.” the 20th of last month.'),
  ('Intestate', 'Having died without a will. The court then appoints an administrator and divides the estate by law.'),
  ('Land patent', 'The first transfer of a piece of land from the government to a private owner.'),
+ ('Lore', 'What a place says about itself: the stories passed around a lake, a township or a lodge, told without a page to point to. Lore is where a hunt often starts; the record is where it ends.'),
+ ('Local legend', 'The famous ancestor, the buried treasure, the river under the ground. Some are true. The desk reads each one against the record and says which.'),
  ('Maiden name', 'A woman’s surname before marriage. Most records name married women only by their husbands’ surnames, which is why a woman’s own family is the commonest gap in any tree.'),
  ('mtDNA and Y-DNA', 'Two DNA tests that follow one line each: mitochondrial DNA passes from mother to child down the all-female line; Y-DNA passes from father to son down the all-male line.'),
  ('Naturalization', 'The process of becoming a citizen. Older files often have two parts: a declaration of intention (“first papers”) and, years later, a petition. Later ones can name the town of birth and the ship.'),
