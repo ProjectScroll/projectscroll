@@ -738,6 +738,15 @@ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key=
     t.scrollTo({left:Math.max(0,best.offsetLeft-8), behavior:smooth}); best.classList.remove('lit'); void best.offsetWidth; best.classList.add('lit'); });
 })();
 
+/* ---------- where the hunt began: the place names drift past ---------- */
+(function(){
+  const box=document.querySelector('.placeband'), tr=document.getElementById('pbTrack'); if (!box || !tr) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches){ box.classList.add('still'); const v=box.querySelector('.pb-view'); if (v){ v.tabIndex=0; v.setAttribute('role','region'); v.setAttribute('aria-label','Places, scroll sideways'); } return; }
+  [].slice.call(tr.children).forEach(function(li){ const c=li.cloneNode(true); c.setAttribute('aria-hidden','true'); tr.appendChild(c); });
+  const speed=function(){ box.style.setProperty('--pbdur', Math.max(40, Math.round(tr.scrollWidth/2/38))+'s'); };
+  speed(); addEventListener('resize', speed, {passive:true}); box.classList.add('run');
+})();
+
 /* ---------- what's new on the trail: a moving ticker ---------- */
 (function(){
   const tk=document.querySelector('.ticker'), track=document.getElementById('tkTrack'); if (!tk || !track) return;

@@ -1724,3 +1724,41 @@ html{scroll-padding-top:5.8rem}
   }
 }
 @media print{ .tl-go{display:none!important} }
+
+/* ===== Draft 57: where the hunt began ===== */
+.hero-k{margin:0 0 .7rem; font:400 .78rem/1.4 "Libre Caslon Text",serif; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-lo)}
+.hero-k span{color:var(--gold); margin:0 .35rem; font-size:.8em}
+:root[data-theme="dark"] .hero-k{color:var(--gold-hi)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .hero-k{color:var(--gold-hi)} }
+@media (min-width:900px){
+  .hero{grid-template-rows:auto auto auto auto auto 1fr}
+  .plate{grid-row:1 / span 6}
+}
+.placeband{display:flex; align-items:stretch; margin:0 0 0; border-bottom:1px solid color-mix(in srgb, var(--gold) 55%, transparent); overflow:hidden;
+  background:linear-gradient(180deg, color-mix(in srgb, var(--gold-hi) 14%, transparent), transparent)}
+.pb-tag{flex:none; display:flex; align-items:center; margin:0; padding:.42rem .9rem .42rem 0; font:400 .68rem/1.2 "Libre Caslon Text",serif; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); white-space:nowrap; text-align:left!important}
+.pb-tag::after{content:""; width:.38rem; height:.38rem; margin-left:.7rem; transform:rotate(45deg); background:var(--gold)}
+.pb-view{flex:1; min-width:0; overflow:hidden; display:flex; align-items:center;
+  -webkit-mask-image:linear-gradient(90deg, transparent, #000 1.6rem, #000 calc(100% - 1.6rem), transparent); mask-image:linear-gradient(90deg, transparent, #000 1.6rem, #000 calc(100% - 1.6rem), transparent)}
+.pb-track{list-style:none; margin:0; padding:0; display:flex; width:max-content}
+.pb-track li{display:flex; align-items:center; white-space:nowrap; padding:.42rem 0; font-size:.8rem; letter-spacing:.06em; color:var(--ink-soft)}
+.pb-track li::after{content:""; width:.28rem; height:.28rem; margin:0 .85rem; transform:rotate(45deg); background:color-mix(in srgb, var(--gold) 75%, transparent)}
+.pb-track li.pb-c{font-variant:small-caps; letter-spacing:.12em; color:var(--gold-lo); font-size:.86rem}
+.pb-track li.pb-hall{font-style:italic; color:var(--rule)}
+:root[data-theme="dark"] .pb-track li.pb-c{color:var(--gold-hi)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .pb-track li.pb-c{color:var(--gold-hi)} }
+.placeband.run .pb-track{animation:pbroll var(--pbdur,90s) linear infinite}
+@media (hover:hover) and (pointer:fine){ .placeband.run .pb-view:hover .pb-track{animation-play-state:paused} }
+@keyframes pbroll{to{transform:translateX(-50%)}}
+.placeband.still .pb-view{-webkit-mask-image:none; mask-image:none}
+.placeband.still .pb-track{flex-wrap:wrap; width:auto}
+@media (max-width:640px){ .pb-tag{display:none} .hero-k{font-size:.68rem; letter-spacing:.1em} }
+@media print{ .placeband{display:none!important} }
+.hero-k span{color:inherit; margin:0; font-size:inherit}
+.hero-k .hk1, .hero-k .hk2{white-space:nowrap}
+.hero-k .hk2{display:block; margin-top:.15rem}
+.hero-k i{font-style:normal; color:var(--gold); font-size:.8em; margin-right:.35rem}
+.placeband + .hero{padding-top:3rem}
+@media (max-width:640px){ .hero-k .hk1{white-space:normal} .placeband + .hero{padding-top:2.2rem} }
+.placeband.still .pb-track{flex-wrap:nowrap; width:max-content}
+.placeband.still .pb-view{overflow-x:auto; scrollbar-width:thin}
