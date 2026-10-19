@@ -19,7 +19,7 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li>The small <b>town plans</b> along the top and left side, with streets, blocks and the names of buildings.</li>
       <li>The <b>business directories</b> printed in the margins, listing who kept which shop or hotel.</li>
       <li>The <b>engraved houses</b> around the border: the proudest farms and homes of 1860.</li>
-      <li>Every <b>farm</b>, marked with its owner’s name and acreage.</li>
+      <li>Every <b>farm</b>, marked with its owner’s name and acreage. Find your family’s name on the land in 1860, then look for the same name in the deed books.</li>
     </ul>
     <p class="note">Source: <i>Map of the Counties of Cass, Van Buren and Berrien, Michigan</i> (Philadelphia: Geil, Harley &amp; Siverd, 1860). Library of Congress, Geography and Map Division, g4113c.la000324. Public domain. Shown through the Library’s own image service.</p>
     <script src="/vendor/openseadragon-4.1.1.min.js?v=1"></script>

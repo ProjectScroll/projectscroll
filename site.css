@@ -1361,7 +1361,7 @@ footer.site{padding-bottom:1rem}
 :root[data-theme="dark"] .tk-fresh{color:#8c2a21}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .tk-fresh{color:#8c2a21} }
 @media (max-width:880px){ .bar.open nav a:not([data-n])::before{content:""; min-width:2.2rem} }
-.tk-long{margin-left:.45em}
+.tk-long{margin-left:0}
 
 
 /* ===== Draft 50: research services as an advertisement ===== */
@@ -1832,3 +1832,31 @@ figcaption .credit{display:block; margin-top:.25rem; font-size:.78rem; font-styl
 /* the badge toast leaves the tab order once it fades */
 .btoast{visibility:hidden; transition:transform .45s cubic-bezier(.2,.9,.3,1.2), opacity .3s, visibility 0s .45s}
 .btoast.on{visibility:visible; transition-delay:0s}
+
+/* ===== Draft 64: from the post ===== */
+.frompost{margin:1.6rem 0 1.8rem; padding:1.1rem 1.2rem 1.2rem; border:1px solid var(--line); border-top:3px solid var(--gold); border-radius:6px; background:var(--paper)}
+.frompost h2{margin:0 0 .35rem; font-size:1.35rem}
+.fp-lead{margin:0 0 .9rem; font-family:"Libre Caslon Display",serif; font-size:1.15rem; line-height:1.4}
+.fp-lead a{font-family:"Libre Caslon Text",serif; font-size:.9rem; white-space:nowrap}
+.fp-pics{display:grid; gap:.8rem; grid-template-columns:repeat(auto-fit, minmax(13rem, 1fr))}
+.fp-pics figure{margin:0}
+.fp-pics img{display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:4px; background:#fff; box-shadow:0 10px 24px -18px rgba(0,0,0,.6); cursor:zoom-in}
+.fp-pics figcaption{font-size:.82rem; color:var(--ink-soft); margin-top:.4rem; line-height:1.4}
+.fp-live{margin-top:1rem; text-align:center}
+.fp-live .note{margin:.5rem 0 0; font-size:.82rem}
+.fp-live.loaded{text-align:left}
+.fp-frame{display:block; max-width:100%; margin:0 auto; border-radius:6px; background:var(--paper-2)}
+@media (max-width:640px){ .fp-pics{grid-template-columns:1fr 1fr} .fp-pics.n1{grid-template-columns:1fr} }
+main.page > section.frompost::after{content:none}
+main.page > section.frompost{counter-increment:none}
+.fp-pics img.open{cursor:zoom-out}
+.fp-zoom{position:fixed; inset:0; z-index:120; display:grid; place-items:center; padding:1rem; background:rgba(21,27,33,.92); cursor:zoom-out}
+.fp-zoom img{max-width:min(100%, 60rem); max-height:100%; width:auto; height:auto; border-radius:4px; box-shadow:0 30px 60px -20px #000}
+.fp-zoom .fp-x{position:absolute; top:.8rem; right:1rem; width:2.4rem; height:2.4rem; border-radius:50%; border:1px solid rgba(255,255,255,.4); background:rgba(0,0,0,.35); color:#fff; font-size:1.4rem; line-height:1; cursor:pointer}
+.solvedbox{margin:1rem 0 1.2rem; padding:.9rem 1.1rem; border:1px solid var(--line); border-left:4px solid var(--gold); border-radius:6px; background:color-mix(in srgb, var(--gold-hi) 8%, var(--paper))}
+.solvedbox h3{margin:0 0 .35rem; font-size:1.1rem; font-family:"Libre Caslon Display",serif; font-weight:400; text-align:left!important}
+.solvedbox p{margin:0; font-size:.95rem; line-height:1.55}
+.newhere{max-width:46rem; margin:0 auto 1rem; padding:.7rem 1rem; border:1px dashed color-mix(in srgb, var(--gold) 70%, transparent); border-radius:6px; background:var(--paper); font-size:.95rem; line-height:1.5; text-align:left}
+.mytally{text-align:center; font-size:.88rem; color:var(--ink-soft); margin:-.4rem 0 .9rem}
+footer .cite{font-size:.78rem; color:var(--ink-soft); max-width:46rem; margin:.6rem auto .2rem; line-height:1.45}
+.status:not(.solved){border-color:var(--rule)}

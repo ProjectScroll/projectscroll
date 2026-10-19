@@ -13,7 +13,7 @@ def proc(html):
     out.append(smart(html[i:])); return ''.join(out)
 import pathlib
 R=str(pathlib.Path(__file__).resolve().parent.parent)
-def page(path, title, desc, body, canon=None, noindex=False, og='https://projectscroll.com/og.png'):
+def page(path, title, desc, body, canon=None, noindex=False, og='https://projectscroll.com/og-dark.png'):
     canon = canon or 'https://projectscroll.com/'+path.replace('index.html','')
     head=f'''<!doctype html>
 <html lang="en">
@@ -35,16 +35,16 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
 <link rel="icon" href="/icons/icon-32.png" type="image/png" sizes="32x32">
-<link rel="alternate icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
-<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="alternate icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png?v=2">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="Project Scroll field notes" href="/feed.xml">
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=63">
+<link rel="stylesheet" href="/site.min.css?v=64">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"href_matches":"/*"}},{{"not":{{"href_matches":"/sample/*"}}}},{{"not":{{"href_matches":"/*.pdf"}}}}]}},"eagerness":"moderate"}}]}}</script>
 </head>
 <body>
@@ -83,11 +83,12 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <nav aria-label="Footer">
       <a href="/">Home</a><a href="/#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/#studio">Studio</a><a href="/records/">Where the records are</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/badges/">Your badges</a><a href="/privacy/">Privacy</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter's worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
     </nav>
-    <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a> · <button type="button" class="lanternbtn" id="lanternBtn" hidden>Put out the lantern</button></p>
+    <p class="cite">To cite a page: Project Scroll, “[page title],” projectscroll.com/[path], dated as shown on the page, accessed [date]. Quote the date on the page, not today’s.</p>
+<p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a> · <button type="button" class="lanternbtn" id="lanternBtn" hidden>Put out the lantern</button></p>
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SPHRLR. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=63" defer></script>
+<script src="/site.min.js?v=64" defer></script>
 </body>
 </html>
 '''
@@ -140,7 +141,8 @@ if __name__=='__main__':
         <ul class="dis">
           <li><a href="https://michigan.access.preservica.com/death-certificates-1897-1952/">Archives of Michigan, death certificates 1897–1952</a>. Free; for most years you can open the certificate itself, in the original handwriting.</li>
           <li><a href="https://www.familysearch.org">FamilySearch</a>. Birth, marriage and death records from all over the world, free with an account.</li>
-          <li><a href="https://www.freebmd.org.uk">FreeBMD</a>. A free index of births, marriages and deaths in England and Wales from 1837; copies can be ordered from the <a href="https://www.gov.uk/order-copy-birth-death-marriage-certificate">General Register Office</a>, for a fee.</li>
+          <li><a href="https://michiganology.org/vital-records/">Michiganology: vital records</a>. The State of Michigan’s own index to its births, marriages and deaths.</li>
+          <li><a href="https://quod.lib.umich.edu/m/micounty/">Michigan County Histories and Atlases</a>. The University of Michigan’s free scans of the county histories, Rogers, Mathews and Glover among them.</li>
           <li><a href="https://www.findagrave.com">Find a Grave</a>. Free transcriptions and photographs of gravestones. Read the stone on paper.</li>
         </ul>
         <p><b>Tip:</b> read every box, including the small print at the bottom. Ages are often given to the day, in years, months and days. Count back from the date of death and you have a birth date to check against everything else. Just remember the informant gave that age too.</p>
@@ -160,7 +162,14 @@ if __name__=='__main__':
     <ul class="notelist">
           <li><a href="/notes/one-letter-two-certificates/">One Letter, Two Certificates</a><span>No. 1 · 17 October 2026 · What to do when two old records tell you two different things.</span></li>
         </ul>
-        <p><a class="btn dl" href="/worksheet/project-scroll-hunters-worksheet.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The hunter's worksheet (PDF)</a></p>
+            <h2>Still open at the desk</h2>
+    <ul class="dis">
+      <li><b>Case 10.</b> The next witnesses are a local newspaper notice from the weeks after the pioneer’s death, his probate file, and the cemetery’s burial record.</li>
+      <li><b>Person of the month.</b> James M. Shepard was three in 1846. Who told him the lodge’s story?</li>
+      <li><b>Case 1.</b> Did the joke lodge’s charter ever exist as a document, or only as a word in a retelling?</li>
+    </ul>
+    <p class="note">When one is answered, it moves into the field notes.</p>
+<p><a class="btn dl" href="/worksheet/project-scroll-hunters-worksheet.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The hunter's worksheet (PDF)</a></p>
     ''', og='https://projectscroll.com/og/notes.jpg')
 
     page('404.html','Not in the record · Project Scroll','This page is not in the record.',

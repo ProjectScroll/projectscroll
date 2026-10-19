@@ -25,7 +25,33 @@
      "url": "http://name.umdl.umich.edu/BAD0870.0001.001"
     }
    ],
-   "post": "https://www.facebook.com/comparativeovations/posts/pfbid02kNrY5zSfjzqrtEPnhHMZtHYXuuuMjvLw3ZANME5PfBcnNVSwsUSEqyVJajL9TAnbl"
+   "post": "https://www.facebook.com/comparativeovations/posts/pfbid02kNrY5zSfjzqrtEPnhHMZtHYXuuuMjvLw3ZANME5PfBcnNVSwsUSEqyVJajL9TAnbl",
+   "frompost": {
+    "lead": "Somebody lost a lodge. It was here.",
+    "photos": [
+     {
+      "src": "/img/pages/rogers-1875-p253",
+      "w": 700,
+      "h": 1091,
+      "alt": "Page 253 of Rogers’s 1875 History of Cass County, with the paragraphs on the 1846 lodge boxed in red.",
+      "cap": "Rogers, 1875, p. 253: the first printing of the 1846 lodge, as James M. Shepard told it."
+     },
+     {
+      "src": "/img/pages/rogers-1875-p254",
+      "w": 700,
+      "h": 1089,
+      "alt": "Page 254 of Rogers’s 1875 History of Cass County, the end of the lodge story boxed in red.",
+      "cap": "Rogers, p. 254. Just below the box: “the charter (?) members.” There is the question mark."
+     },
+     {
+      "src": "/img/pages/mathews-1882-p174",
+      "w": 700,
+      "h": 1012,
+      "alt": "Page 174 of Mathews’s 1882 History of Cass County, Michigan, the lodge story under its own heading.",
+      "cap": "Mathews, 1882, p. 174: the same story seven years later. The question mark is gone."
+     }
+    ]
+   }
   },
   {
    "n": 2,
@@ -51,7 +77,26 @@
      "url": "http://name.umdl.umich.edu/ARH7771.0001.001"
     }
    ],
-   "post": "https://www.facebook.com/comparativeovations/posts/pfbid0oKDvjNjFS2SpHmcf3bhAeLVbB8zJ7euk5q339t2FadCmxyMEHVWvod1Q6JvCSVLbl"
+   "post": "https://www.facebook.com/comparativeovations/posts/pfbid0oKDvjNjFS2SpHmcf3bhAeLVbB8zJ7euk5q339t2FadCmxyMEHVWvod1Q6JvCSVLbl",
+   "frompost": {
+    "lead": "The hotel that walked away.",
+    "photos": [
+     {
+      "src": "/img/tn-corner-1860",
+      "w": 900,
+      "h": 606,
+      "alt": "The hotel’s block on the 1860 map of Cassopolis, the word Hotel engraved on the corner lot.",
+      "cap": "The hotel’s block on the 1860 Geil, Harley & Siverd map. Library of Congress."
+     },
+     {
+      "src": "/img/tn-corner-today",
+      "w": 900,
+      "h": 606,
+      "alt": "The same corner of Broadway and State Street on today’s street map.",
+      "cap": "The northwest corner of Broadway and State Street today. The Union Hotel stood here."
+     }
+    ]
+   }
   },
   {
    "n": 3,
@@ -149,7 +194,19 @@
      "label": "Browse the certificates ›"
     }
    ],
-   "post": "https://www.facebook.com/projectscroll/posts/pfbid0xb5o3WoHejcD9cwgAptCNTpjGwaQHxEs9ZVQ2FBypAqQK63A2aArdWvyTemB5hfyl"
+   "post": "https://www.facebook.com/projectscroll/posts/pfbid0xb5o3WoHejcD9cwgAptCNTpjGwaQHxEs9ZVQ2FBypAqQK63A2aArdWvyTemB5hfyl",
+   "frompost": {
+    "lead": "One letter. That’s all it was.",
+    "photos": [
+     {
+      "src": "/img/two-certificates",
+      "w": 1400,
+      "h": 933,
+      "alt": "Two Michigan death certificates side by side.",
+      "cap": "Two certificates, twenty-three years apart, and one middle initial that only one of them has."
+     }
+    ]
+   }
   }
  ]
 }

@@ -86,7 +86,7 @@ G = [
  ('Ahnentafel', 'German for “ancestor table.” A numbering system for a pedigree: the subject is 1, a person’s father is double their number and their mother double plus one. So 2 is the father, 3 the mother, 4 the father’s father.'),
  ('Census', 'A count of the population. The United States has taken one every ten years since 1790; from 1850 it names every free person in the household (enslaved people were counted on separate schedules, usually without names, until 1870). Most of the 1890 census was destroyed after a fire in 1921. Each census is opened to the public 72 years after it was taken.'),
  ('Consort', 'A husband or wife. Often seen on old gravestones: “Mary, consort of John Smith.”'),
- ('County history', 'The big county histories printed from the 1870s to the 1910s. Many biographies in them were paid for by the people they describe, so they tend to be accurate on names and dates and generous on everything else.'),
+ ('County history', 'The big county histories printed from the 1870s to the 1910s. Many biographies in them were paid for by the people they describe, so they tend to be reliable on what the family knew well, and generous on everything else; dates and places still need a document.'),
  ('Deed', 'The written record of land changing hands, copied into the county’s deed books. Deeds often name wives, heirs and neighbors, and sometimes say where a seller had moved to.'),
  ('Double dating', 'Dates such as “10 February 1731/2.” Before 1752, England and its colonies began the new year on 25 March, so January to March dates were often written with both years.'),
  ('Et ux.', 'Latin, “and wife,” in deeds and court records: “John Smith et ux.” means John and his wife.'),
@@ -158,6 +158,8 @@ about = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li><b>Corrections are welcome.</b> If you know better, tell us. The record is bigger than any one of us.</li>
       <li><b>Places and people are respected.</b> The hunt never asks anyone to dig, to disturb a grave or a mound, or to go looking for anyone’s home.</li>
     </ul>
+    <h2>The record behind this site</h2>
+    <p>The dates on the scroll, the person of the month and the then-and-now maps are built from the same sources the hunt asks you to open: Rogers (1875), Mathews (1882), Glover (1906), the 1860 wall map at the Library of Congress, and Michigan death certificates at the Archives of Michigan. Where a page of this site makes a claim, the source is on the page or one click away. If it is not, that is a correction we owe.</p>
     <h2>Where it started</h2>
     <p>Project Scroll began in Cassopolis, Michigan, with a few questions the county history couldn’t answer. It doesn’t stop there. The hunt and the desk now take on questions from anywhere the records reach.</p>
     <p class="center"><a class="btn" href="/#hunt">Play the hunt</a> <a class="btn" href="/#services">Research services</a> <a class="btn" href="/#studio">Imaging, design and video</a> <a class="btn" href="/#contact">Get in touch</a></p>
@@ -186,7 +188,7 @@ priv = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <h2>Sent to other sites</h2>
     <ul class="dis">
       <li><b>The map room.</b> The 1860 wall map is shown straight from the Library of Congress, so your browser asks the Library’s image server (tile.loc.gov) for the pieces of the map you look at.</li>
-      <li><b>Facebook.</b> Links to Project Scroll’s Facebook page and Messenger simply take you there. Nothing from Facebook is loaded on these pages until you click.</li>
+      <li><b>Facebook.</b> Links to Project Scroll’s Facebook pages and Messenger simply take you there. On a case page you can choose to show the live Facebook post; only then does your browser load it from Facebook, under Facebook’s own terms. Until you click, nothing from Facebook is loaded.</li>
     </ul>
     <h2>When you write to us</h2>
     <p>Messages reach us through Facebook, under Facebook’s own privacy terms. What you tell us about your family is used to answer your question and for nothing else.</p>

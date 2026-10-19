@@ -934,6 +934,47 @@ try{ (function(){
     if (btn){ btn.hidden=false; const sync=function(){ btn.setAttribute('aria-pressed', String(!off)); btn.textContent = off ? 'Light the lantern' : 'Put out the lantern'; };
       sync(); btn.addEventListener('click', function(){ off=!off; try{ localStorage.setItem('ps-lantern', off?'off':'on'); }catch(e){} if (off) l.classList.remove('on'); sync(); }); }
   })(); }catch(err){ psFail(err); }
+  /* ---------- case pages: the live Facebook post, loaded only when asked ---------- */
+  try{ (function(){
+    document.querySelectorAll('.fp-live[data-post]').forEach(function(box){
+      const btn=box.querySelector('button'); if (!btn) return;
+      btn.addEventListener('click', function(){
+        const url=box.dataset.post, w=Math.min(750, Math.max(350, box.clientWidth-2));
+        const dark=(document.documentElement.dataset.theme||'')==='dark' || (!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+        const f=document.createElement('iframe'); f.className='fp-frame'; f.title='The post on Facebook';
+        f.src='https://www.facebook.com/plugins/post.php?href='+encodeURIComponent(url)+'&show_text=true&width='+w+(dark?'&theme=dark':'');
+        f.width=String(w); f.height='720'; f.style.border='0'; f.setAttribute('scrolling','no'); f.setAttribute('allowfullscreen','true'); f.setAttribute('loading','lazy');
+        f.setAttribute('allow','autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share');
+        box.innerHTML=''; box.appendChild(f); box.classList.add('loaded');
+        const n=document.createElement('p'); n.className='note'; n.innerHTML='Shown by Facebook. If it stays blank, <a href="'+url+'">open the post there</a>.'; box.appendChild(n);
+      });
+    });
+  })(); }catch(err){ psFail(err); }
+
+  /* ---------- case pages: tap a page image to see it large ---------- */
+  try{ (function(){
+    const imgs=document.querySelectorAll('.fp-pics img'); if (!imgs.length) return;
+    imgs.forEach(function(img){ img.tabIndex=0; img.setAttribute('role','button'); img.setAttribute('aria-label','Enlarge: '+img.alt);
+      const open=function(){ const z=document.createElement('div'); z.className='fp-zoom'; z.setAttribute('role','dialog'); z.setAttribute('aria-label',img.alt);
+        const big=document.createElement('img'); big.alt=img.alt; big.src=img.currentSrc.replace('-700.','-1200.').replace('-640.','.').replace('-1000.','.'); big.onerror=function(){ big.src=img.currentSrc; };
+        const x=document.createElement('button'); x.type='button'; x.className='fp-x'; x.setAttribute('aria-label','Close'); x.textContent='×';
+        z.appendChild(big); z.appendChild(x); document.body.appendChild(z); document.body.style.overflow='hidden';
+        const close=function(){ z.remove(); document.body.style.overflow=''; img.focus({preventScroll:true}); document.removeEventListener('keydown', esc); };
+        const esc=function(e){ if (e.key==='Escape') close(); };
+        z.addEventListener('click', close); document.addEventListener('keydown', esc); x.focus(); };
+      img.addEventListener('click', open); img.addEventListener('keydown', function(e){ if (e.key==='Enter' || e.key===' '){ e.preventDefault(); open(); } }); });
+  })(); }catch(err){ psFail(err); }
+
+  /* ---------- the case board: your own progress on this device ---------- */
+  try{ (function(){
+    const tally=document.querySelector('#cases .tally'); if (!tally) return;
+    let mine=[], notes=0; try{ mine=JSON.parse(localStorage.getItem('ps-mine')||'[]')||[]; for (let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); if (/^ps-note-/.test(k) && (localStorage.getItem(k)||'').trim()) notes++; } }catch(e){ return; }
+    if (!mine.length && !notes) return;
+    const p=document.createElement('p'); p.className='mytally';
+    p.textContent='On this device: following '+mine.length+(mine.length===1?' case':' cases')+(notes?', with notes on '+notes:'')+'.';
+    tally.insertAdjacentElement('afterend', p);
+  })(); }catch(err){ psFail(err); }
+
   /* ---------- Part I: the tally counts up when it comes into view ---------- */
   try{ (function(){
     const tally=document.getElementById('tlTally'); if (!tally || !('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;

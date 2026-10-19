@@ -7,10 +7,23 @@ D=json.load(open(f'{R}/cases.json')); C=D['cases']; FB='https://www.facebook.com
 esc=html.escape
 for c in C:
     n=c['n']; solved=c.get('solved')
-    status=f'<span class="status solved">Solved</span> Cracked by {esc(solved)}' + (f' on {esc(c["solvedOn"])}' if c.get('solvedOn') else '') if solved else '<span class="status">Open</span> Nobody has cracked it yet.'
+    status=f'<span class="status solved">Solved</span> Cracked by {esc(solved)}' + (f' on {esc(c["solvedOn"])}' if c.get('solvedOn') else '') if solved else ('<span class="status">Practice</span> Nobody has settled it yet, including the desk. Bring the next witness, a newspaper notice or the probate file, with its page, and you are the first name on the board.' if n==10 else '<span class="status">Open</span> Nobody has cracked it yet.')
     hint=f'<h2>A hint</h2><p>{esc(c["hint"])}</p>' if c.get('hint') else ''
     keep=f'<p><a class="btn" href="/keepsake/?case={n}">Solver’s keepsake</a></p>' if solved else ''
     extra='<p><a href="/notes/one-letter-two-certificates/">Read the full case in the field notes</a>.</p>' if n==10 else ''
+    fp=c.get('frompost'); frompost=''
+    if fp and c.get('post'):
+        pics=''.join(f'<figure><picture><source type="image/webp" srcset="{x["src"]}{"-700" if "/pages/" in x["src"] else ""}.webp"><img src="{x["src"]}{"-700" if "/pages/" in x["src"] else ""}.jpg" width="{x["w"]}" height="{x["h"]}" loading="lazy" decoding="async" alt="{esc(x["alt"])}"></picture><figcaption>{x["cap"]}</figcaption></figure>' for x in fp['photos'])
+        frompost=f'''    <section class="frompost" aria-labelledby="fp{n}">
+      <h2 id="fp{n}">From the post</h2>
+      <p class="fp-lead">“{esc(fp['lead'])}” <a href="{esc(c['post'])}">Read the whole post on Facebook ›</a></p>
+      <div class="fp-pics n{len(fp['photos'])}">{pics}</div>
+      <div class="fp-live" id="fplive{n}" data-post="{esc(c['post'])}">
+        <button type="button" class="btn" id="fpload{n}">Show the live post, with its likes and comments</button>
+        <p class="note">Loads from Facebook only when you ask. <a href="/privacy/">What this site keeps.</a></p>
+      </div>
+    </section>
+'''
     if c.get('start'):
         items=''.join(f'<li>{x["text"]} <a href="{esc(x["url"])}">{esc(x.get("label","Read it free online ›"))}</a></li>' for x in c['start'])
         starthere=f'<aside class="starthere" aria-labelledby="sh{n}"><h2 id="sh{n}">Start here</h2><ol>{items}</ol><p class="note">These are the first pages to open. The answer is in the record; the rest of the trail is yours.</p></aside>'
@@ -22,13 +35,14 @@ for c in C:
     <h1>{esc(c['question'])}</h1>
     <p class="casestatus">{status}</p>
     <p class="note">Opened {esc(c['opened'])}.</p>
-    {starthere}{hint}{extra}
+    {starthere}{frompost}{hint}{extra}
     <h2>How to answer</h2>
     <ol class="steps">
-      <li><b>Search the record.</b> Start with the “Start here” box above, then follow where it leads: old county histories, maps, certificates and newspapers, many of them free online.</li>
+      <li><b>Search the record.</b> {'The first sources are on the second hall’s page, behind the first hall’s last door; then follow where they lead:' if c['hall']=='h2' else 'Start with the “Start here” box above, then follow where it leads:'} old county histories, maps, certificates and newspapers, many of them free online.</li>
       <li><b>Post your answer</b> in the comments on <a href="{FB}">Project Scroll’s Facebook page</a>, and say exactly where you found it: the book or record, the page, and a link if there is one.</li>
       <li><b>Get named.</b> The first solver with the page to prove it is named in the next post and on this board.</li>
     </ol>
+    <div class="solvedbox"><h3>What counts as solved</h3><p>A case is solved when an answer is posted with the record it came from: the book or document, the page, and a link if there is one. The desk checks the page. If it says what you say it says, your name goes on the board, the case is marked Solved with your source beside it, and the next post names you. An answer without the page stays a guess, however right it is.</p></div>
     <p class="goodanswer"><b>A good answer looks like this:</b> “Case {n}: [your answer]. Found in [the book or record], p. [page], [link].” Use <b>Copy as a Facebook answer</b> in your notebook below, and it is laid out for you.</p>
     <p class="note">Everything is solved on paper. Never dig, never go near a grave, and never set foot on anyone’s land.</p>
     <p class="casetools"><span>Tools for the hunt:</span> <a href="/records/">Where the records are</a> <a href="/glossary/">The glossary</a> <a href="/toolkit/">The toolkit</a> <a href="/guide/old-handwriting/">Reading the old hand</a> <a href="/worksheet/project-scroll-hunters-worksheet.pdf">The hunter’s worksheet (PDF)</a></p>
