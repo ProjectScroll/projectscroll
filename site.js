@@ -733,6 +733,23 @@ try{ (function(){
   document.querySelectorAll('tr[data-touched]').forEach(function(tr){ const td=tr.querySelector('td.hall'); if (!td) return; const s=document.createElement('small'); s.className='touched'; s.textContent='touched '+tr.dataset.touched; td.appendChild(s); });
 })(); }catch(err){ psFail(err); }
 
+/* ---------- the masthead strip: a different plate each visit, and a slow change while it is in view ---------- */
+try{ (function(){
+  const mh=document.getElementById('masthead'); if (!mh) return;
+  const set=mh.dataset.set.split(';').map(function(x){ const p=x.split('|'); return {id:p[0], cap:p[1]}; });
+  const cap=mh.querySelector('.mh-cap'); let cur=mh.querySelector('.mh-pic');
+  let i=0; try{ i=(parseInt(localStorage.getItem('ps-strip')||'0',10)+1)%set.length; localStorage.setItem('ps-strip', String(i)); }catch(e){ i=Math.floor(Math.random()*set.length); }
+  const make=function(k){ const p=document.createElement('picture'); p.className='mh-pic'; p.innerHTML='<source media="(max-width:700px)" srcset="/img/strip/'+k.id+'-800.webp"><img width="1600" height="200" alt="" decoding="async" loading="lazy">'; p.querySelector('img').src='/img/strip/'+k.id+'.webp'; return p; };
+  const show=function(k){ const n=make(k); mh.insertBefore(n, cap); const img=n.querySelector('img');
+    const go=function(){ n.classList.add('on'); const old=cur; cur=n; cap.textContent=k.cap; setTimeout(function(){ if (old && old!==cur) old.remove(); }, 4200); };
+    if (img.complete) go(); else img.addEventListener('load', go, {once:true}); };
+  if (i!==0) show(set[i]);
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  let seen=false, t=null;
+  const tick=function(){ i=(i+1)%set.length; show(set[i]); try{ localStorage.setItem('ps-strip', String(i)); }catch(e){} };
+  new IntersectionObserver(function(es){ seen=es[0].isIntersecting; clearInterval(t); if (seen) t=setInterval(tick, 45000); }, {threshold:.5}).observe(mh);
+})(); }catch(err){ psFail(err); }
+
 /* ---------- the gold diamond on the rule answers, if asked ---------- */
 try{ (function(){
   const bar=document.querySelector('.bar-in'); if (!bar) return;
