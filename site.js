@@ -501,6 +501,7 @@ try{ (function(){
       showing=false; tq.unshift(id); requestAnimationFrame(function(){ requestAnimationFrame(showNext); }); return; }
     toastEl.innerHTML='<svg viewBox="0 0 40 40" aria-hidden="true"><path class="tin" d="M20 2l4.7 9.6 10.5 1.5-7.6 7.4 1.8 10.5L20 26l-9.4 5 1.8-10.5-7.6-7.4 10.5-1.5z"/><circle cx="20" cy="17.5" r="4.2" class="boss"/></svg><span><small>Badge earned</small><b></b><a href="/badges/">Your badges</a></span>';
     toastEl.querySelector('b').textContent=name(id);
+    { const x=document.createElement('button'); x.type='button'; x.className='bt-x'; x.setAttribute('aria-label','Close'); x.textContent='×'; x.addEventListener('click', function(){ toastEl.classList.remove('on'); }); toastEl.appendChild(x); }
     requestAnimationFrame(function(){ toastEl.classList.add('on'); });
     setTimeout(function(){ toastEl.classList.remove('on'); setTimeout(function(){ showing=false; showNext(); }, 450); }, 4200);
   };
@@ -687,19 +688,22 @@ try{ (function(){
 /* ---------- Ctrl+K or Cmd+K opens the search, as in most modern apps ---------- */
 try{ addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && (e.key==='k' || e.key==='K')){ const b=document.getElementById('searchBtn'); if (b){ e.preventDefault(); b.click(); } } }); }catch(err){ psFail(err); }
 
-/* ---------- the top bar: a gold tab hangs from the rule and names the part you are reading ---------- */
-try{ (function(){
+/* ---------- the top bar: a gold tab names the part you are in while you scroll, then tucks away ---------- */
+(function(){
   const bi=document.querySelector('.bar-in'), bar=document.querySelector('.bar'); if (!bi || !bar) return;
   const tab=document.createElement('a'); tab.className='bar-tab'; tab.setAttribute('aria-hidden','true'); tab.tabIndex=-1; bi.appendChild(tab);
-  const sync=function(){ const rail=document.querySelector('.partrail'); const a=rail && rail.classList.contains('show') && rail.querySelector('a[aria-current="true"]');
-    if (!a){ bar.classList.remove('has-tab'); return; }
-    const num=(a.querySelector('b')||{}).textContent||'', title=(a.querySelector('span')||{}).textContent||'';
-    if (tab.dataset.k!==num){ tab.dataset.k=num; tab.innerHTML='<b>Part '+num+'</b> · '+title; tab.href=a.getAttribute('href'); tab.classList.remove('flip'); void tab.offsetWidth; tab.classList.add('flip'); }
+  const parts=[].slice.call(document.querySelectorAll('main section')).filter(function(s){ return s.id && s.querySelector(':scope > .part'); });
+  if (!parts.length) return;
+  let q=0, hideT=0;
+  const sync=function(){ q=0; const line=bar.getBoundingClientRect().bottom+24; let cur=null;
+    parts.forEach(function(s){ const r=s.getBoundingClientRect(); if (r.top<=line && r.bottom>line) cur=s; });
+    if (!cur){ bar.classList.remove('has-tab'); return; }
+    const pl=cur.querySelector(':scope > .part'), num=((pl && pl.firstChild && pl.firstChild.textContent)||'').replace(/^\s*Part\s*/i,'').trim(), title=((cur.querySelector('h2')||{}).textContent||'').trim();
+    if (tab.dataset.k!==cur.id){ tab.dataset.k=cur.id; tab.innerHTML='<b>Part '+num+'</b> · '+title; tab.href='#'+cur.id; tab.classList.remove('flip'); void tab.offsetWidth; tab.classList.add('flip'); }
     bar.classList.add('has-tab'); };
-  const watch=function(){ const rail=document.querySelector('.partrail'); if (!rail){ setTimeout(watch, 300); return; }
-    new MutationObserver(sync).observe(rail, {subtree:true, attributes:true, attributeFilter:['aria-current','class']}); sync(); };
-  watch();
-})(); }catch(err){ psFail(err); }
+  addEventListener('scroll', function(){ if (!q) q=requestAnimationFrame(sync); bar.classList.add('scrolling'); clearTimeout(hideT); hideT=setTimeout(function(){ bar.classList.remove('scrolling'); }, 1400); }, {passive:true});
+  sync();
+})();
 
 /* ---------- Part I: say which stretch of the scroll is in view ---------- */
 try{ (function(){

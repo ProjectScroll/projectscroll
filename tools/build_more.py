@@ -135,7 +135,7 @@ about = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <h2>What we offer</h2>
     <p><b>Professional research.</b> Lost ancestors, family histories and registers, family legends tested against the record, forgotten places, maps and land surveys, heirlooms, lodges and old societies, historical research for authors, films and local groups, and a second pair of eyes on anything you mean to publish. <a href="/#services">Research services</a>.</p>
     <p><b>Imaging, design and video.</b> Digital imaging of photographs, documents, maps and heirlooms; imaging analysis of faded ink, damaged pages and the details in old photographs; image creation and restoration; graphic design for family books, charts, covers and keepsakes; photography; and video production, from family-history films to recorded interviews.</p>
-    <p><b>3D and living documents.</b> Landscapes modelled in three dimensions from public LiDAR elevation surveys, 3D animations and fly-throughs, every reconstruction labelled as one, and living documents: research papers, timelines and family records that keep growing as new evidence turns up, with every change dated. <a href="/#studio">The studio</a>.</p>
+    <p><b>3D and living documents.</b> Landscapes modeled in three dimensions from public LiDAR elevation surveys, 3D animations and fly-throughs, every reconstruction labeled as one, and living documents: research papers, timelines and family records that keep growing as new evidence turns up, with every change dated. <a href="/#studio">The studio</a>.</p>
     <p>Every commission starts with an honest first read: what can be done, and what it will take, before you commit to anything.</p>
     <h2>What we believe</h2>
     <ul class="dis">
@@ -188,6 +188,7 @@ badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <h1>Your tin badges</h1>
     <p class="lede">In the winter of 1846–47, two hundred badges of the “Ancient and Honorable Order” were worn at a ball in Cassopolis. Not one is known to survive. Here, you can earn your own, one for each thing you do as you explore the site.</p>
     <p class="brank" id="brank"></p>
+    <ol class="rladder" id="rladder" aria-label="The five ranks"></ol>
     <p class="bcount" id="bcount" aria-live="polite"></p>
     <ol class="badgebook" id="badgebook"></ol>
     <div class="sayword" id="sayword">
@@ -224,6 +225,9 @@ badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
         cnt.textContent=n+' of '+window.PS_BADGES.length+' badges earned';
         let rk=window.PS_RANKS[0][1]; window.PS_RANKS.forEach(function(r){ if (n>=r[0]) rk=r[1]; });
         document.getElementById('brank').innerHTML='Your rank: <b></b>'; document.querySelector('#brank b').textContent=rk;
+        const lad=document.getElementById('rladder'); if (lad){ lad.innerHTML=''; window.PS_RANKS.forEach(function(r,i){ const li=document.createElement('li'); const nx=window.PS_RANKS[i+1];
+          li.innerHTML='<b></b><span></span>'; li.querySelector('b').textContent=r[1]; li.querySelector('span').textContent=(r[0]===0?'from the start':r[0]+' badges'+(nx?'':' (every one)'));
+          if (r[1]===rk) li.className='here'; else if (n>=r[0]) li.className='past'; lad.appendChild(li); }); }
         document.getElementById('second').hidden=!got.hewgag;
         document.getElementById('charterbox').hidden=(n<window.PS_BADGES.length);
       };

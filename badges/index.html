@@ -27,7 +27,7 @@
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
-<link rel="stylesheet" href="/site.min.css?v=59">
+<link rel="stylesheet" href="/site.min.css?v=60">
 <script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/sample/*"}},{"not":{"href_matches":"/*.pdf"}}]},"eagerness":"moderate"}]}</script>
 </head>
 <body>
@@ -59,6 +59,7 @@
     <h1>Your tin badges</h1>
     <p class="lede">In the winter of 1846–47, two hundred badges of the “Ancient and Honorable Order” were worn at a ball in Cassopolis. Not one is known to survive. Here, you can earn your own, one for each thing you do as you explore the site.</p>
     <p class="brank" id="brank"></p>
+    <ol class="rladder" id="rladder" aria-label="The five ranks"></ol>
     <p class="bcount" id="bcount" aria-live="polite"></p>
     <ol class="badgebook" id="badgebook"></ol>
     <div class="sayword" id="sayword">
@@ -95,6 +96,9 @@
         cnt.textContent=n+' of '+window.PS_BADGES.length+' badges earned';
         let rk=window.PS_RANKS[0][1]; window.PS_RANKS.forEach(function(r){ if (n>=r[0]) rk=r[1]; });
         document.getElementById('brank').innerHTML='Your rank: <b></b>'; document.querySelector('#brank b').textContent=rk;
+        const lad=document.getElementById('rladder'); if (lad){ lad.innerHTML=''; window.PS_RANKS.forEach(function(r,i){ const li=document.createElement('li'); const nx=window.PS_RANKS[i+1];
+          li.innerHTML='<b></b><span></span>'; li.querySelector('b').textContent=r[1]; li.querySelector('span').textContent=(r[0]===0?'from the start':r[0]+' badges'+(nx?'':' (every one)'));
+          if (r[1]===rk) li.className='here'; else if (n>=r[0]) li.className='past'; lad.appendChild(li); }); }
         document.getElementById('second').hidden=!got.hewgag;
         document.getElementById('charterbox').hidden=(n<window.PS_BADGES.length);
       };
@@ -131,6 +135,6 @@
     <p class="cipherline" aria-label="A line written in code">ESP HZCO TD SPHRLR. DLJ TE TY JZFC MLORP MZZV.</p>
   </footer>
 </div>
-<script src="/site.min.js?v=59" defer></script>
+<script src="/site.min.js?v=60" defer></script>
 </body>
 </html>
