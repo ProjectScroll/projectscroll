@@ -2662,3 +2662,16 @@ html.calm .pb-pause{display:none}
 @media print{ .hero .plate::after{display:none} }
 .hero-k .hk2{padding-left:1.15em; text-indent:-1.15em}
 .hero-k .hk2 i{text-indent:0}
+/* the gazetteer */
+table.gaz{width:100%; margin:.6rem 0 1.8rem}
+table.gaz th[scope="row"]{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.05rem; white-space:nowrap}
+table.gaz td:last-child{white-space:nowrap; text-align:right}
+table.gaz td:nth-child(2){color:var(--ink-soft); font-size:.92rem}
+@media (max-width:640px){ table.gaz th[scope="row"]{white-space:normal} }
+.townjump a.gzl{border:0; padding:0; margin:0 .2rem 0 0; font-style:italic; text-decoration:underline; text-decoration-color:color-mix(in srgb, var(--gold) 60%, transparent)}
+table.gaz{border-collapse:collapse; font-size:.95rem}
+table.gaz thead th{font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; font-weight:400; color:var(--ink-soft); text-align:left; padding:.4rem .6rem; border-bottom:1px solid var(--line)}
+table.gaz tbody th, table.gaz tbody td{padding:.55rem .6rem; border-bottom:1px solid color-mix(in srgb, var(--line) 70%, transparent); vertical-align:top; text-align:left}
+table.gaz tbody th{letter-spacing:.06em}
+table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transparent)}
+@media (max-width:640px){ table.gaz thead{display:none} table.gaz, table.gaz tbody, table.gaz tr{display:block} table.gaz tr{padding:.6rem 0; border-bottom:1px solid var(--line)} table.gaz tbody th, table.gaz tbody td{display:block; border:0; padding:.1rem 0; text-align:left!important} table.gaz td:nth-child(2){font-size:.88rem} }

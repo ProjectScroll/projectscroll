@@ -42,3 +42,4 @@
 ./sponsors/index.html
 ./terms/index.html
 ./accessibility/index.html
+./places/index.html
