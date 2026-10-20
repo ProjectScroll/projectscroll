@@ -30,12 +30,18 @@ for c in C:
     elif c['hall']=='h2':
         starthere=f'<aside class="starthere" aria-labelledby="sh{n}"><h2 id="sh{n}">Start here</h2><p>This case belongs to the second hall. Its sources are posted on the hall’s own page, and that page is behind the first hall’s last door. Find the door, and the trail starts there.</p></aside>'
     else: starthere=''
+    first=('Find the door first. This case’s sources are behind the first hall’s last case: solve that, and the trail opens.' if c['hall']=='h2' and not c.get('start') else 'Open the first source in “Start here” and read the whole passage, not only the lines that seem to answer. Copy out every name, date and place in it.')
+    ladder=f'''<aside class="hintladder" data-case="{n}" aria-labelledby="hl{n}"><h2 id="hl{n}">Stuck? Three ways in</h2><p class="note">Open them one at a time, only as far as you need. They teach the method, not the answer.</p><ol>
+      <li hidden><b>Read slowly.</b> {first}</li>
+      <li hidden><b>Every name is a lead.</b> Look each person up in a second kind of record: a census, a deed index, a plat map, a cemetery list. Where two records made by different people agree, you are on firm ground.</li>
+      <li hidden><b>Ask what the writer could not know.</b> A county history is a memory, written years later. Find a record made at the time, a newspaper, a plat, a certificate, and test the story against it. The answer is usually where the two disagree.</li>
+    </ol><p><button type="button" class="btn hl-next">Show a way in</button> <span class="hl-n" aria-live="polite"></span></p></aside>'''
     body=f'''    <p class="crumb"><a href="/#cases">← The case board</a></p>
     <p class="kicker">Case {n} · {esc(c['hallName'])}</p>
     <h1 style="view-transition-name:case-{c['n']}">{esc(c['question'])}</h1>
     <p class="casestatus">{status}</p>
     <p class="note">Opened {esc(c['opened'])}.</p>
-    {starthere}{frompost}{hint}{extra}
+    {starthere}{frompost}{hint}{ladder}{extra}
     <h2>How to answer</h2>
     <ol class="steps">
       <li><b>Search the record.</b> {'The first sources are on the second hall’s page, behind the first hall’s last door; then follow where they lead:' if c['hall']=='h2' else 'Start with the “Start here” box above, then follow where it leads:'} old county histories, maps, certificates and newspapers, many of them free online.</li>

@@ -513,7 +513,7 @@ window.PS_BADGES=[
   ['marks','Weigher','Mark a piece of evidence in “Try marking these yourself.”'],
   ['glossary','Plain English','Open a definition, or the glossary.'],
   ['mapper','Map room','Walk the 1860 wall map.'],
-  ['thennow','Then and now','Lay an 1860 town plan over today’s streets.'],
+  ['thennow','Then and now','Lay an old town plan over today’s streets.'],
   ['street','Street sleuth','Find a street that changed its name, on a then-and-now page.'],
   ['surveyor','Town surveyor','Find all twelve renamed streets in the seven towns.'],
   ['informant','Informant','Read the guide to the death certificate.'],
@@ -1294,4 +1294,30 @@ try{ (function(){
   const hit=function(){ const H=document.documentElement.scrollHeight-innerHeight; const p=H>0?scrollY/H:0; ns.forEach(function(n){ n.classList.toggle('hit', p>=parseFloat(n.dataset.y||2)-.002); }); };
   let raf=0; addEventListener('scroll', function(){ if (!raf) raf=requestAnimationFrame(function(){ raf=0; hit(); }); }, {passive:true});
   addEventListener('resize', place, {passive:true}); addEventListener('load', place); setTimeout(place, 1500); place();
+})(); }catch(err){ psFail(err); }
+
+/* ---------- Draft 121: three ways in, opened one at a time on each case, remembered on this device ---------- */
+try{ (function(){
+  [].forEach.call(document.querySelectorAll('.hintladder'), function(box){
+    const key='ps-hint-'+box.dataset.case, lis=[].slice.call(box.querySelectorAll('li')), btn=box.querySelector('.hl-next'), say=box.querySelector('.hl-n');
+    let n=0; try{ n=Math.min(lis.length, parseInt(localStorage.getItem(key)||'0',10)||0); }catch(e){}
+    const draw=function(){ lis.forEach(function(li,i){ li.hidden=i>=n; }); btn.hidden=n>=lis.length; say.textContent=n? (n+' of '+lis.length+' opened'+(n>=lis.length?'. A case solved this way still counts; the badge book will say you used the ways in.':'')) : ''; };
+    draw();
+    btn.addEventListener('click', function(){ if (n<lis.length){ n++; try{ localStorage.setItem(key, String(n)); }catch(e){} draw(); const li=lis[n-1]; li.setAttribute('tabindex','-1'); li.focus({preventScroll:false}); } });
+  });
+})(); }catch(err){ psFail(err); }
+try{ (function(){
+  /* the badge book notes the cases where the ways in were used */
+  const bb=document.getElementById('badgebook'); if (!bb) return; const used=[];
+  for (let i=0;i<localStorage.length;i++){ const k=localStorage.key(i), m=/^ps-hint-(\d+)$/.exec(k||''); if (m && +localStorage.getItem(k)>0) used.push([+m[1], +localStorage.getItem(k)]); }
+  if (!used.length) return; used.sort(function(a,b){ return a[0]-b[0]; });
+  const p=document.createElement('p'); p.className='note'; p.textContent='Ways in opened: '+used.map(function(u){ return 'Case '+u[0]+' ('+u[1]+' of 3)'; }).join(', ')+'.'; bb.parentNode.insertBefore(p, bb.nextSibling);
+})(); }catch(err){ psFail(err); }
+try{ (function(){
+  /* the three steps in, for newcomers: each ticks itself off as its badge is earned, and the box goes once all three are done or it is hidden */
+  const box=document.getElementById('startPath'); if (!box || !window.psBadges) return;
+  let off=false; try{ off=localStorage.getItem('ps-start-off')==='1'; }catch(e){}
+  const draw=function(){ const got=window.psBadges(); let done=0; [].forEach.call(box.querySelectorAll('li'), function(li){ const d=!!got[li.dataset.b]; li.classList.toggle('done', d); if (d) done++; }); box.hidden=off || done>=3; };
+  draw(); document.addEventListener('ps-badge', draw);
+  box.querySelector('.sp-x').addEventListener('click', function(){ off=true; try{ localStorage.setItem('ps-start-off','1'); }catch(e){} draw(); });
 })(); }catch(err){ psFail(err); }

@@ -2732,3 +2732,24 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 .nm-h{display:block; font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft)}
 .nm-u{color:var(--rule); margin-left:.15rem; cursor:help}
 @media (max-width:640px){ .nm-bar{top:3.4rem} }
+/* the sources shelf */
+.shelf{list-style:none; padding:0; margin:.6rem 0 1.6rem}
+.shelf li{padding:.7rem 0; border-bottom:1px solid var(--line); line-height:1.45}
+.sh-h{font-size:.85rem; color:var(--ink-soft)}
+.sh-n{font-size:.95rem; color:var(--ink-soft)}
+.sh-t{font-size:.98rem}
+
+.hintladder{margin:1.6rem 0; padding:1rem 1.2rem; border:1px dashed var(--gold,#b8963e); border-radius:4px; background:var(--paper-2)}
+.hintladder h2{margin-top:0}
+.hintladder ol{margin:.6rem 0 .8rem; padding-left:1.3rem}
+.hintladder li{margin:.4rem 0}
+.hl-n{font-size:.9rem; color:var(--ink-soft)}
+
+.startpath{position:relative; margin:1.2rem 0 .6rem; padding:.8rem 1rem .7rem; border:1px solid var(--line); border-left:3px solid var(--gold,#b8963e); border-radius:4px; background:var(--paper-2); max-width:36rem}
+.sp-k{margin:0 0 .3rem; font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+.startpath ol{margin:0; padding-left:1.4rem}
+.startpath li{margin:.25rem 0}
+.startpath li span{color:var(--ink-soft); font-size:.95rem}
+.startpath li.done a{text-decoration:line-through; text-decoration-color:var(--gold,#b8963e)}
+.startpath li.done::marker{content:"✓  "; color:var(--ledger)}
+.sp-x{position:absolute; top:.5rem; right:.6rem; background:none; border:0; font:inherit; font-size:.85rem; color:var(--ink-soft); cursor:pointer; text-decoration:underline}
