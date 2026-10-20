@@ -116,7 +116,7 @@ def build(t):
     </div>
     <div class="tnwrap">
       <div id="tnMap" class="osd tnmap" role="application" aria-label="The {Y} plan of {t["name"]} laid over a modern street map"></div>
-      <div class="tnswipe" id="tnLine" hidden><button type="button" class="tnhandle" id="tnHandle" aria-label="Drag to move the dividing line. Left and right arrow keys also move it."><span aria-hidden="true">◂ ▸</span></button></div>
+      <div class="tnswipe" id="tnLine" data-year="{Y}" hidden><button type="button" class="tnhandle" id="tnHandle" aria-label="Drag to move the dividing line. Left and right arrow keys also move it."><span aria-hidden="true">◂ ▸</span></button></div>
     </div>
   </div>
     <h2>Things to look for</h2>
