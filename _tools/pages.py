@@ -94,7 +94,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=742f46ec">
+<link rel="stylesheet" href="/site.min.css?v=2552e569">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"selector_matches":".bar a, footer nav a, .partrail a, .search-res a, .crumb a"}},{{"href_matches":"/*"}},{{"not":{{"href_matches":"/*.pdf"}}}}]}},"eagerness":"moderate"}}]}}</script>
 </head>
 <body>
@@ -135,6 +135,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <div>
       <p class="motto">Every clue is true. Every answer is in the record.</p>
       <p class="fmail"><a href="mailto:research@projectscroll.com">research@projectscroll.com</a></p>
+      <p class="fmail"><a href="/sponsors/">Sponsor the hunt</a></p>
       <a class="fbfollow" href="https://www.facebook.com/projectscroll/" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21z"/></svg>Follow the hunt on Facebook</a>
       <p>Project Scroll is independent historical research from the St. Joseph River Valley (<a href="/cassopolis/">Cassopolis</a>, Dowagiac, Niles and beyond), with a studio for digital imaging, design, photography, 3D LiDAR, animation and video. Some mysteries open in an afternoon. Some take a season.</p>
     </div>
@@ -146,7 +147,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=742f46ec" defer></script>
+<script src="/site.min.js?v=2552e569" defer></script>
 </body>
 </html>
 '''

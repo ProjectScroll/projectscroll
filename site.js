@@ -524,9 +524,11 @@ window.PS_BADGES=[
   ['halter','Cipher breaker','Decode the hidden line, and say the word in your badge book.'],
   ['charter','Second cipher','Break the second line, which appears in your badge book once the first is broken.'],
   ['diamond','Eye for gold','Ask the gold diamond on the rule, and say its answer in your badge book.'],
+  ['benefactor','Benefactor','Keep the hunt free as a friend of the hunt.'],
+  ['patron','Patron','Fund a case on the board and see it opened.'],
   ['solver','Named on the board','Crack a case and be named as its solver on the case board.']
 ];
-window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the Badge'],[15,'Recorder of the Hall'],[20,'Keeper of the Hall']];
+window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the Badge'],[15,'Recorder of the Hall'],[22,'Keeper of the Hall']];
 try{ (function(){
   const KEY='ps-badges'; let got={};
   try{ got=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; if (got.hewgag && !got.halter) got.halter=got.hewgag; if (got.credo && !got.charter) got.charter=got.credo; if (got.lamp && !got.lantern) got.lantern=got.lamp; delete got.hewgag; delete got.credo; delete got.lamp; }catch(e){ got={}; }

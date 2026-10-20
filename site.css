@@ -2356,3 +2356,31 @@ footer.site .motto::before, footer.site .motto::after{content:""; width:3rem; he
 /* ===== Draft 99: the footnote sits with the headline it answers ===== */
 .hero .foot{margin:0 0 1.3rem; font-size:.98rem; color:var(--ink-soft)}
 .hero .foot span{color:var(--rule); font-weight:700; margin-right:.2rem}
+
+/* ===== Draft 100: the sponsors page and the sponsors' strip ===== */
+.pledge{margin:1.6rem 0; padding:1.1rem 1.3rem; border:1px solid color-mix(in srgb, var(--gold) 60%, transparent); border-left:4px solid var(--gold); background:color-mix(in srgb, var(--paper-2) 60%, transparent); border-radius:4px}
+.pledge h2{margin:0 0 .5rem; font-size:1.25rem}
+.pledge p{margin:0}
+.tiers{display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1rem 0 1.6rem}
+.tier{border:1px solid var(--line); border-top:3px solid var(--gold); border-radius:4px; padding:1rem 1.1rem 1.1rem; background:var(--paper); display:flex; flex-direction:column}
+.tier-k{margin:0; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ledger)}
+.tier h3{margin:.15rem 0 .1rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.45rem}
+.tier-amt{margin:0 0 .6rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.1rem; color:var(--gold-lo)}
+.tier ul{margin:0 0 .7rem; padding-left:1.1rem; font-size:.95rem; line-height:1.5}
+.tier-note{font-size:.88rem; color:var(--ink-soft); margin:0 0 .9rem; flex:1}
+.tier > p:last-child{margin:0}
+.ways{padding-left:1.2rem; line-height:1.55}
+.ways li{margin:.4rem 0}
+table.ledger{width:100%; border-collapse:collapse; margin:.6rem 0 1.6rem; font-size:.95rem}
+table.ledger caption{text-align:left; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-lo); padding:0 0 .4rem}
+table.ledger th, table.ledger td{text-align:left; padding:.5rem .6rem; border-bottom:1px solid var(--line); vertical-align:top}
+table.ledger th{font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft)}
+@media (max-width:640px){ .tiers{grid-template-columns:1fr} }
+/* the sponsors' strip on the home page: three business cards, as in an old county paper */
+.sponsors{max-width:var(--col); margin:0 auto; padding:1.6rem 0 1.2rem; text-align:center}
+.sponsors-h{margin:0 0 .8rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-lo)}
+.sponsors ul{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem}
+.sponsors li{border:1px double var(--line); padding:.9rem .8rem; font-size:.9rem; line-height:1.4; color:var(--ink-soft); min-height:5.2rem; display:grid; place-items:center}
+.sponsors li.open a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--gold)}
+.sponsors li b{display:block; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.1rem; color:var(--ink); letter-spacing:.02em}
+@media (max-width:640px){ .sponsors ul{grid-template-columns:1fr} }

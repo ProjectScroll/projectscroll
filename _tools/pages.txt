@@ -39,3 +39,4 @@
 ./dowagiac/index.html
 ./niles/index.html
 ./paw-paw/index.html
+./sponsors/index.html
