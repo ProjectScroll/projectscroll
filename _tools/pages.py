@@ -35,6 +35,22 @@ def colophon(body):
     return ('    <aside class="colophon" aria-labelledby="colH">\n      <h2 id="colH">Sources cited on this page</h2>\n      <ol>%s</ol>\n'
             '      <p class="note">Every link above opens the record itself, where it is held. If one has moved, <a href="mailto:research@projectscroll.com?subject=A%%20broken%%20link">tell us</a>.</p>\n    </aside>\n') % items
 
+def schema(path, title, desc, canon, og):
+    import json, datetime, os
+    top=path.split('/')[0]; parts=[p for p in path.replace('index.html','').split('/') if p]
+    crumbs=[{"@type":"ListItem","position":1,"name":"Project Scroll","item":"https://projectscroll.com/"}]
+    names={'notes':'Field notes','map':'Map room','cases':'Cases','guide':'Guides','families':'Family histories','legends':'Family legends','records':'Where the records are','glossary':'Glossary','toolkit':'Toolkit','badges':'Badges','about':'About','document':'Document of the month','privacy':'Privacy','cassopolis':'Cassopolis','research':'Research services'}
+    url='https://projectscroll.com/'
+    for i,p in enumerate(parts):
+        url+=p+'/'; crumbs.append({"@type":"ListItem","position":i+2,"name":names.get(p, title.split(' · ')[0]) if i<len(parts)-1 else title.split(' · ')[0],"item":url})
+    kind='Article' if top in ('notes','cases','document') else 'WebPage'
+    try: mod=datetime.date.fromtimestamp(os.path.getmtime(os.path.join(R, path))).isoformat()
+    except Exception: mod=datetime.date.today().isoformat()
+    g=[{"@type":"BreadcrumbList","itemListElement":crumbs},
+       {"@type":kind,"@id":canon+"#page","url":canon,"name":title.split(' · ')[0],"headline":title.split(' · ')[0],"description":desc,"image":og,"inLanguage":"en-US","isPartOf":{"@id":"https://projectscroll.com/#site"},"publisher":{"@id":"https://projectscroll.com/#org"},"dateModified":mod}]
+    if kind=='Article': g[1]["author"]={"@id":"https://projectscroll.com/#org"}
+    return '<script type="application/ld+json">'+json.dumps({"@context":"https://schema.org","@graph":g}, ensure_ascii=False)+'</script>'
+
 def page(path, title, desc, body, canon=None, noindex=False, og='https://projectscroll.com/og-dark.jpg?v=5'):
     canon = canon or 'https://projectscroll.com/'+path.replace('index.html','')
     top=path.split('/')[0]
@@ -49,6 +65,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <title>{title}</title>
 <meta name="description" content="{desc}">
 {'<meta name="robots" content="noindex">' if noindex else f'<link rel="canonical" href="{canon}">'}
+{schema(path, title, desc, canon, og) if not noindex else ''}
 <meta name="theme-color" content="#E8ECE6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151B21" media="(prefers-color-scheme: dark)">
 <meta name="color-scheme" content="light dark">
@@ -112,7 +129,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
       <p class="motto">Every clue is true. Every answer is in the record.</p>
       <p class="fmail"><a href="mailto:research@projectscroll.com">research@projectscroll.com</a></p>
       <a class="fbfollow" href="https://www.facebook.com/projectscroll/" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21z"/></svg>Follow the hunt on Facebook</a>
-      <p>Project Scroll is independent historical research, with a studio for digital imaging, design, photography, 3D LiDAR, animation and video. Some mysteries open in an afternoon. Some take a season.</p>
+      <p>Project Scroll is independent historical research from <a href="/cassopolis/">Cassopolis, Michigan</a>, with a studio for digital imaging, design, photography, 3D LiDAR, animation and video. Some mysteries open in an afternoon. Some take a season.</p>
     </div>
     <nav aria-label="Footer">
       <a href="/">Home</a><a href="/#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/#studio">Studio</a><a href="/records/">Where the records are</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/badges/">Your badges</a><a href="/privacy/">Privacy</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter's worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>

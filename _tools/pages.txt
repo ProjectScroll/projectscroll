@@ -34,3 +34,5 @@
 ./services/index.html
 ./studio/index.html
 ./toolkit/index.html
+./cassopolis/index.html
+./research/index.html

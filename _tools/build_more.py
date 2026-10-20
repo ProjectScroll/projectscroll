@@ -165,7 +165,7 @@ about = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <h2>The record behind this site</h2>
     <p>The dates on the scroll, the person of the month and the then-and-now maps are built from the same sources the hunt asks you to open: Rogers (1875), Mathews (1882), Glover (1906), the 1860 wall map at the Library of Congress, and Michigan death certificates at the Archives of Michigan. Where a page of this site makes a claim, the source is on the page or one click away. If it is not, that is a correction we owe.</p>
     <h2>Where it started</h2>
-    <p>Project Scroll began in Cassopolis, Michigan, with a few questions the county history couldn’t answer. It doesn’t stop there. The hunt and the desk now take on questions from anywhere the records reach.</p>
+    <p>Project Scroll began in <a href="/cassopolis/">Cassopolis, Michigan</a>, with a few questions the county history couldn’t answer. It doesn’t stop there. The hunt and the desk now take on questions from anywhere the records reach.</p>
     <p class="center"><a class="btn" href="/#hunt">Play the hunt</a> <a class="btn" href="/#services">Research services</a> <a class="btn" href="/#studio">Imaging, design and video</a> <a class="btn" href="/#contact">Get in touch</a></p>
 '''
 page('about/index.html', 'About · Project Scroll',
