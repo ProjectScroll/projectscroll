@@ -1,4 +1,6 @@
 /* each feature below runs inside its own guard: if one ever fails, the rest of the page keeps working */
+/* the full stylesheet arrives as a print sheet so it never blocks the first paint (the first screen is styled inline); it is switched on here */
+try{ document.querySelectorAll('link[data-full]').forEach(function(l){ l.media='all'; }); }catch(e){}
 function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
 (function(){
   "use strict";
@@ -365,10 +367,9 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
     'census':['Census','The national head-count taken every ten years. Old schedules list every person in a household, with ages and birthplaces.'],
     'transcription':['Transcription','A typed copy of an old handwritten record. Useful, but every copy can add mistakes, so check the original when you can.']
   };
-  const host=document.querySelector('main'); let gi=0;
-  const glossaryRun=function(){ if (host && 'showPopover' in HTMLElement.prototype){
-    const used={};
-    const walker=document.createTreeWalker(host, NodeFilter.SHOW_TEXT, {acceptNode:function(n){
+  const host=document.querySelector('main'); let gi=0; const used={};
+  const glossaryRun=function(scope){ if (scope && 'showPopover' in HTMLElement.prototype){
+    const walker=document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {acceptNode:function(n){
       const p=n.parentElement; if (!p || p.closest('h1,h2,h3,button,a,summary,.mk,label,script,style,.gl,.tl .yr,.mstrip,.promo-marks,figcaption,[popover],svg,[role="img"],[role="button"],[tabindex],.cert-svg')) return NodeFilter.FILTER_REJECT; return NodeFilter.FILTER_ACCEPT; }});
     const nodes=[]; while (walker.nextNode()) nodes.push(walker.currentNode);
     nodes.forEach(function(n){
@@ -395,7 +396,8 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
     });
   } };
   /* the walk over every text node waits for an idle moment, so it never delays the first paint or the first tap */
-  (window.requestIdleCallback || function(f){ setTimeout(f, 1); })(glossaryRun, {timeout:1500});
+  const hero=document.querySelector('.hero'); if (hero) glossaryRun(hero);  /* the first screen at once, so nothing shifts after paint */
+  (window.requestIdleCallback || function(f){ setTimeout(f, 1); })(function(){ glossaryRun(host); }, {timeout:1500});
 
   /* read aloud: each section can be read out by the device's own voice */
   if ('speechSynthesis' in window){
@@ -521,6 +523,7 @@ window.PS_BADGES=[
   ['halter','Cipher breaker','Decode the hidden line, and say the word in your badge book.'],
   ['charter','Second cipher','Break the second line, which appears in your badge book once the first is broken.'],
   ['diamond','Eye for gold','Ask the gold diamond on the rule, and say its answer in your badge book.'],
+  ['lamp','Miner’s lamp','Light the miner’s lamp in the top bar and let it follow your pointer.'],
   ['solver','Named on the board','Crack a case and be named as its solver on the case board.']
 ];
 window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the Badge'],[15,'Recorder of the Hall'],[20,'Keeper of the Hall']];
@@ -768,6 +771,23 @@ try{ (function(){
   mh.addEventListener('keydown', function(e){ if (e.key==='ArrowRight'){ next(); arm(); e.preventDefault(); } else if (e.key==='ArrowLeft'){ prev(); arm(); e.preventDefault(); } else if (e.key==='Enter' && e.target===mh){ mh.classList.toggle('open'); } });
   mh.addEventListener('click', function(e){ if (e.target.closest('button')) return; mh.classList.toggle('open'); });
   mh.addEventListener('keydown', function(e){ if (e.key==='Escape') mh.classList.remove('open'); });
+})(); }catch(err){ psFail(err); }
+
+/* ---------- the miner's lamp: a warm glow that follows the pointer, off until it is lit ---------- */
+try{ (function(){
+  const b=document.getElementById('lamp'); if (!b) return;
+  const fine=matchMedia('(hover:hover) and (pointer:fine)').matches; if (!fine){ b.hidden=true; return; }
+  const root=document.documentElement; let veil=null, on=false, raf=0, x=innerWidth/2, y=innerHeight/2;
+  const paint=function(){ raf=0; if (veil){ veil.style.setProperty('--lx', x+'px'); veil.style.setProperty('--ly', y+'px'); } };
+  const move=function(e){ x=e.clientX; y=e.clientY; if (!raf) raf=requestAnimationFrame(paint); };
+  const set=function(v, keep){
+    on=v; b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', on?'Put out the miner’s lamp':'Light the miner’s lamp'); root.classList.toggle('lamp', on);
+    if (on){ if (!veil){ veil=document.createElement('div'); veil.className='lamp-veil'; veil.setAttribute('aria-hidden','true'); document.body.appendChild(veil); } paint(); requestAnimationFrame(function(){ veil.classList.add('on'); }); addEventListener('pointermove', move, {passive:true}); if (window.psEarn) psEarn('lamp'); }
+    else { if (veil) veil.classList.remove('on'); removeEventListener('pointermove', move); }
+    if (keep){ try{ localStorage.setItem('ps-lamp', on?'1':'0'); }catch(e){} }
+  };
+  b.addEventListener('click', function(){ set(!on, true); });
+  try{ if (localStorage.getItem('ps-lamp')==='1') set(true, false); }catch(e){}
 })(); }catch(err){ psFail(err); }
 
 /* ---------- the gold diamond on the rule answers, if asked ---------- */

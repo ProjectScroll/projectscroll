@@ -211,7 +211,7 @@ page('privacy/index.html', 'Privacy · Project Scroll',
 badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Your field book</p>
     <h1>Your tin badges</h1>
-    <p class="lede">In the winter of 1846–47, two hundred badges of the “Ancient and Honorable Order” were worn at a ball in Cassopolis. Not one is known to survive. Here you can earn your own: twenty-one of them: twenty for the things you do as you explore the site, and one for cracking a case, with five ranks on the way from Candidate to Keeper of the Hall.</p>
+    <p class="lede">In the winter of 1846–47, two hundred badges of the “Ancient and Honorable Order” were worn at a ball in Cassopolis. Not one is known to survive. Here you can earn your own: twenty-two of them: twenty-one for the things you do as you explore the site, and one for cracking a case, with five ranks on the way from Candidate to Keeper of the Hall.</p>
     <p class="brank" id="brank"></p>
     <ol class="rladder" id="rladder" aria-label="The five ranks"></ol>
     <p class="bcount" id="bcount" aria-live="polite"></p>
