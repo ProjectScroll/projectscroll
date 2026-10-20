@@ -59,7 +59,7 @@ for c in C:
     <p class="copied" id="shareout" aria-live="polite"></p>
     <script>document.getElementById('sharecase').addEventListener('click',function(){{var u=location.href.split('#')[0],t=document.title;if(navigator.share){{navigator.share({{title:t,url:u}}).catch(function(){{}});}}else if(navigator.clipboard){{navigator.clipboard.writeText(u).then(function(){{document.getElementById('shareout').textContent='Link copied.';}},function(){{document.getElementById('shareout').textContent=u;}});}}}});</script>
 '''
-    page(f'cases/{n}/index.html', f'Case {n}: {c["question"][:70]}{"…" if len(c["question"])>70 else ""} · Project Scroll', c['question'], body, og=f'https://projectscroll.com/cases/{n}/card.png')
+    page(f'cases/{n}/index.html', f'Case {n}: {c["question"].split("?")[0][:72]}? · Project Scroll' if "?" in c["question"] else f'Case {n}: {c["question"][:72]} · Project Scroll', c['question'], body, og=f'https://projectscroll.com/cases/{n}/card.png')
     # card source for the drawing script
 pathlib.Path(f'{R}/_tools/cards.json').write_text(json.dumps(C, ensure_ascii=False))
 

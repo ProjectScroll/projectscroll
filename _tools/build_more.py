@@ -119,7 +119,7 @@ G += [
  ('Long s (ſ)', 'An s that looks like an f without the full crossbar, used at the start or in the middle of a word until about 1800. “Congreſs” is Congress.'),
 ]
 G.sort(key=lambda x: x[0].lower())
-gl = ''.join(f'<div class="gl" id="g-{re.sub(r"[^a-z]+","-",t.lower()).strip("-")}"><dt>{t}</dt><dd>{d}</dd></div>' for t, d in G)
+gl = ''.join(f'<div class="gentry" id="g-{re.sub(r"[^a-z]+","-",t.lower()).strip("-")}"><dt>{t}</dt><dd>{d}</dd></div>' for t, d in G)
 letters = sorted({t[0] for t, _ in G})
 glossary = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">From the desk</p>

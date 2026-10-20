@@ -752,9 +752,9 @@ label.btn{cursor:pointer}
 .paid{display:inline-block; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; border:1px solid var(--line); border-radius:10px; padding:0 .45rem; margin-left:.4rem; color:var(--ink-soft); vertical-align:.12em}
 .recnone{text-align:center; color:var(--ink-soft)}
 .glossary{margin:1rem 0}
-.glossary .gl{padding:.65rem 0; border-bottom:1px solid var(--line)}
-.glossary .gl dt{font-weight:700; color:var(--rule)}
-.glossary .gl dd{margin:.15rem 0 0}
+.glossary .gentry{padding:.65rem 0; border-bottom:1px solid var(--line)}
+.glossary .gentry dt{font-weight:700; color:var(--rule)}
+.glossary .gentry dd{margin:.15rem 0 0}
 .intake{border:1px solid var(--line); border-top:3px solid var(--rule); border-radius:6px; padding:1.1rem 1.2rem; background:var(--paper); margin:1rem 0}
 .intake label{display:block; font-weight:700; margin:.8rem 0 .25rem}
 .intake label .h{font-weight:400; color:var(--ink-soft); font-size:.9rem}
@@ -2220,7 +2220,7 @@ main.page > h1::after{content:""; position:absolute; left:0; bottom:0; width:3re
 @media (max-width:760px){ .contents ol{grid-template-columns:repeat(2,1fr)} }
 /* journal-style figures: numbered, with a right-aligned small-caps credit */
 main{counter-reset:part fig}
-figure.secfig, figure.plate, .docfig{counter-increment:fig}
+figure.secfig, .docfig{counter-increment:fig}
 .secfig figcaption::before, .docfig figcaption::before{content:"Fig. " counter(fig) " · "; font-variant:small-caps; letter-spacing:.08em; color:var(--rule)}
 .secfig figcaption{text-align:left; display:flex; flex-wrap:wrap; gap:.3rem .8rem; align-items:baseline}
 .secfig figcaption .credit{margin-left:auto; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); max-width:100%}
@@ -2231,3 +2231,80 @@ figure.secfig, figure.plate, .docfig{counter-increment:fig}
 main.page > .lede{font-size:1.18rem; line-height:1.6; color:var(--ink-soft); border-left:3px solid var(--gold); padding-left:1rem}
 /* each part's foot carries a small centred ornament, as a journal closes an article */
 main > section:not(.contact)::before{content:"◆"; position:absolute; left:50%; bottom:1.1rem; transform:translateX(-50%); font-size:.55rem; color:var(--gold); opacity:.8}
+
+/* ===== Draft 93: sources colophon, drop caps, section accents ===== */
+.colophon{margin:3rem 0 0; padding:1.4rem 0 0; border-top:3px double color-mix(in srgb, var(--gold) 70%, transparent)}
+.colophon h2{font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-lo); font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; margin:0 0 .8rem}
+.colophon ol{margin:0; padding-left:1.4rem; font-size:.92rem; line-height:1.55; columns:2; column-gap:2rem}
+.colophon li{break-inside:avoid; margin:0 0 .35rem}
+.colophon .col-host{display:block; font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft)}
+.colophon .note{margin-top:.9rem}
+@media (max-width:640px){ .colophon ol{columns:1} }
+/* a drop cap opens the first paragraph of each part, and of each inner page */
+main.page > .lede::first-letter, main > section > .intro.dc::first-letter{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:3.4em; line-height:.8; float:left; padding:.12em .12em 0 0; color:var(--ac); font-style:normal}
+/* section accents: the hunt in red-pencil, the desk in ledger green, the studio in gold — the running head, the rules and the dash carry it */
+:root{--ac:var(--gold-lo)}
+[data-accent="hunt"]{--ac:var(--rule)} [data-accent="desk"]{--ac:var(--ledger)} [data-accent="studio"]{--ac:var(--gold-lo)}
+main > section > .part{color:var(--ac)}
+main > section > .part::before, main > section > .part::after{background:linear-gradient(90deg, transparent, color-mix(in srgb, var(--ac) 60%, transparent) 30%, color-mix(in srgb, var(--ac) 60%, transparent) 70%, transparent)}
+main > section > h2::after{background:var(--ac)}
+main > section:not(.contact)::before{color:var(--ac)}
+main > section::after{color:var(--ac)}
+main > section:nth-of-type(even):not(.contact){border-top-color:color-mix(in srgb, var(--ac) 35%, transparent)!important; border-bottom-color:color-mix(in srgb, var(--ac) 35%, transparent)!important}
+main.page[data-accent] > .kicker{color:var(--ac)} main.page[data-accent] > .kicker::after{background:linear-gradient(90deg, color-mix(in srgb, var(--ac) 60%, transparent), transparent)} main.page[data-accent] > h1::after{background:var(--ac)} main.page[data-accent] > .lede{border-left-color:var(--ac)}
+
+/* ===== Draft 93: the audit's corrections ===== */
+/* 1 masthead caption keeps clear of the buttons on phones */
+@media (max-width:700px){ .masthead .mh-cap{left:7.4rem; right:.6rem; text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis} .masthead .mh-cap a{pointer-events:auto} }
+/* 2 the back-to-top button honours hidden */
+.totop[hidden]{display:none!important}
+/* 4 the part rail reads on the dark backdrop in light mode */
+.partrail{color:var(--paper)} .partrail a{color:color-mix(in srgb, var(--paper) 80%, transparent)} .partrail a[aria-current="true"]{color:var(--gold-hi)}
+/* 5 no ghost numeral on pages that are not parts */
+main.page section::after{content:none!important}
+/* 6–7 the contact spread keeps its own palette in both schemes */
+.contact{--paper:#E8ECE6; --ink:#1D2733; --ink-soft:#4B5663; --line:#B9C2B8; --rule:#E0675A}
+main > section.contact{background:#1D2733!important; color:#E8ECE6}
+.contact .credit, .contact .copied, .contact .note{color:rgba(232,236,230,.78)}
+.contact .intro a, .contact .note a{color:#F3D98E}
+.contact .btn.primary{background:#D4AB4F; border-color:#D4AB4F; color:#1D2733}
+.contact .btn{color:#E8ECE6; border-color:rgba(232,236,230,.55)}
+@media (max-width:640px){ .contact .ctas{flex-direction:column} .contact .ctas .btn{width:100%; text-align:center} }
+/* 8 the guide's numbered spots stay legible in the dark */
+:root[data-theme="dark"] .spot[aria-pressed="true"], :root[data-theme="dark"] .spot.on{background:var(--paper); color:var(--ink)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .spot[aria-pressed="true"], :root:not([data-theme="light"]) .spot.on{background:var(--paper); color:var(--ink)} }
+.spot{font-weight:700}
+/* 9 figure captions flow as text again; the credit floats right */
+.secfig figcaption{display:block; text-align:left}
+.secfig figcaption .credit{float:right; margin-left:.8rem; max-width:50%; text-align:right}
+.secfig figcaption::after{content:""; display:block; clear:both}
+/* 11 the viewer's raw error stays hidden; the site's own message shows */
+.openseadragon-message{display:none!important}
+/* 18 keyboard hint only where there is a keyboard */
+@media (hover:none){ .keyhint{display:none!important} }
+/* 19 touch targets */
+.theme, .searchbtn, .badgelink, .lamp{min-width:2rem; min-height:2rem}
+.fn{padding:.3rem; margin:-.3rem}
+.src{min-height:1.5rem; padding:.2rem .55rem}
+.chk input[type="checkbox"]{width:1.1rem; height:1.1rem}
+.masthead .mh-prev, .masthead .mh-next, .masthead .mh-full{width:1.8rem; height:1.8rem}
+/* 20 small running heads in the dark get the brighter gold */
+:root[data-theme="dark"] main > section > .part, :root[data-theme="dark"] .colophon h2, :root[data-theme="dark"] .contents-h, :root[data-theme="dark"] main.page > .kicker{color:var(--gold)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) main > section > .part, :root:not([data-theme="light"]) .colophon h2, :root:not([data-theme="light"]) .contents-h, :root:not([data-theme="light"]) main.page > .kicker{color:var(--gold)} }
+/* 21 the ghost numeral sits clear of the Listen pill */
+main > section::after{right:auto; left:.6rem}
+@media (max-width:700px){ main > section::after{display:none} }
+/* 34 the badge toast and then-and-now frame follow the theme */
+.btoast{background:var(--ink); color:var(--paper)}
+/* 35 the then-and-now map clips to its box */
+#tnMap{overflow:hidden}
+/* 37 no page-colour gaps between parts on phones */
+@media (max-width:700px){ main > section{margin-top:0!important; margin-bottom:0!important} }
+/* 39 empty live regions take no space */
+.copied:empty, .note:empty, #adFa:empty, #verdict:empty, .pile:empty{display:none}
+/* 40 the ticker fades under its buttons */
+.tk-view{-webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 3rem),transparent); mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 3rem),transparent)}
+/* 31 map-room town buttons use gaps, not stranded dots */
+.tnpromo{display:flex; flex-wrap:wrap; gap:.3rem .8rem; align-items:baseline}
+/* 23 one button height */
+.btn{padding-top:.62rem; padding-bottom:.62rem}

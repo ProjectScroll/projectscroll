@@ -13,8 +13,32 @@ def proc(html):
     out.append(smart(html[i:])); return ''.join(out)
 import pathlib
 R=str(pathlib.Path(__file__).resolve().parent.parent)
+RECORD_HOSTS=('loc.gov','hathitrust.org','archive.org','familysearch.org','michiganology.org','umich.edu','glorecords.blm.gov','ancestry','findagrave','newspapers.com','chroniclingamerica','digmichnews','cmich.edu','michigan.gov','rumsey','books.google','jstor','worldcat','openlibrary','wikisource','gutenberg','nypl','cassdistrictlibrary','seekingmichigan','preservica')
+def colophon(body):
+    """Sources cited on this page: every outbound link in the body to a record-holding site, once each, in order."""
+    import re, html as _h
+    seen=[]; out=[]
+    for m in re.finditer(r'<a\s[^>]*href="(https?://[^"]+)"[^>]*>(.*?)</a>', body, re.S):
+        url, text = m.group(1), re.sub('<[^>]+>','',m.group(2)).strip()
+        host=re.sub(r'^https?://(www\.)?','',url).split('/')[0]
+        if not any(h in url for h in RECORD_HOSTS): continue
+        if url in seen or not text or len(text)>140: continue
+        if re.match(r'^(read it|read the|open|see|view|free online|read it free online)\b', text, re.I) or len(text)<6:
+            li=body.rfind('<li>', 0, m.start()); seg=body[li+4:m.start()] if li>=0 and m.start()-li<600 else body[max(0,m.start()-260):m.start()]
+            seg=re.sub(r'\s+',' ',re.sub('<[^>]+>','',seg)).strip(' :;,—–-')
+            cite=re.match(r'^(.*?\(\d{4}\)[^.]*)', seg)
+            text=(cite.group(1) if cite else re.split(r'(?<=[.!?])\s+', seg)[0]).strip(' :;,—–-')[:140] or text
+            text=re.sub(r',?\s*p{1,2}\.?$','',text).rstrip(',')
+        seen.append(url); out.append((url, text, host))
+    if not out: return ''
+    items=''.join('<li><a href="%s" rel="noopener">%s</a> <span class="col-host">%s</span></li>' % (_h.escape(u, quote=True), _h.escape(t), _h.escape(h)) for u,t,h in out)
+    return ('    <aside class="colophon" aria-labelledby="colH">\n      <h2 id="colH">Sources cited on this page</h2>\n      <ol>%s</ol>\n'
+            '      <p class="note">Every link above opens the record itself, where it is held. If one has moved, <a href="mailto:research@projectscroll.com?subject=A%%20broken%%20link">tell us</a>.</p>\n    </aside>\n') % items
+
 def page(path, title, desc, body, canon=None, noindex=False, og='https://projectscroll.com/og-dark.jpg?v=5'):
     canon = canon or 'https://projectscroll.com/'+path.replace('index.html','')
+    top=path.split('/')[0]
+    accent=' data-accent="desk"' if top in ('families','legends','about') else (' data-accent="hunt"' if top in ('cases','notes','badges','map','toolkit','glossary','records','guide','document','notebook','keepsake') else '')
     import html as _h
     title=_h.escape(title, quote=True); desc=_h.escape(desc, quote=True)
     head=f'''<!doctype html>
@@ -47,7 +71,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=c8a37617">
+<link rel="stylesheet" href="/site.min.css?v=b9536d35">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"selector_matches":".bar a, footer nav a, .partrail a, .search-res a, .crumb a"}},{{"href_matches":"/*"}},{{"not":{{"href_matches":"/*.pdf"}}}}]}},"eagerness":"moderate"}}]}}</script>
 </head>
 <body>
@@ -80,9 +104,9 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
   <p class="note search-tip">Tip: press <kbd>/</kbd> or <kbd>Ctrl</kbd> <kbd>K</kbd> anywhere to search.</p>
 </dialog>
 <div class="sheet" id="top">
-  <main id="main" class="page">
+  <main id="main" class="page"{accent}>
 '''
-    foot='''  </main>
+    foot=colophon(body)+'''  </main>
   <footer class="site">
     <div>
       <p class="motto">Every clue is true. Every answer is in the record.</p>
@@ -98,7 +122,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=c8a37617" defer></script>
+<script src="/site.min.js?v=b9536d35" defer></script>
 </body>
 </html>
 '''
@@ -165,7 +189,8 @@ if __name__=='__main__':
 
     page('notes/index.html','Field notes · Project Scroll',
      'Lessons from the Project Scroll research desk: how to read old records, weigh them against each other and know when a question is settled.',
-    '''    <p class="kicker">From the desk</p>
+    '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
+    <p class="kicker">From the desk</p>
         <h1>Field notes</h1>
         <p>Short lessons from real cases: how to read an old record, weigh it against another, and know when a question is settled. A new lesson is bound in each time a case teaches one.</p>
         <p><a class="btn" href="/notes/book/">Open the field notes as a book</a></p>
