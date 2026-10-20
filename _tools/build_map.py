@@ -2,7 +2,7 @@
 import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
 IIIF='https://tile.loc.gov/image-services/iiif/service:gmd:gmd411:g4113:g4113c:la000324'
 body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
-    <p class="kicker">The map room</p>
+    <p class="kicker compass">The map room</p>
     <h1>The 1860 wall map</h1>
     <p class="lede" style="font-size:1.15rem">In 1860 Geil, Harley &amp; Siverd of Philadelphia engraved a great wall map of Cass, Van Buren and Berrien counties, Michigan: every township, the farms and the names of the people on them, with little town plans and pictures of houses around the border. The original is at the Library of Congress. Here you can walk over every inch of it.</p>
     <p class="note">Drag to move. Scroll, pinch or use the buttons to zoom. Nothing is marked: the hunt is yours.</p>

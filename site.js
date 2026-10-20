@@ -1246,3 +1246,11 @@ try{ (function(){
     else out.textContent='Not one of the ten we matched. Check the spelling on both maps, or tell us if you think we missed one.';
     inp.value=''; inp.focus(); });
 })(); }catch(err){ psFail(err); }
+
+/* ---------- Draft 103: a glint on each part's diamond, at its own moment; the footer trail draws itself when it comes into view ---------- */
+try{ (function(){
+  [].forEach.call(document.querySelectorAll('main > section + section, main > .plate2 + section'), function(s,i){ const g=document.createElement('i'); g.className='gemglint'; g.setAttribute('aria-hidden','true'); g.style.setProperty('--gd', (i*1.7%7).toFixed(1)+'s'); s.appendChild(g); });
+  const t=document.querySelector('.trailx'); if (!t) return;
+  if (!('IntersectionObserver' in window)){ t.classList.add('drawn'); return; }
+  const io=new IntersectionObserver(function(es){ if (es[0].isIntersecting){ t.classList.add('drawn'); io.disconnect(); } }, {threshold:.6}); io.observe(t);
+})(); }catch(err){ psFail(err); }
