@@ -25,5 +25,5 @@ for (const c of C){
  <div class="n">Case ${c.n}</div><div class="q">${esc(q)}</div>
  <div class="f"><span><b>Project Scroll</b> · Every clue is true.</span><span>projectscroll.com</span></div></div><div class="pic"></div></body></html>`); await p.goto('file://'+tmp);
  await p.evaluate(()=>document.fonts.ready); await p.waitForTimeout(300); fs.mkdirSync(path.join(R,'cases',String(c.n)),{recursive:true});
- await p.screenshot({path:path.join(R,'cases',String(c.n),'card.png')}); }
+ await p.screenshot({path:path.join(R,'cases',String(c.n),'card.png')}); await p.screenshot({path:path.join(R,'cases',String(c.n),'card.jpg'),type:'jpeg',quality:86}); }
 await b.close(); console.log('cards drawn',C.length);})();

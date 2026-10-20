@@ -31,9 +31,14 @@ def colophon(body):
             text=re.sub(r',?\s*p{1,2}\.?$','',text).rstrip(',')
         seen.append(url); out.append((url, text, host))
     if not out: return ''
-    items=''.join('<li><a href="%s" rel="noopener">%s</a> <span class="col-host">%s</span></li>' % (_h.escape(u, quote=True), _h.escape(t), _h.escape(h)) for u,t,h in out)
+    HOLD={'umich.edu':'University of Michigan Library','loc.gov':'Library of Congress','hathitrust.org':'HathiTrust','archive.org':'Internet Archive','familysearch.org':'FamilySearch (free account)','michiganology.org':'Archives of Michigan','preservica.com':'Archives of Michigan','findagrave.com':'Find a Grave','glorecords.blm.gov':'Bureau of Land Management, General Land Office records','cmich.edu':'Central Michigan University','chroniclingamerica':'Library of Congress, Chronicling America'}
+    def holder(h):
+        for k,v in HOLD.items():
+            if k in h: return v
+        return h
+    items=''.join('<li><a href="%s" rel="noopener">%s</a>%s</li>' % (_h.escape(u, quote=True), _h.escape(t), '' if holder(h).split(' ')[0].lower() in t.lower() else ' <span class="col-host">'+_h.escape(holder(h))+'</span>') for u,t,h in out)
     return ('    <aside class="colophon" aria-labelledby="colH">\n      <h2 id="colH">Sources cited on this page</h2>\n      <ol>%s</ol>\n'
-            '      <p class="note">Every link above opens the record itself, where it is held. If one has moved, <a href="mailto:research@projectscroll.com?subject=A%%20broken%%20link">tell us</a>.</p>\n    </aside>\n') % items
+            '      <p class="note">Every link above opens the source where it is held. If one has moved, <a href="mailto:research@projectscroll.com?subject=A%%20broken%%20link">tell us</a>.</p>\n    </aside>\n') % items
 
 def schema(path, title, desc, canon, og):
     import json, datetime, os
@@ -80,7 +85,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
-<link rel="icon" href="/icons/icon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/icons/icon-32.png" type="image/jpeg" sizes="32x32">
 <link rel="alternate icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png?v=2">
 <link rel="alternate" type="application/atom+xml" title="Project Scroll: new cases, field notes and documents" href="/feed.xml">
@@ -89,7 +94,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=10734b00">
+<link rel="stylesheet" href="/site.min.css?v=7eb5c076">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"selector_matches":".bar a, footer nav a, .partrail a, .search-res a, .crumb a"}},{{"href_matches":"/*"}},{{"not":{{"href_matches":"/*.pdf"}}}}]}},"eagerness":"moderate"}}]}}</script>
 </head>
 <body>
@@ -130,7 +135,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
       <p class="motto">Every clue is true. Every answer is in the record.</p>
       <p class="fmail"><a href="mailto:research@projectscroll.com">research@projectscroll.com</a></p>
       <a class="fbfollow" href="https://www.facebook.com/projectscroll/" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21z"/></svg>Follow the hunt on Facebook</a>
-      <p>Project Scroll is independent historical research from <a href="/cassopolis/">Cassopolis, Michigan</a>, with a studio for digital imaging, design, photography, 3D LiDAR, animation and video. Some mysteries open in an afternoon. Some take a season.</p>
+      <p>Project Scroll is independent historical research from the St. Joseph River Valley (<a href="/cassopolis/">Cassopolis</a>, Dowagiac, Niles and beyond), with a studio for digital imaging, design, photography, 3D LiDAR, animation and video. Some mysteries open in an afternoon. Some take a season.</p>
     </div>
     <nav aria-label="Footer">
       <a href="/">Home</a><a href="/#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/#studio">Studio</a><a href="/records/">Where the records are</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/badges/">Your badges</a><a href="/privacy/">Privacy</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter's worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
@@ -140,7 +145,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=10734b00" defer></script>
+<script src="/site.min.js?v=7eb5c076" defer></script>
 </body>
 </html>
 '''

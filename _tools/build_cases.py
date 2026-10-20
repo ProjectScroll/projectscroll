@@ -59,7 +59,7 @@ for c in C:
     <p class="copied" id="shareout" aria-live="polite"></p>
     <script>document.getElementById('sharecase').addEventListener('click',function(){{var u=location.href.split('#')[0],t=document.title;if(navigator.share){{navigator.share({{title:t,url:u}}).catch(function(){{}});}}else if(navigator.clipboard){{navigator.clipboard.writeText(u).then(function(){{document.getElementById('shareout').textContent='Link copied.';}},function(){{document.getElementById('shareout').textContent=u;}});}}}});</script>
 '''
-    page(f'cases/{n}/index.html', f'Case {n}: {c["question"].split("?")[0][:72]}? · Project Scroll' if "?" in c["question"] else f'Case {n}: {c["question"][:72]} · Project Scroll', c['question'], body, og=f'https://projectscroll.com/cases/{n}/card.png')
+    page(f'cases/{n}/index.html', (lambda q: f'Case {n}: {q} · Project Scroll' if len(q)<=50 else f'Case {n}: {q[:47].rsplit(" ",1)[0]}… · Project Scroll')(c['question'].split('?')[0].strip()+('?' if '?' in c['question'] else '')), (c['question']+' An open case in the Project Scroll history hunt, '+c['hallName'].split(' · ')[0].lower()+': the first sources to open, free online, and how to post an answer.')[:160].rsplit(' ',1)[0] if len(c['question'])<120 else c['question'][:157]+'…', body, og=f'https://projectscroll.com/cases/{n}/card.jpg')
     # card source for the drawing script
 pathlib.Path(f'{R}/_tools/cards.json').write_text(json.dumps(C, ensure_ascii=False))
 

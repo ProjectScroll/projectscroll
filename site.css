@@ -1451,7 +1451,6 @@ form.tmpl select:focus{outline:2px solid var(--rule); outline-offset:1px; border
 .promo.ad .promo-h{font-size:clamp(1.35rem, 3vw, 1.85rem); margin:.55rem auto .4rem; font-style:italic}
 .ad-tag{margin:0 auto .9rem; padding:.35rem 0; max-width:44rem; border-top:1px solid var(--ink); border-bottom:1px solid var(--ink); font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft)}
 .ad-tag i{color:var(--rule); font-style:normal; margin:0 .2rem}
-.promo.ad .ad-cols{grid-template-columns:repeat(3, minmax(0,1fr))}
 .promo.ad .ad-col{padding:1rem 1rem 1.1rem}
 .promo.ad .ad-col h3{font-size:1.18rem; align-items:flex-start; line-height:1.2}
 .promo.ad .ad-col h3 .ic{width:1.6rem; height:1.6rem}
@@ -1593,7 +1592,6 @@ p, li, figcaption{text-wrap:pretty}
 
 /* ===== Draft 54 ===== */
 /* the top bar: a gold diamond at the middle of the gold rule, and one under the section you are reading */
-.bar-in{position:relative}
 .bar-in::after{content:""; position:absolute; left:50%; bottom:-1px; width:.55rem; height:.55rem; transform:translate(-50%,50%) rotate(45deg); z-index:2; pointer-events:none;
   background:linear-gradient(135deg, var(--gold-hi), var(--gold-lo)); box-shadow:0 0 0 2px var(--paper), 0 0 6px color-mix(in srgb, var(--gold) 70%, transparent)}
 @media (min-width:881px){ .navink::after{content:""; position:absolute; left:50%; top:50%; width:.32rem; height:.32rem; transform:translate(-50%,-50%) rotate(45deg); background:var(--gold-hi); box-shadow:0 0 6px var(--gold-hi)} }

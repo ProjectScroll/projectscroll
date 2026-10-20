@@ -661,7 +661,7 @@ try{ (function(){
 /* ---------- search by voice, where the browser can listen ---------- */
 try{ (function(){
   const SR=window.SpeechRecognition || window.webkitSpeechRecognition, q=document.getElementById('searchQ'); if (!SR || !q) return;
-  const form=q.closest('form'); const m=document.createElement('button'); m.type='button'; m.className='mic'; m.setAttribute('aria-label','Search by voice'); m.title='Search by voice';
+  const m=document.createElement('button'); m.type='button'; m.className='mic'; m.setAttribute('aria-label','Search by voice'); m.title='Search by voice';
   m.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></svg>';
   q.insertAdjacentElement('afterend', m);
   let rec=null;
