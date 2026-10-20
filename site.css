@@ -2120,20 +2120,24 @@ p,li,dd,figcaption,.lede{text-wrap:pretty}
 .lamp .glass{stroke:color-mix(in srgb, currentColor 80%, transparent)}
 .lamp .shine{stroke:currentColor}
 /* at rest: a small live flame, nothing else lit — no halo, no ring */
-.lamp .glow{fill:var(--gold-hi); opacity:0; filter:blur(2px); transform-origin:12px 13.4px; transition:opacity .4s}
-.lamp .flame{fill:var(--gold); opacity:.95; transform-origin:12px 15.9px}
-.lamp .flame-in{fill:#fff3c4; opacity:.9; transform-origin:12px 15px}
+.lamp .glow{fill:var(--gold-hi); opacity:0; filter:blur(2.2px); transform-origin:12px 13.4px; transition:opacity .4s}
+.lamp .glow-in{fill:#ffd98a; opacity:.55; filter:blur(1.4px); transform-origin:12px 14px}
+.lamp .flame{fill:#f0b429; opacity:1; transform-origin:12px 16.3px}
+.lamp .flame-in{fill:#fff8dc; opacity:1; transform-origin:12px 15.4px}
 .lamp .ray{stroke:var(--gold-hi); opacity:0; transform-origin:12px 13.4px; transition:opacity .3s}
 .lamp:hover, .lamp:focus-visible{color:var(--ink); border-color:var(--ink-soft)}
 /* lit: the glass fills with light, rays break out, the ring turns gold */
 .lamp[aria-pressed="true"]{color:var(--gold-lo); border-color:var(--gold); box-shadow:0 0 14px color-mix(in srgb, var(--gold-hi) 70%, transparent), inset 0 0 8px color-mix(in srgb, var(--gold-hi) 45%, transparent)}
-.lamp[aria-pressed="true"] .glow{opacity:.9}
+.lamp[aria-pressed="true"] .glow{opacity:.95}
+.lamp[aria-pressed="true"] .glow-in{opacity:.95}
 .lamp[aria-pressed="true"] .flame{fill:var(--gold-hi)}
 .lamp[aria-pressed="true"] .flame-in{fill:#fffbe6}
 .lamp[aria-pressed="true"] .ray{opacity:.9}
 @media (prefers-reduced-motion: no-preference){
   .lamp .flame{animation:flame 1.7s ease-in-out infinite}
   .lamp .flame-in{animation:flame 1.7s ease-in-out -.55s infinite}
+  .lamp .glow-in{animation:glow-rest 1.7s ease-in-out infinite}
+  @keyframes glow-rest{0%,100%{opacity:.45; transform:scale(1)} 30%{opacity:.7; transform:scale(1.2)} 60%{opacity:.5; transform:scale(.95)}}
   .lamp[aria-pressed="true"] .flame, .lamp[aria-pressed="true"] .flame-in{animation-duration:.85s}
   .lamp[aria-pressed="true"] .glow{animation:glow-lit .85s ease-in-out infinite}
   .lamp[aria-pressed="true"] .ray{animation:rays 1.7s ease-in-out infinite}
@@ -2161,3 +2165,13 @@ p,li,dd,figcaption,.lede{text-wrap:pretty}
   .bar nav + .searchbtn{margin-left:.3rem}
 }
 @media (min-width:881px) and (max-width:1000px){ .bar nav{gap:.38rem; font-size:.88rem} .mark{font-size:1.2rem} }
+
+/* ===== Draft 90: the strip, one more pass ===== */
+.plate-dlg img{transform-origin:50% 50%}
+@media (prefers-reduced-motion: no-preference){ .plate-dlg[open] img{animation:pdz 18s ease-in-out infinite alternate} @keyframes pdz{from{transform:scale(1)} to{transform:scale(1.05)}} }
+.masthead .mh-cap a::after{content:" ›"; opacity:.75}
+/* a hairline of ticks along the strip's foot shows where in the set you are */
+.masthead .mh-ticks{position:absolute; left:0; right:0; bottom:0; height:2px; display:flex; gap:1px; z-index:3; opacity:0; transition:opacity .3s; pointer-events:none}
+.masthead:hover .mh-ticks, .masthead.open .mh-ticks, .masthead:focus-within .mh-ticks{opacity:1}
+.masthead .mh-ticks i{flex:1; background:rgba(234,230,220,.28)}
+.masthead .mh-ticks i.on{background:var(--gold-hi)}

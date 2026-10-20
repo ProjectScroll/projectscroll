@@ -1,8 +1,8 @@
 /* Project Scroll offline support.
    Pages: network first, so visitors always get the newest version when online; the saved copy is used only offline.
    Files with a version tag (?v=) and pictures: saved copy first, since their names change whenever they change. */
-const CACHE = 'ps-3b3b7944';
-const CORE = ['/', '/notes/', '/notes/one-letter-two-certificates/', '/404.html', '/map/', '/map/cassopolis/', '/map/niles/', '/map/dowagiac/', '/map/paw-paw/', '/families/', '/legends/', '/records/', '/glossary/', '/about/', '/privacy/', '/badges/', '/guide/death-certificate/', '/toolkit/', '/toolkit/toolkit.js?v=3', '/guide/old-handwriting/', '/notes/book/', '/search.json', '/site.min.css?v=3b3b7944', '/site.min.js?v=3b3b7944',
+const CACHE = 'ps-2d9850f0';
+const CORE = ['/', '/notes/', '/notes/one-letter-two-certificates/', '/404.html', '/map/', '/map/cassopolis/', '/map/niles/', '/map/dowagiac/', '/map/paw-paw/', '/families/', '/legends/', '/records/', '/glossary/', '/about/', '/privacy/', '/badges/', '/guide/death-certificate/', '/toolkit/', '/toolkit/toolkit.js?v=3', '/guide/old-handwriting/', '/notes/book/', '/search.json', '/site.min.css?v=2d9850f0', '/site.min.js?v=2d9850f0',
   '/img/heron-dawn.webp', '/img/doctors-window.jpg', '/img/two-certificates.jpg', '/favicon.svg', '/icons/icon-192.png',
   '/fonts/libre-caslon-display-latin-400-normal.woff2', '/fonts/libre-caslon-text-latin-400-normal.woff2',
   '/fonts/libre-caslon-text-latin-400-italic.woff2', '/fonts/libre-caslon-text-latin-700-normal.woff2'];
