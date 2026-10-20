@@ -780,14 +780,15 @@ try{ (function(){
   const root=document.documentElement; let veil=null, on=false, raf=0, x=innerWidth/2, y=innerHeight/2;
   const paint=function(){ raf=0; if (veil){ veil.style.setProperty('--lx', x+'px'); veil.style.setProperty('--ly', y+'px'); } };
   const move=function(e){ x=e.clientX; y=e.clientY; if (!raf) raf=requestAnimationFrame(paint); };
-  const set=function(v, keep){
-    on=v; b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', on?'Put out the miner’s lamp':'Light the miner’s lamp'); root.classList.toggle('lamp', on);
-    if (on){ if (!veil){ veil=document.createElement('div'); veil.className='lamp-veil'; veil.setAttribute('aria-hidden','true'); document.body.appendChild(veil); } paint(); requestAnimationFrame(function(){ veil.classList.add('on'); }); addEventListener('pointermove', move, {passive:true}); if (window.psEarn) psEarn('lamp'); }
+  const sizeVeil=function(){ if (veil) veil.style.setProperty('--lr', Math.round(Math.max(innerWidth, innerHeight)*0.75)+'px'); };
+  const set=function(v){
+    on=v; b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', on?'Put out the miner’s lamp':'Light the miner’s lamp'); root.classList.toggle('lamp-on', on);
+    if (on){ if (!veil){ veil=document.createElement('div'); veil.className='lamp-veil'; veil.setAttribute('aria-hidden','true'); document.body.appendChild(veil); } sizeVeil(); paint(); requestAnimationFrame(function(){ veil.classList.add('on'); }); addEventListener('pointermove', move, {passive:true}); if (window.psEarn) psEarn('lamp'); }
     else { if (veil) veil.classList.remove('on'); removeEventListener('pointermove', move); }
-    if (keep){ try{ localStorage.setItem('ps-lamp', on?'1':'0'); }catch(e){} }
   };
-  b.addEventListener('click', function(){ set(!on, true); });
-  try{ if (localStorage.getItem('ps-lamp')==='1') set(true, false); }catch(e){}
+  b.addEventListener('click', function(){ set(!on); });
+  try{ localStorage.removeItem('ps-lamp'); }catch(e){}
+  addEventListener('resize', sizeVeil, {passive:true});
 })(); }catch(err){ psFail(err); }
 
 /* ---------- the gold diamond on the rule answers, if asked ---------- */

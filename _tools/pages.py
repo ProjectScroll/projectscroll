@@ -47,7 +47,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=9ecfce78">
+<link rel="stylesheet" href="/site.min.css?v=1bbc9042">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"selector_matches":".bar a, footer nav a, .partrail a, .search-res a, .crumb a"}},{{"href_matches":"/*"}},{{"not":{{"href_matches":"/*.pdf"}}}}]}},"eagerness":"moderate"}}]}}</script>
 </head>
 <body>
@@ -69,7 +69,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <button class="searchbtn" type="button" id="searchBtn" aria-label="Search the site" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     <a class="badgelink" id="badgeLink" href="/badges/" aria-label="Your badges"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3l4.6 9.4 10.4 1.5-7.5 7.3 1.8 10.3L20 26.6l-9.3 4.9 1.8-10.3-7.5-7.3 10.4-1.5z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg><span class="bn" id="badgeN" hidden></span></a>
     <button class="menu" type="button" id="menu" aria-expanded="false" aria-controls="sitenav">Menu</button>
-    <button class="lamp" type="button" id="lamp" aria-label="Light the miner’s lamp" aria-pressed="false" title="The miner’s lamp: a glow that follows your pointer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3.5h6M8 6.5h8l-.7 2H8.7z"/><path d="M8.6 8.5v8.2l1.4 1.8h4l1.4-1.8V8.5"/><path d="M8.6 18.5h6.8M10.2 18.5v2h3.6v-2"/><path class="flame" d="M12 10.3c-1.2 1.4-1.6 2.4-1.6 3.4a1.6 1.6 0 0 0 3.2 0c0-1-.4-2-1.6-3.4z"/><path d="M12 2v1.5"/></svg></button>
+    <button class="lamp" type="button" id="lamp" aria-label="Light the miner’s lamp" aria-pressed="false" title="The miner’s lamp: a glow that follows your pointer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle class="glow" cx="12" cy="13.6" r="3.6" stroke="none"/><path d="M12 2v1.6M9 3.6h6M8 6.4h8l-.7 2H8.7z"/><path class="glass" d="M8.6 8.4v8.3l1.4 1.8h4l1.4-1.8V8.4"/><path d="M8.4 18.5h7.2M10.2 18.5v2h3.6v-2"/><path class="flame" d="M12 10.2c-1.3 1.5-1.8 2.5-1.8 3.6a1.8 1.8 0 0 0 3.6 0c0-1.1-.5-2.1-1.8-3.6z" stroke="none"/><path class="flame-in" d="M12 12.3c-.6.8-.8 1.3-.8 1.8a.8.8 0 0 0 1.6 0c0-.5-.2-1-.8-1.8z" stroke="none"/></svg></button>
     <button class="theme" type="button" aria-label="Switch to dark" id="theme">Dark</button>
   </div>
 </header>
@@ -98,7 +98,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=9ecfce78" defer></script>
+<script src="/site.min.js?v=1bbc9042" defer></script>
 </body>
 </html>
 '''
