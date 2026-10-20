@@ -40,3 +40,5 @@
 ./niles/index.html
 ./paw-paw/index.html
 ./sponsors/index.html
+./terms/index.html
+./accessibility/index.html

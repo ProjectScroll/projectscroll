@@ -758,7 +758,7 @@ try{ (function(){
   preload(set[(i+1)%set.length]); preload(set[(i+2)%set.length]);
   let t=null, seen=false;
   const next=function(){ i=(i+1)%set.length; show(set[i]); preload(set[(i+1)%set.length]); preload(set[(i+2)%set.length]); try{ localStorage.setItem('ps-strip', String(i)); }catch(e){} };
-  const arm=function(){ clearTimeout(t); if (!seen || reduce) return; t=setTimeout(function(){ next(); arm(); }, 20000+Math.random()*40000); };
+  const arm=function(){ clearTimeout(t); if (!seen || reduce) return; t=setTimeout(function(){ if (document.documentElement.classList.contains('calm')){ arm(); return; } next(); arm(); }, 20000+Math.random()*40000); };
   if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ seen=es[0].isIntersecting; arm(); }, {threshold:.5}).observe(mh);
   const prev=function(){ i=(i+set.length-2)%set.length; next(); };
   const pbtn=mh.querySelector('.mh-prev'); if (pbtn) pbtn.addEventListener('click', function(e){ e.stopPropagation(); prev(); arm(); });
@@ -955,6 +955,9 @@ try{ (function(){
   [].slice.call(tr.children).forEach(function(li){ const c=li.cloneNode(true); c.setAttribute('aria-hidden','true'); c.querySelectorAll('a,button').forEach(function(a){ a.tabIndex=-1; }); tr.appendChild(c); });
   const speed=function(){ box.style.setProperty('--pbdur', Math.max(40, Math.round(tr.scrollWidth/2/38))+'s'); };
   speed(); addEventListener('resize', speed, {passive:true}); box.classList.add('run');
+  const pz=document.createElement('button'); pz.type='button'; pz.className='pb-pause'; pz.setAttribute('aria-label','Pause the place names'); pz.setAttribute('aria-pressed','false'); pz.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3" width="2.6" height="10" rx=".8"/><rect x="9.4" y="3" width="2.6" height="10" rx=".8"/></svg>';
+  pz.addEventListener('click', function(){ const on=!box.classList.contains('held'); box.classList.toggle('held', on); pz.setAttribute('aria-pressed', String(on)); pz.setAttribute('aria-label', on?'Play the place names':'Pause the place names'); pz.innerHTML=on?'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3l8 5-8 5z"/></svg>':'<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3" width="2.6" height="10" rx=".8"/><rect x="9.4" y="3" width="2.6" height="10" rx=".8"/></svg>'; });
+  box.appendChild(pz);
 })(); }catch(err){ psFail(err); }
 
 /* ---------- Part I: every date has its own link, so a date can be shared ---------- */
@@ -1253,4 +1256,34 @@ try{ (function(){
   const t=document.querySelector('.trailx'); if (!t) return;
   if (!('IntersectionObserver' in window)){ t.classList.add('drawn'); return; }
   const io=new IntersectionObserver(function(es){ if (es[0].isIntersecting){ t.classList.add('drawn'); io.disconnect(); } }, {threshold:.6}); io.observe(t);
+})(); }catch(err){ psFail(err); }
+
+/* ---------- Draft 105: pause all motion (remembered), a note in the plate viewer, pan for a case, and the gold vein ---------- */
+try{ (function(){
+  const b=document.getElementById('calm'), H=document.documentElement;
+  let on=false; try{ on=localStorage.getItem('ps-calm')==='1'; }catch(e){}
+  const sync=function(){ H.classList.toggle('calm', on); if (b){ b.setAttribute('aria-pressed', String(on)); b.querySelector('span').textContent=on?'Let it move again':'Pause all motion'; } };
+  sync(); if (b) b.addEventListener('click', function(){ on=!on; try{ localStorage.setItem('ps-calm', on?'1':'0'); }catch(e){} sync(); });
+})(); }catch(err){ psFail(err); }
+try{ (function(){
+  /* the plate viewer says plainly which plates are record and which are illustration */
+  const fb=document.querySelector('.mh-full'); if (!fb) return;
+  fb.addEventListener('click', function(){ setTimeout(function(){ const d=document.getElementById('plateDlg'); if (!d || d.querySelector('.pd-note')) return; const n=document.createElement('p'); n.className='pd-note'; n.textContent='The plates mix the record with modern illustration. A caption that names a book, map, postcard or print is the record itself; the rest are artwork made to set the scene.'; d.insertBefore(n, d.querySelector('.pd-nav')); }, 0); });
+})(); }catch(err){ psFail(err); }
+try{ (function(){
+  /* "Pick one for me" becomes a gold pan: give it a shake and a case settles out */
+  const b=document.querySelector('.pickcase'); if (!b) return;
+  b.innerHTML='<svg class="pan" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="13" rx="10" ry="5.2"/><ellipse cx="12" cy="12.2" rx="6.6" ry="3" class="pan-in"/><circle cx="10.4" cy="12" r=".9" class="nug"/><circle cx="13.6" cy="12.6" r=".7" class="nug"/><circle cx="12.4" cy="11.3" r=".55" class="nug"/></svg><span>Pan for a case</span>';
+  b.title='Shake the pan: an open case settles out at random';
+  b.addEventListener('click', function(){ b.classList.remove('panning'); void b.offsetWidth; b.classList.add('panning'); });
+})(); }catch(err){ psFail(err); }
+try{ (function(){
+  /* the gold vein: a nugget on the reading thread for each part; it catches the light as you pass it */
+  const parts=[].slice.call(document.querySelectorAll('main > section[id]')); if (parts.length<3 || !document.querySelector('.vprogress')) return;
+  const vein=document.createElement('div'); vein.className='vein'; vein.setAttribute('aria-hidden','true'); document.body.appendChild(vein);
+  const ns=parts.map(function(){ const i=document.createElement('i'); vein.appendChild(i); return i; });
+  const place=function(){ const H=document.documentElement.scrollHeight-innerHeight; if (H<=0) return; parts.forEach(function(s,k){ const y=Math.min(1, Math.max(0, (s.getBoundingClientRect().top+scrollY-innerHeight*.35)/H)); ns[k].style.top=(y*100)+'%'; ns[k].dataset.y=y; }); hit(); };
+  const hit=function(){ const H=document.documentElement.scrollHeight-innerHeight; const p=H>0?scrollY/H:0; ns.forEach(function(n){ n.classList.toggle('hit', p>=parseFloat(n.dataset.y||2)-.002); }); };
+  let raf=0; addEventListener('scroll', function(){ if (!raf) raf=requestAnimationFrame(function(){ raf=0; hit(); }); }, {passive:true});
+  addEventListener('resize', place, {passive:true}); addEventListener('load', place); setTimeout(place, 1500); place();
 })(); }catch(err){ psFail(err); }

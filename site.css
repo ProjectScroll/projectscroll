@@ -2540,3 +2540,107 @@ main > section + section::before, main > .plate2 + section::before, .plate2::bef
 .mapsw .btn{font-size:.82rem; padding:.3rem .65rem}
 .mapsw .btn[aria-pressed="true"]{background:var(--ink); color:var(--paper); border-color:var(--ink)}
 @media (max-width:640px){ .mapsw{margin:.4rem 0 0; width:100%} }
+
+/* ===== Draft 105: the headline in gold leaf — the whole line, a warmer light, a glow that travels, and three sparks as it settles ===== */
+h1 .foil{position:relative; display:inline-block;
+  background:linear-gradient(100deg, var(--ink) 0 34%, #6d4f14 38%, #b8892f 41%, #e9c76a 44%, #fff4cf 47.5%, #f1d98a 50%, #c99a3a 53%, #8a6a1f 57%, var(--ink) 61% 100%);
+  background-size:320% 100%; background-position:100% 50%; -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent}
+h1 .foil::after{content:""; position:absolute; inset:-.05em 0 0; pointer-events:none; opacity:0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0c.7 6 3.3 8.6 10 10-6.7 1.4-9.3 4-10 10-.7-6-3.3-8.6-10-10 6.7-1.4 9.3-4 10-10z' fill='%23FFF1BF'/%3E%3C/svg%3E") 31% 18%/.34em .34em no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0c.7 6 3.3 8.6 10 10-6.7 1.4-9.3 4-10 10-.7-6-3.3-8.6-10-10 6.7-1.4 9.3-4 10-10z' fill='%23FFF1BF'/%3E%3C/svg%3E") 67% 8%/.26em .26em no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0c.7 6 3.3 8.6 10 10-6.7 1.4-9.3 4-10 10-.7-6-3.3-8.6-10-10 6.7-1.4 9.3-4 10-10z' fill='%23FFF1BF'/%3E%3C/svg%3E") 97% 30%/.3em .3em no-repeat;
+  filter:drop-shadow(0 0 .08em #f6d77a)}
+@media (prefers-reduced-motion: no-preference){
+  @keyframes leaf2{0%{background-position:100% 50%; filter:none} 45%{filter:drop-shadow(0 0 .14em color-mix(in srgb, #f1c75a 55%, transparent))} 100%{background-position:0% 50%; filter:none}}
+  @keyframes sparks{0%,100%{opacity:0; transform:scale(.6)} 30%{opacity:1; transform:scale(1)} 60%{opacity:.35} 80%{opacity:.9}}
+  h1 .foil{animation:leaf2 3.2s cubic-bezier(.45,.05,.3,1) 2s 1 both}
+  h1 .foil::after{animation:sparks 1.8s ease-out 4.6s 1 both}
+  h1:hover .foil{animation:leaf2 2.4s cubic-bezier(.45,.05,.3,1) 0s 1 both}
+  h1:hover .foil::after{animation:sparks 1.6s ease-out 1.6s 1 both}
+}
+@media (forced-colors: active){ h1 .foil::after{display:none} }
+
+/* ===== Draft 105: the gold rush — nuggets, a gold pan, a gilt initial, a vein of gold, and a switch to hold it all still ===== */
+:root{--nugget:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 16'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.35' cy='.3' r='.8'%3E%3Cstop offset='0' stop-color='%23FFF3C4'/%3E%3Cstop offset='.3' stop-color='%23F1D98A'/%3E%3Cstop offset='.65' stop-color='%23C99A3A'/%3E%3Cstop offset='1' stop-color='%237D5D17'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cpath d='M3.2 6.1C3.9 3 6.6 1.6 9.3 2.2c1.6-.9 3.9-.8 5.3.5 2.3.6 3.6 2.6 3.1 4.9.6 2-.6 4.3-2.8 5.1-1.7 1.6-4.4 1.8-6.3.9-2.3.4-4.7-.7-5.4-2.8C2 9.9 2.2 7.6 3.2 6.1z' fill='url(%23g)' stroke='%237D5D17' stroke-width='.7'/%3E%3Cpath d='M7 5.2c.8-.7 2-.9 2.9-.5M12.6 4.6c.7.1 1.3.5 1.6 1' fill='none' stroke='%23FFF8DE' stroke-width='.9' stroke-linecap='round' opacity='.85'/%3E%3C/svg%3E")}
+
+/* nugget bullets: the services lists and the plain lists of every inner page */
+.ad-col li::before{content:""; top:.42em; width:.78em; height:.62em; background:var(--nugget) center/contain no-repeat}
+main.page ul:not([class]){list-style:none; padding-left:1.5rem}
+main.page ul:not([class]) > li{position:relative}
+main.page ul:not([class]) > li::before{content:""; position:absolute; left:-1.45rem; top:.48em; width:.82em; height:.66em; background:var(--nugget) center/contain no-repeat}
+
+/* the gilt initial: inner pages open with a gold-leaf capital, as an illuminated record would */
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  main.page > .lede::first-letter{background:var(--foil); background-size:200% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; text-shadow:none}
+}
+@media (forced-colors: active){ main.page > .lede::first-letter{color:CanvasText; -webkit-text-fill-color:CanvasText; background:none} }
+
+/* the news dot is a nugget that glints */
+.tk-dot{width:.72rem; height:.58rem; border-radius:0; background:var(--nugget) center/contain no-repeat}
+.tk-dot::after{background:radial-gradient(circle, rgba(255,243,196,.9), transparent 70%)!important}
+
+/* pan for a case: the gold pan swirls, the nuggets settle */
+.pickcase{display:inline-flex; align-items:center; gap:.4rem}
+.pickcase .pan{width:1.35rem; height:1.35rem; flex:none; overflow:visible}
+.pickcase .pan ellipse{fill:color-mix(in srgb, #8a6a1f 22%, transparent); stroke:#8a6a1f; stroke-width:1.1}
+.pickcase .pan .pan-in{fill:color-mix(in srgb, #4b5a63 35%, transparent); stroke:none}
+.pickcase .pan .nug{fill:#e9c76a; stroke:#7d5d17; stroke-width:.35}
+@media (prefers-reduced-motion: no-preference){
+  @keyframes swirl{0%{transform:rotate(0)} 20%{transform:rotate(-14deg)} 40%{transform:rotate(12deg)} 60%{transform:rotate(-9deg)} 80%{transform:rotate(5deg)} 100%{transform:rotate(0)}}
+  @keyframes settle{0%{transform:translate(0,0)} 25%{transform:translate(1.4px,-.8px)} 50%{transform:translate(-1.2px,.6px)} 75%{transform:translate(.7px,-.4px)} 100%{transform:translate(0,0)}}
+  .pickcase.panning .pan{animation:swirl .9s ease-in-out; transform-origin:50% 60%}
+  .pickcase.panning .nug{animation:settle .9s ease-in-out}
+  .pickcase:hover .pan .nug{filter:drop-shadow(0 0 1.5px #f6d77a)}
+}
+
+/* the gold vein: nuggets along the reading thread, one for each part, lit as you pass */
+.vein{position:fixed; left:0; top:0; bottom:0; width:12px; z-index:5; pointer-events:none}
+.vein i{position:absolute; left:-1px; width:12px; height:10px; margin-top:-5px; background:var(--nugget) center/contain no-repeat; opacity:.38; filter:grayscale(.85) brightness(.9); transition:opacity .4s, filter .4s, transform .4s}
+.vein i.hit{opacity:1; filter:none; transform:scale(1.15)}
+@supports not (animation-timeline: scroll()){ .vein{display:none} }
+@media (prefers-reduced-motion: reduce){ .vein{display:none} }
+@media (max-width:700px){ .vein{display:none} }
+@media print{ .vein{display:none!important} }
+
+/* fool's gold on the 404 page */
+.foolsgold{display:flex; align-items:center; gap:.7rem; padding:.7rem 1rem; border:1px dashed color-mix(in srgb, var(--gold) 70%, transparent); border-radius:6px; background:color-mix(in srgb, var(--gold-hi) 8%, var(--paper))}
+.foolsgold b{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.15rem; color:var(--gold-lo)}
+.fg-pan{flex:none; width:2.4rem; height:1.6rem; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 26'%3E%3Cellipse cx='20' cy='15' rx='18' ry='9' fill='%23C9A24A' fill-opacity='.25' stroke='%238A6A1F' stroke-width='1.4'/%3E%3Cellipse cx='20' cy='13.6' rx='12' ry='5' fill='%234B5A63' fill-opacity='.35'/%3E%3Cpath d='M16 12l2.4-1.6 2.2 1.4-.8 2.2h-2.6zM22.5 13.2l1.6-.9 1.2 1.2-1.1 1.2z' fill='%23B8B8A8' stroke='%236B6B5E' stroke-width='.5'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* the plate viewer's note on record and illustration */
+.plate-dlg .pd-note{margin:0; padding:0 1rem .4rem; font-size:.74rem; line-height:1.4; font-style:italic; color:rgba(234,230,220,.72); padding-right:16rem}
+@media (max-width:700px){ .plate-dlg .pd-note{padding-right:1rem; padding-bottom:2.8rem} }
+
+/* pause all motion: one switch at the foot of every page, remembered */
+.calmrow{margin:.5rem 0 0}
+.calmbtn{display:inline-flex; align-items:center; gap:.45rem; font:inherit; font-size:.82rem; letter-spacing:.04em; padding:.25rem .75rem; border:1px solid color-mix(in srgb, currentColor 40%, transparent); border-radius:999px; background:transparent; color:inherit; cursor:pointer}
+.calmbtn svg{width:.8rem; height:.8rem; fill:currentColor}
+.calmbtn[aria-pressed="true"]{border-color:var(--gold); color:var(--gold-hi)}
+.calmbtn[aria-pressed="true"] svg rect:first-child{transform:none}
+html.calm *:not(.vprogress):not(.progress), html.calm *::before, html.calm *::after{animation-duration:.001s!important; animation-delay:0s!important; animation-iteration-count:1!important; transition-duration:0s!important; transition-delay:0s!important; scroll-behavior:auto!important}
+html.calm .placeband.run .pb-track{animation:none}
+html.calm .placeband .pb-view{overflow-x:auto}
+html.calm h1 .foil{animation:none; background-position:0% 50%}
+html.calm .trailx .tx-draw{stroke-dashoffset:0} html.calm .trailx .tx-x{opacity:1} html.calm .trailx .tx-gem{transform:none}
+html.calm .gemglint, html.calm .vein{display:none}
+.foolsgold b{white-space:nowrap}
+.ad-col li::before{width:.9em; height:.72em; top:.36em}
+/* light paper needs a deeper leaf so the words never wash out mid-sweep */
+:root{--leaf-hi:#dcae45; --leaf-mid:#c9952f}
+:root[data-theme="dark"]{--leaf-hi:#fff4cf; --leaf-mid:#f1d98a}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--leaf-hi:#fff4cf; --leaf-mid:#f1d98a} }
+h1 .foil{background-image:linear-gradient(100deg, var(--ink) 0 34%, #6d4f14 38%, #a8791f 41%, var(--leaf-mid) 44%, var(--leaf-hi) 47.5%, var(--leaf-mid) 50%, #b8892f 53%, #7d5d17 57%, var(--ink) 61% 100%)}
+/* each case's "Start here" is a scrap of the same treasure map: a compass, a dashed trail, the stops ringed in gold */
+.starthere{position:relative; overflow:hidden; background:radial-gradient(120% 90% at 0% 0%, color-mix(in srgb, var(--gold-hi) 16%, transparent), transparent 60%), radial-gradient(90% 80% at 100% 100%, color-mix(in srgb, var(--gold) 12%, transparent), transparent 55%), color-mix(in srgb, var(--gold-hi) 9%, var(--paper))}
+.starthere::after{content:""; position:absolute; right:.7rem; top:.6rem; width:3rem; height:3rem; opacity:.45; pointer-events:none; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23A07A2A' stroke-width='1'%3E%3Ccircle cx='30' cy='30' r='21'/%3E%3Ccircle cx='30' cy='30' r='17' stroke-dasharray='1.5 2.5'/%3E%3Cpath d='M30 4v52M4 30h52' stroke-opacity='.35'/%3E%3C/g%3E%3Cpath d='M30 6l4 24h-8z' fill='%23B3362B'/%3E%3Cpath d='M30 54l4-24h-8z' fill='%23A07A2A'/%3E%3C/svg%3E") center/contain no-repeat}
+.starthere h2{padding-right:3.4rem}
+.starthere ol{list-style:none; counter-reset:sh; padding-left:2.3rem; position:relative}
+.starthere ol::before{content:""; position:absolute; left:.95rem; top:.75rem; height:calc(100% - 2.2rem); border-left:2px dashed color-mix(in srgb, var(--gold) 80%, transparent)}
+.starthere li{counter-increment:sh; position:relative}
+.starthere li::before{content:counter(sh); position:absolute; left:-2.3rem; top:.05rem; width:1.5rem; height:1.5rem; border-radius:50%; display:grid; place-items:center; background:var(--paper); border:1.5px solid var(--gold); font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:.8rem; line-height:1; color:var(--gold-lo)}
+.pb-pause{flex:none; align-self:center; display:grid; place-items:center; width:1.5rem; height:1.5rem; margin-left:.4rem; padding:0; border:1px solid color-mix(in srgb, var(--gold) 55%, transparent); border-radius:50%; background:transparent; color:var(--ink-soft); cursor:pointer}
+.pb-pause svg{width:.7rem; height:.7rem; fill:currentColor}
+.pb-pause:hover, .pb-pause:focus-visible{color:var(--rule); border-color:var(--rule)}
+.placeband.held .pb-track{animation-play-state:paused!important}
+html.calm .pb-pause{display:none}
