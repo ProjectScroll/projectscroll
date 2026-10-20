@@ -2644,3 +2644,21 @@ h1 .foil{background-image:linear-gradient(100deg, var(--ink) 0 34%, #6d4f14 38%,
 .pb-pause:hover, .pb-pause:focus-visible{color:var(--rule); border-color:var(--rule)}
 .placeband.held .pb-track{animation-play-state:paused!important}
 html.calm .pb-pause{display:none}
+
+/* ===== Draft 106: the kicker in three lines, its diamonds joined by a gold thread — everything is connected ===== */
+.hero-k .hk3{margin-top:.15rem}
+.hero-k .hk3 i{position:relative}
+.hero-k .hk3 i::before{content:""; position:absolute; left:50%; bottom:78%; height:1.05em; border-left:1px dotted var(--gold); transform:translateX(-50%); opacity:.85}
+@media (prefers-reduced-motion: no-preference){ .hero-k .hk3 i{animation-delay:3s!important} }
+/* the heron in a gilt frame: a gold hairline set just inside the edge, small diamonds at the corners */
+.hero .plate{position:relative}
+.hero .plate::after{content:""; position:absolute; inset:.55rem; border:1px solid color-mix(in srgb, #f1d98a 75%, transparent); pointer-events:none; z-index:2;
+  background:
+    linear-gradient(45deg, transparent 42%, #e9c76a 42% 58%, transparent 58%) 0 0/.5rem .5rem no-repeat,
+    linear-gradient(45deg, transparent 42%, #e9c76a 42% 58%, transparent 58%) 100% 0/.5rem .5rem no-repeat,
+    linear-gradient(45deg, transparent 42%, #e9c76a 42% 58%, transparent 58%) 0 100%/.5rem .5rem no-repeat,
+    linear-gradient(45deg, transparent 42%, #e9c76a 42% 58%, transparent 58%) 100% 100%/.5rem .5rem no-repeat;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+@media print{ .hero .plate::after{display:none} }
+.hero-k .hk2{padding-left:1.15em; text-indent:-1.15em}
+.hero-k .hk2 i{text-indent:0}
