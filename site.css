@@ -2809,3 +2809,8 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 .dayval .dv-k{margin:0; font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:var(--rule)}
 .dayval .dv-t{margin:.35rem 0 .3rem; font-size:1.15rem; line-height:1.4}
 .dayval .dv-s{margin:0; font-size:.88rem; color:var(--ink-soft)}
+/* postcards, then and now */
+.pc{margin:1.4rem 0 1.8rem}
+.pc img{width:100%; height:auto; border:1px solid var(--line); border-radius:3px}
+.pc figcaption{margin-top:.5rem; line-height:1.45}
+.pc figcaption a{white-space:nowrap}

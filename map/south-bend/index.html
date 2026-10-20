@@ -30,7 +30,7 @@
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
-<link rel="stylesheet" href="/site.min.css?v=a0e5e080">
+<link rel="stylesheet" href="/site.min.css?v=72d7fb3c">
 <script type="speculationrules">{"prefetch":[{"where":{"and":[{"selector_matches":".bar a, footer nav a, .partrail a, .search-res a, .crumb a"},{"href_matches":"/*"},{"not":{"href_matches":"/*.pdf"}}]},"eagerness":"moderate"}]}</script>
 </head>
 <body>
@@ -48,7 +48,7 @@
       Project Scroll
     </a>
     <nav aria-label="Sections" id="sitenav">
-      <a href="/#hunt">Hunt</a><a href="/#cases">Cases</a><span class="navdrop"><button type="button" class="nd-b" aria-expanded="false" aria-controls="ndMaps">Maps</button><span class="nd" id="ndMaps" hidden><a href="/map/">The map room</a><a href="/map/then-and-now/">Seven towns, then and now</a><a href="/names/">Who was in town</a><a href="/places/">The gazetteer</a><a href="/map/#sanborn">Sanborn sheets</a><a href="/sources/">The sources shelf</a></span></span><a href="/#services">Services</a><a href="/notes/">Field notes</a><a href="/#contact">Contact</a>
+      <a href="/#hunt">Hunt</a><a href="/#cases">Cases</a><span class="navdrop"><button type="button" class="nd-b" aria-expanded="false" aria-controls="ndMaps">Maps</button><span class="nd" id="ndMaps" hidden><a href="/map/">The map room</a><a href="/map/then-and-now/">Seven towns, then and now</a><a href="/names/">Who was in town</a><a href="/postcards/">Postcards, then and now</a><a href="/roads-and-rails/">Roads, rails and mills</a><a href="/places/">The gazetteer</a><a href="/map/#sanborn">Sanborn sheets</a><a href="/sources/">The sources shelf</a></span></span><a href="/#services">Services</a><a href="/notes/">Field notes</a><a href="/#contact">Contact</a>
     </nav>
     <button class="searchbtn" type="button" id="searchBtn" aria-label="Search the site" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     <a class="badgelink" id="badgeLink" href="/badges/" aria-label="Your badges"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3l4.6 9.4 10.4 1.5-7.5 7.3 1.8 10.3L20 26.6l-9.3 4.9 1.8-10.3-7.5-7.3 10.4-1.5z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg><span class="bn" id="badgeN" hidden></span></a>
@@ -78,7 +78,7 @@
       </span>
       <label class="tnrange" id="tnFadeBox"><span>Today</span><input type="range" id="tnOp" min="0" max="100" value="75" aria-label="How much of the 1863 plan to show"><span>1863</span></label>
       <button type="button" class="btn" id="tnHome">Back to town</button>
-      <button type="button" class="btn" id="tnFull">Full screen</button><button type="button" class="btn" id="tnShare">Share this view</button><button type="button" class="btn" id="tnPrint">Print</button><button type="button" class="btn" id="tnNames" aria-pressed="false" disabled title="Solve this town’s renamed-street challenge to unlock">Today’s names 🔒</button>
+      <button type="button" class="btn" id="tnHere" aria-pressed="false">Where am I?</button><button type="button" class="btn" id="tnFull">Full screen</button><button type="button" class="btn" id="tnShare">Share this view</button><button type="button" class="btn" id="tnPrint">Print</button><button type="button" class="btn" id="tnNames" aria-pressed="false" disabled title="Solve this town’s renamed-street challenge to unlock">Today’s names 🔒</button>
       <span class="mapstat" id="tnStat" aria-live="polite">Loading…</span>
     </div>
     <div class="tnwrap">
@@ -186,6 +186,22 @@
       handle.addEventListener('pointerup',up); handle.addEventListener('pointercancel',up);
       handle.addEventListener('keydown',e=>{ if(e.key==='ArrowLeft'||e.key==='ArrowRight'){ frac=Math.min(0.98,Math.max(0.02,frac+(e.key==='ArrowLeft'?-0.04:0.04))); clip(); e.preventDefault(); } });
       L.DomEvent.disableClickPropagation(line);
+      // where am I: a live dot on the old plan, for walking the town; the position never leaves this device
+      const bHere=document.getElementById('tnHere'); let watch=null, dot=null, ring=null, first=true;
+      if (!('geolocation' in navigator)) bHere.hidden=true;
+      const stopHere=()=>{ if (watch!==null) navigator.geolocation.clearWatch(watch); watch=null; if (dot) map.removeLayer(dot); if (ring) map.removeLayer(ring); dot=ring=null; bHere.setAttribute('aria-pressed','false'); bHere.textContent='Where am I?'; };
+      bHere.onclick=()=>{ if (watch!==null){ stopHere(); stat.textContent='Stopped following you.'; return; }
+        first=true; bHere.setAttribute('aria-pressed','true'); bHere.textContent='Stop following me'; stat.textContent='Asking your device where you are… It stays on your device; nothing is sent to us.';
+        watch=navigator.geolocation.watchPosition(pos=>{ const ll=[pos.coords.latitude,pos.coords.longitude], acc=pos.coords.accuracy||30;
+          if (!dot){ ring=L.circle(ll,{radius:acc,weight:1,color:'#B3362B',fillColor:'#B3362B',fillOpacity:.12,interactive:false,pane:'old'}).addTo(map); dot=L.circleMarker(ll,{radius:7,weight:3,color:'#fff',fillColor:'#B3362B',fillOpacity:1,interactive:false,pane:'old'}).addTo(map); }
+          else { dot.setLatLng(ll); ring.setLatLng(ll).setRadius(acc); }
+          const inTown=B.pad(0.15).contains(ll);
+          if (first){ first=false; if (inTown){ map.setView(ll,Math.max(map.getZoom(),17)); stat.textContent='You are on the 1863 plan, within about '+Math.round(acc)+' metres. Walk, and the dot follows you.'; }
+            else { const km=map.distance(ll,B.getCenter())/1000; stat.textContent='You are about '+(km<20?km.toFixed(1):Math.round(km))+' km ('+(km*0.6214<20?(km*0.6214).toFixed(1):Math.round(km*0.6214))+' miles) from South Bend. Come to town and the dot will walk the 1863 streets with you.'; } }
+          else if (inTown && !map.getBounds().pad(-0.1).contains(ll)) map.panTo(ll);
+        }, err=>{ stopHere(); stat.textContent=err.code===1?'Your device did not share its location. You can allow it in the browser’s settings and try again.':'Your device could not find its location just now.'; }, {enableHighAccuracy:true, maximumAge:5000, timeout:20000});
+      };
+      addEventListener('pagehide',stopHere);
       // full screen: the whole map tool, with the map resized to fit
       const room=document.querySelector('.maproom'), bFull=document.getElementById('tnFull');
       if (!room.requestFullscreen) bFull.hidden=true;
@@ -231,6 +247,6 @@
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=a0e5e080" defer></script>
+<script src="/site.min.js?v=72d7fb3c" defer></script>
 </body>
 </html>

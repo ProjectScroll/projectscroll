@@ -157,7 +157,7 @@ def build(t):
       </span>
       <label class="tnrange" id="tnFadeBox"><span>Today</span><input type="range" id="tnOp" min="0" max="100" value="75" aria-label="How much of the {Y} plan to show"><span>{Y}</span></label>
       <button type="button" class="btn" id="tnHome">Back to town</button>
-      <button type="button" class="btn" id="tnFull">Full screen</button><button type="button" class="btn" id="tnShare">Share this view</button><button type="button" class="btn" id="tnPrint">Print</button><button type="button" class="btn" id="tnNames" aria-pressed="false" disabled title="Solve this town’s renamed-street challenge to unlock">Today’s names 🔒</button>
+      <button type="button" class="btn" id="tnHere" aria-pressed="false">Where am I?</button><button type="button" class="btn" id="tnFull">Full screen</button><button type="button" class="btn" id="tnShare">Share this view</button><button type="button" class="btn" id="tnPrint">Print</button><button type="button" class="btn" id="tnNames" aria-pressed="false" disabled title="Solve this town’s renamed-street challenge to unlock">Today’s names 🔒</button>
       <span class="mapstat" id="tnStat" aria-live="polite">Loading…</span>
     </div>
     <div class="tnwrap">
@@ -244,6 +244,22 @@ def build(t):
       handle.addEventListener('pointerup',up); handle.addEventListener('pointercancel',up);
       handle.addEventListener('keydown',e=>{{ if(e.key==='ArrowLeft'||e.key==='ArrowRight'){{ frac=Math.min(0.98,Math.max(0.02,frac+(e.key==='ArrowLeft'?-0.04:0.04))); clip(); e.preventDefault(); }} }});
       L.DomEvent.disableClickPropagation(line);
+      // where am I: a live dot on the old plan, for walking the town; the position never leaves this device
+      const bHere=document.getElementById('tnHere'); let watch=null, dot=null, ring=null, first=true;
+      if (!('geolocation' in navigator)) bHere.hidden=true;
+      const stopHere=()=>{{ if (watch!==null) navigator.geolocation.clearWatch(watch); watch=null; if (dot) map.removeLayer(dot); if (ring) map.removeLayer(ring); dot=ring=null; bHere.setAttribute('aria-pressed','false'); bHere.textContent='Where am I?'; }};
+      bHere.onclick=()=>{{ if (watch!==null){{ stopHere(); stat.textContent='Stopped following you.'; return; }}
+        first=true; bHere.setAttribute('aria-pressed','true'); bHere.textContent='Stop following me'; stat.textContent='Asking your device where you are… It stays on your device; nothing is sent to us.';
+        watch=navigator.geolocation.watchPosition(pos=>{{ const ll=[pos.coords.latitude,pos.coords.longitude], acc=pos.coords.accuracy||30;
+          if (!dot){{ ring=L.circle(ll,{{radius:acc,weight:1,color:'#B3362B',fillColor:'#B3362B',fillOpacity:.12,interactive:false,pane:'old'}}).addTo(map); dot=L.circleMarker(ll,{{radius:7,weight:3,color:'#fff',fillColor:'#B3362B',fillOpacity:1,interactive:false,pane:'old'}}).addTo(map); }}
+          else {{ dot.setLatLng(ll); ring.setLatLng(ll).setRadius(acc); }}
+          const inTown=B.pad(0.15).contains(ll);
+          if (first){{ first=false; if (inTown){{ map.setView(ll,Math.max(map.getZoom(),17)); stat.textContent='You are on the {Y} plan, within about '+Math.round(acc)+' metres. Walk, and the dot follows you.'; }}
+            else {{ const km=map.distance(ll,B.getCenter())/1000; stat.textContent='You are about '+(km<20?km.toFixed(1):Math.round(km))+' km ('+(km*0.6214<20?(km*0.6214).toFixed(1):Math.round(km*0.6214))+' miles) from {t["name"]}. Come to town and the dot will walk the {Y} streets with you.'; }} }}
+          else if (inTown && !map.getBounds().pad(-0.1).contains(ll)) map.panTo(ll);
+        }}, err=>{{ stopHere(); stat.textContent=err.code===1?'Your device did not share its location. You can allow it in the browser’s settings and try again.':'Your device could not find its location just now.'; }}, {{enableHighAccuracy:true, maximumAge:5000, timeout:20000}});
+      }};
+      addEventListener('pagehide',stopHere);
       // full screen: the whole map tool, with the map resized to fit
       const room=document.querySelector('.maproom'), bFull=document.getElementById('tnFull');
       if (!room.requestFullscreen) bFull.hidden=true;
