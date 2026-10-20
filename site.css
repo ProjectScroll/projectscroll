@@ -1045,11 +1045,13 @@ html{scrollbar-color:color-mix(in srgb, var(--ink-soft) 55%, transparent) transp
 :root[data-theme="dark"]{--panel:#192027; --panel-2:#1E272F; --panel-edge:#2E3A44; --panel-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 22px 44px -30px rgba(0,0,0,.8)}
 main{counter-reset:part}
 main > section > .part{counter-increment:part}
+/* (Draft 91) the panels gave way to magazine spreads: each part runs the full sheet, alternate parts on a tinted band */
 main > section, main > section:nth-of-type(even):not(.contact), main > section.contact{
-  max-width:calc(var(--col) + 2rem)!important; margin:3.4rem auto!important; padding:3.3rem 1rem 3rem!important;
-  background:var(--panel)!important; border:1px solid var(--panel-edge)!important; border-top:3px solid color-mix(in srgb, var(--rule) 70%, var(--panel-edge))!important;
-  border-radius:12px!important; box-shadow:var(--panel-shadow); position:relative; isolation:isolate}
-main > section:nth-of-type(even):not(.contact){background:var(--panel-2)!important}
+  max-width:none!important; margin:0 -2.75rem 0 -2.75rem!important; padding:4.2rem 2.75rem 3.4rem!important;
+  background:none!important; border:0!important; border-radius:0!important; box-shadow:none; position:relative; isolation:isolate}
+main > section:nth-of-type(even):not(.contact){background:var(--panel-2)!important; border-top:1px solid color-mix(in srgb, var(--gold) 30%, transparent)!important; border-bottom:1px solid color-mix(in srgb, var(--gold) 30%, transparent)!important}
+main > section.contact{background:var(--ink)!important; color:var(--paper)}
+@media (max-width:640px){ main > section, main > section:nth-of-type(even):not(.contact), main > section.contact{margin:0 -.9rem!important; padding-left:.9rem!important; padding-right:.9rem!important} }
 main > section::after{content:counter(part, upper-roman); position:absolute; z-index:-1; top:.9rem; right:1.3rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:5.4rem; line-height:1; color:var(--rule); opacity:.075; pointer-events:none}
 main > section.contact::after{content:none}
 /* the flourish now sits in the gap between panels */
@@ -2175,3 +2177,34 @@ p,li,dd,figcaption,.lede{text-wrap:pretty}
 .masthead:hover .mh-ticks, .masthead.open .mh-ticks, .masthead:focus-within .mh-ticks{opacity:1}
 .masthead .mh-ticks i{flex:1; background:rgba(234,230,220,.28)}
 .masthead .mh-ticks i.on{background:var(--gold-hi)}
+
+/* ===== Draft 91: magazine section openers ===== */
+/* each part opens like a feature: a gold rule with the part number set into it, a running head, a bigger title with a short gold dash beneath */
+main > section{padding-top:4.2rem}
+main > section + section, main > .plate2 + section{border-top:0}
+main > section + section::before, main > .plate2 + section::before, main > section + .plate2::before, .plate2::before{content:none}
+main > section > .part{position:relative; justify-content:center; margin:0 0 1.1rem; font-size:.78rem; letter-spacing:.22em; color:var(--gold-lo)}
+main > section > .part::before, main > section > .part::after{content:""; flex:1; height:1px; background:linear-gradient(90deg, transparent, color-mix(in srgb, var(--gold) 70%, transparent) 30%, color-mix(in srgb, var(--gold) 70%, transparent) 70%, transparent)}
+main > section > .part{gap:1rem}
+main > section > .part .listen{position:absolute; right:0; top:-.3rem}
+main > section > h2{font-size:clamp(1.9rem, 4.6vw, 2.8rem); line-height:1.08; letter-spacing:-.01em; margin:0 0 1.1rem; position:relative; padding-bottom:1rem}
+main > section > h2::after{content:""; position:absolute; left:50%; bottom:0; width:3rem; height:3px; transform:translateX(-50%); background:linear-gradient(90deg, var(--gold-lo), var(--gold-hi), var(--gold-lo)); border-radius:2px}
+main > section > .intro{font-size:1.08rem; line-height:1.62; max-width:40rem; margin:0 auto 1.6rem; text-align:center; color:var(--ink-soft)}
+/* alternate parts sit on a full-bleed tinted band, as a magazine's feature spreads do */
+/* the contact section closes the magazine: dark ink band, light type */
+.contact h2, .contact .intro, .contact .note, .contact label span, .contact figcaption{color:var(--paper)}
+.contact .intro a, .contact .note a{color:var(--gold-hi)}
+.contact .btn{color:var(--paper); border-color:color-mix(in srgb, var(--paper) 55%, transparent)}
+.contact .btn.primary{background:var(--gold); border-color:var(--gold); color:var(--ink)}
+.contact .btn.primary:hover{background:var(--gold-hi); border-color:var(--gold-hi)}
+.contact input, .contact textarea, .contact select{background:color-mix(in srgb, var(--paper) 10%, transparent); color:var(--paper); border-color:color-mix(in srgb, var(--paper) 35%, transparent)}
+.contact input::placeholder, .contact textarea::placeholder{color:color-mix(in srgb, var(--paper) 55%, transparent)}
+.contact .credit, .contact .copied{color:color-mix(in srgb, var(--paper) 75%, transparent)}
+/* inner pages: the kicker becomes a running head in the same style */
+main.page > .kicker{display:flex; align-items:center; gap:1rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:.78rem; letter-spacing:.22em; color:var(--gold-lo)}
+main.page > .kicker::after{content:""; flex:1; height:1px; background:linear-gradient(90deg, color-mix(in srgb, var(--gold) 70%, transparent), transparent)}
+main.page > h1{position:relative; padding-bottom:1rem; margin-bottom:1.2rem}
+main.page > h1::after{content:""; position:absolute; left:0; bottom:0; width:3rem; height:3px; background:linear-gradient(90deg, var(--gold-lo), var(--gold-hi), var(--gold-lo)); border-radius:2px}
+@media (max-width:640px){ main > section{padding-top:3.2rem} main > section > h2{font-size:1.75rem} }
+
+@media print{ main > section, main > section.contact{background:none!important; color:inherit!important; margin:0!important; padding:1.5rem 0!important} }
