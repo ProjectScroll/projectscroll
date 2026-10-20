@@ -927,7 +927,7 @@ form.tmpl .row2{display:grid; grid-template-columns:1fr 1fr; gap:.65rem}
 
 /* ---------- R2: reading progress along the top bar ---------- */
 .progress{position:absolute; left:0; bottom:-1px; height:2px; width:100%; background:var(--rule); transform-origin:left; transform:scaleX(0)}
-@supports (animation-timeline: scroll()){ @media (prefers-reduced-motion: no-preference){ .progress{animation:prog linear both; animation-timeline:scroll(root)} @keyframes prog{to{transform:scaleX(1)}} } }
+@supports (animation-timeline: scroll()){ @media (prefers-reduced-motion: no-preference){ .progress{animation:prog linear both} .bar .progress{animation-timeline:scroll(root)} @keyframes prog{to{transform:scaleX(1)}} } }
 @supports not (animation-timeline: scroll()){ .progress{display:none} }
 
 /* ---------- R3/R5: small text buttons ---------- */
@@ -2341,3 +2341,14 @@ details.faq summary{padding:.55rem 0; font-weight:600}
 /* footer: the motto set as a small-caps colophon line with gold rules */
 footer.site .motto{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.05rem; letter-spacing:.04em; display:flex; align-items:center; gap:1rem; justify-content:center}
 footer.site .motto::before, footer.site .motto::after{content:""; width:3rem; height:1px; background:color-mix(in srgb, var(--gold) 70%, transparent)}
+
+/* ===== Draft 98: the red thread — reading progress along the top bar (restored) and down the page's margin rule ===== */
+.progress{box-shadow:0 0 6px color-mix(in srgb, var(--rule) 70%, transparent)}
+.progress::after{content:""; position:absolute; right:-.3rem; top:50%; width:.55rem; height:.55rem; transform:translateY(-50%) rotate(45deg); background:var(--rule); box-shadow:0 0 6px var(--rule)}
+.vprogress{position:fixed; left:0; top:0; bottom:0; width:3px; z-index:4; pointer-events:none; background:var(--rule); transform-origin:top; transform:scaleY(0); box-shadow:0 0 6px color-mix(in srgb, var(--rule) 70%, transparent)}
+.vprogress::after{content:""; position:absolute; left:50%; bottom:-.3rem; width:.55rem; height:.55rem; transform:translateX(-50%) rotate(45deg); background:var(--rule); box-shadow:0 0 6px var(--rule)}
+@supports (animation-timeline: scroll()){ @media (prefers-reduced-motion: no-preference){ .vprogress{animation:vprog linear both} body > .vprogress{animation-timeline:scroll(root)} @keyframes vprog{to{transform:scaleY(1)}} } }
+@supports not (animation-timeline: scroll()){ .vprogress{display:none} }
+@media (prefers-reduced-motion: reduce){ .vprogress, .progress{display:none} }
+@media print{ .vprogress{display:none!important} }
+@media (max-width:700px){ .vprogress{width:2px} }
