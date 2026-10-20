@@ -2096,3 +2096,16 @@ p,li,dd,figcaption,.lede{text-wrap:pretty}
 .masthead:focus-visible .mh-hint{opacity:1}
 /* the bar sits a touch lighter over the strip's shadow; the gold rule picks up its glint on load */
 .bar{box-shadow:0 1px 0 color-mix(in srgb, var(--paper) 70%, transparent)}
+
+/* ===== Draft 83: thirty-two plates; the grey ones take the paper's warmth; ‹ › and the whole plate ===== */
+.masthead .mh-pic.g img{filter:sepia(.28) saturate(.9) contrast(.96) brightness(.9)}
+.masthead .mh-prev, .masthead .mh-full{position:absolute; bottom:.3rem; z-index:3; width:1.7rem; height:1.7rem; border:1px solid rgba(234,230,220,.5); border-radius:50%; background:rgba(34,54,74,.55); color:#EAE6DC; font:1.1rem/1 "Libre Caslon Display","Caslon Display Fallback",serif; cursor:pointer; opacity:0; transition:opacity .3s ease, border-color .2s}
+.masthead .mh-prev{left:.6rem} .masthead .mh-next{left:2.6rem} .masthead .mh-full{left:4.6rem; font-size:.95rem}
+.masthead:hover .mh-prev, .masthead.open .mh-prev, .masthead .mh-prev:focus-visible, .masthead:hover .mh-full, .masthead.open .mh-full, .masthead .mh-full:focus-visible{opacity:1}
+.masthead .mh-prev:hover, .masthead .mh-full:hover, .masthead .mh-prev:focus-visible, .masthead .mh-full:focus-visible{border-color:var(--gold-hi); color:var(--gold-hi)}
+.plate-dlg{border:0; padding:0; background:#22364A; color:#EAE6DC; max-width:min(96vw, 1600px); width:min(96vw, 1600px); border-radius:6px; box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
+.plate-dlg::backdrop{background:rgba(10,16,24,.75); -webkit-backdrop-filter:blur(3px); backdrop-filter:blur(3px)}
+.plate-dlg img{display:block; width:100%; height:auto; aspect-ratio:4/1; object-fit:cover}
+.plate-dlg .pd-cap{margin:0; padding:.6rem 1rem; font-size:.9rem; letter-spacing:.04em; display:flex; justify-content:space-between; align-items:center; gap:1rem}
+.plate-dlg .pd-cap a{color:var(--gold-hi)}
+.plate-dlg #pdClose{position:absolute; right:.6rem; bottom:.45rem; padding:.2rem .7rem; font-size:.85rem; color:#EAE6DC; border-color:rgba(234,230,220,.5); background:transparent}
