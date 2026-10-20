@@ -335,7 +335,8 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
         let i=0; const show=function(){ const c=list[i%list.length]; WQ.textContent=c[2]; WQ.href='#case-'+c[3]; W.hidden=false; };
         show();
         const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (list.length>1 && !still) setInterval(function(){ W.classList.add('fade'); setTimeout(function(){ i++; show(); W.classList.remove('fade'); }, 480); }, 7000);
+        let hold=false; W.addEventListener('pointerenter', function(){ hold=true; }); W.addEventListener('pointerleave', function(){ hold=false; });
+        if (list.length>1 && !still) setInterval(function(){ if (hold) return; W.classList.add('fade'); setTimeout(function(){ i++; show(); W.classList.remove('fade'); }, 480); }, 7000);
         const latest=out.length?out[out.length-1][0]:null;
         if (latest && (Date.parse(today)-Date.parse(latest))/864e5<7){ const h=document.querySelector('.bar nav a[href="#hunt"]'); if (h){ h.classList.add('fresh'); h.title='A new clue this week'; } }
       }
@@ -744,7 +745,7 @@ try{ (function(){
   const label=function(k){ cap.innerHTML=''; const n=document.createElement('span'); n.className='mh-n'; n.textContent=(set.indexOf(k)+1)+' / '+set.length; cap.appendChild(n); if (k.href){ const a=document.createElement('a'); a.href=k.href; a.textContent=k.cap; a.title='Open the page this comes from'; cap.appendChild(a); } else cap.appendChild(document.createTextNode(k.cap)); };
   const preload=function(k){ const im=new Image(); im.src='/img/strip/'+k.id+(innerWidth<=700?'-800':'')+'.webp'; };
   const show=function(k){ const n=make(k); mh.insertBefore(n, cap); const img=n.querySelector('img');
-    const go=function(){ n.classList.add('on'); const old=cur; cur=n; label(k); if (!reduce){ mh.classList.remove('glint'); void mh.offsetWidth; mh.classList.add('glint'); } setTimeout(function(){ if (old && old!==cur) old.remove(); }, reduce?50:4200); };
+    const go=function(){ n.classList.add('on'); const old=cur; cur=n; label(k); if (!reduce){ mh.classList.remove('glint'); void mh.offsetWidth; mh.classList.add('glint'); } mh.classList.add('cap-show'); clearTimeout(mh._ct); mh._ct=setTimeout(function(){ mh.classList.remove('cap-show'); }, 4500); setTimeout(function(){ if (old && old!==cur) old.remove(); }, reduce?50:4200); };
     if (img.complete) go(); else img.addEventListener('load', go, {once:true}); };
   if (i!==0) show(set[i]); else { cur.querySelector('img').style.objectPosition=set[0].pos; cur.classList.add(set[0].tone); label(set[0]); }
   preload(set[(i+1)%set.length]); preload(set[(i+2)%set.length]);
@@ -754,8 +755,10 @@ try{ (function(){
   if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ seen=es[0].isIntersecting; arm(); }, {threshold:.5}).observe(mh);
   const prev=function(){ i=(i+set.length-2)%set.length; next(); };
   const pbtn=mh.querySelector('.mh-prev'); if (pbtn) pbtn.addEventListener('click', function(e){ e.stopPropagation(); prev(); arm(); });
-  const fbtn=mh.querySelector('.mh-full'); if (fbtn) fbtn.addEventListener('click', function(e){ e.stopPropagation(); let d=document.getElementById('plateDlg'); if (!d){ d=document.createElement('dialog'); d.id='plateDlg'; d.className='plate-dlg'; d.innerHTML='<img alt=""><p class="pd-cap"></p><button type="button" class="btn" id="pdClose">Close</button>'; document.body.appendChild(d); d.querySelector('#pdClose').addEventListener('click', function(){ d.close(); }); d.addEventListener('click', function(ev){ if (ev.target===d) d.close(); }); }
-    const k=set[i]; d.querySelector('img').src='/img/strip/'+k.id+'.webp'; const c=d.querySelector('.pd-cap'); c.innerHTML=''; if (k.href){ const a=document.createElement('a'); a.href=k.href; a.textContent=k.cap; c.appendChild(a); } else c.textContent=k.cap; if (!d.open) d.showModal(); });
+  const fbtn=mh.querySelector('.mh-full'); if (fbtn) fbtn.addEventListener('click', function(e){ e.stopPropagation(); let d=document.getElementById('plateDlg'); if (!d){ d=document.createElement('dialog'); d.id='plateDlg'; d.className='plate-dlg'; d.innerHTML='<img alt=""><p class="pd-cap"></p><p class="pd-nav"><button type="button" class="btn" id="pdPrev" aria-label="Previous plate">‹</button><span class="pd-n"></span><button type="button" class="btn" id="pdNext" aria-label="Next plate">›</button></p><button type="button" class="btn" id="pdClose">Close</button>'; document.body.appendChild(d); d.querySelector('#pdClose').addEventListener('click', function(){ d.close(); }); d.addEventListener('click', function(ev){ if (ev.target===d) d.close(); }); d.querySelector('#pdPrev').addEventListener('click', function(){ prev(); arm(); fill(); }); d.querySelector('#pdNext').addEventListener('click', function(){ next(); arm(); fill(); }); d.addEventListener('keydown', function(ev){ if (ev.key==='ArrowRight'){ next(); arm(); fill(); ev.preventDefault(); } else if (ev.key==='ArrowLeft'){ prev(); arm(); fill(); ev.preventDefault(); } }); }
+    fill(); if (!d.open) d.showModal(); });
+  const fill=function(){ const d=document.getElementById('plateDlg'); if (!d) return;
+    const k=set[i]; d.querySelector('img').src='/img/strip/'+k.id+'.webp'; d.querySelector('.pd-n').textContent=(i+1)+' / '+set.length; const c=d.querySelector('.pd-cap'); c.innerHTML=''; if (k.href){ const a=document.createElement('a'); a.href=k.href; a.textContent=k.cap; c.appendChild(a); } else c.textContent=k.cap; };
   nbtn.addEventListener('click', function(e){ e.stopPropagation(); next(); arm(); });
   mh.addEventListener('pointerenter', function(){ clearTimeout(t); }); mh.addEventListener('pointerleave', function(){ arm(); });
   mh.tabIndex=0; mh.setAttribute('aria-label','The masthead plates: Enter opens, arrow keys turn the plates');

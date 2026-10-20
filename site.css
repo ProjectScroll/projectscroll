@@ -2109,3 +2109,14 @@ p,li,dd,figcaption,.lede{text-wrap:pretty}
 .plate-dlg .pd-cap{margin:0; padding:.6rem 1rem; font-size:.9rem; letter-spacing:.04em; display:flex; justify-content:space-between; align-items:center; gap:1rem}
 .plate-dlg .pd-cap a{color:var(--gold-hi)}
 .plate-dlg #pdClose{position:absolute; right:.6rem; bottom:.45rem; padding:.2rem .7rem; font-size:.85rem; color:#EAE6DC; border-color:rgba(234,230,220,.5); background:transparent}
+
+/* ===== Draft 84: the top of the page, two more passes ===== */
+/* the place band holds still for a moment so its first words can be read */
+.placeband.run .pb-track{animation-delay:2.6s}
+/* the caption shows for a few seconds whenever a plate changes */
+.masthead.cap-show .mh-cap{opacity:1}
+/* the whole-plate dialog browses */
+.plate-dlg .pd-nav{position:absolute; left:50%; bottom:.3rem; transform:translateX(-50%); margin:0; display:flex; align-items:center; gap:.5rem; font-size:.78rem; letter-spacing:.1em}
+.plate-dlg .pd-nav .btn{padding:.1rem .6rem; font-size:1rem; line-height:1.2; color:#EAE6DC; border-color:rgba(234,230,220,.5); background:transparent}
+.plate-dlg .pd-cap{padding-right:16rem}
+@media (max-width:700px){ .plate-dlg .pd-cap{padding:.5rem .8rem 2.6rem; font-size:.8rem} .plate-dlg .pd-nav{bottom:.35rem} .plate-dlg #pdClose{bottom:.35rem} }
