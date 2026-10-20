@@ -2509,3 +2509,34 @@ main > section + section::before, main > .plate2 + section::before, .plate2::bef
 .kicker.compass{display:flex; align-items:center; gap:.55rem}
 .kicker.compass::before{content:""; flex:none; width:1.7rem; height:1.7rem; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23A07A2A' stroke-width='1.6'%3E%3Ccircle cx='30' cy='30' r='22'/%3E%3Ccircle cx='30' cy='30' r='17' stroke-dasharray='1.5 2.5'/%3E%3C/g%3E%3Cpath d='M30 5l5 25h-10z' fill='%23B3362B'/%3E%3Cpath d='M30 55l5-25h-10z' fill='%23A07A2A'/%3E%3Cpath d='M5 30l25-4v8zM55 30l-25-4v8z' fill='%23A07A2A' fill-opacity='.6'/%3E%3C/svg%3E") center/contain no-repeat}
 @media (prefers-reduced-motion: no-preference){ @keyframes needle{0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(8deg)}} .kicker.compass::before{animation:needle 6s ease-in-out infinite} }
+.townjump{margin:.9rem 0 0; font-size:.92rem; line-height:1.9; color:var(--ink-soft)}
+.townjump b{font-weight:400; font-variant:small-caps; letter-spacing:.08em; color:var(--gold-lo); margin-right:.3rem}
+.townjump a{display:inline-block; margin:0 .15rem; padding:0 .55rem; border:1px solid color-mix(in srgb, var(--gold) 55%, transparent); border-radius:999px; text-decoration:none; color:var(--ink); line-height:1.65}
+.townjump a:hover, .townjump a:focus-visible{border-color:var(--rule); color:var(--rule)}
+.townjump span{margin:0 .25rem 0 .35rem; font-style:italic}
+
+/* ===== Draft 104: the case board in gold — every case a coin waiting to be found ===== */
+/* open cases: an unstruck coin, a gold milled rim around the number */
+.seals a{position:relative; color:var(--ink); border:0; background:radial-gradient(circle, var(--paper) 0 62%, transparent 63%), repeating-conic-gradient(from 0deg, #b8892f 0 6deg, #e3c374 6deg 12deg); box-shadow:0 1px 2px rgba(0,0,0,.18)}
+.seals a:hover, .seals a:focus-visible{color:var(--ink); background:radial-gradient(circle, color-mix(in srgb, var(--gold-hi) 30%, var(--paper)) 0 62%, transparent 63%), repeating-conic-gradient(from 6deg, #b8892f 0 6deg, #f1d98a 6deg 12deg); transform:translateY(-2px)}
+.seals a{transition:transform .2s, background .3s}
+/* solved: a struck gold coin, the number raised, a glint across the face */
+.seals a.solved{color:#5a4110; border:0; text-shadow:0 1px 0 rgba(255,248,214,.8), 0 -1px 0 rgba(90,65,16,.45);
+  background:radial-gradient(circle at 35% 30%, #fff3c4 0 8%, #f1d98a 22%, #d3a83e 52%, #a87d2a 78%, #7d5d17 100%);
+  box-shadow:0 0 0 2px #c79a3c, 0 0 0 3px #7d5d17, inset 0 0 0 3px rgba(125,93,23,.35), 0 3px 6px rgba(0,0,0,.3)}
+.seals a.solved{background:linear-gradient(115deg, transparent 35%, rgba(255,255,255,.7) 48%, transparent 60%) 120% 0/250% 100% no-repeat, radial-gradient(circle at 35% 30%, #fff3c4 0 8%, #f1d98a 22%, #d3a83e 52%, #a87d2a 78%, #7d5d17 100%); animation:stamp .5s cubic-bezier(.3,1.6,.5,1) both}
+@media (prefers-reduced-motion: no-preference){ @keyframes coinshine{0%,70%{background-position:120% 0, 0 0} 100%{background-position:-60% 0, 0 0}} .seals a.solved{animation:stamp .5s cubic-bezier(.3,1.6,.5,1) both, coinshine 4.5s ease-in-out .6s infinite} }
+/* the status in each row: Open is engraved; Solved is minted in gold */
+.status.solved{background:var(--foil); background-size:200% 100%; border:1px solid #a87d2a; color:#3d2c08; text-shadow:0 1px 0 rgba(255,248,214,.6)}
+.status.solved::before{content:""; display:inline-block; width:.62rem; height:.62rem; margin-right:.32rem; vertical-align:-.04rem; border-radius:50%; background:radial-gradient(circle at 35% 30%, #fff3c4, #c79a3c 60%, #7d5d17); box-shadow:0 0 0 1px #7d5d17}
+/* the meter fills with gold, and the solved tally is struck in gold */
+.meter span{background:var(--foil); background-size:200% 100%}
+.tally > span:nth-child(2) b{background:var(--foil); background-size:250% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent}
+@media (forced-colors: active){ .seals a, .seals a.solved{background:Canvas; border:1px solid CanvasText; color:CanvasText} .tally > span:nth-child(2) b{color:CanvasText; -webkit-text-fill-color:CanvasText; background:none} }
+/* the legends page's .solved box must not leak onto the case board's coins and status labels */
+.seals a.solved{padding:0; border-top:0; border-radius:50%}
+.status.solved{padding:.08rem .5rem; border-radius:999px; border-top-width:1px}
+.mapsw{display:inline-flex; flex-wrap:wrap; gap:.3rem; margin-left:.4rem}
+.mapsw .btn{font-size:.82rem; padding:.3rem .65rem}
+.mapsw .btn[aria-pressed="true"]{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+@media (max-width:640px){ .mapsw{margin:.4rem 0 0; width:100%} }

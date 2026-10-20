@@ -19,10 +19,12 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
   <div class="maproom">
     <div class="mapbar">
       <button type="button" class="btn" id="mzin" aria-label="Zoom in">+</button><button type="button" class="btn" id="mzout" aria-label="Zoom out">−</button><button type="button" class="btn" id="mhome">Whole map</button><button type="button" class="btn" id="mfull">Full screen</button>
+      <span class="mapsw" role="group" aria-label="Choose a map"><button type="button" class="btn" data-map="cass1860" aria-pressed="true">1860 · Cass, Van Buren &amp; Berrien</button><button type="button" class="btn" data-map="stjoe1858" aria-pressed="false">1858 · St. Joseph Co.</button><button type="button" class="btn" data-map="kzoo1861" aria-pressed="false">Kalamazoo Co.</button></span>
       <span class="mapstat" id="mstat" aria-live="polite">Loading the map from the Library of Congress…</span>
     </div>
     <div id="osd" class="osd" role="application" aria-label="Zoomable 1860 wall map of Cass, Van Buren and Berrien counties"></div>
   </div>
+    <p class="townjump" id="towns"><b>Jump to a town plan:</b> <a href="#town-buchanan">Buchanan</a> <a href="#town-berrien">Berrien Springs</a> <a href="#town-decatur">Decatur</a> <a href="#town-edwardsburg">Edwardsburg</a> <a href="#town-lawton">Lawton</a> <a href="#town-st-joseph">St. Joseph</a> <span>· on their county maps:</span> <a href="#town-three-rivers">Three Rivers</a> <a href="#town-constantine">Constantine</a> <a href="#town-centreville">Centreville</a> <a href="#town-white-pigeon">White Pigeon</a> <a href="#town-kalamazoo">Kalamazoo</a> <span>· laid over today’s streets:</span> <a href="/map/cassopolis/">Cassopolis</a> <a href="/map/dowagiac/">Dowagiac</a> <a href="/map/niles/">Niles</a> <a href="/map/paw-paw/">Paw Paw</a></p>
     <h2 id="look">Things to look for</h2>
     <ul class="dis">
       <li>The small <b>town plans</b> along the top and left side, with streets, blocks and the names of buildings.</li>
@@ -77,18 +79,33 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       fromHash(); addEventListener('hashchange', fromHash);
     }})();
     </script>
+    <p class="note">Also in the viewer, from the Library of Congress’s county landownership maps: the 1858 map of St. Joseph County, Michigan (g4113s.la000356), and Geil &amp; Harley’s map of Kalamazoo County (g4113k.la000336). Public domain.</p>
     <p class="note">Source: <i>Map of the Counties of Cass, Van Buren and Berrien, Michigan</i> (Philadelphia: Geil, Harley &amp; Siverd, 1860). Library of Congress, Geography and Map Division, g4113c.la000324. Public domain. Shown through the Library’s own image service.</p>
     <script src="/vendor/openseadragon-4.1.1.min.js?v=1"></script>
     <script>
     (function(){{ var stat=document.getElementById('mstat');
       if (!window.OpenSeadragon){{ stat.textContent='The map viewer could not load. Try refreshing the page.'; return; }}
-      var v=OpenSeadragon({{ id:'osd', tileSources:'{IIIF}/info.json', showNavigationControl:false, showNavigator:true, navigatorPosition:'BOTTOM_RIGHT',
+      var T='https://tile.loc.gov/image-services/iiif/service:gmd:gmd411:g4113:';
+      var MAPS={{cass1860:{{src:T+'g4113c:la000324/info.json', name:'Cass, Van Buren and Berrien counties, 1860', size:'18,612 × 20,096'}}, stjoe1858:{{src:T+'g4113s:la000356/info.json', name:'St. Joseph County, 1858', size:'18,330 × 19,143'}}, kzoo1861:{{src:T+'g4113k:la000336/info.json', name:'Kalamazoo County, Geil &amp; Harley', size:'14,708 × 14,300'}}}};
+      var TOWNS={{'buchanan':{{m:'cass1860',n:'Buchanan',r:[4450,1750,1500,1950]}},'lawton':{{m:'cass1860',n:'Lawton',r:[6050,1750,1400,1650]}},'berrien':{{m:'cass1860',n:'Berrien (now Berrien Springs)',r:[9850,1750,1700,1650]}},'edwardsburg':{{m:'cass1860',n:'Edwardsburg',r:[11530,1750,1750,1550]}},'st-joseph':{{m:'cass1860',n:'St. Joseph',r:[1700,6280,2480,2300]}},'decatur':{{m:'cass1860',n:'Decatur',r:[1700,10650,2000,1830]}},'three-rivers':{{m:'stjoe1858',n:'Three Rivers'}},'constantine':{{m:'stjoe1858',n:'Constantine'}},'centreville':{{m:'stjoe1858',n:'Centreville'}},'white-pigeon':{{m:'stjoe1858',n:'White Pigeon'}},'kalamazoo':{{m:'kzoo1861',n:'Kalamazoo'}}}};
+      var cur='cass1860', want=null;
+      var v=OpenSeadragon({{ id:'osd', tileSources:MAPS[cur].src, showNavigationControl:false, showNavigator:true, navigatorPosition:'BOTTOM_RIGHT',
         maxZoomPixelRatio:2.2, visibilityRatio:0.6, gestureSettingsMouse:{{clickToZoom:false, dblClickToZoom:true}}, crossOriginPolicy:'Anonymous', animationTime:0.9 }});
-      v.addHandler('open', function(){{ stat.textContent='18,612 × 20,096 pixels, from the Library of Congress.'; }});
+      var go=function(t){{ if (!t.r){{ v.viewport.goHome(); stat.textContent='Find '+t.n+' on the '+MAPS[t.m].name+' map. Zoom in; the hunt is yours.'; return; }} var r=t.r; v.viewport.fitBounds(v.viewport.imageToViewportRectangle(r[0]-r[2]*.04, r[1]-r[3]*.04, r[2]*1.08, r[3]*1.08)); stat.textContent=t.n+' on the '+MAPS[t.m].name+' map. Drag to look around; “Whole map” goes back.'; }};
+      v.addHandler('open', function(){{ stat.textContent=MAPS[cur].name+': '+MAPS[cur].size+' pixels, from the Library of Congress.'; if (want){{ var t=want; want=null; setTimeout(function(){{ go(t); }}, 60); }} }});
       v.addHandler('open-failed', function(){{ stat.textContent='The Library of Congress image service did not answer. Please try again in a minute.'; }});
+      var town=function(){{ var m=/^#town-([a-z-]+)$/.exec(location.hash); if (!m || !TOWNS[m[1]]) return; var t=TOWNS[m[1]];
+        document.querySelector('.maproom').scrollIntoView({{block:'start'}});
+        if (t.m!==cur){{ cur=t.m; want=t; v.open(MAPS[cur].src); }} else if (v.world.getItemCount()) go(t); else want=t; }};
+      var sw=[].slice.call(document.querySelectorAll('.mapsw button'));
+      var mark=function(){{ sw.forEach(function(b){{ b.setAttribute('aria-pressed', String(b.dataset.map===cur)); }}); }};
+      var openMap=function(k){{ if (!MAPS[k]) return; if (k!==cur){{ cur=k; v.open(MAPS[cur].src); }} else v.viewport.goHome(); mark(); }};
+      sw.forEach(function(b){{ b.addEventListener('click', function(){{ openMap(b.dataset.map); }}); }});
+      var town0=town; town=function(){{ var m=/^#map-([a-z0-9]+)$/.exec(location.hash); if (m){{ document.querySelector('.maproom').scrollIntoView({{block:'start'}}); openMap(m[1]); return; }} town0(); mark(); }};
+      town(); addEventListener('hashchange', town);
       document.getElementById('mzin').onclick=function(){{ v.viewport.zoomBy(1.6); }};
       document.getElementById('mzout').onclick=function(){{ v.viewport.zoomBy(1/1.6); }};
-      document.getElementById('mhome').onclick=function(){{ v.viewport.goHome(); }};
+      document.getElementById('mhome').onclick=function(){{ v.viewport.goHome(); stat.textContent=MAPS[cur].size+' pixels, from the Library of Congress.'; }};
       document.getElementById('mfull').onclick=function(){{ v.setFullScreen(!v.isFullPage()); }};
     }})();
     </script>
