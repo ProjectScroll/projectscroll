@@ -3,7 +3,7 @@
 const { chromium } = require('playwright'); const path=require('path'); const fs=require('fs');
 const R=path.resolve(__dirname,'..'); const F=f=>'file://'+path.join(R,'fonts',f); const I=f=>'file://'+path.join(R,'img',f);
 const CARDS=[
- {out:'og-dark.png', pic:'heron-dawn.jpg', k:'A treasure hunt through real history', h:'Every clue is true.', star:true,
+ {out:'og-dark.png', pic:'heron-dawn.jpg', k:'The St. Joseph River Valley<br><b>◆</b> The Adventure begins in Cassopolis, Michigan', h:'Every clue is true.', star:true,
   d:'Project Scroll is a free online treasure hunt. Real mysteries, history and clues hide in <u>county histories</u>, <u>survey maps</u>, <u>certificates</u>, <u>forgotten newspapers</u>, <u>lore</u> and <u>local legends</u>. Every one of them can be solved by you.',
   c:['Free to play','Solved with clues','Open to anyone, anywhere'], a:'<i>*</i> And every answer is in the record.', f:'projectscroll.com <span></span> Cassopolis, Michigan'},
  {out:'og/hunt.png', pic:'pack-train.jpg', k:'The hunt · ten open cases', h:'Pick a case. Open the record.', hs:66, star:false,

@@ -19,7 +19,7 @@ ELAFF=json.loads((_TD/'elkhart_affine.json').read_text())
 UWM='https://cdm17272.contentdm.oclc.org/iiif/2/agdm:21064'
 ELKCREDIT='1861 plan: <i>Map of Elkhart Co. Indiana</i> (Philadelphia: Samuel Geil, 1861), published by Geil &amp; Harley, inset “{inset}.” American Geographical Society Library, University of Wisconsin–Milwaukee Libraries. Public domain, shown live from the Library’s image service.'
 TOWNS = [
- dict(slug='cassopolis', name='Cassopolis', inset='Cassopolis, County Seat of Cass Co.', img='/img/cass1860.webp',
+ dict(slug='cassopolis', hunt={'h': [1370218351], 't': 'The street that changed its name', 'q': 'Timber Street ran between O’Keefe and East in 1860. It is still there today under another name. Fade the plan away and find it.', 'lab': 'What it is called today'}, name='Cassopolis', inset='Cassopolis, County Seat of Cass Co.', img='/img/cass1860.webp',
       N=41.917772, W=-86.018103, S=41.906100, E=-86.007168, maxb='[41.895,-86.035],[41.930,-85.990]',
       lede='The 1860 wall map has a little plan of Cassopolis, the county seat, with every block, lot and street the engraver knew.',
       look=['<b>State Street and Broadway.</b> The heart of the 1860 town. Find the <b>Court House</b> and the <b>Jail</b> just north of State, then fade to today.',

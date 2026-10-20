@@ -2696,3 +2696,7 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 .sbfig .sbcrop{display:block; position:relative; overflow:hidden; aspect-ratio:990/865; border:1px solid var(--line); border-radius:3px; background:#f3eee2}
 .sbfig .sbcrop img{position:absolute; width:193.94%; height:auto; max-width:none; left:-95.96%; top:-98.27%}
 .sbfig .sbcrop:hover, .sbfig .sbcrop:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+
+/* Draft 113: the map room offers a town's then-and-now page when you jump to it */
+.tnhint{margin:.45rem 0 0; font-size:.95rem}
+.tnhint a{font-weight:600}
