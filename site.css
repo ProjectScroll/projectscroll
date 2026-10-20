@@ -2313,3 +2313,31 @@ main > section::after{right:auto; left:.6rem}
   main.page .ctas, main.page .crumb, .colophon .note{display:none!important}
   main.page > h1{font-size:22pt} main.page > .lede{font-size:12pt; border-left:2px solid #999}
 }
+
+/* ===== Draft 97: the lede's two green words ===== */
+.lede .hi{font-style:normal; color:var(--ledger); font-weight:600}
+:root[data-theme="dark"] .lede .hi{color:#8DB8A8}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .lede .hi{color:#8DB8A8} }
+/* ===== Draft 97: visual pass ===== */
+/* the hero's two buttons breathe; the trust ticks take the hunt's accent */
+.hero .ctas .btn.primary{box-shadow:0 10px 24px -14px color-mix(in srgb, var(--ink) 70%, transparent)}
+.trust li::before{color:var(--ledger)}
+/* the contents strip's numerals take the part's accent so the three families read at a glance */
+.contents li:nth-child(1) a b, .contents li:nth-child(2) a b, .contents li:nth-child(3) a b, .contents li:nth-child(7) a b{color:var(--rule)}
+.contents li:nth-child(4) a b, .contents li:nth-child(5) a b, .contents li:nth-child(6) a b{color:var(--ledger)}
+.contents li:nth-child(8) a b{color:var(--gold-lo)}
+/* cards across the site share one frame: a hairline, a soft lift on hover */
+.cases p, .fammakes > div, .rulecards li, .intake, .pom, .ad-col{transition:box-shadow .25s ease, transform .25s ease}
+@media (hover:hover){ .cases p:hover, .fammakes > div:hover, .rulecards li:hover{box-shadow:0 14px 28px -20px rgba(0,0,0,.45); transform:translateY(-2px)} }
+/* the stats strip's figures carry the gold dash motif */
+.stats b{position:relative; padding-bottom:.35rem}
+.stats b::after{content:""; position:absolute; left:50%; bottom:0; width:1.4rem; height:2px; transform:translateX(-50%); background:var(--gold)}
+/* section standfirsts: a touch more air above the first card row */
+main > section > .intro + *{margin-top:1.4rem}
+/* the FAQ: each question a hairline card, the open one tinted */
+details.faq{border:1px solid var(--line); border-radius:4px; padding:.2rem .9rem; margin:.45rem 0; background:var(--paper)}
+details.faq[open]{background:color-mix(in srgb, var(--paper-2) 60%, transparent); border-color:color-mix(in srgb, var(--gold) 50%, transparent)}
+details.faq summary{padding:.55rem 0; font-weight:600}
+/* footer: the motto set as a small-caps colophon line with gold rules */
+footer.site .motto{font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:1.05rem; letter-spacing:.04em; display:flex; align-items:center; gap:1rem; justify-content:center}
+footer.site .motto::before, footer.site .motto::after{content:""; width:3rem; height:1px; background:color-mix(in srgb, var(--gold) 70%, transparent)}

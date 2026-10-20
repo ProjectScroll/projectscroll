@@ -353,6 +353,7 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
     'plat':['Plat','A surveyor’s drawing of land divided into lots or parcels, with streets and boundaries. Village plats were filed with the county.'],
     'probate':['Probate','The court process that settles a dead person’s estate. Probate files can hold wills, inventories, heirs’ names and signatures.'],
     'informant':['Informant','The person who answered the questions on a certificate. Their memory, not the dead person’s, is what the form records.'],
+    'clues':['Clues','What the hunt gives you to start with: a line in a post, a date on the scroll, a word in a cipher. Every clue is true; none of them is the whole answer.'],
     'mysteries':['Mysteries','The hunt’s open cases: questions the county histories left hanging, each with a real answer waiting in a book, a map or a certificate. Crack one and your name goes on the board.'],
     'pages':['Pages','Two kinds. The printed and handwritten pages the hunt sends you to: county histories, registers, deeds, lodge proceedings and the newspapers of the day, most free online. And the social media pages where the hunt is played: Project Scroll’s own, and the halls that open as it goes.'],
     'websites':['Websites','The free archives where the record now lives: the Library of Congress, HathiTrust, FamilySearch, the Internet Archive, state archives and county pages. The hunt links the exact page.'],

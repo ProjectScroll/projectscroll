@@ -56,7 +56,7 @@ def schema(path, title, desc, canon, og):
     if kind=='Article': g[1]["author"]={"@id":"https://projectscroll.com/#org"}
     return '<script type="application/ld+json">'+json.dumps({"@context":"https://schema.org","@graph":g}, ensure_ascii=False)+'</script>'
 
-def page(path, title, desc, body, canon=None, noindex=False, og='https://projectscroll.com/og-dark.jpg?v=5'):
+def page(path, title, desc, body, canon=None, noindex=False, og='https://projectscroll.com/og-dark.jpg?v=6'):
     canon = canon or 'https://projectscroll.com/'+path.replace('index.html','')
     top=path.split('/')[0]
     accent=' data-accent="desk"' if top in ('families','legends','about') else (' data-accent="hunt"' if top in ('cases','notes','badges','map','toolkit','glossary','records','guide','document','notebook','keepsake') else '')
@@ -94,7 +94,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=7eb5c076">
+<link rel="stylesheet" href="/site.min.css?v=23fe29e4">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"selector_matches":".bar a, footer nav a, .partrail a, .search-res a, .crumb a"}},{{"href_matches":"/*"}},{{"not":{{"href_matches":"/*.pdf"}}}}]}},"eagerness":"moderate"}}]}}</script>
 </head>
 <body>
@@ -145,7 +145,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=7eb5c076" defer></script>
+<script src="/site.min.js?v=23fe29e4" defer></script>
 </body>
 </html>
 '''
