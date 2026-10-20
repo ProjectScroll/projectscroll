@@ -2700,3 +2700,16 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 /* Draft 113: the map room offers a town's then-and-now page when you jump to it */
 .tnhint{margin:.45rem 0 0; font-size:.95rem}
 .tnhint a{font-weight:600}
+/* Draft 115: the then-and-now hub */
+.tngrid{list-style:none; padding:0; margin:1.4rem 0 2rem; display:grid; grid-template-columns:repeat(auto-fill,minmax(15rem,1fr)); gap:1.3rem}
+.tncard{display:flex; flex-direction:column; gap:.3rem; margin:0}
+.tncard a{display:grid; text-decoration:none; color:inherit; border:1px solid var(--line); border-radius:4px; overflow:hidden; background:var(--paper-2)}
+.tncard img{width:100%; height:auto; aspect-ratio:3/2; object-fit:cover; display:block; transition:transform .5s ease}
+.tncard a:hover img, .tncard a:focus-visible img{transform:scale(1.04)}
+.tncard b{font-family:var(--display,inherit); font-size:1.35rem; font-weight:400; padding:.55rem .8rem .65rem}
+.tnc-y{grid-row:1; grid-column:1; justify-self:start; align-self:start; margin:.6rem; padding:.1rem .5rem; background:var(--ink); color:var(--paper); font-size:.8rem; letter-spacing:.12em; border-radius:2px}
+.tncard img{grid-row:1; grid-column:1}
+.tnc-f{font-size:.9rem; color:var(--ink-soft)}
+.tnc-s{font-size:.9rem}
+.tnc-s.done{color:var(--ledger); font-weight:600}
+.tntally{font-weight:600}

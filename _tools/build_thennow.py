@@ -147,7 +147,7 @@ def build(t):
     <p class="kicker">Then and now</p>
     <h1>{t["name"]}, {Y} and today</h1>
     <p class="lede" style="font-size:1.15rem">{t["lede"]} Here it is laid over the streets of today. Fade between the two, or drag a line across and see one beside the other.</p>
-    <p class="note">Other towns: {others}</p>
+    <p class="note">Other towns: {others} · <a href="/map/then-and-now/">all seven</a></p>
     <p class="note">Drag to move. Scroll, pinch or use the buttons to zoom. The old plan was lined up by hand on street corners that still carry their {Y} names, so it is close but not exact: expect it to be out by a few yards in places.</p>
   <div class="maproom">
     <div class="mapbar tnbar">
@@ -243,6 +243,33 @@ def build(t):
     }})();
     </script>
 '''
+FIT={'cassopolis':(19,5),'niles':(43,4),'dowagiac':(33,3),'paw-paw':(30,4),'south-bend':(18,9),'goshen':(40,4),'elkhart':(24,3)}
+def hubpage():
+    cards=[]; total=0
+    for t in TOWNS:
+        Y=t.get('year','1860'); n=len(t.get('hunt',{}).get('h',[])); total+=n; c,yd=FIT[t['slug']]
+        cards.append(f"""      <li class="tncard"><a href="/map/{t['slug']}/"><img src="/img/thennow/{t['slug']}.webp" width="480" height="320" alt="Part of the {Y} plan of {t['name']}" loading="lazy" decoding="async"><span class="tnc-y">{Y}</span><b>{t['name']}</b></a>
+        <span class="tnc-f">Lined up on {c} street corners, within about {yd} yards</span>
+        <span class="tnc-s" data-k="ps-tn-{t['slug']}" data-n="{n}">{n} renamed street{'s' if n!=1 else ''} to find</span></li>""")
+    body=f"""    <p class="crumb"><a href="/map/">← The map room</a></p>
+    <p class="kicker">Then and now</p>
+    <h1>Seven towns, then and now</h1>
+    <p class="lede" style="font-size:1.15rem">The old town plans of the St. Joseph River Valley, each laid over the streets of today. Fade from one to the other, or drag a line across and see them side by side. In every town, at least one street has changed its name since the plan was engraved. Find them all.</p>
+    <p class="tntally" id="tnTally" aria-live="polite">{total} renamed streets in all.</p>
+    <ul class="tngrid">
+{chr(10).join(cards)}
+    </ul>
+    <h2>How they were made</h2>
+    <p>Each plan was matched to today’s map by measurement, on street corners that appear on both: the corners that still carry their old names, plus the few whose new names we were sure of. The plan was then stretched and turned, as little as it would go, to fit them. Where a street has bent, jogged or been widened since, it was left out of the fit, and each town’s page says which.</p>
+    <p class="note">Michigan plans: <i>Map of the Counties of Cass, Van Buren and Berrien, Michigan</i> (1860), Library of Congress. South Bend: M. W. Stokes, <i>Map of St. Joseph Co., Indiana</i> (1863), Library of Congress. Goshen and Elkhart: <i>Map of Elkhart Co. Indiana</i> (1861), American Geographical Society Library, University of Wisconsin–Milwaukee Libraries. All public domain. Today’s streets: © OpenStreetMap contributors.</p>
+    <script>
+    (function(){{ var sum=0, tot=0; [].forEach.call(document.querySelectorAll('.tnc-s'), function(s){{ var n=+s.dataset.n, got=0; try{{ got=JSON.parse(localStorage.getItem(s.dataset.k)||'[]').length; }}catch(e){{}} tot+=n; sum+=Math.min(got,n); if (got){{ s.textContent=(got>=n?'Solved: ':'')+Math.min(got,n)+' of '+n+' renamed street'+(n!==1?'s':'')+' found'; if (got>=n) s.classList.add('done'); }} }});
+      var t=document.getElementById('tnTally'); if (t && sum) t.textContent='You have found '+sum+' of '+tot+' renamed streets.'+(sum>=tot?' Every one. Well done.':''); }})();
+    </script>
+"""
+    page('map/then-and-now/index.html','Seven towns, then and now · Project Scroll','Seven old town plans of the St. Joseph River Valley, from Cassopolis to South Bend, Goshen and Elkhart, laid over today’s streets, each with a renamed street to find.',body,og='https://projectscroll.com/og/map.jpg')
+
 for t in TOWNS:
     page(f'map/{t["slug"]}/index.html', f'{t["name"]}, {t.get("year","1860")} and today · Project Scroll', t['desc'], build(t), og=f'https://projectscroll.com/og/{t["og"]}.jpg')
+hubpage()
 print('then-and-now built:', ', '.join(t['name'] for t in TOWNS))
