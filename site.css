@@ -2814,3 +2814,18 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 .pc img{width:100%; height:auto; border:1px solid var(--line); border-radius:3px}
 .pc figcaption{margin-top:.5rem; line-height:1.45}
 .pc figcaption a{white-space:nowrap}
+
+/* the junior hunt and the lessons */
+.junior{padding-left:1.4rem}
+.jq{margin:1rem 0 1.4rem; padding-bottom:1rem; border-bottom:1px solid var(--line)}
+.jq-q{font-size:1.15rem; margin:0 0 .3rem}
+.jq-where{margin:0 0 .5rem; font-size:.95rem}
+.jq-tip{color:var(--ink-soft)}
+.jq-f{display:flex; gap:.5rem; flex-wrap:wrap}
+.jq-f input{font:inherit; padding:.45rem .7rem; border:1px solid var(--line); border-radius:4px; background:var(--paper-2); color:var(--ink); min-width:12rem}
+.jq.done .jq-q::after{content:"  ✓"; color:var(--ledger)}
+.jq-out{margin:.4rem 0 0}
+.jtally{font-weight:600}
+.lesson{margin:1.6rem 0; padding:1rem 1.2rem; border:1px solid var(--line); border-radius:4px; background:var(--paper-2); break-inside:avoid}
+.lesson h2{margin-top:0}
+.ls-m{font-size:.85rem; letter-spacing:.08em; text-transform:uppercase; color:var(--rule); margin:-.3rem 0 .6rem}
