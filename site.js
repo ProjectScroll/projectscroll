@@ -1350,3 +1350,18 @@ try{ (function(){
   d.addEventListener('click', function(e){ if (e.target.closest('a')) set(false); });
   if (/^\/(map|names|places|sources)\//.test(location.pathname)) b.setAttribute('aria-current','true');
 })(); }catch(err){ psFail(err); }
+try{ (function(){
+  /* this day in the valley: today's entry from the almanac, or the next date it remembers */
+  const box=document.getElementById('dayVal'); if (!box) return;
+  const M=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  fetch('/almanac.json').then(function(r){ return r.json(); }).then(function(A){
+    const n=new Date(), md=('0'+(n.getMonth()+1)).slice(-2)+'-'+('0'+n.getDate()).slice(-2);
+    let hits=A.filter(function(x){ return x.md===md; }), lead='On this day';
+    if (!hits.length){ const next=A.filter(function(x){ return x.md>md; })[0]||A[0]; hits=A.filter(function(x){ return x.md===next.md; }); lead='Coming up'; }
+    const x=hits[(n.getFullYear()+n.getDate())%hits.length], d=+x.md.slice(3)+' '+M[+x.md.slice(0,2)-1]+', '+x.y;
+    const esc=function(s){ const e=document.createElement('span'); e.textContent=s; return e.innerHTML; };
+    box.querySelector('.dv-k').textContent='This day in the valley · '+lead;
+    document.getElementById('dvT').innerHTML='<b>'+esc(d)+'.</b> '+esc(x.p)+': '+esc(x.t);
+    document.getElementById('dvS').innerHTML='<a href="'+esc(x.u)+'" rel="noopener">'+esc(x.s)+', p. '+esc(x.pg)+'</a> · <a href="/almanac/#d-'+x.md+'-'+x.y+'">the whole almanac</a>';
+  }).catch(function(){});
+})(); }catch(err){ psFail(err); }

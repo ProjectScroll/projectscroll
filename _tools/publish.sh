@@ -5,7 +5,7 @@ B=$1; M=$2; cd "$(dirname "$0")/.."
 sh _tools/build.sh >/tmp/ps-build.log 2>&1 || { tail -5 /tmp/ps-build.log; echo "BUILD FAILED"; exit 1; }
 if grep -q "share tags fall outside" /tmp/ps-build.log; then echo "HEADS FAILED"; exit 1; fi
 python3 _tools/check/links.py >/dev/null || { python3 _tools/check/links.py | head; echo "LINKS FAILED"; exit 1; }
-F=0; for c in diag diag24 diag25 diag26; do r=$(BASE=http://localhost:8765 NODE_PATH=$(npm root -g) timeout 300 node _tools/check/$c.js 2>&1 | grep -E "TOTAL|FAIL"); echo "$r" | grep TOTAL; if echo "$r" | grep -q "^FAIL"; then echo "$r" | grep FAIL | head -5; F=1; fi; done
+F=0; for c in diag diag24 diag25 diag26; do r=$(BASE=http://localhost:8765 NODE_PATH=$(npm root -g) timeout 300 node _tools/check/$c.js 2>&1 | grep -E "TOTAL|FAIL"); if ! echo "$r" | grep -q TOTAL; then echo "$c produced no result"; F=1; fi; echo "$r" | grep TOTAL; if echo "$r" | grep -q "^FAIL"; then echo "$r" | grep FAIL | head -5; F=1; fi; done
 A=$(BASE=http://localhost:8765 NODE_PATH=$(npm root -g) timeout 400 node _tools/check/axe.js 2>&1 | grep -v "violations: 0" | grep -v "^$"); if [ -n "$A" ]; then echo "$A" | head -8; F=1; fi
 if [ $F = 1 ]; then echo "CHECKS FAILED, not published"; exit 1; fi
 rm -f D2[0-9]_*.png; git checkout -- _tools/check/*.png 2>/dev/null || true

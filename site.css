@@ -2798,3 +2798,14 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 .bar.open .nd a{border-bottom:1px dotted var(--line); padding:.6rem 0}
 /* phones get a smaller copy of the old-map background */
 @media (max-width:700px){ html::before{background-image:image-set(url("/img/bg-new-france-blue-960.webp") type("image/webp"), url("/img/bg-new-france-blue.jpg") type("image/jpeg"))} }
+/* the almanac */
+.alm{list-style:none; padding:0; margin:.4rem 0 1.4rem}
+.alm li{padding:.55rem 0; border-bottom:1px dotted var(--line); line-height:1.45}
+.alm li.today{background:color-mix(in srgb, var(--gold,#b8963e) 14%, transparent); padding-left:.5rem; border-left:3px solid var(--gold,#b8963e)}
+.al-d{display:block; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; color:var(--rule)}
+.al-s{display:block; font-size:.85rem; color:var(--ink-soft)}
+.al-jump a{margin:0 .1rem}
+.dayval{margin:1.4rem 0; padding:1rem 1.2rem; border:1px solid var(--line); border-top:3px solid var(--rule); border-radius:4px; background:var(--paper-2)}
+.dayval .dv-k{margin:0; font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:var(--rule)}
+.dayval .dv-t{margin:.35rem 0 .3rem; font-size:1.15rem; line-height:1.4}
+.dayval .dv-s{margin:0; font-size:.88rem; color:var(--ink-soft)}
