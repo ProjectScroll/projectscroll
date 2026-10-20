@@ -258,6 +258,7 @@ def hubpage():
     <h1>Seven towns, then and now</h1>
     <p class="lede" style="font-size:1.15rem">The old town plans of the St. Joseph River Valley, each laid over the streets of today. Fade from one to the other, or drag a line across and see them side by side. In every town, at least one street has changed its name since the plan was engraved. Find them all.</p>
     <p class="tntally" id="tnTally" aria-live="polite">{total} renamed streets in all.</p>
+    <p class="note">Find your first and you earn the <a href="/badges/">Street sleuth</a> badge. Find all {total} and you are the hunt’s Town surveyor.</p>
     <ul class="tngrid">
 {chr(10).join(cards)}
     </ul>

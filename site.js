@@ -514,6 +514,8 @@ window.PS_BADGES=[
   ['glossary','Plain English','Open a definition, or the glossary.'],
   ['mapper','Map room','Walk the 1860 wall map.'],
   ['thennow','Then and now','Lay an 1860 town plan over today’s streets.'],
+  ['street','Street sleuth','Find a street that changed its name, on a then-and-now page.'],
+  ['surveyor','Town surveyor','Find all twelve renamed streets in the seven towns.'],
   ['informant','Informant','Read the guide to the death certificate.'],
   ['oldhand','The old hand','Read the guide to old handwriting.'],
   ['records','Record keeper','Visit “Where the records are.”'],
@@ -681,7 +683,7 @@ try{ (function(){
 /* ---------- the ledger that travels: badges, follows and notes as one checked file, read back on another device ---------- */
 try{ (function(){
   const out=document.getElementById('ledgerOut'), inp=document.getElementById('ledgerIn'), msg=document.getElementById('ledgerMsg'); if (!out || !inp) return;
-  const KEYS=/^(ps-badges|ps-mine|ps-days|ps-note-\d+|ps-inked)$/;
+  const KEYS=/^(ps-badges|ps-mine|ps-days|ps-note-\d+|ps-inked|ps-tn-[a-z-]+|ps-nh(-[a-z]+)?)$/;
   const gather=function(){ const d={}; for (let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); if (KEYS.test(k)) d[k]=localStorage.getItem(k); } return d; };
   const sum=function(txt){ if (!(crypto && crypto.subtle)) return Promise.resolve(''); return crypto.subtle.digest('SHA-256', new TextEncoder().encode(txt)).then(function(h){ return [].slice.call(new Uint8Array(h)).map(function(b){ return ('0'+b.toString(16)).slice(-2); }).join(''); }); };
   out.addEventListener('click', function(){
@@ -702,7 +704,7 @@ try{ (function(){
       return sum(JSON.stringify(j.data)).then(function(h){
         if (j.sha256 && h && j.sha256!==h){ msg.textContent='That ledger has been altered since it was made, so it was not read.'; return; }
         let n=0; Object.keys(j.data).forEach(function(k){ if (!KEYS.test(k)) return;
-          if (k==='ps-badges' || k==='ps-mine'){ try{ const cur=JSON.parse(localStorage.getItem(k)||(k==='ps-mine'?'[]':'{}')), add=JSON.parse(j.data[k]); if (Array.isArray(cur)){ add.forEach(function(x){ if (cur.indexOf(x)<0) cur.push(x); }); localStorage.setItem(k, JSON.stringify(cur)); } else { Object.keys(add).forEach(function(b){ if (!cur[b]) cur[b]=add[b]; }); localStorage.setItem(k, JSON.stringify(cur)); } n++; return; }catch(e){} }
+          if (k==='ps-badges' || k==='ps-mine' || /^ps-(tn|nh)/.test(k)){ try{ const cur=JSON.parse(localStorage.getItem(k)||(k==='ps-badges'?'{}':'[]')), add=JSON.parse(j.data[k]); if (Array.isArray(cur)){ add.forEach(function(x){ if (cur.indexOf(x)<0) cur.push(x); }); localStorage.setItem(k, JSON.stringify(cur)); } else { Object.keys(add).forEach(function(b){ if (!cur[b]) cur[b]=add[b]; }); localStorage.setItem(k, JSON.stringify(cur)); } n++; return; }catch(e){} }
           if (/^ps-note-/.test(k) && (localStorage.getItem(k)||'').trim()){ localStorage.setItem(k, (localStorage.getItem(k)+'\n\n'+j.data[k]).trim()); n++; return; }
           localStorage.setItem(k, j.data[k]); n++; });
         msg.textContent='Ledger read: '+n+' entries brought over, merged with what was already here.'; setTimeout(function(){ location.reload(); }, 1400);
@@ -1250,7 +1252,7 @@ try{ (function(){
       if (H.indexOf(h(n))<0 && n.length>3 && n.slice(-1)==='s' && H.indexOf(h(n.slice(0,-1)))>=0) n=n.slice(0,-1);
       const nice=street?toks.map(function(t){ if (/^\d+$/.test(t)){ const k=+t%100, e=(k>10&&k<14)?'th':(['th','st','nd','rd'][k%10]||'th'); return t+e+' Street'; } return t.charAt(0).toUpperCase()+t.slice(1); }).join(' ').replace(/[^A-Za-z0-9 ]/g,''):n.charAt(0).toUpperCase()+n.slice(1);
       if (got.map(function(x){ return x.toLowerCase().replace(/[^a-z]/g,""); }).indexOf(n)>=0) out.textContent=(got.length===total && total===1)?(box.dataset.done||'Found.'):nice+' is already in your list. '+tally();
-      else if (H.indexOf(h(n))>=0){ got.push(nice); try{ localStorage.setItem(key, JSON.stringify(got)); }catch(e){} draw(); if (got.length<total) out.textContent=(box.dataset.yes||'{n}: on both maps.').replace('{n}',nice)+' '+tally(); }
+      else if (H.indexOf(h(n))>=0){ got.push(nice); try{ localStorage.setItem(key, JSON.stringify(got)); }catch(e){} draw(); if (/^ps-tn-/.test(key) && window.psEarn){ window.psEarn('street'); const TN={'cassopolis':1,'niles':2,'dowagiac':3,'paw-paw':1,'south-bend':2,'goshen':2,'elkhart':1}; let all=true; Object.keys(TN).forEach(function(t){ let g=[]; try{ g=JSON.parse(localStorage.getItem('ps-tn-'+t)||'[]'); }catch(e){} if (g.length<TN[t]) all=false; }); if (all) window.psEarn('surveyor'); } if (got.length<total) out.textContent=(box.dataset.yes||'{n}: on both maps.').replace('{n}',nice)+' '+tally(); }
       else out.textContent=box.dataset.no||'Not one we matched. Check the spelling on both maps, or tell us if you think we missed one.';
       inp.value=''; inp.focus(); });
   });
