@@ -428,16 +428,22 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
     const open=function(){ if (!sdlg.open) sdlg.showModal(); q.focus(); if (!idx) fetch('/search.json?v='+((document.querySelector('script[src*="site.min.js"]')||{src:''}).src.split('v=')[1]||'1')).then(function(r){ return r.json(); }).then(function(d){ idx=d; run(); }).catch(function(){ res.innerHTML='<li class="note">Search is not available offline yet.</li>'; }); };
     const run=function(){
       const v=q.value.trim().toLowerCase(); if (!idx){ return; } if (!v){ res.innerHTML=''; return; }
-      const words=v.split(/\s+/);
+      const words=v.split(/\s+/).filter(Boolean);
+      /* forgiving search: a word that is not found exactly may be one letter off, the way old names were spelled every which way */
+      const near=function(a,b){ if (Math.abs(a.length-b.length)>1) return false; let i=0,j=0,e=0; while(i<a.length && j<b.length){ if (a[i]===b[j]){ i++; j++; continue; } if (++e>1) return false; if (a.length>b.length) i++; else if (b.length>a.length) j++; else { i++; j++; } } return e+(a.length-i)+(b.length-j)<=1; };
+      const toks=function(d){ if (!d._t) d._t=Array.from(new Set((d.t+' '+d.x).toLowerCase().split(/[^a-z0-9’']+/).filter(function(w){ return w.length>3; }))); return d._t; };
+      let fuzzyUsed=false;
       const hits=idx.map(function(d){ const T=d.t.toLowerCase(), X=d.x.toLowerCase(); let sc=0;
-        for (const w of words){ const inT=T.indexOf(w)>-1, inX=X.indexOf(w)>-1; if (!inT && !inX) return null; sc+= (inT?10:0) + (inX?1:0); }
+        for (const w of words){ const inT=T.indexOf(w)>-1, inX=X.indexOf(w)>-1;
+          if (!inT && !inX){ if (w.length<4) return null; const f=toks(d).some(function(k){ return near(w,k); }); if (!f) return null; sc+=0.5; fuzzyUsed=true; continue; }
+          sc+= (inT?10:0) + (inX?1:0); }
         return {d:d, sc:sc}; }).filter(Boolean).sort(function(a,b){ return b.sc-a.sc; }).slice(0,8);
       { const sc=document.getElementById('searchCount'); if (sc) sc.textContent=hits.length ? hits.length+(hits.length===1?' result':' results') : 'Nothing found'; }
       if (!hits.length){ res.innerHTML='<li class="note">Nothing found for “'+esc(q.value)+'”.</li>'; return; }
       res.innerHTML=hits.map(function(h){ const X=h.d.x, i=Math.max(0, X.toLowerCase().indexOf(words[0])-60); let snip=(i>0?'…':'')+X.slice(i, i+170)+'…';
         { const ws=words.filter(function(w){ return w.length>1; }).map(function(w){ return w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); });
           if (ws.length){ const rx=new RegExp('('+ws.join('|')+')','ig'); snip=snip.split(rx).map(function(part,k){ return k%2 ? '<mark class="hl">'+esc(part)+'</mark>' : esc(part); }).join(''); } else snip=esc(snip); }
-        return '<li><a href="'+h.d.u+'"><b>'+esc(h.d.t)+'</b><span>'+snip+'</span></a></li>'; }).join('');
+        return '<li><a href="'+h.d.u+'"'+(h.d.i?' class="has-th"':'')+'>'+(h.d.i?'<img src="'+h.d.i+'" width="144" height="76" alt="" loading="lazy">':'')+'<b>'+esc(h.d.t)+'</b><span>'+snip+'</span></a></li>'; }).join('')+(fuzzyUsed?'<li class="note">Some results match a spelling one letter off.</li>':'');
     };
     sbtn.addEventListener('click', open); q.addEventListener('input', run);
     document.getElementById('searchClose').addEventListener('click', function(){ sdlg.close(); });
@@ -1333,4 +1339,14 @@ try{ (function(){
     });
     form.insertAdjacentElement('afterend', b);
   });
+})(); }catch(err){ psFail(err); }
+try{ (function(){
+  /* the Maps menu in the top bar: a disclosure, closed by a click elsewhere, Escape or choosing a map */
+  const b=document.querySelector('.nd-b'), d=document.getElementById('ndMaps'); if (!b || !d) return;
+  const set=function(o){ d.hidden=!o; b.setAttribute('aria-expanded', String(o)); };
+  b.addEventListener('click', function(e){ e.stopPropagation(); set(d.hidden); if (!d.hidden){ const a=d.querySelector('a'); if (a) a.focus(); } });
+  document.addEventListener('click', function(e){ if (!d.hidden && !d.contains(e.target)) set(false); });
+  document.addEventListener('keydown', function(e){ if (e.key==='Escape' && !d.hidden){ set(false); b.focus(); } });
+  d.addEventListener('click', function(e){ if (e.target.closest('a')) set(false); });
+  if (/^\/(map|names|places|sources)\//.test(location.pathname)) b.setAttribute('aria-current','true');
 })(); }catch(err){ psFail(err); }

@@ -16,4 +16,16 @@ for f in sorted(R.rglob('*.html')):
     if 'property="og:' not in t: continue
     p=P(); p.feed(t)
     if p.og==0: bad.append(f'{f.relative_to(R)}: share tags fall outside <head> {p.why}')
+    import re as _re
+    m=_re.search(r'property="og:image" content="https://projectscroll\.com/([^"?]+)',t)
+    if not m: bad.append(f'{f.relative_to(R)}: no share picture')
+    else:
+        img=R/m.group(1)
+        if not img.exists(): bad.append(f'{f.relative_to(R)}: share picture {m.group(1)} is missing')
+        else:
+            try:
+                from PIL import Image
+                w,h=Image.open(img).size
+                if (w,h)!=(1200,630): bad.append(f'{f.relative_to(R)}: share picture is {w}x{h}, not 1200x630')
+            except Exception as e: bad.append(f'{f.relative_to(R)}: share picture unreadable')
 print('\n'.join(bad) or 'heads: every page keeps its share tags in <head>'); sys.exit(1 if bad else 0)

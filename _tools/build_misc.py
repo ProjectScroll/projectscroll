@@ -8,6 +8,15 @@ page('notebook/index.html','Your notebook · Project Scroll','Your private notes
     <p class="nbbtns" id="nbAll" hidden><button type="button" class="btn" id="nbDl">Download all notes</button><button type="button" class="btn" id="nbClear">Erase all notes</button></p>
 ''', noindex=True)
 # search index from the built pages
+from PIL import Image
+TH=pathlib.Path(R,'og','t'); TH.mkdir(exist_ok=True)
+def thumb(rel):
+    src=pathlib.Path(R,rel)
+    if not src.exists(): return None
+    out=TH/(src.stem+'.webp')
+    if not out.exists() or out.stat().st_mtime<src.stat().st_mtime:
+        Image.open(src).convert('RGB').resize((144,76),Image.LANCZOS).save(out,'WEBP',quality=72,method=6)
+    return '/og/t/'+out.name
 docs=[]
 for f in sorted(pathlib.Path(R).rglob('index.html')):
     rel=f.relative_to(R).as_posix()
@@ -25,7 +34,10 @@ for f in sorted(pathlib.Path(R).rglob('index.html')):
             docs.append({'u':'/#'+m.group(1),'t':html.unescape(re.sub('<[^>]+>','',h.group(1))) if h else m.group(1),'x':re.sub(r'\s+',' ',txt).strip()[:4000]})
         continue
     txt=html.unescape(re.sub(r'<[^>]+>',' ',body))
-    docs.append({'u':url,'t':title,'x':re.sub(r'\s+',' ',txt).strip()[:4000]})
+    og=re.search(r'property="og:image" content="https://projectscroll\.com/([^"?]+)',t)
+    d={'u':url,'t':title,'x':re.sub(r'\s+',' ',txt).strip()[:4000]}
+    if og: d['i']=thumb(og.group(1))
+    docs.append(d)
 G={'Plat':'A surveyor’s drawing of land divided into lots or parcels.','Probate':'The court process that settles a dead person’s estate.','Informant':'The person who answered the questions on a certificate.','Census':'The national head-count taken every ten years.','Soundex':'A code that groups surnames that sound alike, used in old census indexes.','Relict':'A widow: a woman who outlived her husband.'}
 for k,v in G.items(): docs.append({'u':'/toolkit/' if k=='Soundex' else '/guide/old-handwriting/' if k=='Relict' else '/#marks','t':'Glossary: '+k,'x':v})
 # each township sheet of about 1928 is its own result, so a search for "Calvin" or "Volinia" opens it

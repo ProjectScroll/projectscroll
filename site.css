@@ -2774,3 +2774,27 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 .maproom.isfull .tnmap, .maproom.isfull #osd{height:calc(100vh - 6.5rem)!important}
 #tnNames[aria-pressed="true"]{background:var(--ink); color:var(--paper)}
 #tnNames:disabled{opacity:.6; cursor:not-allowed}
+
+/* search results with a small picture of the page */
+#searchRes a.has-th{display:grid; grid-template-columns:5.5rem 1fr; column-gap:.8rem; align-items:start}
+#searchRes a.has-th img{grid-row:1 / span 2; width:5.5rem; height:auto; aspect-ratio:144/76; object-fit:cover; border-radius:2px; border:1px solid var(--line)}
+#searchRes a.has-th b, #searchRes a.has-th span{grid-column:2}
+@media (max-width:420px){ #searchRes a.has-th{grid-template-columns:1fr} #searchRes a.has-th img{display:none} }
+
+/* Draft 124: the Maps menu */
+.navdrop{position:relative; display:inline-flex}
+.nd-b{background:none; border:0; padding:.15rem 0; font:inherit; color:var(--ink-soft); cursor:pointer; border-bottom:2px solid transparent; white-space:nowrap}
+.nd-b::after{content:"▾"; font-size:.7em; margin-left:.25em}
+.nd-b:hover, .nd-b[aria-expanded="true"]{color:var(--ink)}
+.nd-b[aria-current="true"]{color:var(--ink); border-bottom-color:var(--rule)}
+.nd{position:absolute; top:calc(100% + .5rem); left:-.8rem; z-index:60; display:flex; flex-direction:column; min-width:14rem; padding:.4rem 0; background:var(--paper); border:1px solid var(--line); border-radius:4px; box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.nd[hidden]{display:none}
+.bar nav .nd a{padding:.45rem .9rem; border:0; color:var(--ink)}
+.bar nav .nd a:hover, .bar nav .nd a:focus-visible{background:var(--paper-2)}
+.bar.open .navdrop{display:block}
+.bar.open .nd-b{display:none}
+.bar.open .nd, .bar.open .nd[hidden]{display:flex; position:static; box-shadow:none; border:0; background:none; padding:0; min-width:0}
+.bar.open .nd a{padding-left:0}
+.bar.open .nd a{border-bottom:1px dotted var(--line); padding:.6rem 0}
+/* phones get a smaller copy of the old-map background */
+@media (max-width:700px){ html::before{background-image:image-set(url("/img/bg-new-france-blue-960.webp") type("image/webp"), url("/img/bg-new-france-blue.jpg") type("image/jpeg"))} }

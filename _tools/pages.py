@@ -54,9 +54,17 @@ def schema(path, title, desc, canon, og):
     g=[{"@type":"BreadcrumbList","itemListElement":crumbs},
        {"@type":kind,"@id":canon+"#page","url":canon,"name":title.split(' · ')[0],"headline":title.split(' · ')[0],"description":desc,"image":og,"inLanguage":"en-US","isPartOf":{"@id":"https://projectscroll.com/#site"},"publisher":{"@id":"https://projectscroll.com/#org"},"dateModified":mod}]
     if kind=='Article': g[1]["author"]={"@id":"https://projectscroll.com/#org"}
+    # the towns are places: say so, with where they are, so search engines can file each page under its town
+    PL={'cassopolis':('Cassopolis','Michigan',41.9117,-86.0097),'niles':('Niles','Michigan',41.8298,-86.2541),'dowagiac':('Dowagiac','Michigan',41.9842,-86.1086),'paw-paw':('Paw Paw','Michigan',42.2178,-85.8911),
+        'south-bend':('South Bend','Indiana',41.6764,-86.2520),'goshen':('Goshen','Indiana',41.5823,-85.8345),'elkhart':('Elkhart','Indiana',41.6820,-85.9767)}
+    slug=parts[-1] if parts else ''
+    if slug in PL and (top=='map' or len(parts)==1):
+        n,st,la,lo=PL[slug]
+        g.append({"@type":"City","@id":"https://projectscroll.com/#place-"+slug,"name":n,"geo":{"@type":"GeoCoordinates","latitude":la,"longitude":lo},"containedInPlace":{"@type":"State","name":st}})
+        g[1]["about"]={"@id":"https://projectscroll.com/#place-"+slug}
     return '<script type="application/ld+json">'+json.dumps({"@context":"https://schema.org","@graph":g}, ensure_ascii=False)+'</script>'
 
-def page(path, title, desc, body, canon=None, noindex=False, og='https://projectscroll.com/og-dark.jpg?v=6'):
+def page(path, title, desc, body, canon=None, noindex=False, og='https://projectscroll.com/og-dark.jpg?v=7'):
     canon = canon or 'https://projectscroll.com/'+path.replace('index.html','')
     top=path.split('/')[0]
     accent=' data-accent="desk"' if top in ('families','legends','about') else (' data-accent="hunt"' if top in ('cases','notes','badges','map','toolkit','glossary','records','guide','document','notebook','keepsake') else '')
@@ -94,7 +102,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=35f5926a">
+<link rel="stylesheet" href="/site.min.css?v=6859ee56">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"selector_matches":".bar a, footer nav a, .partrail a, .search-res a, .crumb a"}},{{"href_matches":"/*"}},{{"not":{{"href_matches":"/*.pdf"}}}}]}},"eagerness":"moderate"}}]}}</script>
 </head>
 <body>
@@ -112,7 +120,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
       Project Scroll
     </a>
     <nav aria-label="Sections" id="sitenav">
-      <a href="/#hunt">Hunt</a><a href="/#cases">Cases</a><a href="/#services">Services</a><a href="/notes/">Field notes</a><a href="/#contact">Contact</a>
+      <a href="/#hunt">Hunt</a><a href="/#cases">Cases</a><span class="navdrop"><button type="button" class="nd-b" aria-expanded="false" aria-controls="ndMaps">Maps</button><span class="nd" id="ndMaps" hidden><a href="/map/">The map room</a><a href="/map/then-and-now/">Seven towns, then and now</a><a href="/names/">Who was in town</a><a href="/places/">The gazetteer</a><a href="/map/#sanborn">Sanborn sheets</a><a href="/sources/">The sources shelf</a></span></span><a href="/#services">Services</a><a href="/notes/">Field notes</a><a href="/#contact">Contact</a>
     </nav>
     <button class="searchbtn" type="button" id="searchBtn" aria-label="Search the site" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     <a class="badgelink" id="badgeLink" href="/badges/" aria-label="Your badges"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3l4.6 9.4 10.4 1.5-7.5 7.3 1.8 10.3L20 26.6l-9.3 4.9 1.8-10.3-7.5-7.3 10.4-1.5z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg><span class="bn" id="badgeN" hidden></span></a>
@@ -149,7 +157,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=35f5926a" defer></script>
+<script src="/site.min.js?v=6859ee56" defer></script>
 </body>
 </html>
 '''
