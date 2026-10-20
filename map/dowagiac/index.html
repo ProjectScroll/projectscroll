@@ -71,7 +71,7 @@
     <p class="kicker">Then and now</p>
     <h1>Dowagiac, 1860 and today</h1>
     <p class="lede" style="font-size:1.15rem">Dowagiac, in Cass County, grew up along the Michigan Central Railroad, which cuts across its 1860 plan on a long diagonal. Here it is laid over the streets of today. Fade between the two, or drag a line across and see one beside the other.</p>
-    <p class="note">Other towns: <a href="/map/cassopolis/">Cassopolis</a> · <a href="/map/niles/">Niles</a> · <a href="/map/paw-paw/">Paw Paw</a></p>
+    <p class="note">Other towns: <a href="/map/cassopolis/">Cassopolis</a> · <a href="/map/niles/">Niles</a> · <a href="/map/paw-paw/">Paw Paw</a> · <a href="/map/south-bend/">South Bend</a></p>
     <p class="note">Drag to move. Scroll, pinch or use the buttons to zoom. The old plan was lined up by hand on street corners that still carry their 1860 names, so it is close but not exact: expect it to be out by a few yards in places.</p>
   <div class="maproom">
     <div class="mapbar tnbar">
@@ -108,17 +108,17 @@
       const isDark=()=>{ const t=document.documentElement.dataset.theme; return t ? t==='dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
       const pal=()=>isDark() ? {land:'#1d2329', water:'#2c4656', minor:'#7d8994', major:'#c9d1d8', rail:'#8a7f72'} : {land:'#f1efe8', water:'#b9d0dc', minor:'#a6a39a', major:'#5d5a54', rail:'#8a7560'};
       const cv=L.canvas({padding:0.5});
-      const groups={w:[], s:[], r:[], m:[], x:[]};
+      const groups={w:[], s:[], r:[], m:[], x:[]}; let sw=4;
       const style={
         w:c=>({renderer:cv, stroke:false, fillColor:c.water, fillOpacity:1, interactive:false}),
-        s:c=>({renderer:cv, color:c.water, weight:4, interactive:false}),
+        s:c=>({renderer:cv, color:c.water, weight:sw, interactive:false}),
         r:c=>({renderer:cv, color:c.minor, weight:2, interactive:false}),
         m:c=>({renderer:cv, color:c.major, weight:3.5, interactive:false}),
         x:c=>({renderer:cv, color:c.rail, weight:2, dashArray:'6 5', interactive:false})
       };
       const paint=()=>{ const c=pal(); map.getContainer().style.background=c.land; for(const k in groups) for(const l of groups[k]) l.setStyle(style[k](c)); };
       fetch('/map/dowagiac/today.json?v=1').then(r=>r.json()).then(d=>{
-        const c=pal();
+        const c=pal(); if(!d.w.length) sw=12; // a river given only as its centre line is drawn wide
         for(const p of d.w) groups.w.push(L.polygon(p.map(dec), style.w(c)).addTo(map));
         for(const k of ['s','r','x','m']) for(const a of (d[k]||[])) groups[k].push(L.polyline(dec(a), style[k](c)).addTo(map));
       }).catch(()=>{ stat.textContent='Today’s streets did not load. Try refreshing the page.'; });
