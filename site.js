@@ -519,17 +519,16 @@ window.PS_BADGES=[
   ['notes','Field notes','Open the book of field notes.'],
   ['legend','Legend tester','Test a family legend.'],
   ['toolkit','Toolmaker','Use a tool in the hunter’s toolkit.'],
-  ['lantern','Lamplighter','Put out the lantern, then light it again.'],
+  ['lantern','Lamplighter','Light the miner’s lamp in the top bar, then put it out.'],
   ['halter','Cipher breaker','Decode the hidden line, and say the word in your badge book.'],
   ['charter','Second cipher','Break the second line, which appears in your badge book once the first is broken.'],
   ['diamond','Eye for gold','Ask the gold diamond on the rule, and say its answer in your badge book.'],
-  ['lamp','Miner’s lamp','Light the miner’s lamp in the top bar and let it follow your pointer.'],
   ['solver','Named on the board','Crack a case and be named as its solver on the case board.']
 ];
 window.PS_RANKS=[[0,'Candidate'],[5,'Brother of the Halter'],[10,'Keeper of the Badge'],[15,'Recorder of the Hall'],[20,'Keeper of the Hall']];
 try{ (function(){
   const KEY='ps-badges'; let got={};
-  try{ got=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; if (got.hewgag && !got.halter) got.halter=got.hewgag; if (got.credo && !got.charter) got.charter=got.credo; delete got.hewgag; delete got.credo; }catch(e){ got={}; }
+  try{ got=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; if (got.hewgag && !got.halter) got.halter=got.hewgag; if (got.credo && !got.charter) got.charter=got.credo; if (got.lamp && !got.lantern) got.lantern=got.lamp; delete got.hewgag; delete got.credo; delete got.lamp; }catch(e){ got={}; }
   let canStore=true; try{ localStorage.setItem('ps-t','1'); localStorage.removeItem('ps-t'); }catch(e){ canStore=false; }
   const save=function(){ try{ localStorage.setItem(KEY, JSON.stringify(got)); }catch(e){} };
   try{ const raw=localStorage.getItem(KEY)||''; if (/hewgag|credo/.test(raw)) save(); }catch(e){}
@@ -568,7 +567,6 @@ try{ (function(){
     else if (/^\/legends\/?$/.test(path) && t.tagName==='BUTTON' && t.closest('main')) earn('legend');
   });
   if (/^\/toolkit\/?$/.test(path)){ const once=function(e){ if (e.target.closest && e.target.closest('.tool')){ earn('toolkit'); } }; document.addEventListener('input', once); document.addEventListener('change', once); }
-  const lb=document.getElementById('lanternBtn'); if (lb){ let n=0; lb.addEventListener('click', function(){ n++; if (n>=2) earn('lantern'); }); }
   const ct=document.getElementById('contact');
   if (ct && 'IntersectionObserver' in window && document.getElementById('hunt')){ const io=new IntersectionObserver(function(es){ if (es[0].isIntersecting){ earn('scroll'); io.disconnect(); } }, {threshold:.25}); io.observe(ct); }
 })(); }catch(err){ psFail(err); }
@@ -680,7 +678,7 @@ try{ (function(){
 /* ---------- the ledger that travels: badges, follows and notes as one checked file, read back on another device ---------- */
 try{ (function(){
   const out=document.getElementById('ledgerOut'), inp=document.getElementById('ledgerIn'), msg=document.getElementById('ledgerMsg'); if (!out || !inp) return;
-  const KEYS=/^(ps-badges|ps-mine|ps-days|ps-note-\d+|ps-lantern|ps-inked)$/;
+  const KEYS=/^(ps-badges|ps-mine|ps-days|ps-note-\d+|ps-inked)$/;
   const gather=function(){ const d={}; for (let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); if (KEYS.test(k)) d[k]=localStorage.getItem(k); } return d; };
   const sum=function(txt){ if (!(crypto && crypto.subtle)) return Promise.resolve(''); return crypto.subtle.digest('SHA-256', new TextEncoder().encode(txt)).then(function(h){ return [].slice.call(new Uint8Array(h)).map(function(b){ return ('0'+b.toString(16)).slice(-2); }).join(''); }); };
   out.addEventListener('click', function(){
@@ -777,17 +775,17 @@ try{ (function(){
 try{ (function(){
   const b=document.getElementById('lamp'); if (!b) return;
   const fine=matchMedia('(hover:hover) and (pointer:fine)').matches; if (!fine){ b.hidden=true; return; }
-  const root=document.documentElement; let veil=null, on=false, raf=0, x=innerWidth/2, y=innerHeight/2;
+  const root=document.documentElement; let veil=null, on=false, lit=false, raf=0, x=innerWidth/2, y=innerHeight/2;
   const paint=function(){ raf=0; if (veil){ veil.style.setProperty('--lx', x+'px'); veil.style.setProperty('--ly', y+'px'); } };
   const move=function(e){ x=e.clientX; y=e.clientY; if (!raf) raf=requestAnimationFrame(paint); };
   const sizeVeil=function(){ if (veil) veil.style.setProperty('--lr', Math.round(Math.max(innerWidth, innerHeight)*0.75)+'px'); };
   const set=function(v){
     on=v; b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', on?'Put out the miner’s lamp':'Light the miner’s lamp'); root.classList.toggle('lamp-on', on);
-    if (on){ if (!veil){ veil=document.createElement('div'); veil.className='lamp-veil'; veil.setAttribute('aria-hidden','true'); document.body.appendChild(veil); } sizeVeil(); paint(); requestAnimationFrame(function(){ veil.classList.add('on'); }); addEventListener('pointermove', move, {passive:true}); if (window.psEarn) psEarn('lamp'); }
-    else { if (veil) veil.classList.remove('on'); removeEventListener('pointermove', move); }
+    if (on){ if (!veil){ veil=document.createElement('div'); veil.className='lamp-veil'; veil.setAttribute('aria-hidden','true'); document.body.appendChild(veil); } sizeVeil(); paint(); requestAnimationFrame(function(){ veil.classList.add('on'); }); addEventListener('pointermove', move, {passive:true}); lit=true; }
+    else { if (veil) veil.classList.remove('on'); removeEventListener('pointermove', move); if (lit && window.psEarn) psEarn('lantern'); }
   };
   b.addEventListener('click', function(){ set(!on); });
-  try{ localStorage.removeItem('ps-lamp'); }catch(e){}
+  try{ localStorage.removeItem('ps-lamp'); localStorage.removeItem('ps-lantern'); }catch(e){}
   addEventListener('resize', sizeVeil, {passive:true});
 })(); }catch(err){ psFail(err); }
 
@@ -1121,19 +1119,6 @@ try{ (function(){
   raf=requestAnimationFrame(loop);
 })(); }catch(err){ psFail(err); }
 
-/* lantern: a warm glow that follows the pointer on computers */
-  try{ (function(){
-    if (!window.matchMedia || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-    let off=false; try{ off=localStorage.getItem('ps-lantern')==='off'; }catch(e){}
-    const l=document.createElement('div'); l.className='lantern'; l.setAttribute('aria-hidden','true'); document.body.appendChild(l);
-    let x=0, y=0, raf=0;
-    const paint=function(){ raf=0; l.style.transform='translate3d('+(x-260)+'px,'+(y-260)+'px,0)'; };
-    document.addEventListener('pointermove', function(e){ if (e.pointerType!=='mouse') return; x=e.clientX; y=e.clientY; if (!off) l.classList.add('on'); if (!raf) raf=requestAnimationFrame(paint); }, {passive:true});
-    document.documentElement.addEventListener('mouseleave', function(){ l.classList.remove('on'); });
-    const btn=document.getElementById('lanternBtn');
-    if (btn){ btn.hidden=false; const sync=function(){ btn.setAttribute('aria-pressed', String(!off)); btn.textContent = off ? 'Light the lantern' : 'Put out the lantern'; };
-      sync(); btn.addEventListener('click', function(){ off=!off; try{ localStorage.setItem('ps-lantern', off?'off':'on'); }catch(e){} if (off) l.classList.remove('on'); sync(); }); }
-  })(); }catch(err){ psFail(err); }
   /* ---------- case pages: the live Facebook post, loaded only when asked ---------- */
   try{ (function(){
     document.querySelectorAll('.fp-live[data-post]').forEach(function(box){
