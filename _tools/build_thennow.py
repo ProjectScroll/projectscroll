@@ -62,7 +62,7 @@ TOWNS = [
       how='The plan was cut from the Library of Congress copy of the wall map. Thirty street corners that appear on both maps (Gremps, Kalamazoo, Niles, LaGrave, Brown and Van Buren, where they meet Cedar, Pine, Elm, Oak and Paw Paw Street) were matched by measurement, and the plan was fitted to them. On average the old corners land within about four yards of the new ones.',
       extra='<p class="note">The wall map was printed in sheets, and the join between two of them runs across the south end of this plan. The strip below the join has been left off.</p>',
       og='pawpaw', desc='The 1860 plan of Paw Paw, Michigan, laid over today’s streets. Fade between them or compare side by side.'),
- dict(slug='south-bend', name='South Bend', year='1863', img=None,
+ dict(slug='south-bend', hunt={'h': [4239982495, 1544337818], 't': 'Two streets that changed their names', 'q': 'Water Street and Market Street are both still on the ground in South Bend, under the names they carry today. Fade the plan away and find them.', 'lab': 'What one of them is called today'}, name='South Bend', year='1863', img=None,
       iiif='https://tile.loc.gov/image-services/iiif/service:gmd:gmd409:g4093:g4093s:la000168', region=[230,5800,3360,3200], px=2400,
       aff=dict(SBAFF), N=41.691177, W=-86.274251, S=41.663669, E=-86.233984, maxb='[41.645,-86.300],[41.710,-86.205]',
       lede='The 1863 map of St. Joseph County, Indiana, has a plan of South Bend in its corner, with the village of Lowell across the river.',
@@ -76,7 +76,7 @@ TOWNS = [
       extra='<p class="note">The pale band across the plan is a fold in the paper of the original. Nothing has been painted out.</p>',
       credit='1863 plan: <i>Map of St. Joseph Co., Indiana</i>, compiled and published by M. W. Stokes (South Bend, 1863), inset “South Bend” and “Lowell.” Library of Congress, Geography and Map Division, g4093s.la000168 (item 2013593163). Public domain, shown live from the Library’s image service.',
       og='map', desc='The 1863 plan of South Bend, Indiana, laid over today’s streets. Fade between them or compare side by side.'),
- dict(slug='goshen', name='Goshen', year='1861', img=None, iiif=UWM, region=[7340,2250,1790,2550], px=1790,
+ dict(slug='goshen', hunt={'h': [3923262336, 2088074974], 't': 'Two streets that changed their names', 'q': 'Market Street, on the south side of the Court House square, has a new name today, and Pearl Street at the south end of town is spelled another way. Fade the plan away and find both.', 'lab': 'What one of them is called today'}, name='Goshen', year='1861', img=None, iiif=UWM, region=[7340,2250,1790,2550], px=1790,
       aff=dict(GOAFF), N=41.5955, W=-85.8412, S=41.5779, E=-85.8238, maxb='[41.565,-85.860],[41.608,-85.805]',
       lede='Goshen, the county seat of Elkhart County, Indiana, has a plan in the corner of the 1861 county map, coloured by its additions.',
       look=['The <b>Court House square</b>, between Third and Main. Fade to today: the courthouse still stands on it.',
@@ -89,7 +89,7 @@ TOWNS = [
       extra='<p class="note">The business directory printed beside the plan has been left off this copy, though a few of its letters show at the left edge. The whole directory is on the full county map in the <a href="/map/#town-goshen">map room</a>.</p>',
       credit=ELKCREDIT.format(inset='Goshen'), inset='Goshen',
       og='map', desc='The 1861 plan of Goshen, Indiana, laid over today’s streets. Fade between them or compare side by side.'),
- dict(slug='elkhart', name='Elkhart', year='1861', img=None, iiif=UWM, region=[1700,2370,1890,2430], px=1890, notch=[59.4,54.6],
+ dict(slug='elkhart', hunt={'h': [4228470081], 't': 'The street that changed its name', 'q': 'Pigeon Street ran between Jackson and High in 1861. It is still there today under another name. Fade the plan away and find it.', 'lab': 'What it is called today'}, name='Elkhart', year='1861', img=None, iiif=UWM, region=[1700,2370,1890,2430], px=1890, notch=[59.4,54.6],
       aff=dict(ELAFF), N=41.6935, W=-85.9819, S=41.6766, E=-85.9644, maxb='[41.665,-86.000],[41.705,-85.945]',
       lede='Elkhart, Indiana, grew up on the point where the Elkhart River runs into the St. Joseph. The 1861 county map has its plan in the corner.',
       look=['<b>Main and Second Streets</b>, running down from the point between the rivers. Washington, Jefferson, Jackson, High and Franklin still cross them under their 1861 names.',
@@ -114,7 +114,7 @@ def overlay(t,Y):
     return f"""      const ll=(u,v)=>{{ const x={x0}+u*{k:.6f}, y={y0}+v*{k:.6f}; return L.latLng({A[0]!r}*x+{A[1]!r}*y+{A[2]!r}, {C[0]!r}*x+{C[1]!r}*y+{C[2]!r}); }};
       const Aff=L.Layer.extend({{
         onAdd(m){{ const el=this._el=L.DomUtil.create('img','tnold leaflet-image-layer'); el.alt='{alt}'; el.style.transformOrigin='0 0'; el.style.opacity=this._op;
-          el.onload=()=>{{ this._place(); this.fire('load'); }}; el.onerror=()=>this.fire('error'); el.src='{url}'; m.getPane('old').appendChild(el); m.on('viewreset zoomend resize',this._place,this); }},
+          el.onload=()=>{{ this._place(); this.fire('load'); }}; el.onerror=()=>{{ el.style.display='none'; this.fire('error'); }}; el.src='{url}'; m.getPane('old').appendChild(el); m.on('viewreset zoomend resize',this._place,this); }},
         onRemove(m){{ this._el.remove(); m.off('viewreset zoomend resize',this._place,this); }},
         _place(){{ const el=this._el, W=el.naturalWidth, H=el.naturalHeight; if(!W) return; const m=this._map;
           const p0=m.latLngToLayerPoint(ll(0,0)), px=m.latLngToLayerPoint(ll(W,0)), py=m.latLngToLayerPoint(ll(0,H));
@@ -124,6 +124,20 @@ def overlay(t,Y):
         getElement(){{ return this._el; }}
       }});
       const old=new Aff().setOpacity(0.75).addTo(map);
+"""
+def hunt(t,Y):
+    v=t.get('hunt')
+    if not v: return ''
+    n=len(v['h']); slug=t['slug']
+    done='Both found. The old names are still on the '+Y+' plan, and now you know where they went.' if n==2 else 'Found it. The old name is still on the '+Y+' plan, and now you know where it went.'
+    return f"""    <aside class="namehunt" aria-labelledby="nhT" data-k="ps-tn-{slug}" data-word="street" data-words="streets" data-h="{','.join(map(str,v['h']))}" data-yes="{{n}}: that’s the one." data-done="{done}" data-no="Not that one. Fade to today’s streets and look where the old one ran.">
+      <p class="nh-k">A challenge · {t['name']}</p>
+      <h3 id="nhT">{v['t']}</h3>
+      <p>{v['q']}</p>
+      <form class="nh-form" autocomplete="off"><label for="nhIn">{v['lab']}</label><input id="nhIn" type="text" maxlength="40" spellcheck="false"><button class="btn" type="submit">Check</button></form>
+      <p class="nh-out" aria-live="polite"></p>
+      <ol class="nh-found" aria-label="Streets you have found"></ol>
+    </aside>
 """
 def build(t):
     others=' · '.join(f'<a href="/map/{o["slug"]}/">{o["name"]}</a>' for o in TOWNS if o['slug']!=t['slug'])
@@ -151,7 +165,7 @@ def build(t):
   </div>
     <h2>Things to look for</h2>
     <ul class="dis">{looks}</ul>
-    <h2>How this was made</h2>
+{hunt(t,Y)}    <h2>How this was made</h2>
     <p>{t["how"]}</p>
     {t.get("extra","")}
     <p class="note">{t.get("credit") or CREDIT.format(inset=t["inset"])} Today’s streets and water: drawn from OpenStreetMap data, © OpenStreetMap contributors, available under the Open Database License.</p>

@@ -30,7 +30,7 @@
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
-<link rel="stylesheet" href="/site.min.css?v=e7274073">
+<link rel="stylesheet" href="/site.min.css?v=7070a944">
 <script type="speculationrules">{"prefetch":[{"where":{"and":[{"selector_matches":".bar a, footer nav a, .partrail a, .search-res a, .crumb a"},{"href_matches":"/*"},{"not":{"href_matches":"/*.pdf"}}]},"eagerness":"moderate"}]}</script>
 </head>
 <body>
@@ -87,6 +87,14 @@
   </div>
     <h2>Things to look for</h2>
     <ul class="dis"><li><b>Michigan, Main and Lafayette Streets</b>, and the <b>Court House square</b> on Main. Fade to today and the square is still there.</li><li><b>Water Street</b> and <b>Market Street</b>. Both are still on the ground, under other names. Fade to today and find what they are called now.</li><li><b>Lowell</b>, across the river: a separate town in 1863, part of South Bend today.</li><li>The great bend of the <b>St. Joseph River</b>, and the bridges across it.</li><li>The <b>Agricultural Fair Ground</b>, and the <b>Cemetery</b> beside the La Porte road at the west edge of town.</li><li>The <b>additions</b> named for the men who laid them out, such as Hendricks &amp; Grant’s. Each name is a lead to a plat in the county’s records.</li></ul>
+    <aside class="namehunt" aria-labelledby="nhT" data-k="ps-tn-south-bend" data-word="street" data-words="streets" data-h="4239982495,1544337818" data-yes="{n}: that’s the one." data-done="Both found. The old names are still on the 1863 plan, and now you know where they went." data-no="Not that one. Fade to today’s streets and look where the old one ran.">
+      <p class="nh-k">A challenge · South Bend</p>
+      <h3 id="nhT">Two streets that changed their names</h3>
+      <p>Water Street and Market Street are both still on the ground in South Bend, under the names they carry today. Fade the plan away and find them.</p>
+      <form class="nh-form" autocomplete="off"><label for="nhIn">What one of them is called today</label><input id="nhIn" type="text" maxlength="40" spellcheck="false"><button class="btn" type="submit">Check</button></form>
+      <p class="nh-out" aria-live="polite"></p>
+      <ol class="nh-found" aria-label="Streets you have found"></ol>
+    </aside>
     <h2>How this was made</h2>
     <p>The plan is shown live from the Library of Congress’s image service, at full detail. Eighteen street corners that appear on both maps (Marion, Madison, Washington, Jefferson and Wayne, where they meet William, Lafayette, Main and Michigan) were matched by measurement, and the plan was fitted to them, turning it a fraction of a degree. On average the old corners land within about nine yards of the new ones. The worst is near William Street, which jogs on today’s ground and runs straight on the 1863 plan.</p>
     <p class="note">The pale band across the plan is a fold in the paper of the original. Nothing has been painted out.</p>
@@ -129,7 +137,7 @@
       const ll=(u,v)=>{ const x=230+u*1.400000, y=5800+v*1.400000; return L.latLng(2.481111962452618e-08*x+-8.570229023591036e-06*y+41.74079549020666, 1.188766676668725e-05*x+1.012239759469011e-07*y+-86.27757179838558); };
       const Aff=L.Layer.extend({
         onAdd(m){ const el=this._el=L.DomUtil.create('img','tnold leaflet-image-layer'); el.alt='1863 town plan of South Bend'; el.style.transformOrigin='0 0'; el.style.opacity=this._op;
-          el.onload=()=>{ this._place(); this.fire('load'); }; el.onerror=()=>this.fire('error'); el.src='https://tile.loc.gov/image-services/iiif/service:gmd:gmd409:g4093:g4093s:la000168/230,5800,3360,3200/2400,/0/default.jpg'; m.getPane('old').appendChild(el); m.on('viewreset zoomend resize',this._place,this); },
+          el.onload=()=>{ this._place(); this.fire('load'); }; el.onerror=()=>{ el.style.display='none'; this.fire('error'); }; el.src='https://tile.loc.gov/image-services/iiif/service:gmd:gmd409:g4093:g4093s:la000168/230,5800,3360,3200/2400,/0/default.jpg'; m.getPane('old').appendChild(el); m.on('viewreset zoomend resize',this._place,this); },
         onRemove(m){ this._el.remove(); m.off('viewreset zoomend resize',this._place,this); },
         _place(){ const el=this._el, W=el.naturalWidth, H=el.naturalHeight; if(!W) return; const m=this._map;
           const p0=m.latLngToLayerPoint(ll(0,0)), px=m.latLngToLayerPoint(ll(W,0)), py=m.latLngToLayerPoint(ll(0,H));
@@ -196,6 +204,6 @@
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=e7274073" defer></script>
+<script src="/site.min.js?v=7070a944" defer></script>
 </body>
 </html>

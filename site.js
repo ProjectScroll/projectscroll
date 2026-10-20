@@ -1243,10 +1243,12 @@ try{ (function(){
     const tally=function(){ return got.length+' of '+total+' found.'; };
     const draw=function(){ if (list){ list.innerHTML=''; got.forEach(function(n){ const li=document.createElement('li'); li.textContent=n; list.appendChild(li); }); } if (got.length) out.textContent=got.length===total?(box.dataset.done||'All found.'):tally(); };
     draw();
-    form.addEventListener('submit', function(e){ e.preventDefault(); const raw=inp.value.trim(); let n=raw.toLowerCase().replace(/m\.?\s*d\.?$/,'').trim().split(/[\s.]+/).filter(Boolean).pop()||''; n=n.replace(/[^a-z]/g,''); if (!n) return;
+    form.addEventListener('submit', function(e){ e.preventDefault(); const raw=inp.value.trim(); const street=box.dataset.word==='street'; let toks=raw.toLowerCase().replace(/m\.?\s*d\.?$/,'').trim().split(/[\s.]+/).filter(Boolean);
+      if (street){ toks=toks.filter(function(t){ return !/^(street|st|avenue|ave|av|boulevard|blvd|road|rd|drive|dr|north|south|east|west|n|s|e|w|the)$/.test(t); }); }
+      let n=street?toks.join(''):(toks.pop()||''); n=n.replace(/[^a-z]/g,''); if (!n) return;
       if (H.indexOf(h(n))<0 && n.length>3 && n.slice(-1)==='s' && H.indexOf(h(n.slice(0,-1)))>=0) n=n.slice(0,-1);
-      const nice=n.charAt(0).toUpperCase()+n.slice(1);
-      if (got.map(function(x){ return x.toLowerCase(); }).indexOf(n)>=0) out.textContent=(got.length===total && total===1)?(box.dataset.done||'Found.'):nice+' is already in your list. '+tally();
+      const nice=street?toks.map(function(t){ return t.charAt(0).toUpperCase()+t.slice(1); }).join(' ').replace(/[^A-Za-z ]/g,''):n.charAt(0).toUpperCase()+n.slice(1);
+      if (got.map(function(x){ return x.toLowerCase().replace(/[^a-z]/g,""); }).indexOf(n)>=0) out.textContent=(got.length===total && total===1)?(box.dataset.done||'Found.'):nice+' is already in your list. '+tally();
       else if (H.indexOf(h(n))>=0){ got.push(nice); try{ localStorage.setItem(key, JSON.stringify(got)); }catch(e){} draw(); if (got.length<total) out.textContent=(box.dataset.yes||'{n}: on both maps.').replace('{n}',nice)+' '+tally(); }
       else out.textContent=box.dataset.no||'Not one we matched. Check the spelling on both maps, or tell us if you think we missed one.';
       inp.value=''; inp.focus(); });
