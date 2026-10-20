@@ -25,6 +25,25 @@ cass='''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li><a href="/document/">Document of the month: one page of Rogers, 1875, read slowly</a></li>
       <li><a href="/notes/one-letter-two-certificates/">A field note: one letter, two certificates</a></li>
     </ul>
+    <h2 id="next-door">Next door, 1860 and 1928</h2>
+    <p>Penn Township is the ground just east of the village, with Diamond Lake in its south-west corner and Vandalia on the railroad. Here it is twice: as the 1860 wall map engraved it, and as a plat book drew it about 1928. The square mile sections are the same, so the two line up. Slide across and watch sixty-eight years of owners change hands.</p>
+    <figure class="tncorner tn2">
+      <div class="tnc-frame tn2-frame" style="--x:50%">
+        <picture><source type="image/webp" srcset="/img/twp/penn-square-600.webp 600w, /img/twp/penn-square.webp 900w" sizes="(min-width:900px) 640px, 92vw"><img class="tnc-now" src="/img/twp/penn-square.webp" width="900" height="900" loading="lazy" decoding="async" alt="Penn Township, Cass County, on a plat map of about 1928: the farms with owners’ names, Diamond Lake at lower left and Vandalia near the middle of the south side."></picture>
+        <div class="tnc-old"><img src="https://tile.loc.gov/image-services/iiif/service:gmd:gmd411:g4113:g4113c:la000324/13378,12253,1755,1765/900,/0/default.jpg" srcset="https://tile.loc.gov/image-services/iiif/service:gmd:gmd411:g4113:g4113c:la000324/13378,12253,1755,1765/600,/0/default.jpg 600w, https://tile.loc.gov/image-services/iiif/service:gmd:gmd411:g4113:g4113c:la000324/13378,12253,1755,1765/900,/0/default.jpg 900w" sizes="(min-width:900px) 640px, 92vw" width="900" height="905" loading="lazy" decoding="async" alt="Penn Township on the 1860 wall map of Cass County: hand-coloured farms with owners’ names, Diamond Lake at lower left and the village of Vandalia."></div>
+        <input type="range" class="tnc-range" min="0" max="100" value="50" aria-label="Slide between 1860 and about 1928">
+        <span class="tnc-lab l" aria-hidden="true">1860</span><span class="tnc-lab r" aria-hidden="true">c. 1928</span>
+      </div>
+      <figcaption>Penn Township, 1860 and about 1928. <span class="credit">Geil, Harley &amp; Siverd, 1860, Library of Congress · plat book, about 1928, Cass County MIGenWeb</span></figcaption>
+    </figure>
+    <aside class="namehunt" aria-labelledby="nhH">
+      <p class="nh-k">A challenge</p>
+      <h3 id="nhH">Find the families who stayed</h3>
+      <p>Ten surnames are written on this township in both years: on a farm in 1860, and still on the land about 1928. Find them. Slide the map, read the names, and type each one you find.</p>
+      <form class="nh-form" id="nhForm" autocomplete="off"><label for="nhIn">A surname on both maps</label><input id="nhIn" type="text" maxlength="30" spellcheck="false"><button class="btn" type="submit">Check</button></form>
+      <p class="nh-out" id="nhOut" aria-live="polite"></p>
+      <ol class="nh-found" id="nhFound" aria-label="Families you have found"></ol>
+    </aside>
     <h2>The other towns of the valley</h2>
     <p><a href="/dowagiac/">Dowagiac</a> · <a href="/niles/">Niles</a> · <a href="/paw-paw/">Paw Paw</a> — each with its history in the record and its 1860 plan laid over today’s streets.</p>
     <h2>Where to look next</h2>

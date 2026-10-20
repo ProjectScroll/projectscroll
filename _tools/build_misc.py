@@ -28,5 +28,9 @@ for f in sorted(pathlib.Path(R).rglob('index.html')):
     docs.append({'u':url,'t':title,'x':re.sub(r'\s+',' ',txt).strip()[:4000]})
 G={'Plat':'A surveyor’s drawing of land divided into lots or parcels.','Probate':'The court process that settles a dead person’s estate.','Informant':'The person who answered the questions on a certificate.','Census':'The national head-count taken every ten years.','Soundex':'A code that groups surnames that sound alike, used in old census indexes.','Relict':'A widow: a woman who outlived her husband.'}
 for k,v in G.items(): docs.append({'u':'/toolkit/' if k=='Soundex' else '/guide/old-handwriting/' if k=='Relict' else '/#marks','t':'Glossary: '+k,'x':v})
+# each township sheet of about 1928 is its own result, so a search for "Calvin" or "Volinia" opens it
+TWP=[('calvin','Calvin','Brownsville, Calvin Center'),('howard','Howard',''),('jefferson','Jefferson',''),('lagrange','LaGrange','LaGrange village, Cassopolis'),('marcellus','Marcellus','Marcellus village'),('mason','Mason',''),('milton','Milton',''),('newberg','Newberg',''),('ontwa','Ontwa','Edwardsburg, Adamsville'),('penn','Penn','Vandalia, Diamond Lake'),('pokagon','Pokagon','Pokagon village, Sumnerville'),('porter-north','Porter','Williamsville (north half)'),('porter-south','Porter','Union (south half)'),('silver-creek','Silver Creek','Indian Lake'),('volinia','Volinia','Nicholsville'),('wayne','Wayne','Glenwood')]
+for k,n,v in TWP:
+    docs.append({'u':'/map/#twp-'+k,'t':n+' Township plat, about 1928','x':n+' Township, Cass County, Michigan: the plat sheet of about 1928, every farm with its owner’s name and acreage. '+(('On the sheet: '+v+'. ') if v else '')+'Open it in the map room and compare the names with the 1860 wall map.'})
 pathlib.Path(R,'search.json').write_text(json.dumps(docs,ensure_ascii=False))
 print('notebook + search index:',len(docs),'entries')

@@ -7,6 +7,15 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="lede" style="font-size:1.15rem">In 1860 Geil, Harley &amp; Siverd of Philadelphia engraved a great wall map of Cass, Van Buren and Berrien counties, Michigan: every township, the farms and the names of the people on them, with little town plans and pictures of houses around the border. The original is at the Library of Congress. Here you can walk over every inch of it.</p>
     <p class="note">Drag to move. Scroll, pinch or use the buttons to zoom. Nothing is marked: the hunt is yours.</p>
     <p class="tnpromo"><b>Then and now.</b> The 1860 town plans laid over today’s streets: <a href="/map/cassopolis/">Cassopolis</a><a href="/map/niles/">Niles</a><a href="/map/dowagiac/">Dowagiac</a><a href="/map/paw-paw/">Paw Paw</a></p>
+    <nav class="contents" aria-label="In this room">
+      <p class="contents-h">In this room</p>
+      <ol>
+        <li><a href="#osd"><b>I</b><span>The 1860 wall map</span></a></li>
+        <li><a href="#look"><b>II</b><span>Things to look for</span></a></li>
+        <li><a href="#more"><b>III</b><span>More maps</span></a></li>
+        <li><a href="#townships"><b>IV</b><span>Fifteen townships, 1928</span></a></li>
+      </ol>
+    </nav>
   <div class="maproom">
     <div class="mapbar">
       <button type="button" class="btn" id="mzin" aria-label="Zoom in">+</button><button type="button" class="btn" id="mzout" aria-label="Zoom out">−</button><button type="button" class="btn" id="mhome">Whole map</button><button type="button" class="btn" id="mfull">Full screen</button>
@@ -14,7 +23,7 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     </div>
     <div id="osd" class="osd" role="application" aria-label="Zoomable 1860 wall map of Cass, Van Buren and Berrien counties"></div>
   </div>
-    <h2>Things to look for</h2>
+    <h2 id="look">Things to look for</h2>
     <ul class="dis">
       <li>The small <b>town plans</b> along the top and left side, with streets, blocks and the names of buildings.</li>
       <li>The <b>business directories</b> printed in the margins, listing who kept which shop or hotel.</li>
@@ -28,30 +37,31 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     </figure>
     <figure class="secfig">
       <a href="https://www.loc.gov/item/13023487/" rel="noopener"><picture><source type="image/webp" srcset="/img/maps/royce-michigan-1899-640.webp 640w, /img/maps/royce-michigan-1899-825.webp 825w" sizes="(min-width:900px) 480px, 92vw"><img src="/img/maps/royce-michigan-1899-825.jpg" srcset="/img/maps/royce-michigan-1899-640.jpg 640w, /img/maps/royce-michigan-1899-825.jpg 825w" sizes="(min-width:900px) 480px, 92vw" width="825" height="1064" loading="lazy" decoding="async" alt="Map of Michigan from 1899 with the Indian land cessions outlined and numbered, Bureau of American Ethnology plate CXXXVII."></picture></a>
-      <figcaption>Michigan with the Indian land cessions numbered: plate CXXXVII of Charles C. Royce, <i>Indian Land Cessions in the United States</i>, in the <i>Eighteenth Annual Report of the Bureau of American Ethnology</i> (Washington, 1899). Each number is a cession in Royce’s schedule, and the south-west corner of the state carries its own. The numbers are the key to which treaty opened which ground. <span class="credit">Royce, 1899 · Library of Congress · public domain</span></figcaption>
+      <figcaption>Michigan with the Indian land cessions numbered: plate CXXXVII of Charles C. Royce, <i>Indian Land Cessions in the United States</i>, in the <i>Eighteenth Annual Report of the Bureau of American Ethnology</i> (Washington, 1899). Each number is a cession in Royce’s schedule, the key to which treaty opened which ground. This is his second Michigan plate; the earlier cessions of the south, the treaty of Chicago of 1821 among them, are drawn on his first. <span class="credit">Royce, 1899 · Library of Congress · public domain</span></figcaption>
     </figure>
     <figure class="secfig">
       <picture><source type="image/webp" srcset="/img/maps/cass-outline-1928-640.webp 640w, /img/maps/cass-outline-1928-1000.webp 1000w" sizes="(min-width:900px) 480px, 92vw"><img src="/img/maps/cass-outline-1928-1000.jpg" srcset="/img/maps/cass-outline-1928-640.jpg 640w, /img/maps/cass-outline-1928-1000.jpg 1000w" sizes="(min-width:900px) 480px, 92vw" width="1000" height="1229" loading="lazy" decoding="async" alt="Outline map of Cass County, Michigan, about 1928, showing the fifteen townships, roads, railways and lakes."></picture>
       <figcaption>An outline map of Cass County from a plat book of about 1928: the fifteen townships, the roads and railways, and every lake. <span class="credit">About 1928 · Cass County MIGenWeb</span></figcaption>
     </figure>
     <h2 id="townships">The county, township by township, about 1928</h2>
-    <p>Fourteen of the county’s fifteen townships from a plat book of about 1928, each farm with its owner’s name and acreage, two generations after the 1860 map. Open a sheet and read the names; then look for the same names on the wall map above. (Penn Township’s sheet is still to come.)</p>
+    <p>All fifteen of the county’s townships from a plat book of about 1928, each farm with its owner’s name and acreage, two generations after the 1860 map. Open a sheet and read the names; then look for the same names on the wall map above. Penn Township is laid over its 1860 self on <a href="/cassopolis/#next-door">a slider on the Cassopolis page</a>, with ten families to find.</p>
     <ul class="twp-grid" id="twpGrid">
-      <li><button type="button" data-k="calvin" data-n="Calvin"><img src="/img/twp/calvin-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Calvin Township, Cass County, Michigan, plat map of about 1928"><span>Calvin</span></button></li>
-      <li><button type="button" data-k="howard" data-n="Howard"><img src="/img/twp/howard-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Howard Township, Cass County, Michigan, plat map of about 1928"><span>Howard</span></button></li>
-      <li><button type="button" data-k="jefferson" data-n="Jefferson"><img src="/img/twp/jefferson-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Jefferson Township, Cass County, Michigan, plat map of about 1928"><span>Jefferson</span></button></li>
-      <li><button type="button" data-k="lagrange" data-n="LaGrange"><img src="/img/twp/lagrange-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="LaGrange Township, Cass County, Michigan, plat map of about 1928"><span>LaGrange</span></button></li>
-      <li><button type="button" data-k="marcellus" data-n="Marcellus"><img src="/img/twp/marcellus-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Marcellus Township, Cass County, Michigan, plat map of about 1928"><span>Marcellus</span></button></li>
-      <li><button type="button" data-k="mason" data-n="Mason"><img src="/img/twp/mason-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Mason Township, Cass County, Michigan, plat map of about 1928"><span>Mason</span></button></li>
-      <li><button type="button" data-k="milton" data-n="Milton"><img src="/img/twp/milton-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Milton Township, Cass County, Michigan, plat map of about 1928"><span>Milton</span></button></li>
-      <li><button type="button" data-k="newberg" data-n="Newberg"><img src="/img/twp/newberg-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Newberg Township, Cass County, Michigan, plat map of about 1928"><span>Newberg</span></button></li>
-      <li><button type="button" data-k="ontwa" data-n="Ontwa"><img src="/img/twp/ontwa-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Ontwa Township, Cass County, Michigan, plat map of about 1928"><span>Ontwa</span></button></li>
-      <li><button type="button" data-k="pokagon" data-n="Pokagon"><img src="/img/twp/pokagon-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Pokagon Township, Cass County, Michigan, plat map of about 1928"><span>Pokagon</span></button></li>
-      <li><button type="button" data-k="porter-north" data-n="Porter, north half"><img src="/img/twp/porter-north-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Porter, north half Township, Cass County, Michigan, plat map of about 1928"><span>Porter, north half</span></button></li>
-      <li><button type="button" data-k="porter-south" data-n="Porter, south half"><img src="/img/twp/porter-south-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Porter, south half Township, Cass County, Michigan, plat map of about 1928"><span>Porter, south half</span></button></li>
-      <li><button type="button" data-k="silver-creek" data-n="Silver Creek"><img src="/img/twp/silver-creek-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Silver Creek Township, Cass County, Michigan, plat map of about 1928"><span>Silver Creek</span></button></li>
-      <li><button type="button" data-k="volinia" data-n="Volinia"><img src="/img/twp/volinia-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Volinia Township, Cass County, Michigan, plat map of about 1928"><span>Volinia</span></button></li>
-      <li><button type="button" data-k="wayne" data-n="Wayne"><img src="/img/twp/wayne-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Wayne Township, Cass County, Michigan, plat map of about 1928"><span>Wayne</span></button></li>
+      <li id="twp-calvin"><button type="button" data-k="calvin" data-n="Calvin"><img src="/img/twp/calvin-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Calvin Township, Cass County, Michigan, plat map of about 1928"><span>Calvin</span></button></li>
+      <li id="twp-howard"><button type="button" data-k="howard" data-n="Howard"><img src="/img/twp/howard-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Howard Township, Cass County, Michigan, plat map of about 1928"><span>Howard</span></button></li>
+      <li id="twp-jefferson"><button type="button" data-k="jefferson" data-n="Jefferson"><img src="/img/twp/jefferson-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Jefferson Township, Cass County, Michigan, plat map of about 1928"><span>Jefferson</span></button></li>
+      <li id="twp-lagrange"><button type="button" data-k="lagrange" data-n="LaGrange"><img src="/img/twp/lagrange-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="LaGrange Township, Cass County, Michigan, plat map of about 1928"><span>LaGrange</span></button></li>
+      <li id="twp-marcellus"><button type="button" data-k="marcellus" data-n="Marcellus"><img src="/img/twp/marcellus-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Marcellus Township, Cass County, Michigan, plat map of about 1928"><span>Marcellus</span></button></li>
+      <li id="twp-mason"><button type="button" data-k="mason" data-n="Mason"><img src="/img/twp/mason-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Mason Township, Cass County, Michigan, plat map of about 1928"><span>Mason</span></button></li>
+      <li id="twp-milton"><button type="button" data-k="milton" data-n="Milton"><img src="/img/twp/milton-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Milton Township, Cass County, Michigan, plat map of about 1928"><span>Milton</span></button></li>
+      <li id="twp-newberg"><button type="button" data-k="newberg" data-n="Newberg"><img src="/img/twp/newberg-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Newberg Township, Cass County, Michigan, plat map of about 1928"><span>Newberg</span></button></li>
+      <li id="twp-ontwa"><button type="button" data-k="ontwa" data-n="Ontwa"><img src="/img/twp/ontwa-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Ontwa Township, Cass County, Michigan, plat map of about 1928"><span>Ontwa</span></button></li>
+      <li id="twp-penn"><button type="button" data-k="penn" data-n="Penn"><img src="/img/twp/penn-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Penn Township, Cass County, Michigan, plat map of about 1928"><span>Penn</span></button></li>
+      <li id="twp-pokagon"><button type="button" data-k="pokagon" data-n="Pokagon"><img src="/img/twp/pokagon-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Pokagon Township, Cass County, Michigan, plat map of about 1928"><span>Pokagon</span></button></li>
+      <li id="twp-porter-north"><button type="button" data-k="porter-north" data-n="Porter, north half"><img src="/img/twp/porter-north-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Porter, north half Township, Cass County, Michigan, plat map of about 1928"><span>Porter, north half</span></button></li>
+      <li id="twp-porter-south"><button type="button" data-k="porter-south" data-n="Porter, south half"><img src="/img/twp/porter-south-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Porter, south half Township, Cass County, Michigan, plat map of about 1928"><span>Porter, south half</span></button></li>
+      <li id="twp-silver-creek"><button type="button" data-k="silver-creek" data-n="Silver Creek"><img src="/img/twp/silver-creek-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Silver Creek Township, Cass County, Michigan, plat map of about 1928"><span>Silver Creek</span></button></li>
+      <li id="twp-volinia"><button type="button" data-k="volinia" data-n="Volinia"><img src="/img/twp/volinia-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Volinia Township, Cass County, Michigan, plat map of about 1928"><span>Volinia</span></button></li>
+      <li id="twp-wayne"><button type="button" data-k="wayne" data-n="Wayne"><img src="/img/twp/wayne-440.webp" width="440" height="440" loading="lazy" decoding="async" alt="Wayne Township, Cass County, Michigan, plat map of about 1928"><span>Wayne</span></button></li>
     </ul>
     <p class="note">Source: a plat book of Cass County, Michigan, of about 1928, from the scans contributed by Ross Traverse to the <a href="https://migenweb.org/cass/townships.htm" rel="noopener">Cass County MIGenWeb Project</a>. Published before 1929 and so in the public domain.</p>
     <script>
@@ -63,6 +73,8 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
           d.addEventListener('keydown', function(ev){{ if (ev.key==='ArrowRight'){{ i=(i+1)%bs.length; fill(); ev.preventDefault(); }} else if (ev.key==='ArrowLeft'){{ i=(i+bs.length-1)%bs.length; fill(); ev.preventDefault(); }} }}); }}
         fill(); if (!d.open) d.showModal(); }}
       bs.forEach(function(b,j){{ b.addEventListener('click', function(){{ i=j; open(); }}); }});
+      var fromHash=function(){{ var m=/^#twp-([a-z-]+)$/.exec(location.hash); if (!m) return; var j=bs.findIndex(function(b){{ return b.dataset.k===m[1]; }}); if (j<0) return; i=j; bs[j].scrollIntoView({{block:'center'}}); bs[j].focus({{preventScroll:true}}); open(); }};
+      fromHash(); addEventListener('hashchange', fromHash);
     }})();
     </script>
     <p class="note">Source: <i>Map of the Counties of Cass, Van Buren and Berrien, Michigan</i> (Philadelphia: Geil, Harley &amp; Siverd, 1860). Library of Congress, Geography and Map Division, g4113c.la000324. Public domain. Shown through the Library’s own image service.</p>
