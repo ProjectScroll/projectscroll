@@ -7,6 +7,7 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="lede" style="font-size:1.15rem">In 1860 Geil, Harley &amp; Siverd of Philadelphia engraved a great wall map of Cass, Van Buren and Berrien counties, Michigan: every township, the farms and the names of the people on them, with little town plans and pictures of houses around the border. The original is at the Library of Congress. Here you can walk over every inch of it.</p>
     <p class="note">Drag to move. Scroll, pinch or use the buttons to zoom. Nothing is marked: the hunt is yours.</p>
     <p class="tnpromo"><b>Then and now.</b> The old town plans laid over today’s streets: <a href="/map/cassopolis/">Cassopolis</a><a href="/map/niles/">Niles</a><a href="/map/dowagiac/">Dowagiac</a><a href="/map/paw-paw/">Paw Paw</a><a href="/map/south-bend/">South Bend, 1863</a><a href="/map/goshen/">Goshen, 1861</a><a href="/map/elkhart/">Elkhart, 1861</a><a href="/map/then-and-now/">All seven →</a></p>
+    <p class="tnpromo"><b>Names on the old maps.</b> Every lawyer, doctor, merchant and smith in the directories beside the town plans, in one roll you can search: <a href="/names/">Who was in town →</a></p>
     <nav class="contents" aria-label="In this room">
       <p class="contents-h">In this room</p>
       <ol>

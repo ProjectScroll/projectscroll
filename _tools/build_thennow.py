@@ -170,6 +170,7 @@ def build(t):
     <p>{t["how"]}</p>
     {t.get("extra","")}
     <p class="note">{t.get("credit") or CREDIT.format(inset=t["inset"])} Today’s streets and water: drawn from OpenStreetMap data, © OpenStreetMap contributors, available under the Open Database License.</p>
+    {('<p class="note">The business directory printed beside this plan is in the roll of names: <a href="/names/?town='+t['slug']+'">who was in '+t['name']+' in '+Y+' →</a></p>') if t['slug'] in ('cassopolis','niles','dowagiac','paw-paw','goshen') else ''}
     <p class="tnnext"><a href="/map/{nx['slug']}/">Next town: {nx['name']}, {nx.get('year','1860')} →</a> <span aria-hidden="true">·</span> <a href="/map/then-and-now/">All seven towns</a></p>
     <link rel="stylesheet" href="/vendor/leaflet-1.9.4/leaflet.css?v=1">
     <script src="/vendor/leaflet-1.9.4/leaflet.js?v=1"></script>

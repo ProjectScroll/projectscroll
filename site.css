@@ -2715,3 +2715,20 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 .tntally{font-weight:600}
 .tnnext{margin:2rem 0 0; padding-top:1rem; border-top:1px solid var(--line); font-size:1.05rem}
 .tnnext a:first-child{font-weight:600}
+
+/* Draft 120: the roll of names */
+.nm-bar{position:sticky; top:4.2rem; z-index:5; background:var(--paper); padding:.8rem 0 .6rem; border-bottom:1px solid var(--line); margin:1.2rem 0 1rem}
+.nm-q{display:grid; gap:.3rem; font-size:.95rem}
+.nm-q input{font:inherit; font-size:1.1rem; padding:.6rem .8rem; border:1px solid var(--line); border-radius:4px; background:var(--paper-2); color:var(--ink); width:100%; box-sizing:border-box}
+.nm-chips{display:flex; flex-wrap:wrap; gap:.4rem; margin:.6rem 0 .2rem}
+.nm-chips .btn{font-size:.85rem; padding:.3rem .7rem}
+.nm-chips .btn[aria-pressed="true"]{background:var(--ink); color:var(--paper)}
+.nm-count{margin:.3rem 0 0; font-size:.9rem; color:var(--ink-soft)}
+.nm-town{margin:1.6rem 0 .5rem; font-size:1.25rem}
+.nm-town a{font-size:.85rem; font-family:inherit; margin-left:.5rem; white-space:nowrap}
+.nm-list{list-style:none; padding:0; margin:0; columns:2 18rem; column-gap:2rem}
+.nm-list li{break-inside:avoid; padding:.28rem 0; border-bottom:1px dotted var(--line); line-height:1.35}
+.nm-n{color:var(--ink-soft)}
+.nm-h{display:block; font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft)}
+.nm-u{color:var(--rule); margin-left:.15rem; cursor:help}
+@media (max-width:640px){ .nm-bar{top:3.4rem} }
