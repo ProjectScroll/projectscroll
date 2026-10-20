@@ -177,7 +177,7 @@
       var cur='cass1860', want=null;
       var v=OpenSeadragon({ id:'osd', tileSources:MAPS[cur].src, showNavigationControl:false, showNavigator:true, navigatorPosition:'BOTTOM_RIGHT',
         maxZoomPixelRatio:2.2, visibilityRatio:0.6, gestureSettingsMouse:{clickToZoom:false, dblClickToZoom:true}, crossOriginPolicy:false, animationTime:0.9 });
-      var go=function(t){ if (!t.r){ v.viewport.goHome(); stat.textContent='Find '+t.n+' on the '+MAPS[t.m].name+(/plate/.test(MAPS[t.m].name)?'':' map')+'. Zoom in; the hunt is yours.'; return; } var r=t.r; v.viewport.fitBounds(v.viewport.imageToViewportRectangle(r[0]-r[2]*.04, r[1]-r[3]*.04, r[2]*1.08, r[3]*1.08)); stat.textContent=t.n+' on the '+MAPS[t.m].name+(/plate/.test(MAPS[t.m].name)?'':' map')+'. Drag to look around; “Whole map” goes back.'; };
+      var go=function(t){ if (!t.r){ v.viewport.goHome(); stat.textContent=t.msg||('Find '+t.n+' on the '+MAPS[t.m].name+(/plate|view|Sanborn/.test(MAPS[t.m].name)?'':' map')+'. Zoom in; the hunt is yours.'); return; } var r=t.r; v.viewport.fitBounds(v.viewport.imageToViewportRectangle(r[0]-r[2]*.04, r[1]-r[3]*.04, r[2]*1.08, r[3]*1.08)); stat.textContent=t.msg||(t.n+' on the '+MAPS[t.m].name+(/plate|view|Sanborn/.test(MAPS[t.m].name)?'':' map')+'. Drag to look around; “Whole map” goes back.'); };
       v.addHandler('open', function(){ stat.textContent=MAPS[cur].name+': '+MAPS[cur].size+' pixels'+(MAPS[cur].local?'.':', from '+(MAPS[cur].from||'the Library of Congress')+'.'); if (want){ var t=want; want=null; setTimeout(function(){ go(t); }, 60); } });
       v.addHandler('open-failed', function(){ stat.textContent='The Library of Congress image service did not answer. Please try again in a minute.'; });
       var town=function(){ var m=/^#town-([a-z-]+)$/.exec(location.hash); if (!m || !TOWNS[m[1]]) return; var t=TOWNS[m[1]];
@@ -209,7 +209,7 @@
       var fill=function(L){ S.innerHTML=''; L.forEach(function(f,i){ var o=document.createElement('option'); o.value=i; o.textContent=label(f); S.appendChild(o); }); S.disabled=!L.length; };
       var show=function(slug, place, i, r){ var f=cache[slug][i]; if (!f || !window.psMap) return; var key='sb-'+slug+'-'+f.ed+'-'+f.sheet, town=place.split(',')[0];
         if (!window.psMap.maps[key]){ window.psMap.maps[key]={src:{type:'image', url:f.url}, name:'Sanborn map of '+town+', '+label(f), size:f.w.toLocaleString('en-US')+' × '+f.h.toLocaleString('en-US'), from:'Wikimedia Commons (the Library of Congress’s scan)', local:false}; if (G){ var o=document.createElement('option'); o.value=key; o.textContent=town+' · '+label(f); G.appendChild(o); } }
-        window.psMap.goTo({m:key, n:town, r:r}); setTimeout(function(){ if (!r) window.psMap.say('Sanborn map of '+town+', '+label(f)+'. Zoom in to read the buildings.'); }, 400); };
+        window.psMap.goTo({m:key, n:town, r:r, msg:'Sanborn map of '+town+', '+label(f)+'. Zoom in to read the buildings; “Whole map” shows the whole sheet.'}); };
       T.addEventListener('change', function(){ if (!T.value) return; var p=T.value.split('|'); load(p[0], p[1], function(L){ fill(L); if (L.length) show(p[0], p[1], 0); }); });
       S.addEventListener('change', function(){ var p=T.value.split('|'); show(p[0], p[1], +S.value); });
       var fromHash=function(){ var m=/^#sanborn-([a-z-]+)(?:\/(\d{3})-(\d+))?(?:\/([\d,]+))?$/.exec(location.hash); if (!m) return; var opt=[].slice.call(T.options).filter(function(o){ return o.value.split('|')[0]===m[1]; })[0]; if (!opt) return; T.value=opt.value; var p=opt.value.split('|');
