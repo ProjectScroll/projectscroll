@@ -2675,3 +2675,18 @@ table.gaz tbody th, table.gaz tbody td{padding:.55rem .6rem; border-bottom:1px s
 table.gaz tbody th{letter-spacing:.06em}
 table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transparent)}
 @media (max-width:640px){ table.gaz thead{display:none} table.gaz, table.gaz tbody, table.gaz tr{display:block} table.gaz tr{padding:.6rem 0; border-bottom:1px solid var(--line)} table.gaz tbody th, table.gaz tbody td{display:block; border:0; padding:.1rem 0; text-align:left!important} table.gaz td:nth-child(2){font-size:.88rem} }
+.namehunt.mom{border-left-color:var(--gold)}
+.namehunt.mom .nh-k{color:var(--gold-lo)}
+/* the map menu and the Sanborn browser */
+.mapsel{display:inline-flex; align-items:center; gap:.45rem; margin-left:.4rem; font-size:.85rem; color:var(--ink-soft)}
+.mapsel span, .sb-ctl label span{font-variant:small-caps; letter-spacing:.08em; color:var(--gold-lo)}
+.mapsel select, .sb-ctl select{font:inherit; font-size:.9rem; padding:.32rem .5rem; border:1px solid var(--line); border-radius:3px; background:var(--paper); color:var(--ink); max-width:min(100%, 22rem)}
+@media (max-width:640px){ .mapsel{margin:.4rem 0 0; width:100%} .mapsel select{flex:1} }
+.sanborn{margin:2rem 0 1rem; padding:1.1rem 1.2rem 1rem; border:1px solid color-mix(in srgb, var(--gold) 55%, transparent); border-left:4px solid #c0504d; border-radius:4px; background:linear-gradient(90deg, color-mix(in srgb, #e8a0a0 10%, transparent), transparent 40%), var(--panel-2)}
+.sanborn h2{margin-top:0}
+.sb-ctl{display:flex; flex-wrap:wrap; gap:.6rem 1rem; margin:.6rem 0 .4rem}
+.sb-ctl label{display:flex; flex-direction:column; gap:.2rem; font-size:.85rem; flex:1 1 12rem}
+/* a window onto one corner of a Commons sheet, cropped by the frame */
+.sbfig .sbcrop{display:block; position:relative; overflow:hidden; aspect-ratio:990/865; border:1px solid var(--line); border-radius:3px; background:#f3eee2}
+.sbfig .sbcrop img{position:absolute; width:193.94%; height:auto; max-width:none; left:-95.96%; top:-98.27%}
+.sbfig .sbcrop:hover, .sbfig .sbcrop:focus-visible{outline:2px solid var(--gold); outline-offset:2px}

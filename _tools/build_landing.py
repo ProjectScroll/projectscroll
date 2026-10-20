@@ -36,7 +36,7 @@ cass='''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       </div>
       <figcaption>Penn Township, 1860 and about 1928. <span class="credit">Geil, Harley &amp; Siverd, 1860, Library of Congress · plat book, about 1928, Cass County MIGenWeb</span></figcaption>
     </figure>
-    <aside class="namehunt" aria-labelledby="nhH">
+    <aside class="namehunt" aria-labelledby="nhH" data-k="ps-nh" data-h="1500474820,2974215929,685748702,2088285762,191284034,2332093417,184548888,180175259,193416305,2611415453" data-yes="{n}: on the land in 1860 and still there about 1928." data-done="All ten. Every family that stayed, found. Tell us what else you saw: research@projectscroll.com" data-no="Not one of the ten we matched. Check the spelling on both maps, or tell us if you think we missed one.">
       <p class="nh-k">A challenge</p>
       <h3 id="nhH">Find the families who stayed</h3>
       <p>Ten surnames are written on this township in both years: on a farm in 1860, and still on the land about 1928. Find them. Slide the map, read the names, and type each one you find.</p>
@@ -44,6 +44,12 @@ cass='''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <p class="nh-out" id="nhOut" aria-live="polite"></p>
       <ol class="nh-found" id="nhFound" aria-label="Families you have found"></ol>
     </aside>
+    <h2 id="thirty-years-on">The hotel corner, thirty years on</h2>
+    <p>In 1860 the engraver wrote one word on the block by the court house: HOTEL. Twenty-four years later the Sanborn Map Company drew the same corner building by building, for the insurers. The court house and post office face Broadway, the county jail and the sheriff’s house stand behind them, and across the street stands a hotel under a name the 1860 directory never lists. Is it on the ground where the 1860 hotel stood? Lay the two maps side by side and decide for yourself.</p>
+    <figure class="secfig land sbfig">
+      <a class="sbcrop" href="/map/#sanborn-cassopolis/001-2/1900,1700,1980,1730" aria-label="Open the 1884 Sanborn sheet of Cassopolis in the map room"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Sanborn_Fire_Insurance_Map_from_Cassopolis%2C_Cass_County%2C_Michigan._LOC_sanborn03951_001-2.jpg/1920px-Sanborn_Fire_Insurance_Map_from_Cassopolis%2C_Cass_County%2C_Michigan._LOC_sanborn03951_001-2.jpg" width="1920" height="2273" loading="lazy" decoding="async" alt="Sanborn fire-insurance map of Cassopolis, November 1884, sheet 2: the corner of Broadway and State, with the County Court House and Post Office, the County Jail and Sheriff’s Dwelling, the Exchange House and the County Offices."></a>
+      <figcaption>Broadway and State, November 1884: the court house and post office, the jail, the county offices and the Exchange House. Pink is brick, yellow is wood. <a href="/map/#sanborn-cassopolis/001-2/1900,1700,1980,1730">Open the whole sheet</a>, or step through the 1892, 1899 and 1909 editions in the map room. <span class="credit">Sanborn Map Co., 1884 · Library of Congress, via Wikimedia Commons</span></figcaption>
+    </figure>
     <h2>The other towns of the valley</h2>
     <p><a href="/dowagiac/">Dowagiac</a> · <a href="/niles/">Niles</a> · <a href="/paw-paw/">Paw Paw</a> — each with its history in the record and its 1860 plan laid over today’s streets.</p>
     <h2>Where to look next</h2>

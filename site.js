@@ -1235,19 +1235,23 @@ try{ (function(){
 try{ (function(){ [].forEach.call(document.querySelectorAll('.tn2-frame'), function(f){ const r=f.querySelector('.tnc-range'); if (!r) return; const set=function(){ f.style.setProperty('--x', r.value+'%'); }; r.addEventListener('input', set); set();
     const old=f.querySelector('.tnc-old img'); if (old){ const fail=function(){ f.classList.add('tn-off'); r.disabled=true; const c=f.parentNode.querySelector('figcaption'); if (c && !c.querySelector('.tn-msg')){ const m=document.createElement('span'); m.className='tn-msg'; m.textContent=' The 1860 half comes from the Library of Congress, which did not answer just now; try again in a minute.'; c.insertBefore(m, c.querySelector('.credit')); } }; if (old.complete && old.naturalWidth===0 && old.currentSrc) fail(); else old.addEventListener('error', fail, {once:true}); } }); })(); }catch(err){ psFail(err); }
 try{ (function(){
-  const form=document.getElementById('nhForm'); if (!form) return;
-  const inp=document.getElementById('nhIn'), out=document.getElementById('nhOut'), list=document.getElementById('nhFound');
-  const H=[1500474820,2974215929,685748702,2088285762,191284034,2332093417,184548888,180175259,193416305,2611415453];
+  /* every "find the names" box on the site: data-h holds the hashed answers, data-k the place it remembers, data-done the line it ends on */
   const h=function(s){ let x=5381; for (let i=0;i<s.length;i++){ x=((Math.imul(x,33))^s.charCodeAt(i))>>>0; } return x; };
-  let got=[]; try{ got=JSON.parse(localStorage.getItem('ps-nh')||'[]'); }catch(e){}
-  const draw=function(){ list.innerHTML=''; got.forEach(function(n){ const li=document.createElement('li'); li.textContent=n; list.appendChild(li); }); if (got.length) out.textContent=got.length===H.length?'All ten. Every family that stayed, found. Tell us what else you saw: research@projectscroll.com':got.length+' of ten found.'; };
-  draw();
-  form.addEventListener('submit', function(e){ e.preventDefault(); const raw=inp.value.trim(); const n=raw.toLowerCase().replace(/[^a-z]/g,''); if (!n) return;
-    const nice=raw.charAt(0).toUpperCase()+raw.slice(1).toLowerCase();
-    if (got.map(function(x){ return x.toLowerCase(); }).indexOf(n)>=0){ out.textContent=nice+' is already in your list. '+got.length+' of ten found.'; }
-    else if (H.indexOf(h(n))>=0){ got.push(nice); try{ localStorage.setItem('ps-nh', JSON.stringify(got)); }catch(e){} draw(); if (got.length<H.length) out.textContent=nice+': on the land in 1860 and still there about 1928. '+got.length+' of ten found.'; }
-    else out.textContent='Not one of the ten we matched. Check the spelling on both maps, or tell us if you think we missed one.';
-    inp.value=''; inp.focus(); });
+  [].forEach.call(document.querySelectorAll('.namehunt[data-h]'), function(box){
+    const form=box.querySelector('form'), inp=box.querySelector('input'), out=box.querySelector('.nh-out'), list=box.querySelector('.nh-found');
+    const H=box.dataset.h.split(',').map(Number), key=box.dataset.k, total=H.length, word=box.dataset.word||'family', words=box.dataset.words||'families';
+    let got=[]; try{ got=JSON.parse(localStorage.getItem(key)||'[]'); }catch(e){}
+    const tally=function(){ return got.length+' of '+total+' found.'; };
+    const draw=function(){ if (list){ list.innerHTML=''; got.forEach(function(n){ const li=document.createElement('li'); li.textContent=n; list.appendChild(li); }); } if (got.length) out.textContent=got.length===total?(box.dataset.done||'All found.'):tally(); };
+    draw();
+    form.addEventListener('submit', function(e){ e.preventDefault(); const raw=inp.value.trim(); let n=raw.toLowerCase().replace(/m\.?\s*d\.?$/,'').trim().split(/[\s.]+/).filter(Boolean).pop()||''; n=n.replace(/[^a-z]/g,''); if (!n) return;
+      if (H.indexOf(h(n))<0 && n.length>3 && n.slice(-1)==='s' && H.indexOf(h(n.slice(0,-1)))>=0) n=n.slice(0,-1);
+      const nice=n.charAt(0).toUpperCase()+n.slice(1);
+      if (got.map(function(x){ return x.toLowerCase(); }).indexOf(n)>=0) out.textContent=(got.length===total && total===1)?(box.dataset.done||'Found.'):nice+' is already in your list. '+tally();
+      else if (H.indexOf(h(n))>=0){ got.push(nice); try{ localStorage.setItem(key, JSON.stringify(got)); }catch(e){} draw(); if (got.length<total) out.textContent=(box.dataset.yes||'{n}: on both maps.').replace('{n}',nice)+' '+tally(); }
+      else out.textContent=box.dataset.no||'Not one we matched. Check the spelling on both maps, or tell us if you think we missed one.';
+      inp.value=''; inp.focus(); });
+  });
 })(); }catch(err){ psFail(err); }
 
 /* ---------- Draft 103: a glint on each part's diamond, at its own moment; the footer trail draws itself when it comes into view ---------- */
