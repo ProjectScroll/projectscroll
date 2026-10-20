@@ -142,6 +142,7 @@ def hunt(t,Y):
 def build(t):
     others=' · '.join(f'<a href="/map/{o["slug"]}/">{o["name"]}</a>' for o in TOWNS if o['slug']!=t['slug'])
     Y=t.get('year','1860')
+    nx=TOWNS[(TOWNS.index(t)+1)%len(TOWNS)]
     looks=''.join(f'<li>{x}</li>' for x in t['look'])
     return f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
     <p class="kicker">Then and now</p>
@@ -169,6 +170,7 @@ def build(t):
     <p>{t["how"]}</p>
     {t.get("extra","")}
     <p class="note">{t.get("credit") or CREDIT.format(inset=t["inset"])} Today’s streets and water: drawn from OpenStreetMap data, © OpenStreetMap contributors, available under the Open Database License.</p>
+    <p class="tnnext"><a href="/map/{nx['slug']}/">Next town: {nx['name']}, {nx.get('year','1860')} →</a> <span aria-hidden="true">·</span> <a href="/map/then-and-now/">All seven towns</a></p>
     <link rel="stylesheet" href="/vendor/leaflet-1.9.4/leaflet.css?v=1">
     <script src="/vendor/leaflet-1.9.4/leaflet.js?v=1"></script>
     <script>
