@@ -21,6 +21,7 @@ REC = [
   ('Michigan County Histories and Atlases', 'https://quod.lib.umich.edu/m/micounty', 'The University of Michigan’s collection of the old county histories and atlases, full text.', 'free'),
   ('Michigan Digital Newspapers', 'https://www.cmich.edu/research/cmu-library/collections/michigan-digital-newspapers', 'Central Michigan University’s portal to digitized Michigan newspapers.', 'free'),
   ('MIGenWeb', 'https://www.migenweb.org/', 'Michigan’s county volunteer sites.', 'free'),
+  ('Plat maps of Cass County', 'https://www.cassdistrictlibrary.org/cass-county-plat-maps/', 'The Cass District Library’s list of every plat book of the county from 1860 to today: which years exist, and which the county Historical Commission reprinted (1860, 1872, 1896 and 1914). The township sheets of about 1928 are <a href="/map/#townships">in the map room</a>.', 'free'),
  ]),
  ('Indiana', 'Next door', [
   ('Hoosier State Chronicles', 'https://newspapers.library.in.gov/', 'Indiana’s free digital historic newspaper program.', 'free'),

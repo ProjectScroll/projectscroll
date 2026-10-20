@@ -10,9 +10,13 @@ cass='''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li><b>Founded:</b> platted 1831; chosen as county seat the same year, a compromise between rival settlements.</li>
       <li><b>Named for:</b> Lewis Cass (1782–1866), governor of Michigan Territory 1813–31, later Secretary of War and of State.</li>
       <li><b>First published histories:</b> Howard S. Rogers, <i>History of Cass County, from 1825 to 1875</i> (Cassopolis, 1875); Alfred Mathews, <i>History of Cass County, Michigan</i> (Chicago, 1882); L. H. Glover, <i>A Twentieth Century History of Cass County</i> (Chicago, 1906).</li>
-      <li><b>On the map:</b> the 1860 Geil &amp; Harley wall map of Cass County, held by the Library of Congress, carries a plan of the village with lot numbers and owners; you can <a href="/map/cassopolis/">lay it over today’s streets</a>.</li>
+      <li><b>On the map:</b> the 1860 Geil &amp; Harley wall map of Cass County, held by the Library of Congress, carries a plan of the village with lot numbers and owners; you can <a href="/map/cassopolis/">lay it over today’s streets</a>, and the county’s township sheets of about 1928 are <a href="/map/#townships">in the map room</a>.</li>
       <li><b>Vital records:</b> Michigan death certificates from 1897 are free to read at the Archives of Michigan; <a href="/guide/death-certificate/">here is how to read one</a>.</li>
     </ul>
+    <figure class="secfig land">
+      <a href="/map/#more"><picture><source type="image/webp" srcset="/img/maps/cassopolis-directory-1860-640.webp 640w, /img/maps/cassopolis-directory-1860-1000.webp 1000w" sizes="(min-width:900px) 480px, 92vw"><img src="/img/maps/cassopolis-directory-1860-1000.jpg" srcset="/img/maps/cassopolis-directory-1860-640.jpg 640w, /img/maps/cassopolis-directory-1860-1000.jpg 1000w" sizes="(min-width:900px) 480px, 92vw" width="1000" height="548" loading="lazy" decoding="async" alt="Detail of the 1860 wall map: the business directory beside the Cassopolis plan, listing hotels, merchants, physicians and surgeons."></picture></a>
+      <figcaption>Who kept the village in 1860: two hotels, three merchants and three physicians, engraved beside the Cassopolis plan on the county wall map. <span class="credit">Geil, Harley &amp; Siverd, 1860 · Library of Congress</span></figcaption>
+    </figure>
     <h2>What the hunt has found in Cassopolis</h2>
     <p>The hunt began here, with a joke secret society of 1846 whose story is told in Rogers and Mathews, a village hotel that was hauled across town and turned into a mill, and a doctor who kept a bone. Each is an open case on <a href="/#cases">the case board</a>; the first two are listed here, and each has its sources free online.</p>
     <ul>

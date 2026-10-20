@@ -2097,7 +2097,7 @@ p,li,dd,figcaption,.lede{text-wrap:pretty}
 .plate-dlg img{display:block; width:100%; height:auto; aspect-ratio:4/1; object-fit:cover}
 .plate-dlg .pd-cap{margin:0; padding:.6rem 1rem; font-size:.9rem; letter-spacing:.04em; display:flex; justify-content:space-between; align-items:center; gap:1rem}
 .plate-dlg .pd-cap a{color:var(--gold-hi)}
-.plate-dlg #pdClose{position:absolute; right:.6rem; bottom:.45rem; padding:.2rem .7rem; font-size:.85rem; color:#EAE6DC; border-color:rgba(234,230,220,.5); background:transparent}
+.plate-dlg #pdClose, .plate-dlg #twClose{position:absolute; right:.6rem; bottom:.45rem; padding:.2rem .7rem; font-size:.85rem; color:#EAE6DC; border-color:rgba(234,230,220,.5); background:transparent}
 
 /* ===== Draft 84: the top of the page, two more passes ===== */
 /* the place band holds still for a moment so its first words can be read */
@@ -2108,7 +2108,7 @@ p,li,dd,figcaption,.lede{text-wrap:pretty}
 .plate-dlg .pd-nav{position:absolute; left:50%; bottom:.3rem; transform:translateX(-50%); margin:0; display:flex; align-items:center; gap:.5rem; font-size:.78rem; letter-spacing:.1em}
 .plate-dlg .pd-nav .btn{padding:.1rem .6rem; font-size:1rem; line-height:1.2; color:#EAE6DC; border-color:rgba(234,230,220,.5); background:transparent}
 .plate-dlg .pd-cap{padding-right:16rem}
-@media (max-width:700px){ .plate-dlg .pd-cap{padding:.5rem .8rem 2.6rem; font-size:.8rem} .plate-dlg .pd-nav{bottom:.35rem} .plate-dlg #pdClose{bottom:.35rem} }
+@media (max-width:700px){ .plate-dlg .pd-cap{padding:.5rem .8rem 2.6rem; font-size:.8rem} .plate-dlg .pd-nav{bottom:.35rem} .plate-dlg #pdClose, .plate-dlg #twClose{bottom:.35rem} }
 
 /* ===== Draft 85: code pass ===== */
 /* links in the place band meet the 24px touch target */
@@ -2384,3 +2384,12 @@ table.ledger th{font-size:.78rem; letter-spacing:.1em; text-transform:uppercase;
 .sponsors li.open a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--gold)}
 .sponsors li b{display:block; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.1rem; color:var(--ink); letter-spacing:.02em}
 @media (max-width:640px){ .sponsors ul{grid-template-columns:1fr} }
+
+/* ===== Draft 101: the township sheets in the map room ===== */
+.twp-grid{list-style:none; margin:1.2rem 0; padding:0; display:grid; grid-template-columns:repeat(auto-fill, minmax(8.5rem, 1fr)); gap:.9rem}
+.twp-grid button{display:block; width:100%; padding:0; border:1px solid color-mix(in srgb, var(--gold) 55%, transparent); border-radius:4px; background:var(--panel-2); color:var(--ink); cursor:zoom-in; font:inherit; overflow:hidden; transition:transform .25s, box-shadow .25s}
+.twp-grid button:hover, .twp-grid button:focus-visible{transform:translateY(-2px); box-shadow:0 10px 22px -14px rgba(0,0,0,.6); outline:none; border-color:var(--gold)}
+.twp-grid img{display:block; width:100%; height:auto; aspect-ratio:1; object-fit:contain; filter:sepia(.2) contrast(1.02); background:#f3eee2}
+.twp-grid span{display:block; padding:.4rem .5rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-size:.9rem; letter-spacing:.03em; text-align:center}
+.plate-dlg.twp-dlg{width:auto; max-width:min(96vw, 1100px)}
+.plate-dlg.twp-dlg img{aspect-ratio:auto; object-fit:contain; width:auto; max-width:100%; max-height:80vh; margin:0 auto; background:#f3eee2}
