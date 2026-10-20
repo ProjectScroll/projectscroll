@@ -1321,3 +1321,16 @@ try{ (function(){
   draw(); document.addEventListener('ps-badge', draw);
   box.querySelector('.sp-x').addEventListener('click', function(){ off=true; try{ localStorage.setItem('ps-start-off','1'); }catch(e){} draw(); });
 })(); }catch(err){ psFail(err); }
+try{ (function(){
+  /* challenge a friend: every find-the-names box can be sent on, with its question */
+  [].forEach.call(document.querySelectorAll('.namehunt'), function(box){
+    const form=box.querySelector('form'), h=box.querySelector('h3'); if (!form || !h || box.querySelector('.nh-dare')) return;
+    const b=document.createElement('button'); b.type='button'; b.className='btn nh-dare'; b.textContent='Challenge a friend';
+    const say=box.querySelector('.nh-out');
+    b.addEventListener('click', function(){ const url=location.origin+location.pathname+(box.id?'#'+box.id:''), text='Can you crack this one? '+h.textContent.trim()+', on Project Scroll. Every clue is true.';
+      if (navigator.share) navigator.share({title:h.textContent.trim(), text:text, url:url}).catch(function(){});
+      else if (navigator.clipboard) navigator.clipboard.writeText(text+' '+url).then(function(){ if (say) say.textContent='Copied. Paste it to a friend and see who finishes first.'; }, function(){});
+    });
+    form.insertAdjacentElement('afterend', b);
+  });
+})(); }catch(err){ psFail(err); }

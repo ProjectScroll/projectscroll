@@ -157,6 +157,7 @@ def build(t):
       </span>
       <label class="tnrange" id="tnFadeBox"><span>Today</span><input type="range" id="tnOp" min="0" max="100" value="75" aria-label="How much of the {Y} plan to show"><span>{Y}</span></label>
       <button type="button" class="btn" id="tnHome">Back to town</button>
+      <button type="button" class="btn" id="tnFull">Full screen</button><button type="button" class="btn" id="tnShare">Share this view</button><button type="button" class="btn" id="tnPrint">Print</button><button type="button" class="btn" id="tnNames" aria-pressed="false" disabled title="Solve this town’s renamed-street challenge to unlock">Today’s names 🔒</button>
       <span class="mapstat" id="tnStat" aria-live="polite">Loading…</span>
     </div>
     <div class="tnwrap">
@@ -169,7 +170,7 @@ def build(t):
 {hunt(t,Y)}    <h2>How this was made</h2>
     <p>{t["how"]}</p>
     {t.get("extra","")}
-    <p class="note">{t.get("credit") or CREDIT.format(inset=t["inset"])} Today’s streets and water: drawn from OpenStreetMap data, © OpenStreetMap contributors, available under the Open Database License.</p>
+    <p class="note tncredit">{t.get("credit") or CREDIT.format(inset=t["inset"])} Today’s streets and water: drawn from OpenStreetMap data, © OpenStreetMap contributors, available under the Open Database License.</p>
     {('<p class="note">The business directory printed beside this plan is in the roll of names: <a href="/names/?town='+t['slug']+'">who was in '+t['name']+' in '+Y+' →</a></p>') if t['slug'] in ('cassopolis','niles','dowagiac','paw-paw','goshen') else ''}
     <p class="tnnext"><a href="/map/{nx['slug']}/">Next town: {nx['name']}, {nx.get('year','1860')} →</a> <span aria-hidden="true">·</span> <a href="/map/then-and-now/">All seven towns</a></p>
     <link rel="stylesheet" href="/vendor/leaflet-1.9.4/leaflet.css?v=1">
@@ -243,6 +244,30 @@ def build(t):
       handle.addEventListener('pointerup',up); handle.addEventListener('pointercancel',up);
       handle.addEventListener('keydown',e=>{{ if(e.key==='ArrowLeft'||e.key==='ArrowRight'){{ frac=Math.min(0.98,Math.max(0.02,frac+(e.key==='ArrowLeft'?-0.04:0.04))); clip(); e.preventDefault(); }} }});
       L.DomEvent.disableClickPropagation(line);
+      // full screen: the whole map tool, with the map resized to fit
+      const room=document.querySelector('.maproom'), bFull=document.getElementById('tnFull');
+      if (!room.requestFullscreen) bFull.hidden=true;
+      bFull.onclick=()=>{{ if (document.fullscreenElement) document.exitFullscreen(); else room.requestFullscreen().catch(()=>{{}}); }};
+      document.addEventListener('fullscreenchange',()=>{{ const on=!!document.fullscreenElement; room.classList.toggle('isfull',on); bFull.textContent=on?'Leave full screen':'Full screen'; setTimeout(()=>{{ map.invalidateSize(); clip(); }},120); }});
+      // share this view: the link carries the zoom and the centre
+      const hv=()=>{{ const c=map.getCenter(); return '#'+map.getZoom().toFixed(2)+'/'+c.lat.toFixed(5)+'/'+c.lng.toFixed(5); }};
+      document.getElementById('tnShare').onclick=()=>{{ const url=location.origin+location.pathname+hv(); history.replaceState(null,'',hv());
+        if (navigator.share && matchMedia('(pointer:coarse)').matches) navigator.share({{title:document.title,url}}).catch(()=>{{}});
+        else if (navigator.clipboard) navigator.clipboard.writeText(url).then(()=>{{ stat.textContent='Link to this view copied. It opens the map just here.'; }},()=>prompt('Copy this link:',url)); else prompt('Copy this link:',url); }};
+      const fromHash=()=>{{ const m=/^#(\\d+(?:\\.\\d+)?)\\/(-?\\d+\\.\\d+)\\/(-?\\d+\\.\\d+)$/.exec(location.hash); if (m) map.setView([+m[2],+m[3]],+m[1]); }};
+      fromHash(); addEventListener('hashchange',fromHash);
+      // print: the map as it stands, with its credit line
+      document.getElementById('tnPrint').onclick=()=>{{ document.documentElement.classList.add('printmap'); setTimeout(()=>window.print(),150); }};
+      addEventListener('afterprint',()=>document.documentElement.classList.remove('printmap'));
+      // today's names, the prize for solving the town's challenge: OpenStreetMap's own map, with its street names, under the old plan
+      const bNames=document.getElementById('tnNames'), need={len(t.get('hunt',{}).get('h',[]))};
+      let osm=null, namesOn=false;
+      const solved=()=>{{ try{{ return need>0 && JSON.parse(localStorage.getItem('ps-tn-{t["slug"]}')||'[]').length>=need; }}catch(e){{ return false; }} }};
+      const unlock=()=>{{ if (solved()){{ bNames.disabled=false; bNames.title='Show today’s street names under the old plan'; bNames.textContent='Today’s names'; }} }};
+      unlock(); document.addEventListener('ps-badge',unlock); document.addEventListener('submit',()=>setTimeout(unlock,50),true);
+      bNames.onclick=()=>{{ if (bNames.disabled) return; namesOn=!namesOn; bNames.setAttribute('aria-pressed',String(namesOn));
+        if (namesOn){{ if (!osm) osm=L.tileLayer('https://tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png',{{maxZoom:19, attribution:'Street names: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}}); osm.addTo(map); osm.bringToBack(); stat.textContent='Today’s names on, from OpenStreetMap. Fade the old plan to read them.'; }}
+        else {{ if (osm) map.removeLayer(osm); stat.textContent='Today’s names off.'; }} }};
     }})();
     </script>
 '''

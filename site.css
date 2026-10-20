@@ -2753,3 +2753,24 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 .startpath li.done a{text-decoration:line-through; text-decoration-color:var(--gold,#b8963e)}
 .startpath li.done::marker{content:"✓  "; color:var(--ledger)}
 .sp-x{position:absolute; top:.5rem; right:.6rem; background:none; border:0; font:inherit; font-size:.85rem; color:var(--ink-soft); cursor:pointer; text-decoration:underline}
+
+/* Draft 123: printing a map prints the map, its view and its credit, nothing else */
+@media print{
+  html.printmap body *{visibility:hidden}
+  html.printmap .maproom, html.printmap .maproom *, html.printmap #printCredit{visibility:visible}
+  html.printmap .maproom{position:absolute; inset:0 0 auto 0}
+  html.printmap .mapbar{display:none}
+  html.printmap #osd{height:9in!important; border:0}
+  html.printmap #printCredit{display:block!important; font-size:10pt; margin:.2in 0 0}
+}
+
+@media print{
+  html.printmap .tncredit{visibility:visible; position:absolute; top:9.3in; left:0; right:0; font-size:9pt}
+  html.printmap .tnbar{display:none}
+  html.printmap .tnmap{height:9in!important}
+}
+.maproom.isfull{background:var(--paper); padding:.6rem; display:flex; flex-direction:column; overflow:auto}
+.maproom.isfull .tnwrap{flex:1}
+.maproom.isfull .tnmap, .maproom.isfull #osd{height:calc(100vh - 6.5rem)!important}
+#tnNames[aria-pressed="true"]{background:var(--ink); color:var(--paper)}
+#tnNames:disabled{opacity:.6; cursor:not-allowed}
