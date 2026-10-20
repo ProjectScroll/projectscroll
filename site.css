@@ -2352,3 +2352,7 @@ footer.site .motto::before, footer.site .motto::after{content:""; width:3rem; he
 @media (prefers-reduced-motion: reduce){ .vprogress, .progress{display:none} }
 @media print{ .vprogress{display:none!important} }
 @media (max-width:700px){ .vprogress{width:2px} }
+
+/* ===== Draft 99: the footnote sits with the headline it answers ===== */
+.hero .foot{margin:0 0 1.3rem; font-size:.98rem; color:var(--ink-soft)}
+.hero .foot span{color:var(--rule); font-weight:700; margin-right:.2rem}
