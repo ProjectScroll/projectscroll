@@ -46,7 +46,7 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <h2>Every box, in order</h2>
     <ol class="boxlist">{items}</ol>
     <h2>The rule of thumb</h2>
-    <p>The top half (boxes 3 to 10) is <b>memory</b>: what the informant believed about a life. The bottom half (boxes 12 to 16) is <b>the event</b>: written by people who were there that week. When the two halves disagree with other records, trust the bottom half first, and weigh the top half by who the informant was.</p>
+    <p>The top half (boxes 3 to 10) is <b>memory</b>: what the informant believed about a life. The bottom half (boxes 12 to 16) is <b>the event</b>: written by people who were there that week. When either half disagrees with another record, trust the bottom half first, and weigh the top half by who the informant was.</p>
     <p class="remember"><b>Remember:</b> the dead person was never the informant. Everything in the top half is someone else’s memory, given on the hardest day, so find the informant’s name on the certificate and ask how well they knew the life they were describing.</p>
     <p>Michigan’s certificates from 1897 to 1952 are free to view at the <a href="https://michigan.access.preservica.com/death-certificates-1897-1952/">Archives of Michigan</a>. Elsewhere, try <a href="https://www.familysearch.org">FamilySearch</a> or your state archives.</p>
     <p class="ctas" style="margin-top:1.2rem"><a class="btn primary" href="/notes/one-letter-two-certificates/">See it in a real case</a><a class="btn" href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet (PDF)</a></p>

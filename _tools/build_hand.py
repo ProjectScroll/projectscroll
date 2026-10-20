@@ -6,7 +6,7 @@ CARDS=[
  ('ye','“Ye” means “the”','The y stands for an old letter, thorn (þ), pronounced “th”. “Ye olde inn” was always read “the old inn”. Likewise “yt” = that, “ym” = them.'),
  ('Wm · Jno · Chas','Shortened first names','Clerks raised the last letters: Wm = William, Jno = John (not Jonathan), Chas = Charles, Thos = Thomas, Jas = James, Geo = George, Saml = Samuel, Benj = Benjamin.'),
  ('inst. · ult. · prox.','Which month?','“The 4th inst.” = the 4th of this month. “The 20th ult.” = the 20th of last month. “The 2nd prox.” = the 2nd of next month. Check the date of the letter or newspaper to know which month.'),
- ('do.','Ditto','“do.” under an entry means “the same as above”. Census takers and clerks used it for repeated surnames, birthplaces and occupations.'),
+ ('do.','Ditto','“do.” under an entry means “the same as above.” Census takers and clerks used it for repeated surnames, birthplaces and occupations.'),
  ('&c.','Et cetera','The ampersand plus c: “and so on”. Often written as a looped sign that can look like a letter.'),
  ('1745/6','Double dates','Before 1752 in England and its colonies, the new year began on 25 March. A date between January and March is often written with both years. Use the later one for today’s calendar.'),
  ('relict · consort','On gravestones','“Relict of John Smith” = his widow (she outlived him). “Consort of” = his wife, who died while he was living.'),

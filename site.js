@@ -322,7 +322,7 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
     list.forEach(function(c){ if (new Date(c[0]+'T00:00:00')<=today) cur=c; });
     document.getElementById('clueLbl').textContent='Clue of the week · '+cur[1];
     document.getElementById('clueText').textContent=cur[2];
-    const cl=document.getElementById('clueLink'); cl.href='#case-'+cur[3]; cl.textContent='It’s case '+cur[3]+' on the board';
+    const cl=document.getElementById('clueLink'); cl.href='#case-'+cur[3]; cl.textContent='It’s Case '+cur[3]+' on the case board';
   }catch(e){} }
 
   /* the whisper: the open questions, one at a time, under the hero; and a red dot on Hunt while this week's clue is fresh */
@@ -366,7 +366,7 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
     'transcription':['Transcription','A typed copy of an old handwritten record. Useful, but every copy can add mistakes, so check the original when you can.']
   };
   const host=document.querySelector('main'); let gi=0;
-  if (host && 'showPopover' in HTMLElement.prototype){
+  const glossaryRun=function(){ if (host && 'showPopover' in HTMLElement.prototype){
     const used={};
     const walker=document.createTreeWalker(host, NodeFilter.SHOW_TEXT, {acceptNode:function(n){
       const p=n.parentElement; if (!p || p.closest('h1,h2,h3,button,a,summary,.mk,label,script,style,.gl,.tl .yr,.mstrip,.promo-marks,figcaption,[popover],svg,[role="img"],[role="button"],[tabindex],.cert-svg')) return NodeFilter.FILTER_REJECT; return NodeFilter.FILTER_ACCEPT; }});
@@ -393,7 +393,9 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
         cur=after;
       }
     });
-  }
+  } };
+  /* the walk over every text node waits for an idle moment, so it never delays the first paint or the first tap */
+  (window.requestIdleCallback || function(f){ setTimeout(f, 1); })(glossaryRun, {timeout:1500});
 
   /* read aloud: each section can be read out by the device's own voice */
   if ('speechSynthesis' in window){

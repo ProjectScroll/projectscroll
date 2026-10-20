@@ -6,7 +6,7 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <h1>The 1860 wall map</h1>
     <p class="lede" style="font-size:1.15rem">In 1860 Geil, Harley &amp; Siverd of Philadelphia engraved a great wall map of Cass, Van Buren and Berrien counties, Michigan: every township, the farms and the names of the people on them, with little town plans and pictures of houses around the border. The original is at the Library of Congress. Here you can walk over every inch of it.</p>
     <p class="note">Drag to move. Scroll, pinch or use the buttons to zoom. Nothing is marked: the hunt is yours.</p>
-    <p class="tnpromo"><b>Then and now:</b> the 1860 town plans laid over today’s streets: <a href="/map/cassopolis/">Cassopolis</a> · <a href="/map/niles/">Niles</a> · <a href="/map/dowagiac/">Dowagiac</a> · <a href="/map/paw-paw/">Paw Paw</a></p>
+    <p class="tnpromo"><b>Then and now.</b> The 1860 town plans laid over today’s streets: <a href="/map/cassopolis/">Cassopolis</a> · <a href="/map/niles/">Niles</a> · <a href="/map/dowagiac/">Dowagiac</a> · <a href="/map/paw-paw/">Paw Paw</a></p>
   <div class="maproom">
     <div class="mapbar">
       <button type="button" class="btn" id="mzin" aria-label="Zoom in">+</button><button type="button" class="btn" id="mzout" aria-label="Zoom out">−</button><button type="button" class="btn" id="mhome">Whole map</button><button type="button" class="btn" id="mfull">Full screen</button>

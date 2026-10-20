@@ -28,7 +28,7 @@
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
-<link rel="stylesheet" href="/site.min.css?v=ae17451d">
+<link rel="stylesheet" href="/site.min.css?v=a157fa8c">
 <script type="speculationrules">{"prefetch":[{"where":{"and":[{"selector_matches":".bar a, footer nav a, .partrail a, .search-res a, .crumb a"},{"href_matches":"/*"},{"not":{"href_matches":"/*.pdf"}}]},"eagerness":"moderate"}]}</script>
 </head>
 <body>
@@ -45,7 +45,7 @@
       Project Scroll
     </a>
     <nav aria-label="Sections" id="sitenav">
-      <a href="/#hunt">Hunt</a><a href="/#cases">Cases</a><a href="/#services">Research</a><a href="/notes/">Field notes</a><a href="/#contact">Contact</a>
+      <a href="/#hunt">Hunt</a><a href="/#cases">Cases</a><a href="/#services">Services</a><a href="/notes/">Field notes</a><a href="/#contact">Contact</a>
     </nav>
     <button class="searchbtn" type="button" id="searchBtn" aria-label="Search the site" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     <a class="badgelink" id="badgeLink" href="/badges/" aria-label="Your badges"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3l4.6 9.4 10.4 1.5-7.5 7.3 1.8 10.3L20 26.6l-9.3 4.9 1.8-10.3-7.5-7.3 10.4-1.5z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg><span class="bn" id="badgeN" hidden></span></a>
@@ -64,7 +64,7 @@
     <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Your field book</p>
     <h1>Your tin badges</h1>
-    <p class="lede">In the winter of 1846–47, two hundred badges of the “Ancient and Honorable Order” were worn at a ball in Cassopolis. Not one is known to survive. Here you can earn your own: twenty of them, one for each thing you do as you explore the site, and one for cracking a case, with five ranks on the way from Candidate to Keeper of the Hall.</p>
+    <p class="lede">In the winter of 1846–47, two hundred badges of the “Ancient and Honorable Order” were worn at a ball in Cassopolis. Not one is known to survive. Here you can earn your own: twenty-one of them: twenty for the things you do as you explore the site, and one for cracking a case, with five ranks on the way from Candidate to Keeper of the Hall.</p>
     <p class="brank" id="brank"></p>
     <ol class="rladder" id="rladder" aria-label="The five ranks"></ol>
     <p class="bcount" id="bcount" aria-live="polite"></p>
@@ -84,7 +84,7 @@
     </div>
     <div class="ledgerbox" id="ledgerbox">
       <h2>Carry your ledger</h2>
-      <p>Your badges, followed cases and notebook live only in this browser. To carry them to another device, take your ledger with you: a small file, made here, that another copy of Project Scroll can read back. Nothing is sent to us.</p>
+      <p>Your badges, followed cases and notebook live only in this browser. To carry them to another device, take your ledger with you: a small file, made here, that Project Scroll on another device can read back. Nothing is sent to us.</p>
       <p class="formrow"><button type="button" class="btn primary" id="ledgerOut">Take my ledger</button> <label class="btn" for="ledgerIn">Bring a ledger back</label><input type="file" id="ledgerIn" accept=".json,application/json" class="vh"></p>
       <p class="note" id="ledgerMsg" aria-live="polite"></p>
     </div>
@@ -94,7 +94,7 @@
       <form id="charterform" class="formrow" autocomplete="off"><label>Your name <input type="text" id="cname" maxlength="60"></label><button type="submit" class="btn primary">Print my charter</button></form>
       <p class="note">Your charter is made on this device. Nothing is sent anywhere.</p>
     </div>
-    <div class="charter" id="charter" aria-hidden="true"><p class="ch-top">Project Scroll</p><p class="ch-h">Charter of the Hall</p><p class="ch-b">Know all by these presents that</p><p class="ch-name" id="chName"></p><p class="ch-b">having read the walls, followed the record, broken both ciphers and earned every one of the tin badges, is hereby received as</p><p class="ch-rank">Keeper of the Hall</p><p class="ch-b">of the Hall, with all the honor and none of the dignity that any such title has ever carried.</p><p class="ch-date" id="chDate"></p><p class="ch-motto">Every clue is true. Every answer is in the record.</p></div>
+    <div class="charter" id="charter" aria-hidden="true"><p class="ch-top">Project Scroll</p><p class="ch-h">Charter of the Hall</p><p class="ch-b">Know all by these presents that</p><p class="ch-name" id="chName"></p><p class="ch-b">having read the walls, followed the record, broken both ciphers and earned every one of the tin badges, is hereby received as</p><p class="ch-rank">Keeper of the Hall</p><p class="ch-b">with all the honor and none of the dignity that any such title has ever carried.</p><p class="ch-date" id="chDate"></p><p class="ch-motto">Every clue is true. Every answer is in the record.</p></div>
     <p class="note">Your badges are kept only in this browser, on this device. Nobody else can see them, and we never receive them. <button type="button" class="linkbtn" id="breset">Start the field book over</button></p>
     <script>
     document.addEventListener('DOMContentLoaded', function(){
@@ -151,6 +151,6 @@
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=ae17451d" defer></script>
+<script src="/site.min.js?v=a157fa8c" defer></script>
 </body>
 </html>

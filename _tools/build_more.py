@@ -92,7 +92,7 @@ G = [
  ('Et ux.', 'Latin, “and wife,” in deeds and court records: “John Smith et ux.” means John and his wife.'),
  ('Executor', 'The person named in a will to carry it out. Compare administrator.'),
  ('Field notes', 'A surveyor’s notebook from the original land survey, recording every line walked: the trees, streams, soil and sometimes the people met along the way.'),
- ('General Land Office', 'The federal office that surveyed and sold public land, from 1812 until it became part of the Bureau of Land Management in 1946. Its plats, field notes and patents are online free.'),
+ ('General Land Office', 'The federal office that surveyed and sold public land, from 1812 until it became part of the Bureau of Land Management in 1946. Its plats, field notes and patents are free online.'),
  ('Informant', 'The person who answered the questions on a certificate. On a death certificate the dead person was never the informant, so everything on it is someone else’s memory.'),
  ('Instant and ultimo', 'Old newspaper shorthand: “the 4th inst.” means the 4th of this month; “the 20th ult.” the 20th of last month.'),
  ('Intestate', 'Having died without a will. The court then appoints an administrator and divides the estate by law.'),
@@ -108,7 +108,7 @@ G = [
  ('Register system', 'The standard way of numbering a family register, used by American genealogists since the 1800s. Each descendant gets a number, and the children of each couple are listed with small roman numerals.'),
  ('Relict', 'A widow, or less often a widower: someone who outlived their husband or wife.'),
  ('Section, township and range', 'The survey grid of the public-land states. A survey township is six miles square and divided into 36 sections of one square mile (640 acres). A land description such as “NE¼ of section 12, T5S R14W” pins down a farm exactly.'),
- ('Soundex', 'A code that groups surnames that sound alike: a letter and three digits, so Robert and Rupert both come out as R163. Old census indexes were built on it. Try it in our <a href="/toolkit/">toolkit</a>.'),
+ ('Soundex', 'A code that groups surnames that sound alike: a letter and three digits, so Robert and Rupert both come out as R163. Old census indexes were built on it. Try it in our <a href="/toolkit/#soundex">toolkit</a>.'),
  ('Tract book', 'The land office’s ledger of sales, arranged by section, showing who first bought each piece of land and when.'),
  ('Transcription', 'A written copy of a record, word for word. Better than an abstract, but every copy is a chance for a new mistake.'),
  ('Vital records', 'Records of births, marriages and deaths. Most states only required them from the late 1800s or early 1900s.'),
@@ -161,7 +161,7 @@ about = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li><b>Places and people are respected.</b> The hunt never asks anyone to dig, to disturb a grave or a mound, or to go looking for anyone’s home.</li>
     </ul>
     <h2>When we get something wrong</h2>
-    <p>We will. When a reader or a new document shows that a page of this site is mistaken, we change the page, date the change on it, and say what was wrong, rather than quietly replacing the words. A case that was called solved on a bad reading is reopened and says so. If you have found an error, write to <a href="mailto:research@projectscroll.com?subject=A%20correction">research@projectscroll.com</a> or <a href="/#contact">tell us</a> on Facebook; corrections are credited to the person who sent them, by name or not, as they prefer.</p>
+    <p>We will. When a reader or a new document shows that a page of this site is mistaken, we change the page, date the change on it, and say what was wrong, rather than quietly replacing the words. A case that was called solved on a bad reading is reopened and says so. If you have found an error, write to <a href="mailto:research@projectscroll.com?subject=A%20correction">research@projectscroll.com</a> or <a href="https://m.me/projectscroll">tell us</a> on Facebook; corrections are credited to the person who sent them, by name or not, as they prefer.</p>
     <h2>The record behind this site</h2>
     <p>The dates on the scroll, the person of the month and the then-and-now maps are built from the same sources the hunt asks you to open: Rogers (1875), Mathews (1882), Glover (1906), the 1860 wall map at the Library of Congress, and Michigan death certificates at the Archives of Michigan. Where a page of this site makes a claim, the source is on the page or one click away. If it is not, that is a correction we owe.</p>
     <h2>Where it started</h2>
@@ -211,7 +211,7 @@ page('privacy/index.html', 'Privacy · Project Scroll',
 badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Your field book</p>
     <h1>Your tin badges</h1>
-    <p class="lede">In the winter of 1846–47, two hundred badges of the “Ancient and Honorable Order” were worn at a ball in Cassopolis. Not one is known to survive. Here you can earn your own: twenty of them, one for each thing you do as you explore the site, and one for cracking a case, with five ranks on the way from Candidate to Keeper of the Hall.</p>
+    <p class="lede">In the winter of 1846–47, two hundred badges of the “Ancient and Honorable Order” were worn at a ball in Cassopolis. Not one is known to survive. Here you can earn your own: twenty-one of them: twenty for the things you do as you explore the site, and one for cracking a case, with five ranks on the way from Candidate to Keeper of the Hall.</p>
     <p class="brank" id="brank"></p>
     <ol class="rladder" id="rladder" aria-label="The five ranks"></ol>
     <p class="bcount" id="bcount" aria-live="polite"></p>
@@ -231,7 +231,7 @@ badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     </div>
     <div class="ledgerbox" id="ledgerbox">
       <h2>Carry your ledger</h2>
-      <p>Your badges, followed cases and notebook live only in this browser. To carry them to another device, take your ledger with you: a small file, made here, that another copy of Project Scroll can read back. Nothing is sent to us.</p>
+      <p>Your badges, followed cases and notebook live only in this browser. To carry them to another device, take your ledger with you: a small file, made here, that Project Scroll on another device can read back. Nothing is sent to us.</p>
       <p class="formrow"><button type="button" class="btn primary" id="ledgerOut">Take my ledger</button> <label class="btn" for="ledgerIn">Bring a ledger back</label><input type="file" id="ledgerIn" accept=".json,application/json" class="vh"></p>
       <p class="note" id="ledgerMsg" aria-live="polite"></p>
     </div>
@@ -241,7 +241,7 @@ badges = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <form id="charterform" class="formrow" autocomplete="off"><label>Your name <input type="text" id="cname" maxlength="60"></label><button type="submit" class="btn primary">Print my charter</button></form>
       <p class="note">Your charter is made on this device. Nothing is sent anywhere.</p>
     </div>
-    <div class="charter" id="charter" aria-hidden="true"><p class="ch-top">Project Scroll</p><p class="ch-h">Charter of the Hall</p><p class="ch-b">Know all by these presents that</p><p class="ch-name" id="chName"></p><p class="ch-b">having read the walls, followed the record, broken both ciphers and earned every one of the tin badges, is hereby received as</p><p class="ch-rank">Keeper of the Hall</p><p class="ch-b">of the Hall, with all the honor and none of the dignity that any such title has ever carried.</p><p class="ch-date" id="chDate"></p><p class="ch-motto">Every clue is true. Every answer is in the record.</p></div>
+    <div class="charter" id="charter" aria-hidden="true"><p class="ch-top">Project Scroll</p><p class="ch-h">Charter of the Hall</p><p class="ch-b">Know all by these presents that</p><p class="ch-name" id="chName"></p><p class="ch-b">having read the walls, followed the record, broken both ciphers and earned every one of the tin badges, is hereby received as</p><p class="ch-rank">Keeper of the Hall</p><p class="ch-b">with all the honor and none of the dignity that any such title has ever carried.</p><p class="ch-date" id="chDate"></p><p class="ch-motto">Every clue is true. Every answer is in the record.</p></div>
     <p class="note">Your badges are kept only in this browser, on this device. Nobody else can see them, and we never receive them. <button type="button" class="linkbtn" id="breset">Start the field book over</button></p>
     <script>
     document.addEventListener('DOMContentLoaded', function(){
@@ -310,7 +310,7 @@ doc = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="lede">Every month we put one real page on the table and read it slowly. This month: page 253 of Howard S. Rogers’s <i>History of Cass County, from 1825 to 1875</i>, the first time the joke lodge of 1846 was ever printed, with the man who told it to Rogers only a footnote away.</p>
     <figure class="docfig">
       <a href="/img/pages/rogers-1875-p253-1200.jpg"><picture><source type="image/webp" srcset="/img/pages/rogers-1875-p253-700.webp 700w, /img/pages/rogers-1875-p253-1200.webp 1200w" sizes="(min-width:900px) 700px, 92vw"><img src="/img/pages/rogers-1875-p253-700.jpg" width="700" height="1091" alt="Page 253 of Rogers’s 1875 History of Cass County, with the paragraphs on the 1846 lodge boxed in red." fetchpriority="high" decoding="async"></picture></a>
-      <figcaption>Rogers, 1875, p. 253. The boxed paragraphs are the lodge story. Click the page to see it full size.</figcaption>
+      <figcaption>Rogers, 1875, p. 253. The boxed paragraphs are the lodge story. Tap or click the page to see it full size.</figcaption>
     </figure>
     <h2>What it is</h2>
     <p>Rogers was Cass County’s first historian. His book came out in 1875, fifty years after the county’s first land entries, while people who had seen 1846 were still alive to be asked. That is the book’s value and its danger at once: it is close to the events, and it is made of what people remembered.</p>
@@ -324,7 +324,7 @@ doc = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <h2>Read it yourself</h2>
     <p>The whole book is free online in the University of Michigan’s county-histories collection: <a href="https://name.umdl.umich.edu/BAD0871.0001.001" target="_blank" rel="noopener">Rogers, <i>History of Cass County, from 1825 to 1875</i></a>. Go to pages 253–254. Then compare <a href="https://name.umdl.umich.edu/BAD0870.0001.001" target="_blank" rel="noopener">Mathews, 1882</a>, page 174, where the same story is printed again, and notice what is missing.</p>
     <p>This page is the opening clue of <a href="/cases/1/">Case 1</a>. If you read it closely enough, you may not need the rest.</p>
-    <h2>Last month</h2>
+    <h2>Next month</h2>
     <p>This is the first document of the month. The next is chosen on the first of November.</p>
     <p class="center"><a class="btn primary" href="/cases/1/">Open Case 1</a> <a class="btn" href="/records/">Where the records are</a> <a class="btn" href="/">Back to Project Scroll</a></p>
 '''

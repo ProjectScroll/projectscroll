@@ -40,7 +40,7 @@ for c in C:
     <ol class="steps">
       <li><b>Search the record.</b> {'The first sources are on the second hall’s page, behind the first hall’s last door; then follow where they lead:' if c['hall']=='h2' else 'Start with the “Start here” box above, then follow where it leads:'} old county histories, maps, certificates and newspapers, many of them free online.</li>
       <li><b>Post your answer</b> in the comments on <a href="{FB}">Project Scroll’s Facebook page</a>, and say exactly where you found it: the book or record, the page, and a link if there is one.</li>
-      <li><b>Get named.</b> The first solver with the page to prove it is named in the next post and on this board.</li>
+      <li><b>Get named.</b> The first solver with the page to prove it is named in the next post and on the case board.</li>
     </ol>
     <div class="solvedbox"><h3>What counts as solved</h3><p>A case is solved when an answer is posted with the record it came from: the book or document, the page, and a link if there is one. The desk checks the page. If it says what you say it says, your name goes on the board, the case is marked Solved with your source beside it, and the next post names you. An answer without the page stays a guess, however right it is.</p></div>
     <p class="goodanswer"><b>A good answer looks like this:</b> “Case {n}: [your answer]. Found in [the book or record], p. [page], [link].” Use <b>Copy as a Facebook answer</b> in your notebook below, and it is laid out for you.</p>

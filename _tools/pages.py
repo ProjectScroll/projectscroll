@@ -47,7 +47,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=ae17451d">
+<link rel="stylesheet" href="/site.min.css?v=a157fa8c">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"selector_matches":".bar a, footer nav a, .partrail a, .search-res a, .crumb a"}},{{"href_matches":"/*"}},{{"not":{{"href_matches":"/*.pdf"}}}}]}},"eagerness":"moderate"}}]}}</script>
 </head>
 <body>
@@ -64,7 +64,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
       Project Scroll
     </a>
     <nav aria-label="Sections" id="sitenav">
-      <a href="/#hunt">Hunt</a><a href="/#cases">Cases</a><a href="/#services">Research</a><a href="/notes/">Field notes</a><a href="/#contact">Contact</a>
+      <a href="/#hunt">Hunt</a><a href="/#cases">Cases</a><a href="/#services">Services</a><a href="/notes/">Field notes</a><a href="/#contact">Contact</a>
     </nav>
     <button class="searchbtn" type="button" id="searchBtn" aria-label="Search the site" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     <a class="badgelink" id="badgeLink" href="/badges/" aria-label="Your badges"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3l4.6 9.4 10.4 1.5-7.5 7.3 1.8 10.3L20 26.6l-9.3 4.9 1.8-10.3-7.5-7.3 10.4-1.5z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg><span class="bn" id="badgeN" hidden></span></a>
@@ -97,7 +97,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=ae17451d" defer></script>
+<script src="/site.min.js?v=a157fa8c" defer></script>
 </body>
 </html>
 '''
@@ -159,7 +159,7 @@ if __name__=='__main__':
 
         <h2>Your turn</h2>
         <p>Pick someone in your family who died long ago. Find two records that name them and compare every box: name, dates, parents, birthplaces. Do they disagree? Which would you believe, and why? The best mysteries start at home.</p>
-        <p>Want to test yourself first? <a href="/#try">Try the two-record puzzle</a>. Got a mystery you can't crack? Write to <a href="mailto:research@projectscroll.com?subject=My%20mystery">research@projectscroll.com</a>, <a href="https://m.me/projectscroll">message us on Facebook</a>, or see <a href="/#contact">how to start</a>. Tell us how you did in the comments on <a href="https://www.facebook.com/projectscroll/">Project Scroll's page</a>.</p>
+        <p>Want to test yourself first? <a href="/#try">Try the two-record puzzle</a>. Got a mystery you can't crack? Write to <a href="mailto:research@projectscroll.com?subject=My%20mystery">research@projectscroll.com</a>, <a href="https://m.me/projectscroll">message us on Facebook</a>, or <a href="/#contact">start with a question</a>. Tell us how you did in the comments on <a href="https://www.facebook.com/projectscroll/">Project Scroll's page</a>.</p>
     ''', og='https://projectscroll.com/og/one-letter.jpg')
 
     page('notes/index.html','Field notes · Project Scroll',
@@ -177,7 +177,7 @@ if __name__=='__main__':
       <li><b>Person of the month.</b> James M. Shepard was three in 1846. Who told him the lodge’s story?</li>
       <li><b>Case 1.</b> Did the joke lodge’s charter ever exist as a document, or only as a word in a retelling?</li>
     </ul>
-    <p class="note">When one is answered, it moves into the field notes.</p>
+    <p class="note">When one is answered, it becomes a field note.</p>
 <p><a class="btn dl" href="/worksheet/project-scroll-hunters-worksheet.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The hunter's worksheet (PDF)</a></p>
     ''', og='https://projectscroll.com/og/notes.jpg')
 
@@ -185,7 +185,7 @@ if __name__=='__main__':
     '''    <p class="kicker">Error 404</p>
         <h1>Not in the record.</h1>
         <p class="lede" style="font-size:1.2rem">We searched the index, the margins and the back pages. This page isn't here.</p>
-        <p>It may have moved, or it may never have existed. A good record-keeper is honest about both. Press / to search the site, or pick up the trail below.</p>
+        <p>It may have moved, or it may never have existed. A good record-keeper is honest about both. Press <kbd>/</kbd> to search the site, or pick up the trail below.</p>
         <p class="ctas" style="margin-top:1.6rem"><a class="btn primary" href="/">Back to the first page</a><a class="btn" href="/#cases">See the case board</a></p>
     ''', noindex=True)
     print('pages written')

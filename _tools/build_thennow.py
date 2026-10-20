@@ -66,7 +66,7 @@ def build(t):
     <h1>{t["name"]}, 1860 and today</h1>
     <p class="lede" style="font-size:1.15rem">{t["lede"]} Here it is laid over the streets of today. Fade between the two, or drag a line across and see one beside the other.</p>
     <p class="note">Other towns: {others}</p>
-    <p class="note">Drag to move, scroll or pinch to zoom. The old plan was lined up by hand on street corners that still carry their 1860 names, so it is close but not exact: expect it to be out by a few yards in places.</p>
+    <p class="note">Drag to move. Scroll, pinch or use the buttons to zoom. The old plan was lined up by hand on street corners that still carry their 1860 names, so it is close but not exact: expect it to be out by a few yards in places.</p>
   <div class="maproom">
     <div class="mapbar tnbar">
       <span class="seg" role="group" aria-label="How to compare">

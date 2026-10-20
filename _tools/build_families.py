@@ -48,7 +48,7 @@ def intake(kind):
     want = ('<label for="ikWant">What would you like?</label><select id="ikWant"><option>Not sure yet: advise me</option><option>A family register (descendants of one couple)</option><option>An ancestral monograph (all the ancestors of one person)</option><option>A full family history</option><option>One line, or one question, to begin with</option></select>') if fam else ''
     story_label = 'The family story, exactly as it was told' if not fam else 'Any family story, exactly as it was told <span class="h">(optional)</span>'
     return f"""    <div class="intake" id="intake">
-      <p class="note" style="margin:0">Fill in what you can. This builds a tidy message for you to send us by email or Facebook Messenger. Nothing is sent or stored by this page.</p>
+      <p class="note" style="margin:0">Fill in what you can. This builds a tidy message for you to send us by email or Facebook Messenger. Nothing is sent by this page; your draft stays in your own browser.</p>
       <label for="ikName">Your first name</label><input type="text" id="ikName" autocomplete="given-name">
       <label for="ikWho">{'Who is it about?' if fam else 'Who is the story about?'} <span class="h">Full names, as far as you know them</span></label><input type="text" id="ikWho">
       <label for="ikWhere">Where did they live? <span class="h">Town, county, state or country</span></label><input type="text" id="ikWhere">
@@ -60,7 +60,7 @@ def intake(kind):
         <label><input type="checkbox" value="a family Bible"> Family Bible</label><label><input type="checkbox" value="letters"> Letters</label><label><input type="checkbox" value="photographs"> Photographs</label><label><input type="checkbox" value="obituaries or clippings"> Obituaries or clippings</label><label><input type="checkbox" value="certificates"> Certificates</label><label><input type="checkbox" value="someone's family tree"> Someone’s family tree</label><label><input type="checkbox" value="DNA test results"> DNA results</label>
       </div></fieldset>
       <div class="out" id="ikOut" aria-live="polite"></div>
-      <div class="btns"><button type="button" class="btn" id="ikCopy">Copy my message</button><a class="btn primary" href="mailto:research@projectscroll.com?subject=A%20family%20history" id="ikMail">Send it by email</a><a class="btn" href="https://m.me/projectscroll" rel="noopener" id="ikSend">Open Messenger</a></div>
+      <div class="btns"><button type="button" class="btn" id="ikCopy">Copy my message</button><a class="btn primary" href="mailto:research@projectscroll.com?subject={'A%20family%20legend' if kind=='legend' else 'A%20family%20history'}" id="ikMail">Send it by email</a><a class="btn" href="https://m.me/projectscroll" rel="noopener" id="ikSend">Open Messenger</a></div>
       <p class="note center" id="ikDone" aria-live="polite" style="margin:.5rem 0 0"></p>
     </div>
     <script>
@@ -83,7 +83,7 @@ def intake(kind):
         L.push('', 'Thank you'+(v('ikName')?',':'.'));
         if(v('ikName')) L.push(v('ikName'));
         $('ikOut').textContent=L.join('\\n');
-        $('ikMail').href='mailto:research@projectscroll.com?subject='+encodeURIComponent('A family history')+'&body='+encodeURIComponent(L.join('\\n'));
+        $('ikMail').href='mailto:research@projectscroll.com?subject='+encodeURIComponent('{'A family legend' if kind=='legend' else 'A family history'}')+'&body='+encodeURIComponent(L.join('\\n'));
         try{{ const o={{}}; fields.forEach(f=>o[f.id]=f.value); localStorage.setItem(KEY,JSON.stringify(o)); }}catch(e){{}}
       }}
       document.getElementById('intake').addEventListener('input',build); build();
@@ -131,13 +131,13 @@ families = f'''    <p class="crumb"><a href="/#services">← Research services</
     </div>
 
     <h2>Lessons from our own desk</h2>
-    <p>Real lessons, every one learned the hard way on a family history built at this desk.</p>
+    <p>Every one learned the hard way, on a family history built at this desk.</p>
     <ol class="lessons">
       <li><b>A woman dies under her married name.</b> For years a death certificate went unfound because everyone searched for her under her maiden name. It was filed under her husband’s.</li>
       <li><b>Search the unusual name.</b> A rare surname finds the family and almost nobody else. A common one needs a place and a date beside it, or it finds thousands.</li>
       <li><b>A strong lead in the right county is still not a parent.</b> A well-documented man of the right name, in the right place, at the right time, turned out to be no relation at all. The answer was in a different family.</li>
       <li><b>An abstract is not a record.</b> A published summary of a colonial will gave two witnesses’ names and a probate date. The court’s own record disagreed on both.</li>
-      <li><b>“About” must stay “about”.</b> A birth year worked out from an age at death was printed beside real dates, and soon looked like one. Estimates are marked as estimates, always.</li>
+      <li><b>“About” must stay “about.”</b> A birth year worked out from an age at death was printed beside real dates, and soon looked like one. Estimates are marked as estimates, always.</li>
       <li><b>The best finds are in free books nobody opened.</b> Lines written off as dead ends turned out to be answered in county histories and family genealogies that had been free online for years. Dead ends don’t get searched.</li>
     </ol>
 
