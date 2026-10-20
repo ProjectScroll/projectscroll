@@ -30,7 +30,7 @@ TOWNS = [
       how='The plan was cut from the Library of Congress copy of the wall map. Nineteen street corners that appear on both maps (Broadway, Rowland, O’Keefe and East, where they meet York, State, Jefferson, Water and South) were matched by measurement, and the plan was scaled to fit them. On average the old corners land within about five yards of the new ones.',
       extra='<p class="note">One label has been painted out of this copy so that it does not spoil the hunt. Nothing else has been changed.</p>',
       og='cassopolis', desc='The 1860 town plan of Cassopolis, Michigan, laid over today’s streets. Fade between them or compare side by side.'),
- dict(slug='niles', name='Niles', inset='City of Niles, Berrien Co.', img='/img/towns/niles1860.webp',
+ dict(slug='niles', hunt={'h': [172395083, 5859367], 't': 'Two streets that changed their names', 'q': 'North Street, on the west bank below Main, and the street marked only “Avenue” on the east side of town are both still on the ground under other names. Fade the plan away and find them.', 'lab': 'What one of them is called today'}, name='Niles', inset='City of Niles, Berrien Co.', img='/img/towns/niles1860.webp',
       N=NILES['N'], W=NILES['W'], S=NILES['S'], E=NILES['E'], maxb='[41.810,-86.285],[41.855,-86.220]',
       lede='The biggest town plan on the 1860 wall map is the City of Niles, in Berrien County, astride the St. Joseph River.',
       look=['<b>The numbered streets</b>, Front to Twelfth, still in the same order today. Fade to see how closely the blocks match.',
@@ -40,7 +40,7 @@ TOWNS = [
             'The <b>Union School</b>, the <b>Fair Ground</b> and the <b>Cemetery</b> on the east side of town.'],
       how='The plan was cut from the Library of Congress copy of the wall map. Forty-three street corners that appear on both maps (Front Street to Ninth Street, where they meet Eagle, Howard, Cass, Ferry, Sycamore and Main) were matched by measurement, and the plan was fitted to them, turning it a fraction of a degree. On average the old corners land within about four yards of the new ones. Where today’s Main Street bends away east of Fifth Street it was left out of the fit, because the 1860 plan carries it straight.',
       og='niles', desc='The 1860 plan of the City of Niles, Michigan, laid over today’s streets. Fade between them or compare side by side.'),
- dict(slug='dowagiac', name='Dowagiac', inset='Dowagiac, Cass Co.', img='/img/towns/dowagiac1860.webp',
+ dict(slug='dowagiac', hunt={'h': [1791197882, 176602452, 2767408012], 't': 'Three streets in Spalding’s Addition', 'q': 'East of the railroad, in Spalding’s Addition, the 1860 plan names Spalding, Wayne and Center Streets. Today one is spelled another way, one has a new name, and one has become part of a longer street. Fade the plan away and find all three.', 'lab': 'What one of them is called today'}, name='Dowagiac', inset='Dowagiac, Cass Co.', img='/img/towns/dowagiac1860.webp',
       N=DOWAGIAC['N'], W=DOWAGIAC['W'], S=DOWAGIAC['S'], E=DOWAGIAC['E'], maxb='[41.965,-86.135],[42.000,-86.085]',
       lede='Dowagiac, in Cass County, grew up along the Michigan Central Railroad, which cuts across its 1860 plan on a long diagonal.',
       look=['<b>The railroad</b>, its depot and freight house, and how the streets beside it were laid out on the slant.',
@@ -51,7 +51,7 @@ TOWNS = [
       how='The plan was cut from the Library of Congress copy of the wall map. Thirty-three street corners that appear on both maps (Parsonage, Green, Cross, Center, Hamilton, Orchard, Front and McOmber, where they meet Wayne, North, Telegraph, West, Spruce, Courtland and Division) were matched by measurement, and the plan was fitted to them. On average the old corners land within about three yards of the new ones.',
       extra='<p class="note">The little village of Brownsville, printed in the corner of the same inset, has been left out of this copy.</p>',
       og='dowagiac', desc='The 1860 plan of Dowagiac, Michigan, laid over today’s streets. Fade between them or compare side by side.'),
- dict(slug='paw-paw', name='Paw Paw', inset='Paw Paw, County Seat of Van Buren Co.', img='/img/towns/pawpaw1860.webp',
+ dict(slug='paw-paw', hunt={'h': [3220699467], 't': 'The street that changed its name', 'q': 'Main Street ran through the middle of Paw Paw in 1860, between Oak and Paw Paw Streets. Through the heart of town it carries another name today. Fade the plan away and find it.', 'lab': 'What it is called today'}, name='Paw Paw', inset='Paw Paw, County Seat of Van Buren Co.', img='/img/towns/pawpaw1860.webp',
       N=PAWPAW['N'], W=PAWPAW['W'], S=PAWPAW['S'], E=PAWPAW['E'], maxb='[42.200,-85.915],[42.235,-85.865]',
       lede='Paw Paw, the county seat of Van Buren County, sits on the Paw Paw River.',
       look=['<b>Kalamazoo, Niles, LaGrave, Brown, Van Buren and Gremps Streets</b>, all still carrying their 1860 names.',
@@ -129,7 +129,7 @@ def hunt(t,Y):
     v=t.get('hunt')
     if not v: return ''
     n=len(v['h']); slug=t['slug']
-    done='Both found. The old names are still on the '+Y+' plan, and now you know where they went.' if n==2 else 'Found it. The old name is still on the '+Y+' plan, and now you know where it went.'
+    done=('Both found.' if n==2 else 'All three found.')+' The old names are still on the '+Y+' plan, and now you know where they went.' if n>1 else 'Found it. The old name is still on the '+Y+' plan, and now you know where it went.'
     return f"""    <aside class="namehunt" aria-labelledby="nhT" data-k="ps-tn-{slug}" data-word="street" data-words="streets" data-h="{','.join(map(str,v['h']))}" data-yes="{{n}}: that’s the one." data-done="{done}" data-no="Not that one. Fade to today’s streets and look where the old one ran.">
       <p class="nh-k">A challenge · {t['name']}</p>
       <h3 id="nhT">{v['t']}</h3>

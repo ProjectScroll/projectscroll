@@ -13,3 +13,4 @@ sh _tools/stamp.sh
 # the first screen of every page is styled inline; the full stylesheet no longer blocks paint (needs the local server on 8765)
 if ! curl -s -o /dev/null http://localhost:8765/; then (setsid nohup python3 -m http.server 8765 >/dev/null 2>&1 &); for i in 1 2 3 4 5 6 7 8 9 10; do curl -s -o /dev/null http://localhost:8765/ && break; sleep 1; done; fi
 if curl -s -o /dev/null http://localhost:8765/; then POSTCSS_DIR=/tmp/claude-0/-home-claude/4ab16262-7f57-5f1b-b1c5-742690289c52/scratchpad/mini/node_modules NODE_PATH=$(npm root -g) node _tools/critical.js | tail -1; else echo "critical: no server on 8765, pages keep the blocking stylesheet"; fi
+python3 _tools/check/heads.py
