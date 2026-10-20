@@ -2033,9 +2033,15 @@ p,li,dd,figcaption,.lede{text-wrap:pretty}
 .nextmk{display:inline-block; margin-left:.4rem; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-lo)}
 @media (prefers-reduced-motion: no-preference){ .tl li.next{animation:nextglow 4s ease-in-out infinite} @keyframes nextglow{0%,100%{box-shadow:0 0 0 1px color-mix(in srgb, var(--gold) 45%, transparent), 0 0 12px -2px color-mix(in srgb, var(--gold) 40%, transparent)} 50%{box-shadow:0 0 0 1px color-mix(in srgb, var(--gold) 80%, transparent), 0 0 24px -2px color-mix(in srgb, var(--gold-hi) 75%, transparent)}} }
 /* 14 dusk: warmer paper in the hour around sunset */
-:root[data-dusk]{--paper:#E9E4D6; --paper-2:#DED6C5; --line:#C1B8A4; --ink-soft:#4F4A42}
-:root[data-dusk] .bar{background:color-mix(in srgb, #E9E4D6 84%, transparent)}
-:root[data-dusk] .hero .plate img{filter:sepia(.12) saturate(1.05)}
+/* the dusk warmth is for light pages only: on dark pages it would undo the dark theme */
+@media (prefers-color-scheme: light){
+  :root[data-dusk]:not([data-theme="dark"]){--paper:#E9E4D6; --paper-2:#DED6C5; --line:#C1B8A4; --ink-soft:#4F4A42}
+  :root[data-dusk]:not([data-theme="dark"]) .bar{background:color-mix(in srgb, #E9E4D6 84%, transparent)}
+  :root[data-dusk]:not([data-theme="dark"]) .hero .plate img{filter:sepia(.12) saturate(1.05)}
+}
+:root[data-dusk][data-theme="light"]{--paper:#E9E4D6; --paper-2:#DED6C5; --line:#C1B8A4; --ink-soft:#4F4A42}
+:root[data-dusk][data-theme="light"] .bar{background:color-mix(in srgb, #E9E4D6 84%, transparent)}
+:root[data-dusk][data-theme="light"] .hero .plate img{filter:sepia(.12) saturate(1.05)}
 /* 15 the map room: paper grain, a vignette, and a lamp in the dark */
 .maproom{overflow:hidden}
 .maproom::before{content:""; position:absolute; inset:0; pointer-events:none; z-index:2; box-shadow:inset 0 0 50px 6px rgba(70,50,20,.18); border-radius:inherit}

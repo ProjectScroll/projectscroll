@@ -14,6 +14,10 @@ NILES=json.loads((_TD/'niles_bounds.json').read_text())
 DOWAGIAC=json.loads((_TD/'dowagiac_bounds.json').read_text())
 PAWPAW=json.loads((_TD/'pawpaw_bounds.json').read_text())
 SBAFF=json.loads((_TD/'southbend_affine.json').read_text())
+GOAFF=json.loads((_TD/'goshen_affine.json').read_text())
+ELAFF=json.loads((_TD/'elkhart_affine.json').read_text())
+UWM='https://cdm17272.contentdm.oclc.org/iiif/2/agdm:21064'
+ELKCREDIT='1861 plan: <i>Map of Elkhart Co. Indiana</i> (Philadelphia: Samuel Geil, 1861), published by Geil &amp; Harley, inset “{inset}.” American Geographical Society Library, University of Wisconsin–Milwaukee Libraries. Public domain, shown live from the Library’s image service.'
 TOWNS = [
  dict(slug='cassopolis', name='Cassopolis', inset='Cassopolis, County Seat of Cass Co.', img='/img/cass1860.webp',
       N=41.917772, W=-86.018103, S=41.906100, E=-86.007168, maxb='[41.895,-86.035],[41.930,-85.990]',
@@ -72,6 +76,32 @@ TOWNS = [
       extra='<p class="note">The pale band across the plan is a fold in the paper of the original. Nothing has been painted out.</p>',
       credit='1863 plan: <i>Map of St. Joseph Co., Indiana</i>, compiled and published by M. W. Stokes (South Bend, 1863), inset “South Bend” and “Lowell.” Library of Congress, Geography and Map Division, g4093s.la000168 (item 2013593163). Public domain, shown live from the Library’s image service.',
       og='map', desc='The 1863 plan of South Bend, Indiana, laid over today’s streets. Fade between them or compare side by side.'),
+ dict(slug='goshen', name='Goshen', year='1861', img=None, iiif=UWM, region=[7340,2250,1790,2550], px=1790,
+      aff=dict(GOAFF), N=41.5955, W=-85.8412, S=41.5779, E=-85.8238, maxb='[41.565,-85.860],[41.608,-85.805]',
+      lede='Goshen, the county seat of Elkhart County, Indiana, has a plan in the corner of the 1861 county map, coloured by its additions.',
+      look=['The <b>Court House square</b>, between Third and Main. Fade to today: the courthouse still stands on it.',
+            '<b>Market Street</b>, along the south side of the square. It is still there under another name. Fade to today and find what it is called now.',
+            '<b>Pearl Street</b> at the south end of town. Today’s map spells it differently.',
+            'The <b>railroad</b> crossing the north-east of town on its long diagonal, with the <b>Depot Grounds</b> and the passenger and freight depots.',
+            'The <b>race</b> and <b>Rock Run</b>, the machine shop and the tannery beside them, and the <b>Elkhart River</b> on the west.',
+            'The <b>additions</b> named for the men who laid them out: Barnes’s, Albright’s, Mayfield’s, Chamberlain’s and the rest. Each name is a lead to a plat in the county’s records.'],
+      how='The plan is shown live from the University of Wisconsin–Milwaukee Libraries’ image service, at full detail. Forty street corners that appear on both maps (Second, Third, Main, Fifth, Sixth and Seventh, where they meet Wilkinson, Pike, Clinton, Market, Washington, Jefferson, Madison, Monroe and Pearl) were matched by measurement, and the plan was fitted to them, turning it a little over half a degree. On average the old corners land within about four yards of the new ones. Monroe Street jogs at Main on both maps, and each side was measured on its own. Where today’s Main Street bends away south of Monroe it was left out of the fit.',
+      extra='<p class="note">The business directory printed beside the plan has been left off this copy, though a few of its letters show at the left edge. The whole directory is on the full county map in the <a href="/map/#town-goshen">map room</a>.</p>',
+      credit=ELKCREDIT.format(inset='Goshen'), inset='Goshen',
+      og='map', desc='The 1861 plan of Goshen, Indiana, laid over today’s streets. Fade between them or compare side by side.'),
+ dict(slug='elkhart', name='Elkhart', year='1861', img=None, iiif=UWM, region=[1700,2370,1890,2430], px=1890, notch=[59.4,54.6],
+      aff=dict(ELAFF), N=41.6935, W=-85.9819, S=41.6766, E=-85.9644, maxb='[41.665,-86.000],[41.705,-85.945]',
+      lede='Elkhart, Indiana, grew up on the point where the Elkhart River runs into the St. Joseph. The 1861 county map has its plan in the corner.',
+      look=['<b>Main and Second Streets</b>, running down from the point between the rivers. Washington, Jefferson, Jackson, High and Franklin still cross them under their 1861 names.',
+            '<b>Pigeon Street</b>, between Jackson and High. It is still there under another name. Fade to today and find what it is called now.',
+            '<b>Vistula Street</b>, cutting across the west side on the slant. It is still on today’s map.',
+            'The <b>Grist Mill</b> and the <b>Paper Mill</b> at the top of the plan, by the dam on the St. Joseph.',
+            'The <b>Michigan Southern &amp; Northern Indiana Railroad</b> and its Goshen branch, and Chapman &amp; Kimball’s addition beside it, with Division and Rail Road Streets.',
+            '<b>Water and Sycamore Streets</b> on the point between the two rivers.'],
+      how='The plan is shown live from the University of Wisconsin–Milwaukee Libraries’ image service, at full detail. Twenty-four street corners that appear on both maps (Main, Second, Third, Fourth and Fifth, where they meet Sycamore, Washington, Jefferson, Jackson, Pigeon, High and Franklin) were matched by measurement, and the plan was fitted to them. Elkhart’s streets run on a slant to the compass, about twenty degrees, and the 1861 engraver drew them the same way, so the plan hardly turns at all. On average the old corners land within about three yards of the new ones.',
+      extra='<p class="note">The title of the county map is printed in the corner of this inset, over open ground; that corner has been cut away so it does not hide today’s streets. The oval stamp at the foot of the plan is the library’s mark on the original.</p>',
+      credit=ELKCREDIT.format(inset='Elkhart'), inset='Elkhart',
+      og='map', desc='The 1861 plan of Elkhart, Indiana, laid over today’s streets. Fade between them or compare side by side.'),
 ]
 CREDIT='1860 plan: <i>Map of the Counties of Cass, Van Buren and Berrien, Michigan</i> (Philadelphia: Geil, Harley &amp; Siverd, 1860), inset “{inset}” Library of Congress, Geography and Map Division, g4113c.la000324. Public domain.'
 def overlay(t,Y):
@@ -171,11 +201,14 @@ def build(t):
       let swipe=false, frac=0.5;
       function clip(){{
         const img=old.getElement(); if(!img) return;
-        if(!swipe){{ img.style.clipPath=''; return; }}
+        const N={json.dumps(t.get('notch'))};
+        const poly=c=>'polygon(0 0,'+N[0]+'% 0,'+N[0]+'% '+N[1]+'%,'+c+'% '+N[1]+'%,'+c+'% 100%,0 100%)';
+        if(!swipe){{ img.style.clipPath=N?poly(100):''; return; }}
         const w=wrap.getBoundingClientRect(), r=img.getBoundingClientRect();
         const x=w.left+w.width*frac;
         const cut=Math.min(100,Math.max(0,r.right-x)/(r.width||1)*100);
-        img.style.clipPath='inset(0 '+cut.toFixed(3)+'% 0 0)';
+        const keep=100-cut;
+        img.style.clipPath=(N&&keep>N[0])?poly(keep.toFixed(3)):'inset(0 '+cut.toFixed(3)+'% 0 0)';
         line.style.left=(frac*100)+'%';
       }}
       function mode(s){{

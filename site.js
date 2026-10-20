@@ -721,10 +721,9 @@ try{ (function(){
   const tl=document.getElementById('tl');
   if (tl){ const lis=[].slice.call(tl.children); let first=lis.findIndex(function(li){ return !li.classList.contains('sealed'); }); if (first<0) first=-1;
     for (let i=first+1;i<lis.length;i++){ if (lis[i].classList.contains('sealed')){ lis[i].classList.add('next'); const m=lis[i].querySelector('.sealedmk'); if (m){ const t=document.createElement('span'); t.className='nextmk'; t.textContent='Next to open'; m.insertAdjacentElement('afterend', t); } break; } } }
-  /* 14 dusk: in the hour either side of sunset on the reader's own clock, the paper warms (only when no theme is chosen and the device is in light) */
+  /* 14 dusk: in the hour either side of sunset on the reader's own clock, the paper warms (the stylesheet applies it to light pages only) */
   try{
-    const forced=document.documentElement.dataset.theme || localStorage.getItem('ps-theme');
-    if (!forced && !matchMedia('(prefers-color-scheme: dark)').matches){
+    {
       const SUNSET=[17.5,18.1,18.8,20.2,20.7,21.2,21.1,20.6,19.7,18.9,17.4,17.1]; /* typical sunset, Great Lakes country, by month */
       const now=new Date(), h=now.getHours()+now.getMinutes()/60, ss=SUNSET[now.getMonth()];
       if (h>=ss-1 && h<=ss+1.2) document.documentElement.setAttribute('data-dusk','');
