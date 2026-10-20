@@ -75,7 +75,7 @@ TOWNS = [
       how='The plan is shown live from the Library of Congress’s image service, at full detail. Eighteen street corners that appear on both maps (Marion, Madison, Washington, Jefferson and Wayne, where they meet William, Lafayette, Main and Michigan) were matched by measurement, and the plan was fitted to them, turning it a fraction of a degree. On average the old corners land within about nine yards of the new ones. The worst is near William Street, which jogs on today’s ground and runs straight on the 1863 plan.',
       extra='<p class="note">The pale band across the plan is a fold in the paper of the original. Nothing has been painted out.</p>',
       credit='1863 plan: <i>Map of St. Joseph Co., Indiana</i>, compiled and published by M. W. Stokes (South Bend, 1863), inset “South Bend” and “Lowell.” Library of Congress, Geography and Map Division, g4093s.la000168 (item 2013593163). Public domain, shown live from the Library’s image service.',
-      og='map', desc='The 1863 plan of South Bend, Indiana, laid over today’s streets. Fade between them or compare side by side.'),
+      og='south-bend', desc='The 1863 plan of South Bend, Indiana, laid over today’s streets. Fade between them or compare side by side.'),
  dict(slug='goshen', hunt={'h': [3923262336, 2088074974], 't': 'Two streets that changed their names', 'q': 'Market Street, on the south side of the Court House square, has a new name today, and Pearl Street at the south end of town is spelled another way. Fade the plan away and find both.', 'lab': 'What one of them is called today'}, name='Goshen', year='1861', img=None, iiif=UWM, region=[7340,2250,1790,2550], px=1790,
       aff=dict(GOAFF), N=41.5955, W=-85.8412, S=41.5779, E=-85.8238, maxb='[41.565,-85.860],[41.608,-85.805]',
       lede='Goshen, the county seat of Elkhart County, Indiana, has a plan in the corner of the 1861 county map, coloured by its additions.',
@@ -88,7 +88,7 @@ TOWNS = [
       how='The plan is shown live from the University of Wisconsin–Milwaukee Libraries’ image service, at full detail. Forty street corners that appear on both maps (Second, Third, Main, Fifth, Sixth and Seventh, where they meet Wilkinson, Pike, Clinton, Market, Washington, Jefferson, Madison, Monroe and Pearl) were matched by measurement, and the plan was fitted to them, turning it a little over half a degree. On average the old corners land within about four yards of the new ones. Monroe Street jogs at Main on both maps, and each side was measured on its own. Where today’s Main Street bends away south of Monroe it was left out of the fit.',
       extra='<p class="note">The business directory printed beside the plan has been left off this copy, though a few of its letters show at the left edge. The whole directory is on the full county map in the <a href="/map/#town-goshen">map room</a>.</p>',
       credit=ELKCREDIT.format(inset='Goshen'), inset='Goshen',
-      og='map', desc='The 1861 plan of Goshen, Indiana, laid over today’s streets. Fade between them or compare side by side.'),
+      og='goshen', desc='The 1861 plan of Goshen, Indiana, laid over today’s streets. Fade between them or compare side by side.'),
  dict(slug='elkhart', hunt={'h': [4228470081], 't': 'The street that changed its name', 'q': 'Pigeon Street ran between Jackson and High in 1861. It is still there today under another name. Fade the plan away and find it.', 'lab': 'What it is called today'}, name='Elkhart', year='1861', img=None, iiif=UWM, region=[1700,2370,1890,2430], px=1890, notch=[59.4,54.6],
       aff=dict(ELAFF), N=41.6935, W=-85.9819, S=41.6766, E=-85.9644, maxb='[41.665,-86.000],[41.705,-85.945]',
       lede='Elkhart, Indiana, grew up on the point where the Elkhart River runs into the St. Joseph. The 1861 county map has its plan in the corner.',
@@ -101,7 +101,7 @@ TOWNS = [
       how='The plan is shown live from the University of Wisconsin–Milwaukee Libraries’ image service, at full detail. Twenty-four street corners that appear on both maps (Main, Second, Third, Fourth and Fifth, where they meet Sycamore, Washington, Jefferson, Jackson, Pigeon, High and Franklin) were matched by measurement, and the plan was fitted to them. Elkhart’s streets run on a slant to the compass, about twenty degrees, and the 1861 engraver drew them the same way, so the plan hardly turns at all. On average the old corners land within about three yards of the new ones.',
       extra='<p class="note">The title of the county map is printed in the corner of this inset, over open ground; that corner has been cut away so it does not hide today’s streets. The oval stamp at the foot of the plan is the library’s mark on the original.</p>',
       credit=ELKCREDIT.format(inset='Elkhart'), inset='Elkhart',
-      og='map', desc='The 1861 plan of Elkhart, Indiana, laid over today’s streets. Fade between them or compare side by side.'),
+      og='elkhart', desc='The 1861 plan of Elkhart, Indiana, laid over today’s streets. Fade between them or compare side by side.'),
 ]
 CREDIT='1860 plan: <i>Map of the Counties of Cass, Van Buren and Berrien, Michigan</i> (Philadelphia: Geil, Harley &amp; Siverd, 1860), inset “{inset}” Library of Congress, Geography and Map Division, g4113c.la000324. Public domain.'
 def overlay(t,Y):
@@ -267,7 +267,7 @@ def hubpage():
       var t=document.getElementById('tnTally'); if (t && sum) t.textContent='You have found '+sum+' of '+tot+' renamed streets.'+(sum>=tot?' Every one. Well done.':''); }})();
     </script>
 """
-    page('map/then-and-now/index.html','Seven towns, then and now · Project Scroll','Seven old town plans of the St. Joseph River Valley, from Cassopolis to South Bend, Goshen and Elkhart, laid over today’s streets, each with a renamed street to find.',body,og='https://projectscroll.com/og/map.jpg')
+    page('map/then-and-now/index.html','Seven towns, then and now · Project Scroll','Seven old town plans of the St. Joseph River Valley, from Cassopolis to South Bend, Goshen and Elkhart, laid over today’s streets, each with a renamed street to find.',body,og='https://projectscroll.com/og/then-and-now.jpg')
 
 for t in TOWNS:
     page(f'map/{t["slug"]}/index.html', f'{t["name"]}, {t.get("year","1860")} and today · Project Scroll', t['desc'], build(t), og=f'https://projectscroll.com/og/{t["og"]}.jpg')
