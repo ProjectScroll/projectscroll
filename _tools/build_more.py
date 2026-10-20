@@ -14,7 +14,7 @@ REC = [
   ('David Rumsey Map Collection', 'https://www.davidrumsey.com/', 'Over a hundred thousand historic maps and atlases online, free to view.', 'free'),
   ('Land patents (BLM General Land Office)', 'https://glorecords.blm.gov/', 'The first sale of federal land to a private owner, with surveyors’ plats and field notes, for the public-land states.', 'free'),
   ('USGenWeb', 'https://usgenweb.org/', 'Volunteer sites for every state and county: transcribed records, cemetery lists, biographies and local know-how.', 'free'),
-  ('Ellis Island passenger search', 'https://heritage.statueofliberty.org/', 'Arrival lists for the port of New York, 1820–1957.', 'free'),
+  ('Ellis Island passenger search', 'https://www.statueofliberty.org/arrival-search', 'Arrival lists for the port of New York, 1820–1957.', 'free'),
  ]),
  ('Michigan', 'Where Project Scroll began', [
   ('Michiganology: vital records', 'https://michiganology.org/vital-records/', 'The Archives of Michigan’s death certificates, 1897–1952, and more, free to search and view.', 'free'),
@@ -37,7 +37,7 @@ REC = [
   ('Matricula', 'https://data.matricula-online.eu/', 'Catholic parish registers from Germany, Austria, Poland and elsewhere, free to view.', 'free'),
   ('Archion', 'https://www.archion.de/', 'Protestant church books of Germany. Paid, and worth it when a German village is known.', 'paid'),
   ('ScotlandsPeople', 'https://www.scotlandspeople.gov.uk/', 'Scotland’s official records: parish registers, statutory registers, wills. Pay per view.', 'paid'),
-  ('Library and Archives Canada', 'https://library-archives.canada.ca/eng', 'Canadian census, immigration and military records.', 'free'),
+  ('Library and Archives Canada', 'https://www.canada.ca/en/library-archives.html', 'Canadian census, immigration and military records.', 'free'),
  ]),
 ]
 def recsec(name, sub, items):
