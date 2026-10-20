@@ -32,7 +32,7 @@ data=[{'n':n,'l':l,'who':who,'k':k,'m':m,'what':what,'trust':trust} for n,l,x,y,
 import json
 body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">A guide from the desk</p>
-    <h1>How to read a death certificate</h1>
+    <h1>How do I read a Michigan death certificate?</h1>
     <p class="lede" style="font-size:1.15rem">A death certificate is two records in one. The doctor wrote down the death, at the time. Someone else, the informant, answered questions about a whole life, on the hardest day. Tap any numbered box to see who filled it in, and how far to trust it.</p>
     <div class="guide">
       <div class="cert-wrap">{''.join(svg)}{spots}</div>
@@ -62,5 +62,5 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       show(10); }})();
     </script>
 '''
-page('guide/death-certificate/index.html','How to read a death certificate · Project Scroll','An interactive guide: tap each box of a death certificate to see who filled it in and how far to trust it.',body, og='https://projectscroll.com/og/death-certificate.jpg')
+page('guide/death-certificate/index.html','How do I read a Michigan death certificate? · Project Scroll','An interactive guide: tap each box of a death certificate to see who filled it in and how far to trust it.',body, og='https://projectscroll.com/og/death-certificate.jpg')
 print('guide built')

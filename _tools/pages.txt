@@ -36,3 +36,6 @@
 ./toolkit/index.html
 ./cassopolis/index.html
 ./research/index.html
+./dowagiac/index.html
+./niles/index.html
+./paw-paw/index.html

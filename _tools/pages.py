@@ -83,12 +83,13 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="icon" href="/icons/icon-32.png" type="image/png" sizes="32x32">
 <link rel="alternate icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png?v=2">
+<link rel="alternate" type="application/atom+xml" title="Project Scroll: new cases, field notes and documents" href="/feed.xml">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="Project Scroll field notes" href="/feed.xml">
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=b9536d35">
+<link rel="stylesheet" href="/site.min.css?v=10734b00">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"selector_matches":".bar a, footer nav a, .partrail a, .search-res a, .crumb a"}},{{"href_matches":"/*"}},{{"not":{{"href_matches":"/*.pdf"}}}}]}},"eagerness":"moderate"}}]}}</script>
 </head>
 <body>
@@ -139,7 +140,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=b9536d35" defer></script>
+<script src="/site.min.js?v=10734b00" defer></script>
 </body>
 </html>
 '''

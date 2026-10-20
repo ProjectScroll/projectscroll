@@ -1,17 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-<channel>
-  <title>Project Scroll · Field notes</title>
-  <link>https://projectscroll.com/notes/</link>
-  <atom:link href="https://projectscroll.com/feed.xml" rel="self" type="application/rss+xml"/>
-  <description>Lessons from the Project Scroll research desk: how to read old records, weigh them, and know when a question is settled.</description>
-  <language>en-us</language>
-  <item>
-    <title>One Letter, Two Certificates</title>
-    <link>https://projectscroll.com/notes/one-letter-two-certificates/</link>
-    <guid>https://projectscroll.com/notes/one-letter-two-certificates/</guid>
-    <pubDate>Sat, 17 Oct 2026 12:00:00 -0400</pubDate>
-    <description>A pioneer, his son, two death certificates and one middle initial: what to do when old records disagree.</description>
-  </item>
-</channel>
-</rss>
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>Project Scroll</title>
+<subtitle>An online treasure hunt through real history, from the St. Joseph River Valley. Every clue is true.</subtitle>
+<link href="https://projectscroll.com/"/>
+<link rel="self" href="https://projectscroll.com/feed.xml"/>
+<id>https://projectscroll.com/</id>
+<updated>2026-10-19T12:00:00Z</updated>
+<author><name>Project Scroll</name><email>research@projectscroll.com</email></author>
+<entry><title>Document of the month: October 2026</title><link href="https://projectscroll.com/document/"/><id>https://projectscroll.com/document/</id><updated>2026-10-19T12:00:00Z</updated><summary>One real page, read slowly, every month. October 2026: page 253 of Rogers’s 1875 History of Cass County, the first printing of the joke lodge of 1846.</summary></entry>
+<entry><title>One Letter, Two Certificates</title><link href="https://projectscroll.com/notes/one-letter-two-certificates/"/><id>https://projectscroll.com/notes/one-letter-two-certificates/</id><updated>2026-10-17T12:00:00Z</updated><summary>A pioneer, his son, two death certificates and one middle initial: what to do when old records disagree.</summary></entry>
+<entry><title>Case 9: What became of that bone, and of everything else taken from the grave?</title><link href="https://projectscroll.com/cases/9/"/><id>https://projectscroll.com/cases/9/</id><updated>2026-10-17T12:00:00Z</updated><summary>The second hall · A lake with no stream in and no stream out</summary></entry>
+<entry><title>Case 8: Who was the doctor who took a bone home and kept it?</title><link href="https://projectscroll.com/cases/8/"/><id>https://projectscroll.com/cases/8/</id><updated>2026-10-17T12:00:00Z</updated><summary>The second hall · A lake with no stream in and no stream out</summary></entry>
+<entry><title>Case 7: What powered the flour mill on a lake with no stream, and where did it stand?</title><link href="https://projectscroll.com/cases/7/"/><id>https://projectscroll.com/cases/7/</id><updated>2026-10-17T12:00:00Z</updated><summary>The second hall · A lake with no stream in and no stream out</summary></entry>
+<entry><title>Case 6: Where did the boulders on the shore go?</title><link href="https://projectscroll.com/cases/6/"/><id>https://projectscroll.com/cases/6/</id><updated>2026-10-17T12:00:00Z</updated><summary>The second hall · A lake with no stream in and no stream out</summary></entry>
+<entry><title>Case 5: Where does the lake’s water really come from?</title><link href="https://projectscroll.com/cases/5/"/><id>https://projectscroll.com/cases/5/</id><updated>2026-10-17T12:00:00Z</updated><summary>The second hall · A lake with no stream in and no stream out</summary></entry>
+<entry><title>Case 4: Where is the 1831 parchment deed today?</title><link href="https://projectscroll.com/cases/4/"/><id>https://projectscroll.com/cases/4/</id><updated>2026-10-17T12:00:00Z</updated><summary>The second hall · A lake with no stream in and no stream out</summary></entry>
+<entry><title>Case 3: Who was the settler who gave away forty acres of lakefront?</title><link href="https://projectscroll.com/cases/3/"/><id>https://projectscroll.com/cases/3/</id><updated>2026-10-17T12:00:00Z</updated><summary>The second hall · A lake with no stream in and no stream out</summary></entry>
+<entry><title>Case 10: One letter, two certificates: which middle initial is right?</title><link href="https://projectscroll.com/cases/10/"/><id>https://projectscroll.com/cases/10/</id><updated>2026-10-17T12:00:00Z</updated><summary>From the desk · Practice case</summary></entry>
+<entry><title>Case 2: In 1867 the old hotel where the lodge danced was hauled across the village and turned into a mill. Where did it end up?</title><link href="https://projectscroll.com/cases/2/"/><id>https://projectscroll.com/cases/2/</id><updated>2026-10-15T12:00:00Z</updated><summary>The first hall · The Cassopolis Hall of Comparative Ovations</summary></entry>
+<entry><title>Case 1: Did the joke lodge of 1846 ever have a real charter? Even the man who first wrote its story wasn’t sure.</title><link href="https://projectscroll.com/cases/1/"/><id>https://projectscroll.com/cases/1/</id><updated>2026-10-15T12:00:00Z</updated><summary>The first hall · The Cassopolis Hall of Comparative Ovations</summary></entry>
+</feed>

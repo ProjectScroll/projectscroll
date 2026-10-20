@@ -25,7 +25,7 @@ cards=''.join(f'<div class="hcard"><p class="glyph">{c[0]}</p><h3>{E(c[1])}</h3>
 quiz=''.join(f'<li data-a="{a}"><p>{E(q)}</p><div class="qopts2">'+''.join(f'<button type="button" data-i="{i}">{E(o)}</button>' for i,o in enumerate(opts))+f'</div><p class="qwhy" hidden>{E(why)}</p></li>' for q,opts,a,why in Q)
 body=f'''    <p class="crumb"><a href="/toolkit/">← The hunter’s toolkit</a></p>
     <p class="kicker">A guide from the desk</p>
-    <h1>Reading the old hand</h1>
+    <h1>How do I read old handwriting in records?</h1>
     <p class="lede" style="font-size:1.15rem">The writing in old records is not hard once you know ten tricks the clerks used. Here they are, with a short quiz at the end.</p>
     <h2>The clerks’ tricks</h2>
     <div class="hcards">{cards}</div>
@@ -42,5 +42,5 @@ body=f'''    <p class="crumb"><a href="/toolkit/">← The hunter’s toolkit</a>
         out.textContent = n===items.length ? ('You read '+s+' of '+items.length+' like a clerk.') : (s+' of '+n+' so far.'); }}); }}); }}); }})();
     </script>
 '''
-page('guide/old-handwriting/index.html','Reading the old hand · Project Scroll','The handwriting tricks and abbreviations of old records explained: the long s, ye, inst. and ult., double dates and more, with a quiz.',body, og='https://projectscroll.com/og/handwriting.jpg')
+page('guide/old-handwriting/index.html','How do I read old handwriting in records? · Project Scroll','The handwriting tricks and abbreviations of old records explained: the long s, ye, inst. and ult., double dates and more, with a quiz.',body, og='https://projectscroll.com/og/handwriting.jpg')
 print('hand built')

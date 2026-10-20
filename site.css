@@ -2308,3 +2308,10 @@ main > section::after{right:auto; left:.6rem}
 .tnpromo{display:flex; flex-wrap:wrap; gap:.3rem .8rem; align-items:baseline}
 /* 23 one button height */
 .btn{padding-top:.62rem; padding-bottom:.62rem}
+
+/* ===== Draft 95: the place and research pages print as handouts ===== */
+@media print{
+  main.page a[href^="/"]::after{content:" (projectscroll.com" attr(href) ")"; font-size:.85em; color:#555}
+  main.page .ctas, main.page .crumb, .colophon .note{display:none!important}
+  main.page > h1{font-size:22pt} main.page > .lede{font-size:12pt; border-left:2px solid #999}
+}
