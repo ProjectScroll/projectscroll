@@ -2844,3 +2844,17 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 .lostq h2{margin-top:0}
 .lq-f{display:flex; gap:.5rem; flex-wrap:wrap; align-items:center}
 .lq-f input{font:inherit; padding:.45rem .7rem; border:1px solid var(--line); border-radius:4px; background:var(--paper-2); color:var(--ink)}
+
+.lt{border-top:1px solid var(--line); padding-top:1.2rem; margin-top:1.6rem}
+.lt h2{margin:0 0 .2rem}
+.lt-aka{font-weight:400; font-size:.8em; color:var(--ink-soft)}
+.lt-w{margin:0 0 .8rem; font-size:.9rem; color:var(--ink-soft); letter-spacing:.02em}
+.lt blockquote{margin:.8rem 0; padding-left:1rem; border-left:3px solid var(--line); font-style:italic}
+.lt blockquote p{margin:0}
+.lt cite{display:block; font-style:normal; font-size:.85rem; margin-top:.3rem}
+.np{margin-top:1.8rem}
+.np figure{margin:.6rem 0 .8rem}
+.np img{display:block; width:100%; height:auto; border:1px solid var(--line); background:#eee}
+.npq details{border-bottom:1px solid var(--line); padding:.6rem 0}
+.npq summary{cursor:pointer; font-weight:600}
+.npq p{margin:.4rem 0 0}
