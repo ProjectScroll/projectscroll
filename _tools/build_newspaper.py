@@ -20,10 +20,10 @@ CL=[
   'Men wore detachable starched collars, and a badly ironed one left a rough edge that cut the neck. The Model Steam Laundry on South Kalamazoo Street claimed to be the only laundry in southern Michigan that could take the “saw edges” off.'),
 ]
 def fig(i,t,r,txt):
-    x,y,w,h=map(int,r.split(',')); H=lambda W: round(h*W/w)
-    src=lambda W: f'{I}/{r}/{W},/0/default.jpg'
+    from PIL import Image
+    W,H=Image.open(pathlib.Path(__file__).parent.parent/f'img/news/c{i}.webp').size; sw=500 if W==900 else 800
     return f'''    <section class="np" id="c{i}"><h2>{E(t)}</h2>
-      <figure><a href="{src(1600)}" rel="noopener"><img src="{src(800)}" srcset="{src(500)} 500w, {src(800)} 800w, {src(1200)} 1200w" sizes="(min-width:900px) 40rem, 92vw" width="800" height="{H(800)}" alt="{E(t)}: a clipping from page 8 of the True Northerner, 1 February 1899." loading="{'eager' if i==0 else 'lazy'}" decoding="async"></a></figure>
+      <figure><a href="{I}/{r}/full/0/default.jpg" rel="noopener" title="Open this clipping at full size at the Library of Congress"><img src="/img/news/c{i}.webp" srcset="/img/news/c{i}-s.webp {sw}w, /img/news/c{i}.webp {W}w" sizes="(min-width:900px) 40rem, 92vw" width="{W}" height="{H}" alt="{E(t)}: a clipping from page 8 of the True Northerner, 1 February 1899." loading="{'eager' if i==0 else 'lazy'}" decoding="async"></a></figure>
       <p>{E(txt)}</p></section>
 '''
 Q=[('What did a Paw Paw dealer pay for a dozen eggs?','14 cents.'),('Who chose United States senators in 1899?','The state legislatures. Direct election came with the Seventeenth Amendment in 1913.'),('How many bushels of peaches did Mr. Packard grow?','About 3,000, at over a dollar a bushel.'),('What was showing at Longwell’s opera house on 4 February?','Moving pictures of the Spanish-American War, by a Lumière cinématographe company.')]
@@ -31,7 +31,7 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Newspaper of the month</p>
     <h1>The True Northerner, 1 February 1899</h1>
     <p class="lede" style="font-size:1.15rem">One page of an old valley paper, read slowly. This month: the back page of Paw Paw’s weekly, in the middle of a Michigan winter, with egg prices, a farmers’ meeting and the war with Spain at the opera house.</p>
-    <p>The <i>True Northerner</i> was the weekly of Paw Paw, the seat of Van Buren County. Its back page that week was a working page: the market report, the end of a long account of a farmers’ institute, the circuit court, real-estate sales, and the advertisements that paid for it all. Tap any clipping to see it larger, or <a href="{P}" rel="noopener">open the whole page</a> at the Library of Congress.</p>
+    <p>The <i>True Northerner</i> was the weekly of Paw Paw, the seat of Van Buren County. Its back page that week was a working page: the market report, the end of a long account of a farmers’ institute, the circuit court, real-estate sales, and the advertisements that paid for it all. Tap any clipping to see it at full size, or <a href="{P}" rel="noopener">open the whole page</a> at the Library of Congress.</p>
 {''.join(fig(i,*c) for i,c in enumerate(CL))}
     <h2>Read the page yourself</h2>
     <div class="npq">{''.join(f'<details><summary>{E(q)}</summary><p>{E(a)}</p></details>' for q,a in Q)}</div>
@@ -42,7 +42,7 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li><b>Do not trust the typed text.</b> The searchable text behind a scanned page is machine-read: here it turns “Eggs” into “Kpgs.” Search it, then read the picture.</li>
       <li><b>Find your own town’s paper.</b> Chronicling America and Michigan’s digital newspapers are free. See the <a href="/sources/">sources shelf</a>.</li>
     </ul>
-    <p class="note">Source: <i>The True Northerner</i> (Paw Paw, Mich.), 1 February 1899, page 8, digitized by Central Michigan University’s Clarke Historical Library for Chronicling America, Library of Congress. The clippings are drawn live from the Library’s image server. Every quotation on this page was checked against the page image.</p>
+    <p class="note">Source: <i>The True Northerner</i> (Paw Paw, Mich.), 1 February 1899, page 8, digitized by Central Michigan University’s Clarke Historical Library for Chronicling America, Library of Congress. The clippings were cut from the Library’s scan; tap one to open it at full size there. Every quotation on this page was checked against the page image.</p>
 '''
 page('newspaper/index.html','The True Northerner, 1 February 1899 · Newspaper of the month · Project Scroll','One page of an old valley paper, read slowly: the back page of Paw Paw’s True Northerner for 1 February 1899, with egg prices, a farmers’ institute and the Spanish-American War at the opera house.',body,og='https://projectscroll.com/og/records.jpg')
 print('newspaper built',len(CL))
