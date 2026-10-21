@@ -3241,3 +3241,7 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 .linkbtn.se-cal{font-size:.88rem}
 .se.flash{animation:muflash 1.8s ease}
 @media (max-width:640px){ .se-mb{min-width:2.3rem; padding:.3rem .4rem} }
+.wk-stage .wk{border:0; padding:0; background:none; animation:none}
+.wk-map .leaflet-control-attribution{font-size:.68rem; background:color-mix(in srgb, var(--paper) 80%, transparent); color:var(--ink-soft)}
+.mu-map .fd-mu{fill:var(--gold)!important; fill-opacity:.8}
+.wk-stage .wk-h{margin:.1rem 0 .4rem; font-size:1.2rem; text-align:left} .wk-stage .wk-h::after{content:none}

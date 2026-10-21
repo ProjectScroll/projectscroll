@@ -1,0 +1,234 @@
+{
+ "stops": [
+  {
+   "name": "Site of the first courthouse",
+   "address": "West side of North Broadway, north of York Street",
+   "lat": 41.9138,
+   "lon": -86.0128,
+   "built": "about 1836 (gone)",
+   "then": "Cass County’s first courthouse was a plain wooden building, 34 by 24 feet, ordered by the county board in 1835 for about $450. It stood north of the original village rather than on the public square, and served until the second courthouse opened in 1841.",
+   "now": "Nothing of it survives, and the exact lot has not been pinned down: this stop marks the stretch of Broadway where the 1906 county history places it.",
+   "sources": [
+    "https://archive.org/details/twentiethcentury00glov",
+    "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=242",
+    "https://tedshideler.com/2022/10/10/the-cass-county-michigan-courthouse-1899-2003/",
+    "https://www.leaderpub.com/?p=702332"
+   ],
+   "verified": false,
+   "id": "first-courthouse"
+  },
+  {
+   "name": "Local History Branch (Carnegie Library)",
+   "address": "145 N. Broadway, Cassopolis, MI 49031",
+   "lat": 41.9124,
+   "lon": -86.01265,
+   "built": "1908-1909",
+   "then": "Built over the winter of 1908-09 with a $10,000 gift from Andrew Carnegie, this was the town’s public library for more than 80 years; Cassopolis was one of 53 Michigan communities to receive Carnegie library money. From 1947 to 1957 its basement also housed the Cass County Library, and after the 1993 merger that created the Cass District Library it reopened in October 1994 as the Local History Branch.",
+   "now": "The Cass District Library's Local History Branch, a genealogy and county-history research library (Mon-Thu 9-4), restored in 2012 and renovated again in 2020-21.",
+   "sources": [
+    "https://www.cassdistrictlibrary.org/locations/local-history-branch/",
+    "https://www.leaderpub.com/?p=618042",
+    "https://www.leaderpub.com/?p=29535",
+    "https://en.wikipedia.org/wiki/Cass_District_Library"
+   ],
+   "verified": true,
+   "id": "carnegie-library"
+  },
+  {
+   "name": "Cass County Historic Courthouse",
+   "address": "120 N. Broadway, Cassopolis, MI 49031",
+   "lat": 41.91202,
+   "lon": -86.01243,
+   "built": "1898-1900 (cornerstone Oct. 5, 1898; accepted Oct. 1900)",
+   "then": "The stone courthouse with its tall clock tower was designed by the Grand Rapids firm Rush, Bowman & Rush and finished in 1900 by the contractors James Rowson and August Mohnke, after the county dismissed its first builder in 1898. It cost $43,797.88 with furniture and heating, and stands on the northeast quarter of the old public square, where the 1841 courthouse stood for nearly sixty years. The county jail of 1852 stood just north of it.",
+   "now": "Empty after the courts moved out in 2003, it was restored with federal ARPA and USDA money and reopened in October 2024 as county offices: administrator, clerk/register of deeds, treasurer and the Board of Commissioners.",
+   "sources": [
+    "https://watershedvoice.com/2024/09/30/cass-county-historic-courthouse-reopening-after-major-renovation",
+    "https://courthouses.co/?p=10460",
+    "https://tedshideler.com/2022/10/10/the-cass-county-michigan-courthouse-1899-2003/",
+    "https://leaderpub.com/?p=880680",
+    "https://archive.org/details/twentiethcentury00glov",
+    "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=243",
+    "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=245",
+    "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=246",
+    "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=247"
+   ],
+   "verified": true,
+   "id": "historic-courthouse"
+  },
+  {
+   "name": "The Old Public Square (Broadway & State)",
+   "address": "Intersection of Broadway (M-62) and State Street (M-60)",
+   "lat": 41.91165,
+   "lon": -86.01255,
+   "built": "Platted 1831",
+   "then": "The 1831 village plat set aside a public square of 26 by 20 rods for county buildings, with Broadway and State Street crossing at its center. In 1839 the county deeded most of it to the 'Court House Company,' which built the 1841 courthouse. Merchants then built on the other quarters, among them Asa Kingsbury's brick stores of 1869-70 on the southwest quarter. The county sued in 1879 to win the square back and lost in the Michigan Supreme Court in 1880, which is why the old square is now a row of business blocks. Early taverns faced it too: the Union Hotel on the west side of Broadway and the Eagle Hotel on the east side.",
+   "now": "A downtown crossroads of two state highways, with streetscape improvements laid along Broadway and East State in 2020.",
+   "sources": [
+    "https://archive.org/details/twentiethcentury00glov",
+    "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=176",
+    "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=177",
+    "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=180",
+    "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=181",
+    "https://www.leaderpub.com/?p=830414"
+   ],
+   "verified": true,
+   "id": "public-square",
+   "card": [
+    "carriages",
+    "Carriages drawn up on Broadway, from an old postcard"
+   ]
+  },
+  {
+   "name": "The old courthouse’s second life",
+   "address": "State Street at Disbrow Street, one block west of Broadway",
+   "lat": 41.9115,
+   "lon": -86.01375,
+   "built": "1841 (moved 1898-99; razed 1968)",
+   "then": "The county’s second courthouse was a two-storey frame building with classical columns, finished in 1841 for $6,000. When the stone courthouse replaced it, it was sold at auction for $25 and moved a block west. A theatre history says it became the 420-seat Colonial Opera House, then the Colonial Theatre in 1909, and in 1937 was remodelled as the Gem Theatre, which showed films until about 1960; the 1906 county history, though, calls it a storage house, so its early years here are uncertain.",
+   "now": "The building was torn down in 1968. The county’s first log jail, finished in 1834, also stood on this stretch of State Street west of Broadway.",
+   "sources": [
+    "https://cinematreasures.org/theaters/18611",
+    "https://www.leaderpub.com/?p=702332",
+    "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=242",
+    "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=243",
+    "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=244",
+    "https://tedshideler.com/2022/10/10/the-cass-county-michigan-courthouse-1899-2003/"
+   ],
+   "verified": true,
+   "id": "gem-theatre-site"
+  },
+  {
+   "name": "The bank corner",
+   "address": "116 S. Broadway, Cassopolis, MI 49031 (corner of W. State St.)",
+   "lat": 41.91118,
+   "lon": -86.01272,
+   "built": "c. 1900 per sale listing; renovated 1990",
+   "then": "Banking began on this side of the old square in 1857, when Asa Kingsbury opened a private bank, and in 1869–70 he built a brick banking house among the new stores on the square’s southwest quarter. The First National Bank of Cassopolis was organised in 1870 with Kingsbury as president, and around 1899 it bought $32,000 of the county’s bonds to pay for the new courthouse.",
+   "now": "The two-storey brick building at 116 South Broadway is a former bank with its vaults still inside. Whether it is the First National’s own building has not been confirmed.",
+   "sources": [
+    "https://carwm.resimplifi.com/listings/d8ce9f41-former-downtown-bank-facility-cassopolis-mi",
+    "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=181",
+    "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=228",
+    "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=246"
+   ],
+   "verified": false,
+   "id": "bank-corner",
+   "card": [
+    "broadway1",
+    "Broadway in the days of wagons, from an old postcard"
+   ]
+  },
+  {
+   "name": "United Presbyterian Church",
+   "address": "209 E. State St., Cassopolis, MI 49031",
+   "lat": 41.91151,
+   "lon": -86.01055,
+   "built": "Begun early 1890s",
+   "then": "The congregation was founded in March 1842 as the First Presbyterian Church, when Cassopolis was still 'little more than a clearing in the woods.' Work on the present building began in the early 1890s, and in 1938 the congregation joined with the village's Baptist church. It long served as a federated church for several denominations before taking its present Presbyterian name in 1968.",
+   "now": "Still a Presbyterian congregation, half a block east of Broadway.",
+   "sources": [
+    "https://www.leaderpub.com/?p=782143"
+   ],
+   "verified": false,
+   "id": "presbyterian-church"
+  },
+  {
+   "name": "The old post office storefront",
+   "address": "151 S. Broadway, Cassopolis, MI 49031",
+   "lat": 41.91065,
+   "lon": -86.01241,
+   "built": "Late 1800s (a wainscot board inside is signed 1897)",
+   "then": "Local accounts say this storefront was one of the village’s post offices in the late 1800s; a board inside is signed 1897. It later held a barbershop and a thrift shop, and about 2011 a new owner fitted it out as a Prohibition-style room with a salvaged 38-foot bar.",
+   "now": "Since 2021 it has been a tavern. Check before you go in.",
+   "sources": [
+    "https://leaderpub.com/?p=851367",
+    "https://www.leaderpub.com/?p=217543",
+    "https://www.leaderpub.com/?p=568162"
+   ],
+   "verified": false,
+   "id": "old-post-office",
+   "card": [
+    "broadway3",
+    "Broadway when the first cars came, from an old postcard"
+   ]
+  },
+  {
+   "name": "The Sinclair Station",
+   "address": "200 S. Broadway (Broadway at Jefferson St.), Cassopolis, MI 49031",
+   "lat": 41.90962,
+   "lon": -86.0126,
+   "built": "Mid-20th century (date not found); restored c. 2009-2012",
+   "then": "An old DX filling station that had stood empty for about thirty years was bought and restored over three years as a 1952-style Sinclair station, with period pumps, a vintage police car and a wrecker. It opened free to visitors around 2011, although no Sinclair station had ever stood here.",
+   "now": "A 2019 report said the antiques had been sold and the building had become an auto-detailing shop. See it from the sidewalk.",
+   "sources": [
+    "https://www.leaderpub.com/?p=568232",
+    "https://abc57.com/news/retired-dentist-trying-to-boost-tourism-in-cassopolis",
+    "https://www.roadsideamerica.com/tip/34584",
+    "https://www.leaderpub.com/?p=568162"
+   ],
+   "verified": false,
+   "id": "sinclair-station"
+  },
+  {
+   "name": "Pioneer Log Cabin Museum",
+   "address": "400 S. Broadway, Cassopolis, MI 49031",
+   "lat": 41.90652,
+   "lon": -86.01267,
+   "built": "1923 (built May 23; dedicated June 20, 1923)",
+   "then": "Proposed by Charles Harmon of the Cass County Pioneer Society, the cabin was raised in a single day, May 23, 1923, by a crew of 46 men led by Ed Ferguson. They used numbered logs donated from farms across the county, each matched to its giver and tree species. Its doors are black walnut, and its stair rail came from an 1845 barn. It opened as a pioneer relic museum in June 1924.",
+   "now": "A volunteer-run museum in a village park, open at times through the season; see the museum’s website, pioneerlogcabinmuseum.com.",
+   "sources": [
+    "https://cassopolis-mi.us/services/parks_and_recreation.php",
+    "https://en.wikipedia.org/wiki/Pioneer_Log_Cabin_Museum",
+    "https://digitalcollections.detroitpubliclibrary.org/islandora/object/islandora%3A221296"
+   ],
+   "verified": true,
+   "id": "log-cabin",
+   "card": [
+    "cabin-postcard",
+    "The Pioneer Log Cabin, Cassopolis, on an old postcard"
+   ]
+  }
+ ],
+ "sanborn": [
+  {
+   "year": 1884,
+   "url": "https://www.loc.gov/item/sanborn03951_001/"
+  },
+  {
+   "year": 1892,
+   "url": "https://www.loc.gov/item/sanborn03951_002/"
+  },
+  {
+   "year": 1899,
+   "url": "https://www.loc.gov/item/sanborn03951_003/"
+  },
+  {
+   "year": 1909,
+   "url": "https://www.loc.gov/item/sanborn03951_004/"
+  },
+  {
+   "year": 1924,
+   "url": "https://www.loc.gov/item/sanborn03951_005/"
+  },
+  {
+   "year": 1947,
+   "url": "https://www.loc.gov/item/sanborn03951_006/"
+  }
+ ],
+ "markers": [
+  {
+   "title": "Cass County Courthouse (Michigan State Register of Historic Sites, 1976)",
+   "location": "120 N. Broadway, Cassopolis",
+   "url": "https://en.wikipedia.org/wiki/List_of_Michigan_State_Historic_Sites_in_Cass_County",
+   "note": "State Register listing; no marker plaque or text found online"
+  },
+  {
+   "title": "Cass County Veterans Memorial",
+   "location": "Cass County Veterans Memorial Roadside Park, M-62 north of Beeson St., near Cassopolis (41.94007, -86.03508)",
+   "url": "https://www.hmdb.org/m.asp?m=75408",
+   "note": "Erected 1946, with panels added 1989 and 1991. About 2 miles north of downtown, so not a walk stop."
+  }
+ ]
+}

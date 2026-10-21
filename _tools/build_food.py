@@ -85,7 +85,7 @@ JS = r'''<script>
       var b=document.createElement('button'); b.type='button'; b.className='fd-popb'; b.textContent=li.dataset.n+' ›'; b.addEventListener('click',function(){ map.closePopup(); go(li); });
       c.bindPopup(b); c.bindTooltip(li.dataset.n,{direction:'top', offset:[0,-6]}); marks.push({c:c, li:li}); li._c=c; c.addTo(map); });
     var sm=$('#fdMu'); sm.hidden=false; sm.addEventListener('click',function(){ showMu=!showMu; sm.setAttribute('aria-pressed',String(showMu));
-      if (showMu && !mu.length) fetch('/museums/places.json?v=1').then(function(r){ return r.json(); }).then(function(ps){ ps.forEach(function(p){ var c=L.circleMarker([p[1],p[2]],{radius:5, className:'mu-pin lib fd-mu', bubblingMouseEvents:false}); c.bindTooltip(p[0],{direction:'top'}); var a=document.createElement('a'); a.href='/museums/#'+p[3]; a.textContent=p[0]+' ›'; c.bindPopup(a); mu.push(c); c.addTo(map); }); });
+      if (showMu && !mu.length) fetch('/museums/places.json?v=1').then(function(r){ return r.json(); }).then(function(ps){ ps.forEach(function(p){ var c=L.circleMarker([p[1],p[2]],{radius:5, className:'mu-pin fd-mu', bubblingMouseEvents:false}); c.bindTooltip(p[0],{direction:'top'}); var a=document.createElement('a'); a.href='/museums/#'+p[3]; a.textContent=p[0]+' ›'; c.bindPopup(a); mu.push(c); c.addTo(map); }); });
       else mu.forEach(function(c){ showMu? c.addTo(map) : map.removeLayer(c); }); });
     pins(); };
   var need=function(){ if (window.L){ start(); return; } if (need.on) return; need.on=1;

@@ -1,0 +1,734 @@
+[
+ {
+  "type": "restaurant",
+  "name": "Caruso's Candy & Soda Fountain",
+  "town": "Dowagiac",
+  "county": "Cass",
+  "state": "MI",
+  "address": "130 S. Front St., Dowagiac, MI 49047",
+  "kind": "candy shop and soda fountain",
+  "story": "Antonio and Emilia Caruso opened the shop in September 1922, and it is now run by their granddaughter, the third generation of the family. The building dates from about 1874, and a candy and ice cream business called the Chicago Candy Kitchen was already on the site by 1910.",
+  "what": "An old-fashioned soda fountain where candy is still cooled on a big marble table, known for homemade chocolates and ice cream.",
+  "url": null,
+  "source": "https://wsbt.com/news/regional/carusos-candy-soda-fountain-nostalgic-100-years-sweet-tradition-dubai-chocolates-ice-cream-legacy-dowagiac-western-michigan-what-to-do ; https://dowagiacmuseum.info/wp-content/uploads/2025/10/Walking-Tour-of-Historic-Downtown-Dowagiac-2025.pdf",
+  "verified": true,
+  "ll": [
+   41.98331,
+   -86.10818
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Wood Fire Trattoria",
+  "town": "Dowagiac",
+  "county": "Cass",
+  "state": "MI",
+  "address": "134 S. Front St., Dowagiac, MI 49047",
+  "kind": "Italian restaurant",
+  "story": "The restaurant fills a downtown Dowagiac building that the tourist council describes as about 150 years old, which had been a restaurant before Wood Fire's founders took it over.",
+  "what": "Wood-fired pizza and Italian dinners in an old Front Street storefront next door to Caruso's.",
+  "url": "https://woodfiredining.com/",
+  "source": "https://swmichigan.org/member/wood-fire-trattoria ; https://woodfiredining.com/",
+  "verified": true,
+  "ll": [
+   41.98326,
+   -86.10823
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Holden Green Tavern",
+  "town": "Cassopolis",
+  "county": "Cass",
+  "state": "MI",
+  "address": "151 S. Broadway St., Cassopolis, MI 49031",
+  "kind": "tavern",
+  "story": "The building was the village post office from 1897 to 1957 and later held a barbershop and a thrift shop. Steve and Shelley Schroeder bought it in 2018 and opened the tavern in 2021, keeping an old telephone booth and barber chairs more than 100 years old.",
+  "what": "A cozy downtown tavern known for its pizza and sandwiches, with old photos of Cassopolis on the walls.",
+  "url": null,
+  "source": "https://www.wndu.com/2024/08/22/michiana-eats-holden-green-tavern ; https://leaderpub.com/?p=851367",
+  "verified": false,
+  "ll": [
+   41.91065,
+   -86.01241
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Thistledown & Row",
+  "town": "Buchanan",
+  "county": "Berrien",
+  "state": "MI",
+  "address": "103 Days Ave., Buchanan, MI 49107",
+  "kind": "restaurant and cidery",
+  "story": "It occupies the Redden Building, which brothers Samuel and Levi Redden built in 1884 and which then stood empty for years. The building was restored after 2020, and the restaurant opened on January 1, 2025.",
+  "what": "Modern American food with house-made ciders, meads and Michigan wines in a restored brick building downtown.",
+  "url": "https://www.thistledownandrow.com",
+  "source": "https://leaderpub.com/?p=896592 ; https://leaderpub.com/?p=905988 ; https://www.michigan.org/property/thistledown-row",
+  "verified": true,
+  "ll": [
+   41.82721,
+   -86.35946
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Sunny Italy Cafe",
+  "town": "South Bend",
+  "county": "St. Joseph",
+  "state": "IN",
+  "address": "601 N. Niles Ave., South Bend, IN 46617",
+  "kind": "Italian restaurant",
+  "story": "It opened in 1926 as the North Niles Avenue Cafe, and Notre Dame students nicknamed it \"Rosie's\" after owner Rosie Vumbaca. Jimmy and Josie Bamber bought it in 1940 and named it Sunny Italy.",
+  "what": "South Bend's oldest Italian restaurant, a red-checkered-tablecloth place with old-school charm.",
+  "url": "https://www.sunnyitalycafe.com/",
+  "source": "https://sites.nd.edu/ndarchives/sunny-italy/ ; https://visitindiana.in.gov/blog/post/south-bends-oldest-italian-restaurant-is-a-must-try/ ; https://www.visitsouthbend.com/blog/restaurants-a-to-z/",
+  "verified": false,
+  "ll": [
+   41.68336,
+   -86.24465
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Rocco's",
+  "town": "South Bend",
+  "county": "St. Joseph",
+  "state": "IN",
+  "address": "537 N. St. Louis Blvd., South Bend, IN 46617",
+  "kind": "pizzeria and Italian restaurant",
+  "story": "Rocco's has been making pizza near Notre Dame since 1951 and is now owned by Warren and Linda Verteramo.",
+  "what": "A homey Italian place known for its old-style pizza.",
+  "url": "https://roccosoriginalpizza.com",
+  "source": "https://www.wndu.com/2024/02/29/michiana-eats-roccos ; https://abc57.com/news/tradition-by-the-slice-the-story-of-roccos-pizza",
+  "verified": true,
+  "ll": [
+   41.6831,
+   -86.2416
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Barnaby's",
+  "town": "South Bend",
+  "county": "St. Joseph",
+  "state": "IN",
+  "address": "713 E. Jefferson Blvd., South Bend, IN 46617",
+  "kind": "pizzeria",
+  "story": "George and Ruby Stratigos opened Barnaby's in 1969, and their son John runs it today. It stands where his grandparents built a brownstone house in 1920; his grandfather Spyridon also ran the Stratigon Grille downtown from 1914 to 1963.",
+  "what": "A neighborhood pizza and sandwich spot across from Howard Park in the East Bank.",
+  "url": "https://www.visitsouthbend.com/directory/barnabys-south-bend/",
+  "source": "https://www.visitsouthbend.com/blog/barnabys-pizza-south-bend/",
+  "verified": true,
+  "ll": [
+   41.67537,
+   -86.24094
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Café Navarre",
+  "town": "South Bend",
+  "county": "St. Joseph",
+  "state": "IN",
+  "address": "101 N. Michigan St., South Bend, IN 46601",
+  "kind": "fine-dining restaurant",
+  "story": "The restaurant is in a restored former bank building at the corner of Michigan and Washington, the old center of downtown, and is now in its fourteenth year.",
+  "what": "A special-occasion restaurant serving modern Italian food, seafood and house-made pasta.",
+  "url": "https://toast.app/r/cafe-navarre-101-n-michigan-street",
+  "source": "https://www.visitsouthbend.com/blog/a-history-lovers-guide-to-the-bend/ ; https://toast.app/r/cafe-navarre-101-n-michigan-street",
+  "verified": true,
+  "ll": [
+   41.6765,
+   -86.25047
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Midway Tavern (Martha's Midway)",
+  "town": "Mishawaka",
+  "county": "St. Joseph",
+  "state": "IN",
+  "address": "West Fourth St. near Smith St., Mishawaka, IN",
+  "kind": "tavern",
+  "story": "The tavern turned 100 in October 2024. A Belgian immigrant family took it over in the early years, Martha ran it until she died at 91, and her descendants run it now. The barroom was remodeled in 1933 and looks much as it did then.",
+  "what": "A neighborhood bar with a back room known for live blues.",
+  "url": null,
+  "source": "https://abc57.com/news/midway-tavern-celebrates-their-centennial ; https://www.leaderpub.com/?p=756966 ; https://wsbt.com/news/local/gallery/mishawaka-midway-tavern-lunch-celebrates-100-years-century-business-beer-music-musicians-blues-show-drinks-pool-knute-rockne-al-capone-celebrity-bar-family-indiana",
+  "verified": false
+ },
+ {
+  "type": "restaurant",
+  "name": "South Side Soda Shop & Diner",
+  "town": "Goshen",
+  "county": "Elkhart",
+  "state": "IN",
+  "address": "1122 S. Main St., Goshen, IN 46526",
+  "kind": "diner and soda fountain",
+  "story": "The building opened in 1910 as a grocery that also held a post office. It became a soda shop in 1940, closed in the early 1980s, and reopened as the South Side Soda Shop in 1986; the diner-car addition came around 1994.",
+  "what": "A retro family diner known for its chili, shakes and malts, and in-house pies, and seen on TV's Diners, Drive-Ins and Dives.",
+  "url": "https://www.visitelkhartcounty.com/listing/south-side-soda-shop/795/",
+  "source": "https://www.indianaconnection.org/eclectic-dining-and-timeless-charm/ ; https://www.visitelkhartcounty.com/listing/south-side-soda-shop/795/",
+  "verified": true,
+  "ll": [
+   41.57174,
+   -85.82978
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Goshen Brewing Company",
+  "town": "Goshen",
+  "county": "Elkhart",
+  "state": "IN",
+  "address": "315 W. Washington St., Goshen, IN 46526",
+  "kind": "brewpub",
+  "story": "The brewpub opened in May 2015 in a former office building of the Northern Indiana Public Service Company (NIPSCO), and it reused copper left in the building for its beer flights.",
+  "what": "A riverside brewpub with a beer garden, local food and live music.",
+  "url": "https://www.goshenbrewing.com/",
+  "source": "https://record.goshen.edu/?p=42363 ; https://www.visitelkhartcounty.com/blog/post/jesse-sensenig/",
+  "verified": true,
+  "ll": [
+   41.58519,
+   -85.83876
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Kercher's Sunrise Orchards",
+  "town": "Goshen",
+  "county": "Elkhart",
+  "state": "IN",
+  "address": "19498 County Road 38, Goshen, IN 46526",
+  "kind": "orchard farm market",
+  "story": "The Kercher family came from Ohio in 1851, and William Wheeler Kercher started growing apples commercially on 40 acres in 1922. The fourth generation, Tom and Maureen Kercher, runs the orchard with their children.",
+  "what": "A fall farm stop with apples, pumpkins, a corn maze, wagon rides and a market of homemade goods.",
+  "url": "https://www.visitelkhartcounty.com/listing/kerchers-sunrise-orchard/8/",
+  "source": "https://www.infarmbureau.org/newsdetail/2022/08/31/kercher-s-sunrise-orchards-continues-to-offer-apples-and-a-whole-lot-more ; https://www.visitelkhartcounty.com/listing/kerchers-sunrise-orchard/8/",
+  "verified": false
+ },
+ {
+  "type": "restaurant",
+  "name": "Das Dutchman Essenhaus",
+  "town": "Middlebury",
+  "county": "Elkhart",
+  "state": "IN",
+  "address": "240 U.S. 20, Middlebury, IN 46540",
+  "kind": "Amish-style restaurant and bakery",
+  "story": "The restaurant has served Amish-style home cooking since 1971 and has grown into a complex with an inn, a bakery and shops.",
+  "what": "Indiana's big family-style Amish restaurant, famous for noodles, fried chicken and pies.",
+  "url": "https://www.essenhaus.com/",
+  "source": "https://www.visitelkhartcounty.com/listing/das-dutchman-essenhaus-restaurant/516/ ; https://www.essenhaus.com/",
+  "verified": true,
+  "ll": [
+   41.6679,
+   -85.72595
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Blue Gate Restaurant",
+  "town": "Shipshewana",
+  "county": "LaGrange",
+  "state": "IN",
+  "address": "195 N. Van Buren St., Shipshewana, IN 46565",
+  "kind": "Amish-style restaurant and bakery",
+  "story": "Mel and June Riegsecker bought and fixed up an old Shipshewana factory building in 1984. In the mid-1980s they opened a 50-seat restaurant called Der Strudel Haus, which grew into the Blue Gate.",
+  "what": "Family-style Amish cooking and pies in the center of Shipshewana, with a theater next door.",
+  "url": "https://www.thebluegate.com/",
+  "source": "https://www.thebluegate.com/shipshewana/riegsecker/about/",
+  "verified": true,
+  "ll": [
+   41.67572,
+   -85.58053
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Coppes Commons",
+  "town": "Nappanee",
+  "county": "Elkhart",
+  "state": "IN",
+  "address": "401 E. Market St., Nappanee, IN 46550",
+  "kind": "food hall in a historic factory",
+  "story": "The complex fills the 1887 factory where the Coppes company, founded in 1876 by Frank and John Coppes, built the famous \"Hoosier\" kitchen cabinets and shipped them across the country.",
+  "what": "A restored cabinet factory with a coffee shop, deli, bakery, pretzels, ice cream and a small cabinet museum.",
+  "url": "https://www.coppescommons.com/",
+  "source": "https://www.visitelkhartcounty.com/listing/coppes-commons/964/ ; https://www.coppescommons.com/ ; https://townepost.com/indiana/lakes-region/market-street-magic/",
+  "verified": true,
+  "ll": [
+   41.44256,
+   -85.99729
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Bell's Eccentric Café",
+  "town": "Kalamazoo",
+  "county": "Kalamazoo",
+  "state": "MI",
+  "address": "355 E. Kalamazoo Ave., Kalamazoo, MI 49007",
+  "kind": "brewpub",
+  "story": "Larry Bell started a homebrew supply shop in 1983 and began selling his own beer in 1985. The Eccentric Café opened next to the brewery in 1993, and Discover Kalamazoo calls it the first brewery pub in Michigan.",
+  "what": "A craft-beer landmark with a full kitchen, a beer garden and a music hall.",
+  "url": "https://cafe.bellsbeer.com/",
+  "source": "https://en.wikipedia.org/wiki/Bell%27s_Brewery ; https://www.discoverkalamazoo.com/blog/post/history-buffs-two-day-weekend-in-kalamazoo-michigan/ ; https://cafe.bellsbeer.com/",
+  "verified": true,
+  "ll": [
+   42.29495,
+   -85.5787
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Louie's Trophy House",
+  "town": "Kalamazoo",
+  "county": "Kalamazoo",
+  "state": "MI",
+  "address": "629 Walbridge St., Kalamazoo, MI 49007",
+  "kind": "tavern",
+  "story": "Louie's says it has served the community since 1918, starting as a soup kitchen, and calls the Trophy House Kalamazoo's oldest bar.",
+  "what": "A bar and grill with walls full of mounted game, which gives it the feel of a northwoods cabin.",
+  "url": "https://louieskzoo.com/",
+  "source": "https://louieskzoo.com/ ; https://www.discoverkalamazoo.com/blog/post/history-buffs-two-day-weekend-in-kalamazoo-michigan/",
+  "verified": true,
+  "ll": [
+   42.2977,
+   -85.57674
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "La Cantina Ristorante Italiano",
+  "town": "Paw Paw",
+  "county": "Van Buren",
+  "state": "MI",
+  "address": "139 W. Michigan Ave., Paw Paw, MI 49079",
+  "kind": "Italian restaurant",
+  "story": "Amo and Rose Scotese founded La Cantina in 1936, and the third generation of the family runs it today.",
+  "what": "A lively family Italian restaurant serving pasta and pizza every night.",
+  "url": "https://www.lacantinapawpaw.com/",
+  "source": "https://www.michigan.org/property/la-cantina-inc ; https://southhaven.org/directory/la-cantina-ristorante-italiano ; https://int.wwmt.com/features/road-trippin/road-trippin-family-tradition-and-authentic-italian-eats-makes-la-cantina-a-must-visit",
+  "verified": true,
+  "ll": [
+   42.2178,
+   -85.89461
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Clementine's",
+  "town": "South Haven",
+  "county": "Van Buren",
+  "state": "MI",
+  "address": "500 Phoenix St., South Haven, MI 49090",
+  "kind": "restaurant and saloon",
+  "story": "The restaurant fills the former Citizens Bank building, built in about 1897 and refurbished with its period look intact. One family has run it since 1982.",
+  "what": "A busy downtown spot known for burgers and onion rings under the old bank's high ceilings.",
+  "url": "https://www.ohmydarling.com",
+  "source": "https://www.southhaven.org/directory/clementines/ ; https://shoreline.mydigitalpublication.com/article/Clementine%E2%80%99s/2876548/436413/article.html ; https://www.ohmydarling.com",
+  "verified": true,
+  "ll": [
+   42.40309,
+   -86.27389
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Sherman's of South Haven",
+  "town": "South Haven",
+  "county": "Van Buren",
+  "state": "MI",
+  "address": "1601 Phoenix St., South Haven, MI 49090",
+  "kind": "ice cream parlor",
+  "story": "Sherman's started as a dairy in 1916, turned to ice cream in the 1950s and opened its South Haven stand in 1958. After 66 seasons it closed in fall 2024, then reopened in 2025 under new owner Mike Schimanski.",
+  "what": "A classic summer ice cream stand famous for towering scoops.",
+  "url": "https://www.southhaven.org/directory/shermans-of-south-haven/",
+  "source": "https://fox17online.com/news/local-news/south-mi/van-buren/shermans-dairy-bar-to-reopen-may-1 ; https://wilcoxnewspapers.com/ice-cream-shop-reopens-under-new-ownership",
+  "verified": false
+ },
+ {
+  "type": "restaurant",
+  "name": "The Livery",
+  "town": "Benton Harbor",
+  "county": "Berrien",
+  "state": "MI",
+  "address": "190 5th St., Benton Harbor, MI 49022",
+  "kind": "brewpub",
+  "story": "The brewpub is in a restored 1800s building in the Arts District that once housed the Palace Livery, a horse livery stable.",
+  "what": "Craft beer, pub food and live music in an old brick livery.",
+  "url": "http://liverybrew.com/",
+  "source": "https://swmichigan.org/blog/the-livery-beer-food-music-makers-trail ; http://liverybrew.com/",
+  "verified": true,
+  "ll": [
+   42.11847,
+   -86.45368
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Bit of Swiss Pastry Shoppe",
+  "town": "Stevensville",
+  "county": "Berrien",
+  "state": "MI",
+  "address": "4333 Ridge Rd., Stevensville, MI 49127",
+  "kind": "bakery",
+  "story": "When St. Joseph's Whitcomb Hotel closed in 1966, Emil Tosi bought its bakeshop equipment and set it up in a cabin on his family's property. The hotel's former baker, Hans Kottmann, opened the bakery there in 1967.",
+  "what": "A European-style pastry shop known for tortes, pastries and breads.",
+  "url": "https://www.bitofswiss.com/",
+  "source": "https://www.bitofswiss.com/ ; https://swmichigan.org/member/bit-of-swiss",
+  "verified": true,
+  "ll": [
+   42.03922,
+   -86.52311
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Grande Mere Inn",
+  "town": "Stevensville",
+  "county": "Berrien",
+  "state": "MI",
+  "address": "5800 Red Arrow Hwy., Stevensville, MI 49127",
+  "kind": "restaurant",
+  "story": "Pete and Nancy Racine opened the restaurant in 1980, and their son Charley and his wife Tricia carry it on.",
+  "what": "A family-run dinner house with sunset views over the lake and Michigan-farm cooking.",
+  "url": "https://www.grandemereinn.com/",
+  "source": "https://www.grandemereinn.com/ ; https://swmichigan.org/member/grande-mere-inn",
+  "verified": true,
+  "ll": [
+   42.01274,
+   -86.52879
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Jollay Orchards",
+  "town": "Coloma",
+  "county": "Berrien",
+  "state": "MI",
+  "address": "1850 Friday Rd., Coloma, MI 49038",
+  "kind": "orchard farm market",
+  "story": "The family has farmed this land since 1857, and the eighth generation now works it.",
+  "what": "A u-pick fruit farm whose market sells fresh cider, baked goods and apple-cinnamon doughnuts.",
+  "url": "https://www.jollayorchards.com/",
+  "source": "https://www.jollayorchards.com/ ; https://abc57.com/news/abc57-road-trip-jollay-orchards",
+  "verified": true,
+  "ll": [
+   42.14755,
+   -86.30732
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Journeyman Distillery & Staymaker",
+  "town": "Three Oaks",
+  "county": "Berrien",
+  "state": "MI",
+  "address": "109 Generations Dr., Three Oaks, MI 49128",
+  "kind": "distillery and restaurant",
+  "story": "The distillery and its restaurant, Staymaker, fill a refurbished 1800s factory that once made featherbone and corsets.",
+  "what": "Tours, tastings and a restaurant in a big brick factory.",
+  "url": "https://www.journeyman.com/",
+  "source": "https://www.journeyman.com/",
+  "verified": true,
+  "ll": [
+   41.80279,
+   -86.61156
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Redamak's",
+  "town": "New Buffalo",
+  "county": "Berrien",
+  "state": "MI",
+  "address": "616 E. Buffalo St., New Buffalo, MI 49117",
+  "kind": "burger tavern",
+  "story": "George and Gladys Redamak started the place in the late 1940s. Jim and Angie Maroney took it over on July 15, 1975, and their family still runs it.",
+  "what": "A Harbor Country burger institution open about eight months a year.",
+  "url": "https://www.redamaks.com/",
+  "source": "https://www.redamaks.com/history/ ; https://www.redamaks.com/",
+  "verified": true,
+  "ll": [
+   41.79702,
+   -86.73703
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Oink's Dutch Treat",
+  "town": "New Buffalo",
+  "county": "Berrien",
+  "state": "MI",
+  "address": "227 W. Buffalo St., New Buffalo, MI 49117",
+  "kind": "ice cream parlor",
+  "story": "This family-owned ice cream shop has been a New Buffalo landmark for more than 36 years.",
+  "what": "A pig-themed ice cream parlor with a long list of flavors.",
+  "url": "https://www.oinksdutchtreat.com/",
+  "source": "https://www.oinksdutchtreat.com/",
+  "verified": true,
+  "ll": [
+   41.7926,
+   -86.74657
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Leeds Public House",
+  "town": "Michigan City",
+  "county": "LaPorte",
+  "state": "IN",
+  "address": "401 Franklin St., Michigan City, IN 46360",
+  "kind": "pub",
+  "story": "The pub opened in 2019 in a longtime downtown building at Fourth and Franklin that was once a bank and later Ryan's Irish Pub.",
+  "what": "A downtown gastropub with weekend brunch.",
+  "url": "https://www.leedspublichouse.com/",
+  "source": "https://nwindianabusiness.com/pbqm ; https://www.leedspublichouse.com/",
+  "verified": true,
+  "ll": [
+   41.71812,
+   -86.90258
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Heston Supper Club",
+  "town": "La Porte (Hesston)",
+  "county": "LaPorte",
+  "state": "IN",
+  "address": "2003 E. 1000 N., La Porte, IN 46350",
+  "kind": "supper club",
+  "story": "It has been family-owned for more than 40 years, run by Tim Ohlund and his wife Jackie, in an old-style building set back among the cornfields.",
+  "what": "A classic Midwestern supper club with neon signs, steaks and homemade desserts.",
+  "url": "https://www.hestonsupperclub.com/",
+  "source": "https://www.hestonsupperclub.com/ ; https://ediblemichiana.ediblecommunities.com/eat/join-club",
+  "verified": true
+ },
+ {
+  "type": "restaurant",
+  "name": "Blackbird Waterhouse",
+  "town": "Coloma",
+  "county": "Berrien",
+  "state": "MI",
+  "address": "4896 Paw Paw Lake Rd., Coloma, MI 49038",
+  "kind": "restaurant",
+  "story": "George Klotter opened this building in the late 1920s as the Wil-O-Paw Station and Inn, a barbecue stand with a car repair shop out front, and by the 1940s it was a supper club. The Immers bought and renovated it in 2018.",
+  "what": "Smoked meats, steaks and live music in an old roadhouse.",
+  "url": "https://www.blackbirdwaterhouse.com/",
+  "source": "https://ediblemichiana.ediblecommunities.com/eat/historic-lake-area-eateries-celebrate-past-modern-flair",
+  "verified": false,
+  "ll": [
+   42.20058,
+   -86.29527
+  ]
+ },
+ {
+  "type": "lodging",
+  "name": "Henderson Castle",
+  "town": "Kalamazoo",
+  "county": "Kalamazoo",
+  "state": "MI",
+  "address": "100 Monroe St., Kalamazoo, MI 49006",
+  "kind": "historic inn and restaurant",
+  "story": "Frank Henderson, president of the Henderson-Ames Company, had the castle finished in 1895 to a design by C. A. Gombert of Milwaukee, at a cost of $72,000. Chef François Moyet bought it in 2011 and runs it as an inn.",
+  "what": "A hilltop stone mansion with 14 guest rooms, a chophouse restaurant, afternoon tea, tours and a vineyard.",
+  "url": "https://www.hendersoncastle.com/",
+  "source": "https://www.hendersoncastle.com/index.php/castle ; https://www.discoverkalamazoo.com/blog/post/history-buffs-two-day-weekend-in-kalamazoo-michigan/",
+  "verified": true,
+  "ll": [
+   42.29292,
+   -85.60498
+  ]
+ },
+ {
+  "type": "lodging",
+  "name": "The Kalamazoo House",
+  "town": "Kalamazoo",
+  "county": "Kalamazoo",
+  "state": "MI",
+  "address": "447 W. South St., Kalamazoo, MI 49007",
+  "kind": "historic inn",
+  "story": "David and Amelia Lilienfeld, of a cigar-making family, built the Victorian house in 1878. It was set for demolition in 1985 for a parking lot until restorers Lou and Annette Conti saved it, and it has been an inn nearly ever since.",
+  "what": "An Italianate mansion inn near downtown, named after the city's first hotel.",
+  "url": "https://www.thekalamazoohouse.com/",
+  "source": "https://www.thekalamazoohouse.com/history ; https://www.thekalamazoohouse.com/",
+  "verified": true,
+  "ll": [
+   42.28944,
+   -85.58846
+  ]
+ },
+ {
+  "type": "lodging",
+  "name": "Stuart Avenue Inn",
+  "town": "Kalamazoo",
+  "county": "Kalamazoo",
+  "state": "MI",
+  "address": "229 Stuart Ave., Kalamazoo, MI 49007",
+  "kind": "B&B",
+  "story": "The inn is an 1886 Queen Anne house in Kalamazoo's Stuart Neighborhood Historic District.",
+  "what": "A Victorian bed-and-breakfast on a street of grand old houses.",
+  "url": "https://stuartavenueinn.com",
+  "source": "https://www.michigan.org/property/stuart-avenue-inn ; https://www.discoverkalamazoo.com/blog/post/cozy-up-at-kalamazoos-bed-breakfasts-this-winter/ ; https://stuartavenueinn.com",
+  "verified": true,
+  "ll": [
+   42.29239,
+   -85.59781
+  ]
+ },
+ {
+  "type": "lodging",
+  "name": "Hotel Elkhart",
+  "town": "Elkhart",
+  "county": "Elkhart",
+  "state": "IN",
+  "address": "500 S. Main St., Elkhart, IN 46516",
+  "kind": "historic hotel",
+  "story": "The hotel was built in 1923 and restored over more than two years, keeping its plaster lobby ceilings, terrazzo floors and ballroom. It reopened in summer 2021 as part of Hilton's Tapestry Collection.",
+  "what": "A 93-room downtown hotel with a corner bar, a rooftop bar and a café.",
+  "url": "https://www.hotelelkhart.com/",
+  "source": "https://hospitalitydesign.com/news/hotel-elkhart-opens-in-indiana/128308 ; https://www.hotelelkhart.com/",
+  "verified": true,
+  "ll": [
+   41.68331,
+   -85.97095
+  ]
+ },
+ {
+  "type": "lodging",
+  "name": "Oliver Inn Bed & Breakfast",
+  "town": "South Bend",
+  "county": "St. Joseph",
+  "state": "IN",
+  "address": "630 W. Washington St., South Bend, IN 46601",
+  "kind": "B&B",
+  "story": "James Oliver, inventor of the Oliver Chilled Plow, had this 1886 Queen Anne mansion built as a wedding gift for his daughter. South Bend's preservation commission rates it an \"outstanding\" historic structure.",
+  "what": "A ten-room Victorian B&B a short walk from downtown on West Washington Street.",
+  "url": "https://www.oliverinn.com/",
+  "source": "https://ediblemichiana.ediblecommunities.com/things-do/oliver-inn-south-bend ; https://www.oliverinn.com/",
+  "verified": true,
+  "ll": [
+   41.67623,
+   -86.25823
+  ]
+ },
+ {
+  "type": "lodging",
+  "name": "Market St. Manor",
+  "town": "Nappanee",
+  "county": "Elkhart",
+  "state": "IN",
+  "address": "302 E. Market St., Nappanee, IN 46550",
+  "kind": "B&B and tea house",
+  "story": "This is the Queen Anne home of Frank and Katharine Coppes, built from 1887 to 1893. Frank and his brother John founded the Coppes cabinet company in 1876, and the house has been on the National Register since 1990.",
+  "what": "A pink Victorian mansion B&B that also serves afternoon tea.",
+  "url": "https://hisbedandbreakfast.com",
+  "source": "https://en.wikipedia.org/wiki/Frank_and_Katharine_Coppes_House ; https://townepost.com/indiana/lakes-region/market-street-magic/ ; https://hisbedandbreakfast.com",
+  "verified": true,
+  "ll": [
+   41.44272,
+   -85.99852
+  ]
+ },
+ {
+  "type": "lodging",
+  "name": "Gordon Beach Inn",
+  "town": "Union Pier",
+  "county": "Berrien",
+  "state": "MI",
+  "address": "16220 Lakeshore Rd., Union Pier, MI 49129",
+  "kind": "historic inn",
+  "story": "Chicago physician Louis Gordon built the inn in 1924 at a time when nearby lake towns turned away Jewish visitors. It is a State Historic Site and one of the last resort hotels of its era along this shore.",
+  "what": "A twenty-room 1920s resort inn in the woods near the beach, with a restaurant on site.",
+  "url": "https://www.gordonbeachinn.com/",
+  "source": "https://www.gordonbeachinn.com/ ; https://ediblemichiana.ediblecommunities.com/eat/historic-lake-area-eateries-celebrate-past-modern-flair",
+  "verified": true,
+  "ll": [
+   41.82617,
+   -86.699
+  ]
+ },
+ {
+  "type": "lodging",
+  "name": "The Inn at Union Pier",
+  "town": "Union Pier",
+  "county": "Berrien",
+  "state": "MI",
+  "address": "9708 Berrien St., Union Pier, MI 49129",
+  "kind": "inn",
+  "story": "In the 1920s the property was the Karonsky Hotel, a kosher resort for Chicago vacationers.",
+  "what": "A Harbor Country inn with antique Swedish tile stoves (kakelugns) in many rooms.",
+  "url": "https://www.innatunionpier.com/",
+  "source": "https://www.innatunionpier.com/about ; https://www.innatunionpier.com/",
+  "verified": true
+ },
+ {
+  "type": "lodging",
+  "name": "Lakeside Inn",
+  "town": "Lakeside",
+  "county": "Berrien",
+  "state": "MI",
+  "address": "15251 Lakeshore Rd., Lakeside, MI 49116",
+  "kind": "historic inn",
+  "story": "John and Nancy Aylsworth bought the site in 1901 and built the inn, probably in the early 1910s. After decades as a resort and an arts center, it reopened as a hotel in 1995 and was added to the National Register in 2009.",
+  "what": "A rambling century-old lakeside inn on the bluff.",
+  "url": "https://www.lakesideinns.com/",
+  "source": "https://en.wikipedia.org/wiki/Lakeside_Inn_(Lakeside,_Michigan) ; https://www.lakesideinns.com/",
+  "verified": true,
+  "ll": [
+   41.84319,
+   -86.67872
+  ]
+ },
+ {
+  "type": "lodging",
+  "name": "Carriage House at the Harbor",
+  "town": "South Haven",
+  "county": "Van Buren",
+  "state": "MI",
+  "address": "118 Woodman Ave., South Haven, MI 49090",
+  "kind": "B&B",
+  "story": "J. F. Crowley built the house in 1886 as the home of Henry and Ellen Avery.",
+  "what": "A harbor-side B&B a short walk from the river and downtown.",
+  "url": "https://www.carriagehouseharbor.com/",
+  "source": "https://southhaven.org/blog/history-of-the-carriage-house ; https://www.carriagehouseharbor.com/",
+  "verified": true
+ },
+ {
+  "type": "lodging",
+  "name": "Yelton Manor",
+  "town": "South Haven",
+  "county": "Van Buren",
+  "state": "MI",
+  "address": "140 N. Shore Dr., South Haven, MI 49090",
+  "kind": "B&B",
+  "story": "Its guest house was built on the foundation of the old Dewey Hotel, beside the main manor, which was designed as a large family home.",
+  "what": "An adults-only boutique B&B across from the beach.",
+  "url": "https://www.yeltonmanor.com/",
+  "source": "https://www.yeltonmanor.com/",
+  "verified": false,
+  "ll": [
+   42.40697,
+   -86.27828
+  ]
+ },
+ {
+  "type": "lodging",
+  "name": "The Morris Estate",
+  "town": "Niles",
+  "county": "Berrien",
+  "state": "MI",
+  "address": "1997 Morris Dr., Niles, MI 49120",
+  "kind": "B&B on a historic estate",
+  "story": "The riverside estate first belonged to E. M. Morris, a businessman known for planting trees and for his gifts to the community. Braden and Amber Janowski bought it in 2010 and opened it as a B&B in 2018.",
+  "what": "A riverside estate with guest rooms, weddings and events.",
+  "url": "https://www.morrisestatebedandbreakfast.com/",
+  "source": "https://leaderpub.com/?p=792770 ; https://swmichigan.org/plan-and-stay/towns/niles",
+  "verified": false,
+  "ll": [
+   41.84931,
+   -86.28712
+  ]
+ }
+]

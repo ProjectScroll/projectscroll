@@ -41,7 +41,8 @@ JS = r'''<script>
       var b=li.querySelector('.wk-sb'); if (b){ b.hidden=!navigator.geolocation; b.disabled=!!stamp[li.id]; b.textContent=stamp[li.id]? 'Stamped ✓' : 'I’m here: stamp it'; }
       if (pins[i]){ var el=pins[i].getElement(); if (el){ el.classList.toggle('seen',!!seen[li.id]); el.classList.toggle('cur',i===cur); } } }); };
   var show=function(i, fly){ cur=(i+N)%N; var li=stops[cur]; seen[li.id]=1; save();
-    stage.innerHTML=''; var c=li.cloneNode(true); c.removeAttribute('id'); c.querySelectorAll('[id]').forEach(function(x){ x.removeAttribute('id'); }); c.querySelectorAll('.mu-me,.mu-msg').forEach(function(x){ x.remove(); });
+    stage.innerHTML=''; var c=document.createElement('div'); c.className='wk wk-card'; c.innerHTML=li.innerHTML; c.querySelectorAll('[id]').forEach(function(x){ x.removeAttribute('id'); }); c.querySelectorAll('.mu-me,.mu-msg').forEach(function(x){ x.remove(); });
+    var h3=c.querySelector('h3'); if (h3){ var h2=document.createElement('h2'); h2.className='wk-h'; h2.textContent=h3.textContent; h3.replaceWith(h2); }
     stage.appendChild(c); num.textContent='Stop '+(cur+1)+' of '+N; prev.disabled=false; next.disabled=false;
     if (map && fly!==false){ map.flyTo(LL(li), 18, {duration:calm?0:.8}); }
     if (Object.keys(seen).length===N && window.psEarn) window.psEarn('walker');
