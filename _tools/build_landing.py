@@ -1,5 +1,6 @@
 # Two pages written for the searches people actually make: "Cassopolis history" and "genealogy research services (Michigan)".
 import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
+from oldcards import strip as ocstrip
 
 cass='''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Cass County, Michigan</p>
@@ -57,6 +58,7 @@ cass='''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="note">Project Scroll is independent research and is not affiliated with the Village of Cassopolis, Cass County, or any historical society. Corrections are welcome at <a href="mailto:research@projectscroll.com?subject=Cassopolis">research@projectscroll.com</a>.</p>
     <p class="ctas"><a class="btn primary" href="/#hunt">Play the hunt</a> <a class="btn" href="/map/cassopolis/">Cassopolis, 1860 and today</a> <a class="btn" href="/research/">Research services</a></p>
 '''
+cass=cass.replace('    <h2>The other towns of the valley</h2>', ocstrip(['Cassopolis'], 4, '/postcards/#cassopolis')+'    <h2>The other towns of the valley</h2>',1)
 page('cassopolis/index.html', 'Cassopolis, Michigan history and records · Project Scroll',
      'The history of Cassopolis, county seat of Cass County, Michigan, from the record: the 1860 map, the county histories of 1875, 1882 and 1906, certificates and newspapers, each linked where it is held.', cass, og='https://projectscroll.com/og/cassopolis.jpg')
 
@@ -115,7 +117,7 @@ for slug,name,county,lede,facts,where,og in PLACES:
     <p class="lede">{lede}</p>
     <h2>The town at a glance</h2>
     <ul>{items}</ul>
-    <h2>Where to look</h2>
+{ocstrip({'dowagiac':['Dowagiac'],'niles':['Niles'],'paw-paw':['Paw Paw']}[slug], 4, '/postcards/#'+slug)}    <h2>Where to look</h2>
     <p>{where} The <a href="/records/">records page</a> links each source where it is held, and the <a href="/glossary/">glossary</a> explains the words the old records use.</p>
     <p class="note">Project Scroll is independent research and is not affiliated with the {"Village" if slug=="paw-paw" else "City"} of {name} or any historical society. Corrections are welcome at <a href="mailto:research@projectscroll.com?subject={name}">research@projectscroll.com</a>.</p>
     <p class="ctas"><a class="btn primary" href="/map/{slug}/">{name}, 1860 and today</a> <a class="btn" href="/#hunt">Play the hunt</a> <a class="btn" href="/research/">Research services</a></p>

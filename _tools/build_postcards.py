@@ -1,5 +1,6 @@
 """Cassopolis on old postcards: stand where the photographer stood.  python3 _tools/build_postcards.py"""
 import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
+from oldcards import gallery, D as OC
 CARDS=[
  ('yerty','West side of Broadway, looking south','A Yerty postcard. The photographer stood on Broadway with the stores of the west side on the right.'),
  ('broadway1','Broadway in the days of wagons','Horses and wagons on the main street, the store fronts close together.'),
@@ -25,6 +26,10 @@ body=f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
       <li><b>Send it in</b> to <a href="mailto:research@projectscroll.com?subject=Rephotographed%20postcard">research@projectscroll.com</a>, saying which card and when you took it. By sending it you let us show it here with your name.</li>
     </ol>
     <p class="note">The pictures are taken from old postcards of Cassopolis. Each was published before 1931, or published without a copyright notice, and is in the public domain in the United States. The pairings will be added as readers send them in.</p>
+    <h2 id="valley">The valley on old postcards and photographs</h2>
+    <p>{len(OC)} more views of the towns of the St. Joseph River valley, from Cassopolis to Michigan City: main streets, depots, courthouses, libraries, hotels, mills, fairs and parades, most of them between 1900 and 1930. Each one links to the library or archive that holds it. Press a picture to see it full size.</p>
+    <nav class="oc-jump" aria-label="Jump to a town">{''.join(f'<a href="#{a}">{b}</a>' for a,b in [('cassopolis','Cassopolis'),('dowagiac','Dowagiac'),('edwardsburg','Edwardsburg'),('marcellus','Marcellus'),('vandalia','Vandalia'),('the-villages','Villages'),('niles','Niles'),('benton-harbor-and-st-joseph','Benton Harbor'),('south-haven','South Haven'),('three-rivers','Three Rivers'),('kalamazoo','Kalamazoo'),('south-bend-and-mishawaka','South Bend'),('elkhart','Elkhart'),('goshen','Goshen'),('la-porte','La Porte'),('michigan-city','Michigan City')])}</nav>
+{gallery()}    <p class="note">Every picture here is in the public domain in the United States: published before 1931, or published without a copyright notice. The libraries named under each one hold the originals and are thanked for making them free to see; none of them endorses this site. Have an old postcard of the valley? <a href="/story/">Tell us about it</a>.</p>
 '''
-page('postcards/index.html','Stand where the photographer stood · Postcards, then and now · Project Scroll','Old postcards of Cassopolis, Michigan, from the days of wagons to the first cars: find where each was taken, take it again today, and see the two side by side.',body,og='https://projectscroll.com/og/cassopolis.jpg')
+page('postcards/index.html','Old postcards and photographs of the valley · Project Scroll','Old postcards and photographs of Cassopolis, Dowagiac, Niles, South Bend, Elkhart, Goshen and the other towns of the St. Joseph River valley, about 1900 to 1945, each linked to the library that holds it.',body,og='https://projectscroll.com/og/cassopolis.jpg')
 print('postcards built')

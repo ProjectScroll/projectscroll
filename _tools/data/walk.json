@@ -34,7 +34,11 @@
     "https://en.wikipedia.org/wiki/Cass_District_Library"
    ],
    "verified": true,
-   "id": "carnegie-library"
+   "id": "carnegie-library",
+   "card": [
+    "oc:ps005",
+    "The Public Library, Cassopolis, on a postcard of 1914"
+   ]
   },
   {
    "name": "Cass County Historic Courthouse",
@@ -56,7 +60,11 @@
     "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=247"
    ],
    "verified": true,
-   "id": "historic-courthouse"
+   "id": "historic-courthouse",
+   "card": [
+    "oc:ps004",
+    "The Cass County Court House on a postcard of about 1910"
+   ]
   },
   {
    "id": "the-fort",
@@ -120,7 +128,11 @@
     "https://tedshideler.com/2022/10/10/the-cass-county-michigan-courthouse-1899-2003/"
    ],
    "verified": true,
-   "id": "gem-theatre-site"
+   "id": "gem-theatre-site",
+   "card": [
+    "oc:ps008",
+    "The Colonial Opera House, Cassopolis, on a postcard of about 1913"
+   ]
   },
   {
    "name": "The bank corner",

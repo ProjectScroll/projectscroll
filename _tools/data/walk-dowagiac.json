@@ -74,7 +74,11 @@
     "https://www.leaderpub.com/2020/07/07/dowagiac-leaders-begin-planning-process-for-beckwith-park-renovation/",
     "https://www.geocaching.com/geocache/GC1TF95"
    ],
-   "verified": true
+   "verified": true,
+   "card": [
+    "oc:ps011",
+    "The Beckwith Building, Dowagiac, on a postcard of about 1912"
+   ]
   },
   {
    "id": "carusos-candy-kitchen",
@@ -106,7 +110,11 @@
     "https://dowagiacmuseum.info/wp-content/uploads/2025/10/Walking-Tour-of-Historic-Downtown-Dowagiac-2025.pdf",
     "https://hmdb.org/m.asp?m=217940"
    ],
-   "verified": false
+   "verified": false,
+   "card": [
+    "oc:ps040",
+    "Front Street looking north, Dowagiac, on a postcard of about 1930–45"
+   ]
   },
   {
    "id": "elks-temple-wounded-minnow",
@@ -154,7 +162,11 @@
     "https://michiganrailroads.com/stations-locations/78-cass-county-14/594-dowagiac-mi",
     "https://en.wikipedia.org/wiki/National_Register_of_Historic_Places_listings_in_Cass_County,_Michigan"
    ],
-   "verified": true
+   "verified": true,
+   "card": [
+    "oc:ps012",
+    "The Michigan Central station, Dowagiac, on a postcard of about 1910"
+   ]
   },
   {
    "id": "judd-lumber",

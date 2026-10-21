@@ -27,6 +27,9 @@ for C in CFG:
   def pc(s):
       if not s.get('card'): return ''
       k, cap = s['card']
+      if k.startswith('oc:'):
+          import oldcards as O; d = O.BY[k[3:]]
+          return f'<figure class="wk-pc wk-oc">{O.pic(d, "(min-width:900px) 30rem, 92vw")}<figcaption>{E(cap)} <span class="credit">{E(d["credit"])} · <a href="{E(d["url"])}" rel="noopener">source</a></span></figcaption></figure>'
       return f'<figure class="wk-pc"><picture><source type="image/avif" srcset="/img/strip/{k}-800.avif 800w, /img/strip/{k}.avif 1600w" sizes="(min-width:900px) 30rem, 92vw"><img src="/img/strip/{k}-800.webp" srcset="/img/strip/{k}-800.webp 800w, /img/strip/{k}.webp 1600w" sizes="(min-width:900px) 30rem, 92vw" width="1600" height="400" alt="{E(cap)}" loading="lazy" decoding="async"></picture><figcaption>{E(cap)}</figcaption></figure>'
   def src(s):
       u = s.get('sources') or []
