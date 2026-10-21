@@ -41,13 +41,14 @@
    "id": "fair-store",
    "name": "The Fair Store block",
    "address": "117-123 S. Front St., Dowagiac, MI 49047",
-   "lat": 41.98336,
-   "lon": -86.1079,
+   "lat": 41.9833,
+   "lon": -86.10785,
    "built": "by 1899",
    "then": "A store called The Fair was here by 1899, when the city directory listed Emanuel Tobias as its owner. The block then held a run of other businesses until 1941, when The Fair came back as a large department store that kept its doors open into the 1970s.",
    "now": "Present occupant not confirmed.",
    "sources": [
-    "https://dowagiacmuseum.info/wp-content/uploads/2025/10/Walking-Tour-of-Historic-Downtown-Dowagiac-2025.pdf"
+    "https://dowagiacmuseum.info/wp-content/uploads/2025/10/Walking-Tour-of-Historic-Downtown-Dowagiac-2025.pdf",
+    "https://www.dowagiacchamber.com/shop"
    ],
    "verified": false
   },
@@ -55,17 +56,23 @@
    "id": "beckwith-park-memorial-theatre-site",
    "name": "Beckwith Park and the Beckwith Memorial Theatre site",
    "address": "Southeast corner of S. Front St. and Beeson St., Dowagiac, MI 49047",
-   "lat": 41.98277,
-   "lon": -86.10812,
+   "lat": 41.98278,
+   "lon": -86.10835,
    "built": "1892 (theatre opened 19 January 1893; razed 1966)",
-   "then": "Open park ground from 1848, this corner became the site of the Beckwith Memorial in 1892, built in memory of Round Oak founder P. D. Beckwith by his daughter and son-in-law. Besides a 600-seat theatre counted among the finest between New York and Chicago, the building held a bank, city hall and the Round Oak company offices; films were shown from 1914. It was torn down in 1966 and the corner went back to being a park.",
-   "now": "A downtown park on the corner where the theatre stood.",
+   "then": "Open park ground from 1848, this corner became the site of the Beckwith Memorial in 1892, built in memory of Round Oak founder P. D. Beckwith by his daughter and son-in-law, in Lake Superior red sandstone, and dedicated in January 1893. Besides a 600-seat theatre counted among the finest between New York and Chicago, the building held a bank, city hall and the Round Oak company offices; films were shown from 1914. It was torn down in 1966, and a bank building later stood on part of the lot; the city bought that in 2019, took it down in 2020 and added the ground to the park.",
+   "now": "Beckwith Park, renovated and reopened in July 2021. A piece of the theatre's red sandstone wall still shows on the building next door.",
    "sources": [
     "https://dowagiacmuseum.info/wp-content/uploads/2025/10/Walking-Tour-of-Historic-Downtown-Dowagiac-2025.pdf",
     "https://cityofdowagiac.com/arts_recreation/entertainment/theatre.php",
     "https://www.cinematreasures.org/theaters/67935",
     "https://www.waterwinterwonderland.com/movietheaters.aspx?id=1573&loctypeid=5",
-    "https://en.wikipedia.org/wiki/Round_Oak_Stove_Company"
+    "https://en.wikipedia.org/wiki/Round_Oak_Stove_Company",
+    "https://www.hmdb.org/m.asp?m=217930",
+    "https://dowagiacmuseum.info/wp-content/virtualexhibit/vex1/B2CFA0D5-6F3B-4DC8-9D93-690767090550.htm",
+    "https://dowagiacmuseum.info/wp-content/virtualexhibit/vex1/57AFCAD7-88EB-4247-9F52-865292033200.htm",
+    "https://www.leaderpub.com/2021/07/16/new-look-beckwith-park-ready-for-action/",
+    "https://www.leaderpub.com/2020/07/07/dowagiac-leaders-begin-planning-process-for-beckwith-park-renovation/",
+    "https://www.geocaching.com/geocache/GC1TF95"
    ],
    "verified": true
   },
@@ -89,29 +96,32 @@
    "id": "front-and-commercial-corner",
    "name": "Front and Commercial: the brick downtown",
    "address": "S. Front St. at Commercial St., Dowagiac, MI 49047",
-   "lat": 41.98262,
-   "lon": -86.1088,
+   "lat": 41.98243,
+   "lon": -86.10887,
    "built": "late 1860s-1880s",
    "then": "Fires in the 1860s destroyed most of the first wooden stores on Front and Commercial streets, and brick blocks took their place, mostly between the late 1860s and the 1880s. A 1910 newspaper item quoted in the museum booklet reported that the State Savings Bank would move from 130 S. Front to this corner.",
    "now": "The heart of the downtown commercial district, revitalized in the 1990s when M-51 was rerouted and Depot Drive was laid out.",
    "sources": [
     "https://dowagiacmuseum.info/wp-content/uploads/2020/04/Dowagiac-History-Timeline-v.2-1.pdf",
-    "https://dowagiacmuseum.info/wp-content/uploads/2025/10/Walking-Tour-of-Historic-Downtown-Dowagiac-2025.pdf"
+    "https://dowagiacmuseum.info/wp-content/uploads/2025/10/Walking-Tour-of-Historic-Downtown-Dowagiac-2025.pdf",
+    "https://hmdb.org/m.asp?m=217940"
    ],
    "verified": false
   },
   {
    "id": "elks-temple-wounded-minnow",
    "name": "1913 Elks Temple (Wounded Minnow Saloon)",
-   "address": "234 S. Front St., Dowagiac, MI 49047",
-   "lat": 41.98207,
-   "lon": -86.10936,
+   "address": "234–236 S. Front St., Dowagiac, MI 49047",
+   "lat": 41.98211,
+   "lon": -86.10938,
    "built": "1913",
    "then": "Raised in 1913 as a three-story downtown temple, it had shops at street level and club rooms, a pool hall and a small theatre above. Over the decades the ground floor held grocery stores, a state liquor store and taverns.",
    "now": "The Wounded Minnow Saloon fills the ground floor, and a 2025 plan adds apartments upstairs as part of a $9 million state grant for downtown.",
    "sources": [
     "https://dowagiacmuseum.info/wp-content/uploads/2025/10/Walking-Tour-of-Historic-Downtown-Dowagiac-2025.pdf",
-    "https://www.wwmt.com/news/state/historic-dowagiac-building-to-expand-with-new-apartments-wounded-minnow-living-space-top-floor-upper-corridor-downtown-state-grant-traffic-dowagiac-michigan"
+    "https://www.wwmt.com/news/state/historic-dowagiac-building-to-expand-with-new-apartments-wounded-minnow-living-space-top-floor-upper-corridor-downtown-state-grant-traffic-dowagiac-michigan",
+    "https://www.giftly.com/gift-card/wounded-minnow-saloon-dowagiac",
+    "https://www.beckwiththeatre.com/about"
    ],
    "verified": true
   },
@@ -119,8 +129,8 @@
    "id": "238-south-front",
    "name": "Moore grocery building",
    "address": "238 S. Front St., Dowagiac, MI 49047",
-   "lat": 41.98203,
-   "lon": -86.10939,
+   "lat": 41.98206,
+   "lon": -86.1094,
    "built": "c. 1900",
    "then": "George Moore built this as a grocery and meat market around 1900 and had retired by 1908. Merwin and Bonnell traded here into the 1920s, and by 1938 W. F. Lyon and Son ran a funeral, undertaking and furniture business in it, followed by a string of other shops.",
    "now": "Present occupant not confirmed.",
@@ -150,30 +160,36 @@
    "id": "judd-lumber",
    "name": "Judd Lumber Company",
    "address": "101 Robinson St., Dowagiac, MI 49047",
-   "lat": 41.97969,
-   "lon": -86.1082,
+   "lat": 41.97976,
+   "lon": -86.10816,
    "built": "1859 (sawmill); 1889 (lumber yard)",
-   "then": "Mark Judd put up a sawmill here in 1859, and he and William Judd added a lumber yard in 1889; the mill can be seen behind the depot in an 1860 photograph. The sawmill ran into the 1950s, and the Judd family kept the business until 2019.",
-   "now": "Still a working lumber yard under new owners, billed as Michigan's oldest.",
+   "then": "Mark Judd put up a sawmill here in 1859, and he and William Judd added a lumber yard in 1889. The sawmill ran into the 1950s, and the Judd family kept the business until 2019.",
+   "now": "Still a working lumber yard, now run as US Lumber Company, and billed as Michigan's oldest.",
    "sources": [
     "https://dowagiacmuseum.info/wp-content/uploads/2025/10/Walking-Tour-of-Historic-Downtown-Dowagiac-2025.pdf",
     "https://www.thebluebook.com/iProView/1204307/judd-lumber-co/subcontractors/",
-    "https://dowagiacmuseum.info/wp-content/uploads/2020/04/Dowagiac-History-Timeline-v.2-1.pdf"
+    "https://dowagiacmuseum.info/wp-content/uploads/2020/04/Dowagiac-History-Timeline-v.2-1.pdf",
+    "https://www.uslumbercompany.com/building-supply-center/dowagiac",
+    "https://www.dowagiacchamber.com/shop",
+    "https://leaderpub.com/?p=811095",
+    "https://www.leaderpub.com/?p=760988"
    ],
-   "verified": false
+   "verified": true
   },
   {
    "id": "commercial-and-pennsylvania-first-round-oak-stove",
    "name": "Commercial and Pennsylvania: where the first Round Oak stove stood",
    "address": "Commercial St. at Pennsylvania Ave., Dowagiac, MI 49047",
-   "lat": 41.98236,
-   "lon": -86.1106,
+   "lat": 41.9829,
+   "lon": -86.10976,
    "built": null,
-   "then": "A small early business district grew up at this corner, and its first buildings burned in a fire in the 1860s. The museum’s walking tour says the very first Round Oak stove was set up in a barber shop here.",
-   "now": "Present buildings and occupants not confirmed.",
+   "then": "A small early business district grew up at this corner, and its first buildings burned in a fire in the 1860s. Beckwith's very first stove heated his own foundry, but the first Round Oak stove offered for sale was set up in a barber shop here, where the townsmen would see it, and it stayed there until 1895.",
+   "now": "The exact lot is not known; the stop marks the corner. Present buildings and occupants not confirmed.",
    "sources": [
     "https://dowagiacmuseum.info/wp-content/uploads/2025/10/Walking-Tour-of-Historic-Downtown-Dowagiac-2025.pdf",
-    "https://dowagiacmuseum.info/wp-content/uploads/2020/04/Dowagiac-History-Timeline-v.2-1.pdf"
+    "https://dowagiacmuseum.info/wp-content/uploads/2020/04/Dowagiac-History-Timeline-v.2-1.pdf",
+    "https://www.leaderpub.com/2023/04/29/dowagiac-175-p-d-beckwith-round-oak-and-the-industrial-revolution/",
+    "https://www.leaderpub.com/2017/03/06/dowagiacs-favorite-barber/"
    ],
    "verified": false
   },
@@ -200,11 +216,15 @@
    "lon": -86.1104,
    "built": "church of 1859, remodelled 1906",
    "then": "This was the site of the town's first church open to all denominations; in 1854 the children from the first Orphan Train were placed with local families here. The Methodists built a church on the spot in 1859, faced it in brick and took off its steeple in a 1906 remodeling, and worshipped here until 1974.",
-   "now": "Home since 1990 of the Beckwith Theatre Company, a volunteer community theatre named for the lost Beckwith Memorial Theatre. (The city describes the present building as 1925 Neo-Gothic; the dates are still being checked.)",
+   "now": "Home of the Beckwith Theatre Company, a volunteer community theatre named for the lost Beckwith Memorial Theatre; its first season, in 1990, was staged on the third floor of the Elks Temple on Front Street. The city's website dates the building to 1925, but a museum photograph of about 1865 shows this same church, so its core is the 1859 church as refaced in 1906.",
    "sources": [
     "https://dowagiacmuseum.info/wp-content/uploads/2025/10/Walking-Tour-of-Historic-Downtown-Dowagiac-2025.pdf",
     "https://cityofdowagiac.com/arts_recreation/entertainment/theatre.php",
-    "https://beckwiththeatre.com/"
+    "https://beckwiththeatre.com/",
+    "https://stageagent.com/theatre-companies/19499/beckwith-theatre-company",
+    "https://swmichigan.org/member/beckwith-theatre",
+    "https://dowagiacmuseum.info/wp-content/virtualexhibit/vex1/151F8ECE-6D07-46ED-A9FB-155035214186.htm",
+    "https://www.beckwiththeatre.com/about"
    ],
    "verified": false
   }

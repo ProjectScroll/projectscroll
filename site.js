@@ -2,6 +2,8 @@
 /* the full stylesheet arrives as a print sheet so it never blocks the first paint (the first screen is styled inline); it is switched on here */
 try{ document.querySelectorAll('link[data-full]').forEach(function(l){ l.media='all'; }); }catch(e){}
 function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
+/* run fn once, when el comes within a screen or so of view: keeps layout reads off the first paint */
+function psWhenNear(el, fn){ if (!el) return; if (!('IntersectionObserver' in window)){ fn(); return; } const io=new IntersectionObserver(function(es){ if (es.some(function(e){ return e.isIntersecting; })){ io.disconnect(); fn(); } }, {rootMargin:'900px 0px'}); io.observe(el); }
 (function(){
   "use strict";
   let root=document.documentElement, btn=document.getElementById('theme');
@@ -197,7 +199,7 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
     let eq=0; const edgesSoon=function(){ if (!eq) eq=requestAnimationFrame(function(){ eq=0; edges(); }); };
     t.addEventListener('scroll', edgesSoon, {passive:true}); window.addEventListener('resize', edgesSoon, {passive:true});
     document.querySelectorAll('.tl-filters button').forEach(function(b){ b.addEventListener('click', function(){ setTimeout(build,0); }); });
-    build();
+    psWhenNear(t, build);
   })(); }catch(err){ psFail(err); }
 
   /* questions: open all, and open the one a link points at */
@@ -206,7 +208,7 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
 
   /* back-to-top button appears once you are well down the scroll */
   let tt=document.querySelector('.totop');
-  if (tt){ let onS=function(){ tt.hidden = scrollY < innerHeight*1.5; }; addEventListener('scroll', onS, {passive:true}); onS(); }
+  if (tt){ let onS=function(){ tt.hidden = scrollY < innerHeight*1.5; }; addEventListener('scroll', onS, {passive:true}); requestAnimationFrame(onS); }
 
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -538,6 +540,7 @@ window.PS_BADGES=[
   ['pass25','Twenty-five stamps','Collect twenty-five stamps in your passport.'],
   ['pass50','Fifty stamps','Collect fifty stamps in your passport.'],
   ['harvest','The harvest trail','In the fall, stamp the mill, the orchard and the stove town: Bonneyville Mill, Jollay Orchards and the Dowagiac Area History Museum.'],
+  ['teller','Keeper of a story','Send the research desk a story of the valley, and say how you know it.'],
   ['notes','Field notes','Open the book of field notes.'],
   ['legend','Legend tester','Test a family legend.'],
   ['toolkit','Toolmaker','Use a tool in the hunter’s toolkit.'],
@@ -890,7 +893,7 @@ try{ (function(){
     lis.forEach(function(li){ if (li.offsetLeft<=mid) cur=li; });
     if (t.scrollLeft+t.clientWidth>=t.scrollWidth-4) cur=lis[lis.length-1];
     const e=cur?eraOf(yearOf(cur)):''; btns.forEach(function(b){ if (b.textContent===e) b.setAttribute('aria-current','true'); else b.removeAttribute('aria-current'); }); };
-  t.addEventListener('scroll', function(){ if (!q) q=requestAnimationFrame(spy); }, {passive:true}); spy();
+  t.addEventListener('scroll', function(){ if (!q) q=requestAnimationFrame(spy); }, {passive:true}); psWhenNear(t, spy);
 })(); }catch(err){ psFail(err); }
 
 /* ---------- the advertisement: a light catches the paper as the pointer moves ---------- */
@@ -961,7 +964,7 @@ try{ (function(){
     if (tab.dataset.k!==cur.id){ tab.dataset.k=cur.id; tab.innerHTML='<b>Part '+num+'</b> · '+title; tab.href='#'+cur.id; tab.classList.remove('flip'); void tab.offsetWidth; tab.classList.add('flip'); }
     bar.classList.add('has-tab'); };
   addEventListener('scroll', function(){ if (!q) q=requestAnimationFrame(sync); bar.classList.add('scrolling'); clearTimeout(hideT); hideT=setTimeout(function(){ bar.classList.remove('scrolling'); }, 1400); }, {passive:true});
-  sync();
+  requestAnimationFrame(sync);
 })(); }catch(err){ psFail(err); }
 
 /* ---------- Part I: say which stretch of the scroll is in view ---------- */
@@ -975,7 +978,7 @@ try{ (function(){
     out.innerHTML='In view: <b>'+y(vis[0])+'</b>'+(vis.length>1?' to <b>'+y(vis[vis.length-1])+'</b>':'')+(sealed?' · '+sealed+' sealed':''); };
   t.addEventListener('scroll', function(){ if (!q) q=requestAnimationFrame(read); }, {passive:true}); addEventListener('resize', function(){ if (!q) q=requestAnimationFrame(read); }, {passive:true});
   document.querySelectorAll('.tl-filters button').forEach(function(b){ b.addEventListener('click', function(){ setTimeout(read, 60); }); });
-  read();
+  psWhenNear(t, read);
 })(); }catch(err){ psFail(err); }
 
 /* ---------- add Project Scroll to a phone's home screen, where the browser offers it ---------- */
@@ -1009,7 +1012,7 @@ try{ (function(){
   if (matchMedia('(prefers-reduced-motion: reduce)').matches){ box.classList.add('still'); const v=box.querySelector('.pb-view'); if (v){ v.tabIndex=0; v.setAttribute('role','region'); v.setAttribute('aria-label','Places, scroll sideways'); } return; }
   [].slice.call(tr.children).forEach(function(li){ const c=li.cloneNode(true); c.setAttribute('aria-hidden','true'); c.querySelectorAll('a,button').forEach(function(a){ a.tabIndex=-1; }); tr.appendChild(c); });
   const speed=function(){ box.style.setProperty('--pbdur', Math.max(40, Math.round(tr.scrollWidth/2/38))+'s'); };
-  speed(); addEventListener('resize', speed, {passive:true}); box.classList.add('run');
+  requestAnimationFrame(speed); addEventListener('resize', speed, {passive:true}); box.classList.add('run');
   const pz=document.createElement('button'); pz.type='button'; pz.className='pb-pause'; pz.setAttribute('aria-label','Pause the place names'); pz.setAttribute('aria-pressed','false'); pz.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3" width="2.6" height="10" rx=".8"/><rect x="9.4" y="3" width="2.6" height="10" rx=".8"/></svg>';
   pz.addEventListener('click', function(){ const on=!box.classList.contains('held'); box.classList.toggle('held', on); pz.setAttribute('aria-pressed', String(on)); pz.setAttribute('aria-label', on?'Play the place names':'Pause the place names'); pz.innerHTML=on?'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3l8 5-8 5z"/></svg>':'<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3" width="2.6" height="10" rx=".8"/><rect x="9.4" y="3" width="2.6" height="10" rx=".8"/></svg>'; });
   box.appendChild(pz);
@@ -1053,7 +1056,7 @@ try{ (function(){
   /* a second copy of the items makes the loop seamless; it is hidden from screen readers and the keyboard */
   items.forEach(function(li){ const c=li.cloneNode(true); c.setAttribute('aria-hidden','true'); c.querySelectorAll('a').forEach(function(a){ a.tabIndex=-1; }); track.appendChild(c); });
   const speed=function(){ tk.style.setProperty('--tkdur', Math.max(20, Math.round(track.scrollWidth/2/55))+'s'); };
-  speed(); addEventListener('resize', speed, {passive:true}); tk.classList.add('run');
+  requestAnimationFrame(speed); addEventListener('resize', speed, {passive:true}); tk.classList.add('run');
   const pb=document.getElementById('tkPause'); let paused=false; try{ paused=localStorage.getItem('ps-ticker')==='paused'; }catch(e){}
   const sync=function(){ tk.classList.toggle('paused', paused); if (pb){ pb.setAttribute('aria-pressed', String(paused)); pb.setAttribute('aria-label', paused?'Play the news':'Pause the news'); } };
   if (pb){ pb.hidden=false; pb.addEventListener('click', function(){ paused=!paused; try{ localStorage.setItem('ps-ticker', paused?'paused':'run'); }catch(e){} sync(); }); }
@@ -1496,4 +1499,11 @@ try{ (function(){
   let i=0, t=0, seen=false;
   const step=function(){ imgs[i].classList.remove('on'); i=(i+1)%imgs.length; imgs[i].classList.add('on'); };
   new IntersectionObserver(function(es){ seen=es[0].isIntersecting; clearInterval(t); if (seen) t=setInterval(step, 4500); }).observe(box);
+})(); }catch(err){ psFail(err); }
+
+/* ---------- moving bands rest while they are out of sight: no work for what nobody can see ---------- */
+try{ (function(){
+  if (!('IntersectionObserver' in window)) return;
+  const io=new IntersectionObserver(function(es){ es.forEach(function(e){ e.target.classList.toggle('offscreen', !e.isIntersecting); }); }, {rootMargin:'100px 0px'});
+  document.querySelectorAll('.placeband, .ticker, .tcard, .vshow').forEach(function(el){ io.observe(el); });
 })(); }catch(err){ psFail(err); }

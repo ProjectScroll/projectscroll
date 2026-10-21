@@ -1738,7 +1738,7 @@ html{scroll-padding-top:5.8rem}
 .pb-track li.pb-hall{font-style:italic; color:var(--rule)}
 :root[data-theme="dark"] .pb-track li.pb-c{color:var(--gold-hi)}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .pb-track li.pb-c{color:var(--gold-hi)} }
-.placeband.run .pb-track{animation:pbroll var(--pbdur,90s) linear infinite}
+.placeband.run .pb-track{animation:pbroll var(--pbdur,90s) linear infinite; will-change:transform}
 @media (hover:hover) and (pointer:fine){ .placeband.run .pb-view:hover .pb-track{animation-play-state:paused} }
 @keyframes pbroll{to{transform:translateX(-50%)}}
 .placeband.still .pb-view{-webkit-mask-image:none; mask-image:none}
@@ -1931,9 +1931,9 @@ dialog.fp-zoom::backdrop{background:transparent}
   @keyframes diamond{0%,14%{box-shadow:0 0 0 2px var(--paper), 0 0 6px color-mix(in srgb, var(--gold) 70%, transparent)} 24%{box-shadow:0 0 0 2px var(--paper), 0 0 14px 3px color-mix(in srgb, var(--gold-hi) 85%, transparent)} 36%,100%{box-shadow:0 0 0 2px var(--paper), 0 0 6px color-mix(in srgb, var(--gold) 70%, transparent)}}
   .mark svg{transition:transform .3s ease, filter .3s ease}
   .mark:hover svg{transform:translateY(-1px) rotate(-3deg); filter:drop-shadow(0 0 4px color-mix(in srgb, var(--gold) 70%, transparent))}
-  .pb-track li::after{animation:twinkle 6s ease-in-out infinite}
+  .pb-track li::after{background:var(--gold-hi); box-shadow:0 0 4px color-mix(in srgb, var(--gold-hi) 70%, transparent); opacity:.85}
   .pb-track li:nth-child(3n+1)::after{animation-delay:-2s} .pb-track li:nth-child(3n+2)::after{animation-delay:-4s}
-  @keyframes twinkle{0%,100%{background:color-mix(in srgb, var(--gold) 75%, transparent); box-shadow:none} 50%{background:var(--gold-hi); box-shadow:0 0 5px color-mix(in srgb, var(--gold-hi) 80%, transparent)}}
+  @keyframes twinkle{0%,100%{opacity:.6} 50%{opacity:1}}
   .hero-k .hk2 i{display:inline-block; animation:twinkle-i 6s ease-in-out infinite}
   @keyframes twinkle-i{0%,100%{text-shadow:none} 50%{text-shadow:0 0 6px color-mix(in srgb, var(--gold-hi) 85%, transparent)}}
 }
@@ -3351,3 +3351,17 @@ p + :is(ul, ol):not([class]){margin-top:-.25rem}
 .lede + p, .kicker + h1{margin-top:0}
 h3 + p{margin-top:.35rem}
 @media print{ .secfig, .tncorner{margin:.8rem auto!important} }
+
+/* ── Share your story ── */
+.st-steps{padding-left:1.3rem; margin:.4rem 0 1.4rem}
+.st-steps li{margin-bottom:.55rem}
+.st-form .st-wide{grid-column:1/-1}
+.st-form textarea{font:inherit; font-size:1rem; line-height:1.55; padding:.55rem .65rem; border:1px solid var(--line); border-radius:4px; background:var(--paper); color:var(--ink); resize:vertical; width:100%}
+.st-form textarea:focus-visible,.st-form input:focus-visible,.st-form select:focus-visible{outline:2px solid var(--gold); outline-offset:1px}
+.st-form #stCount{color:var(--ink-soft); font-size:.8rem; min-height:1.1em}
+.st-perm{border:1px solid var(--line); border-radius:4px; padding:.6rem .9rem .7rem; margin:0}
+.st-perm legend{font-size:.9rem; padding:0 .3rem}
+.st-perm label{display:flex; flex-direction:row; align-items:flex-start; gap:.55rem; margin:.35rem 0; font-size:.95rem}
+.st-perm input{margin-top:.3rem; min-height:auto}
+.st-form p.st-wide{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center}
+.offscreen, .offscreen *, .offscreen::before, .offscreen::after, .offscreen *::before, .offscreen *::after{animation-play-state:paused!important}

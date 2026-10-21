@@ -110,7 +110,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li><b>Read the neighbours.</b> The families on either side in a census are often in-laws; the witnesses to a deed are often kin.</li>
       <li><b>Go back to the original.</b> An index finds the record. The record itself is the evidence.</li>
     </ul>
-    <p class="note">Found someone who belongs on this site? <a href="/#contact">Tell us</a>, with the record that shows it.</p>
+    <p class="note">Found someone who belongs on this site? <a href="/story/">Tell us</a>, with the record that shows it.</p>
 {JS}
 '''
 page('people/index.html', 'Find your people · The record finder · Project Scroll',
