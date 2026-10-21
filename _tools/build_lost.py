@@ -54,7 +54,9 @@ def card(t):
     mp=f' · <a href="https://www.openstreetmap.org/?mlat={t["ll"][0]}&amp;mlon={t["ll"][1]}#map=14/{t["ll"][0]}/{t["ll"][1]}" rel="noopener">on today’s map</a>' if t.get('ll') else ''
     qs=''.join(f'<blockquote><p>“{E(q)}”</p><cite><a href="{u}" rel="noopener">{E(s)}</a></cite></blockquote>' for q,s,u in t['q'])
     d=f'<p class="note">{E(t["d"])}</p>' if t.get('d') else ''
-    return f'<article class="lt"><h2>{E(t["n"])}{a}</h2><p class="lt-w">{E(t["w"])}{mp}</p><p><b>What was there.</b> {E(t["b"])}</p><p><b>What happened.</b> {E(t["f"])}</p>{qs}{d}</article>'
+    import re as _r
+    sid=_r.sub(r'[^a-z]+','-',t['n'].lower().split(',')[0].split(' and ')[0]).strip('-')
+    return f'<article class="lt" id="{sid}"><h2>{E(t["n"])}{a}</h2><p class="lt-w">{E(t["w"])}{mp}</p><p><b>What was there.</b> {E(t["b"])}</p><p><b>What happened.</b> {E(t["f"])}</p>{qs}{d}</article>'
 body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Lost towns of the valley</p>
     <h1>Towns that are not there any more</h1>

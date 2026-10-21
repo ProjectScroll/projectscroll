@@ -523,6 +523,8 @@ window.PS_BADGES=[
   ['street','Street sleuth','Find a street that changed its name, on a then-and-now page.'],
   ['surveyor','Town surveyor','Find all twelve renamed streets in the seven towns.'],
   ['junior','Junior surveyor','Answer all seven questions of the junior hunt.'],
+  ['lidar','Laser surveyor','Fly over Cassopolis in the LiDAR model.'],
+  ['valley','Keeper of the valley','Find the three lost towns on the 3D river valley.'],
   ['informant','Informant','Read the guide to the death certificate.'],
   ['oldhand','The old hand','Read the guide to old handwriting.'],
   ['records','Record keeper','Visit “Where the records are.”'],
@@ -568,7 +570,7 @@ try{ (function(){
   try{ const d=new Date().toISOString().slice(0,10); let days=JSON.parse(localStorage.getItem('ps-days')||'[]'); if (days.indexOf(d)<0){ days.push(d); days=days.slice(-30); localStorage.setItem('ps-days', JSON.stringify(days)); } if (days.length>=3) setTimeout(function(){ earn('regular'); }, 2500); }catch(e){}
   setTimeout(function(){ earn('candidate'); }, 1500);
   const path=location.pathname;
-  const byPath=[[/^\/cases\/\d+\/?$/,'casefile'],[/^\/map\/?$/,'mapper'],[/^\/map\/[a-z-]+\/?$/,'thennow'],[/^\/guide\/death-certificate\/?$/,'informant'],[/^\/guide\/old-handwriting\/?$/,'oldhand'],[/^\/records\/?$/,'records'],[/^\/glossary\/?$/,'glossary'],[/^\/notes\/book\/?$/,'notes']];
+  const byPath=[[/^\/map\/3d\/cassopolis\/?$/,'lidar'],[/^\/cases\/\d+\/?$/,'casefile'],[/^\/map\/?$/,'mapper'],[/^\/map\/[a-z-]+\/?$/,'thennow'],[/^\/guide\/death-certificate\/?$/,'informant'],[/^\/guide\/old-handwriting\/?$/,'oldhand'],[/^\/records\/?$/,'records'],[/^\/glossary\/?$/,'glossary'],[/^\/notes\/book\/?$/,'notes']];
   byPath.forEach(function(r){ if (r[0].test(path)) setTimeout(function(){ earn(r[1]); }, 2200); });
   document.addEventListener('click', function(e){
     const t=e.target.closest && e.target.closest('button,a'); if (!t) return;
@@ -690,7 +692,7 @@ try{ (function(){
 /* ---------- the ledger that travels: badges, follows and notes as one checked file, read back on another device ---------- */
 try{ (function(){
   const out=document.getElementById('ledgerOut'), inp=document.getElementById('ledgerIn'), msg=document.getElementById('ledgerMsg'); if (!out || !inp) return;
-  const KEYS=/^(ps-badges|ps-mine|ps-days|ps-note-\d+|ps-inked|ps-tn-[a-z-]+|ps-nh(-[a-z]+)?|ps-junior|ps-hint-\d+)$/;
+  const KEYS=/^(ps-badges|ps-mine|ps-days|ps-note-\d+|ps-inked|ps-tn-[a-z-]+|ps-nh(-[a-z]+)?|ps-junior|ps-valley|ps-hint-\d+)$/;
   const gather=function(){ const d={}; for (let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); if (KEYS.test(k)) d[k]=localStorage.getItem(k); } return d; };
   const sum=function(txt){ if (!(crypto && crypto.subtle)) return Promise.resolve(''); return crypto.subtle.digest('SHA-256', new TextEncoder().encode(txt)).then(function(h){ return [].slice.call(new Uint8Array(h)).map(function(b){ return ('0'+b.toString(16)).slice(-2); }).join(''); }); };
   out.addEventListener('click', function(){

@@ -2907,3 +2907,46 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
   .toolrow .pb-sponsor{flex:none}
   .toolrow .pb-sponsor a{white-space:nowrap}
 }
+
+/* Draft 136: the LiDAR model */
+.l3d{position:relative; margin:1.4rem 0 1rem; aspect-ratio:16/10; min-height:22rem; max-height:80vh; background:#0b1622; border:1px solid color-mix(in srgb, var(--gold) 45%, transparent); border-radius:6px; overflow:hidden; box-shadow:0 18px 40px -22px rgba(0,0,0,.6)}
+.l3d canvas{position:absolute; inset:0; width:100%; height:100%; display:block; touch-action:none; cursor:grab}
+.l3d canvas:active{cursor:grabbing}
+.l3d:fullscreen{max-height:none; aspect-ratio:auto; border-radius:0}
+.l3d-ui{position:absolute; top:.6rem; left:.6rem; right:.6rem; display:flex; flex-wrap:wrap; gap:.4rem; z-index:2}
+.l3d-b{font:inherit; font-size:.78rem; letter-spacing:.06em; padding:.32rem .7rem; border-radius:999px; border:1px solid rgba(232,184,74,.45); background:rgba(11,22,34,.72); color:#e9e2cf; cursor:pointer; backdrop-filter:blur(4px)}
+.l3d-b:hover, .l3d-b:focus-visible{border-color:#f6d27a; color:#fff}
+.l3d-b[aria-pressed="true"]{background:rgba(232,184,74,.22); border-color:#f6d27a; color:#f6d27a}
+.l3d-load{position:absolute; inset:0; display:grid; place-items:center; margin:0; color:#cfd8dc; font-size:.95rem; letter-spacing:.08em}
+.l3d-help{position:absolute; left:.8rem; bottom:.5rem; margin:0; font-size:.72rem; color:rgba(233,226,207,.7); pointer-events:none}
+.l3d-tags{position:absolute; inset:0; pointer-events:none; z-index:1}
+.l3d-tag{position:absolute; left:0; top:0; white-space:nowrap; font-size:.75rem; letter-spacing:.08em; color:#f6d27a; text-shadow:0 1px 3px #000; transition:opacity .2s; margin:-1.6rem 0 0 -3rem}
+.l3d-tag::after{content:""; position:absolute; left:3rem; top:1.25rem; width:7px; height:7px; border-radius:50%; background:#f6d27a; box-shadow:0 0 10px #f6d27a}
+.l3d.no3d{display:none}
+.l3d-load[hidden]{display:none}
+.l3d-key{list-style:none; padding:0; margin:.4rem 0 1.2rem; display:flex; flex-wrap:wrap; gap:.4rem 1.2rem; font-size:.88rem; color:var(--ink-soft)}
+.l3d-key i{display:inline-block; width:.8rem; height:.8rem; border-radius:50%; margin-right:.4rem; vertical-align:-.05rem}
+@media (max-width:640px){ .l3d{aspect-ratio:3/4} .l3d-help{display:none} .l3d-b{font-size:.72rem; padding:.28rem .55rem} }
+.l3d-v{aspect-ratio:16/10}
+.l3d-r{display:inline-flex; align-items:center; gap:.4rem; cursor:default}
+.l3d-r input{width:6rem; accent-color:#e8b84a}
+.l3d-r output{min-width:2.2em; color:#f6d27a}
+.l3d-town{margin:-1.2rem 0 0 0; transform-origin:0 0; font-size:.68rem; color:#e9e2cf; letter-spacing:.06em}
+.l3d-town::after{left:-3px; top:1.05rem; width:5px; height:5px; background:#e9e2cf; box-shadow:none}
+.l3d-card{position:absolute; left:.8rem; right:.8rem; bottom:2rem; z-index:3; max-width:30rem; padding:.7rem .9rem; border-radius:6px; background:rgba(8,18,28,.88); border:1px solid #e8b84a; color:#e9e2cf; font-size:.9rem; line-height:1.4}
+.l3d-card b{color:#f6d27a}
+.l3d-card a{color:#f6d27a}
+.l3d-found{position:absolute; right:.8rem; bottom:.5rem; margin:0; font-size:.78rem; color:#f6d27a; letter-spacing:.06em; z-index:2}
+/* Draft 136: the two 3D picture-buttons above the heron */
+.heroside{margin:2rem auto 0; width:min(100%, 18rem)}
+.heroside .plate{margin:1rem 0 0; width:100%}
+.tri{display:grid; grid-template-columns:1fr 1fr; gap:.6rem}
+.tcard{position:relative; display:block; border-radius:6px; overflow:hidden; text-decoration:none; border:1px solid color-mix(in srgb, var(--gold) 70%, transparent); box-shadow:0 10px 26px -14px rgba(0,0,0,.55); background:#0b1622; transition:transform .25s, box-shadow .25s}
+.tcard img{display:block; width:100%; height:auto; aspect-ratio:9/16; object-fit:cover}
+.tcard::after{content:""; position:absolute; inset:.3rem; border:1px solid color-mix(in srgb, #f1d98a 60%, transparent); border-radius:4px; pointer-events:none}
+.tcard span{position:absolute; left:0; right:0; bottom:0; padding:1.6rem .5rem .55rem; font-size:.66rem; line-height:1.25; letter-spacing:.12em; text-transform:uppercase; text-align:center; color:#f6d27a; background:linear-gradient(180deg, transparent, rgba(8,18,28,.92) 55%)}
+.tcard:hover, .tcard:focus-visible{transform:translateY(-2px); box-shadow:0 16px 30px -14px rgba(0,0,0,.6), 0 0 0 1px #f6d27a}
+@media (min-width:900px){
+  .hero > .heroside{grid-column:2; grid-row:1 / span 6; margin:2.6rem 0 0; width:100%}
+}
+@media (prefers-reduced-motion: reduce){ .tcard{transition:none} .tcard:hover{transform:none} }
