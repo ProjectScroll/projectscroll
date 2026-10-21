@@ -11,7 +11,11 @@
   "url": "https://dowagiacmuseum.info/",
   "verified": true,
   "note": "Hours Tue–Fri 10–5, Sat 10–2. It took over from the former Southwestern Michigan College Museum.",
-  "hours": "Tue–Fri 10–5, Sat 10–2. Free."
+  "hours": "Tue–Fri 10–5, Sat 10–2. Free.",
+  "ll": [
+   41.98363,
+   -86.10607
+  ]
  },
  {
   "county": "Cass",
@@ -24,7 +28,11 @@
   "address": "211 Commercial St., Dowagiac, MI 49047",
   "url": "https://www.dowagiacdl.org/about",
   "verified": true,
-  "note": "Mon/Wed/Fri 9–5:30, Tue/Thu 9–7, Sat 9–2."
+  "note": "Mon/Wed/Fri 9–5:30, Tue/Thu 9–7, Sat 9–2.",
+  "ll": [
+   41.98291,
+   -86.10997
+  ]
  },
  {
   "county": "Cass",
@@ -38,7 +46,11 @@
   "url": "https://www.urscc.org",
   "verified": true,
   "note": "Open May–October, Mon–Fri 2–5 pm; private tours by arrangement through the operator's contact page. The operator's site name includes 'Underground Railroad' (see report).",
-  "hours": "May to October, Mon–Fri 2–5 pm; private tours by arrangement."
+  "hours": "May to October, Mon–Fri 2–5 pm; private tours by arrangement.",
+  "ll": [
+   41.91906,
+   -85.933
+  ]
  },
  {
   "county": "Cass",
@@ -52,7 +64,11 @@
   "url": "https://pioneerlogcabinmuseum.com",
   "verified": false,
   "note": "URL supplied by the site owner, but the site blocks automated fetching (robots rule), so I could not confirm it loads. The Village of Cassopolis parks page confirms the address and says the museum is 'periodically open'; there are no set hours.",
-  "hours": "Open at times through the season; see the museum’s website."
+  "hours": "Open at times through the season; see the museum’s website.",
+  "ll": [
+   41.90652,
+   -86.01267
+  ]
  },
  {
   "county": "Cass",
@@ -66,7 +82,12 @@
   "url": "https://ccmihistoricalsociety.org/newtonhouse",
   "verified": true,
   "note": "Open houses on the first Sunday of each month, June–September, 1:00–4:30 pm. Owned by MSU and leased to Cass County; MSU trustees approved a sale to the Cass County Historical Society in June 2026, and I could not confirm whether the sale has closed.",
-  "hours": "Open houses on the first Sunday of each month, June to September, 1:00–4:30 pm."
+  "hours": "Open houses on the first Sunday of each month, June to September, 1:00–4:30 pm.",
+  "ll": [
+   42.01171,
+   -85.95473
+  ],
+  "approx": true
  },
  {
   "county": "Cass",
@@ -93,7 +114,11 @@
   "address": "145 N. Broadway, Cassopolis, MI 49031",
   "url": "https://www.cassdistrictlibrary.org/local-history-branch",
   "verified": true,
-  "note": "Mon–Thu 9–4; closed Fri–Sun. Phone 269-357-7823."
+  "note": "Mon–Thu 9–4; closed Fri–Sun. Phone 269-357-7823.",
+  "ll": [
+   41.9124,
+   -86.01265
+  ]
  },
  {
   "county": "Cass",
@@ -106,7 +131,11 @@
   "address": "26818 Main Street, Edwardsburg, MI 49112",
   "url": "https://edwardsburgmuseum.org/",
   "verified": true,
-  "note": "Open mid-April to mid-December; Tue–Fri 1–4, Sat 11–2."
+  "note": "Open mid-April to mid-December; Tue–Fri 1–4, Sat 11–2.",
+  "ll": [
+   41.7984,
+   -86.08466
+  ]
  },
  {
   "county": "Berrien",
@@ -120,7 +149,11 @@
   "url": "https://www.nilesmi.org/departments_and_divisions/niles_history_center/fort_st_joseph_museum.php",
   "verified": true,
   "note": "Wed–Fri 10–4, Sat 10–3. The first floor is being updated while the museum stays open.",
-  "hours": "Wed–Fri 10–4, Sat 10–3. Free."
+  "hours": "Wed–Fri 10–4, Sat 10–3. Free.",
+  "ll": [
+   41.8296,
+   -86.25275
+  ]
  },
  {
   "county": "Berrien",
@@ -133,7 +166,11 @@
   "address": "508 E. Main Street, Niles, MI 49120",
   "url": "https://www.nilesmi.org/departments_and_divisions/niles_history_center/",
   "verified": true,
-  "note": "2026 tours Fridays and Saturdays at 1 pm through December, starting at the museum; $5 adults, 18 and under free; first floor ADA accessible."
+  "note": "2026 tours Fridays and Saturdays at 1 pm through December, starting at the museum; $5 adults, 18 and under free; first floor ADA accessible.",
+  "ll": [
+   41.8296,
+   -86.25275
+  ]
  },
  {
   "county": "Berrien",
@@ -147,7 +184,11 @@
   "url": "https://nilesmi.org/community/museums_and_historic_sites.php",
   "verified": true,
   "note": "Mostly outdoor or exterior sites; the hotel and depot are working buildings, not museums.",
-  "hours": "Mostly outdoor sites; the hotel and depot are working buildings."
+  "hours": "Mostly outdoor sites; the hotel and depot are working buildings.",
+  "ll": [
+   41.81291,
+   -86.26083
+  ]
  },
  {
   "county": "Berrien",
@@ -160,7 +201,11 @@
   "address": "620 E. Main St., Niles, MI 49120 (entrance on Cedar St.)",
   "url": "https://www.nileslibrary.com/programs-services/adults/local-history-genealogy/",
   "verified": true,
-  "note": "Mon–Thu 9–8, Fri–Sat 10–6. Not to be confused with Niles-Maine District Library in Illinois."
+  "note": "Mon–Thu 9–8, Fri–Sat 10–6. Not to be confused with Niles-Maine District Library in Illinois.",
+  "ll": [
+   41.82973,
+   -86.25337
+  ]
  },
  {
   "county": "Berrien",
@@ -173,7 +218,11 @@
   "address": "313 N. Cass St., Berrien Springs, MI 49103",
   "url": "http://www.berrienhistory.org/",
   "verified": true,
-  "note": "Museum buildings Wed–Sun 10–5; $5 admission. The official home page still shows 2017 hours, and current hours come from the county community directory. Closed during the Youth Fair and over the winter holidays."
+  "note": "Museum buildings Wed–Sun 10–5; $5 admission. The official home page still shows 2017 hours, and current hours come from the county community directory. Closed during the Youth Fair and over the winter holidays.",
+  "ll": [
+   41.94801,
+   -86.34039
+  ]
  },
  {
   "county": "Berrien",
@@ -186,7 +235,11 @@
   "address": "501 Territorial Road, Benton Harbor, MI 49022",
   "url": "https://mortonhousemuseum.org/contact/",
   "verified": true,
-  "note": "Open Wednesdays and Saturdays 11–2; tours by appointment."
+  "note": "Open Wednesdays and Saturdays 11–2; tours by appointment.",
+  "ll": [
+   42.11896,
+   -86.44663
+  ]
  },
  {
   "county": "Berrien",
@@ -199,7 +252,11 @@
   "address": "300 Coloma Ave., Coloma, MI 49038",
   "url": "http://www.northberrienhistory.org/",
   "verified": true,
-  "note": "Tue–Fri 10–4; groups call two weeks ahead."
+  "note": "Tue–Fri 10–4; groups call two weeks ahead.",
+  "ll": [
+   42.1814,
+   -86.31259
+  ]
  },
  {
   "county": "Berrien",
@@ -212,7 +269,12 @@
   "address": "Downtown Buchanan, south of Front Street between Oak St. and Days Ave., Buchanan, MI",
   "url": "https://www.cityofbuchanan.com/node/2607",
   "verified": true,
-  "note": "Saturdays 9–1, Memorial Day to Labor Day; free; group tours by arrangement."
+  "note": "Saturdays 9–1, Memorial Day to Labor Day; free; group tours by arrangement.",
+  "ll": [
+   41.82738,
+   -86.35987
+  ],
+  "approx": true
  },
  {
   "county": "Berrien",
@@ -226,7 +288,11 @@
   "url": "http://fortmiamiheritage.org/",
   "verified": true,
   "note": "The former St. Joseph museum is permanently closed. There are no posted public hours, so contact the society before visiting.",
-  "hours": "No posted public hours: write to the society before visiting."
+  "hours": "No posted public hours: write to the society before visiting.",
+  "ll": [
+   42.10443,
+   -86.46439
+  ]
  },
  {
   "county": "Berrien",
@@ -253,7 +319,11 @@
   "address": "58471 Red Arrow Hwy, Hartford, MI 49057",
   "url": "https://www.vanburencountyhistoricalsociety.org/",
   "verified": true,
-  "note": "Wed, Fri and Sun noon–5; guided tours on Sundays, other days by appointment."
+  "note": "Wed, Fri and Sun noon–5; guided tours on Sundays, other days by appointment.",
+  "ll": [
+   42.21396,
+   -86.11262
+  ]
  },
  {
   "county": "Van Buren",
@@ -266,7 +336,11 @@
   "address": "200 N. Phelps Street, Decatur, MI 49045",
   "url": "https://www.vbdl.org/about/local-history/",
   "verified": true,
-  "note": "Mon–Fri 10–4, Sat 9–3."
+  "note": "Mon–Fri 10–4, Sat 9–3.",
+  "ll": [
+   42.10973,
+   -85.97519
+  ]
  },
  {
   "county": "Van Buren",
@@ -280,7 +354,11 @@
   "url": "https://www.vbrgs.org/",
   "verified": true,
   "note": "Collection hours not listed; check with the Hartford Public Library.",
-  "hours": "Ask the Hartford Public Library for collection hours."
+  "hours": "Ask the Hartford Public Library for collection hours.",
+  "ll": [
+   42.20682,
+   -86.16317
+  ]
  },
  {
   "county": "Van Buren",
@@ -293,7 +371,11 @@
   "address": "260 Dyckman Avenue, South Haven, MI 49090",
   "url": "https://www.michiganmaritimemuseum.org",
   "verified": true,
-  "note": "Hours are on its Hours & Admissions page (not seen)."
+  "note": "Hours are on its Hours & Admissions page (not seen).",
+  "ll": [
+   42.40652,
+   -86.27434
+  ]
  },
  {
   "county": "Van Buren",
@@ -307,7 +389,11 @@
   "url": "https://libertyhydebailey.org/about-bailey",
   "verified": true,
   "note": "Saturdays 11–5; season not stated. City-owned, run by a nonprofit.",
-  "hours": "Saturdays 11–5."
+  "hours": "Saturdays 11–5.",
+  "ll": [
+   42.39205,
+   -86.26372
+  ]
  },
  {
   "county": "Van Buren",
@@ -321,7 +407,11 @@
   "url": "https://historyofsouthhaven.org/",
   "verified": true,
   "note": "Building open Tue and Wed 9–3. I could not confirm a public exhibit space.",
-  "hours": "Building open Tue and Wed 9–3."
+  "hours": "Building open Tue and Wed 9–3.",
+  "ll": [
+   42.40219,
+   -86.26525
+  ]
  },
  {
   "county": "Van Buren",
@@ -335,7 +425,11 @@
   "url": "https://michiganflywheelers.org",
   "verified": true,
   "note": "Hours are on its tours page (not seen); mostly seasonal events.",
-  "hours": "Mostly seasonal events; see their website."
+  "hours": "Mostly seasonal events; see their website.",
+  "ll": [
+   42.39421,
+   -86.20156
+  ]
  },
  {
   "county": "St. Joseph",
@@ -348,7 +442,11 @@
   "address": "34 N. Main St., Three Rivers, MI 49093",
   "url": "https://www.sjchsmi.com",
   "verified": true,
-  "note": "Fridays 10–4 or by appointment; 269-273-6003."
+  "note": "Fridays 10–4 or by appointment; 269-273-6003.",
+  "ll": [
+   41.94475,
+   -85.63362
+  ]
  },
  {
   "county": "St. Joseph",
@@ -361,7 +459,11 @@
   "address": "113 W. Chicago Rd., White Pigeon, MI 49099",
   "url": "https://www.sjchsmi.com/the-land-office",
   "verified": true,
-  "note": "Summer open houses 1–4 pm; group tours by arrangement (269-718-7013)."
+  "note": "Summer open houses 1–4 pm; group tours by arrangement (269-718-7013).",
+  "ll": [
+   41.798,
+   -85.64454
+  ]
  },
  {
   "county": "St. Joseph",
@@ -375,7 +477,11 @@
   "url": "https://www.sturgismuseum.org/",
   "verified": true,
   "note": "Hours not listed on the page; call ahead.",
-  "hours": "Call ahead for hours: 269-503-7440."
+  "hours": "Call ahead for hours: 269-503-7440.",
+  "ll": [
+   41.80394,
+   -85.42005
+  ]
  },
  {
   "county": "St. Joseph",
@@ -388,7 +494,11 @@
   "address": "88 N. Main St., Three Rivers, MI 49093",
   "url": "https://www.threeriverslibrary.org/michigan-room",
   "verified": true,
-  "note": "Open whenever the library is open; staff cannot do lengthy research."
+  "note": "Open whenever the library is open; staff cannot do lengthy research.",
+  "ll": [
+   41.94588,
+   -85.63502
+  ]
  },
  {
   "county": "St. Joseph",
@@ -401,7 +511,11 @@
   "address": "808 W. Washington Street, South Bend, IN 46601",
   "url": "https://historymuseumsb.org/",
   "verified": true,
-  "note": "Mon–Sat 10–5, Sun 12–5."
+  "note": "Mon–Sat 10–5, Sun 12–5.",
+  "ll": [
+   41.67584,
+   -86.26211
+  ]
  },
  {
   "county": "St. Joseph",
@@ -415,7 +529,11 @@
   "url": "https://historymuseumsb.org/",
   "verified": true,
   "note": "Guided tours twice daily; times not listed.",
-  "hours": "Guided tours twice a day; see the museum’s site for times."
+  "hours": "Guided tours twice a day; see the museum’s site for times.",
+  "ll": [
+   41.67584,
+   -86.26211
+  ]
  },
  {
   "county": "St. Joseph",
@@ -428,7 +546,11 @@
   "address": "201 Chapin Street, South Bend, IN 46601",
   "url": "https://studebakermuseum.org/",
   "verified": true,
-  "note": "Mon–Sat 10–5, Sun 12–5."
+  "note": "Mon–Sat 10–5, Sun 12–5.",
+  "ll": [
+   41.67464,
+   -86.26189
+  ]
  },
  {
   "county": "St. Joseph",
@@ -441,7 +563,11 @@
   "address": "304 S. Main St., South Bend, IN 46601",
   "url": "https://sjcpl.org/lfh/",
   "verified": true,
-  "note": "Mon–Thu 9–7, Fri–Sat 9–5, Sun 1–5 (Labor Day to Memorial Day). Contact ahead for archival items."
+  "note": "Mon–Thu 9–7, Fri–Sat 9–5, Sun 1–5 (Labor Day to Memorial Day). Contact ahead for archival items.",
+  "ll": [
+   41.67335,
+   -86.25146
+  ]
  },
  {
   "county": "St. Joseph",
@@ -454,7 +580,11 @@
   "address": "209 Lincolnway East, Mishawaka, IN",
   "url": "https://www.mphpl.org/lfh/getting-started/",
   "verified": true,
-  "note": "Open during library hours."
+  "note": "Open during library hours.",
+  "ll": [
+   41.66416,
+   -86.11015
+  ]
  },
  {
   "county": "St. Joseph",
@@ -468,7 +598,11 @@
   "url": "https://mishawakamuseum.org/contact/",
   "verified": true,
   "note": "Hours not listed on the site; 574-217-8807.",
-  "hours": "Call ahead for hours: 574-217-8807."
+  "hours": "Call ahead for hours: 574-217-8807.",
+  "ll": [
+   41.66084,
+   -86.18074
+  ]
  },
  {
   "county": "St. Joseph",
@@ -482,7 +616,11 @@
   "url": "https://www.historicnewcarlisle.org/about",
   "verified": true,
   "note": "Hours not listed; 574-654-3897.",
-  "hours": "Call ahead for hours: 574-654-3897."
+  "hours": "Call ahead for hours: 574-654-3897.",
+  "ll": [
+   41.70634,
+   -86.50916
+  ]
  },
  {
   "county": "St. Joseph",
@@ -510,7 +648,11 @@
   "url": "https://www.sjcindiana.com/2026/Archives-Records-Center",
   "verified": false,
   "note": "The county page blocks automated fetching. Address and hours (Mon–Fri 8–4:30) come from SBAGS.",
-  "hours": "Mon–Fri 8–4:30."
+  "hours": "Mon–Fri 8–4:30.",
+  "ll": [
+   41.66308,
+   -86.25317
+  ]
  },
  {
   "county": "St. Joseph",
@@ -524,7 +666,11 @@
   "url": "https://library.iusb.edu/search-find/archives/faq.html",
   "verified": true,
   "note": "Collecting scope and street address not stated on the page.",
-  "hours": "Call or email ahead: 574-520-4410."
+  "hours": "Call or email ahead: 574-520-4410.",
+  "ll": [
+   41.6659,
+   -86.22054
+  ]
  },
  {
   "county": "St. Joseph",
@@ -538,7 +684,11 @@
   "url": "https://clas.iusb.edu/centers/civil-rights/more-about-us.html",
   "verified": true,
   "note": "Public hours not listed.",
-  "hours": "Call ahead for public hours."
+  "hours": "Call ahead for public hours.",
+  "ll": [
+   41.67601,
+   -86.26586
+  ]
  },
  {
   "county": "St. Joseph",
@@ -552,7 +702,11 @@
   "url": "https://archives.nd.edu/information/",
   "verified": true,
   "note": "Mainly about Notre Dame and Catholic history, with little local history.",
-  "hours": "Mostly university and Catholic history."
+  "hours": "Mostly university and Catholic history.",
+  "ll": [
+   41.70247,
+   -86.23414
+  ]
  },
  {
   "county": "Elkhart",
@@ -565,7 +719,11 @@
   "address": "304 West Vistula St., Bristol, IN 46507",
   "url": "https://elkhartcountyparks.org/destinations/historical-museum/",
   "verified": true,
-  "note": "Tue–Sat 9–5; free."
+  "note": "Tue–Sat 9–5; free.",
+  "ll": [
+   41.72169,
+   -85.8202
+  ]
  },
  {
   "county": "Elkhart",
@@ -578,7 +736,11 @@
   "address": "302 E. Beardsley Ave., Elkhart, IN 46514 (tours start at the Beardsley Discovery Center, 819 N. Main St.)",
   "url": "https://www.ruthmere.org/Regular-Admission-and-Prices",
   "verified": true,
-  "note": "Tours Tue–Sat 10–3 hourly, Sun 1–3; closed Jan 1–Mar 31."
+  "note": "Tours Tue–Sat 10–3 hourly, Sun 1–3; closed Jan 1–Mar 31.",
+  "ll": [
+   41.69321,
+   -85.97339
+  ]
  },
  {
   "county": "Elkhart",
@@ -591,7 +753,11 @@
   "address": "102 W. Beardsley Ave., Elkhart, IN 46514",
   "url": "https://www.ruthmere.org/Regular-Admission-and-Prices",
   "verified": true,
-  "note": "Same tour schedule and season as Ruthmere; first floor wheelchair accessible."
+  "note": "Same tour schedule and season as Ruthmere; first floor wheelchair accessible.",
+  "ll": [
+   41.69309,
+   -85.97655
+  ]
  },
  {
   "county": "Elkhart",
@@ -604,7 +770,11 @@
   "address": "124 S. Main St., Goshen, IN 46526",
   "url": "https://www.goshenhistorical.org",
   "verified": true,
-  "note": "Tue–Sat 10–4; first Fridays until 8."
+  "note": "Tue–Sat 10–4; first Fridays until 8.",
+  "ll": [
+   41.58557,
+   -85.83428
+  ]
  },
  {
   "county": "Elkhart",
@@ -618,7 +788,12 @@
   "url": "https://goshenpl.lib.in.us/reference-services/genealogy-local-history/",
   "verified": true,
   "note": "Address from a RootsWeb list, not the page itself.",
-  "hours": "Open library hours."
+  "hours": "Open library hours.",
+  "ll": [
+   41.58504,
+   -85.83445
+  ],
+  "approx": true
  },
  {
   "county": "Elkhart",
@@ -632,7 +807,11 @@
   "url": "https://www.myepl.org/genealogy/",
   "verified": true,
   "note": "",
-  "hours": "Open library hours."
+  "hours": "Open library hours.",
+  "ll": [
+   41.68475,
+   -85.97374
+  ]
  },
  {
   "county": "Elkhart",
@@ -645,7 +824,11 @@
   "address": "302 W. Market Street, Nappanee, IN 46550",
   "url": "https://www.nappaneelibrary.org/",
   "verified": true,
-  "note": "Mon–Fri 9–5, Sat 9–1."
+  "note": "Mon–Fri 9–5, Sat 9–1.",
+  "ll": [
+   41.44274,
+   -86.00402
+  ]
  },
  {
   "county": "Elkhart",
@@ -658,7 +841,11 @@
   "address": "721 S. Main St., Elkhart, IN 46516",
   "url": "https://www.cityofelkhartin.gov/departments/national-new-york-central-railroad-museum/visit/admission-hours/",
   "verified": true,
-  "note": "Wed–Sat 10–5."
+  "note": "Wed–Sat 10–5.",
+  "ll": [
+   41.68038,
+   -85.97047
+  ]
  },
  {
   "county": "Elkhart",
@@ -672,7 +859,11 @@
   "url": "https://www.rvmhhalloffame.org/",
   "verified": true,
   "note": "Apr 1–Nov 1: Mon–Sat 9–5, Sun 10–3. Address from Wikipedia.",
-  "hours": "April 1 to November 1: Mon–Sat 9–5, Sun 10–3."
+  "hours": "April 1 to November 1: Mon–Sat 9–5, Sun 10–3.",
+  "ll": [
+   41.72912,
+   -85.88022
+  ]
  },
  {
   "county": "Elkhart",
@@ -685,7 +876,11 @@
   "address": "53373 County Road 131, Bristol, IN 46507",
   "url": "https://elkhartcountyparks.org/destinations/bonneyville-mill",
   "verified": true,
-  "note": "Mill open Tue–Sun 10–5, Apr 14–Nov 15."
+  "note": "Mill open Tue–Sun 10–5, Apr 14–Nov 15.",
+  "ll": [
+   41.71811,
+   -85.76527
+  ]
  },
  {
   "county": "Elkhart",
@@ -699,7 +894,11 @@
   "url": "https://www.goshen.edu/mhl",
   "verified": true,
   "note": "Mon–Fri 8–5. Its scope is religious history, not county history.",
-  "hours": "Mon–Fri 8–5. Its subject is Anabaptist and Mennonite history."
+  "hours": "Mon–Fri 8–5. Its subject is Anabaptist and Mennonite history.",
+  "ll": [
+   41.56248,
+   -85.82523
+  ]
  },
  {
   "county": "Regional (Kalamazoo)",
@@ -713,7 +912,11 @@
   "url": "https://wmich.edu/library/visit/zhang",
   "verified": true,
   "note": "Outside the six counties. County coverage taken from a RootsWeb wiki page; hours on WMU LibCal.",
-  "hours": "In Kalamazoo, just outside the valley; hours on the WMU library site."
+  "hours": "In Kalamazoo, just outside the valley; hours on the WMU library site.",
+  "ll": [
+   42.27653,
+   -85.60696
+  ]
  },
  {
   "county": "Cass",
@@ -726,7 +929,11 @@
   "address": "115 S. Front St., Dowagiac, MI 49047",
   "url": "https://heddon.dowagiacmuseum.info/the-heddon-museum",
   "verified": true,
-  "hours": "Tuesday and Friday 10–5; run by volunteers, so call ahead: 269-783-2560."
+  "hours": "Tuesday and Friday 10–5; run by volunteers, so call ahead: 269-783-2560.",
+  "ll": [
+   41.98352,
+   -86.10772
+  ]
  },
  {
   "county": "Cass",
@@ -739,7 +946,12 @@
   "address": "4054 Centre St. (M-40), Marcellus, MI 49067",
   "url": "https://www.hmdb.org/m.asp?m=261988",
   "verified": true,
-  "hours": "Ask the post about visiting hours."
+  "hours": "Ask the post about visiting hours.",
+  "ll": [
+   42.02447,
+   -85.81516
+  ],
+  "approx": true
  },
  {
   "county": "Cass",
@@ -752,7 +964,11 @@
   "address": "200 S. Broadway St., Cassopolis, MI 49031",
   "url": "https://www.casscountymi.org/1370/Museums",
   "verified": true,
-  "hours": "A private showplace; look over it from outside or ask on site."
+  "hours": "A private showplace; look over it from outside or ask on site.",
+  "ll": [
+   41.90962,
+   -86.0126
+  ]
  },
  {
   "county": "Kalamazoo",
@@ -766,7 +982,11 @@
   "url": "https://kalamazoomuseum.org/",
   "verified": true,
   "note": "Tue–Sat 10–4, Sun 12–4, closed Mon.",
-  "hours": "Tue–Sat 10–4, Sun 12–4. Free."
+  "hours": "Tue–Sat 10–4, Sun 12–4. Free.",
+  "ll": [
+   42.2934,
+   -85.58368
+  ]
  },
  {
   "county": "Kalamazoo",
@@ -780,7 +1000,12 @@
   "url": "https://www.airzoo.org/",
   "verified": true,
   "note": "Mon–Sat 9–5, Sun 12–5. The Discovery Center opens later on Fri and Sat.",
-  "hours": "Mon–Sat 9–5, Sun 12–5."
+  "hours": "Mon–Sat 9–5, Sun 12–5.",
+  "ll": [
+   42.24182,
+   -85.56026
+  ],
+  "approx": true
  },
  {
   "county": "Kalamazoo",
@@ -794,7 +1019,11 @@
   "url": "https://www.kpl.gov/local-history/",
   "verified": true,
   "note": "Library hours: Mon–Thu 9–8, Fri 9–6, Sat 10–5, closed Sun. The room's own hours were not stated.",
-  "hours": "Library hours: Mon–Thu 9–8, Fri 9–6, Sat 10–5."
+  "hours": "Library hours: Mon–Thu 9–8, Fri 9–6, Sat 10–5.",
+  "ll": [
+   42.28954,
+   -85.58459
+  ]
  },
  {
   "county": "Kalamazoo",
@@ -808,7 +1037,11 @@
   "url": "https://www.mikvgs.org/",
   "verified": true,
   "note": "Meetings are hybrid (in person and Zoom). No mailing address is published.",
-  "hours": "Free drop-in help Thursdays 10–12 after meetings."
+  "hours": "Free drop-in help Thursdays 10–12 after meetings.",
+  "ll": [
+   42.20359,
+   -85.58706
+  ]
  },
  {
   "county": "Kalamazoo",
@@ -822,7 +1055,11 @@
   "url": "https://vicksburghistory.org/historic-village/",
   "verified": true,
   "note": "Saturdays 11–5 according to the village government's page; no season was stated.",
-  "hours": "Saturdays 11–5."
+  "hours": "Saturdays 11–5.",
+  "ll": [
+   42.1229,
+   -85.52987
+  ]
  },
  {
   "county": "Kalamazoo",
@@ -836,7 +1073,11 @@
   "url": "https://www.portagemi.gov/Facilities/Facility/Details/Celery-Flats-Historical-Site-2",
   "verified": true,
   "note": "No building hours were given; the area hosts seasonal community events.",
-  "hours": "City park; buildings open for seasonal events."
+  "hours": "City park; buildings open for seasonal events.",
+  "ll": [
+   42.21116,
+   -85.58492
+  ]
  },
  {
   "county": "Kalamazoo",
@@ -850,7 +1091,11 @@
   "url": "https://conference.kbs.msu.edu/manor-house/visit/",
   "verified": true,
   "note": "Mon–Thu 10–3 (closed 1–1:30), closed weekends except the holiday market, and closed the first two weeks of November. Call ahead (269-671-2160) because private rentals can close the house.",
-  "hours": "Mon–Thu 10–3; call ahead, 269-671-2160."
+  "hours": "Mon–Thu 10–3; call ahead, 269-671-2160.",
+  "ll": [
+   42.41184,
+   -85.38773
+  ]
  },
  {
   "county": "Kalamazoo",
@@ -864,7 +1109,11 @@
   "url": "https://www.nps.gov/places/michigan-dr-nathan-thomas-house.htm",
   "verified": false,
   "note": "The NPS page loaded and confirms the house exists, but not that it is open. No regular hours or society website were found; tours appear to be by event or appointment. NOTE: this is an Underground Railroad site; your separate UGRR project is quarantined from the thesis, but a neutral directory listing of a public site is a different matter. Your call.",
-  "hours": "Tours by event or appointment through the Schoolcraft Historical Society."
+  "hours": "Tours by event or appointment through the Schoolcraft Historical Society.",
+  "ll": [
+   42.11616,
+   -85.62923
+  ]
  },
  {
   "county": "Kalamazoo",
@@ -878,7 +1127,11 @@
   "url": "https://www.kpl.gov/local-history/cemeteries/kzoo-city/mountain-home-cemetery/",
   "verified": true,
   "note": "Open grounds. The Cemeteries Office is 269-337-8227. Living-history tours are run occasionally by others.",
-  "hours": "Open grounds."
+  "hours": "Open grounds.",
+  "ll": [
+   42.29411,
+   -85.60295
+  ]
  },
  {
   "county": "Kalamazoo",
@@ -892,7 +1145,11 @@
   "url": "https://www.kpl.gov/local-history/kalamazoo-history/historic-districts/bronson-park-historic-district/",
   "verified": true,
   "note": "Public park, always open.",
-  "hours": "Public park, always open."
+  "hours": "Public park, always open.",
+  "ll": [
+   42.29022,
+   -85.586
+  ]
  },
  {
   "county": "Kalamazoo",
@@ -906,7 +1163,11 @@
   "url": "https://www.oshtemo.org/Departments/Parks-Recreation-Department/Parks/Historic-Drake-House",
   "verified": true,
   "note": "Tours by appointment through the Oshtemo Historical Society (contact is on the township page).",
-  "hours": "Tours by appointment through the Oshtemo Historical Society."
+  "hours": "Tours by appointment through the Oshtemo Historical Society.",
+  "ll": [
+   42.3004,
+   -85.64826
+  ]
  },
  {
   "county": "Kalamazoo",
@@ -920,7 +1181,11 @@
   "url": "https://library.kzoo.edu/special-collections/",
   "verified": true,
   "note": "Hours not posted; contact the archivist (Archivist@kzoo.edu, 269-337-7151).",
-  "hours": "Contact the archivist: 269-337-7151."
+  "hours": "Contact the archivist: 269-337-7151.",
+  "ll": [
+   42.29076,
+   -85.59936
+  ]
  },
  {
   "county": "LaPorte",
@@ -934,7 +1199,11 @@
   "url": "https://www.laportecountyhistory.org/",
   "verified": true,
   "note": "Tue–Sat 10–4:30 Central.",
-  "hours": "Tue–Sat 10–4:30 Central."
+  "hours": "Tue–Sat 10–4:30 Central.",
+  "ll": [
+   41.59545,
+   -86.70815
+  ]
  },
  {
   "county": "LaPorte",
@@ -948,7 +1217,11 @@
   "url": "https://www.barkermansion.org/",
   "verified": true,
   "note": "Tue–Sun 10–5 Central, closed Mon and major holidays. Note the address is barkermansion.org; the .com address is blocked.",
-  "hours": "Tue–Sun 10–5 Central."
+  "hours": "Tue–Sun 10–5 Central.",
+  "ll": [
+   41.71484,
+   -86.90279
+  ]
  },
  {
   "county": "LaPorte",
@@ -962,7 +1235,11 @@
   "url": "https://www.mchistorical.org/visit",
   "verified": true,
   "note": "Apr 1–Oct 31, Wed–Sun 1–4 Central, plus December weekends 12–3. Admission $10 adults. Do not use oldlighthousemuseum.org: that old domain now carries a casino page.",
-  "hours": "April to October, Wed–Sun 1–4 Central, plus December weekends 12–3. $10 adults."
+  "hours": "April to October, Wed–Sun 1–4 Central, plus December weekends 12–3. $10 adults.",
+  "ll": [
+   41.72268,
+   -86.90602
+  ]
  },
  {
   "county": "LaPorte",
@@ -976,7 +1253,11 @@
   "url": "https://www.hesston.org/",
   "verified": true,
   "note": "Seasonal weekends, noon–5 Central, plus special events. See hesston.org/plan for the calendar.",
-  "hours": "Weekends in season, noon–5 Central."
+  "hours": "Weekends in season, noon–5 Central.",
+  "ll": [
+   41.75492,
+   -86.67985
+  ]
  },
  {
   "county": "LaPorte",
@@ -990,7 +1271,11 @@
   "url": "https://laportelibrary.org/local-history-genealogy",
   "verified": true,
   "note": "Room hours not posted. Information desk 219-362-6156 ext. 101.",
-  "hours": "Ask at the information desk: 219-362-6156 ext. 101."
+  "hours": "Ask at the information desk: 219-362-6156 ext. 101.",
+  "ll": [
+   41.60864,
+   -86.72136
+  ]
  },
  {
   "county": "LaGrange",
@@ -1004,7 +1289,11 @@
   "url": "https://www.mennohof.org/",
   "verified": false,
   "note": "The official site refused the fetch (robots). The county visitors' bureau listing confirms Mon–Sat 10–5, last tour at 4.",
-  "hours": "Mon–Sat 10–5; last tour at 4."
+  "hours": "Mon–Sat 10–5; last tour at 4.",
+  "ll": [
+   41.67044,
+   -85.58273
+  ]
  },
  {
   "county": "LaGrange",
@@ -1018,7 +1307,12 @@
   "url": null,
   "verified": false,
   "note": "No official site was found; it is confirmed only by the county visitors' bureau listing. May 2–Nov 1, Tue and Wed 1–3, other times by appointment.",
-  "hours": "May to November, Tue and Wed 1–3; other times by appointment. Free."
+  "hours": "May to November, Tue and Wed 1–3; other times by appointment. Free.",
+  "ll": [
+   41.67738,
+   -85.57804
+  ],
+  "approx": true
  },
  {
   "county": "LaGrange",
@@ -1032,7 +1326,11 @@
   "url": "https://www.lagrange.lib.in.us/genealogy-resources/",
   "verified": true,
   "note": "Usable whenever the library is open; materials do not circulate.",
-  "hours": "Open library hours."
+  "hours": "Open library hours.",
+  "ll": [
+   41.64387,
+   -85.41943
+  ]
  },
  {
   "county": "Berrien",
@@ -1046,7 +1344,11 @@
   "url": "https://new-buffalo-railroad-museum.org/",
   "verified": true,
   "note": "Apr–Oct, Sat–Sun 12–5 Eastern.",
-  "hours": "April to October, Sat–Sun 12–5."
+  "hours": "April to October, Sat–Sun 12–5.",
+  "ll": [
+   41.78837,
+   -86.73945
+  ]
  },
  {
   "county": "Berrien",
@@ -1060,7 +1362,11 @@
   "url": "https://www.regionofthreeoaksmuseum.com",
   "verified": true,
   "note": "Seasonal, spring to October. The site gives Fri–Sun 12–5; Pure Michigan gives slightly different hours. Closed in winter.",
-  "hours": "Spring to October, Fri–Sun 12–5."
+  "hours": "Spring to October, Fri–Sun 12–5.",
+  "ll": [
+   41.80323,
+   -86.61203
+  ]
  },
  {
   "county": "Berrien",
@@ -1074,7 +1380,11 @@
   "url": "https://www.sjcity.com/node/3074",
   "verified": true,
   "note": "Inner Light tours on summer Saturdays (June–August), weather permitting. The pier is open to walk.",
-  "hours": "Inner light tours on summer Saturdays, weather permitting."
+  "hours": "Inner light tours on summer Saturdays, weather permitting.",
+  "ll": [
+   42.1161,
+   -86.49345
+  ]
  },
  {
   "county": "Van Buren",
@@ -1088,7 +1398,11 @@
   "url": "https://coverttwp.com/covert-historical-museum/",
   "verified": true,
   "note": "May 16–Sept 15, Tue and Fri 1–4.",
-  "hours": "Mid-May to mid-September, Tue and Fri 1–4."
+  "hours": "Mid-May to mid-September, Tue and Fri 1–4.",
+  "ll": [
+   42.29452,
+   -86.2626
+  ]
  },
  {
   "county": "St. Joseph",
@@ -1102,7 +1416,11 @@
   "url": "https://www.stjosephcountymi.gov/Home/Components/FacilityDirectory/FacilityDirectory/4/97",
   "verified": true,
   "note": "The county page is for the park; it does not give the bridge's history or a street address.",
-  "hours": "County park; the parks office gives directions: 269-467-5519."
+  "hours": "County park; the parks office gives directions: 269-467-5519.",
+  "ll": [
+   41.96744,
+   -85.52866
+  ]
  },
  {
   "county": "St. Joseph",
@@ -1116,7 +1434,11 @@
   "url": "https://walkertondigitallibrary.omeka.net/walkerton-heritage-museum",
   "verified": true,
   "note": "Thu–Sat 10–1, other times by appointment.",
-  "hours": "Thu–Sat 10–1, other times by appointment."
+  "hours": "Thu–Sat 10–1, other times by appointment.",
+  "ll": [
+   41.46921,
+   -86.48651
+  ]
  },
  {
   "county": "St. Joseph",
@@ -1130,7 +1452,11 @@
   "url": "https://www.in.gov/history/state-historical-markers/find-a-marker/battell-park/",
   "verified": true,
   "note": "Public park. The link is the state historical-marker page.",
-  "hours": "Public park."
+  "hours": "Public park.",
+  "ll": [
+   41.6655,
+   -86.18745
+  ]
  },
  {
   "county": "St. Joseph",
@@ -1144,7 +1470,11 @@
   "url": "https://sbvpa.org/a-storied-past/",
   "verified": true,
   "note": "Run under the city's Venues Parks & Arts department. Self-guided.",
-  "hours": "Open grounds; self-guided."
+  "hours": "Open grounds; self-guided.",
+  "ll": [
+   41.67767,
+   -86.26768
+  ]
  },
  {
   "county": "St. Joseph",
@@ -1158,7 +1488,11 @@
   "url": null,
   "verified": false,
   "note": "Confirmed only by a 2023 news report; no official cemetery page was found. Tour dates vary.",
-  "hours": "Open grounds; twilight history tours some seasons."
+  "hours": "Open grounds; twilight history tours some seasons.",
+  "ll": [
+   41.70889,
+   -86.27798
+  ]
  },
  {
   "county": "St. Joseph",
@@ -1172,7 +1506,12 @@
   "url": "https://www.visitsouthbend.com/blog/studebaker-bendix-trail/",
   "verified": true,
   "note": "The link is the visitors' bureau page that produced the trail.",
-  "hours": "Self-guided driving tour, about 90 minutes."
+  "hours": "Self-guided driving tour, about 90 minutes.",
+  "ll": [
+   41.67486,
+   -86.26026
+  ],
+  "approx": true
  },
  {
   "county": "St. Joseph",
@@ -1186,7 +1525,11 @@
   "url": null,
   "verified": false,
   "note": "sjcparks.org refused the fetch (robots). The visitors' bureau page confirms the park and its features.",
-  "hours": "County park; open daily."
+  "hours": "County park; open daily.",
+  "ll": [
+   41.66776,
+   -86.49968
+  ]
  },
  {
   "county": "St. Joseph",
@@ -1200,7 +1543,11 @@
   "url": "https://hospitality.nd.edu/explore/eck-visitors-center/",
   "verified": true,
   "note": "Register in person within 30 minutes of a tour; first 25 people only. Hours not posted.",
-  "hours": "Free walking tours from the visitors center; sign up in person."
+  "hours": "Free walking tours from the visitors center; sign up in person.",
+  "ll": [
+   41.69655,
+   -86.23923
+  ]
  },
  {
   "county": "St. Joseph",
@@ -1214,7 +1561,11 @@
   "url": "https://www.saintmarys.edu/news/heritage-and-research-center-celebrates-grand-opening-saint-marys",
   "verified": true,
   "note": "Grand opening was 26 May 2026; full public opening is in 2027. Until then visits are by appointment.",
-  "hours": "By appointment until it opens fully in 2027."
+  "hours": "By appointment until it opens fully in 2027.",
+  "ll": [
+   41.70747,
+   -86.25628
+  ]
  },
  {
   "county": "St. Joseph",
@@ -1228,7 +1579,11 @@
   "url": "https://www.morriscenter.org/about-us/history/",
   "verified": true,
   "note": "The site has a 'Tours' link, but no tour schedule was found.",
-  "hours": "Open for performances; ask about tours."
+  "hours": "Open for performances; ask about tours.",
+  "ll": [
+   41.67832,
+   -86.25098
+  ]
  },
  {
   "county": "Elkhart",
@@ -1242,7 +1597,11 @@
   "url": "https://www.thelerner.com/",
   "verified": true,
   "note": "Guided 'Behind the Curtain' tours are offered occasionally ($10). There are free lunchtime organ concerts.",
-  "hours": "Open for performances; occasional behind-the-scenes tours."
+  "hours": "Open for performances; occasional behind-the-scenes tours.",
+  "ll": [
+   41.68403,
+   -85.97175
+  ]
  },
  {
   "county": "Elkhart",
@@ -1256,7 +1615,11 @@
   "url": "https://www.coppescommons.com/",
   "verified": true,
   "note": "Generally 10–5 Eastern. The full weekly schedule is on the site.",
-  "hours": "Generally 10–5."
+  "hours": "Generally 10–5.",
+  "ll": [
+   41.44256,
+   -85.99729
+  ]
  },
  {
   "county": "Elkhart",
@@ -1270,7 +1633,12 @@
   "url": "https://middleburyin.com/departments/parks_and_trails/krider_s_world_fair_garden_park.php",
   "verified": true,
   "note": "Public park, open seasonally. The town page confirms only the 1934 fair.",
-  "hours": "Town park, open in season."
+  "hours": "Town park, open in season.",
+  "ll": [
+   41.67909,
+   -85.71038
+  ],
+  "approx": true
  },
  {
   "county": "Elkhart",
@@ -1284,7 +1652,11 @@
   "url": "https://goshenhistorical.org/historic-goshen-walking-tour/",
   "verified": true,
   "note": "Year-round. The museum itself is already in your directory; this is the separate trail.",
-  "hours": "Year-round, self-guided."
+  "hours": "Year-round, self-guided.",
+  "ll": [
+   41.58557,
+   -85.83409
+  ]
  },
  {
   "county": "Elkhart",
@@ -1298,7 +1670,11 @@
   "url": "https://elkhartcivictheatre.org/?p=102",
   "verified": true,
   "note": "Open for performances. The construction year (believed to be the 1890s) was not confirmed on the page.",
-  "hours": "Open for performances."
+  "hours": "Open for performances.",
+  "ll": [
+   41.72159,
+   -85.81601
+  ]
  },
  {
   "county": "Cass",
@@ -1311,7 +1687,11 @@
   "address": "319 M-62, Cassopolis, MI 49031",
   "url": "https://www.cassdistrictlibrary.org/",
   "verified": true,
-  "hours": "See the library’s website for hours."
+  "hours": "See the library’s website for hours.",
+  "ll": [
+   41.92033,
+   -86.01844
+  ]
  },
  {
   "county": "Cass",
@@ -1324,7 +1704,11 @@
   "address": "26745 Church St., Edwardsburg, MI",
   "url": "https://www.cassdistrictlibrary.org/",
   "verified": true,
-  "hours": "See the library’s website for hours."
+  "hours": "See the library’s website for hours.",
+  "ll": [
+   41.79706,
+   -86.08359
+  ]
  },
  {
   "county": "Cass",
@@ -1337,7 +1721,12 @@
   "address": "17049 US-12, Edwardsburg, MI",
   "url": "https://www.cassdistrictlibrary.org/",
   "verified": true,
-  "hours": "See the library’s website for hours."
+  "hours": "See the library’s website for hours.",
+  "ll": [
+   41.79527,
+   -86.03749
+  ],
+  "approx": true
  },
  {
   "county": "Cass",
@@ -1350,7 +1739,12 @@
   "address": "2341 Yankee St., Niles, MI",
   "url": "https://www.cassdistrictlibrary.org/",
   "verified": true,
-  "hours": "See the library’s website for hours."
+  "hours": "See the library’s website for hours.",
+  "ll": [
+   41.8266,
+   -86.21918
+  ],
+  "approx": true
  },
  {
   "county": "Cass",
@@ -1363,6 +1757,10 @@
   "address": "205 E. Main St., Marcellus, MI 49067",
   "url": "https://www.marcellus.michlibrary.org/",
   "verified": true,
-  "hours": "Mon–Thu 10–7, Fri 10–5, Sat 10–2."
+  "hours": "Mon–Thu 10–7, Fri 10–5, Sat 10–2.",
+  "ll": [
+   42.02703,
+   -85.81275
+  ]
  }
 ]

@@ -2982,3 +2982,73 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 .mu-w{color:var(--ink-soft)}
 .mu-a{font-size:.85rem!important; color:var(--ink-soft)}
 .mu-go{font-size:.88rem}
+/* Draft 145: museums map, trip list, near me */
+.mu-opts{margin-top:.4rem}
+.mu-nmsg{margin:.2rem 0; font-size:.88rem; color:var(--ink-soft); min-height:1.2em}
+.mu-jl{font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-right:.2rem; align-self:center}
+.mu-cj span{opacity:.65; font-size:.85em; margin-left:.15rem}
+.mu-n{font-size:.75rem; font-weight:normal; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-left:.4rem; white-space:nowrap}
+.mu-mapf{margin:1rem 0 1.2rem}
+.mu-map{height:min(62vh,520px); min-height:320px; border:1px solid var(--line); border-radius:4px; background:color-mix(in srgb, #6f9fb8 30%, var(--paper)); position:relative; z-index:0}
+.mu-mapph{position:absolute; inset:0; display:grid; place-items:center; margin:0; color:var(--ink-soft); font-size:.9rem}
+.mu-map.leaflet-container{font:inherit; background:color-mix(in srgb, #6f9fb8 30%, var(--paper))}
+.mu-map .mu-cty{fill:var(--paper); fill-opacity:.75; stroke:var(--line); stroke-width:1}
+.mu-map .mu-cty.in{fill:var(--paper-2); fill-opacity:1; stroke:color-mix(in srgb, var(--ink-soft) 55%, transparent); stroke-width:1.2}
+.mu-map .mu-ws{stroke:var(--gold); stroke-width:1.4; stroke-dasharray:5 5; stroke-opacity:.7}
+.mu-map .mu-rv{stroke:#4a86a8; stroke-width:1.6; stroke-opacity:.85; fill:none}
+.mu-map.osm .mu-cty{fill-opacity:0} .mu-map.osm .mu-cty.in{fill-opacity:.08}
+.mu-cl{color:var(--ink-soft); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; text-align:center; line-height:1.1; opacity:.8; pointer-events:none; white-space:nowrap}
+.mu-map .mu-pin{fill:var(--gold); fill-opacity:.95; stroke:color-mix(in srgb, var(--ink) 75%, transparent); stroke-width:1.4; cursor:pointer}
+.mu-map .mu-pin.lib{fill:#3f7f9c}
+.mu-map .mu-pin.b{fill-opacity:.45}
+.mu-map .mu-pin.t{stroke:var(--rule); stroke-width:3.2}
+.mu-map .mu-me-pt{fill:var(--rule); fill-opacity:1; stroke:#fff; stroke-width:2}
+.mu-map .leaflet-popup-content-wrapper,.mu-map .leaflet-popup-tip{background:var(--paper); color:var(--ink)}
+.mu-map .leaflet-tooltip{background:var(--paper); color:var(--ink); border-color:var(--line)}
+.mu-pop p{margin:.2rem 0 .5rem}
+.mu-pk{display:block; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft)}
+.mu-pop button{font:inherit; font-size:.95rem; background:none; border:0; padding:0; color:var(--ink); text-align:left; text-decoration:underline; text-decoration-color:var(--gold); text-underline-offset:3px; cursor:pointer}
+.mu-pop small{display:block; color:var(--ink-soft)}
+.mu-mapf figcaption{display:flex; flex-wrap:wrap; align-items:center; gap:.4rem .9rem; margin-top:.45rem; font-size:.82rem; color:var(--ink-soft)}
+.mu-dot{display:inline-block; width:.75rem; height:.75rem; border-radius:50%; background:var(--gold); border:1.5px solid #3a2a10; vertical-align:-.1rem; margin-right:.2rem}
+.mu-dot.lib{background:#3f7f9c} .mu-dot.t{background:transparent; border:3px solid var(--rule)}
+.mu-mapf .btn{font-size:.8rem}
+.mu-stat{margin-left:auto}
+.mu-trip{border:1px solid var(--line); border-left:3px solid var(--rule); border-radius:4px; padding:.8rem 1.1rem; margin:1rem 0; background:var(--paper)}
+.mu-trip h2{margin:0 0 .4rem; font-size:1.15rem}
+.mu-trip ol{margin:.2rem 0 .6rem; padding-left:1.4rem}
+.mu-trip li{margin:.25rem 0}
+.mu-tt{color:var(--ink-soft); font-size:.9rem}
+.mu-up,.mu-x{font:inherit; margin-left:.45rem; width:1.7rem; height:1.7rem; border:1px solid var(--line); border-radius:50%; background:transparent; color:var(--ink-soft); cursor:pointer; line-height:1}
+.mu-up:disabled{opacity:.3; cursor:default}
+.mu-x:hover,.mu-up:hover:not(:disabled){color:var(--rule); border-color:var(--rule)}
+.mu-tacts{display:flex; flex-wrap:wrap; gap:.5rem; margin:.4rem 0}
+.mu-mine{margin:.4rem 0; color:var(--ink-soft); font-size:.9rem}
+.mu-mine:empty,.mu-mine:has(span:empty){display:none}
+.mu{scroll-margin-top:6rem; display:flex; flex-direction:column}
+.mu-ph{display:block; width:calc(100% + 1.9rem); max-width:none; height:auto; margin:-.8rem -.95rem .6rem; border-radius:3px 3px 0 0; aspect-ratio:600/338; object-fit:cover}
+.mu-acts{font-size:.88rem; margin-top:auto!important; padding-top:.3rem}
+.mu-acts a{white-space:nowrap}
+.mu-none{color:var(--ink-soft)}
+.mu-me{display:flex; flex-wrap:wrap; gap:.4rem; margin:.5rem 0 .1rem!important}
+.mu-tb,.mu-bb{font:inherit; font-size:.8rem; padding:.28rem .65rem; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--ink); cursor:pointer; min-height:2rem}
+.mu-tb:hover,.mu-bb:hover{border-color:var(--gold)}
+.mu-tb[aria-pressed="true"]{background:color-mix(in srgb, var(--rule) 14%, transparent); border-color:var(--rule)}
+.mu-bb[aria-pressed="true"]{background:color-mix(in srgb, var(--gold) 22%, transparent); border-color:var(--gold)}
+.mu.on-trip{border-top-color:var(--rule)}
+.mu-dist{font-weight:bold; color:var(--ink); text-transform:none; letter-spacing:.02em}
+.mu.flash{animation:muflash 1.8s ease}
+@keyframes muflash{0%,30%{box-shadow:0 0 0 3px var(--gold)}100%{box-shadow:0 0 0 0 transparent}}
+@media (prefers-reduced-motion: reduce){ .mu.flash{animation:none; outline:3px solid var(--gold)} }
+.mu h3:focus{outline:none}
+@media (max-width:640px){ .mu-map{height:56vh; min-height:300px} .mu-stat{margin-left:0; width:100%} }
+@media print{
+  .mu-bar,.mu-mapf,.mu-me,.mu-dir,.mu-tacts,.mu-trip .note,.mu-up,.mu-x,.mu-mine{display:none!important}
+  .mu-list{display:block} .mu{break-inside:avoid; margin:0 0 .6rem; background:none} .mu-ph{display:none}
+  .mu-acts a[href^="http"]::after{content:" (" attr(href) ")"; font-size:.75rem; word-break:break-all}
+  html.mu-printtrip .mu:not(.on-trip), html.mu-printtrip .mu-c:not(:has(.on-trip)), html.mu-printtrip .dis, html.mu-printtrip .note, html.mu-printtrip .lede, html.mu-printtrip main > h2{display:none!important}
+  html.mu-printtrip .mu{display:block!important}
+  html.mu-printtrip .mu-trip{border:0; padding:0}
+}
+.mu-map .leaflet-control-attribution{font-size:.68rem; background:color-mix(in srgb, var(--paper) 80%, transparent); color:var(--ink-soft)}
+.mu-map .leaflet-control-attribution a{color:var(--ink-soft)}

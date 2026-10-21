@@ -528,6 +528,7 @@ window.PS_BADGES=[
   ['informant','Informant','Read the guide to the death certificate.'],
   ['oldhand','The old hand','Read the guide to old handwriting.'],
   ['records','Record keeper','Visit “Where the records are.”'],
+  ['visitor','Out in the field','Mark three museums or historic places as “Been there.”'],
   ['notes','Field notes','Open the book of field notes.'],
   ['legend','Legend tester','Test a family legend.'],
   ['toolkit','Toolmaker','Use a tool in the hunter’s toolkit.'],
@@ -692,7 +693,7 @@ try{ (function(){
 /* ---------- the ledger that travels: badges, follows and notes as one checked file, read back on another device ---------- */
 try{ (function(){
   const out=document.getElementById('ledgerOut'), inp=document.getElementById('ledgerIn'), msg=document.getElementById('ledgerMsg'); if (!out || !inp) return;
-  const KEYS=/^(ps-badges|ps-mine|ps-days|ps-note-\d+|ps-inked|ps-tn-[a-z-]+|ps-nh(-[a-z]+)?|ps-junior|ps-valley|ps-hint-\d+)$/;
+  const KEYS=/^(ps-badges|ps-mine|ps-days|ps-note-\d+|ps-inked|ps-tn-[a-z-]+|ps-nh(-[a-z]+)?|ps-junior|ps-valley|ps-mu-trip|ps-mu-been|ps-hint-\d+)$/;
   const gather=function(){ const d={}; for (let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); if (KEYS.test(k)) d[k]=localStorage.getItem(k); } return d; };
   const sum=function(txt){ if (!(crypto && crypto.subtle)) return Promise.resolve(''); return crypto.subtle.digest('SHA-256', new TextEncoder().encode(txt)).then(function(h){ return [].slice.call(new Uint8Array(h)).map(function(b){ return ('0'+b.toString(16)).slice(-2); }).join(''); }); };
   out.addEventListener('click', function(){
