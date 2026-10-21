@@ -2956,3 +2956,6 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 .tcard img{border-radius:10px}
 .tcard span{left:9%; right:9%; bottom:4.5%; padding:1.2rem .3rem .4rem; border-radius:0 0 8px 8px}
 .tcard:hover, .tcard:focus-visible{box-shadow:none; filter:drop-shadow(0 14px 18px rgba(0,0,0,.45)) drop-shadow(0 0 6px rgba(246,210,122,.55))}
+/* labels one size smaller, two lines each, the same on both buttons; the pair starts level with the valley line */
+.tcard span{font-size:.6rem; letter-spacing:.1em; line-height:1.35}
+@media (min-width:900px){ .hero > .heroside{margin-top:0} }
