@@ -714,5 +714,44 @@
   "verified": true,
   "note": "Outside the six counties. County coverage taken from a RootsWeb wiki page; hours on WMU LibCal.",
   "hours": "In Kalamazoo, just outside the valley; hours on the WMU library site."
+ },
+ {
+  "county": "Cass",
+  "state": "MI",
+  "town": "Dowagiac",
+  "name": "Heddon Museum",
+  "kind": "museum",
+  "what": "The museum of James Heddon’s Sons, the Dowagiac fishing-tackle company famous for its lures, rods and reels, with a recreated workshop showing how lures were made by hand.",
+  "research": "",
+  "address": "115 S. Front St., Dowagiac, MI 49047",
+  "url": "https://heddon.dowagiacmuseum.info/the-heddon-museum",
+  "verified": true,
+  "hours": "Tuesday and Friday 10–5; run by volunteers, so call ahead: 269-783-2560."
+ },
+ {
+  "county": "Cass",
+  "state": "MI",
+  "town": "Marcellus",
+  "name": "Veterans Museum at VFW Post 4054",
+  "kind": "museum",
+  "what": "A veterans’ military museum at the Marcellus VFW post, with a memorial to the area’s missing in action.",
+  "research": "",
+  "address": "4054 Centre St. (M-40), Marcellus, MI 49067",
+  "url": "https://www.hmdb.org/m.asp?m=261988",
+  "verified": true,
+  "hours": "Ask the post about visiting hours."
+ },
+ {
+  "county": "Cass",
+  "state": "MI",
+  "town": "Cassopolis",
+  "name": "Sinclair Station",
+  "kind": "historic site",
+  "what": "A filling station restored in the style of the 1950s and 1960s, a roadside display of mid-century motoring that visitors are welcome to look over.",
+  "research": "",
+  "address": "200 S. Broadway St., Cassopolis, MI 49031",
+  "url": "https://www.casscountymi.org/1370/Museums",
+  "verified": true,
+  "hours": "A private showplace; look over it from outside or ask on site."
  }
 ]
