@@ -2950,3 +2950,9 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
   .hero > .heroside{grid-column:2; grid-row:1 / span 6; margin:2.6rem 0 0; width:100%}
 }
 @media (prefers-reduced-motion: reduce){ .tcard{transition:none} .tcard:hover{transform:none} }
+/* the artwork carries its own gold frame */
+.tcard{border:0; background:none; border-radius:10px; box-shadow:none; overflow:visible; filter:drop-shadow(0 10px 14px rgba(0,0,0,.35))}
+.tcard::after{content:none}
+.tcard img{border-radius:10px}
+.tcard span{left:9%; right:9%; bottom:4.5%; padding:1.2rem .3rem .4rem; border-radius:0 0 8px 8px}
+.tcard:hover, .tcard:focus-visible{box-shadow:none; filter:drop-shadow(0 14px 18px rgba(0,0,0,.45)) drop-shadow(0 0 6px rgba(246,210,122,.55))}

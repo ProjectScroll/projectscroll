@@ -52,3 +52,23 @@ for root,_,fs in os.walk(R):
         else: continue
         if ch: open(p,'wb').write(nb); n+=1
 print(f'metadata stripped from {n} image(s)')
+# PDFs: keep only the title (what a reader's window shows); drop the making program, dates and any XMP
+try:
+    from pypdf import PdfReader, PdfWriter
+    m=0
+    for root,_,fs in os.walk(R):
+        if any(s in root for s in SKIP): continue
+        for f in fs:
+            if not f.lower().endswith('.pdf'): continue
+            p=os.path.join(root,f); r=PdfReader(p); md=dict(r.metadata or {})
+            if set(md)-{'/Title'} or r.xmp_metadata is not None:
+                w=PdfWriter(clone_from=r); w._info=None if False else w._info
+                w.metadata={'/Title': md.get('/Title','Project Scroll')}
+                try:
+                    if '/Metadata' in w._root_object: del w._root_object['/Metadata']
+                except Exception: pass
+                with open(p,'wb') as o: w.write(o)
+                m+=1
+    print(f'pdf metadata cleared from {m} file(s)')
+except ImportError:
+    print('pypdf not installed: PDFs not checked')
