@@ -1,0 +1,855 @@
+[
+ {
+  "name": "Goshen First Fridays: Fire & Ice",
+  "season": "winter",
+  "month": 1,
+  "when": "First Friday of January, 5–9 pm",
+  "town": "Goshen",
+  "county": "Elkhart",
+  "state": "IN",
+  "what": "Downtown Goshen opens the year with live ice carving, fire performers, an ice throne and sleigh for photos, and outdoor fires with free marshmallows. The Goshen Historical Museum stays open into the evening.",
+  "history": "Downtown Goshen has held monthly First Fridays festivals since 2007.",
+  "url": "https://www.downtowngoshen.org/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-01-02",
+   "end": "2026-01-02"
+  }
+ },
+ {
+  "name": "Shipshewana Ice Festival & Chili Cook-Off",
+  "season": "winter",
+  "month": 1,
+  "when": "Mid-January, Friday–Saturday",
+  "town": "Shipshewana",
+  "county": "LaGrange",
+  "state": "IN",
+  "what": "Professional carvers fill the town with ice sculptures, with live carving and a carving competition, plus a wing contest on Friday evening and a chili contest on Saturday.",
+  "history": null,
+  "url": "https://visitshipshewana.org/wintertime",
+  "verified": true,
+  "dates2026": {
+   "start": "2027-01-16",
+   "end": "2027-01-16"
+  }
+ },
+ {
+  "name": "St. Joseph Ice Fest",
+  "season": "winter",
+  "month": 1,
+  "when": "A weekend in late January / early February",
+  "town": "St. Joseph",
+  "county": "Berrien",
+  "state": "MI",
+  "what": "Downtown St. Joseph fills with ice carvers working through the weekend, a lit 'Fire & Ice' tower, frozen games for families and a scavenger hunt along State and Pleasant streets.",
+  "history": null,
+  "url": "https://www.stjoetoday.com/icefest",
+  "verified": true,
+  "dates2026": {
+   "start": "2027-01-29",
+   "end": "2027-01-31"
+  }
+ },
+ {
+  "name": "Dowagiac Ice Time Festival",
+  "season": "winter",
+  "month": 2,
+  "when": "First Saturday of February (approx.), 10 am–4 pm",
+  "town": "Dowagiac",
+  "county": "Cass",
+  "state": "MI",
+  "what": "A one-day winter festival downtown with ice sculptures, a chili crawl through local restaurants, children's crafts, open shops and a fire-department s'mores tent.",
+  "history": "The 2023 festival was the 26th annual, organized by the Greater Dowagiac Chamber of Commerce.",
+  "url": "https://www.dowagiacchamber.com/events/upcoming-events",
+  "verified": true,
+  "dates2026": {
+   "start": "2027-02-06",
+   "end": "2027-02-06"
+  }
+ },
+ {
+  "name": "South Haven Ice Breaker Festival",
+  "season": "winter",
+  "month": 2,
+  "when": "First weekend of February (approx.)",
+  "town": "South Haven",
+  "county": "Van Buren",
+  "state": "MI",
+  "what": "More than forty ice sculptures line downtown South Haven, alongside cardboard sled races, horse-drawn wagon rides, outdoor skating and a chili cook-off.",
+  "history": "2027 is billed as the 33rd annual Ice Breaker.",
+  "url": "https://www.southhaven.org/events/ice-breaker-festival-2/",
+  "verified": true,
+  "dates2026": {
+   "start": "2027-02-05",
+   "end": "2027-02-07"
+  }
+ },
+ {
+  "name": "Candlelight Christmas Parade",
+  "season": "winter",
+  "month": 12,
+  "when": "First Friday of December (approx.), evening",
+  "town": "Dowagiac",
+  "county": "Cass",
+  "state": "MI",
+  "what": "Dowagiac's evening holiday parade brings well over a hundred lighted units down Front Street, with a tree lighting at Beckwith Park, as part of the town's 'Celebrate the Holidays' season.",
+  "history": "The 2019 parade was described as the 38th annual.",
+  "url": "https://www.dowagiacchamber.com/events/upcoming-events",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-12-04",
+   "end": "2026-12-04"
+  }
+ },
+ {
+  "name": "Santa's Candy Cane Express at Hesston Steam Museum",
+  "season": "winter",
+  "month": 12,
+  "when": "Two weekends in early December",
+  "town": "Hesston (near La Porte)",
+  "county": "LaPorte",
+  "state": "IN",
+  "what": "The steam museum's Christmas trains carry families through the snowy woods to visit Santa on two December weekends.",
+  "history": null,
+  "url": "https://www.hesston.org/plan",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-12-05",
+   "end": "2026-12-13"
+  }
+ },
+ {
+  "name": "Christmas at Copshaholm",
+  "season": "winter",
+  "month": 12,
+  "when": "December, holiday self-guided tours",
+  "town": "South Bend",
+  "county": "St. Joseph",
+  "state": "IN",
+  "what": "The History Museum decorates the Oliver family's 38-room Copshaholm mansion with Christmas trees on all three floors and themed table settings, and opens it for self-guided holiday tours.",
+  "history": null,
+  "url": "https://historymuseumsb.org/christmas-at-copshaholm",
+  "verified": true
+ },
+ {
+  "name": "Shipshewana Lights of Joy",
+  "season": "winter",
+  "month": 12,
+  "when": "Mid-November through December 31, nightly",
+  "town": "Shipshewana",
+  "county": "LaGrange",
+  "state": "IN",
+  "what": "A drive-through light show at the Shipshewana Trading Place: nearly two miles of lighted scenes with Christmas music on the car radio.",
+  "history": null,
+  "url": "https://shipshewanalightsofjoy.com/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-11-10",
+   "end": "2026-12-31"
+  }
+ },
+ {
+  "name": "Sturgis Tree Lighting & Parade of Lights",
+  "season": "winter",
+  "month": 12,
+  "when": "First Thursday (tree lighting) and Friday (parade) of December",
+  "town": "Sturgis",
+  "county": "St. Joseph",
+  "state": "MI",
+  "what": "Sturgis lights its community tree with a children's reading of a Christmas poem, and the next evening more than fifty lighted floats from local businesses and clubs roll downtown.",
+  "history": null,
+  "url": "https://sturgisareachamber.com/visit-sturgis/christmas-time-in-sturgis/",
+  "verified": true
+ },
+ {
+  "name": "Kalamazoo Nature Center Maple Sugar Festival",
+  "season": "spring",
+  "month": 3,
+  "when": "Early March, one Sunday, 9 am–4 pm",
+  "town": "Kalamazoo",
+  "county": "Kalamazoo",
+  "state": "MI",
+  "what": "A day in the sugarbush at the Nature Center, with a pancake breakfast served with Michigan maple syrup and horse-drawn wagon rides around the grounds.",
+  "history": "2027 is billed as the 61st annual festival; it began as 'a kettle on a tripod.'",
+  "url": "https://naturecenter.org/events/maplesugar/",
+  "verified": true,
+  "dates2026": {
+   "start": "2027-03-07",
+   "end": "2027-03-07"
+  }
+ },
+ {
+  "name": "Sugar Camp Days at Bendix Woods",
+  "season": "spring",
+  "month": 3,
+  "when": "Third weekend of March",
+  "town": "New Carlisle",
+  "county": "St. Joseph",
+  "state": "IN",
+  "what": "St. Joseph County Parks opens its sugar bush and sugar house for tours of sap gathering and boiling, with a Lions Club pancake breakfast, historical crafters, wagon rides and maple treats.",
+  "history": "Bendix Woods was once part of the Studebaker proving-ground complex; its clubhouse and the CCC-planted 'Studebaker' pine-tree sign (1930s) are on the National Register.",
+  "url": "https://www.visitsouthbend.com/directory/bendix-woods-county-park/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-03-14",
+   "end": "2026-03-15"
+  }
+ },
+ {
+  "name": "Kalamazoo Living History Show",
+  "season": "spring",
+  "month": 3,
+  "when": "Third weekend of March (approx.)",
+  "town": "Kalamazoo",
+  "county": "Kalamazoo",
+  "state": "MI",
+  "what": "A large juried show for reenactors and history buffs, where makers sell pre-1890 clothing, gear and crafts at the county Expo Center; open to the public, with a different reenactment group hosting each year.",
+  "history": "Founded 1976.",
+  "url": "https://www.kalamazooshow.com/",
+  "verified": true,
+  "dates2026": {
+   "start": "2027-03-20",
+   "end": "2027-03-21"
+  }
+ },
+ {
+  "name": "Wakarusa Maple Syrup Festival",
+  "season": "spring",
+  "month": 4,
+  "when": "Last full weekend of April, Friday–Sunday",
+  "town": "Wakarusa",
+  "county": "Elkhart",
+  "state": "IN",
+  "what": "A three-day small-town festival with a Saturday parade, carnival rides, dozens of vendor booths and plenty of maple treats.",
+  "history": null,
+  "url": "https://www.visitelkhartcounty.com/blog/post/wakarusa-maple-syrup-festival/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-04-24",
+   "end": "2026-04-26"
+  }
+ },
+ {
+  "name": "Bonneyville Mill season",
+  "season": "spring",
+  "month": 4,
+  "when": "Mid-April to mid-November, Tuesday–Sunday",
+  "town": "Bristol",
+  "county": "Elkhart",
+  "state": "IN",
+  "what": "Elkhart County Parks' grist mill, billed as Indiana's oldest operating grist mill, grinds grain and sells its flour through the warm months; the park adds schoolhouse open houses, a Feature Grain Day and autumn leaf walks.",
+  "history": null,
+  "url": "https://elkhartcountyparks.org/destinations/bonneyville-mill",
+  "verified": true
+ },
+ {
+  "name": "Blossomtime Festival",
+  "season": "spring",
+  "month": 5,
+  "when": "Late April to early May, ending with the Saturday Grand Floral Parade",
+  "town": "St. Joseph & Benton Harbor",
+  "county": "Berrien",
+  "state": "MI",
+  "what": "Southwest Michigan's spring festival honoring the fruit-growing country, shared by some two dozen communities, with the Blessing of the Blossoms and a Grand Floral Parade that crosses the river from St. Joseph into Benton Harbor.",
+  "history": "Established 1906 and described as Michigan's oldest multi-community festival; the Blessing of the Blossoms began in 1906 with Rev. W. J. Cady.",
+  "url": "https://blossomtimefestival.org/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-05-09",
+   "end": "2026-05-09"
+  }
+ },
+ {
+  "name": "Dogwood Fine Arts Festival",
+  "season": "spring",
+  "month": 5,
+  "when": "About ten days in mid-May",
+  "town": "Dowagiac",
+  "county": "Cass",
+  "state": "MI",
+  "what": "Dowagiac's spring arts festival brings readings by visiting authors, concerts, art shows and a downtown art walk, and has commissioned public sculpture for the city.",
+  "history": "Began in 1995, pairing visiting sculptors with local donors who commissioned public art (City of Dowagiac).",
+  "url": "https://www.cityofdowagiac.com/arts_recreation/embrace_the_arts/index.php",
+  "verified": false
+ },
+ {
+  "name": "Shipshewana Flea Market season",
+  "season": "spring",
+  "month": 5,
+  "when": "Early May to late September, Tuesdays & Wednesdays",
+  "town": "Shipshewana",
+  "county": "LaGrange",
+  "state": "IN",
+  "what": "The Trading Place's big open-air flea market runs two days a week all summer, alongside the weekly antique and livestock auctions in the auction barn.",
+  "history": null,
+  "url": "https://shipshewanatradingplace.com/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-05-05",
+   "end": "2026-09-30"
+  }
+ },
+ {
+  "name": "Hesston Steam Museum operating season",
+  "season": "spring",
+  "month": 5,
+  "when": "Weekends, Memorial Day through Labor Day",
+  "town": "Hesston (near La Porte)",
+  "county": "LaPorte",
+  "state": "IN",
+  "what": "The La Porte County Historical Steam Society runs its steam and diesel railroads and antique machinery on summer weekends, opening with National Train Day and Memorial Day weekend.",
+  "history": "First show and reunion held in 1957; the steam society was chartered as a nonprofit in 1968.",
+  "url": "https://www.hesston.org/",
+  "verified": true
+ },
+ {
+  "name": "Quilt Gardens along the Heritage Trail",
+  "season": "summer",
+  "month": 6,
+  "when": "Late May through early fall",
+  "town": "Elkhart County towns (Goshen, Nappanee, Middlebury, Elkhart and others)",
+  "county": "Elkhart",
+  "state": "IN",
+  "what": "Seventeen giant flower gardens planted in traditional quilt patterns across Elkhart County, free to tour along the Heritage Trail through the summer.",
+  "history": "2026 is the program's 19th year.",
+  "url": "https://www.visitelkhartcounty.com/",
+  "verified": true
+ },
+ {
+  "name": "Three Oaks Flag Day Celebration",
+  "season": "summer",
+  "month": 6,
+  "when": "A weekend in early-to-mid June",
+  "town": "Three Oaks",
+  "county": "Berrien",
+  "state": "MI",
+  "what": "Billed as the world's largest Flag Day parade, Three Oaks turns out for a weekend of patriotic celebration honoring veterans and the flag.",
+  "history": "First parade June 14, 1953, organized by Herb Flick under American Legion Post 204; it grew to a three-day celebration in the late 1970s.",
+  "url": "https://threeoaksflagday.com/",
+  "verified": true
+ },
+ {
+  "name": "Vicksburg Old Car Festival",
+  "season": "summer",
+  "month": 6,
+  "when": "Second weekend of June (approx.), Friday–Saturday",
+  "town": "Vicksburg",
+  "county": "Kalamazoo",
+  "state": "MI",
+  "what": "More than a thousand old cars, from Model Ts to hot rods, fill the village on Saturday, while the Vicksburg Historic Village opens its buildings and an antique tractor and gas-engine show runs on the grounds.",
+  "history": null,
+  "url": null,
+  "verified": true,
+  "dates2026": {
+   "start": "2026-06-12",
+   "end": "2026-06-13"
+  }
+ },
+ {
+  "name": "Elkhart Jazz Festival",
+  "season": "summer",
+  "month": 6,
+  "when": "Mid-June, four days",
+  "town": "Elkhart",
+  "county": "Elkhart",
+  "state": "IN",
+  "what": "Four days of jazz in venues all over downtown Elkhart, including the historic Lerner Theatre, outdoor stages and small listening rooms.",
+  "history": "Founded 1988.",
+  "url": "https://elkhartjazzfestival.com/",
+  "verified": true,
+  "dates2026": {
+   "start": "2027-06-17",
+   "end": "2027-06-20"
+  }
+ },
+ {
+  "name": "Three Rivers Water Festival",
+  "season": "summer",
+  "month": 6,
+  "when": "Third weekend of June, Thursday–Saturday",
+  "town": "Three Rivers",
+  "county": "St. Joseph",
+  "state": "MI",
+  "what": "Three days downtown and at Scidmore Park: an opening parade, arts and crafts, a soap box derby, car show, duck race and fireworks over the rivers.",
+  "history": "The 2019 festival was the 63rd annual (City of Three Rivers).",
+  "url": "https://www.threeriversmi.org/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-06-18",
+   "end": "2026-06-20"
+  }
+ },
+ {
+  "name": "Civil War Train Raids at Hesston",
+  "season": "summer",
+  "month": 6,
+  "when": "Last weekend of June",
+  "town": "Hesston (near La Porte)",
+  "county": "LaPorte",
+  "state": "IN",
+  "what": "A living-history weekend at the Hesston Steam Museum, with Civil War reenactors staging train raids on the museum's railroad.",
+  "history": null,
+  "url": "https://www.hesston.org/plan",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-06-27",
+   "end": "2026-06-28"
+  }
+ },
+ {
+  "name": "St. Joseph County 4-H Fair",
+  "season": "summer",
+  "month": 7,
+  "when": "Early July, nine days",
+  "town": "South Bend",
+  "county": "St. Joseph",
+  "state": "IN",
+  "what": "The county's 4-H fair at the Ironwood Road fairgrounds, with livestock and open-class exhibits, a queen pageant, youth talent contest, parades and rides.",
+  "history": null,
+  "url": "https://www.4hfair.com/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-07-03",
+   "end": "2026-07-11"
+  }
+ },
+ {
+  "name": "Krasl Art Fair on the Bluff",
+  "season": "summer",
+  "month": 7,
+  "when": "Second weekend of July",
+  "town": "St. Joseph",
+  "county": "Berrien",
+  "state": "MI",
+  "what": "A juried outdoor art fair spread through Lake Bluff Park above Lake Michigan, run by the Krasl Art Center.",
+  "history": null,
+  "url": "https://krasl.org/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-07-11",
+   "end": "2026-07-12"
+  }
+ },
+ {
+  "name": "LaGrange County 4-H Fair",
+  "season": "summer",
+  "month": 7,
+  "when": "Mid-July, one week",
+  "town": "LaGrange",
+  "county": "LaGrange",
+  "state": "IN",
+  "what": "A week of 4-H exhibits and livestock with grandstand rodeo, truck and tractor pulls, harness racing by the local Trottingbred association, and Friday fireworks.",
+  "history": null,
+  "url": "https://lagrangecounty4hfair.org/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-07-11",
+   "end": "2026-07-18"
+  }
+ },
+ {
+  "name": "LaPorte County Fair",
+  "season": "summer",
+  "month": 7,
+  "when": "Mid-July, one week",
+  "town": "La Porte",
+  "county": "LaPorte",
+  "state": "IN",
+  "what": "Billed as Indiana's oldest county fair, with livestock and open-class shows, rodeo and grandstand events, and Pioneerland, a living-history village of early Indiana pioneer life.",
+  "history": "Established 1845; Pioneerland added in 1995.",
+  "url": "https://lpfair.com/",
+  "verified": true,
+  "dates2026": {
+   "start": "2027-07-10",
+   "end": "2027-07-17"
+  }
+ },
+ {
+  "name": "Van Buren Youth Fair",
+  "season": "summer",
+  "month": 7,
+  "when": "Third week of July",
+  "town": "Hartford",
+  "county": "Van Buren",
+  "state": "MI",
+  "what": "Van Buren County's youth and 4-H fair at the Hartford fairgrounds, with livestock shows, exhibits and grandstand events.",
+  "history": null,
+  "url": "https://vanburencountymi.gov/?p=85968",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-07-18",
+   "end": "2026-07-25"
+  }
+ },
+ {
+  "name": "Elkhart County 4-H Fair",
+  "season": "summer",
+  "month": 7,
+  "when": "Late July, nine days",
+  "town": "Goshen",
+  "county": "Elkhart",
+  "state": "IN",
+  "what": "One of Indiana's largest ticketed events, drawing about 200,000 people for nine days of 4-H livestock and exhibits, grandstand shows, a famous food row and the Heritage Park stage.",
+  "history": null,
+  "url": "https://4hfair.org/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-07-24",
+   "end": "2026-08-01"
+  }
+ },
+ {
+  "name": "Blueberry u-pick season",
+  "season": "summer",
+  "month": 7,
+  "when": "July through August (some varieties into mid-September)",
+  "town": "South Haven area",
+  "county": "Van Buren",
+  "state": "MI",
+  "what": "South Haven sits at the heart of Michigan's blueberry country, and through July and August farms and u-pick fields around town open for picking.",
+  "history": "The area claims the world's largest concentration of blueberry growers, nearly 300 farmers within 50 miles.",
+  "url": "https://www.southhaven.org/blog/all-about-blueberries-in-south-haven-mi/",
+  "verified": true
+ },
+ {
+  "name": "Coloma Glad-Peach Festival",
+  "season": "summer",
+  "month": 8,
+  "when": "Late July / first days of August",
+  "town": "Coloma",
+  "county": "Berrien",
+  "state": "MI",
+  "what": "Coloma's summer festival celebrates the area's peaches and gladiolus with a parade, carnival, walk/run and evening events downtown.",
+  "history": null,
+  "url": "https://gladpeachfest.com/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-07-31",
+   "end": "2026-08-01"
+  }
+ },
+ {
+  "name": "Fort St. Joseph Archaeology Open House",
+  "season": "summer",
+  "month": 8,
+  "when": "First weekend of August",
+  "town": "Niles",
+  "county": "Berrien",
+  "state": "MI",
+  "what": "Each August the archaeologists excavating the site of the 18th-century French colonial fort on the St. Joseph River open their dig to the public, with artifact displays, 'ask an archaeologist' tables, guided tours and a living history village of costumed reenactors.",
+  "history": "Western Michigan University's Fort St. Joseph Archaeological Project has more than 25 years of research at the site.",
+  "url": "https://wmich.edu/fortstjoseph",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-08-01",
+   "end": "2026-08-02"
+  }
+ },
+ {
+  "name": "Cass County Fair",
+  "season": "summer",
+  "month": 8,
+  "when": "First full week of August",
+  "town": "Cassopolis",
+  "county": "Cass",
+  "state": "MI",
+  "what": "Cass County's agricultural fair, with livestock shows, still exhibits and a youth auction, a carnival, and grandstand rodeos, tractor pulls and demolition derbies.",
+  "history": "Held since 1851; 2026 marked 175 years.",
+  "url": "https://www.mycasscountyfair.com/",
+  "verified": true,
+  "dates2026": {
+   "start": "2027-08-01",
+   "end": "2027-08-07"
+  }
+ },
+ {
+  "name": "Kalamazoo County Fair",
+  "season": "summer",
+  "month": 8,
+  "when": "Early August, Tuesday–Saturday",
+  "town": "Kalamazoo",
+  "county": "Kalamazoo",
+  "state": "MI",
+  "what": "Five days of 4-H livestock and animal shows, a petting farm, stage shows and a Saturday-night rodeo at the county Expo Center grounds on Lake Street.",
+  "history": null,
+  "url": "https://www.kalcounty.gov/399/Kalamazoo-County-Fair",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-08-04",
+   "end": "2026-08-08"
+  }
+ },
+ {
+  "name": "Abbott's Magic Get-Together",
+  "season": "summer",
+  "month": 8,
+  "when": "Early-to-mid August, four days",
+  "town": "Colon",
+  "county": "St. Joseph",
+  "state": "MI",
+  "what": "Magicians from around the world gather in the little village of Colon, home of Abbott's Magic Company, for four days of lectures, competitions and public evening shows.",
+  "history": "Since 1934, founded by Percy Abbott and Recil Bordner.",
+  "url": "https://www.magicgettogether.com/",
+  "verified": true,
+  "dates2026": {
+   "start": "2027-08-11",
+   "end": "2027-08-14"
+  }
+ },
+ {
+  "name": "National Blueberry Festival",
+  "season": "summer",
+  "month": 8,
+  "when": "Second weekend of August (approx.), four days",
+  "town": "South Haven",
+  "county": "Van Buren",
+  "state": "MI",
+  "what": "South Haven's long-running harvest festival honors the area's blueberry growers with four days of summer celebration by the lake.",
+  "history": "Described as one of the longest-running fruit festivals in the nation; 2026 was billed as the 64th annual (https://www.southhaven.org/events/the-64th-annual-national-blueberry-festival/).",
+  "url": "https://www.southhaven.org/events/festivals-celebrations/national-blueberry-festival/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-08-06",
+   "end": "2026-08-09"
+  }
+ },
+ {
+  "name": "Berrien County Youth Fair",
+  "season": "summer",
+  "month": 8,
+  "when": "Third week of August",
+  "town": "Berrien Springs",
+  "county": "Berrien",
+  "state": "MI",
+  "what": "Berrien County's youth fair, with livestock and youth exhibits, fair royalty, a large-animal auction, tractor pulls, bull riding and a demolition derby.",
+  "history": null,
+  "url": "https://bcyf.org/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-08-17",
+   "end": "2026-08-22"
+  }
+ },
+ {
+  "name": "Hesston Labor Day Weekend Steam & Power Show",
+  "season": "fall",
+  "month": 9,
+  "when": "Labor Day weekend, four days",
+  "town": "Hesston (near La Porte)",
+  "county": "LaPorte",
+  "state": "IN",
+  "what": "The steam museum's biggest weekend: steam engines, antique machinery and trains in action, with a steam-powered threshing machine working the harvest.",
+  "history": "The first show and reunion was held in 1957.",
+  "url": "https://www.hesston.org/plan",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-09-04",
+   "end": "2026-09-07"
+  }
+ },
+ {
+  "name": "Michigan Flywheelers Antique Engine & Tractor Show",
+  "season": "fall",
+  "month": 9,
+  "when": "Second weekend of September (approx.), Thursday–Sunday",
+  "town": "South Haven",
+  "county": "Van Buren",
+  "state": "MI",
+  "what": "The museum's biggest show fills its 80-acre grounds with hundreds of working antique engines and tractors, a sawmill and shingle mill, a 1920s-style 'Olde Town' and a small railroad.",
+  "history": null,
+  "url": "https://michiganflywheelers.org",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-09-10",
+   "end": "2026-09-13"
+  }
+ },
+ {
+  "name": "Paw Paw Wine & Harvest Festival",
+  "season": "fall",
+  "month": 9,
+  "when": "Second weekend of September (approx.)",
+  "town": "Paw Paw",
+  "county": "Van Buren",
+  "state": "MI",
+  "what": "Paw Paw celebrates the grape harvest in the heart of Michigan wine country with family events, wine tasting, a parade and a 5K.",
+  "history": null,
+  "url": "https://www.wineandharvestfestival.com/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-09-11",
+   "end": "2026-09-13"
+  }
+ },
+ {
+  "name": "Nappanee Apple Festival",
+  "season": "fall",
+  "month": 9,
+  "when": "Third weekend of September, Thursday–Sunday",
+  "town": "Nappanee",
+  "county": "Elkhart",
+  "state": "IN",
+  "what": "Opens by cutting a giant baked apple pie, then four days of parade, three stages, more than 150 exhibitors and apple fritters, dumplings and cider.",
+  "history": null,
+  "url": "https://nappaneeapplefestival.org/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-09-17",
+   "end": "2026-09-20"
+  }
+ },
+ {
+  "name": "La Porte Sunflower Fair",
+  "season": "fall",
+  "month": 9,
+  "when": "Third Saturday of September (approx.)",
+  "town": "La Porte",
+  "county": "LaPorte",
+  "state": "IN",
+  "what": "A downtown community fair along Michigan Avenue with craft and nonprofit vendors, a farmers market, a rib cook-off, a car show and a sunflower-growing contest.",
+  "history": null,
+  "url": "https://sunflowerfair.com/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-09-19",
+   "end": "2026-09-19"
+  }
+ },
+ {
+  "name": "St. Joseph County Grange Fair",
+  "season": "fall",
+  "month": 9,
+  "when": "Late September, one week",
+  "town": "Centreville",
+  "county": "St. Joseph",
+  "state": "MI",
+  "what": "Michigan's Grange fair keeps the county fair tradition late in the season, with grandstand events, a community stage and daily free events at the Centreville fairgrounds.",
+  "history": null,
+  "url": "https://sjcgfair.com/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-09-20",
+   "end": "2026-09-26"
+  }
+ },
+ {
+  "name": "Michiana Mennonite Relief Sale",
+  "season": "fall",
+  "month": 9,
+  "when": "Last weekend of September, Friday–Saturday",
+  "town": "Goshen",
+  "county": "Elkhart",
+  "state": "IN",
+  "what": "A Mennonite community tradition at the Elkhart County fairgrounds: food booths, a live quilt auction and other sales, all raising money for Mennonite Central Committee relief work.",
+  "history": "First sale held in 1968.",
+  "url": "https://mennonitesale.org/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-09-25",
+   "end": "2026-09-26"
+  }
+ },
+ {
+  "name": "Vicksburg Harvest Festival",
+  "season": "fall",
+  "month": 9,
+  "when": "Last Sunday of September, 11 am–4 pm",
+  "town": "Vicksburg",
+  "county": "Kalamazoo",
+  "state": "MI",
+  "what": "The Vicksburg Historical Society opens its Historic Village, general store, print shop and schoolhouse for a free day of crafts and fiber demonstrations, antique tractors, wagon rides and pumpkin decorating, celebrating the area's farm heritage.",
+  "history": "The 2024 festival was the 14th annual.",
+  "url": "https://vicksburghistory.org/signature-events/",
+  "verified": true
+ },
+ {
+  "name": "Apple Cider Century",
+  "season": "fall",
+  "month": 9,
+  "when": "Last Sunday of September",
+  "town": "Three Oaks",
+  "county": "Berrien",
+  "state": "MI",
+  "what": "A one-day bicycle tour from Three Oaks through orchard and wine country, with routes from 15 to 100 miles and cider and fruit along the way.",
+  "history": "Started 1974; organized by the Three Oaks Spokes Bicycle Club.",
+  "url": "https://www.applecidercentury.com/",
+  "verified": true,
+  "dates2026": {
+   "start": "2027-09-26",
+   "end": "2027-09-26"
+  }
+ },
+ {
+  "name": "Apple-picking season in the Fruit Belt",
+  "season": "fall",
+  "month": 9,
+  "when": "Mid-August through October",
+  "town": "Coloma, Berrien Springs, Galien, Three Oaks and other towns",
+  "county": "Berrien",
+  "state": "MI",
+  "what": "Berrien County's orchards open for u-pick apples from mid-August into October, many with farm markets, cider and wagon rides.",
+  "history": "Jollay Orchards in Coloma dates its farm to 1857.",
+  "url": "https://swmichigan.org/blog/best-apple-orchards",
+  "verified": true
+ },
+ {
+  "name": "Giant Straw Bale Art Trail",
+  "season": "fall",
+  "month": 10,
+  "when": "September through late October",
+  "town": "Shipshewana, Middlebury, LaGrange and Howe",
+  "county": "LaGrange",
+  "state": "IN",
+  "what": "A free self-guided autumn trail of giant round straw bales turned into colorful characters and scenes by local artists and businesses across four towns.",
+  "history": null,
+  "url": "https://visitshipshewana.org/events/autumn-adventures/straw-bale-art/",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-09-01",
+   "end": "2026-10-24"
+  }
+ },
+ {
+  "name": "Under the Harvest Moon Festival",
+  "season": "fall",
+  "month": 10,
+  "when": "A Saturday in mid-October, 10 am–4 pm",
+  "town": "Dowagiac",
+  "county": "Cass",
+  "state": "MI",
+  "what": "Dowagiac's autumn festival brings vintage tractors, an open-air antique market, fall produce, Michigan-made crafts, blacksmith demonstrations and a scarecrow contest downtown.",
+  "history": null,
+  "url": "https://www.dowagiacchamber.com/events/upcoming-events",
+  "verified": true,
+  "dates2026": {
+   "start": "2026-10-10",
+   "end": "2026-10-10"
+  }
+ },
+ {
+  "name": "Fall colour in Southwest Michigan",
+  "season": "fall",
+  "month": 10,
+  "when": "Peak usually the first two weeks of October",
+  "town": "St. Joseph, Coloma, Berrien Springs, Niles, South Haven and the Red Arrow Highway",
+  "county": "Berrien",
+  "state": "MI",
+  "what": "The orchard and dune country turns in early October; the tourism council suggests drives along Red Arrow Highway and Blue Star Highway, vineyard roads near Baroda, and the trails at Fernwood Botanical Garden in Niles.",
+  "history": null,
+  "url": "https://swmichigan.org/fall-color-report",
+  "verified": true
+ },
+ {
+  "name": "Maple Hill Holiday Parade",
+  "season": "fall",
+  "month": 11,
+  "when": "A Saturday in late November, 11 am",
+  "town": "Kalamazoo",
+  "county": "Kalamazoo",
+  "state": "MI",
+  "what": "Kalamazoo's downtown holiday parade of marching bands, giant balloons and floats, with shops on the Kalamazoo Mall opening the holiday season.",
+  "history": "Founded in 1962 by the Gilmore Brothers department store.",
+  "url": "https://www.kalamazooholidayparade.org/",
+  "verified": true
+ }
+]

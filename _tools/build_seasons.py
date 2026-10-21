@@ -60,7 +60,7 @@ JS = r'''<script>
   if (cur){ cur.classList.add('now'); cur.querySelector('h2').insertAdjacentHTML('beforeend',' <span class="se-now">now</span>'); cur.parentNode.insertBefore(cur, secs[0]); }
   var fmt=function(s){ var d=new Date(s+'T12:00:00'); return d.toLocaleDateString('en-US',{weekday:'short', month:'short', day:'numeric', year:'numeric'}); };
   items.forEach(function(li){ var s=li.dataset.start, e=li.dataset.end; if (!s) return; var t=li.querySelector('.se-d');
-    var past=new Date((e||s)+'T23:59:00')<now; t.textContent=' · '+fmt(s)+(e && e!==s? ' to '+fmt(e) : '')+(past? ' (this year’s has passed)' : '');
+    var past=new Date((e||s)+'T23:59:00')<now, on=!past && new Date(s+'T00:00:00')<=now; t.textContent=' · '+fmt(s)+(e && e!==s? ' to '+fmt(e) : '')+(past? ' (this year’s has passed)' : on? ' (on now)' : ''); if (on) li.classList.add('soon');
     if (!past && (new Date(s+'T00:00:00')-now)/864e5<=31){ li.classList.add('soon'); } });
   var draw=function(){ var w=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean), c=cs.value, n=0;
     items.forEach(function(li){ var ok=(!mon || +li.dataset.m===mon) && (!c || li.dataset.c===c) && w.every(function(x){ return li.dataset.t.indexOf(x)>=0; }); li.hidden=!ok; if (ok) n++; });
@@ -70,7 +70,7 @@ JS = r'''<script>
   q.addEventListener('input',draw); cs.addEventListener('change',draw);
   /* coming up: the next few with known dates */
   var up=items.filter(function(li){ return li.dataset.start && new Date((li.dataset.end||li.dataset.start)+'T23:59:00')>=now; }).sort(function(a,b){ return a.dataset.start<b.dataset.start?-1:1; }).slice(0,4);
-  var ul=$('#seUp'); if (up.length){ up.forEach(function(li){ var r=document.createElement('li'), a=document.createElement('a'); a.href='#'+li.id; a.textContent=li.dataset.n; r.appendChild(a); var s=document.createElement('span'); s.textContent=' · '+li.dataset.town+' · '+fmt(li.dataset.start); r.appendChild(s); ul.appendChild(r); }); $('#seUpW').hidden=false; }
+  var ul=$('#seUp'); if (up.length){ up.forEach(function(li){ var r=document.createElement('li'), a=document.createElement('a'); a.href='#'+li.id; a.textContent=li.dataset.n; r.appendChild(a); var s=document.createElement('span'); var on=new Date(li.dataset.start+'T00:00:00')<=now; s.textContent=' · '+li.dataset.town+' · '+(on? 'on now, until '+fmt(li.dataset.end) : fmt(li.dataset.start)); r.appendChild(s); ul.appendChild(r); }); $('#seUpW').hidden=false; }
   /* add to calendar: a small .ics file made on this device */
   var pad=function(n){ return ('0'+n).slice(-2); };
   $$('.se-cal').forEach(function(b){ b.addEventListener('click',function(){ var li=b.closest('.se'), s=li.dataset.start.replace(/-/g,''), e=new Date(li.dataset.end+'T12:00:00'); e.setDate(e.getDate()+1);
@@ -85,7 +85,7 @@ JS = r'''<script>
 body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Seasons &amp; festivals</p>
     <h1>When to come, and why to come back</h1>
-    <p class="lede" style="font-size:1.15rem">{n} fairs, festivals, harvests, living-history days and holiday walks across the St. Joseph River valley, season by season. Most have run for decades; a few for more than a century. The season we are in comes first.</p>
+    <p class="lede" style="font-size:1.15rem">Here are {n} fairs, festivals, harvests, living-history days and holiday walks across the St. Joseph River valley, season by season. Most have run for decades; a few for more than a century. The season we are in comes first.</p>
     <div class="se-up" id="seUpW" hidden><p class="mu-jl">Coming up</p><ul id="seUp"></ul></div>
     <div class="mu-bar">
       <label class="nm-q"><span>Find an event</span><input type="search" id="seQ" placeholder="A town, a fair, a fruit…" autocomplete="off" spellcheck="false"></label>

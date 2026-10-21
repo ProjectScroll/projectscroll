@@ -346,7 +346,7 @@ JS = r'''<script>
 body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Museums &amp; historic places</p>
     <h1>Where the valley keeps its past</h1>
-    <p class="lede" style="font-size:1.15rem">{n} museums, historic houses, libraries, research rooms and archives across the St. Joseph River valley and its neighbours, from the log cabin in Cassopolis to the Studebaker collection in South Bend. The hunt starts on this website. It finishes in places like these.</p>
+    <p class="lede" style="font-size:1.15rem">Here are {n} museums, historic houses, libraries, research rooms and archives across the St. Joseph River valley and its neighbours, from the log cabin in Cassopolis to the Studebaker collection in South Bend. The hunt starts on this website. It finishes in places like these.</p>
     <div class="mu-bar">
       <label class="nm-q"><span>Find a place</span><input type="search" id="muQ" placeholder="A town, a museum or a subject" autocomplete="off" spellcheck="false"></label>
       <div class="nm-chips" role="group" aria-label="Show one kind of place"><button type="button" class="btn mu-f" data-k="" aria-pressed="true">Everything</button>{kinds}</div>
