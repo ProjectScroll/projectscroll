@@ -74,12 +74,32 @@ JS = r'''<script>
     var l=document.createElement('link'); l.rel='stylesheet'; l.href='/vendor/leaflet-1.9.4/leaflet.css?v=1'; document.head.appendChild(l);
     var s=document.createElement('script'); s.src='/vendor/leaflet-1.9.4/leaflet.js?v=1'; s.onload=start; document.head.appendChild(s); };
   if ('IntersectionObserver' in window){ var io=new IntersectionObserver(function(e){ if (e.some(function(x){ return x.isIntersecting; })){ io.disconnect(); need(); } },{rootMargin:'300px'}); io.observe($('#wkMap')); } else need();
+  /* play the tour aloud: the browser's own voice reads each stop, then moves on */
+  var pb=$('#wkPlay'), playing=false, sy=window.speechSynthesis;
+  var say=function(){ if (!playing) return; var li=stops[cur], t=li.dataset.n+'. '+[].slice.call(li.querySelectorAll('.wk-then,.wk-now')).map(function(p){ return p.textContent; }).join(' ');
+    var u=new SpeechSynthesisUtterance(t); u.lang='en-US'; u.rate=.98;
+    u.onend=function(){ if (!playing) return; if (cur<N-1) setTimeout(function(){ if (playing){ show(cur+1); say(); } },1200); else { playing=false; pb.setAttribute('aria-pressed','false'); pb.textContent='Play the tour aloud'; } };
+    sy.cancel(); sy.speak(u); };
+  if (sy && window.SpeechSynthesisUtterance){ pb.hidden=false; pb.addEventListener('click',function(){ playing=!playing; pb.setAttribute('aria-pressed',String(playing)); pb.textContent=playing?'Stop reading':'Play the tour aloud'; if (playing) say(); else sy.cancel(); });
+    prev.addEventListener('click',function(){ if (playing) say(); }); next.addEventListener('click',function(){ if (playing) say(); }); addEventListener('pagehide',function(){ sy.cancel(); }); }
+  /* follow me on foot: your position on the plan, and each stop opens as you reach it; nothing leaves this device */
+  var fb=$('#wkFollow'), watch=null, me=null, fmsg=$('#wkProg');
+  if (navigator.geolocation){ fb.hidden=false; fb.addEventListener('click',function(){
+    if (watch!==null){ navigator.geolocation.clearWatch(watch); watch=null; fb.setAttribute('aria-pressed','false'); fb.textContent='Follow me on foot'; if (me && map) map.removeLayer(me); me=null; return; }
+    need(); fb.setAttribute('aria-pressed','true'); fb.textContent='Stop following';
+    watch=navigator.geolocation.watchPosition(function(p){ var here=[p.coords.latitude,p.coords.longitude];
+      if (map){ if (!me) me=L.circleMarker(here,{radius:8, className:'mu-me-pt', interactive:false}).addTo(map); else me.setLatLng(here); }
+      var best=-1, bd=1e9; stops.forEach(function(li,i){ var d=km(here,LL(li))*1000; if (d<bd){ bd=d; best=i; } });
+      if (bd>2000){ fmsg.textContent='You look to be away from Broadway. Following starts working when you are in downtown Cassopolis.'; return; }
+      if (bd<=40+Math.min(p.coords.accuracy||0,40) && best!==cur){ show(best); if (navigator.vibrate) navigator.vibrate(90); fmsg.textContent='You are at stop '+(best+1)+': '+stops[best].dataset.n+'.'; if (playing) say(); }
+    }, function(){ fmsg.textContent='No location shared, so following is off.'; fb.click(); }, {enableHighAccuracy:true, maximumAge:5000, timeout:30000}); }); }
   var h=location.hash.slice(1), at=stops.findIndex(function(li){ return li.id===h; });
   show(at>=0? at : 0, false); if (at>=0) $('#wkBox').scrollIntoView();
 })();
 </script>'''.replace('__ROUTE__', route)
 body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Broadway Virtual Walk</p>
+    <figure class="pg-art"><picture><source type="image/avif" srcset="/img/card-walk-art-270.avif 270w, /img/card-walk-art.avif 540w" sizes="8rem"><img class="vt-walk" src="/img/card-walk-art-270.webp" srcset="/img/card-walk-art-270.webp 270w, /img/card-walk-art.webp 540w" sizes="8rem" width="540" height="960" alt="" decoding="async"></picture></figure>
     <h1>Walk old Broadway</h1>
     <p class="lede" style="font-size:1.15rem">Cassopolis, Michigan, from the 1860 plan to today: {len(S)} stops down the main street, each with what stood there, who ran it, and what is there now. Walk it from your chair, stop by stop on the old plan, or bring this page to Broadway and stamp each stop on the spot.</p>
     <div class="wk-box" id="wkBox">
@@ -88,7 +108,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
         <p class="wk-nav"><button type="button" class="btn" id="wkPrev">‹ Back</button> <span id="wkNum" aria-live="polite"></span> <button type="button" class="btn primary" id="wkNext">Next stop ›</button></p>
         <div class="wk-stage" id="wkStage" aria-live="polite"></div>
       </div>
-      <p class="wk-tools"><label class="wk-op" id="wkOp" hidden>1860 plan <input type="range" min="0" max="100" value="90" aria-label="How strongly the 1860 plan shows"></label> <button type="button" class="btn mu-osm" id="wkOSM" aria-pressed="false" hidden>Show today’s streets</button> <a class="btn" href="/map/3d/cassopolis/">Fly over it in 3D</a> <a class="btn" href="/map/cassopolis/">The full 1860 plan</a></p>
+      <p class="wk-tools"><label class="wk-op" id="wkOp" hidden>1860 plan <input type="range" min="0" max="100" value="90" aria-label="How strongly the 1860 plan shows"></label> <button type="button" class="btn mu-osm" id="wkOSM" aria-pressed="false" hidden>Show today’s streets</button> <button type="button" class="btn" id="wkPlay" aria-pressed="false" hidden>Play the tour aloud</button> <button type="button" class="btn" id="wkFollow" aria-pressed="false" hidden>Follow me on foot</button> <a class="btn" href="/map/3d/cassopolis/">Fly over it in 3D</a> <a class="btn" href="/map/cassopolis/">The full 1860 plan</a></p>
       <p class="mu-mine" id="wkProg" aria-live="polite"></p>
     </div>
     <h2>Every stop</h2>
@@ -98,6 +118,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <h2>Walking it for real</h2>
     <ul class="dis">
       <li><b>Start at the north end</b> and walk south with the stops in order; the whole walk is under a mile.</li>
+      <li><b>Let the page follow you.</b> “Follow me on foot” opens each stop as you reach it, and “Play the tour aloud” reads it to you, so you can keep your eyes on the street.</li>
       <li><b>Stamp as you go.</b> “I’m here” checks your location once, on your phone, and stamps that stop. Nothing leaves your device.</li>
       <li><b>Stay on the sidewalk</b> and on public ground, and be kind to the businesses: many of these buildings are still working shops and offices.</li>
       <li><b>Take the same picture.</b> Where a stop has an old postcard, stand where the photographer stood and <a href="/postcards/">send us your photo</a>.</li>

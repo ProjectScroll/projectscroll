@@ -51,6 +51,8 @@ JS = r'''<script>
     var ok=S.filter(function(s){ return (s.w.indexOf(want)>=0) && s.era.indexOf(era)>=0 && (!s.st || s.st.indexOf(st)>=0 || (!st && s.st.indexOf('')>=0)); });
     if (st) ok=ok.filter(function(s){ return !s.st || s.st.indexOf(st)>=0; });
     ok.sort(function(a,b){ return (b.on==='site')-(a.on==='site'); });
+    if (name){ var place=st? county+', '+(st==='MI'?'Michigan':'Indiana') : '';
+      ok.splice(ok.filter(function(s){ return s.on==='site'; }).length, 0, {t:'Search FamilySearch for '+name+(place?' in '+place:''), d:'The free FamilySearch index, searched for this surname'+(place?' anywhere in the county':'')+'. A free account is needed to see the records.', u:function(){ return 'https://www.familysearch.org/search/record/results?q.surname='+encodeURIComponent(name)+(place?'&q.anyPlace='+encodeURIComponent(place):''); }}); }
     list.innerHTML='';
     ok.forEach(function(s,i){ var li=document.createElement('li'), a=document.createElement('a'); a.href=s.u(name,st,st? county+', '+(st==='MI'?'Michigan':'Indiana') : '');
       if (!s.on) a.rel='noopener'; var b=document.createElement('b'); b.textContent=s.t; a.appendChild(b); li.appendChild(a);
@@ -59,8 +61,17 @@ JS = r'''<script>
     var where=seat[1]? ' The county’s own books are kept at the courthouse and county offices in '+seat[1]+'.' : '';
     head.textContent=(name? 'For '+name+', ' : 'For your person, ')+ERA[era]+(seat[0]&&c!=='other'? ', in '+seat[0] : '')+': '+ok.length+' places to look, best first.'+where;
     out.hidden=false; out.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth', block:'start'}); head.focus({preventScroll:true});
-    try{ localStorage.setItem('ps-rf', JSON.stringify({c:c, era:era, want:want})); }catch(e){} });
-  try{ var p=JSON.parse(localStorage.getItem('ps-rf')||'null'); if (p){ $('#rfCounty').value=p.c; $('#rfEra').value=p.era; $('#rfWant').value=p.want; } }catch(e){}
+    try{ localStorage.setItem('ps-rf', JSON.stringify({c:c, era:era, want:want})); }catch(e){}
+    history.replaceState(null,'','?'+new URLSearchParams({c:c, e:era, w:want}).toString()+'#rfOut'); });
+  /* share the list: the link carries the answers, so it opens with the same list */
+  $('#rfShare').addEventListener('click',function(){ var m=$('#rfShareMsg'), qs=new URLSearchParams(location.search), nm=$('#rfName').value.trim(); if (nm) qs.set('n',nm); var url=location.origin+location.pathname+'?'+qs.toString();
+    if (navigator.share){ navigator.share({title:'Where to look', text:head.textContent, url:url}).catch(function(){}); return; }
+    if (navigator.clipboard) navigator.clipboard.writeText(url).then(function(){ m.textContent='Link copied.'; },function(){ m.textContent=url; }); else m.textContent=url; });
+  $('#rfPrint').addEventListener('click',function(){ window.print(); });
+  var sp=new URLSearchParams(location.search);
+  if (sp.get('c') && SEAT[sp.get('c')]){ $('#rfCounty').value=sp.get('c'); $('#rfEra').value=String(Math.max(0,Math.min(3,+sp.get('e')||0))); var wv=sp.get('w'); if ([].some.call($('#rfWant').options,function(o){ return o.value===wv; })) $('#rfWant').value=wv; $('#rfName').value=(sp.get('n')||'').slice(0,40);
+    setTimeout(function(){ f.requestSubmit ? f.requestSubmit() : f.dispatchEvent(new Event('submit')); },60); }
+  try{ var p=JSON.parse(localStorage.getItem('ps-rf')||'null'); if (p && !location.search){ $('#rfCounty').value=p.c; $('#rfEra').value=p.era; $('#rfWant').value=p.want; } }catch(e){}
 })();
 </script>'''.replace('__SEATS__', seats)
 
@@ -77,6 +88,7 @@ tools = ''.join(f'<li class="pp-t"><a href="{u}"><b>{t}</b><span>{d}</span></a><
 
 body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Find your people</p>
+    <figure class="pg-art"><picture><source type="image/avif" srcset="/img/card-people-art-270.avif 270w, /img/card-people-art.avif 540w" sizes="8rem"><img class="vt-people" src="/img/card-people-art-270.webp" srcset="/img/card-people-art-270.webp 270w, /img/card-people-art.webp 540w" sizes="8rem" width="540" height="960" alt="" decoding="async"></picture></figure>
     <h1>Who were they, and where is it written?</h1>
     <p class="lede" style="font-size:1.15rem">Everyone who lived in the valley left a trail of paper: a census line, a deed, a notice in the weekly paper, a name on a stone. Answer three questions and the record finder lists where to look first, on this site and in the free collections, and which county office keeps the books.</p>
     <form class="rf" id="rfForm" aria-labelledby="rfH">
@@ -88,7 +100,8 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <p><button class="btn primary" type="submit">Show me where to look</button></p>
     </form>
     <section class="rf-out" id="rfOut" hidden aria-live="polite"><h2 id="rfHead" tabindex="-1"></h2><ol class="rf-list" id="rfList"></ol>
-      <p class="note">Nothing you type leaves this page. The list is a starting order, not a guarantee: records were lost, burned or never kept in some places and years. The <a href="/records/">records page</a> has the rest.</p></section>
+      <p class="mu-tacts"><button type="button" class="btn" id="rfShare">Share this list</button> <button type="button" class="btn" id="rfPrint">Print it</button> <span class="mu-nmsg" id="rfShareMsg" aria-live="polite"></span></p>
+      <p class="note">Nothing you type is sent anywhere unless you share the link yourself; a shared link carries your three answers and the surname, if you typed one. The page’s own address never holds the surname. The list is a starting order, not a guarantee: records were lost, burned or never kept in some places and years. The <a href="/records/">records page</a> has the rest.</p></section>
     <h2>The people tools</h2>
     <ul class="pp-tools">{tools}</ul>
     <h2>Three habits that find more</h2>

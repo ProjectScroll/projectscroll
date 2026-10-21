@@ -29,7 +29,7 @@
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
-<link rel="stylesheet" href="/site.min.css?v=82fa88d9">
+<link rel="stylesheet" href="/site.min.css?v=6fad3727">
 <script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/*.pdf","/*.zip","/*.xml","/*.json"]}},{"not":{"selector_matches":"[download], [target=_blank]"}}]},"eagerness":"moderate"}],"prerender":[{"where":{"and":[{"selector_matches":".bar a, .toolrow .nd a, .crumb a, footer nav a, .partrail a, .search-res a"},{"href_matches":"/*"},{"not":{"href_matches":["/*.pdf","/map/3d/*"]}}]},"eagerness":"conservative"}]}</script>
 </head>
 <body>
@@ -67,13 +67,14 @@
   <main id="main" class="page">
     <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Seasons &amp; festivals</p>
+    <figure class="pg-art"><picture><source type="image/avif" srcset="/img/card-seasons-art-270.avif 270w, /img/card-seasons-art.avif 540w" sizes="8rem"><img class="vt-seasons" src="/img/card-seasons-art-270.webp" srcset="/img/card-seasons-art-270.webp 270w, /img/card-seasons-art.webp 540w" sizes="8rem" width="540" height="960" alt="" decoding="async"></picture></figure>
     <h1>When to come, and why to come back</h1>
     <p class="lede" style="font-size:1.15rem">Here are 53 fairs, festivals, harvests, living-history days and holiday walks across the St. Joseph River valley, season by season. Most have run for decades; a few for more than a century. The season we are in comes first.</p>
     <div class="se-up" id="seUpW" hidden><p class="mu-jl">Coming up</p><ul id="seUp"></ul></div>
     <div class="mu-bar">
       <label class="nm-q"><span>Find an event</span><input type="search" id="seQ" placeholder="A town, a fair, a fruit…" autocomplete="off" spellcheck="false"></label>
       <div class="nm-chips se-mbs" role="group" aria-label="Show one month"><button type="button" class="se-mb" data-m="1" aria-pressed="false">Jan</button><button type="button" class="se-mb" data-m="2" aria-pressed="false">Feb</button><button type="button" class="se-mb" data-m="3" aria-pressed="false">Mar</button><button type="button" class="se-mb" data-m="4" aria-pressed="false">Apr</button><button type="button" class="se-mb" data-m="5" aria-pressed="false">May</button><button type="button" class="se-mb" data-m="6" aria-pressed="false">Jun</button><button type="button" class="se-mb" data-m="7" aria-pressed="false">Jul</button><button type="button" class="se-mb" data-m="8" aria-pressed="false">Aug</button><button type="button" class="se-mb" data-m="9" aria-pressed="false">Sep</button><button type="button" class="se-mb" data-m="10" aria-pressed="false">Oct</button><button type="button" class="se-mb" data-m="11" aria-pressed="false">Nov</button><button type="button" class="se-mb" data-m="12" aria-pressed="false">Dec</button></div>
-      <div class="nm-chips"><label class="mu-ol"><span class="vh">County</span><select id="seC"><option value="">Every county</option><option value="Berrien">Berrien County, Michigan</option><option value="Cass">Cass County, Michigan</option><option value="Kalamazoo">Kalamazoo County, Michigan</option><option value="St. Joseph">St. Joseph County, Michigan</option><option value="Van Buren">Van Buren County, Michigan</option><option value="Elkhart">Elkhart County, Indiana</option><option value="LaGrange">LaGrange County, Indiana</option><option value="LaPorte">LaPorte County, Indiana</option><option value="St. Joseph">St. Joseph County, Indiana</option></select></label></div>
+      <div class="nm-chips"><button type="button" class="btn" id="seWk" aria-pressed="false">This weekend</button><label class="mu-ol"><span class="vh">County</span><select id="seC"><option value="">Every county</option><option value="Berrien">Berrien County, Michigan</option><option value="Cass">Cass County, Michigan</option><option value="Kalamazoo">Kalamazoo County, Michigan</option><option value="St. Joseph">St. Joseph County, Michigan</option><option value="Van Buren">Van Buren County, Michigan</option><option value="Elkhart">Elkhart County, Indiana</option><option value="LaGrange">LaGrange County, Indiana</option><option value="LaPorte">LaPorte County, Indiana</option><option value="St. Joseph">St. Joseph County, Indiana</option></select></label></div>
       <p class="nm-count" id="seCount" aria-live="polite">53 events</p>
     </div>
     <section class="se-s" id="spring" data-ms="3,4,5"><h2>Spring <span class="mu-n">9 events</span></h2><p class="se-sub">Blossoms, sap buckets and the first open days</p>
@@ -403,6 +404,9 @@
         <p class="mu-acts"><a class="mu-go" href="https://www.southhaven.org/events/ice-breaker-festival-2/" rel="noopener">Their website ›</a> · <button type="button" class="linkbtn se-cal">Add to my calendar</button></p>
       </li></ul></section>
 
+    <h2>Keep the calendar</h2>
+    <p>All 15 events with set dates, in one calendar file. <a class="btn" href="webcal://projectscroll.com/seasons/valley.ics">Subscribe in your calendar</a> <a class="btn" href="/seasons/valley.ics" download>Download the file</a></p>
+    <p class="note">Subscribing keeps the dates up to date as we add the next year’s; your calendar app checks the file about once a week. It holds only the event dates, nothing about you.</p>
     <h2>Before you go</h2>
     <ul class="dis">
       <li><b>Check the dates.</b> Most events keep the same weekend each year, but the exact days are set by the organisers. Their own website has the latest.</li>
@@ -423,12 +427,16 @@
   items.forEach(function(li){ var s=li.dataset.start, e=li.dataset.end; if (!s) return; var t=li.querySelector('.se-d');
     var past=new Date((e||s)+'T23:59:00')<now, on=!past && new Date(s+'T00:00:00')<=now; t.textContent=' · '+fmt(s)+(e && e!==s? ' to '+fmt(e) : '')+(past? ' (this year’s has passed)' : on? ' (on now)' : ''); if (on) li.classList.add('soon');
     if (!past && (new Date(s+'T00:00:00')-now)/864e5<=31){ li.classList.add('soon'); } });
+  var wk=false, wb=$('#seWk'), sat=new Date(now); sat.setHours(0,0,0,0); var dw=sat.getDay(); if (dw!==6 && dw!==0) sat.setDate(sat.getDate()+(6-dw)); else if (dw===0) sat.setDate(sat.getDate()-1);
+  var sun=new Date(sat); sun.setDate(sat.getDate()+1); sun.setHours(23,59,0,0);
+  var onWk=function(li){ if (!li.dataset.start) return false; var a=new Date(li.dataset.start+'T00:00:00'), b=new Date((li.dataset.end||li.dataset.start)+'T23:59:00'); return a<=sun && b>=sat; };
   var draw=function(){ var w=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean), c=cs.value, n=0;
-    items.forEach(function(li){ var ok=(!mon || +li.dataset.m===mon) && (!c || li.dataset.c===c) && w.every(function(x){ return li.dataset.t.indexOf(x)>=0; }); li.hidden=!ok; if (ok) n++; });
+    items.forEach(function(li){ var ok=(!wk || onWk(li)) && (!mon || +li.dataset.m===mon) && (!c || li.dataset.c===c) && w.every(function(x){ return li.dataset.t.indexOf(x)>=0; }); li.hidden=!ok; if (ok) n++; });
     secs.forEach(function(s){ s.hidden=!s.querySelector('.se:not([hidden])'); });
     cnt.textContent=n===items.length? n+' events' : n+' of '+items.length+' events'; };
   mbs.forEach(function(b){ if (+b.dataset.m===m0) b.classList.add('cur'); b.addEventListener('click',function(){ var on=b.getAttribute('aria-pressed')!=='true'; mbs.forEach(function(x){ x.setAttribute('aria-pressed','false'); }); b.setAttribute('aria-pressed',String(on)); mon=on? +b.dataset.m : 0; draw(); }); });
   q.addEventListener('input',draw); cs.addEventListener('change',draw);
+  wb.addEventListener('click',function(){ wk=!wk; wb.setAttribute('aria-pressed',String(wk)); if (wk){ mon=0; mbs.forEach(function(x){ x.setAttribute('aria-pressed','false'); }); } draw(); if (wk && !items.some(function(li){ return !li.hidden; })) cnt.textContent='Nothing with set dates this weekend. Try the month.'; });
   /* coming up: the next few with known dates */
   var up=items.filter(function(li){ return li.dataset.start && new Date((li.dataset.end||li.dataset.start)+'T23:59:00')>=now; }).sort(function(a,b){ return a.dataset.start<b.dataset.start?-1:1; }).slice(0,4);
   var ul=$('#seUp'); if (up.length){ up.forEach(function(li){ var r=document.createElement('li'), a=document.createElement('a'); a.href='#'+li.id; a.textContent=li.dataset.n; r.appendChild(a); var s=document.createElement('span'); var on=new Date(li.dataset.start+'T00:00:00')<=now; s.textContent=' · '+li.dataset.town+' · '+(on? 'on now, until '+fmt(li.dataset.end) : fmt(li.dataset.start)); r.appendChild(s); ul.appendChild(r); }); $('#seUpW').hidden=false; }
@@ -462,6 +470,6 @@
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=82fa88d9" defer></script>
+<script src="/site.min.js?v=6fad3727" defer></script>
 </body>
 </html>

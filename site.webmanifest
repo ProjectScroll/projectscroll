@@ -33,20 +33,32 @@
  ],
  "shortcuts": [
   {
+   "name": "Broadway Virtual Walk",
+   "url": "/walk/"
+  },
+  {
+   "name": "Find your people",
+   "url": "/people/"
+  },
+  {
+   "name": "Food, recipes & lodging",
+   "url": "/food/"
+  },
+  {
+   "name": "Seasons & festivals",
+   "url": "/seasons/"
+  },
+  {
+   "name": "Museums & historic places",
+   "url": "/museums/"
+  },
+  {
    "name": "The map room",
    "url": "/map/"
   },
   {
-   "name": "Seven towns, then and now",
-   "url": "/map/then-and-now/"
-  },
-  {
    "name": "Who was in town",
    "url": "/names/"
-  },
-  {
-   "name": "The case board",
-   "url": "/#cases"
   }
  ]
 }

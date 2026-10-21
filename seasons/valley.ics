@@ -1,0 +1,160 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Project Scroll//Seasons and festivals of the valley//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Seasons & festivals of the St. Joseph River valley
+X-WR-CALDESC:Fairs, festivals and harvests from projectscroll.com/seasons/
+REFRESH-INTERVAL;VALUE=DURATION:P1W
+X-PUBLISHED-TTL:P1W
+BEGIN:VEVENT
+UID:shipshewana-ice-festival-chili-cook-off-20270116@projectscroll.com
+DTSTAMP:20261021T070428Z
+DTSTART;VALUE=DATE:20270116
+DTEND;VALUE=DATE:20270117
+SUMMARY:Shipshewana Ice Festival & Chili Cook-Off
+LOCATION:Shipshewana\, IN
+DESCRIPTION:Professional carvers fill the town with ice sculptures\, with live carving and a carving competition\, plus a wing contest on Friday evening and a chili contest on Saturday. Check the dates and times on the event’s own website before you go. More: https://projectscroll.com/seasons/#shipshewana-ice-festival-chili-cook-off
+URL:https://visitshipshewana.org/wintertime
+END:VEVENT
+BEGIN:VEVENT
+UID:st-joseph-ice-fest-20270129@projectscroll.com
+DTSTAMP:20261021T070428Z
+DTSTART;VALUE=DATE:20270129
+DTEND;VALUE=DATE:20270201
+SUMMARY:St. Joseph Ice Fest
+LOCATION:St. Joseph\, MI
+DESCRIPTION:Downtown St. Joseph fills with ice carvers working through the weekend\, a lit 'Fire & Ice' tower\, frozen games for families and a scavenger hunt along State and Pleasant streets. Check the dates and times on the event’s own website before you go. More: https://projectscroll.com/seasons/#st-joseph-ice-fest
+URL:https://www.stjoetoday.com/icefest
+END:VEVENT
+BEGIN:VEVENT
+UID:dowagiac-ice-time-festival-20270206@projectscroll.com
+DTSTAMP:20261021T070428Z
+DTSTART;VALUE=DATE:20270206
+DTEND;VALUE=DATE:20270207
+SUMMARY:Dowagiac Ice Time Festival
+LOCATION:Dowagiac\, MI
+DESCRIPTION:A one-day winter festival downtown with ice sculptures\, a chili crawl through local restaurants\, children's crafts\, open shops and a fire-department s'mores tent. Check the dates and times on the event’s own website before you go. More: https://projectscroll.com/seasons/#dowagiac-ice-time-festival
+URL:https://www.dowagiacchamber.com/events/upcoming-events
+END:VEVENT
+BEGIN:VEVENT
+UID:south-haven-ice-breaker-festival-20270205@projectscroll.com
+DTSTAMP:20261021T070428Z
+DTSTART;VALUE=DATE:20270205
+DTEND;VALUE=DATE:20270208
+SUMMARY:South Haven Ice Breaker Festival
+LOCATION:South Haven\, MI
+DESCRIPTION:More than forty ice sculptures line downtown South Haven\, alongside cardboard sled races\, horse-drawn wagon rides\, outdoor skating and a chili cook-off. Check the dates and times on the event’s own website before you go. More: https://projectscroll.com/seasons/#south-haven-ice-breaker-festival
+URL:https://www.southhaven.org/events/ice-breaker-festival-2/
+END:VEVENT
+BEGIN:VEVENT
+UID:candlelight-christmas-parade-20261204@projectscroll.com
+DTSTAMP:20261021T070428Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:Candlelight Christmas Parade
+LOCATION:Dowagiac\, MI
+DESCRIPTION:Dowagiac's evening holiday parade brings well over a hundred lighted units down Front Street\, with a tree lighting at Beckwith Park\, as part of the town's 'Celebrate the Holidays' season. Check the dates and times on the event’s own website before you go. More: https://projectscroll.com/seasons/#candlelight-christmas-parade
+URL:https://www.dowagiacchamber.com/events/upcoming-events
+END:VEVENT
+BEGIN:VEVENT
+UID:santa-s-candy-cane-express-at-hesston-steam-museum-20261205@projectscroll.com
+DTSTAMP:20261021T070428Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261214
+SUMMARY:Santa's Candy Cane Express at Hesston Steam Museum
+LOCATION:Hesston (near La Porte)\, IN
+DESCRIPTION:The steam museum's Christmas trains carry families through the snowy woods to visit Santa on two December weekends. Check the dates and times on the event’s own website before you go. More: https://projectscroll.com/seasons/#santa-s-candy-cane-express-at-hesston-steam-museum
+URL:https://www.hesston.org/plan
+END:VEVENT
+BEGIN:VEVENT
+UID:shipshewana-lights-of-joy-20261110@projectscroll.com
+DTSTAMP:20261021T070428Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20270101
+SUMMARY:Shipshewana Lights of Joy
+LOCATION:Shipshewana\, IN
+DESCRIPTION:A drive-through light show at the Shipshewana Trading Place: nearly two miles of lighted scenes with Christmas music on the car radio. Check the dates and times on the event’s own website before you go. More: https://projectscroll.com/seasons/#shipshewana-lights-of-joy
+URL:https://shipshewanalightsofjoy.com/
+END:VEVENT
+BEGIN:VEVENT
+UID:kalamazoo-nature-center-maple-sugar-festival-20270307@projectscroll.com
+DTSTAMP:20261021T070428Z
+DTSTART;VALUE=DATE:20270307
+DTEND;VALUE=DATE:20270308
+SUMMARY:Kalamazoo Nature Center Maple Sugar Festival
+LOCATION:Kalamazoo\, MI
+DESCRIPTION:A day in the sugarbush at the Nature Center\, with a pancake breakfast served with Michigan maple syrup and horse-drawn wagon rides around the grounds. Check the dates and times on the event’s own website before you go. More: https://projectscroll.com/seasons/#kalamazoo-nature-center-maple-sugar-festival
+URL:https://naturecenter.org/events/maplesugar/
+END:VEVENT
+BEGIN:VEVENT
+UID:kalamazoo-living-history-show-20270320@projectscroll.com
+DTSTAMP:20261021T070428Z
+DTSTART;VALUE=DATE:20270320
+DTEND;VALUE=DATE:20270322
+SUMMARY:Kalamazoo Living History Show
+LOCATION:Kalamazoo\, MI
+DESCRIPTION:A large juried show for reenactors and history buffs\, where makers sell pre-1890 clothing\, gear and crafts at the county Expo Center\; open to the public\, with a different reenactment group hosting each year. Check the dates and times on the event’s own website before you go. More: https://projectscroll.com/seasons/#kalamazoo-living-history-show
+URL:https://www.kalamazooshow.com/
+END:VEVENT
+BEGIN:VEVENT
+UID:elkhart-jazz-festival-20270617@projectscroll.com
+DTSTAMP:20261021T070428Z
+DTSTART;VALUE=DATE:20270617
+DTEND;VALUE=DATE:20270621
+SUMMARY:Elkhart Jazz Festival
+LOCATION:Elkhart\, IN
+DESCRIPTION:Four days of jazz in venues all over downtown Elkhart\, including the historic Lerner Theatre\, outdoor stages and small listening rooms. Check the dates and times on the event’s own website before you go. More: https://projectscroll.com/seasons/#elkhart-jazz-festival
+URL:https://elkhartjazzfestival.com/
+END:VEVENT
+BEGIN:VEVENT
+UID:laporte-county-fair-20270710@projectscroll.com
+DTSTAMP:20261021T070428Z
+DTSTART;VALUE=DATE:20270710
+DTEND;VALUE=DATE:20270718
+SUMMARY:LaPorte County Fair
+LOCATION:La Porte\, IN
+DESCRIPTION:Billed as Indiana's oldest county fair\, with livestock and open-class shows\, rodeo and grandstand events\, and Pioneerland\, a living-history village of early Indiana pioneer life. Check the dates and times on the event’s own website before you go. More: https://projectscroll.com/seasons/#laporte-county-fair
+URL:https://lpfair.com/
+END:VEVENT
+BEGIN:VEVENT
+UID:cass-county-fair-20270801@projectscroll.com
+DTSTAMP:20261021T070428Z
+DTSTART;VALUE=DATE:20270801
+DTEND;VALUE=DATE:20270808
+SUMMARY:Cass County Fair
+LOCATION:Cassopolis\, MI
+DESCRIPTION:Cass County's agricultural fair\, with livestock shows\, still exhibits and a youth auction\, a carnival\, and grandstand rodeos\, tractor pulls and demolition derbies. Check the dates and times on the event’s own website before you go. More: https://projectscroll.com/seasons/#cass-county-fair
+URL:https://www.mycasscountyfair.com/
+END:VEVENT
+BEGIN:VEVENT
+UID:abbott-s-magic-get-together-20270811@projectscroll.com
+DTSTAMP:20261021T070428Z
+DTSTART;VALUE=DATE:20270811
+DTEND;VALUE=DATE:20270815
+SUMMARY:Abbott's Magic Get-Together
+LOCATION:Colon\, MI
+DESCRIPTION:Magicians from around the world gather in the little village of Colon\, home of Abbott's Magic Company\, for four days of lectures\, competitions and public evening shows. Check the dates and times on the event’s own website before you go. More: https://projectscroll.com/seasons/#abbott-s-magic-get-together
+URL:https://www.magicgettogether.com/
+END:VEVENT
+BEGIN:VEVENT
+UID:apple-cider-century-20270926@projectscroll.com
+DTSTAMP:20261021T070428Z
+DTSTART;VALUE=DATE:20270926
+DTEND;VALUE=DATE:20270927
+SUMMARY:Apple Cider Century
+LOCATION:Three Oaks\, MI
+DESCRIPTION:A one-day bicycle tour from Three Oaks through orchard and wine country\, with routes from 15 to 100 miles and cider and fruit along the way. Check the dates and times on the event’s own website before you go. More: https://projectscroll.com/seasons/#apple-cider-century
+URL:https://www.applecidercentury.com/
+END:VEVENT
+BEGIN:VEVENT
+UID:giant-straw-bale-art-trail-20260901@projectscroll.com
+DTSTAMP:20261021T070428Z
+DTSTART;VALUE=DATE:20260901
+DTEND;VALUE=DATE:20261025
+SUMMARY:Giant Straw Bale Art Trail
+LOCATION:Shipshewana\, Middlebury\, LaGrange and Howe\, IN
+DESCRIPTION:A free self-guided autumn trail of giant round straw bales turned into colorful characters and scenes by local artists and businesses across four towns. Check the dates and times on the event’s own website before you go. More: https://projectscroll.com/seasons/#giant-straw-bale-art-trail
+URL:https://visitshipshewana.org/events/autumn-adventures/straw-bale-art/
+END:VEVENT
+END:VCALENDAR

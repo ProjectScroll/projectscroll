@@ -65,7 +65,7 @@ JS = r'''<script>
   var draw=function(){ var w=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean), c=cs.value, n=0;
     items.forEach(function(li){ var ok=(!ty||li.dataset.ty===ty) && (!c||li.dataset.c===c) && w.every(function(x){ return li.dataset.t.indexOf(x)>=0; }); li.hidden=!ok; if (ok) n++; });
     $$('.fd-sec').forEach(function(s){ s.hidden=!s.querySelector('.fd:not([hidden])'); });
-    $$('.fd-sec h3.fd-st').forEach(function(h){ var ul=h.nextElementSibling; h.hidden=!ul.querySelector('.fd:not([hidden])'); });
+    $$('.fd-sec h3.fd-st').forEach(function(h){ var ul=h.nextElementSibling; h.hidden=h.classList.contains('gone') || !ul.querySelector('.fd:not([hidden])'); });
     cnt.textContent=n===items.length? n+' places' : n+' of '+items.length+' places';
     if (map) pins(); };
   tys.forEach(function(b){ b.addEventListener('click',function(){ ty=b.dataset.ty; tys.forEach(function(x){ x.setAttribute('aria-pressed',String(x===b)); }); draw(); }); });
@@ -95,6 +95,22 @@ JS = r'''<script>
   items.forEach(function(li){ var b=li.querySelector('.mu-sm'); if (!b) return; b.addEventListener('click',function(){ var ll=li.dataset.ll.split(',').map(Number);
     var fly=function(){ $('#fdMap').scrollIntoView({behavior:glide, block:'center'}); map.setView(ll,15,{animate:!calm}); if (li._c) li._c.openPopup(); };
     if (map) fly(); else { need(); var t=setInterval(function(){ if (map && marks.length){ clearInterval(t); fly(); } },120); setTimeout(function(){ clearInterval(t); },8000); } }); });
+  /* nearest to me: each list sorted by distance from where you are; the position stays on this device */
+  items.forEach(function(li,i){ li._p=li.parentNode; li._i=i; });
+  var nb=$('#fdNear'), nm=$('#fdNearMsg'), near=false;
+  var km=function(a,b){ var R=6371, r=Math.PI/180, dl=(b[0]-a[0])*r, dn=(b[1]-a[1])*r, h=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dn/2)*Math.sin(dn/2); return 2*R*Math.asin(Math.sqrt(h)); };
+  nb.addEventListener('click',function(){
+    if (near){ near=false; nb.setAttribute('aria-pressed','false'); nb.textContent='Nearest to me'; nm.textContent='';
+      items.forEach(function(li){ li._p.appendChild(li); var k=li.querySelector('.fd-dist'); if (k) k.remove(); }); $$('.fd-st').forEach(function(h){ h.classList.remove('gone'); }); draw(); return; }
+    if (!navigator.geolocation){ nm.textContent='This browser cannot share a location.'; return; }
+    nm.textContent='Asking your browser where you are…';
+    navigator.geolocation.getCurrentPosition(function(pos){ var me=[pos.coords.latitude,pos.coords.longitude]; near=true; nb.setAttribute('aria-pressed','true'); nb.textContent='Back to the lists';
+      ['eat','stay'].forEach(function(sec){ var S=document.getElementById(sec), first=S.querySelector('.mu-list'); var lis=items.filter(function(li){ return S.contains(li); });
+        lis.forEach(function(li){ li._d=li.dataset.ll? km(me, li.dataset.ll.split(',').map(Number)) : 1e9; });
+        lis.sort(function(a,b){ return a._d-b._d; }).forEach(function(li){ first.appendChild(li); if (li._d<1e9){ var k=document.createElement('span'); k.className='fd-dist'; k.textContent=' · about '+((li._d*.621371)<10?(li._d*.621371).toFixed(1):Math.round(li._d*.621371))+' mi'; li.querySelector('.mu-k').appendChild(k); } });
+        S.querySelectorAll('.fd-st').forEach(function(h){ h.classList.add('gone'); }); });
+      nm.textContent='Sorted from where you are now. Your location stays on this device.'; draw(); },
+      function(){ nm.textContent='No location shared, so nothing changed.'; }, {maximumAge:600000, timeout:15000}); });
   /* the recipe box: ticks for the ones you have cooked, kept on this device */
   var made={}; try{ made=JSON.parse(localStorage.getItem('ps-cooked')||'{}')||{}; }catch(e){}
   $$('.rc').forEach(function(li){ var b=document.createElement('button'); b.type='button'; b.className='mu-bb rc-b';
@@ -118,12 +134,14 @@ FIELDS = [
 fields = ''.join(f'<li class="fd-fi"><h3>{E(t)}</h3><p>{E(d)}</p><p><a href="{u}">{E(l)} ›</a></p></li>' for t,d,u,l in FIELDS)
 body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Food, recipes &amp; lodging</p>
+    <figure class="pg-art"><picture><source type="image/avif" srcset="/img/card-food-art-270.avif 270w, /img/card-food-art.avif 540w" sizes="8rem"><img class="vt-food" src="/img/card-food-art-270.webp" srcset="/img/card-food-art-270.webp 270w, /img/card-food-art.webp 540w" sizes="8rem" width="540" height="960" alt="" decoding="async"></picture></figure>
     <h1>A table and a bed in the valley</h1>
     <p class="lede" style="font-size:1.15rem">Where to eat and where to stay, chosen for their stories: dining rooms in old banks and depots, family tables that have fed a town for generations, inns in houses built before the railroad came. And from the old cookbooks and weekly papers, what the valley cooked.</p>
     <p class="nm-chips fd-jump"><a class="btn" href="#eat">Places to eat</a><a class="btn" href="#stay">Places to stay</a><a class="btn" href="#recipes">The valley kitchen</a><a class="btn" href="#fields">Where the food came from</a></p>
     <div class="mu-bar">
       <label class="nm-q"><span>Find a place</span><input type="search" id="fdQ" placeholder="A town, a kind of place, a building" autocomplete="off" spellcheck="false"></label>
-      <div class="nm-chips" role="group" aria-label="Show one kind"><button type="button" class="btn fd-f" data-ty="" aria-pressed="true">Everything</button><button type="button" class="btn fd-f" data-ty="restaurant" aria-pressed="false">Places to eat</button><button type="button" class="btn fd-f" data-ty="lodging" aria-pressed="false">Places to stay</button><label class="mu-ol"><span class="vh">County</span><select id="fdC"><option value="">Every county</option>{copts}</select></label></div>
+      <div class="nm-chips" role="group" aria-label="Show one kind"><button type="button" class="btn fd-f" data-ty="" aria-pressed="true">Everything</button><button type="button" class="btn fd-f" data-ty="restaurant" aria-pressed="false">Places to eat</button><button type="button" class="btn fd-f" data-ty="lodging" aria-pressed="false">Places to stay</button><button type="button" class="btn" id="fdNear" aria-pressed="false">Nearest to me</button><label class="mu-ol"><span class="vh">County</span><select id="fdC"><option value="">Every county</option>{copts}</select></label></div>
+      <p class="mu-nmsg" id="fdNearMsg" aria-live="polite"></p>
       <p class="nm-count" id="fdCount" aria-live="polite">{len(F)} places</p>
     </div>
     <figure class="mu-mapf">

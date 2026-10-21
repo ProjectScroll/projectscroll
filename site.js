@@ -625,10 +625,10 @@ try{ (function(){
     document.getElementById('otdNext').addEventListener('click', function(){ go(1); }); }
 })(); }catch(err){ psFail(err); }
 
-/* links to other websites open in a new tab. The site's own menu (top bar, logo, footer, search results,
-   parts rail) stays in the same tab, so Back works. Other links to the site's own pages still open a new tab. */
+/* links to other websites open in a new tab. The site's own menus and buttons (top bar, tool row, the picture buttons, the four doors and their panels, footer, search results,
+   parts rail, breadcrumbs) stay in the same tab, so Back works. Other links to the site's own pages still open a new tab. */
 try{ (function(){
-  const here=location.origin+location.pathname, MENU='.bar, footer.site nav, #searchRes, .partrail, .skip';
+  const here=location.origin+location.pathname, MENU='.bar, footer.site nav, #searchRes, .partrail, .skip, .toolrow, .heroside, .doors, .drp, .crumb, .wk-tools, .fd-jump, .pp-tools, .mu-dtl, .mu-acts .mu-old, .se-up';
   const mark=function(a){
     const h=a.getAttribute('href'); if (!h || h.charAt(0)==='#' || /^(mailto:|tel:|javascript:)/i.test(h)) return;
     let u; try{ u=new URL(h, location.href); }catch(e){ return; }
