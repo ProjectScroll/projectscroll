@@ -1,0 +1,589 @@
+[
+ {
+  "id": "round-oak-stove",
+  "name": "Round Oak Stove Company",
+  "town": "Dowagiac",
+  "county": "Cass",
+  "state": "MI",
+  "founded": "1871",
+  "founder": "Philo D. Beckwith",
+  "made": "Heating stoves, later furnaces and cooking stoves",
+  "story": "Philo D. Beckwith opened a foundry in Dowagiac in the 1850s and cast his first stove around 1867 to heat the struggling shop. The Michigan Central Railroad then ordered heaters for its depots between Detroit and Chicago, and by 1871 stoves were his main product. By 1900 Round Oak was one of the largest stove factories in the United States. Its 1890s advertising claimed more than a million Round Oak stoves were in use.",
+  "peak": "About 1,200 workers in the 1910s, in a town of five or six thousand people.",
+  "end": "Decline began in 1914 after the deaths of salesman O. G. Beach and Arthur Beckwith; stove production ended in 1946-47. In 1947 the buildings were sold to Kaiser-Frazer and the Round Oak name went to Peerless (repair parts). A revival under new owners in 1948 ended in the 1950s.",
+  "today": "The 1910s Round Oak foundry complex on Spaulding Street is still in use by Ameriwood Furniture. The Beckwith Memorial Theatre (1893) is gone.",
+  "see_it": [
+   {
+    "place": "Dowagiac Area History Museum (largest public Round Oak collection: stoves, ledgers, advertising)",
+    "town": "Dowagiac, MI",
+    "url": "https://dowagiacmuseum.info/round-oak/"
+   }
+  ],
+  "sources": [
+   "https://dowagiacmuseum.info/round-oak/",
+   "https://dowagiacmuseum.info/wp-content/uploads/2020/04/Dowagiac-History-Timeline-1.pdf",
+   "https://www.leaderpub.com/2021/04/10/round-oaks-impact-on-dowagiac-still-felt-60-years-later/",
+   "https://en.wikipedia.org/wiki/Round_Oak_Stove_Company"
+  ],
+  "postcard": "Coal Fire, Round Oak, Dec. 1909"
+ },
+ {
+  "id": "dowagiac-drill",
+  "name": "Dowagiac Drill Company / Dowagiac Manufacturing Co. (grain drills)",
+  "town": "Dowagiac",
+  "county": "Cass",
+  "state": "MI",
+  "founded": "1881 (Dowagiac Drill Company); Beckwith's drill business earlier",
+  "founder": "Grew out of P. D. Beckwith’s grain-drill trade",
+  "made": "Grain drills (seed-sowing machines)",
+  "story": "Before stoves, Beckwith's Dowagiac foundry was built around a roller grain drill; an 1863 patented Beckwith design used heavy cast-iron wheels to smooth the soil as it planted, and in 1869 Michigan awarded him a silver medallion for his two-horse drill. The Dowagiac Drill Company followed in 1881. Dowagiac drills were sold across the United States and in Europe, South America and Asia, and 1899 advertising called the works the 'largest drill factory in existence.'",
+  "peak": "",
+  "end": "",
+  "today": "The Dowagiac Area History Museum keeps grain-drill artifacts with its Round Oak collection. A Beckwith & Lee drill of about 1890 is in the collection of The Henry Ford.",
+  "see_it": [
+   {
+    "place": "Dowagiac Area History Museum",
+    "town": "Dowagiac, MI",
+    "url": "https://dowagiacmuseum.info/"
+   },
+   {
+    "place": "The Henry Ford (Beckwith & Lee grain drill, c. 1890; check display status)",
+    "town": "Dearborn, MI",
+    "url": "https://www.thehenryford.org/collections/explore/artifact/119116"
+   }
+  ],
+  "sources": [
+   "https://www.leaderpub.com/2023/04/29/dowagiac-175-p-d-beckwith-round-oak-and-the-industrial-revolution/",
+   "https://www.leaderpub.com/2011/06/12/restored-dowagiac-grain-drill-unveiled-at-smc-museum-june-22/",
+   "https://www.thehenryford.org/collections/explore/artifact/119116",
+   "https://dowagiacmuseum.info/round-oak/",
+   "https://www.leaderpub.com/2021/04/10/round-oaks-impact-on-dowagiac-still-felt-60-years-later/",
+   "https://www.courtlistener.com/opinion/8764020/dowagiac-mfg-co-v-superior-drill-co/"
+  ],
+  "postcard": "M. C. Railway and Drill Works, Dowagiac"
+ },
+ {
+  "id": "heddon",
+  "name": "James Heddon's Sons",
+  "town": "Dowagiac",
+  "county": "Cass",
+  "state": "MI",
+  "founded": "1902",
+  "founder": "James Heddon (with his sons)",
+  "made": "Artificial fishing lures, rods and reels",
+  "story": "The story goes that James Heddon, a former beekeeper, was whittling by Dowagiac's Mill Pond in the late 1890s when a bass struck a piece of wood he tossed into the water. He went on to build a top-water lure he called the 'Dowagiac.' The company was founded in 1902, first making lures by hand in the family kitchen and in a new Dowagiac factory by 1904. By the 1920s it was called the world's largest producer of quality fishing tackle; most of its workers were women.",
+  "peak": "",
+  "end": "Lures were made in Dowagiac until 1984. The brand lives on under later owners.",
+  "today": "The Heddon Museum in downtown Dowagiac holds more than 1,000 lures, 140 reels and 150 rods, including an original James Heddon frog.",
+  "see_it": [
+   {
+    "place": "Heddon Museum",
+    "town": "Dowagiac, MI (115 S. Front St.)",
+    "url": "https://heddon.dowagiacmuseum.info/"
+   },
+   {
+    "place": "Heddon Museum (city page)",
+    "town": "Dowagiac, MI",
+    "url": "https://www.cityofdowagiac.com/arts_recreation/museums/the_heddon_museum.php"
+   }
+  ],
+  "sources": [
+   "https://www.cityofdowagiac.com/arts_recreation/museums/the_heddon_museum.php",
+   "https://heddon.dowagiacmuseum.info/",
+   "https://dowagiacmuseum.info/wp-content/uploads/2020/04/Dowagiac-History-Timeline-1.pdf",
+   "https://en.wikipedia.org/wiki/Heddon_(brand)"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "kawneer",
+  "name": "Kawneer Company",
+  "town": "Niles",
+  "county": "Berrien",
+  "state": "MI",
+  "founded": "1906 (Kansas City); moved to Niles early 1907",
+  "founder": "Francis J. Plym, architect",
+  "made": "Metal storefront framing and complete storefronts",
+  "story": "Francis J. Plym, a Swedish-born architect, patented a way of framing plate-glass shop windows in heavy rolled copper, which would neither rot like wood nor rust like iron; the patent was granted May 15, 1906. The company name came from Kansas City's Kaw River. Local promoter Carmi R. Smith is said to have met Plym while he was changing trains at Niles, and in early 1907 the company moved there with help from the local Business Men's Association. Kawneer grew from window frames to door frames and complete shop fronts.",
+  "peak": "",
+  "end": "Kawneer left Niles for the Atlanta area sometime in the 1970s or early 1980s (sources differ). The company continues today.",
+  "today": "Plym donated Plym Park to Niles, and it is still in use. Kawneer aluminum panels that covered downtown Niles storefronts in the 1970s were removed in the 2003-04 revitalization.",
+  "see_it": [],
+  "sources": [
+   "https://www.leaderpub.com/2009/10/17/francis-j-plym-was-once-knighted-by-swedens-king/",
+   "https://www.leaderpub.com/2010/03/17/smith-brought-kawneer-to-niles-during-train-stop/",
+   "https://friendsofsilverbrook.org/site5/plym-family?showall=1",
+   "https://sah-archipedia.org/node/4644",
+   "https://en.wikipedia.org/wiki/Kawneer"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "clark-equipment",
+  "name": "Clark Equipment Company",
+  "town": "Buchanan",
+  "county": "Berrien",
+  "state": "MI",
+  "founded": "1903 in Chicago as George R. Rich Manufacturing; moved to Buchanan 1904; Clark Equipment formed 1916",
+  "founder": "Eugene B. Clark (with George R. Rich's drill company)",
+  "made": "Rail drills, then truck axles and wheels, and industrial trucks (the Trucktractor, ancestor of the forklift)",
+  "story": "The company began in Chicago making a tougher drill for boring holes in steel rails, and moved to Buchanan in 1904 when the chamber of commerce offered free rent and cheap power. Eugene B. Clark, a 33-year-old Illinois Steel engineer, took over management, and the firm became Celfor Tool (1906) and then Clark Equipment (1916). Buchanan made steel truck wheels and an internal-gear drive axle that became an industry standard. Foundry workers built a gas-powered shop buggy to move material around the plant; as the Trucktractor it was sold to others, and its features went into Clark's lift truck in 1927.",
+  "peak": "",
+  "end": "Ingersoll-Rand bought Clark in 1995 and sold it to Doosan in 2007.",
+  "today": "",
+  "see_it": [],
+  "sources": [
+   "https://www.encyclopedia.com/books/politics-and-business-magazines/clark-equipment-company",
+   "https://www.michigan.org/property/history-center-courthouse-square",
+   "https://berrienhistory.org/",
+   "https://en.wikipedia.org/wiki/Clark_Equipment_Company"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "sheffield-car",
+  "name": "Sheffield Car Company (Sheffield Velocipede Car Co.)",
+  "town": "Three Rivers",
+  "county": "St. Joseph",
+  "state": "MI",
+  "founded": "1879 (George S. Sheffield & Co.); incorporated 15 June 1882",
+  "founder": "George S. Sheffield, with Warren Willits and E. B. Linsley",
+  "made": "Railroad velocipedes and handcars, motor section cars, street-car trucks",
+  "story": "George S. Sheffield, a Michigan farmer, patented a three-wheeled railroad hand car (Patent No. 213,254, 11 March 1879) and built the business in Three Rivers. In 1888 Charles H. Morse of Fairbanks, Morse & Co. bought Willits's interest, and Fairbanks-Morse became the sales agent for Sheffield products; the company was reorganized as Sheffield Car Co. in 1892. By 1896 it offered velocipedes with small gasoline engines, and one estimate puts velocipede output at about 4,000. A Sheffield velocipede survives at the Buckinghamshire Railway Centre in England.",
+  "peak": "By 1910 the works occupied 40 acres and built light motor cars up to street-car size, dump cars, mining cars and marine engines.",
+  "end": "Absorbed into Fairbanks, Morse & Co. in 1918 and later run as its Sheffield Works on Fourth Street. When the plant closed is not settled.",
+  "today": "",
+  "see_it": [
+   {
+    "place": "Buckinghamshire Railway Centre (Sheffield velocipede, built 1887 or later)",
+    "town": "Quainton, England",
+    "url": "https://midcontinent.org/rollingstock/builders/sheffield.htm"
+   }
+  ],
+  "sources": [
+   "https://midcontinent.org/rollingstock/builders/sheffield.htm",
+   "https://midcontinent.org/rollingstock/builders/sheffield2.htm"
+  ],
+  "postcard": "Sheffield Car Co. works, Three Rivers"
+ },
+ {
+  "id": "studebaker",
+  "name": "Studebaker",
+  "town": "South Bend",
+  "county": "St. Joseph",
+  "state": "IN",
+  "founded": "16 February 1852",
+  "founder": "Henry and Clement Studebaker (H & C Studebaker)",
+  "made": "Wagons and carriages, then automobiles",
+  "story": "Henry and Clement Studebaker opened a blacksmith shop in South Bend on 16 February 1852 with $68 in capital, and built two wagons in their first year. The firm supplied wagons to the U.S. Army, made 6,000 vehicles in 1867 and over 75,000 by 1885, and became one of the world's largest makers of horse-drawn vehicles. It built an electric car in 1902 and a gasoline car in 1904, and made its last wagons in 1920.",
+  "peak": "Over 75,000 vehicles a year by 1885; sales over $2 million by 1887 (Smithsonian Libraries).",
+  "end": "South Bend production ended in December 1963; the Hamilton, Ontario plant closed in March 1966, ending 114 years.",
+  "today": "Studebaker National Museum, South Bend. On the former Studebaker proving ground (now Bendix Woods County Park, New Carlisle) about 8,000 pines planted in the late 1930s spell STUDEBAKER, about half a mile long in all; the sign is on the National Register.",
+  "see_it": [
+   {
+    "place": "Studebaker National Museum",
+    "town": "South Bend, IN (201 Chapin St.)",
+    "url": "https://studebakermuseum.org/"
+   },
+   {
+    "place": "Studebaker Tree Sign, Bendix Woods County Park",
+    "town": "New Carlisle, IN",
+    "url": "https://npgallery.nps.gov/GetAsset/a88a6046-896e-409e-935c-81836f0db1a9"
+   }
+  ],
+  "sources": [
+   "https://www.sil.si.edu/ondisplay/studebaker/intro.htm",
+   "https://studebakermuseum.org/",
+   "https://npgallery.nps.gov/GetAsset/a88a6046-896e-409e-935c-81836f0db1a9",
+   "https://en.wikipedia.org/wiki/Studebaker",
+   "https://en.wikipedia.org/wiki/Bendix_Woods"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "oliver-chilled-plow",
+  "name": "Oliver Chilled Plow Works (South Bend Iron Works)",
+  "town": "South Bend",
+  "county": "St. Joseph",
+  "state": "IN",
+  "founded": "1855 (bought into South Bend Foundry); South Bend Iron Works 1868; Oliver Chilled Plow Works 1901",
+  "founder": "James Oliver",
+  "made": "Chilled cast-iron plows",
+  "story": "James Oliver, a Scottish immigrant, received the first of 45 plow patents on June 30, 1857. He chilled molten iron so a plow bottom had a glass-hard face that polished like steel and scoured clean in sticky prairie soil. The South Bend Iron Works had 100 workers in 1868; in 1874 Oliver bought 32 acres of farmland for a new factory. Daily shipments sometimes reached 30 to 40 railcars, each carrying 150 to 200 plows, and by 1901 the firm was called the world's largest plow maker, styling itself 'Plowmakers to the World.'",
+  "peak": "World's largest plow manufacturer by 1901; up to 30-40 railcars of plows shipped a day.",
+  "end": "Later part of Oliver Farm Equipment / Oliver Corporation; sold to White Motor Corporation in 1960; White tractors were built in South Bend from 1976 until the plant closed in 1985. Most buildings were demolished in 2002.",
+  "today": "The powerhouse and smokestack, still bearing the Oliver name, are the only surviving factory structures (Oliver Industrial Park, Rose Brick & Materials). The family mansion Copshaholm (38 rooms, completed 1896-97) is open at The History Museum.",
+  "see_it": [
+   {
+    "place": "The History Museum and Oliver Mansion (Copshaholm)",
+    "town": "South Bend, IN (808 W. Washington St.)",
+    "url": "https://historymuseumsb.org/oliver-mansion/"
+   },
+   {
+    "place": "The Henry Ford (Oliver plow; a copy is used at Firestone Farm, Greenfield Village)",
+    "town": "Dearborn, MI",
+    "url": "https://www.thehenryford.org/collections/explore/artifact/384719"
+   }
+  ],
+  "sources": [
+   "https://discoverindianahistory.org/items/show/441",
+   "https://historymuseumsb.org/oliver-mansion/",
+   "https://www.thehenryford.org/collections/explore/artifact/384719",
+   "https://en.wikipedia.org/wiki/Oliver_Farm_Equipment_Company"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "singer-south-bend",
+  "name": "Singer Manufacturing Company cabinet works",
+  "town": "South Bend",
+  "county": "St. Joseph",
+  "state": "IN",
+  "founded": "1868 (South Bend works)",
+  "founder": "The Singer Manufacturing Company",
+  "made": "Sewing-machine cabinets and stands (with a foundry for stands and treadles)",
+  "story": "Singer set up its South Bend cabinet works in 1868 on the East Race and moved around 1900 to a larger site on Division Street (now Western Avenue). The plant made the wooden cabinets and cast-iron stands and treadles for Singer sewing machines. It covered about 60 acres, including 20 acres of lumber yards and about five miles of railroad track inside the factory.",
+  "peak": "About 3,000 workers in 1914, its busiest year.",
+  "end": "Singer announced the closing in April 1954; the shutdown began in January 1955.",
+  "today": "One building survives on the Western Avenue site, the Mary Crest Building.",
+  "see_it": [],
+  "sources": [
+   "https://historymuseumsb.org/singer-sewing-machine-company"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "bendix",
+  "name": "Bendix Corporation (Bendix Aviation)",
+  "town": "South Bend",
+  "county": "St. Joseph",
+  "state": "IN",
+  "founded": "1924",
+  "founder": "Vincent Bendix",
+  "made": "Automobile brakes and starter drives, later aviation and radio equipment",
+  "story": "Vincent Bendix of Moline, Illinois, invented the starter drive that made the automobile self-starter practical. In 1924 he founded the Bendix Corporation in South Bend to make automobile brake systems. It became Bendix Aviation in 1929 and made automotive, aviation, marine, radio and radar equipment; he or his company held more than 5,500 patents. Bendix also founded the Bendix Transcontinental Air Race in 1931.",
+  "peak": "",
+  "end": "Renamed Bendix Corporation in 1960. Bosch later occupied the South Bend main office until December 2012; Curtis Products moved in in 2013.",
+  "today": "The 1920s-30s Art Deco plant buildings in western South Bend survive, including the administration building on Bendix Drive with copper zigzag door spandrels.",
+  "see_it": [],
+  "sources": [
+   "https://www.britannica.com/print/article/60441",
+   "https://historymuseumsb.org/bendix-corporation"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "ball-band",
+  "name": "Mishawaka Woolen Manufacturing Co. (Ball-Band)",
+  "town": "Mishawaka",
+  "county": "St. Joseph",
+  "state": "IN",
+  "founded": "Woolen mill c. 1838; bought by the Beigers 1867; incorporated 1874",
+  "founder": "Jacob Beiger and Martin V. Beiger (owners from 1867)",
+  "made": "Rubber and knit footwear (Ball-Band boots and shoes, Red Ball Jets)",
+  "story": "Martin V. Beiger and Adolphus Eberhart invented an all-knit boot in 1886. A red ball was added to the boots' black band in 1891, and 'Ball-Band' was registered as a trademark in 1901; the first Ball-Band rubber shoes were made in February 1898. The company motto was 'Good enough will do; Ball-Band must be the best.' In 1951 it launched the Red Ball Jets sports shoe.",
+  "peak": "About 5,000 workers on more than 40 acres.",
+  "end": "Renamed Mishawaka Rubber and Woolen Mfg. Co. (1924) and Mishawaka Rubber Co. (1958); sold to Uniroyal in 1961, later Michelin. The Mishawaka plant ceased operations in 1997 and the buildings were demolished in June 2000.",
+  "today": "Robert Buetter Riverfront Park (2005) occupies the site. In July 2026 Mishawaka unveiled 'Shoe City', giant Red Ball Jet sculptures around the city, one at Ironworks Plaza. IU South Bend Archives hold 17 company films.",
+  "see_it": [
+   {
+    "place": "Shoe City Red Ball Jet sculptures (one at Ironworks Plaza)",
+    "town": "Mishawaka, IN",
+    "url": "https://www.wndu.com/2026/07/25/mishawaka-unveils-shoe-city-project-honoring-citys-sneaker-legacy/"
+   },
+   {
+    "place": "The Henry Ford (Ball-Band men's shoes, 1924-58; not on exhibit)",
+    "town": "Dearborn, MI",
+    "url": "https://www.thehenryford.org/collections/explore/artifact/535991"
+   }
+  ],
+  "sources": [
+   "https://historymuseumsb.org/mishawaka-woolen-company-ball-band-rubber",
+   "https://m.library.iusb.edu/search-find/archives/finding-aids/mishawaka-woolen.pdf",
+   "https://www.wndu.com/2026/07/25/mishawaka-unveils-shoe-city-project-honoring-citys-sneaker-legacy/",
+   "https://www.thehenryford.org/collections/explore/artifact/535991"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "conn",
+  "name": "C. G. Conn",
+  "town": "Elkhart",
+  "county": "Elkhart",
+  "state": "IN",
+  "founded": "1875 (mouthpiece patent and first instruments); incorporated 1904",
+  "founder": "Charles Gerard Conn",
+  "made": "Band instruments (cornets, horns, saxophones and more)",
+  "story": "Charles G. Conn was making a rubber-rimmed cornet mouthpiece by 1874, patented it in 1875, and began making instruments that year, his first cornet designed with the French maker Eugene Dupont. The mouthpiece idea, the story goes, came after he split his lip in a saloon fight. By 1905 Conn claimed 'the world's largest musical instrument factory', and other makers followed him to Elkhart. By the 1970s about 40% of the world's band instruments were made in Elkhart, the 'Band Industry Capital of the World.'",
+  "peak": "World's largest musical-instrument factory by 1905 (company claim); Elkhart made about 40% of the world's band instruments by the 1970s.",
+  "end": "Conn sold to Carl D. Greenleaf in 1915; the company was sold in 1969, and manufacturing moved out of Elkhart in 1972 (organ work stayed until 1978). The Conn-Selmer name continues in Elkhart.",
+  "today": "An Indiana state historical marker stands at Jackson Blvd. and Elkhart Ave., the site of the Conn factory until 1910.",
+  "see_it": [],
+  "sources": [
+   "https://www.in.gov/history/state-historical-markers/find-a-marker/cg-conn-company/",
+   "https://www.saxophone.org/museum/saxophones/manufacturer/13/history"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "miles-laboratories",
+  "name": "Dr. Miles Medical Company / Miles Laboratories",
+  "town": "Elkhart",
+  "county": "Elkhart",
+  "state": "IN",
+  "founded": "1885 (incorporated 28 October 1885)",
+  "founder": "Dr. Franklin L. Miles",
+  "made": "Patent medicines, then Alka-Seltzer",
+  "story": "Dr. Franklin L. Miles moved his practice from Chicago to Elkhart in 1875 and in 1885 began the Dr. Miles Medical Company to sell Dr. Miles' Nervine and Restorative Nerve and Liver pills. The firm published Dr. Miles New U.S. Weather Almanac from 1902 and won a place in law books with a 1911 U.S. Supreme Court price-fixing case. Its best-known product, Alka-Seltzer, was first used on December 20, 1930, and trademarked June 9, 1931.",
+  "peak": "",
+  "end": "Bayer AG acquired Miles Laboratories in 1977-79, and the Miles name was dropped in 1995.",
+  "today": "An Indiana state historical marker stands at 403 W. Franklin St., Elkhart.",
+  "see_it": [],
+  "sources": [
+   "https://www.in.gov/history/state-historical-markers/find-a-marker/dr-franklin-l-miles"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "gibson",
+  "name": "Gibson Mandolin-Guitar Manufacturing Company",
+  "town": "Kalamazoo",
+  "county": "Kalamazoo",
+  "state": "MI",
+  "founded": "1902 (financing agreement); incorporated 1904 per Kalamazoo Public Library",
+  "founder": "Orville Gibson (with five Kalamazoo backers)",
+  "made": "Mandolins and guitars",
+  "story": "Orville Gibson, a New Yorker who came to Kalamazoo in the 1880s, worked as a clerk and carved mandolins in his spare time. He was making them full-time by 1896, and five local men then offered to fund a factory for his instruments. The company moved to Parsons Street in 1917 and stayed nearly seven decades, growing to about 120,000 square feet over a whole city block. The Super 400 (1934) and the Les Paul (1952) were made there.",
+  "peak": "In the 1960s, over 1,000 guitars a day and nearly 1,000 workers.",
+  "end": "Headquarters moved to Nashville in 1981 and the Kalamazoo plant closed in 1984.",
+  "today": "Four former Gibson workers formed Heritage Guitar, Inc., which still builds guitars in part of the old Parsons Street plant.",
+  "see_it": [
+   {
+    "place": "Kalamazoo Valley Museum, 'Kalamazoo Direct to You' permanent exhibit (Gibson instruments)",
+    "town": "Kalamazoo, MI (230 N. Rose St.)",
+    "url": "https://kalamazoomuseum.org/exhibits/kalamazoo-direct-to-you"
+   }
+  ],
+  "sources": [
+   "https://www.kpl.gov/local-history/kalamazoo-history/music/gibson-inc-2/",
+   "https://kalamazoomuseum.org/exhibits/kalamazoo-direct-to-you"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "kalamazoo-celery",
+  "name": "Kalamazoo celery growing",
+  "town": "Kalamazoo",
+  "county": "Kalamazoo",
+  "state": "MI",
+  "founded": "1856 (George Taylor's first planting, by tradition); Dutch growers from 1866",
+  "founder": "George Taylor; Cornelius De Bruin and other Dutch growers",
+  "made": "Celery (blanched, 'Kalamazoo celery')",
+  "story": "A Scotsman, George Taylor, is credited with planting celery in Kalamazoo in 1856. Cornelius De Bruin, who came from the Netherlands in 1866, developed the stalk type, and Dutch farmers turned the muck lands into celery fields. Celery was shipped by rail from 1871, and vendors, often young boys, sold stalks to passengers at the Michigan Central depot. Growers wore wooden shoes, and their horses wore wide wooden shoes to keep from sinking in the muck.",
+  "peak": "More than 1,000 acres were still in celery in 1939; the 1910 city directory ran six and a half pages of growers.",
+  "end": "Paper-mill wells lowered the water table, blight struck in the 1930s and outside competition grew. By 1985 one grower remained, and he was gone by about 2000.",
+  "today": "Former celery growers turned to flowers, and Kalamazoo became one of the leading U.S. producers of bedding plants. A historical marker stands at Park Street and Crosstown Parkway.",
+  "see_it": [],
+  "sources": [
+   "https://www.kpl.gov/local-history/kalamazoo-history/business/stalking-the-celery-city/",
+   "https://www.kalamazoo.migenweb.org/celery.htm"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "upjohn",
+  "name": "The Upjohn Company",
+  "town": "Kalamazoo",
+  "county": "Kalamazoo",
+  "state": "MI",
+  "founded": "1886 (in Hastings, as Upjohn Pill and Granule Co.; moved to Kalamazoo)",
+  "founder": "Dr. William E. Upjohn, with his brothers Henry and James",
+  "made": "Pills and pharmaceuticals",
+  "story": "Dr. W. E. Upjohn patented a 'friable' pill in 1885, one that crumbled easily to powder, when most hard pills passed through the body undissolved. To prove it he mailed pine boards to thousands of physicians with his pills and rivals', inviting them to hammer each pill into the wood and compare. A thumb crushing a pill became the company trademark for about 60 years. In the 1950s Upjohn's chemistry made steroids such as cortisone affordable, and later products included Motrin and Rogaine.",
+  "peak": "",
+  "end": "Merged with Pharmacia in 1995; the Portage works later passed to Pfizer.",
+  "today": "The Portage plant, opened in 1951, still makes medicines. W. E. Upjohn was named the Kalamazoo Gazette’s “Person of the Century” in 2000.",
+  "see_it": [],
+  "sources": [
+   "https://www.kpl.gov/local-history/kalamazoo-history/biographies/upjohn-william-e/",
+   "https://upjohn.net/presentations/2019_Pfizer_New_Professionals/Upjohn%20History%20Presentation%20Notes%20-%20Pfizer%20July%202019.pdf"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "checker-motors",
+  "name": "Checker Cab Manufacturing / Checker Motors",
+  "town": "Kalamazoo",
+  "county": "Kalamazoo",
+  "state": "MI",
+  "founded": "1922 (Chicago); in Kalamazoo from 1923",
+  "founder": "Morris Markin",
+  "made": "Taxicabs",
+  "story": "Morris Markin, a Russian-born tailor who had taken over a Chicago cab fleet, formed the Checker Cab Manufacturing Corporation in May 1922 and moved production to two empty auto plants on Pitcher Street in Kalamazoo in 1923. Albert Kahn designed new buildings in 1929. By 1965 more than a quarter of the nation's cabs were Checkers, and they became a New York City icon. Detroit automakers refused filming access for the 1978 film Blue Collar, so it was shot at the Checker plant.",
+  "peak": "Over 100 vehicles a day and about 5,000 a year at peak.",
+  "end": "The last Checker cab came off the line on 12 July 1982. The company then made stampings, went bankrupt and closed at the end of June 2009, after 87 years in Kalamazoo; much of the plant was demolished in 2010.",
+  "today": "The 1929 Kahn building, machine shop and test track remain. The last cab, apple green, is at the Gilmore Car Museum.",
+  "see_it": [
+   {
+    "place": "Gilmore Car Museum (last Checker cab; Checker archive)",
+    "town": "Hickory Corners, MI",
+    "url": "https://gilmorecarmuseum.org/"
+   },
+   {
+    "place": "Kalamazoo Valley Museum (one of the last Checker cabs)",
+    "town": "Kalamazoo, MI",
+    "url": "https://kalamazoomuseum.org/exhibits/kalamazoo-direct-to-you"
+   }
+  ],
+  "sources": [
+   "https://www.kpl.gov/local-history/kalamazoo-history/business/checker-motors/",
+   "https://oldcarsweekly.com/features/checker-cars-at-gilmore-museum",
+   "https://kalamazoomuseum.org/exhibits/kalamazoo-direct-to-you",
+   "https://gilmorecarmuseum.org/"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "shakespeare",
+  "name": "Shakespeare Company",
+  "town": "Kalamazoo",
+  "county": "Kalamazoo",
+  "state": "MI",
+  "founded": "1897 (incorporated 1905)",
+  "founder": "William Shakespeare Jr.",
+  "made": "Fishing reels, rods and lines",
+  "story": "William Shakespeare Jr. patented a level-winding fishing reel in 1896, which laid line evenly on the spool so anglers no longer had to guide it with a thumb, and founded his company in Kalamazoo in 1897. The firm grew from Water Street to Pitcher Street (1913) and to 241 E. Kalamazoo Ave. (1939). From 1945 it made the first fiberglass fishing rods. A 1948 strike of about 700 workers led to a riot and a record-length conspiracy trial.",
+  "peak": "No peak figure found; about 700 employees were involved in the 1948 strike.",
+  "end": "Headquarters moved to Columbia, South Carolina, in 1970; a Kalamazoo division stayed on, and successor Speareflex abandoned the site in 1989.",
+  "today": "The Shakespeare Pub occupies one of the Art Deco company buildings and keeps the name alive.",
+  "see_it": [],
+  "sources": [
+   "https://www.kpl.gov/local-history/kalamazoo-history/business/shakespeare-company/"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "kalamazoo-stove",
+  "name": "Kalamazoo Stove Company",
+  "town": "Kalamazoo",
+  "county": "Kalamazoo",
+  "state": "MI",
+  "founded": "1902",
+  "founder": "",
+  "made": "Stoves, ranges and furnaces sold by mail",
+  "story": "The Kalamazoo Stove Company made stoves and furnaces from 1902 to 1952 and was one of the first manufacturers to sell directly to customers by mail rather than through stores, under the slogan 'A Kalamazoo Direct to You.' In 1937, its peak year, it made 100,000 stoves.",
+  "peak": "100,000 stoves in 1937; over 2,700 employees and two Kalamazoo plants at its height.",
+  "end": "Stove and furnace production stopped in 1952 as buyers moved to gas and electric; parts were supplied for years afterward.",
+  "today": "",
+  "see_it": [],
+  "sources": [
+   "https://www.kpl.gov/local-history/kalamazoo-history/business/kalamazoo-stove-company/",
+   "https://en.wikipedia.org/wiki/Kalamazoo_Stove_Company",
+   "https://kalamazoomuseum.org/exhibits/kalamazoo-direct-to-you"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "whirlpool",
+  "name": "Upton Machine Company (Whirlpool)",
+  "town": "St. Joseph / Benton Harbor",
+  "county": "Berrien",
+  "state": "MI",
+  "founded": "1911",
+  "founder": "Lou Upton and his uncle Emory Upton",
+  "made": "Electric wringer washing machines, later home appliances",
+  "story": "Lou Upton received the patent for a hand-cranked clothes washer from a failed appliance dealer, his uncle Emory added an electric motor, and with $5,000 from L. C. Bassford the Upton Machine Company began building electric wringer washers in St. Joseph in 1911. A 1916 contract to build two washers for Sears, Roebuck saved the young firm. It merged with the Nineteen Hundred Washer Company in 1929 and took the name Whirlpool Corporation in 1950.",
+  "peak": "",
+  "end": "Still in business.",
+  "today": "Whirlpool Corporation is headquartered in Benton Harbor.",
+  "see_it": [],
+  "sources": [
+   "https://www.encyclopedia.com/social-sciences-and-law/economics-business-and-labor/businesses-and-occupations/whirlpool-corp"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "benton-harbor-fruit-market",
+  "name": "Benton Harbor Fruit Market and the Michigan Fruit Belt",
+  "town": "Benton Harbor",
+  "county": "Berrien",
+  "state": "MI",
+  "founded": "1860",
+  "founder": "",
+  "made": "Peaches, apples, cherries, berries, grapes, pears, plums",
+  "story": "Lake Michigan tempers the weather along a narrow coastal strip, and by the 1840s Berrien County was already shipping peaches to Chicago. The Benton Harbor market was established in 1860 as an outlet for the region's fruit. A 1914 motorists' guide declared that 'No tour through Michigan is complete without a ride through the famous Fruit Belt.'",
+  "peak": "In the 1940s it was called “the largest cash-to-growers outlet in the world.”",
+  "end": "Still operating seasonally; it moved from downtown Benton Harbor to Territorial Road (in Benton Township, 1967) with urban-renewal funds.",
+  "today": "The market still trades each summer, with nearly 100 commodities passing through. A State of Michigan 'The Fruit Belt' historical marker tells the region's story.",
+  "see_it": [
+   {
+    "place": "Benton Harbor Fruit Market",
+    "town": "Benton Harbor, MI (Territorial Road)",
+    "url": "https://www.bhfm.com/index.php/about-us-2/"
+   }
+  ],
+  "sources": [
+   "https://www.bhfm.com/index.php/about-us-2/",
+   "https://www2.dnr.state.mi.us/Publications/PDFS/ArcGISOnline/StoryMaps/mhc_historical_markers/pdfs/MHC111957005.pdf",
+   "https://www.mibluemag.com/vintage-views/michigans-famous-fruit-belt/",
+   "https://en.wikipedia.org/wiki/Benton_Harbor_Fruit_Market"
+  ],
+  "postcard": "Benton Harbor Fruit and Vegetable Market; Grading and assorting peaches near Benton Harbor"
+ },
+ {
+  "id": "rumely",
+  "name": "M. Rumely Company (Advance-Rumely)",
+  "town": "La Porte",
+  "county": "LaPorte",
+  "state": "IN",
+  "founded": "1853",
+  "founder": "Meinrad Rumely (with brother John)",
+  "made": "Threshers and the OilPull kerosene tractor",
+  "story": "German immigrant Meinrad Rumely and his brother John opened a small La Porte shop in 1853 making corn shellers, horse-powered machines and railroad castings; by 1869 it had 35 workers and $50,000 a year in sales. In 1909 the company tested 'Kerosene Annie', a tractor that burned cheap kerosene and needed no boiler, water or coal. The resulting OilPull was an immediate success, and nearly 60,000 were built and sold worldwide between 1910 and 1930.",
+  "peak": "Nearly 60,000 OilPull tractors built (1910-1930); 300 employees in 1904.",
+  "end": "Reorganized as Advance-Rumely in 1915 and bought by Allis-Chalmers in 1931, which closed the La Porte plant in 1982 or 1983.",
+  "today": "An Indiana state historical marker and an ASME landmark plaque (#225, 2003) stand at La Porte Hospital, the site of the first shop. Some original Rumely buildings stand in the 112-acre former plant on Pine Lake Avenue. The La Porte County Historical Society Museum holds Rumely collections.",
+  "see_it": [
+   {
+    "place": "La Porte County Historical Society Museum (Rumely collections)",
+    "town": "La Porte, IN (2405 Indiana Ave.)",
+    "url": "https://laportecountyhistory.org/"
+   }
+  ],
+  "sources": [
+   "https://secure.in.gov/history/state-historical-markers/find-a-marker/the-rumely-companies",
+   "https://www.asme.org/about-asme/engineering-history/landmarks/225-rumely-companies-agricultural-products",
+   "https://blog.library.in.gov/the-advance-rumely-company-of-laporte-indiana/",
+   "https://laportecountyhistory.org/"
+  ],
+  "postcard": ""
+ },
+ {
+  "id": "coppes",
+  "name": "Coppes Bros. & Zook (Coppes Napanee)",
+  "town": "Nappanee",
+  "county": "Elkhart",
+  "state": "IN",
+  "founded": "1876",
+  "founder": "John and Frank Coppes (Daniel Zook joined in 1890)",
+  "made": "Kitchen cabinets ('Hoosier'-type and the Dutch Kitchenet)",
+  "story": "John and Frank Coppes began with a sawmill partnership in Nappanee in 1876, and attorney Daniel Zook joined in 1890. In 1898 Coppes was called the largest maker of the kitchen cabinets known as 'Hoosiers', and in 1914 it introduced the streamlined 'Nappanee Dutch Kitchenet.' A 1920 time-and-motion study claimed a housewife could save 75% of her kitchen time and effort with one.",
+  "peak": "",
+  "end": "Renamed Coppes, Inc. in 1936; sold to an outside corporation (Monarch Co.) in 1969. Thomas Mast bought the old factory complex in 2007.",
+  "today": "Coppes Napanee still makes custom cabinets in Nappanee and calls itself the longest continuously operating cabinet maker in the U.S. The old factory is Coppes Commons (shops since 2008), and in August 2026 a 30-foot Hoosier cabinet, billed as the world's largest, was unveiled there.",
+  "see_it": [
+   {
+    "place": "Coppes Napanee / Coppes Commons",
+    "town": "Nappanee, IN (455 E. Lincoln St.)",
+    "url": "https://coppesnapanee.com/"
+   }
+  ],
+  "sources": [
+   "https://www.nappanee.in.gov/visit/about-nappanee/history-of-nappanee",
+   "https://www.in.gov/history/state-historical-markers/find-a-marker/nappanee-furniture",
+   "https://hoodline.com/2026/08/nappanee-unveils-30-foot-climbable-hoosier-cabinet-world-s-largest/",
+   "https://coppesnapanee.com/"
+  ],
+  "postcard": ""
+ }
+]
