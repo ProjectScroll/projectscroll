@@ -57,6 +57,26 @@
    "id": "historic-courthouse"
   },
   {
+   "id": "the-fort",
+   "name": "“The Fort”: the county office building",
+   "address": "105 N. Broadway, Cassopolis, MI 49031",
+   "lat": 41.91177,
+   "lon": -86.01266,
+   "built": "1860",
+   "then": "Built in 1860, this brick building held the county’s offices — the clerk, the probate court, the register of deeds and the treasurer — until the stone courthouse across the way was finished in 1899. It was later a laundry, and in 1923 the Masons bought it for their temple and added the large hall at the back in 1925. Somewhere along the way it took the name “The Fort”; no source we have read says why.",
+   "now": "The state lists it on the Michigan State Register of Historic Sites (1985) as the Cass County Office Building/Masonic Temple. For some years it has been the Turtle Lodge, an event hall with offices and apartments; it changed hands in 2022.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/List_of_Michigan_State_Historic_Sites_in_Cass_County",
+    "https://migenweb.org/cass/postcards/county_photos.htm",
+    "https://tedshideler.com/2022/10/10/the-cass-county-michigan-courthouse-1899-2003/",
+    "https://leaderpub.com/?p=736830",
+    "https://leaderpub.com/?p=860064",
+    "https://www.weichert.com/133779767/",
+    "https://archive.org/details/twentiethcentury00glov"
+   ],
+   "verified": true
+  },
+  {
    "name": "The Old Public Square (Broadway & State)",
    "address": "Intersection of Broadway (M-62) and State Street (M-60)",
    "lat": 41.91165,

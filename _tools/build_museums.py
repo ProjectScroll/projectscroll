@@ -5,7 +5,7 @@ import sys, pathlib, json, html, re, urllib.parse
 sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
 E = html.escape
 D = json.load(open(pathlib.Path(__file__).parent/'data'/'museums.json'))
-ORDER = [('Cass','MI'),('Berrien','MI'),('Van Buren','MI'),('St. Joseph','MI'),('Kalamazoo','MI'),('St. Joseph','IN'),('Elkhart','IN'),('LaGrange','IN'),('LaPorte','IN')]
+ORDER = [('Cass','MI'),('Berrien','MI'),('Van Buren','MI'),('St. Joseph','MI'),('Kalamazoo','MI'),('Barry','MI'),('St. Joseph','IN'),('Elkhart','IN'),('LaGrange','IN'),('LaPorte','IN')]
 KIND = {'museum':'Museum','historic house':'Historic house','historic site':'Historic site','historical society':'Society','library local history':'Library history room','library':'Library','archive':'Archive'}
 # the towns that have an old-map page on this site
 OLDMAP = {'Cassopolis':('cassopolis','1860'),'Dowagiac':('dowagiac','1860'),'Niles':('niles','1860'),'Paw Paw':('paw-paw','1860'),'South Bend':('south-bend','1863'),'Elkhart':('elkhart','1861'),'Goshen':('goshen','1861')}

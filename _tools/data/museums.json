@@ -1822,5 +1822,24 @@
    -85.81275
   ],
   "oh": "Mo-Th 10-19; Fr 10-17; Sa 10-14"
+ },
+ {
+  "county": "Barry",
+  "state": "MI",
+  "town": "Hickory Corners",
+  "name": "Gilmore Car Museum",
+  "kind": "museum",
+  "what": "Opened in 1966 by Upjohn chairman Donald S. Gilmore and his wife Genevieve, it spreads more than 400 vintage cars and motorcycles across a 90-acre campus of restored barns, a 1930s service station and a working 1941 diner. The campus also hosts several independent club museums, such as the Model A Ford Museum and the Pierce-Arrow Museum.",
+  "research": "An automotive research library and archive open to the public, and the Checker Motors Historical Records & Archives; the Cadillac & LaSalle Club’s museum and research center is on the same grounds. Call ahead for research visits.",
+  "address": "6865 W. Hickory Rd., Hickory Corners, MI 49060",
+  "url": "https://www.gilmorecarmuseum.org/",
+  "verified": true,
+  "note": "",
+  "hours": "April to November: weekdays 9–5, weekends 9–6. December to March: daily 10–5.",
+  "ll": [
+   42.44021,
+   -85.42008
+  ],
+  "oh": "Mo-Fr 9-17; Sa,Su 9-18"
  }
 ]

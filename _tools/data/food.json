@@ -730,5 +730,73 @@
    41.84931,
    -86.28712
   ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Wounded Minnow Saloon",
+  "town": "Dowagiac",
+  "county": "Cass",
+  "state": "MI",
+  "address": "234 S. Front St., Dowagiac, MI 49047",
+  "kind": "tavern",
+  "story": "The saloon fills the ground floor of the Elks (BPOE Lodge 889) Temple, which opened in 1913 with the lodge's lounge, meeting rooms, pool hall and theater on the two floors above. Over the years the street-level space held grocery stores, the state liquor store and taverns, including Hook's, before the Wounded Minnow.",
+  "what": "A casual downtown tavern serving sandwiches, burgers and drinks, named for a classic local fishing lure.",
+  "url": null,
+  "source": "https://dowagiacmuseum.info/wp-content/uploads/2025/10/Walking-Tour-of-Historic-Downtown-Dowagiac-2025.pdf ; https://leaderpub.com/?p=270502 ; https://www.giftly.com/gift-card/wounded-minnow-saloon-dowagiac",
+  "verified": true,
+  "ll": [
+   41.98207,
+   -86.10936
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "Old Tavern Inn",
+  "town": "Sumnerville",
+  "county": "Cass",
+  "state": "MI",
+  "address": "61088 Indian Lake Rd., Niles, MI 49120",
+  "kind": "tavern",
+  "story": "It opened in 1835, before Michigan became a state, as a stagecoach stop with food, drink and beds, and later held the town’s meetings and dances. It has been sided, added onto and turned to face a new way, but its original beams survive in the basement, and Michigan counts it as the state’s oldest business still running in its first building.",
+  "what": "A small, old-time tavern known for its burgers, with old photographs of the building on its walls.",
+  "url": "https://www.michigan.org/property/old-tavern-inn",
+  "source": "https://www.michigan.org/property/old-tavern-inn ; https://leaderpub.com/?p=720567 ; https://www.leaderpub.com/?p=742836 ; https://unearththevoyage.com/michigan-niles-old-tavern-inn-oldest-bar-is-still-pouring-drinks-in-this-charming-college-town/",
+  "verified": false,
+  "ll": [
+   41.91171,
+   -86.20751
+  ]
+ },
+ {
+  "type": "restaurant",
+  "name": "George & Sally's Blue Moon Diner (Gilmore Car Museum)",
+  "town": "Hickory Corners",
+  "county": "Barry",
+  "state": "MI",
+  "address": "6865 W. Hickory Rd., Hickory Corners, MI 49060",
+  "kind": "diner",
+  "story": "This 1941 diner was restored in 2004 and moved more than 800 miles from Meriden, Connecticut, to the Gilmore Car Museum, where it opened in 2005.",
+  "what": "Hot dogs, blue-plate specials, pie and frozen custard in a real streamlined diner on the museum grounds; open with the museum’s season.",
+  "url": "https://www.gilmorecarmuseum.org/visit/dining",
+  "source": "https://www.gilmorecarmuseum.org/visit/dining",
+  "verified": true,
+  "ll": [
+   42.44021,
+   -85.42008
+  ]
+ },
+ {
+  "type": "lodging",
+  "name": "Arbor Hill Inn",
+  "town": "La Porte",
+  "county": "LaPorte",
+  "state": "IN",
+  "address": "263 W. Johnson Rd., La Porte, IN 46350",
+  "kind": "historic inn",
+  "story": "The inn fills a large La Porte house built in 1910 and renovated in 2000; one of its suites is still known as Mrs. Jones’ room.",
+  "what": "A country inn with themed rooms and suites on three floors, plus a guest house, that also serves dinners to guests.",
+  "url": "https://arborhillinn.com/",
+  "source": "https://arborhillinn.com/ ; https://www.meetings-conventions.com/Meeting-Event-Venues/La-Porte-IN/Convention-Hotel/Arbor-Hill-Inn-p2439388 ; https://www.reservebbonline.nethram.com/227233.html",
+  "verified": false
  }
 ]
