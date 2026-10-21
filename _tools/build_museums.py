@@ -4,8 +4,8 @@ import sys, pathlib, json, html, re
 sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
 E = html.escape
 D = json.load(open(pathlib.Path(__file__).parent/'data'/'museums.json'))
-ORDER = [('Cass','MI'),('Berrien','MI'),('Van Buren','MI'),('St. Joseph','MI'),('St. Joseph','IN'),('Elkhart','IN'),('Kalamazoo','MI'),('LaGrange','IN'),('LaPorte','IN')]
-KIND = {'museum':'Museum','historic house':'Historic house','historic site':'Historic site','historical society':'Society','library local history':'Library history room','archive':'Archive'}
+ORDER = [('Cass','MI'),('Berrien','MI'),('Van Buren','MI'),('St. Joseph','MI'),('Kalamazoo','MI'),('St. Joseph','IN'),('Elkhart','IN'),('LaGrange','IN'),('LaPorte','IN')]
+KIND = {'museum':'Museum','historic house':'Historic house','historic site':'Historic site','historical society':'Society','library local history':'Library history room','library':'Library','archive':'Archive'}
 SKIP = re.compile(r'(wikipedia|rootsweb|third-party|i could|not seen|see report|blocked|fetch|sbags|directory page|from the page|from a |per a |migenweb|official home page|community directory|not to be confused|county coverage|is in massachusetts)', re.I)
 def when(n):
     parts = [p.strip() for p in re.split(r'(?<=[.;])\s+', n or '') if p.strip()]
@@ -42,7 +42,7 @@ n = len(D)
 body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Museums &amp; historic places</p>
     <h1>Where the valley keeps its past</h1>
-    <p class="lede" style="font-size:1.15rem">{n} museums, historic houses, research rooms and archives across the St. Joseph River valley, from the log cabin in Cassopolis to the Studebaker collection in South Bend. The hunt starts on this website. It finishes in places like these.</p>
+    <p class="lede" style="font-size:1.15rem">{n} museums, historic houses, libraries, research rooms and archives across the St. Joseph River valley and its neighbours, from the log cabin in Cassopolis to the Studebaker collection in South Bend. The hunt starts on this website. It finishes in places like these.</p>
     <div class="mu-bar">
       <label class="nm-q"><span>Find a place</span><input type="search" id="muQ" placeholder="A town, a museum or a subject" autocomplete="off" spellcheck="false"></label>
       <div class="nm-chips" role="group" aria-label="Show one kind of place"><button type="button" class="btn mu-f" data-k="" aria-pressed="true">Everything</button>{kinds}</div>
