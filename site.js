@@ -1505,5 +1505,27 @@ try{ (function(){
 try{ (function(){
   if (!('IntersectionObserver' in window)) return;
   const io=new IntersectionObserver(function(es){ es.forEach(function(e){ e.target.classList.toggle('offscreen', !e.isIntersecting); }); }, {rootMargin:'100px 0px'});
-  document.querySelectorAll('.placeband, .ticker, .tcard, .vshow').forEach(function(el){ io.observe(el); });
+  document.querySelectorAll('.placeband, .ticker, .tcard, .vshow, .pshow').forEach(function(el){ io.observe(el); });
+})(); }catch(err){ psFail(err); }
+
+/* ---------- the two picture buttons under the heron: old postcards and old maps, turning like the masthead (slow fade, slow drift, a pause between) ---------- */
+try{ (function(){
+  const boxes=document.querySelectorAll('.pshow'); if (!boxes.length) return;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  boxes.forEach(function(box, bi){
+    const set=(box.dataset.set||'').split(';').map(function(x){ const p=x.split('|'); return {id:p[0], cap:p[1]||''}; }).filter(function(k){ return k.id; });
+    if (set.length<2 || reduce) return;
+    const frame=box.querySelector('.vs-f'), cap=box.querySelector('.ps-cap'); let cur=frame.querySelector('.ps-p'), i=0, t=null, seen=false;
+    const src=function(k,w){ return '/img/btn/'+k.id+(w?'-480':''); };
+    const make=function(k){ const p=document.createElement('picture'); p.className='ps-p';
+      p.innerHTML='<source type="image/avif" srcset="'+src(k,1)+'.avif 480w, '+src(k)+'.avif 960w" sizes="(min-width:900px) 24rem, 92vw"><img width="960" height="540" alt="" decoding="async" sizes="(min-width:900px) 24rem, 92vw">';
+      const im=p.querySelector('img'); im.srcset=src(k,1)+'.webp 480w, '+src(k)+'.webp 960w'; im.src=src(k,1)+'.webp'; return p; };
+    const show=function(k){ const n=make(k); frame.appendChild(n); const img=n.querySelector('img');
+      const go=function(){ requestAnimationFrame(function(){ n.classList.add('on'); }); const old=cur; cur=n; if (cap) cap.textContent=k.cap; setTimeout(function(){ if (old && old!==cur) old.remove(); }, 4300); };
+      if (img.complete) go(); else img.addEventListener('load', go, {once:true}); };
+    const next=function(){ i=(i+1)%set.length; show(set[i]); };
+    const arm=function(){ clearTimeout(t); if (!seen) return; t=setTimeout(function(){ if (!document.documentElement.classList.contains('calm')) next(); arm(); }, 7000+Math.random()*6000+bi*1500); };
+    if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ seen=es[0].isIntersecting; arm(); }, {threshold:.4}).observe(box); else { seen=true; arm(); }
+    box.addEventListener('pointerenter', function(){ clearTimeout(t); }); box.addEventListener('pointerleave', arm);
+  });
 })(); }catch(err){ psFail(err); }

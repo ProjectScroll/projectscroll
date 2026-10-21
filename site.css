@@ -3381,3 +3381,19 @@ h3 + p{margin-top:.35rem}
 .wk-oc img{width:100%; height:auto}
 @media (prefers-reduced-motion: reduce){ .oc img{transition:none} }
 .oc-grid .oc img{aspect-ratio:3/2; object-fit:cover; object-position:50% 40%}
+
+/* ── Postcards & historic photos · The map room: two 16:9 buttons under the heron ── */
+.pshows{display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.8rem 0 .2rem}
+.hero > .pshows, .hero > .whisper{grid-column:1 / -1}
+.pshow.vshow{margin:0}
+.pshow .vs-f{overflow:hidden; background:#22364A}
+.pshow .ps-p{position:absolute; inset:0; opacity:0; transition:opacity 4s ease}
+.pshow .ps-p.on{opacity:1}
+.pshow .ps-p img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transition:none; filter:sepia(.18) saturate(.9) contrast(.97) brightness(.95)}
+.pshow#psMap .ps-p img{filter:saturate(.85) contrast(.98) brightness(.96)}
+@media (prefers-reduced-motion: no-preference){ .pshow .ps-p.on img{animation:mhdrift 40s linear forwards} }
+.pshow .vs-l{font-size:.72rem; letter-spacing:.14em; padding:1.8rem .6rem .6rem; z-index:2}
+.pshow .ps-cap{position:absolute; left:.7rem; right:.7rem; top:.55rem; z-index:2; font-size:.68rem; letter-spacing:.04em; color:#EAE6DC; text-shadow:0 1px 3px rgba(0,0,0,.8); opacity:0; transition:opacity .3s ease; pointer-events:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.pshow:hover .ps-cap, .pshow:focus-visible .ps-cap{opacity:1}
+@media (max-width:560px){ .pshows{grid-template-columns:1fr} }
+@media print{ .pshows{display:none} }
