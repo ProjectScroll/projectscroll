@@ -2897,3 +2897,13 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 }
 @media (max-width:380px){ .tr-nav .nd-b{font-size:.88rem} .toolrow{gap:.5rem .55rem} .toolrow .pb-sponsor a{font-size:.56rem; letter-spacing:.06em} }
 @media print{ .toolrow{display:none} }
+/* Draft 135: on wider screens the row never wraps; the name box gives up width first, so the sponsor line always keeps the far right of the Maps line */
+@media (min-width:900px){
+  .toolrow{flex-wrap:nowrap}
+  .tr-nav{flex:1 1 auto; min-width:0; flex-wrap:nowrap}
+  .tr-nav > .navdrop{flex:none}
+  .tr-find{flex:0 1 13rem; min-width:6.5rem}
+  .tr-find input{width:100%; min-width:0}
+  .toolrow .pb-sponsor{flex:none}
+  .toolrow .pb-sponsor a{white-space:nowrap}
+}
