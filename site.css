@@ -3052,3 +3052,76 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 }
 .mu-map .leaflet-control-attribution{font-size:.68rem; background:color-mix(in srgb, var(--paper) 80%, transparent); color:var(--ink-soft)}
 .mu-map .leaflet-control-attribution a{color:var(--ink-soft)}
+/* Draft 146: smooth page changes (browsers that know cross-page view transitions; others change pages as before) */
+@media (prefers-reduced-motion: no-preference){
+  @view-transition{navigation:auto}
+  ::view-transition-old(root),::view-transition-new(root){animation-duration:.24s; animation-timing-function:ease-out}
+  .bar{view-transition-name:ps-bar}
+  ::view-transition-group(ps-bar){animation-duration:0s}
+}
+/* long pages: the browser skips drawing sections below the screen until they come near */
+@media screen{
+  .mu-c:not(.mu-near), .lt, .np, .shelf{content-visibility:auto; contain-intrinsic-size:auto 900px}
+  .lt, .np{contain-intrinsic-size:auto 420px}
+}
+/* gentle fades as cards come into view (scroll-driven, no script; off when motion is reduced, and never in print) */
+@supports (animation-timeline: view()){
+  @media screen and (prefers-reduced-motion: no-preference){
+    .mu, .lt, .np, .shelf, .mu-dt{animation:psrise linear both; animation-timeline:view(); animation-range:entry 0% entry 55%}
+  }
+}
+@keyframes psrise{from{opacity:.25; transform:translateY(18px)} to{opacity:1; transform:none}}
+/* the Maps and Research tools menus as native pop-ups, where the browser has them */
+.nd[popover]{position:fixed; inset:auto; margin:0; color:var(--ink); overflow:auto; max-height:calc(100vh - 2rem)}
+.nd[popover]:not(:popover-open){display:none}
+.tr-nav .nd[popover]{position:fixed; right:auto}
+/* Draft 146: museums — hours, day trips, sharing, grouped pins, passport */
+.mu-ol select{font:inherit; font-size:.92rem; padding:.42rem .6rem; border:1px solid var(--line); border-radius:4px; background:var(--paper); color:var(--ink); min-height:2.4rem}
+.mu-open{font-size:.85rem!important; color:var(--ink-soft)}
+.mu-open::before{content:""; display:inline-block; width:.55rem; height:.55rem; border-radius:50%; background:var(--line); margin-right:.4rem; vertical-align:.05rem}
+.mu-open.on{color:var(--ink)} .mu-open.on::before{background:#3f9a5a}
+.mu-open:empty{display:none}
+.mu-sm{font:inherit; font-size:.88rem; background:none; border:0; padding:0; color:var(--ink); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:3px; cursor:pointer; white-space:nowrap}
+.mu-sm:hover{text-decoration-color:var(--gold)}
+.mu-sb{font:inherit; font-size:.8rem; padding:.28rem .65rem; border:1px dashed var(--gold); border-radius:999px; background:transparent; color:var(--ink); cursor:pointer; min-height:2rem}
+.mu-sb:disabled{border-style:solid; background:color-mix(in srgb, var(--gold) 22%, transparent); cursor:default}
+.mu-msg{font-size:.82rem!important; color:var(--ink-soft); margin:.2rem 0 0!important}
+.mu-msg:empty{display:none}
+.mu{position:relative}
+.mu.stamped::after{content:"✦ " attr(data-stamp); position:absolute; top:.55rem; right:.6rem; transform:rotate(-8deg); font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:var(--rule); border:2px solid var(--rule); border-radius:4px; padding:.1rem .35rem; opacity:.85; pointer-events:none}
+.mu-tmsg{font-size:.9rem; margin:.3rem 0}
+.mu-tmsg:empty{display:none}
+.mu-link{font:inherit; font-size:.85rem; width:100%; max-width:34rem; margin-top:.3rem; padding:.35rem .5rem; border:1px solid var(--line); border-radius:4px; background:var(--paper-2); color:var(--ink)}
+.mu-leg{color:var(--ink-soft); font-size:.8rem}
+.mu-shared{border:1px solid var(--gold); border-radius:4px; padding:.6rem .9rem; background:color-mix(in srgb, var(--gold) 10%, var(--paper)); display:flex; flex-wrap:wrap; gap:.5rem; align-items:center}
+.mu-shared[hidden]{display:none}
+.mu-qr{border:1px solid var(--line); border-radius:6px; background:var(--paper); color:var(--ink); padding:1.2rem 1.4rem; max-width:min(26rem, calc(100vw - 2rem))}
+.mu-qr::backdrop{background:rgba(10,14,18,.6)}
+.mu-qr h2{margin:0 0 .6rem; font-size:1.2rem}
+.mu-qr #muQRc{background:#fff; padding:.5rem; border-radius:4px}
+.mu-qr #muQRc svg{display:block; width:100%; height:auto}
+.mu-qrl{font-size:.88rem; color:var(--ink-soft)}
+.mu-pass h2,.mu-dts h2{margin-top:1.6rem}
+.mu-stamps{list-style:none; padding:0; display:flex; flex-wrap:wrap; gap:.8rem}
+.mu-stamp{display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; width:8.2rem; height:8.2rem; border-radius:50%; border:3px double var(--rule); color:var(--rule); text-decoration:none; padding:.6rem; transform:rotate(-6deg); line-height:1.15}
+.mu-stamps li:nth-child(even) .mu-stamp{transform:rotate(5deg)}
+.mu-stamp span,.mu-stamp time{font-size:.6rem; letter-spacing:.1em; text-transform:uppercase}
+.mu-stamp b{font-size:.78rem; margin:.25rem 0}
+.mu-dtl{list-style:none; padding:0; display:grid; grid-template-columns:repeat(auto-fill, minmax(16rem,1fr)); gap:.9rem}
+.mu-dt{border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:4px; padding:.8rem 1rem; background:color-mix(in srgb, var(--paper-2) 60%, transparent); display:flex; flex-direction:column}
+.mu-dt h3{margin:0 0 .3rem; font-size:1.05rem}
+.mu-dt p{margin:.3rem 0; font-size:.9rem}
+.mu-dt ol{margin:.3rem 0 .5rem; padding-left:1.3rem; font-size:.9rem}
+.mu-dt p:last-child{margin-top:auto}
+.mu-map .mu-clu{display:grid; place-items:center; border-radius:50%; background:color-mix(in srgb, var(--gold) 88%, transparent); border:2px solid color-mix(in srgb, var(--ink) 70%, transparent); color:#1b1408; font-weight:bold; font-size:.82rem; box-shadow:0 0 0 4px color-mix(in srgb, var(--gold) 30%, transparent); cursor:pointer}
+.mu-map .mu-clu.t{border-color:var(--rule); border-width:3px}
+.mu-map .mu-clu.hl{box-shadow:0 0 0 7px color-mix(in srgb, var(--rule) 45%, transparent)}
+.mu-map .mu-pin.hl{stroke:var(--rule); stroke-width:4; fill-opacity:1}
+.mu-pop small{margin-top:.15rem}
+@media print{
+  .mu-dts,.mu-pass,.mu-shared,.mu-sb,.mu-msg,.mu-qr,.mu-open,.mu-sm{display:none!important}
+  html.mu-printqr body *{visibility:hidden}
+  html.mu-printqr #muQR, html.mu-printqr #muQR *{visibility:visible}
+  html.mu-printqr #muQR{display:block!important; position:absolute; top:0; left:0; border:0}
+  html.mu-printqr #muQR .mu-tacts{display:none}
+}
