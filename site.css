@@ -3417,3 +3417,31 @@ h3 + p{margin-top:.35rem}
 .vs-coming time{min-width:9.5rem; font-size:.85rem; letter-spacing:.04em; color:var(--rule)}
 .vs-coming span{font-size:.88rem; color:var(--ink-soft)}
 @media (prefers-reduced-motion: reduce){ .vs-cards a{transition:none} }
+
+/* ── Postcards: search, filters, map ── */
+.oc-filt{margin:1rem 0 1.6rem}
+.oc-filt .nm-chips{margin-top:.5rem}
+.pc-map{height:min(70vh,30rem)}
+.leaflet-interactive.pc-pin{fill:#b8862b; fill-opacity:.85; stroke:#fff6d6; stroke-width:2}
+.pc-pop .pc-ph{margin:0 0 .4rem; font-weight:600}
+.pc-pg{display:grid; grid-template-columns:repeat(3,1fr); gap:.3rem}
+.pc-pg img{display:block; width:100%; height:auto; aspect-ratio:3/2; object-fit:cover; border-radius:2px}
+.pc-more{display:inline-block; margin-top:.45rem; font-size:.85rem}
+.vs-days{list-style:none; padding:0; margin:1rem 0 2rem; display:grid; gap:1rem}
+.vs-day{border:1px solid var(--line); border-radius:4px; padding:1rem 1.2rem; background:color-mix(in srgb, var(--paper-2) 45%, transparent)}
+.vs-day h3{margin:0 0 .2rem; font-family:"Libre Caslon Display","Caslon Display Fallback",serif; font-weight:400; font-size:1.35rem}
+.vs-when{font-size:.88rem; color:var(--ink-soft); margin:0 0 .6rem}
+.vs-day ol{margin:0 0 .6rem; padding-left:1.3rem}
+.vs-day ol li{margin-bottom:.35rem}
+.vs-t{display:inline-block; min-width:5.5rem; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--rule)}
+@media print{ html.vs-printing main > *:not(section), html.vs-printing main section:not(:has(.vs-on)), html.vs-printing .vs-day:not(.vs-on), html.vs-printing .vs-print{display:none!important}
+  html.vs-printing .vs-day{border:0} }
+.vs-plan{margin:2rem 0 1rem}
+.mu-wx{font-size:.88rem; color:var(--ink-soft); margin:.4rem 0 0}
+.mu-wx b{font-weight:600; color:var(--ink)}
+.mu-wxk{font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--rule); margin-right:.3rem}
+.hl-empty{border:1px dashed var(--line); border-radius:4px; padding:1.1rem 1.3rem; margin:1rem 0 2rem}
+.hl-kinds{columns:2 16rem; margin:.4rem 0 0; padding-left:1.2rem}
+.hl-kinds li{break-inside:avoid; margin-bottom:.3rem}
+.hl-cab{list-style:none; padding:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(15rem,1fr)); gap:1rem}
+.hl-item img{width:100%; height:auto; border-radius:3px}

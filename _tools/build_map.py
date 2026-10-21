@@ -1,5 +1,6 @@
 """Builds the map room:  python3 _tools/build_map.py"""
 import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
+from pcmap import section as pcmap_section
 IIIF='https://tile.loc.gov/image-services/iiif/service:gmd:gmd411:g4113:g4113c:la000324'
 body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker compass">The map room</p>
@@ -16,6 +17,7 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
         <li><a href="#more"><b>III</b><span>More maps</span></a></li>
         <li><a href="#sanborn"><b>IV</b><span>Sanborn sheets</span></a></li>
         <li><a href="#townships"><b>V</b><span>Fifteen townships, 1928</span></a></li>
+        <li><a href="#pcmap"><b>VI</b><span>Old postcards on the map</span></a></li>
         <li><a href="/places/"><b>★</b><span>The gazetteer: every place</span></a></li>
       </ol>
     </nav>
@@ -40,7 +42,7 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       </select></label><label><span>Sheet</span><select id="sbSheet" disabled><option>Choose a town first</option></select></label></div>
       <p class="note" id="sbNote" aria-live="polite">The sheets are the Library of Congress’s scans, shown from Wikimedia Commons. Public domain.</p>
     </section>
-    <h2 id="look">Things to look for</h2>
+'''+pcmap_section()+f'''    <h2 id="look">Things to look for</h2>
     <ul class="dis">
       <li>The small <b>town plans</b> along the top and left side, with streets, blocks and the names of buildings.</li>
       <li>The <b>business directories</b> printed in the margins, listing who kept which shop or hotel.</li>

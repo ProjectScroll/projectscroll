@@ -34,6 +34,12 @@ for C in CFG:
   def src(s):
       u = s.get('sources') or []
       return ' '.join(f'<a href="{E(x)}" rel="noopener">source {i}</a>' for i, x in enumerate(u, 1))
+  SQ={'first-courthouse','historic-courthouse','the-fort','public-square','bank-corner','gem-theatre-site'}
+  def sb(s):
+      if C['data']=='walk.json':
+          if s['id'] in SQ: return '<a class="wk-sbn" href="/map/#sanborn-cassopolis/001-2/1900,1700,1980,1730">The square on the 1884 Sanborn sheet</a>'
+          return '<a class="wk-sbn" href="/map/#sanborn-cassopolis/001-2">Open the 1884 Sanborn sheet</a>'
+      return '<a class="wk-sbn" href="/map/#sanborn-dowagiac">Open the Sanborn sheets of Dowagiac</a>'
   def blt(b): return ('built '+b) if re.match(r'^(\d|about|c\.)', b) else b[0].lower()+b[1:]
   stops = ''.join(f'''<li class="wk" id="{s['id']}" data-ll="{s['lat']},{s['lon']}" data-n="{E(s['name'])}">
           <p class="mu-k">Stop {s['n']} of {len(S)}{(' · '+E(blt(str(s['built'])))) if s.get('built') else ''}<span class="wk-st"></span></p>
@@ -42,7 +48,7 @@ for C in CFG:
           <p class="wk-then"><b>Then.</b> {E(s['then'])}</p>
           <p class="wk-now"><b>Now.</b> {E(s['now'])}</p>
           {f'<p class="mu-a">{E(s["address"])}</p>' if s.get('address') else ''}
-          <p class="wk-src">{src(s)}</p>
+          <p class="wk-src">{src(s)} · {sb(s)}</p>
           <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
         </li>''' for s in S)
   sanborn = ''.join(f'<li><a href="{E(x["url"])}" rel="noopener">{E(str(x["year"]))}</a>{(" · "+E(x["note"])) if x.get("note") else ""}</li>' for x in W.get('sanborn', []))
@@ -162,6 +168,7 @@ for C in CFG:
         <li><b>Stay on the sidewalk</b> and on public ground, and be kind to the businesses: many of these buildings are still working shops and offices.</li>
         <li><b>Take the same picture.</b> Where a stop has an old postcard, stand where the photographer stood and <a href="/postcards/">send us your photo</a>.</li>
       </ul>
+      <p class="vs-plan"><a class="btn" href="/visit/">Plan your visit: ready-made days out, food, lodging and festivals</a></p>
       <p class="note">{C['note']}</p>
   {JS}
   '''

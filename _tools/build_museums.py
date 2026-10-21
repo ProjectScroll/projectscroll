@@ -99,6 +99,24 @@ for i, d in enumerate([d for k in keys for d in sorted(groups[k], key=lambda x:(
 ld = '<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@type':'ItemList','name':'Museums & historic places of the St. Joseph River valley','numberOfItems':n,'itemListElement':items}, ensure_ascii=False).replace('</','<\\/')+'</script>'
 
 JS = r'''<script>
+(function(){
+  var w=document.getElementById('muWx'); if (!w || !window.fetch) return;
+  var go=function(){
+    fetch('https://api.weather.gov/points/41.912,-86.010',{headers:{'Accept':'application/geo+json'}}).then(function(r){return r.json();}).then(function(j){
+      return fetch(j.properties.forecast).then(function(r){return r.json();});
+    }).then(function(f){
+      var p=f.properties.periods; if (!p||!p.length) return;
+      var a=p[0], b=p[1];
+      w.innerHTML='<span class="mu-wxk">Weather in the valley</span> <b></b> <span></span>';
+      w.querySelector('b').textContent=a.name+': '+a.temperature+'°'+a.temperatureUnit+', '+a.shortForecast.toLowerCase();
+      if (b) w.querySelector('span:last-child').textContent='· '+b.name+': '+b.temperature+'°'+b.temperatureUnit+', '+b.shortForecast.toLowerCase();
+      w.hidden=false;
+    }).catch(function(){});
+  };
+  if ('requestIdleCallback' in window) requestIdleCallback(go,{timeout:3000}); else setTimeout(go,1500);
+})();
+</script>
+<script>
 (function(){ "use strict";
   var $=function(s,r){ return (r||document).querySelector(s); }, $$=function(s,r){ return [].slice.call((r||document).querySelectorAll(s)); };
   var calm=matchMedia('(prefers-reduced-motion: reduce)').matches, glide=calm?'auto':'smooth';
@@ -352,6 +370,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <label class="nm-q"><span>Find a place</span><input type="search" id="muQ" placeholder="A town, a museum or a subject" autocomplete="off" spellcheck="false"></label>
       <div class="nm-chips" role="group" aria-label="Show one kind of place"><button type="button" class="btn mu-f" data-k="" aria-pressed="true">Everything</button>{kinds}</div>
       <div class="nm-chips mu-opts"><button type="button" class="btn mu-rb" id="muR" aria-pressed="false">Help for researchers</button><label class="mu-ol"><span class="vh">Opening days</span><select id="muOpen"><option value="">Open any day</option><option value="now">Open right now</option><option value="today">Open today</option>{opts}</select></label><button type="button" class="btn mu-nb" id="muNear" aria-pressed="false">Sort by distance from me</button><button type="button" class="btn mu-off" id="muOff" hidden>Save for no-signal use</button></div>
+      <p class="mu-wx" id="muWx" hidden></p>
       <p class="mu-nmsg" id="muNearMsg" aria-live="polite"></p><p class="mu-nmsg" id="muOffMsg" aria-live="polite"></p>
       <p class="nm-chips mu-jump"><span class="mu-jl">Jump to a county:</span> {chips}</p>
       <p class="nm-count" id="muCount" aria-live="polite">{n} places</p>
@@ -388,7 +407,8 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li><b>No signal out there?</b> Press “Save for no-signal use” before you leave, and this page, its map and your trip will open on your phone without a connection.</li>
       <li><b>Know of a place we missed?</b> <a href="/#contact">Tell us</a> and we will add it.</li>
     </ul>
-    <p class="note">Every place on this page was checked against its own website, or a city, county, library or university page about it, in October 2026. Places marked “check before you go” could not be confirmed online. The “open now” and “open today” lines are worked out from each place’s posted hours and seasons, in its own time zone; they do not know about holidays, events or a volunteer’s day off. Hours change: always look at the place’s own site before travelling. Map pins come from each street address; a few pins marked “near, not exact” sit at the town or road. The map draws its own county lines (US Census Bureau) and rivers (USGS). Only if you press “Show today’s streets” does your browser ask OpenStreetMap’s tile server for street maps, under <a href="https://osmfoundation.org/wiki/Privacy_Policy" rel="noopener">its privacy policy</a>. “Sort by distance” asks your browser for your location and uses it only on this page.</p>
+    <p class="vs-plan"><a class="btn" href="/visit/">Plan your visit: ready-made days out, food, lodging and festivals</a></p>
+    <p class="note">Every place on this page was checked against its own website, or a city, county, library or university page about it, in October 2026. Places marked “check before you go” could not be confirmed online. The “open now” and “open today” lines are worked out from each place’s posted hours and seasons, in its own time zone; they do not know about holidays, events or a volunteer’s day off. Hours change: always look at the place’s own site before travelling. Map pins come from each street address; a few pins marked “near, not exact” sit at the town or road. The map draws its own county lines (US Census Bureau) and rivers (USGS). Only if you press “Show today’s streets” does your browser ask OpenStreetMap’s tile server for street maps, under <a href="https://osmfoundation.org/wiki/Privacy_Policy" rel="noopener">its privacy policy</a>. “Sort by distance” asks your browser for your location and uses it only on this page. The weather line comes from the National Weather Service forecast for Cassopolis (weather.gov), fetched by your browser.</p>
 {ld}
 {JS}
 '''

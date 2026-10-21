@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', function(){ "use strict";
   var t=new Date().toISOString().slice(0,10), n=0;
   document.querySelectorAll('#vsComing li').forEach(function(li){ if (li.dataset.end<t || n>=6) li.hidden=true; else n++; });
   if (!n){ var p=document.getElementById('vsNone'); if (p) p.hidden=false; }
+  document.querySelectorAll('.vs-print').forEach(function(b){ b.addEventListener('click', function(){ var d=document.getElementById(b.dataset.day); document.documentElement.classList.add('vs-printing'); d.classList.add('vs-on'); window.print(); }); });
+  addEventListener('afterprint', function(){ document.documentElement.classList.remove('vs-printing'); document.querySelectorAll('.vs-on').forEach(function(x){ x.classList.remove('vs-on'); }); });
 });
 </script>'''
 CARDS = [
@@ -30,12 +32,55 @@ CARDS = [
  ('/passport/', 'Your passport', 'Press “I’m here” at a museum, a stop, a table or a festival to collect stamps and print a certificate.'),
  ('/postcards/', 'Old postcards', 'More than a hundred views of the valley’s towns as they were, to compare with what you see today.'),
 ]
+
+def mu(n): return '/museums/#'+slug(n)
+def fd(n): return '/food/#'+slug(n)
+DAYS=[
+ ('cass-dow','A day in Cassopolis and Dowagiac','Best on a Tuesday or Friday, when both Dowagiac museums are open; the log cabin keeps summer hours.',[
+   ('Morning','Walk old Broadway in Cassopolis, eleven stops with the 1860 plan underfoot.','/walk/'),
+   ('Morning','The Local History Branch, in the 1909 Carnegie library: county histories, maps and family files (Mon–Thu).',mu('Cass District Library – Local History Branch')),
+   ('Morning','The Pioneer Log Cabin Museum on South Broadway, built in 1923 (open through the season; check its website).',mu('Pioneer Log Cabin Museum')),
+   ('Lunch','Holden Green Tavern, in the old post office storefront on Broadway.',fd('Holden Green Tavern')),
+   ('Afternoon','Drive about 11 miles to Dowagiac: the Dowagiac Area History Museum, for the Round Oak stove story.',mu('Dowagiac Area History Museum')),
+   ('Afternoon','Walk Front Street, thirteen stops, with the Heddon Museum’s lures on the way (Tue and Fri; call ahead).','/walk/dowagiac/'),
+   ('Treat','A soda at Caruso’s, on Front Street since 1922.',fd("Caruso's Candy & Soda Fountain")),
+   ('Supper','The Wounded Minnow, in the 1913 Elks Temple, or the Old Tavern Inn at Sumnerville, opened in 1835.',fd('Wounded Minnow Saloon'))]),
+ ('niles','Niles and the river','A half day; the Fort St. Joseph Museum is open Wednesday to Saturday.',[
+   ('Morning','The Fort St. Joseph Museum and the Niles History Center.',mu('Fort St. Joseph Museum (Niles History Center)')),
+   ('Morning','The Four Flags City sites around downtown, mostly seen from outside.',mu('Niles Historic Sites (Four Flags City)')),
+   ('Lunch','The Old Tavern Inn at Sumnerville, opened in 1835 as a stagecoach stop.',fd('Old Tavern Inn')),
+   ('Stay','The Morris Estate, a riverside estate kept as a bed and breakfast.',fd('The Morris Estate'))]),
+ ('fruit','A weekend in the fruit belt','Blossom time from late April, blueberries in July, apples and cider in the fall.',[
+   ('Saturday','Jollay Orchards near Coloma, farmed by the same family since 1857 (fall market).',fd('Jollay Orchards')),
+   ('Saturday','The Morton House Museum in Benton Harbor (Wed and Sat 11–2). On a weekday, the North Berrien Historical Museum in Coloma instead.',mu('Morton House Museum')),
+   ('Saturday','The St. Joseph pier lights; inner tours on summer Saturdays, weather permitting.',mu('St. Joseph North Pier Lights')),
+   ('Supper','Grande Mere Inn at Stevensville.',fd('Grande Mere Inn')),
+   ('Sunday','The Region of Three Oaks Museum (spring to October, Fri–Sun afternoons).',mu('Region of Three Oaks Museum')),
+   ('Stay','The Inn at Union Pier or Gordon Beach Inn, near the lake.',fd('The Inn at Union Pier'))]),
+ ('amish','Elkhart County and the Amish country','Best Tuesday to Saturday, when all three are open; many businesses close on Sundays. Mind the buggies.',[
+   ('Morning','Bonneyville Mill near Bristol, the old grist mill (mid-April to mid-November, Tue–Sun).',mu('Bonneyville Mill')),
+   ('Morning','The Elkhart County Historical Museum in Bristol (Tue–Sat).',mu('Elkhart County Historical Museum')),
+   ('Lunch','Das Dutchman Essenhaus in Middlebury, or the Blue Gate in Shipshewana.',fd('Das Dutchman Essenhaus')),
+   ('Afternoon','Menno-Hof in Shipshewana (Mon–Sat 10–5).',mu('Menno-Hof')),
+   ('Afternoon','Coppes Commons in Nappanee, the old kitchen-cabinet factory.',mu('Coppes Commons and Coppes History Museum')),
+   ('Stay','Market St. Manor in Nappanee.',fd('Market St. Manor'))]),
+ ('kzoo','Kalamazoo and the Gilmore','A full day, Monday to Thursday, when the Kellogg Manor House is open; the Gilmore keeps longer hours from April to November.',[
+   ('Morning','The Gilmore Car Museum at Hickory Corners.',mu('Gilmore Car Museum')),
+   ('Lunch','George & Sally’s Blue Moon Diner, a 1941 diner on the Gilmore grounds.',fd("George & Sally's Blue Moon Diner (Gilmore Car Museum)")),
+   ('Afternoon','The W.K. Kellogg Manor House (Mon–Thu; call ahead).',mu('W.K. Kellogg Manor House')),
+   ('Supper','Bell’s Eccentric Café in Kalamazoo.',fd("Bell's Eccentric Café")),
+   ('Stay','Henderson Castle or The Kalamazoo House.',fd('Henderson Castle'))]),
+]
+days=''.join(f'<li class="vs-day" id="day-{k}"><h3>{E(t)}</h3><p class="vs-when">{E(w)}</p><ol>'+''.join(f'<li><span class="vs-t">{E(a)}</span> <a href="{h}">{E(b)}</a></li>' for a,b,h in st)+f'</ol><p><button type="button" class="btn vs-print" data-day="day-{k}">Print this day</button></p></li>' for k,t,w,st in DAYS)
 cards = ''.join(f'<li><a href="{h}"><b>{E(t)}</b><span>{E(d)}</span></a></li>' for h,t,d in CARDS)
 body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Visit &amp; Plan</p>
     <h1>Coming to the St. Joseph River valley</h1>
     <p class="lede" style="font-size:1.15rem">Cassopolis and the towns around it, from Kalamazoo to Lake Michigan and down into northern Indiana, are an easy trip from Chicago, Detroit and Indianapolis. Here is what to see, where to eat and stay, what’s on, and how to get here, all in one place.</p>
     <ul class="vs-cards">{cards}</ul>
+    <section aria-labelledby="vsDH"><h2 id="vsDH">Ready-made days out</h2>
+      <p>Five days planned for you, in an order that saves driving. Hours change: check each place before you go.</p>
+      <ol class="vs-days">{days}</ol></section>
     <section aria-labelledby="vsCH"><h2 id="vsCH">Coming up</h2>
       <ol class="vs-coming" id="vsComing">{coming}</ol>
       <p class="note" id="vsNone" hidden>Nothing on the calendar for the next few weeks. See the <a href="/seasons/">full year</a>.</p>

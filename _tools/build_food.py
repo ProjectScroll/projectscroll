@@ -173,6 +173,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li><b>Know a place with a story?</b> <a href="/#contact">Tell us</a>, with what you know of its history.</li>
       <li><b>Own one of these places?</b> Project Scroll is free to play and depends on sponsors. <a href="/sponsors/">See how to keep the lanterns lit</a>.</li>
     </ul>
+    <p class="vs-plan"><a class="btn" href="/visit/">Plan your visit: ready-made days out, food, lodging and festivals</a></p>
     <p class="note">Every place here was chosen for its history and checked against its own website, or a city, county or tourism page, in October 2026. No place paid to be listed; any sponsor will always be marked as one. Places marked “check before you go” could not be fully confirmed online. The recipes are from cookbooks and newspapers published before 1929, now in the public domain, quoted as printed; the notes on making them today are ours.</p>
 {ld}
 {JS}

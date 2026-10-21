@@ -33,6 +33,10 @@
  ],
  "shortcuts": [
   {
+   "name": "Visit & Plan",
+   "url": "/visit/"
+  },
+  {
    "name": "Broadway Virtual Walk",
    "url": "/walk/"
   },

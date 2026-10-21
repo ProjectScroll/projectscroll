@@ -1,190 +1,206 @@
 {
-"postcards": [
-[
-"pc-ps002",
-"Broadway Looking South, Cassopolis, Mich · 1909"
-],
-[
-"pc-ps009",
-"Hotel Goodwin, Cassopolis, Mich · 1916"
-],
-[
-"pc-ps008",
-"The Colonial Opera House, Cassopolis, Mich · 1913"
-],
-[
-"pc-ps005",
-"Public Library, Cassopolis, Mich · 1914"
-],
-[
-"pc-ps004",
-"Cass Co. Court House, Cassopolis, Mich · 1910"
-],
-[
-"pc-ps003",
-"W. Side Main St. North, Cassopolis, Mich · 1909"
-],
-[
-"pc-ps006",
-"Michigan Central Depot, Cassopolis, Mich · 1908"
-],
-[
-"pc-ps000",
-"Birds Eye State St. East, Cassopolis, Mich · 1910"
-],
-[
-"pc-ps093",
-"Forest Hall, Diamond Lake, Cassopolis · 1909"
-],
-[
-"pc-ps011",
-"Beckwith Building, Dowagiac, Mich · 1912"
-],
-[
-"pc-ps014",
-"Our New Fire Truck, Homecoming Aug. 1912, Dowagiac, Mich · 1912"
-],
-[
-"pc-ps040",
-"Front Street, looking north, Dowagiac, Mich · about 1930–45"
-],
-[
-"pc-ps015",
-"Roosevelt Special, March 30th 1912 · 1912"
-],
-[
-"pc-ps016",
-"Monument Day, Dowagiac, Mich · 1908"
-],
-[
-"pc-ps041",
-"Mill and mill pond, Dowagiac, Mich · about 1930–45"
-],
-[
-"pc-ps024",
-"Edwardsburg, Mich · 1907"
-],
-[
-"pc-ps027",
-"This is Main Street looking West, Marcellus · 1907"
-],
-[
-"pc-ps033",
-"State St., Vandalia, Mich · 1909"
-],
-[
-"pc-ps046",
-"Niles, Berrien County, Michigan (bird's-eye view) · 1868"
-],
-[
-"pc-ps052",
-"An orchard at its best, near Benton Harbor and St. Joseph, Mich · about 1930–45"
-],
-[
-"pc-ps051",
-"Benton Harbor Fruit and Vegetable Market, largest in the world · about 1930–45"
-],
-[
-"pc-ps064",
-"Main Street looking south, Three Rivers, Michigan · about 1930–45"
-],
-[
-"pc-ps067",
-"Main Street looking west, Kalamazoo, Mich · about 1906"
-],
-[
-"pc-ps071",
-"Michigan Street, north from Washington Street, South Bend, Indiana · about 1930–45"
-],
-[
-"pc-ps074",
-"North Main St., Elkhart, Ind · 1915"
-],
-[
-"pc-ps077",
-"Court House, Goshen, Ind · 1912"
-],
-[
-"pc-ps080",
-"Main St. north from Washington St., Goshen, Ind · 1911"
-],
-[
-"pc-ps081",
-"St. Joe River bridge, Bristol, Ind · 1912"
-],
-[
-"pc-ps088",
-"Franklin St. North Market, Michigan City, Ind · 1906"
-],
-[
-"pc-ps089",
-"Hoosier Slide, Michigan City, Ind · 1907"
-],
-[
-"pc-ps099",
-"Wiest's Resort, Indian Lake, Dowagiac · 1912"
-],
-[
-"pc-ps012",
-"M.C. R.R. Station, Dowagiac, Mich · 1910"
-],
-[
-"pc-ps043",
-"Elkhart St., Edwardsburg, Mich · 1910"
-]
-],
-"maps": [
-[
-"m-wall1",
-"The 1860 wall map of Cass County"
-],
-[
-"m-cass1",
-"Cassopolis in 1860: the village plan"
-],
-[
-"m-bellin",
-"Bellin’s map of the Great Lakes, 1744"
-],
-[
-"m-dow",
-"Dowagiac in 1860"
-],
-[
-"m-niles68",
-"Niles in 1868, a bird’s-eye view"
-],
-[
-"m-cass2",
-"Cassopolis in 1860: Broadway and the square"
-],
-[
-"m-niles",
-"Niles in 1860, the river through the plan"
-],
-[
-"m-royce",
-"Land cessions in Michigan, Royce, 1899"
-],
-[
-"m-dir",
-"The 1860 Cassopolis business directory"
-],
-[
-"m-paw",
-"Paw Paw in 1860"
-],
-[
-"m-wall2",
-"The 1860 wall map: the southern townships"
-],
-[
-"m-1928",
-"Cass County townships, about 1928"
-],
-[
-"m-jeff",
-"Jefferson Township, Cass County, from a plat book"
-]
-]
+ "postcards": [
+  [
+   "pc-ps002",
+   "Broadway Looking South, Cassopolis, Mich · 1909"
+  ],
+  [
+   "pc-ps009",
+   "Hotel Goodwin, Cassopolis, Mich · 1916"
+  ],
+  [
+   "pc-ps008",
+   "The Colonial Opera House, Cassopolis, Mich · 1913"
+  ],
+  [
+   "pc-ps005",
+   "Public Library, Cassopolis, Mich · 1914"
+  ],
+  [
+   "pc-ps004",
+   "Cass Co. Court House, Cassopolis, Mich · 1910"
+  ],
+  [
+   "pc-ps003",
+   "W. Side Main St. North, Cassopolis, Mich · 1909"
+  ],
+  [
+   "pc-ps006",
+   "Michigan Central Depot, Cassopolis, Mich · 1908"
+  ],
+  [
+   "pc-ps000",
+   "Birds Eye State St. East, Cassopolis, Mich · 1910"
+  ],
+  [
+   "pc-ps093",
+   "Forest Hall, Diamond Lake, Cassopolis · 1909"
+  ],
+  [
+   "pc-ps011",
+   "Beckwith Building, Dowagiac, Mich · 1912"
+  ],
+  [
+   "pc-ps014",
+   "Our New Fire Truck, Homecoming Aug. 1912, Dowagiac, Mich · 1912"
+  ],
+  [
+   "pc-ps040",
+   "Front Street, looking north, Dowagiac, Mich · about 1930–45"
+  ],
+  [
+   "pc-ps015",
+   "Roosevelt Special, March 30th 1912 · 1912"
+  ],
+  [
+   "pc-ps016",
+   "Monument Day, Dowagiac, Mich · 1908"
+  ],
+  [
+   "pc-ps041",
+   "Mill and mill pond, Dowagiac, Mich · about 1930–45"
+  ],
+  [
+   "pc-ps024",
+   "Edwardsburg, Mich · 1907"
+  ],
+  [
+   "pc-ps027",
+   "This is Main Street looking West, Marcellus · 1907"
+  ],
+  [
+   "pc-ps033",
+   "State St., Vandalia, Mich · 1909"
+  ],
+  [
+   "pc-ps046",
+   "Niles, Berrien County, Michigan (bird's-eye view) · 1868"
+  ],
+  [
+   "pc-ps052",
+   "An orchard at its best, near Benton Harbor and St. Joseph, Mich · about 1930–45"
+  ],
+  [
+   "pc-ps051",
+   "Benton Harbor Fruit and Vegetable Market, largest in the world · about 1930–45"
+  ],
+  [
+   "pc-ps064",
+   "Main Street looking south, Three Rivers, Michigan · about 1930–45"
+  ],
+  [
+   "pc-ps067",
+   "Main Street looking west, Kalamazoo, Mich · about 1906"
+  ],
+  [
+   "pc-ps071",
+   "Michigan Street, north from Washington Street, South Bend, Indiana · about 1930–45"
+  ],
+  [
+   "pc-ps074",
+   "North Main St., Elkhart, Ind · 1915"
+  ],
+  [
+   "pc-ps077",
+   "Court House, Goshen, Ind · 1912"
+  ],
+  [
+   "pc-ps080",
+   "Main St. north from Washington St., Goshen, Ind · 1911"
+  ],
+  [
+   "pc-ps081",
+   "St. Joe River bridge, Bristol, Ind · 1912"
+  ],
+  [
+   "pc-ps088",
+   "Franklin St. North Market, Michigan City, Ind · 1906"
+  ],
+  [
+   "pc-ps089",
+   "Hoosier Slide, Michigan City, Ind · 1907"
+  ],
+  [
+   "pc-ps099",
+   "Wiest's Resort, Indian Lake, Dowagiac · 1912"
+  ],
+  [
+   "pc-ps012",
+   "M.C. R.R. Station, Dowagiac, Mich · 1910"
+  ],
+  [
+   "pc-ps043",
+   "Elkhart St., Edwardsburg, Mich · 1910"
+  ],
+  [
+   "pc-ps101",
+   "The court house, Cassopolis · about 1908–1916"
+  ],
+  [
+   "pc-ps108",
+   "North Front Street, Dowagiac · about 1912–1918"
+  ],
+  [
+   "pc-ps109",
+   "Grand Trunk depot, Edwardsburg · about 1907–1915"
+  ],
+  [
+   "pc-ps111",
+   "The old mill, Vandalia · about 1908–1918"
+  ]
+ ],
+ "maps": [
+  [
+   "m-wall1",
+   "The 1860 wall map of Cass County"
+  ],
+  [
+   "m-cass1",
+   "Cassopolis in 1860: the village plan"
+  ],
+  [
+   "m-bellin",
+   "Bellin’s map of the Great Lakes, 1744"
+  ],
+  [
+   "m-dow",
+   "Dowagiac in 1860"
+  ],
+  [
+   "m-niles68",
+   "Niles in 1868, a bird’s-eye view"
+  ],
+  [
+   "m-cass2",
+   "Cassopolis in 1860: Broadway and the square"
+  ],
+  [
+   "m-niles",
+   "Niles in 1860, the river through the plan"
+  ],
+  [
+   "m-royce",
+   "Land cessions in Michigan, Royce, 1899"
+  ],
+  [
+   "m-dir",
+   "The 1860 Cassopolis business directory"
+  ],
+  [
+   "m-paw",
+   "Paw Paw in 1860"
+  ],
+  [
+   "m-wall2",
+   "The 1860 wall map: the southern townships"
+  ],
+  [
+   "m-1928",
+   "Cass County townships, about 1928"
+  ],
+  [
+   "m-jeff",
+   "Jefferson Township, Cass County, from a plat book"
+  ]
+ ]
 }
