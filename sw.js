@@ -43,7 +43,17 @@ self.addEventListener('fetch', e => {
   if (/\.pdf$/.test(url.pathname)) { e.respondWith(caches.match(req).then(hit => { const net = fetch(req).then(res => { if (res.ok && hit) e.waitUntil(caches.open('ps-files').then(c => c.put(req, res.clone()))); return res; }); if (hit) { e.waitUntil(net.catch(() => {})); return hit; } return net; })); return; }
   /* share cards are redrawn under the same names, so they are never served from the cache first */
   if (/^\/(og\/|og-dark\.|cases\/\d+\/card\.)/.test(url.pathname)) return;
-  if (url.search.includes('v=') || /\.(png|jpg|webp|svg|woff2)$/.test(url.pathname)) {
+  /* files with a version tag never change under their name: the saved copy first */
+  if (url.search.includes('v=') || /\.woff2$/.test(url.pathname)) {
     e.respondWith(caches.match(req).then(r => r || fetch(req).then(res => { e.waitUntil(save(req, res.clone())); return res; })));
+    return;
+  }
+  /* pictures: the saved copy at once, and a fresh one fetched behind it, so a replaced picture shows on the next visit */
+  if (/\.(png|jpg|jpeg|webp|svg|gif)$/.test(url.pathname)) {
+    e.respondWith(caches.match(req).then(hit => {
+      const net = fetch(req).then(res => { e.waitUntil(save(req, res.clone())); return res; });
+      if (hit) { e.waitUntil(net.catch(() => {})); return hit; }
+      return net;
+    }));
   }
 });
