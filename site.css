@@ -3456,3 +3456,12 @@ h3 + p{margin-top:.35rem}
 .mk-pc figcaption{font-size:.8rem; color:var(--ink-soft); margin-top:.25rem}
 .mk-see{font-size:.95rem}
 @media (max-width:560px){ .mk-dl{grid-template-columns:1fr} .mk-dl dt{padding-top:.5rem} }
+/* Visit & Plan: the one highlighted link in the tool row, white (dark) or ink (light) with a green rule under it */
+:root{--vp-green:#2E7D56}
+@supports (color: light-dark(#000, #fff)){ :root{--vp-green:light-dark(#2E7D56, #5FC08F)} }
+@supports not (color: light-dark(#000, #fff)){
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--vp-green:#5FC08F} }
+  :root[data-theme="dark"]{--vp-green:#5FC08F}
+}
+.tr-nav .tr-visit{color:var(--ink); border-bottom:2px solid var(--vp-green); padding-bottom:.1rem; transition:border-color .2s}
+.tr-nav .tr-visit:hover, .tr-nav .tr-visit:focus-visible, .tr-nav .tr-visit[aria-current="page"]{border-bottom-color:var(--gold)}
