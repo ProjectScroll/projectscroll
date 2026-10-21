@@ -2878,14 +2878,22 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 .tr-find button{display:grid; place-items:center; width:1.6rem; height:1.6rem; border:0; background:none; color:var(--ink-soft); cursor:pointer; border-radius:50%}
 .tr-find button:hover, .tr-find button:focus-visible{color:var(--ink)}
 .tr-find svg{width:1rem; height:1rem}
-@media (max-width:640px){
-  .toolrow{gap:.5rem .9rem}
-  .hero .toolrow{position:relative; margin:0 0 1.6rem}
+/* narrower screens: Maps and Research tools stay on the left and the sponsor line on the far right of the same line; the name box drops to its own line below */
+@media (max-width:899px){
+  .toolrow{flex-wrap:wrap; gap:.55rem .9rem}
+  .tr-nav{display:contents}
+  .tr-nav > .navdrop{order:1} .toolrow .pb-sponsor{order:2; margin-left:auto} .tr-find{order:3; flex:1 1 100%; height:2.3rem}
+  .tr-find input{width:100%}
+  .hero .toolrow{position:relative; top:auto; left:auto; right:auto; margin:0 0 1.4rem}
   .hero{padding-top:1rem}
-  .toolrow .pb-sponsor{margin-left:0; order:-1; flex-basis:100%}
-  .tr-find{flex:1 1 100%; height:2.3rem} .tr-find input{width:100%; font-size:1rem}
-  .tr-nav{flex:1 1 100%}
   .tr-nav .navdrop{position:static}
   .tr-nav .nd{position:absolute; left:0; right:0; top:calc(100% + .3rem); min-width:0; max-height:60vh}
 }
+@media (max-width:640px){
+  .toolrow{gap:.5rem .8rem}
+  .tr-find input{font-size:1rem}
+  .toolrow .pb-sponsor a{white-space:nowrap; letter-spacing:.1em; gap:.35rem}
+  .toolrow{gap:.5rem .7rem}
+}
+@media (max-width:380px){ .tr-nav .nd-b{font-size:.88rem} .toolrow{gap:.5rem .55rem} .toolrow .pb-sponsor a{font-size:.56rem; letter-spacing:.06em} }
 @media print{ .toolrow{display:none} }
