@@ -1366,3 +1366,36 @@ try{ (function(){
     document.getElementById('dvS').innerHTML='<a href="'+esc(x.u)+'" rel="noopener">'+esc(x.s)+', p. '+esc(x.pg)+'</a> · <a href="/almanac/#d-'+x.md+'-'+x.y+'">the whole almanac</a>';
   }).catch(function(){});
 })(); }catch(err){ psFail(err); }
+try{ (function(){
+  /* save to your phone: an install button when the browser offers one, and a plain hint on iPhones and iPads */
+  const foot=document.querySelector('footer'); if (!foot || matchMedia('(display-mode: standalone)').matches || navigator.standalone) return;
+  const p=document.createElement('p'); p.className='installer'; p.hidden=true; foot.insertBefore(p, foot.firstChild);
+  let ev=null;
+  addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); ev=e; p.innerHTML=''; const b=document.createElement('button'); b.type='button'; b.className='btn'; b.textContent='Save Project Scroll to this device';
+    b.addEventListener('click', function(){ ev.prompt(); ev.userChoice.finally(function(){ p.hidden=true; ev=null; }); }); p.appendChild(b); const s=document.createElement('span'); s.textContent=' It opens like an app, and the maps you have looked at stay readable without signal.'; p.appendChild(s); p.hidden=false; });
+  if (/iP(hone|ad|od)/.test(navigator.userAgent) && /Safari/.test(navigator.userAgent) && !/CriOS|FxiOS/.test(navigator.userAgent)){ p.textContent='To save Project Scroll to your home screen, tap Share, then “Add to Home Screen”. The maps you have looked at stay readable without signal.'; p.hidden=false; }
+})(); }catch(err){ psFail(err); }
+try{ (function(){
+  /* the badge book as a picture to save or post */
+  const bb=document.getElementById('badgebook'); if (!bb || !window.psBadges || !document.createElement('canvas').getContext) return;
+  const got=window.psBadges(), ids=Object.keys(got); if (!ids.length) return;
+  const b=document.createElement('button'); b.type='button'; b.className='btn'; b.textContent='Save my badges as a picture';
+  const wrap=document.createElement('p'); wrap.appendChild(b); bb.parentNode.insertBefore(wrap, bb);
+  b.addEventListener('click', function(){
+    const W=1080, H=1080, c=document.createElement('canvas'); c.width=W; c.height=H; const g=c.getContext('2d');
+    g.fillStyle='#16283a'; g.fillRect(0,0,W,H); g.strokeStyle='#e6c46a'; g.lineWidth=6; g.strokeRect(36,36,W-72,H-72);
+    const n=ids.length, rk=(window.PS_RANKS||[[0,'Candidate']]).filter(function(r){ return n>=r[0]; }).pop()[1];
+    const star=function(x,y,r){ g.beginPath(); for (let i=0;i<10;i++){ const a=-Math.PI/2+i*Math.PI/5, rr=i%2?r*.45:r; g.lineTo(x+rr*Math.cos(a), y+rr*Math.sin(a)); } g.closePath(); g.fillStyle='#c9cfd4'; g.fill(); g.lineWidth=3; g.strokeStyle='#8e979e'; g.stroke(); g.beginPath(); g.arc(x,y-r*.06,r*.2,0,7); g.fillStyle='#e6c46a'; g.fill(); };
+    star(W/2, 230, 120);
+    g.textAlign='center'; g.fillStyle='#e6c46a'; g.font='600 30px Georgia, serif'; g.fillText('PROJECT SCROLL · THE BADGE BOOK', W/2, 420);
+    g.fillStyle='#f3efe4'; g.font='68px Georgia, serif'; g.fillText(rk, W/2, 510);
+    g.font='34px Georgia, serif'; g.fillStyle='#c8cfd6'; g.fillText(n+' of '+window.PS_BADGES.length+' badges earned', W/2, 566);
+    const names=window.PS_BADGES.filter(function(x){ return got[x[0]]; }).map(function(x){ return x[1]; });
+    g.font='28px Georgia, serif'; g.fillStyle='#f3efe4'; let y=640, line='';
+    names.forEach(function(nm){ const t=line?line+'  ·  '+nm:nm; if (g.measureText(t).width>900){ g.fillText(line, W/2, y); y+=44; line=nm; } else line=t; }); if (line) g.fillText(line, W/2, y);
+    g.font='italic 30px Georgia, serif'; g.fillStyle='#e6c46a'; g.fillText('Every clue is true.  projectscroll.com', W/2, H-90);
+    c.toBlob(function(bl){ const f=new File([bl],'project-scroll-badges.png',{type:'image/png'});
+      if (navigator.canShare && navigator.canShare({files:[f]})) navigator.share({files:[f], title:'My Project Scroll badges'}).catch(function(){});
+      else { const a=document.createElement('a'); a.href=URL.createObjectURL(bl); a.download='project-scroll-badges.png'; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 2000); } }, 'image/png');
+  });
+})(); }catch(err){ psFail(err); }

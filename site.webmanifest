@@ -24,5 +24,29 @@
    "type": "image/png",
    "purpose": "maskable"
   }
+ ],
+ "id": "/",
+ "categories": [
+  "education",
+  "games",
+  "books"
+ ],
+ "shortcuts": [
+  {
+   "name": "The map room",
+   "url": "/map/"
+  },
+  {
+   "name": "Seven towns, then and now",
+   "url": "/map/then-and-now/"
+  },
+  {
+   "name": "Who was in town",
+   "url": "/names/"
+  },
+  {
+   "name": "The case board",
+   "url": "/#cases"
+  }
  ]
 }

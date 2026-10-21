@@ -2829,3 +2829,18 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 .lesson{margin:1.6rem 0; padding:1rem 1.2rem; border:1px solid var(--line); border-radius:4px; background:var(--paper-2); break-inside:avoid}
 .lesson h2{margin-top:0}
 .ls-m{font-size:.85rem; letter-spacing:.08em; text-transform:uppercase; color:var(--rule); margin:-.3rem 0 .6rem}
+.installer{margin:0 0 1rem; font-size:.92rem; color:var(--ink-soft)}
+/* the soldiers roll */
+.roll{width:100%; border-collapse:collapse; font-size:.95rem}
+.roll th, .roll td{text-align:left; padding:.4rem .5rem; border-bottom:1px solid var(--line); vertical-align:top}
+.roll th{font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft)}
+.roll tr.k td{background:color-mix(in srgb, var(--rule) 12%, transparent)}
+.roll tr.d td{background:color-mix(in srgb, var(--ink-soft) 10%, transparent)}
+.roll td:first-child{font-weight:600; white-space:nowrap}
+.sic{font-size:.85rem; color:var(--rule)}
+.tablewrap{overflow-x:auto; margin:.8rem 0 1.4rem}
+@media (max-width:640px){ .roll td:first-child{white-space:normal} }
+.lostq{margin:1.6rem 0; padding:1rem 1.2rem; border:1px dashed var(--gold,#b8963e); border-radius:4px}
+.lostq h2{margin-top:0}
+.lq-f{display:flex; gap:.5rem; flex-wrap:wrap; align-items:center}
+.lq-f input{font:inherit; padding:.45rem .7rem; border:1px solid var(--line); border-radius:4px; background:var(--paper-2); color:var(--ink)}

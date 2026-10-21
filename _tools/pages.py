@@ -102,7 +102,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=3f3b0988">
+<link rel="stylesheet" href="/site.min.css?v=f0d52cb8">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"selector_matches":".bar a, footer nav a, .partrail a, .search-res a, .crumb a"}},{{"href_matches":"/*"}},{{"not":{{"href_matches":"/*.pdf"}}}}]}},"eagerness":"moderate"}}]}}</script>
 </head>
 <body>
@@ -120,7 +120,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
       Project Scroll
     </a>
     <nav aria-label="Sections" id="sitenav">
-      <a href="/#hunt">Hunt</a><a href="/#cases">Cases</a><span class="navdrop"><button type="button" class="nd-b" aria-expanded="false" aria-controls="ndMaps">Maps</button><span class="nd" id="ndMaps" hidden><a href="/map/">The map room</a><a href="/map/then-and-now/">Seven towns, then and now</a><a href="/names/">Who was in town</a><a href="/postcards/">Postcards, then and now</a><a href="/roads-and-rails/">Roads, rails and mills</a><a href="/places/">The gazetteer</a><a href="/map/#sanborn">Sanborn sheets</a><a href="/sources/">The sources shelf</a></span></span><a href="/#services">Services</a><a href="/notes/">Field notes</a><a href="/#contact">Contact</a>
+      <a href="/#hunt">Hunt</a><a href="/#cases">Cases</a><span class="navdrop"><button type="button" class="nd-b" aria-expanded="false" aria-controls="ndMaps">Maps</button><span class="nd" id="ndMaps" hidden><a href="/map/">The map room</a><a href="/map/then-and-now/">Seven towns, then and now</a><a href="/names/">Who was in town</a><a href="/postcards/">Postcards, then and now</a><a href="/roads-and-rails/">Roads, rails and mills</a><a href="/soldiers/">Soldiers of the valley</a><a href="/places/">The gazetteer</a><a href="/map/#sanborn">Sanborn sheets</a><a href="/sources/">The sources shelf</a></span></span><a href="/#services">Services</a><a href="/notes/">Field notes</a><a href="/#contact">Contact</a>
     </nav>
     <button class="searchbtn" type="button" id="searchBtn" aria-label="Search the site" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     <a class="badgelink" id="badgeLink" href="/badges/" aria-label="Your badges"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3l4.6 9.4 10.4 1.5-7.5 7.3 1.8 10.3L20 26.6l-9.3 4.9 1.8-10.3-7.5-7.3 10.4-1.5z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg><span class="bn" id="badgeN" hidden></span></a>
@@ -157,7 +157,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=3f3b0988" defer></script>
+<script src="/site.min.js?v=f0d52cb8" defer></script>
 </body>
 </html>
 '''
@@ -248,6 +248,11 @@ if __name__=='__main__':
         <p class="lede" style="font-size:1.2rem">We searched the index, the margins and the back pages. This page isn't here.</p>
         <p class="foolsgold"><span class="fg-pan" aria-hidden="true"></span><b>Fool’s gold.</b> It glitters, but it isn’t here: a forty-niner would call this one pyrite.</p>
         <p>It may have moved, or it may never have existed. A good record-keeper is honest about both. Press <kbd>/</kbd> to search the site, or pick up the trail below.</p>
+        <aside class="lostq" aria-labelledby="lqH"><h2 id="lqH">While you are lost</h2><p>Pages go missing; so do towns. The 1860 wall map has a little plan of a Berrien County village that was called simply “Berrien”. What is it called today?</p>
+          <form class="lq-f" autocomplete="off"><label for="lqIn">Its name today</label><input id="lqIn" type="text" maxlength="40" spellcheck="false"><button class="btn" type="submit">Check</button></form><p class="lq-out" aria-live="polite"></p></aside>
+        <script>(function(){ var f=document.querySelector('.lq-f'); if(!f) return; var h=function(s){ var x=5381; for(var i=0;i<s.length;i++) x=((Math.imul(x,33))^s.charCodeAt(i))>>>0; return x; };
+          f.addEventListener('submit',function(e){ e.preventDefault(); var v=document.getElementById('lqIn').value.toLowerCase().replace(/[^a-z]/g,''), o=document.querySelector('.lq-out');
+            if (h(v)===554842722) o.innerHTML='Found it, and so are you. <a href="/map/#town-berrien">See the 1860 plan of Berrien in the map room →</a>'; else o.textContent='Not that one. It sits on the St. Joseph River, and today it carries a second word.'; }); })();</script>
         <p class="ctas" style="margin-top:1.6rem"><a class="btn primary" href="/">Back to the first page</a><a class="btn" href="/#cases">See the case board</a></p>
     ''', noindex=True)
     print('pages written')
