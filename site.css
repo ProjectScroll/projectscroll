@@ -497,7 +497,7 @@ table.ledger, .cards, .cases, ul.svc, ol.promises, .rulecards, dl.marks, .tl-wra
 
 
 /* ---------- the top bar shares the page column: logo at its left edge, Light/Dark at its right ---------- */
-.bar-in{max-width:calc(48rem + 5.5rem)!important; padding:.6rem 2.75rem!important; gap:1rem}
+.bar-in{max-width:calc(48rem + 5.5rem)!important; padding:.6rem 2.75rem .6rem 2rem!important; gap:1rem}
 .bar nav{gap:1.05rem; font-size:.93rem}
 .mark{font-size:1.22rem}
 @media (max-width:640px){ .bar-in{padding:.6rem 1rem .6rem 2.1rem!important} }
