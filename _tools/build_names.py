@@ -9,12 +9,17 @@ for k,d in DIRS.items():
     for hd,nm,nt in d['entries']:
         q=nm.endswith('?'); rows.append([k,hd,nm.rstrip('?'),nt,1 if q else 0])
 towns=[[k,d['name'],d['year'],d['src'],SEE[k]] for k,d in DIRS.items()]
+# the soldiers' roll joins the directories, so one search finds a man in either
+SOL=json.load(open(pathlib.Path(__file__).parent/'data'/'soldiers_6mi_d.json'))
+for x in SOL: rows.append(['co-d',x['rank'],x['name'],x['notes'],0])
+towns.append(['co-d','Company D, Sixth Michigan Infantry','1861','Mathews, History of Cass County (1882), pp. 119–120','/soldiers/'])
+ND=len(rows)-len(SOL)
 n=len(rows)
 chips=''.join(f'<button type="button" class="btn nm-t" data-t="{k}" aria-pressed="false">{html.escape(nm)}, {y}</button>' for k,nm,y,_,_ in towns)
 body=f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
     <p class="kicker">Names on the old maps</p>
     <h1>Who was in town</h1>
-    <p class="lede" style="font-size:1.15rem">Beside each town plan, the mapmakers printed a business directory: the lawyers, doctors, merchants, smiths, hotel keepers and county officers who paid to be listed. Here are {n} of those entries from {['','one','two','three','four','five','six','seven','eight','nine'][len(towns)]} towns, as one roll you can search. Type a surname, a trade or a town.</p>
+    <p class="lede" style="font-size:1.15rem">Beside each town plan, the mapmakers printed a business directory: the lawyers, doctors, merchants, smiths, hotel keepers and county officers who paid to be listed. Here are {ND} of those entries from {['','one','two','three','four','five','six','seven','eight','nine'][len(DIRS)]} towns, with the {len(SOL)} men of Company D, Sixth Michigan Infantry, raised at Dowagiac in 1861, as one roll you can search. Type a surname, a trade or a town.</p>
     <div class="nm-bar">
       <label class="nm-q"><span>Search the roll</span><input type="search" id="nmQ" placeholder="A surname, a trade or a town" autocomplete="off" spellcheck="false"></label>
       <div class="nm-chips" role="group" aria-label="Show one town"><button type="button" class="btn nm-t" data-t="" aria-pressed="true">All towns</button>{chips}</div>
@@ -43,7 +48,7 @@ body=f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
         cnt.textContent=hits.length===R.length?R.length+' entries':hits.length+' of '+R.length+' entries'+(hits.length?'':'. Try fewer letters, or another spelling: the engravers were not consistent.');
         var html='', last='', lastH='';
         hits.forEach(function(r){{
-          if (r[0]!==last){{ if (last) html+='</ul>'; var t=T[r[0]]; html+='<h2 class="nm-town">'+esc(t[0])+', '+t[1]+' <a href="'+t[3]+'">see the directory on the map →</a></h3><ul class="nm-list">'; last=r[0]; lastH=''; }}
+          if (r[0]!==last){{ if (last) html+='</ul>'; var t=T[r[0]]; html+='<h2 class="nm-town">'+esc(t[0])+', '+t[1]+' <a href="'+t[3]+'">'+(r[0]==='co-d'?'see the whole roll →':'see the directory on the map →')+'</a></h2><ul class="nm-list">'; last=r[0]; lastH=''; }}
           html+='<li><b>'+esc(r[2])+(r[4]?'<span class="nm-u" title="Our reading of a worn or crowded engraving">?</span>':'')+'</b>'+(r[3]?' <span class="nm-n">'+esc(r[3])+'</span>':'')+' <span class="nm-h">'+esc(r[1])+'</span></li>';
         }});
         out.innerHTML=html?html+'</ul>':'';
@@ -57,5 +62,5 @@ body=f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
     }})();
     </script>
 '''
-page('names/index.html','Who was in town · Names on the old maps · Project Scroll',f'{n} names from the business directories printed beside the 1860 and 1861 town plans of Cassopolis, Dowagiac, Niles, Paw Paw and Goshen, searchable by surname, trade or town.',body,og='https://projectscroll.com/og/map.jpg')
+page('names/index.html','Who was in town · Names on the old maps · Project Scroll',f'{n} names from the business directories printed beside the 1860 and 1861 town plans of Cassopolis, Dowagiac, Niles, Paw Paw and Goshen, and the roll of Company D, Sixth Michigan Infantry, searchable by surname, trade or town.',body,og='https://projectscroll.com/og/map.jpg')
 print('names roll built:',n,'entries')

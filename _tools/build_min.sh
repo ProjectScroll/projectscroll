@@ -4,6 +4,7 @@
 set -e
 cd "$(dirname "$0")/.."
 M=${MINI:-/tmp/claude-0/-home-claude/4ab16262-7f57-5f1b-b1c5-742690289c52/scratchpad/mini/node_modules/.bin}
+[ -x "$M/terser" ] || M="$(npm root -g)/.bin"
 "$M/lightningcss" --minify site.css -o site.min.css
 "$M/terser" site.js --compress --mangle --comments false -o site.min.js
 ls -l site.css site.min.css site.js site.min.js | awk '{print $5, $9}'

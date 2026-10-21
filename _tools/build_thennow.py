@@ -114,7 +114,7 @@ def overlay(t,Y):
     return f"""      const ll=(u,v)=>{{ const x={x0}+u*{k:.6f}, y={y0}+v*{k:.6f}; return L.latLng({A[0]!r}*x+{A[1]!r}*y+{A[2]!r}, {C[0]!r}*x+{C[1]!r}*y+{C[2]!r}); }};
       const Aff=L.Layer.extend({{
         onAdd(m){{ const el=this._el=L.DomUtil.create('img','tnold leaflet-image-layer'); el.alt='{alt}'; el.style.transformOrigin='0 0'; el.style.opacity=this._op;
-          el.onload=()=>{{ this._place(); this.fire('load'); }}; el.onerror=()=>{{ el.style.display='none'; this.fire('error'); }}; el.src='{url}'; m.getPane('old').appendChild(el); m.on('viewreset zoomend resize',this._place,this); }},
+          el.onload=()=>{{ this._place(); this.fire('load'); }}; el.onerror=()=>{{ el.style.display='none'; this.fire('error'); }}; if ('{url}'.indexOf('https://tile.loc.gov/')===0) el.crossOrigin='anonymous'; el.src='{url}'; m.getPane('old').appendChild(el); m.on('viewreset zoomend resize',this._place,this); }},
         onRemove(m){{ this._el.remove(); m.off('viewreset zoomend resize',this._place,this); }},
         _place(){{ const el=this._el, W=el.naturalWidth, H=el.naturalHeight; if(!W) return; const m=this._map;
           const p0=m.latLngToLayerPoint(ll(0,0)), px=m.latLngToLayerPoint(ll(W,0)), py=m.latLngToLayerPoint(ll(0,H));

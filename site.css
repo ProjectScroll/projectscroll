@@ -2858,3 +2858,34 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 .npq details{border-bottom:1px solid var(--line); padding:.6rem 0}
 .npq summary{cursor:pointer; font-weight:600}
 .npq p{margin:.4rem 0 0}
+
+/* Draft 133: the tool row — Maps, Research tools and Find a name on the left, the sponsor line on the right */
+.toolrow{display:flex; align-items:center; justify-content:space-between; gap:.6rem 1.2rem; flex-wrap:wrap; font-size:.92rem; position:relative; z-index:40}
+.sheet > .toolrow{max-width:none; padding-top:1.1rem}
+.sheet > .toolrow + .page{padding-top:2.2rem}
+.hero .toolrow{position:absolute; top:.45rem; left:0; right:0}
+.toolrow .pb-sponsor{position:static; margin:0 0 0 auto}
+.tr-nav{display:flex; align-items:center; gap:.4rem 1rem; flex-wrap:wrap}
+.tr-nav .nd-b{font-size:.95rem; color:var(--ink-soft)}
+.tr-nav .nd{left:-.6rem; max-height:min(70vh,32rem); overflow:auto}
+.tr-nav .nd a{padding:.45rem .9rem; color:var(--ink); text-decoration:none; white-space:nowrap}
+.tr-nav .nd a:hover, .tr-nav .nd a:focus-visible{background:var(--paper-2)}
+.tr-nav .nd a[aria-current="page"]{font-weight:600}
+.tr-find{display:inline-flex; align-items:center; border:1px solid var(--line); border-radius:999px; background:var(--paper); padding:0 .2rem 0 .7rem; height:2rem}
+.tr-find:focus-within{border-color:var(--rule); box-shadow:0 0 0 3px color-mix(in srgb, var(--rule) 20%, transparent)}
+.tr-find input{border:0; background:none; font:inherit; font-size:.88rem; color:var(--ink); width:8.2rem; outline:none; padding:0}
+.tr-find input::placeholder{color:var(--ink-soft); opacity:1}
+.tr-find button{display:grid; place-items:center; width:1.6rem; height:1.6rem; border:0; background:none; color:var(--ink-soft); cursor:pointer; border-radius:50%}
+.tr-find button:hover, .tr-find button:focus-visible{color:var(--ink)}
+.tr-find svg{width:1rem; height:1rem}
+@media (max-width:640px){
+  .toolrow{gap:.5rem .9rem}
+  .hero .toolrow{position:relative; margin:0 0 1.6rem}
+  .hero{padding-top:1rem}
+  .toolrow .pb-sponsor{margin-left:0; order:-1; flex-basis:100%}
+  .tr-find{flex:1 1 100%; height:2.3rem} .tr-find input{width:100%; font-size:1rem}
+  .tr-nav{flex:1 1 100%}
+  .tr-nav .navdrop{position:static}
+  .tr-nav .nd{position:absolute; left:0; right:0; top:calc(100% + .3rem); min-width:0; max-height:60vh}
+}
+@media print{ .toolrow{display:none} }

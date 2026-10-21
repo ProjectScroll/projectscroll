@@ -27,7 +27,7 @@ function psFail(err){ try{ console.error('[Project Scroll]', err); }catch(e){} }
   }
 
   /* the top bar gains a soft shadow once the page has scrolled */
-  if (bar){ let bq=0; const lift=function(){ bq=0; bar.classList.toggle('lifted', scrollY>12); }; addEventListener('scroll', function(){ if (!bq) bq=requestAnimationFrame(lift); }, {passive:true}); lift(); }
+  if (bar){ let bq=0; const lift=function(){ bq=0; bar.classList.toggle('lifted', scrollY>12); }; addEventListener('scroll', function(){ if (!bq) bq=requestAnimationFrame(lift); }, {passive:true}); bq=requestAnimationFrame(lift); }
 
   /* the asterisk leads to its footnote */
   let star=document.getElementById('star'), foot=document.getElementById('foot');
@@ -658,7 +658,7 @@ try{ (function(){
 try{ (function(){
   const b=document.getElementById('saveOff'), msg=document.getElementById('saveOffMsg'); if (!b) return;
   if (!('caches' in window) || !('serviceWorker' in navigator)) return;
-  const files=[location.pathname].concat([].slice.call(document.querySelectorAll('a[href$=".pdf"]')).map(function(a){ return a.getAttribute('href'); }));
+  const files=[location.pathname].concat([].slice.call(document.querySelectorAll('a[href$=".pdf"]')).map(function(a){ return a.getAttribute('href'); }), [].slice.call(document.querySelectorAll('script[src],link[rel=stylesheet][href]')).map(function(e){ return e.getAttribute('src')||e.getAttribute('href'); }).filter(function(u){ return u && u.charAt(0)==='/' && u.charAt(1)!=='/'; }));
   const tick=function(){ b.textContent='Saved for offline ✓'; b.disabled=true; };
   caches.open('ps-files').then(function(c){ return c.match(location.pathname); }).then(function(hit){ b.hidden=false; if (hit) tick(); }).catch(function(){ b.hidden=false; });
   b.addEventListener('click', function(){
@@ -1211,7 +1211,7 @@ try{ (function(){
       if (svc && 'IntersectionObserver' in window){ const io=new IntersectionObserver(function(es){ if (es.some(function(e){ return e.isIntersecting; })){ fbq('track','ViewContent',{content_name:'Professional services'}); io.disconnect(); } },{threshold:.4}); io.observe(svc); }
       document.addEventListener('click', function(ev){ const a=ev.target.closest && ev.target.closest('a[href^="https://m.me/"]'); if (a) fbq('track','Lead',{content_name:'Messenger'}); }, true);
     }
-    function set(v){ state=v; try{ localStorage.setItem(KEY, v); }catch(e){} document.dispatchEvent(new CustomEvent('ps-consent',{detail:v})); if (v==='yes') load(); }
+    function set(v){ const was=state; state=v; try{ localStorage.setItem(KEY, v); }catch(e){} document.dispatchEvent(new CustomEvent('ps-consent',{detail:v})); if (v==='yes') load(); else if (v==='no' && (loaded || typeof window.fbq==='function')){ try{ window.fbq('consent','revoke'); }catch(e){} if (was==='yes') setTimeout(function(){ location.reload(); }, 600); } }
     window.psConsent=function(v){ if (v===undefined) return state; set(v); };
     if (state==='yes') load();
     /* the privacy page's own switch */
@@ -1297,10 +1297,10 @@ try{ (function(){
   const parts=[].slice.call(document.querySelectorAll('main > section[id]')); if (parts.length<3 || !document.querySelector('.vprogress')) return;
   const vein=document.createElement('div'); vein.className='vein'; vein.setAttribute('aria-hidden','true'); document.body.appendChild(vein);
   const ns=parts.map(function(){ const i=document.createElement('i'); vein.appendChild(i); return i; });
-  const place=function(){ const H=document.documentElement.scrollHeight-innerHeight; if (H<=0) return; parts.forEach(function(s,k){ const y=Math.min(1, Math.max(0, (s.getBoundingClientRect().top+scrollY-innerHeight*.35)/H)); ns[k].style.top=(y*100)+'%'; ns[k].dataset.y=y; }); hit(); };
+  let pq=0; const place=function(){ pq=0; const H=document.documentElement.scrollHeight-innerHeight; if (H<=0) return; const ys=parts.map(function(s){ return Math.min(1, Math.max(0, (s.getBoundingClientRect().top+scrollY-innerHeight*.35)/H)); }); ys.forEach(function(y,k){ ns[k].style.top=(y*100)+'%'; ns[k].dataset.y=y; }); hit(); }; const placeSoon=function(){ if (!pq) pq=requestAnimationFrame(place); };
   const hit=function(){ const H=document.documentElement.scrollHeight-innerHeight; const p=H>0?scrollY/H:0; ns.forEach(function(n){ n.classList.toggle('hit', p>=parseFloat(n.dataset.y||2)-.002); }); };
   let raf=0; addEventListener('scroll', function(){ if (!raf) raf=requestAnimationFrame(function(){ raf=0; hit(); }); }, {passive:true});
-  addEventListener('resize', place, {passive:true}); addEventListener('load', place); setTimeout(place, 1500); place();
+  addEventListener('resize', placeSoon, {passive:true}); addEventListener('load', placeSoon); setTimeout(placeSoon, 1500); placeSoon();
 })(); }catch(err){ psFail(err); }
 
 /* ---------- Draft 121: three ways in, opened one at a time on each case, remembered on this device ---------- */
@@ -1342,14 +1342,19 @@ try{ (function(){
   });
 })(); }catch(err){ psFail(err); }
 try{ (function(){
-  /* the Maps menu in the top bar: a disclosure, closed by a click elsewhere, Escape or choosing a map */
-  const b=document.querySelector('.nd-b'), d=document.getElementById('ndMaps'); if (!b || !d) return;
-  const set=function(o){ d.hidden=!o; b.setAttribute('aria-expanded', String(o)); };
-  b.addEventListener('click', function(e){ e.stopPropagation(); set(d.hidden); if (!d.hidden){ const a=d.querySelector('a'); if (a) a.focus(); } });
-  document.addEventListener('click', function(e){ if (!d.hidden && !d.contains(e.target)) set(false); });
-  document.addEventListener('keydown', function(e){ if (e.key==='Escape' && !d.hidden){ set(false); b.focus(); } });
-  d.addEventListener('click', function(e){ if (e.target.closest('a')) set(false); });
-  if (/^\/(map|names|places|sources)\//.test(location.pathname)) b.setAttribute('aria-current','true');
+  /* the Maps and Research tools menus: disclosures, closed by a click elsewhere, Escape, leaving them, or choosing a page */
+  const here=location.pathname;
+  document.querySelectorAll('.navdrop').forEach(function(w){
+    const b=w.querySelector('.nd-b'), d=w.querySelector('.nd'); if (!b || !d) return;
+    const set=function(o){ d.hidden=!o; b.setAttribute('aria-expanded', String(o)); };
+    b.addEventListener('click', function(e){ e.stopPropagation(); document.querySelectorAll('.navdrop .nd').forEach(function(x){ if (x!==d && !x.hidden){ x.hidden=true; x.previousElementSibling.setAttribute('aria-expanded','false'); } }); set(d.hidden); if (!d.hidden){ const a=d.querySelector('a'); if (a) a.focus(); } });
+    document.addEventListener('click', function(e){ if (!d.hidden && !w.contains(e.target)) set(false); });
+    w.addEventListener('keydown', function(e){ if (e.key==='Escape' && !d.hidden){ e.stopPropagation(); set(false); b.focus(); } });
+    w.addEventListener('focusout', function(e){ if (!d.hidden && !w.contains(e.relatedTarget)) set(false); });
+    d.addEventListener('click', function(e){ if (e.target.closest('a')) set(false); });
+    let on=false; d.querySelectorAll('a').forEach(function(a){ const p=a.getAttribute('href').split('#')[0]; if (p!=='/' && (here===p || (p!=='/map/' && here.indexOf(p)===0) || (p==='/map/' && here==='/map/'))){ a.setAttribute('aria-current','page'); on=true; } });
+    if (on) b.setAttribute('aria-current','true');
+  });
 })(); }catch(err){ psFail(err); }
 try{ (function(){
   /* this day in the valley: today's entry from the almanac, or the next date it remembers */
