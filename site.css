@@ -3465,3 +3465,30 @@ h3 + p{margin-top:.35rem}
 }
 .tr-nav .tr-visit{color:var(--ink); border-bottom:2px solid var(--vp-green); padding-bottom:.1rem; transition:border-color .2s}
 .tr-nav .tr-visit:hover, .tr-nav .tr-visit:focus-visible, .tr-nav .tr-visit[aria-current="page"]{border-bottom-color:var(--gold)}
+/* Visit & Plan: days map, live hours, the day builder */
+.vs-day{border-left:4px solid var(--dc, var(--line))}
+.vs-dot{display:inline-block; width:.7rem; height:.7rem; border-radius:50%; background:var(--dc); margin-right:.5rem; vertical-align:.08em}
+.vs-open{font-size:.82rem; color:var(--ink-soft)}
+.vs-open.on{color:var(--vp-green)}
+.vs-acts{display:flex; flex-wrap:wrap; gap:.5rem}
+.vs-map{height:min(66vh,30rem)}
+.vs-legend{display:flex; flex-wrap:wrap; gap:.35rem .5rem; margin-top:.6rem}
+.vs-lg{background:none; border:1px solid var(--line); border-radius:999px; padding:.2rem .65rem; font:inherit; font-size:.82rem; color:var(--ink); cursor:pointer}
+.vs-lg[aria-pressed="true"]{border-color:var(--dc); box-shadow:inset 0 0 0 1px var(--dc)}
+.vs-town span{display:inline-block; transform:translate(4px,-50%); font:italic .72rem/1 "Libre Caslon Text","Caslon Text Fallback",serif; color:var(--ink); text-shadow:0 0 3px var(--paper),0 0 3px var(--paper); white-space:nowrap; pointer-events:none}
+.vs-town{width:0!important; height:0!important}
+.vs-build{border:1px solid var(--line); border-radius:4px; padding:1rem 1.2rem; background:color-mix(in srgb, var(--paper-2) 45%, transparent)}
+.vb-res{list-style:none; padding:0; margin:.4rem 0 1rem}
+.vb-res li{display:flex; align-items:center; gap:.6rem; padding:.3rem 0; border-bottom:1px dashed var(--line)}
+.vb-res small{color:var(--ink-soft)}
+.vb-add{padding:.15rem .7rem; font-size:.85rem}
+.vb-day h3{margin:.4rem 0}
+.vb-day ol li{margin:.25rem 0}
+.vb-empty{color:var(--ink-soft); font-size:.92rem}
+.fd-add{font-size:.88rem}
+.wk-photo{border:1px dashed var(--gold); border-radius:4px; padding:.6rem .8rem; font-size:.92rem; margin:.6rem 0}
+.mk-near, .fd-near{font-size:.88rem; color:var(--ink-soft)}
+@media print{
+  html.vb-printing main > *:not(section#build), html.vb-printing #build > p, html.vb-printing .vb-res, html.vb-printing #build .nm-q, html.vb-printing .mu-tacts, html.vb-printing .vb-day button{display:none!important}
+  html.vs-printing .vs-acts{display:none!important}
+}

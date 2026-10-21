@@ -31,6 +31,11 @@ for C in CFG:
           import oldcards as O; d = O.BY[k[3:]]
           return f'<figure class="wk-pc wk-oc">{O.pic(d, "(min-width:900px) 30rem, 92vw")}<figcaption>{E(cap)} <span class="credit">{E(O.credit(d))} · <a href="{E(d["url"])}" rel="noopener">source</a></span></figcaption></figure>'
       return f'<figure class="wk-pc"><picture><source type="image/avif" srcset="/img/strip/{k}-800.avif 800w, /img/strip/{k}.avif 1600w" sizes="(min-width:900px) 30rem, 92vw"><img src="/img/strip/{k}-800.webp" srcset="/img/strip/{k}-800.webp 800w, /img/strip/{k}.webp 1600w" sizes="(min-width:900px) 30rem, 92vw" width="1600" height="400" alt="{E(cap)}" loading="lazy" decoding="async"></picture><figcaption>{E(cap)}</figcaption></figure>'
+  def photo(s):
+      if not s.get('card'): return ''
+      import urllib.parse as _u
+      mt='mailto:research@projectscroll.com?subject='+_u.quote('Then and now: '+s['name'])+'&body='+_u.quote('My photo of '+s['name']+', taken from where the old postcard was made. (Attach the photo.)\n\nMay Project Scroll show it beside the postcard, with my name? Yes / No\nMy name, as I would like it shown:')
+      return f'<p class="wk-photo">📷 <b>Photo spot.</b> Stand where the photographer stood: line up the rooflines and corners with the postcard, take the same picture, and <a href="{mt}">send it to us</a>. The best go up beside the old view, with your name.</p>'
   def src(s):
       u = s.get('sources') or []
       return ' '.join(f'<a href="{E(x)}" rel="noopener">source {i}</a>' for i, x in enumerate(u, 1))
@@ -44,7 +49,7 @@ for C in CFG:
   stops = ''.join(f'''<li class="wk" id="{s['id']}" data-ll="{s['lat']},{s['lon']}" data-n="{E(s['name'])}">
           <p class="mu-k">Stop {s['n']} of {len(S)}{(' · '+E(blt(str(s['built'])))) if s.get('built') else ''}<span class="wk-st"></span></p>
           <h3>{E(s['name'])}</h3>
-          {pc(s)}
+          {pc(s)}{photo(s)}
           <p class="wk-then"><b>Then.</b> {E(s['then'])}</p>
           <p class="wk-now"><b>Now.</b> {E(s['now'])}</p>
           {f'<p class="mu-a">{E(s["address"])}</p>' if s.get('address') else ''}

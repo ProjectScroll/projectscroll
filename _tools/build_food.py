@@ -14,11 +14,26 @@ for d in F:
 def directions(d):
     if not d.get('address'): return ''
     return 'https://www.google.com/maps/dir/?api=1&destination='+urllib.parse.quote(d['name']+', '+d['address'])
+import math
+_MU = [m for m in json.load(open(P/'museums.json')) if m.get('ll')]
+def _km(a,b):
+    r=math.pi/180; dl=(b[0]-a[0])*r; dn=(b[1]-a[1])*r; h=math.sin(dl/2)**2+math.cos(a[0]*r)*math.cos(b[0]*r)*math.sin(dn/2)**2; return 12742*math.asin(math.sqrt(h))
+def _mslug(s): return re.sub(r'[^a-z0-9]+','-',s.lower()).strip('-')
+_MID={}; _u=set()
+for m in json.load(open(P/'museums.json')):
+    k=_mslug(m['name']); k=_mslug(m['name']+' '+m['town']) if k in _u else k; _u.add(k); _MID[m['name']]=k
+def near(d):
+    if not d.get('ll'): return ''
+    best=min(_MU, key=lambda m:_km(d['ll'],m['ll'])); k=_km(d['ll'],best['ll'])
+    if k>8: return ''
+    mi=k*0.621371; t='next door' if mi<0.15 else (f'{mi:.1f} mi away' if mi<10 else f'{round(mi)} mi away')
+    return f'<p class="fd-near">Nearby: <a href="/museums/#{_MID[best["name"]]}">{E(best["name"])}</a>, {t}</p>'
 def card(d):
     di = directions(d)
     acts = [f'<a class="mu-go" href="{E(d["url"])}" rel="noopener">Their website ›</a>' if d.get('url') else '<span class="mu-none">No website: call ahead</span>']
     if di: acts.append(f'<a href="{E(di)}" rel="noopener">Directions</a>')
     if d.get('ll'): acts.append('<button type="button" class="mu-sm">Show on the map</button>')
+    if d.get('ll'): acts.append(f'<button type="button" class="mu-tb fd-add" data-i="f:{d["_id"]}" aria-pressed="false">Add to my day</button>')
     chk = '' if d.get('verified') else '<span class="mu-chk" title="We could not confirm every detail online. Check before you go.">check before you go</span>'
     ll = f' data-ll="{d["ll"][0]},{d["ll"][1]}"' if d.get('ll') else ''
     return f'''<li class="mu fd" id="{d['_id']}" data-ty="{d['type']}" data-c="{E(d['county'])}"{ll} data-n="{E(d['name'])}" data-t="{E((d['name']+' '+d['town']+' '+d['county']+' '+d.get('kind','')+' '+d.get('story','')+' '+d.get('what','')).lower())}">
@@ -27,7 +42,7 @@ def card(d):
         <p class="fd-story">{E(d.get('story',''))}</p>
         {f'<p>{E(d["what"])}</p>' if d.get('what') else ''}
         {f'<p class="mu-a">{E(d["address"])}</p>' if d.get('address') else ''}
-        <p class="mu-acts">{' · '.join(acts)}</p>
+        {near(d)}<p class="mu-acts">{' · '.join(acts)}</p>
         {'<p class="mu-me"><button type="button" class="mu-sb fd-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>' if d.get('ll') else ''}
       </li>'''
 def group(ty):
@@ -82,6 +97,7 @@ JS = r'''<script>
       b.c.forEach(function(c){ c.r.forEach(function(r){ L.polygon(r.map(function(p){ return [p[1],p[0]]; }),{pane:'base', className:c.d?'mu-cty in':'mu-cty', interactive:false}).addTo(map); }); });
       b.v.forEach(function(l){ L.polyline(l.map(function(p){ return [p[1],p[0]]; }),{pane:'base', className:'mu-rv', interactive:false}).addTo(map); });
       map.attributionControl.addAttribution('County lines: US Census Bureau · Rivers: USGS'); }).catch(function(){});
+    __TOWNS__.forEach(function(x){ L.marker([x[1],x[2]],{interactive:false, keyboard:false, icon:L.divIcon({className:'vs-town', html:'<span>'+x[0]+'</span>', iconSize:null})}).addTo(map); });
     items.forEach(function(li){ if (!li.dataset.ll) return; var ll=li.dataset.ll.split(',').map(Number);
       var c=L.circleMarker(ll,{radius:7, className:'mu-pin '+(li.dataset.ty==='lodging'?'stay':'eat'), bubblingMouseEvents:false});
       var b=document.createElement('button'); b.type='button'; b.className='fd-popb'; b.textContent=li.dataset.n+' ›'; b.addEventListener('click',function(){ map.closePopup(); go(li); });
@@ -133,10 +149,18 @@ JS = r'''<script>
     var pr=document.createElement('button'); pr.type='button'; pr.className='mu-tb'; pr.textContent='Print this recipe'; pr.addEventListener('click',function(){ li.classList.add('rc-print'); document.documentElement.classList.add('rc-printing'); window.print(); });
     p.appendChild(pr); li.appendChild(p); });
   addEventListener('afterprint',function(){ document.documentElement.classList.remove('rc-printing'); $$('.rc-print').forEach(function(x){ x.classList.remove('rc-print'); }); });
+  /* add to my day: the same list the Visit & Plan day builder uses, kept on this device */
+  var day=[]; try{ day=JSON.parse(localStorage.getItem('ps-day')||'[]')||[]; }catch(e){}
+  var dpaint=function(){ $$('.fd-add').forEach(function(b){ var on=day.indexOf(b.dataset.i)>=0; b.setAttribute('aria-pressed',String(on)); b.textContent=on?'On my day ✓':'Add to my day'; }); var n=$('#fdDayN'); if (n){ n.textContent=day.length; n.parentNode.hidden=!day.length; } };
+  $$('.fd-add').forEach(function(b){ b.addEventListener('click',function(){ var i=day.indexOf(b.dataset.i); if (i>=0) day.splice(i,1); else day.push(b.dataset.i); try{ localStorage.setItem('ps-day',JSON.stringify(day)); }catch(e){} dpaint(); }); });
+  dpaint();
+  var pa=$('#rcAll'); if (pa) pa.addEventListener('click',function(){ $$('.rc').forEach(function(li){ li.classList.add('rc-print'); }); document.documentElement.classList.add('rc-printing'); window.print(); });
   draw();
   var h=location.hash.slice(1), t=h && document.getElementById(h); if (t && t.classList.contains('fd')) setTimeout(function(){ go(t); },300);
 })();
 </script>'''
+import visitdata as _V
+JS = JS.replace('__TOWNS__', json.dumps([[n,la,lo] for n,la,lo in _V.TOWNS]))
 FIELDS = [
   ('The fruit belt', 'Along the Lake Michigan shore the big lake keeps spring frosts back and autumn warm, and for well over a century the counties near it have grown apples, peaches, cherries, grapes and blueberries. Many of the valley’s festivals are harvest festivals.', '/seasons/#summer', 'Harvest festivals by season'),
   ('Mills on every stream', 'Before the railroads, every town needed a grist mill to grind its wheat and corn, and most of the valley’s early towns grew up beside one. A few still stand, and one or two still grind.', '/roads-and-rails/', 'Roads, rails and mills'),
@@ -163,6 +187,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <section class="fd-sec" id="eat"><h2>Places to eat with a story <span class="mu-n">{ne} places</span></h2>{eat}</section>
     <section class="fd-sec" id="stay"><h2>Places to stay <span class="mu-n">{ns} places</span></h2>{stay}</section>
     <section id="recipes"><h2>The valley kitchen</h2>
+      <p><button type="button" class="btn" id="rcAll">Print the whole recipe box</button></p>
       <p>Recipes and household hints as they were printed in the valley’s own cookbooks and newspapers, word for word, with a note on how to make each one today. Tick the ones you have cooked: one earns a badge for your <a href="/badges/">field book</a>.</p>
       <ul class="rc-list">{recipes}</ul></section>
     <section id="fields"><h2>Where the food came from</h2><ul class="fd-fields">{fields}</ul></section>
@@ -173,7 +198,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li><b>Know a place with a story?</b> <a href="/#contact">Tell us</a>, with what you know of its history.</li>
       <li><b>Own one of these places?</b> Project Scroll is free to play and depends on sponsors. <a href="/sponsors/">See how to keep the lanterns lit</a>.</li>
     </ul>
-    <p class="vs-plan"><a class="btn" href="/visit/">Plan your visit: ready-made days out, food, lodging and festivals</a></p>
+    <p class="vs-plan"><a class="btn" href="/visit/">Plan your visit: ready-made days out, food, lodging and festivals</a> <span hidden><a class="btn" href="/visit/#build">See my day (<span id="fdDayN">0</span>)</a></span></p>
     <p class="note">Every place here was chosen for its history and checked against its own website, or a city, county or tourism page, in October 2026. No place paid to be listed; any sponsor will always be marked as one. Places marked “check before you go” could not be fully confirmed online. The recipes are from cookbooks and newspapers published before 1929, now in the public domain, quoted as printed; the notes on making them today are ours.</p>
 {ld}
 {JS}
