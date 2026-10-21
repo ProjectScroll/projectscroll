@@ -637,12 +637,13 @@ try{ (function(){
 /* links to other websites open in a new tab. The site's own menus and buttons (top bar, tool row, the picture buttons, the four doors and their panels, footer, search results,
    parts rail, breadcrumbs) stay in the same tab, so Back works. Other links to the site's own pages still open a new tab. */
 try{ (function(){
-  const here=location.origin+location.pathname, MENU='.bar, footer.site nav, #searchRes, .partrail, .skip, .toolrow, .heroside, .doors, .drp, .crumb, .wk-tools, .fd-jump, .pp-tools, .mu-dtl, .mu-acts .mu-old, .se-up';
+  const here=location.origin+location.pathname, MENU='.bar, footer.site nav, #searchRes, .partrail, .skip, .toolrow, .heroside, .doors, .drp, .crumb, .wk-tools, .fd-jump, .pp-tools, .mu-dtl, .mu-acts .mu-old, .se-up, .pshows, .oc-jump, .tr-visit';
+  const BTN='.btn, .pshow, .vshow, .tcard, .dcard, .ctas a';
   const mark=function(a){
     const h=a.getAttribute('href'); if (!h || h.charAt(0)==='#' || /^(mailto:|tel:|javascript:)/i.test(h)) return;
     let u; try{ u=new URL(h, location.href); }catch(e){ return; }
     if (u.origin+u.pathname===here && u.hash) return;
-    if (u.origin===location.origin && a.closest(MENU)){ if (a.target==='_blank') a.removeAttribute('target'); return; }
+    if (a.closest(BTN) || (u.origin===location.origin && a.closest(MENU))){ if (a.target==='_blank') a.removeAttribute('target'); return; }
     a.target='_blank'; const r=(a.getAttribute('rel')||'').split(/\s+/); if (r.indexOf('noopener')<0) r.push('noopener'); a.setAttribute('rel', r.join(' ').trim());
   };
   document.querySelectorAll('a[href]').forEach(mark);
