@@ -13,8 +13,9 @@ def pc(s):
 def src(s):
     u = s.get('sources') or []
     return ' '.join(f'<a href="{E(x)}" rel="noopener">source {i}</a>' for i, x in enumerate(u, 1))
+def blt(b): return ('built '+b) if re.match(r'^(\d|about|c\.)', b) else b[0].lower()+b[1:]
 stops = ''.join(f'''<li class="wk" id="{s['id']}" data-ll="{s['lat']},{s['lon']}" data-n="{E(s['name'])}">
-        <p class="mu-k">Stop {s['n']} of {len(S)}{(' · built '+E(str(s['built']))) if s.get('built') else ''}<span class="wk-st"></span></p>
+        <p class="mu-k">Stop {s['n']} of {len(S)}{(' · '+E(blt(str(s['built'])))) if s.get('built') else ''}<span class="wk-st"></span></p>
         <h3>{E(s['name'])}</h3>
         {pc(s)}
         <p class="wk-then"><b>Then.</b> {E(s['then'])}</p>
@@ -41,7 +42,7 @@ JS = r'''<script>
       var b=li.querySelector('.wk-sb'); if (b){ b.hidden=!navigator.geolocation; b.disabled=!!stamp[li.id]; b.textContent=stamp[li.id]? 'Stamped ✓' : 'I’m here: stamp it'; }
       if (pins[i]){ var el=pins[i].getElement(); if (el){ el.classList.toggle('seen',!!seen[li.id]); el.classList.toggle('cur',i===cur); } } }); };
   var show=function(i, fly){ cur=(i+N)%N; var li=stops[cur]; seen[li.id]=1; save();
-    stage.innerHTML=''; var c=document.createElement('div'); c.className='wk wk-card'; c.innerHTML=li.innerHTML; c.querySelectorAll('[id]').forEach(function(x){ x.removeAttribute('id'); }); c.querySelectorAll('.mu-me,.mu-msg').forEach(function(x){ x.remove(); });
+    stage.innerHTML=''; var c=document.createElement('div'); c.className='wk wk-card'; c.innerHTML=li.innerHTML; c.querySelectorAll('[id]').forEach(function(x){ x.removeAttribute('id'); }); c.querySelectorAll('.mu-me,.mu-msg,.cshare-w').forEach(function(x){ x.remove(); });
     var h3=c.querySelector('h3'); if (h3){ var h2=document.createElement('h2'); h2.className='wk-h'; h2.textContent=h3.textContent; h3.replaceWith(h2); }
     stage.appendChild(c); num.textContent='Stop '+(cur+1)+' of '+N; prev.disabled=false; next.disabled=false;
     if (map && fly!==false){ map.flyTo(LL(li), 18, {duration:calm?0:.8}); }
@@ -93,6 +94,15 @@ JS = r'''<script>
       if (bd>2000){ fmsg.textContent='You look to be away from Broadway. Following starts working when you are in downtown Cassopolis.'; return; }
       if (bd<=40+Math.min(p.coords.accuracy||0,40) && best!==cur){ show(best); if (navigator.vibrate) navigator.vibrate(90); fmsg.textContent='You are at stop '+(best+1)+': '+stops[best].dataset.n+'.'; if (playing) say(); }
     }, function(){ fmsg.textContent='No location shared, so following is off.'; fb.click(); }, {enableHighAccuracy:true, maximumAge:5000, timeout:30000}); }); }
+  /* save the walk for the street: the page, the plan, the map code and the postcards go into this device's saved copy */
+  var ob=$('#wkOff');
+  if ('caches' in window && navigator.serviceWorker && navigator.serviceWorker.controller){ ob.hidden=false; ob.addEventListener('click',function(){ ob.textContent='Saving…';
+    var urls=['/walk/','/img/cass1860.webp','/vendor/leaflet-1.9.4/leaflet.js?v=1','/vendor/leaflet-1.9.4/leaflet.css?v=1'].concat($$('.wk-list img').map(function(i){ return i.currentSrc||i.src; }), $$('link[rel=stylesheet][href*="?v="],script[src*="?v="]').map(function(e){ return e.getAttribute('href')||e.getAttribute('src'); }));
+    caches.keys().then(function(k){ return caches.open(k.filter(function(x){ return /^ps-[0-9a-f]{6,}$/.test(x); })[0]||'ps-files'); })
+      .then(function(c){ return Promise.all(urls.map(function(u){ return c.add(new Request(u,{cache:'reload'})).catch(function(){}); })); })
+      .then(function(){ return navigator.storage && navigator.storage.persist ? navigator.storage.persist() : false; })
+      .then(function(){ ob.textContent='Saved for no-signal use ✓'; fmsg.textContent='Saved. The walk, the 1860 plan and the postcards now open on this device without signal.'; })
+      .catch(function(){ ob.textContent='Could not save'; }); }); }
   var h=location.hash.slice(1), at=stops.findIndex(function(li){ return li.id===h; });
   show(at>=0? at : 0, false); if (at>=0) $('#wkBox').scrollIntoView();
 })();
@@ -108,7 +118,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
         <p class="wk-nav"><button type="button" class="btn" id="wkPrev">‹ Back</button> <span id="wkNum" aria-live="polite"></span> <button type="button" class="btn primary" id="wkNext">Next stop ›</button></p>
         <div class="wk-stage" id="wkStage" aria-live="polite"></div>
       </div>
-      <p class="wk-tools"><label class="wk-op" id="wkOp" hidden>1860 plan <input type="range" min="0" max="100" value="90" aria-label="How strongly the 1860 plan shows"></label> <button type="button" class="btn mu-osm" id="wkOSM" aria-pressed="false" hidden>Show today’s streets</button> <button type="button" class="btn" id="wkPlay" aria-pressed="false" hidden>Play the tour aloud</button> <button type="button" class="btn" id="wkFollow" aria-pressed="false" hidden>Follow me on foot</button> <a class="btn" href="/map/3d/cassopolis/">Fly over it in 3D</a> <a class="btn" href="/map/cassopolis/">The full 1860 plan</a></p>
+      <p class="wk-tools"><label class="wk-op" id="wkOp" hidden>1860 plan <input type="range" min="0" max="100" value="90" aria-label="How strongly the 1860 plan shows"></label> <button type="button" class="btn mu-osm" id="wkOSM" aria-pressed="false" hidden>Show today’s streets</button> <button type="button" class="btn" id="wkPlay" aria-pressed="false" hidden>Play the tour aloud</button> <button type="button" class="btn" id="wkFollow" aria-pressed="false" hidden>Follow me on foot</button> <a class="btn" href="/map/3d/cassopolis/">Fly over it in 3D</a> <a class="btn" href="/map/cassopolis/">The full 1860 plan</a> <button type="button" class="btn" id="wkOff" hidden>Save for no-signal use</button></p>
       <p class="mu-mine" id="wkProg" aria-live="polite"></p>
     </div>
     <h2>Every stop</h2>

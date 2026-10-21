@@ -1349,6 +1349,16 @@ try{ (function(){
   });
 })(); }catch(err){ psFail(err); }
 try{ (function(){
+  /* share one place: every card on the museums, food, seasons and walk pages gets a link straight to itself */
+  const cards=document.querySelectorAll('.mu[id], .se[id], .wk-list .wk[id]'); if (!cards.length) return;
+  cards.forEach(function(c){ const where=c.querySelector('.mu-acts')||c.querySelector('.wk-src'); if (!where) return;
+    const b=document.createElement('button'); b.type='button'; b.className='cshare'; b.textContent='Share'; b.setAttribute('aria-label','Share '+((c.querySelector('h3')||{}).textContent||'this place'));
+    b.addEventListener('click', function(){ const url=location.origin+location.pathname+'#'+c.id, t=(c.querySelector('h3')||{}).textContent||document.title;
+      if (navigator.share) { navigator.share({title:t, url:url}).catch(function(){}); return; }
+      if (navigator.clipboard) navigator.clipboard.writeText(url).then(function(){ b.textContent='Link copied'; setTimeout(function(){ b.textContent='Share'; },1800); }); });
+    const w=document.createElement('span'); w.className='cshare-w'; if (where.textContent.trim()) w.appendChild(document.createTextNode(' · ')); w.appendChild(b); where.appendChild(w); });
+})(); }catch(err){ psFail(err); }
+try{ (function(){
   /* the four doors under the trust line: each opens a small panel of its pages; without native pop-ups the button is simply a link */
   const pop=!!(window.HTMLElement && HTMLElement.prototype.hasOwnProperty('popover'));
   document.querySelectorAll('.dcard[data-door]').forEach(function(a){

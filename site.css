@@ -3256,3 +3256,6 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 }
 @media print{ .pg-art{display:none} }
 .fd-dist{font-weight:bold; color:var(--ink); text-transform:none; letter-spacing:.02em}
+.cshare{font:inherit; font-size:.85rem; background:none; border:0; padding:0; color:var(--ink); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:3px; cursor:pointer}
+.cshare:hover{text-decoration-color:var(--gold)}
+@media print{ .cshare{display:none} }
