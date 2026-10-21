@@ -29,7 +29,7 @@
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
-<link rel="stylesheet" href="/site.min.css?v=d6cb2950">
+<link rel="stylesheet" href="/site.min.css?v=89a64aac">
 <script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/*.pdf","/*.zip","/*.xml","/*.json"]}},{"not":{"selector_matches":"[download], [target=_blank]"}}]},"eagerness":"moderate"}],"prerender":[{"where":{"and":[{"selector_matches":".bar a, .toolrow .nd a, .crumb a, footer nav a, .partrail a, .search-res a"},{"href_matches":"/*"},{"not":{"href_matches":["/*.pdf","/map/3d/*"]}}]},"eagerness":"conservative"}]}</script>
 </head>
 <body>
@@ -63,215 +63,223 @@
   <p class="note search-tip">Tip: press <kbd>/</kbd> or <kbd>Ctrl</kbd> <kbd>K</kbd> anywhere to search.</p>
 </dialog>
 <div class="sheet" id="top">
-<nav class="toolrow" aria-label="Maps, research tools and sponsor"><div class="tr-nav"><span class="navdrop"><button type="button" class="nd-b" aria-expanded="false" aria-controls="ndMaps">Maps</button><span class="nd" id="ndMaps" hidden><a href="/map/">The map room</a><a href="/map/then-and-now/">Seven towns, then and now</a><a href="/map/3d/valley/">The valley in 3D</a><a href="/map/3d/cassopolis/">Cassopolis in LiDAR</a><a href="/places/">The gazetteer</a><a href="/map/#sanborn">Sanborn fire-insurance sheets</a><a href="/postcards/">Postcards, then and now</a><a href="/roads-and-rails/">Roads, rails and mills</a><a href="/lost-towns/">Lost towns of the valley</a></span></span><span class="navdrop"><button type="button" class="nd-b" aria-expanded="false" aria-controls="ndTools">Research tools</button><span class="nd" id="ndTools" hidden><a href="/names/">Who was in town</a><a href="/soldiers/">Soldiers of the valley</a><a href="/newspaper/">Newspaper of the month</a><a href="/almanac/">This day in the valley</a><a href="/museums/">Museums &amp; historic places</a><a href="/sources/">The sources shelf</a><a href="/records/">Finding the records</a><a href="/toolkit/">The research toolkit</a><a href="/guide/old-handwriting/">Reading old handwriting</a><a href="/guide/death-certificate/">Reading a death certificate</a><a href="/guide/gravestones/">Reading old gravestones</a><a href="/glossary/">Glossary</a><a href="/families/">Families</a><a href="/legends/">Legends</a><a href="/classrooms/">For classrooms</a></span></span><form class="tr-find" action="/names/" method="get" role="search" aria-label="Find a name"><input type="search" name="q" placeholder="Find a name" aria-label="Find a name in the old directories and rolls" autocomplete="off" spellcheck="false" enterkeyhint="search"><button type="submit" aria-label="Find"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></form></div><p class="pb-sponsor"><a href="/sponsors/"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 2.5h4M5.5 4h5l-.6 1H6.1zM6 5.2c-1.1 1-1.6 2.3-1.6 3.6 0 2.3 1.6 4 3.6 4s3.6-1.7 3.6-4c0-1.3-.5-2.6-1.6-3.6M8 7.4c-.7.8-1 1.5-1 2.2a1 1 0 0 0 2 0c0-.7-.3-1.4-1-2.2zM6 12.8h4v1H6z"/></svg><span>Keep the lanterns lit</span><b>Sponsor the hunt</b></a></p></nav>
+<nav class="toolrow" aria-label="Maps, research tools and sponsor"><div class="tr-nav"><span class="navdrop"><button type="button" class="nd-b" aria-expanded="false" aria-controls="ndMaps">Maps</button><span class="nd" id="ndMaps" hidden><a href="/map/">The map room</a><a href="/map/then-and-now/">Seven towns, then and now</a><a href="/map/3d/valley/">The valley in 3D</a><a href="/map/3d/cassopolis/">Cassopolis in LiDAR</a><a href="/places/">The gazetteer</a><a href="/map/#sanborn">Sanborn fire-insurance sheets</a><a href="/postcards/">Postcards, then and now</a><a href="/roads-and-rails/">Roads, rails and mills</a><a href="/lost-towns/">Lost towns of the valley</a></span></span><span class="navdrop"><button type="button" class="nd-b" aria-expanded="false" aria-controls="ndTools">Research tools</button><span class="nd" id="ndTools" hidden><a href="/names/">Who was in town</a><a href="/soldiers/">Soldiers of the valley</a><a href="/newspaper/">Newspaper of the month</a><a href="/almanac/">This day in the valley</a><a href="/museums/">Museums &amp; historic places</a><a href="/passport/">Your passport</a><a href="/sources/">The sources shelf</a><a href="/records/">Finding the records</a><a href="/toolkit/">The research toolkit</a><a href="/guide/old-handwriting/">Reading old handwriting</a><a href="/guide/death-certificate/">Reading a death certificate</a><a href="/guide/gravestones/">Reading old gravestones</a><a href="/glossary/">Glossary</a><a href="/families/">Families</a><a href="/legends/">Legends</a><a href="/classrooms/">For classrooms</a></span></span><form class="tr-find" action="/names/" method="get" role="search" aria-label="Find a name"><input type="search" name="q" placeholder="Find a name" aria-label="Find a name in the old directories and rolls" autocomplete="off" spellcheck="false" enterkeyhint="search"><button type="submit" aria-label="Find"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></form></div><p class="pb-sponsor"><a href="/sponsors/"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 2.5h4M5.5 4h5l-.6 1H6.1zM6 5.2c-1.1 1-1.6 2.3-1.6 3.6 0 2.3 1.6 4 3.6 4s3.6-1.7 3.6-4c0-1.3-.5-2.6-1.6-3.6M8 7.4c-.7.8-1 1.5-1 2.2a1 1 0 0 0 2 0c0-.7-.3-1.4-1-2.2zM6 12.8h4v1H6z"/></svg><span>Keep the lanterns lit</span><b>Sponsor the hunt</b></a></p></nav>
   <main id="main" class="page">
     <p class="crumb"><a href="/">← Project Scroll</a></p>
-    <p class="kicker">Broadway Virtual Walk</p>
-    <figure class="pg-art"><picture><source type="image/avif" srcset="/img/card-walk-art-270.avif 270w, /img/card-walk-art.avif 540w" sizes="8rem"><img class="vt-walk" src="/img/card-walk-art-270.webp" srcset="/img/card-walk-art-270.webp 270w, /img/card-walk-art.webp 540w" sizes="8rem" width="540" height="960" alt="" decoding="async"></picture></figure>
-    <h1>Walk old Broadway</h1>
-    <p class="lede" style="font-size:1.15rem">Cassopolis, Michigan, from the 1860 plan to today: 11 stops down the main street, each with what stood there, who ran it, and what is there now. Walk it from your chair, stop by stop on the old plan, or bring this page to Broadway and stamp each stop on the spot.</p>
-    <div class="wk-box" id="wkBox">
-      <div class="wk-map" id="wkMap" role="region" aria-label="The 1860 plan of Cassopolis with the stops of the walk. Every stop is also in the list below."><p class="mu-mapph">The 1860 plan opens here.</p></div>
-      <div class="wk-side">
-        <p class="wk-nav"><button type="button" class="btn" id="wkPrev">‹ Back</button> <span id="wkNum" aria-live="polite"></span> <button type="button" class="btn primary" id="wkNext">Next stop ›</button></p>
-        <div class="wk-stage" id="wkStage" aria-live="polite"></div>
+      <p class="kicker">Broadway Virtual Walk</p>
+      <figure class="pg-art"><picture><source type="image/avif" srcset="/img/card-walk-art-270.avif 270w, /img/card-walk-art.avif 540w" sizes="8rem"><img class="vt-walk" src="/img/card-walk-art-270.webp" srcset="/img/card-walk-art-270.webp 270w, /img/card-walk-art.webp 540w" sizes="8rem" width="540" height="960" alt="" decoding="async"></picture></figure>
+      <h1>Walk old Broadway</h1>
+      <p class="lede" style="font-size:1.15rem">Cassopolis, Michigan, from the 1860 plan to today: 11 stops down the main street, each with what stood there, who ran it, and what is there now. Walk it from your chair, stop by stop on the old plan, or bring this page to Broadway and stamp each stop on the spot.</p>
+      <div class="wk-box" id="wkBox">
+        <div class="wk-map" id="wkMap" role="region" aria-label="A map of downtown Cassopolis with the stops of the walk. Every stop is also in the list below."><p class="mu-mapph">The map opens here.</p></div>
+        <div class="wk-side">
+          <p class="wk-nav"><button type="button" class="btn" id="wkPrev">‹ Back</button> <span id="wkNum" aria-live="polite"></span> <button type="button" class="btn primary" id="wkNext">Next stop ›</button></p>
+          <div class="wk-stage" id="wkStage" aria-live="polite"></div>
+        </div>
+        <p class="wk-tools"><label class="wk-op" id="wkOp" hidden>1860 plan <input type="range" min="0" max="100" value="90" aria-label="How strongly the 1860 plan shows"></label> <button type="button" class="btn mu-osm" id="wkOSM" aria-pressed="false" hidden>Show today’s streets</button> <button type="button" class="btn" id="wkPlay" aria-pressed="false" hidden>Play the tour aloud</button> <button type="button" class="btn" id="wkFollow" aria-pressed="false" hidden>Follow me on foot</button> <a class="btn" href="/map/3d/cassopolis/">Fly over it in 3D</a> <a class="btn" href="/map/cassopolis/">The full 1860 plan</a> <a class="btn" href="/walk/dowagiac/">Next: Front Street, Dowagiac ›</a> <button type="button" class="btn" id="wkOff" hidden>Save for no-signal use</button></p>
+        <p class="mu-mine" id="wkProg" aria-live="polite"></p>
       </div>
-      <p class="wk-tools"><label class="wk-op" id="wkOp" hidden>1860 plan <input type="range" min="0" max="100" value="90" aria-label="How strongly the 1860 plan shows"></label> <button type="button" class="btn mu-osm" id="wkOSM" aria-pressed="false" hidden>Show today’s streets</button> <button type="button" class="btn" id="wkPlay" aria-pressed="false" hidden>Play the tour aloud</button> <button type="button" class="btn" id="wkFollow" aria-pressed="false" hidden>Follow me on foot</button> <a class="btn" href="/map/3d/cassopolis/">Fly over it in 3D</a> <a class="btn" href="/map/cassopolis/">The full 1860 plan</a> <button type="button" class="btn" id="wkOff" hidden>Save for no-signal use</button></p>
-      <p class="mu-mine" id="wkProg" aria-live="polite"></p>
-    </div>
-    <h2>Every stop</h2>
-    <ol class="wk-list"><li class="wk" id="first-courthouse" data-ll="41.9138,-86.0128" data-n="Site of the first courthouse">
-        <p class="mu-k">Stop 1 of 11 · built about 1836 (gone)<span class="wk-st"></span></p>
-        <h3>Site of the first courthouse</h3>
-        
-        <p class="wk-then"><b>Then.</b> Cass County’s first courthouse was a plain wooden building, 34 by 24 feet, ordered by the county board in 1835 for about $450. It stood north of the original village rather than on the public square, and served until the second courthouse opened in 1841.</p>
-        <p class="wk-now"><b>Now.</b> Nothing of it survives, and the exact lot has not been pinned down: this stop marks the stretch of Broadway where the 1906 county history places it.</p>
-        <p class="mu-a">West side of North Broadway, north of York Street</p>
-        <p class="wk-src"><a href="https://archive.org/details/twentiethcentury00glov" rel="noopener">source 1</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=242" rel="noopener">source 2</a> <a href="https://tedshideler.com/2022/10/10/the-cass-county-michigan-courthouse-1899-2003/" rel="noopener">source 3</a> <a href="https://www.leaderpub.com/?p=702332" rel="noopener">source 4</a></p>
-        <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
-      </li><li class="wk" id="carnegie-library" data-ll="41.9124,-86.01265" data-n="Local History Branch (Carnegie Library)">
-        <p class="mu-k">Stop 2 of 11 · built 1908-1909<span class="wk-st"></span></p>
-        <h3>Local History Branch (Carnegie Library)</h3>
-        
-        <p class="wk-then"><b>Then.</b> Built over the winter of 1908-09 with a $10,000 gift from Andrew Carnegie, this was the town’s public library for more than 80 years; Cassopolis was one of 53 Michigan communities to receive Carnegie library money. From 1947 to 1957 its basement also housed the Cass County Library, and after the 1993 merger that created the Cass District Library it reopened in October 1994 as the Local History Branch.</p>
-        <p class="wk-now"><b>Now.</b> The Cass District Library&#x27;s Local History Branch, a genealogy and county-history research library (Mon-Thu 9-4), restored in 2012 and renovated again in 2020-21.</p>
-        <p class="mu-a">145 N. Broadway, Cassopolis, MI 49031</p>
-        <p class="wk-src"><a href="https://www.cassdistrictlibrary.org/locations/local-history-branch/" rel="noopener">source 1</a> <a href="https://www.leaderpub.com/?p=618042" rel="noopener">source 2</a> <a href="https://www.leaderpub.com/?p=29535" rel="noopener">source 3</a> <a href="https://en.wikipedia.org/wiki/Cass_District_Library" rel="noopener">source 4</a></p>
-        <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
-      </li><li class="wk" id="historic-courthouse" data-ll="41.91202,-86.01243" data-n="Cass County Historic Courthouse">
-        <p class="mu-k">Stop 3 of 11 · built 1898-1900 (cornerstone Oct. 5, 1898; accepted Oct. 1900)<span class="wk-st"></span></p>
-        <h3>Cass County Historic Courthouse</h3>
-        
-        <p class="wk-then"><b>Then.</b> The stone courthouse with its tall clock tower was designed by the Grand Rapids firm Rush, Bowman &amp; Rush and finished in 1900 by the contractors James Rowson and August Mohnke, after the county dismissed its first builder in 1898. It cost $43,797.88 with furniture and heating, and stands on the northeast quarter of the old public square, where the 1841 courthouse stood for nearly sixty years. The county jail of 1852 stood just north of it.</p>
-        <p class="wk-now"><b>Now.</b> Empty after the courts moved out in 2003, it was restored with federal ARPA and USDA money and reopened in October 2024 as county offices: administrator, clerk/register of deeds, treasurer and the Board of Commissioners.</p>
-        <p class="mu-a">120 N. Broadway, Cassopolis, MI 49031</p>
-        <p class="wk-src"><a href="https://watershedvoice.com/2024/09/30/cass-county-historic-courthouse-reopening-after-major-renovation" rel="noopener">source 1</a> <a href="https://courthouses.co/?p=10460" rel="noopener">source 2</a> <a href="https://tedshideler.com/2022/10/10/the-cass-county-michigan-courthouse-1899-2003/" rel="noopener">source 3</a> <a href="https://leaderpub.com/?p=880680" rel="noopener">source 4</a> <a href="https://archive.org/details/twentiethcentury00glov" rel="noopener">source 5</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=243" rel="noopener">source 6</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=245" rel="noopener">source 7</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=246" rel="noopener">source 8</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=247" rel="noopener">source 9</a></p>
-        <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
-      </li><li class="wk" id="the-fort" data-ll="41.91177,-86.01266" data-n="“The Fort”: the county office building">
-        <p class="mu-k">Stop 4 of 11 · built 1860<span class="wk-st"></span></p>
-        <h3>“The Fort”: the county office building</h3>
-        
-        <p class="wk-then"><b>Then.</b> Built in 1860, this brick building held the county’s offices — the clerk, the probate court, the register of deeds and the treasurer — until the stone courthouse across the way was finished in 1899. It was later a laundry, and in 1923 the Masons bought it for their temple and added the large hall at the back in 1925. Somewhere along the way it took the name “The Fort”; no source we have read says why.</p>
-        <p class="wk-now"><b>Now.</b> The state lists it on the Michigan State Register of Historic Sites (1985) as the Cass County Office Building/Masonic Temple. For some years it has been the Turtle Lodge, an event hall with offices and apartments; it changed hands in 2022.</p>
-        <p class="mu-a">105 N. Broadway, Cassopolis, MI 49031</p>
-        <p class="wk-src"><a href="https://en.wikipedia.org/wiki/List_of_Michigan_State_Historic_Sites_in_Cass_County" rel="noopener">source 1</a> <a href="https://migenweb.org/cass/postcards/county_photos.htm" rel="noopener">source 2</a> <a href="https://tedshideler.com/2022/10/10/the-cass-county-michigan-courthouse-1899-2003/" rel="noopener">source 3</a> <a href="https://leaderpub.com/?p=736830" rel="noopener">source 4</a> <a href="https://leaderpub.com/?p=860064" rel="noopener">source 5</a> <a href="https://www.weichert.com/133779767/" rel="noopener">source 6</a> <a href="https://archive.org/details/twentiethcentury00glov" rel="noopener">source 7</a></p>
-        <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
-      </li><li class="wk" id="public-square" data-ll="41.91165,-86.01255" data-n="The Old Public Square (Broadway &amp; State)">
-        <p class="mu-k">Stop 5 of 11 · platted 1831<span class="wk-st"></span></p>
-        <h3>The Old Public Square (Broadway &amp; State)</h3>
-        <figure class="wk-pc"><picture><source type="image/avif" srcset="/img/strip/carriages-800.avif 800w, /img/strip/carriages.avif 1600w" sizes="(min-width:900px) 30rem, 92vw"><img src="/img/strip/carriages-800.webp" srcset="/img/strip/carriages-800.webp 800w, /img/strip/carriages.webp 1600w" sizes="(min-width:900px) 30rem, 92vw" width="1600" height="400" alt="Carriages drawn up on Broadway, from an old postcard" loading="lazy" decoding="async"></picture><figcaption>Carriages drawn up on Broadway, from an old postcard</figcaption></figure>
-        <p class="wk-then"><b>Then.</b> The 1831 village plat set aside a public square of 26 by 20 rods for county buildings, with Broadway and State Street crossing at its center. In 1839 the county deeded most of it to the &#x27;Court House Company,&#x27; which built the 1841 courthouse. Merchants then built on the other quarters, among them Asa Kingsbury&#x27;s brick stores of 1869-70 on the southwest quarter. The county sued in 1879 to win the square back and lost in the Michigan Supreme Court in 1880, which is why the old square is now a row of business blocks. Early taverns faced it too: the Union Hotel on the west side of Broadway and the Eagle Hotel on the east side.</p>
-        <p class="wk-now"><b>Now.</b> A downtown crossroads of two state highways, with streetscape improvements laid along Broadway and East State in 2020.</p>
-        <p class="mu-a">Intersection of Broadway (M-62) and State Street (M-60)</p>
-        <p class="wk-src"><a href="https://archive.org/details/twentiethcentury00glov" rel="noopener">source 1</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=176" rel="noopener">source 2</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=177" rel="noopener">source 3</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=180" rel="noopener">source 4</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=181" rel="noopener">source 5</a> <a href="https://www.leaderpub.com/?p=830414" rel="noopener">source 6</a></p>
-        <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
-      </li><li class="wk" id="gem-theatre-site" data-ll="41.9115,-86.01375" data-n="The old courthouse’s second life">
-        <p class="mu-k">Stop 6 of 11 · built 1841 (moved 1898-99; razed 1968)<span class="wk-st"></span></p>
-        <h3>The old courthouse’s second life</h3>
-        
-        <p class="wk-then"><b>Then.</b> The county’s second courthouse was a two-storey frame building with classical columns, finished in 1841 for $6,000. When the stone courthouse replaced it, it was sold at auction for $25 and moved a block west. A theatre history says it became the 420-seat Colonial Opera House, then the Colonial Theatre in 1909, and in 1937 was remodelled as the Gem Theatre, which showed films until about 1960; the 1906 county history, though, calls it a storage house, so its early years here are uncertain.</p>
-        <p class="wk-now"><b>Now.</b> The building was torn down in 1968. The county’s first log jail, finished in 1834, also stood on this stretch of State Street west of Broadway.</p>
-        <p class="mu-a">State Street at Disbrow Street, one block west of Broadway</p>
-        <p class="wk-src"><a href="https://cinematreasures.org/theaters/18611" rel="noopener">source 1</a> <a href="https://www.leaderpub.com/?p=702332" rel="noopener">source 2</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=242" rel="noopener">source 3</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=243" rel="noopener">source 4</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=244" rel="noopener">source 5</a> <a href="https://tedshideler.com/2022/10/10/the-cass-county-michigan-courthouse-1899-2003/" rel="noopener">source 6</a></p>
-        <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
-      </li><li class="wk" id="bank-corner" data-ll="41.91118,-86.01272" data-n="The bank corner">
-        <p class="mu-k">Stop 7 of 11 · built c. 1900 per sale listing; renovated 1990<span class="wk-st"></span></p>
-        <h3>The bank corner</h3>
-        <figure class="wk-pc"><picture><source type="image/avif" srcset="/img/strip/broadway1-800.avif 800w, /img/strip/broadway1.avif 1600w" sizes="(min-width:900px) 30rem, 92vw"><img src="/img/strip/broadway1-800.webp" srcset="/img/strip/broadway1-800.webp 800w, /img/strip/broadway1.webp 1600w" sizes="(min-width:900px) 30rem, 92vw" width="1600" height="400" alt="Broadway in the days of wagons, from an old postcard" loading="lazy" decoding="async"></picture><figcaption>Broadway in the days of wagons, from an old postcard</figcaption></figure>
-        <p class="wk-then"><b>Then.</b> Banking began on this side of the old square in 1857, when Asa Kingsbury opened a private bank, and in 1869–70 he built a brick banking house among the new stores on the square’s southwest quarter. The First National Bank of Cassopolis was organised in 1870 with Kingsbury as president, and around 1899 it bought $32,000 of the county’s bonds to pay for the new courthouse.</p>
-        <p class="wk-now"><b>Now.</b> The two-storey brick building at 116 South Broadway is a former bank with its vaults still inside. Whether it is the First National’s own building has not been confirmed.</p>
-        <p class="mu-a">116 S. Broadway, Cassopolis, MI 49031 (corner of W. State St.)</p>
-        <p class="wk-src"><a href="https://carwm.resimplifi.com/listings/d8ce9f41-former-downtown-bank-facility-cassopolis-mi" rel="noopener">source 1</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=181" rel="noopener">source 2</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=228" rel="noopener">source 3</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=246" rel="noopener">source 4</a></p>
-        <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
-      </li><li class="wk" id="presbyterian-church" data-ll="41.91151,-86.01055" data-n="United Presbyterian Church">
-        <p class="mu-k">Stop 8 of 11 · begun early 1890s<span class="wk-st"></span></p>
-        <h3>United Presbyterian Church</h3>
-        
-        <p class="wk-then"><b>Then.</b> The congregation was founded in March 1842 as the First Presbyterian Church, when Cassopolis was still &#x27;little more than a clearing in the woods.&#x27; Work on the present building began in the early 1890s, and in 1938 the congregation joined with the village&#x27;s Baptist church. It long served as a federated church for several denominations before taking its present Presbyterian name in 1968.</p>
-        <p class="wk-now"><b>Now.</b> Still a Presbyterian congregation, half a block east of Broadway.</p>
-        <p class="mu-a">209 E. State St., Cassopolis, MI 49031</p>
-        <p class="wk-src"><a href="https://www.leaderpub.com/?p=782143" rel="noopener">source 1</a></p>
-        <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
-      </li><li class="wk" id="old-post-office" data-ll="41.91065,-86.01241" data-n="The old post office storefront">
-        <p class="mu-k">Stop 9 of 11 · late 1800s (a wainscot board inside is signed 1897)<span class="wk-st"></span></p>
-        <h3>The old post office storefront</h3>
-        <figure class="wk-pc"><picture><source type="image/avif" srcset="/img/strip/broadway3-800.avif 800w, /img/strip/broadway3.avif 1600w" sizes="(min-width:900px) 30rem, 92vw"><img src="/img/strip/broadway3-800.webp" srcset="/img/strip/broadway3-800.webp 800w, /img/strip/broadway3.webp 1600w" sizes="(min-width:900px) 30rem, 92vw" width="1600" height="400" alt="Broadway when the first cars came, from an old postcard" loading="lazy" decoding="async"></picture><figcaption>Broadway when the first cars came, from an old postcard</figcaption></figure>
-        <p class="wk-then"><b>Then.</b> Local accounts say this storefront was one of the village’s post offices in the late 1800s; a board inside is signed 1897. It later held a barbershop and a thrift shop, and about 2011 a local dentist, Dr. Roger Pecina, fitted it out as a Prohibition-style room with a salvaged 38-foot bar.</p>
-        <p class="wk-now"><b>Now.</b> Steve and Shelley Schroeder bought it in 2018 and have run it since 2021 as Holden Green Tavern. Check before you go in.</p>
-        <p class="mu-a">151 S. Broadway, Cassopolis, MI 49031</p>
-        <p class="wk-src"><a href="https://leaderpub.com/?p=851367" rel="noopener">source 1</a> <a href="https://www.leaderpub.com/?p=217543" rel="noopener">source 2</a> <a href="https://www.leaderpub.com/?p=568162" rel="noopener">source 3</a></p>
-        <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
-      </li><li class="wk" id="sinclair-station" data-ll="41.90962,-86.0126" data-n="The Sinclair Station">
-        <p class="mu-k">Stop 10 of 11 · mid-20th century (date not found); restored c. 2009-2012<span class="wk-st"></span></p>
-        <h3>The Sinclair Station</h3>
-        
-        <p class="wk-then"><b>Then.</b> An old DX filling station that had stood empty for about thirty years was bought by Dr. Roger Pecina, who spent three years restoring it as a 1952-style Sinclair station, with period pumps, a vintage police car and a wrecker. It opened free to visitors around 2011, although no Sinclair station had ever stood here.</p>
-        <p class="wk-now"><b>Now.</b> A 2019 report said the antiques had been sold and the building had become an auto-detailing shop. See it from the sidewalk.</p>
-        <p class="mu-a">200 S. Broadway (Broadway at Jefferson St.), Cassopolis, MI 49031</p>
-        <p class="wk-src"><a href="https://www.leaderpub.com/?p=568232" rel="noopener">source 1</a> <a href="https://abc57.com/news/retired-dentist-trying-to-boost-tourism-in-cassopolis" rel="noopener">source 2</a> <a href="https://www.roadsideamerica.com/tip/34584" rel="noopener">source 3</a> <a href="https://www.leaderpub.com/?p=568162" rel="noopener">source 4</a></p>
-        <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
-      </li><li class="wk" id="log-cabin" data-ll="41.90652,-86.01267" data-n="Pioneer Log Cabin Museum">
-        <p class="mu-k">Stop 11 of 11 · built 1923 (built May 23; dedicated June 20, 1923)<span class="wk-st"></span></p>
-        <h3>Pioneer Log Cabin Museum</h3>
-        <figure class="wk-pc"><picture><source type="image/avif" srcset="/img/strip/cabin-postcard-800.avif 800w, /img/strip/cabin-postcard.avif 1600w" sizes="(min-width:900px) 30rem, 92vw"><img src="/img/strip/cabin-postcard-800.webp" srcset="/img/strip/cabin-postcard-800.webp 800w, /img/strip/cabin-postcard.webp 1600w" sizes="(min-width:900px) 30rem, 92vw" width="1600" height="400" alt="The Pioneer Log Cabin, Cassopolis, on an old postcard" loading="lazy" decoding="async"></picture><figcaption>The Pioneer Log Cabin, Cassopolis, on an old postcard</figcaption></figure>
-        <p class="wk-then"><b>Then.</b> Proposed by Charles Harmon of the Cass County Pioneer Society, the cabin was raised in a single day, May 23, 1923, by a crew of 46 men led by Ed Ferguson. They used numbered logs donated from farms across the county, each matched to its giver and tree species. Its doors are black walnut, and its stair rail came from an 1845 barn. It opened as a pioneer relic museum in June 1924.</p>
-        <p class="wk-now"><b>Now.</b> A volunteer-run museum in a village park, open at times through the season; see the museum’s website, pioneerlogcabinmuseum.com.</p>
-        <p class="mu-a">400 S. Broadway, Cassopolis, MI 49031</p>
-        <p class="wk-src"><a href="https://cassopolis-mi.us/services/parks_and_recreation.php" rel="noopener">source 1</a> <a href="https://en.wikipedia.org/wiki/Pioneer_Log_Cabin_Museum" rel="noopener">source 2</a> <a href="https://digitalcollections.detroitpubliclibrary.org/islandora/object/islandora%3A221296" rel="noopener">source 3</a></p>
-        <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
-      </li></ol>
-    <h2>The fire-insurance sheets</h2><p>The Sanborn Map Company drew Cassopolis building by building for fire insurers. Each sheet shows what every building was made of and what it was used for. Open one beside this walk:</p><ul class="dis"><li><a href="https://www.loc.gov/item/sanborn03951_001/" rel="noopener">1884</a></li><li><a href="https://www.loc.gov/item/sanborn03951_002/" rel="noopener">1892</a></li><li><a href="https://www.loc.gov/item/sanborn03951_003/" rel="noopener">1899</a></li><li><a href="https://www.loc.gov/item/sanborn03951_004/" rel="noopener">1909</a></li><li><a href="https://www.loc.gov/item/sanborn03951_005/" rel="noopener">1924</a></li><li><a href="https://www.loc.gov/item/sanborn03951_006/" rel="noopener">1947</a></li></ul>
-    <h2>Historical markers in town</h2><ul class="dis"><li><a href="https://en.wikipedia.org/wiki/List_of_Michigan_State_Historic_Sites_in_Cass_County" rel="noopener">Cass County Courthouse (Michigan State Register of Historic Sites, 1976)</a> · 120 N. Broadway, Cassopolis</li><li><a href="https://www.hmdb.org/m.asp?m=75408" rel="noopener">Cass County Veterans Memorial</a> · Cass County Veterans Memorial Roadside Park, M-62 north of Beeson St., near Cassopolis (41.94007, -86.03508)</li></ul>
-    <h2>Walking it for real</h2>
-    <ul class="dis">
-      <li><b>Start at the north end</b> and walk south with the stops in order; the whole walk is under a mile.</li>
-      <li><b>Let the page follow you.</b> “Follow me on foot” opens each stop as you reach it, and “Play the tour aloud” reads it to you, so you can keep your eyes on the street.</li>
-      <li><b>Stamp as you go.</b> “I’m here” checks your location once, on your phone, and stamps that stop. Nothing leaves your device.</li>
-      <li><b>Stay on the sidewalk</b> and on public ground, and be kind to the businesses: many of these buildings are still working shops and offices.</li>
-      <li><b>Take the same picture.</b> Where a stop has an old postcard, stand where the photographer stood and <a href="/postcards/">send us your photo</a>.</li>
-    </ul>
-    <p class="note">The stops come from the county histories of 1875, 1882 and 1906, the Sanborn sheets, and the village and county records, each linked under its stop. The plan is the 1860 county wall map’s inset of Cassopolis. Where a date or name could not be confirmed, the stop says so. Corrections are welcome at research@projectscroll.com.</p>
-<script>
-(function(){ "use strict";
-  var $=function(s){ return document.querySelector(s); }, $$=function(s){ return [].slice.call(document.querySelectorAll(s)); };
-  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var stops=$$('.wk'), N=stops.length, cur=0, map=null, pins=[], plan=null, osm=null, line=null;
-  var seen={}, stamp={}; try{ seen=JSON.parse(localStorage.getItem('ps-walk')||'{}')||{}; stamp=JSON.parse(localStorage.getItem('ps-walk-stamp')||'{}')||{}; }catch(e){}
-  var save=function(){ try{ localStorage.setItem('ps-walk',JSON.stringify(seen)); localStorage.setItem('ps-walk-stamp',JSON.stringify(stamp)); }catch(e){} };
-  var LL=function(li){ return li.dataset.ll.split(',').map(Number); };
-  var km=function(a,b){ var R=6371, r=Math.PI/180, dl=(b[0]-a[0])*r, dn=(b[1]-a[1])*r, h=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dn/2)*Math.sin(dn/2); return 2*R*Math.asin(Math.sqrt(h)); };
-  var stage=$('#wkStage'), num=$('#wkNum'), prev=$('#wkPrev'), next=$('#wkNext'), prog=$('#wkProg');
-  var paint=function(){ var n=Object.keys(seen).length; prog.textContent=n? 'You have walked '+n+' of '+N+' stops'+(Object.keys(stamp).length? ', and stamped '+Object.keys(stamp).length+' in person' : '')+'.' : '';
-    stops.forEach(function(li,i){ var s=li.querySelector('.wk-st'); s.textContent=stamp[li.id]? ' · stamped '+stamp[li.id] : (seen[li.id]? ' · walked' : '');
-      var b=li.querySelector('.wk-sb'); if (b){ b.hidden=!navigator.geolocation; b.disabled=!!stamp[li.id]; b.textContent=stamp[li.id]? 'Stamped ✓' : 'I’m here: stamp it'; }
-      if (pins[i]){ var el=pins[i].getElement(); if (el){ el.classList.toggle('seen',!!seen[li.id]); el.classList.toggle('cur',i===cur); } } }); };
-  var show=function(i, fly){ cur=(i+N)%N; var li=stops[cur]; seen[li.id]=1; save();
-    stage.innerHTML=''; var c=document.createElement('div'); c.className='wk wk-card'; c.innerHTML=li.innerHTML; c.querySelectorAll('[id]').forEach(function(x){ x.removeAttribute('id'); }); c.querySelectorAll('.mu-me,.mu-msg,.cshare-w').forEach(function(x){ x.remove(); });
-    var h3=c.querySelector('h3'); if (h3){ var h2=document.createElement('h2'); h2.className='wk-h'; h2.textContent=h3.textContent; h3.replaceWith(h2); }
-    stage.appendChild(c); num.textContent='Stop '+(cur+1)+' of '+N; prev.disabled=false; next.disabled=false;
-    if (map && fly!==false){ map.flyTo(LL(li), 18, {duration:calm?0:.8}); }
-    if (Object.keys(seen).length===N && window.psEarn) window.psEarn('walker');
-    paint(); };
-  prev.addEventListener('click',function(){ show(cur-1); }); next.addEventListener('click',function(){ show(cur+1); });
-  $('#wkBox').addEventListener('keydown',function(e){ if (e.target.closest('input,select,textarea')) return; if (e.key==='ArrowRight'){ show(cur+1); e.preventDefault(); } if (e.key==='ArrowLeft'){ show(cur-1); e.preventDefault(); } });
-  stops.forEach(function(li,i){ var b=li.querySelector('.wk-sb'), m=li.querySelector('.mu-msg'); if (!b) return;
-    b.addEventListener('click',function(){ if (!navigator.geolocation) return; m.textContent='Checking where you are…';
-      navigator.geolocation.getCurrentPosition(function(p){ var d=km([p.coords.latitude,p.coords.longitude], LL(li)), reach=.12+Math.min(p.coords.accuracy||0,300)/1000;
-        if (d<=reach){ stamp[li.id]=new Date().toISOString().slice(0,10); seen[li.id]=1; save(); paint(); m.textContent='Stamped. It stays on this device.'; if (window.psEarn) window.psEarn('stamp'); }
-        else m.textContent='You look to be about '+(d*0.621371<10?(d*0.621371).toFixed(1):Math.round(d*0.621371))+' mi away. The stamp works on the spot.'; },
-        function(){ m.textContent='No location shared, so nothing changed.'; }, {enableHighAccuracy:true, timeout:20000, maximumAge:0}); }); });
-  /* the map: the 1860 plan of the village with the stops on it; today's streets only if asked for */
-  var start=function(){ if (map || !window.L) return;
-    map=L.map('wkMap',{zoomSnap:.25, minZoom:15, maxZoom:19, scrollWheelZoom:false, maxBounds:[[41.9,-86.03],[41.925,-85.995]]}); map.attributionControl.setPrefix(false);
-    plan=L.imageOverlay('/img/cass1860.webp',[[41.9061,-86.018103],[41.917772,-86.007168]],{opacity:.9, className:'wk-plan'}).addTo(map);
-    map.attributionControl.addAttribution('1860 plan: Geil, Harley &amp; Siverd, Library of Congress');
-    line=L.polyline([[41.9138, -86.0128], [41.9124, -86.01265], [41.91202, -86.01243], [41.91177, -86.01266], [41.91165, -86.01255], [41.9115, -86.01375], [41.91118, -86.01272], [41.91151, -86.01055], [41.91065, -86.01241], [41.90962, -86.0126], [41.90652, -86.01267]],{className:'wk-route', interactive:false}).addTo(map);
-    stops.forEach(function(li,i){ var m=L.marker(LL(li),{icon:L.divIcon({className:'wk-pin', html:'<span>'+(i+1)+'</span>', iconSize:[26,26]}), title:'Stop '+(i+1)+': '+li.dataset.n, alt:'Stop '+(i+1)}).addTo(map);
-      m.on('click',function(){ show(i,false); map.panTo(LL(li)); }); pins.push(m); });
-    map.fitBounds(line.getBounds().pad(.25));
-    map.on('focus click',function(){ map.scrollWheelZoom.enable(); }); map.on('blur mouseout',function(){ map.scrollWheelZoom.disable(); });
-    var op=$('#wkOp'); op.hidden=false; op.querySelector('input').addEventListener('input',function(e){ plan.setOpacity(+e.target.value/100); });
-    var sb=$('#wkOSM'); sb.hidden=false; sb.addEventListener('click',function(){ var on=sb.getAttribute('aria-pressed')!=='true'; sb.setAttribute('aria-pressed',String(on));
-      if (on){ if (!osm) osm=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19, attribution:'Streets: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}); osm.addTo(map); osm.bringToBack(); }
-      else map.removeLayer(osm); });
-    paint(); };
-  var need=function(){ if (window.L){ start(); return; } if (need.on) return; need.on=1;
-    var l=document.createElement('link'); l.rel='stylesheet'; l.href='/vendor/leaflet-1.9.4/leaflet.css?v=1'; document.head.appendChild(l);
-    var s=document.createElement('script'); s.src='/vendor/leaflet-1.9.4/leaflet.js?v=1'; s.onload=start; document.head.appendChild(s); };
-  if ('IntersectionObserver' in window){ var io=new IntersectionObserver(function(e){ if (e.some(function(x){ return x.isIntersecting; })){ io.disconnect(); need(); } },{rootMargin:'300px'}); io.observe($('#wkMap')); } else need();
-  /* play the tour aloud: the browser's own voice reads each stop, then moves on */
-  var pb=$('#wkPlay'), playing=false, sy=window.speechSynthesis;
-  var say=function(){ if (!playing) return; var li=stops[cur], t=li.dataset.n+'. '+[].slice.call(li.querySelectorAll('.wk-then,.wk-now')).map(function(p){ return p.textContent; }).join(' ');
-    var u=new SpeechSynthesisUtterance(t); u.lang='en-US'; u.rate=.98;
-    u.onend=function(){ if (!playing) return; if (cur<N-1) setTimeout(function(){ if (playing){ show(cur+1); say(); } },1200); else { playing=false; pb.setAttribute('aria-pressed','false'); pb.textContent='Play the tour aloud'; } };
-    sy.cancel(); sy.speak(u); };
-  if (sy && window.SpeechSynthesisUtterance){ pb.hidden=false; pb.addEventListener('click',function(){ playing=!playing; pb.setAttribute('aria-pressed',String(playing)); pb.textContent=playing?'Stop reading':'Play the tour aloud'; if (playing) say(); else sy.cancel(); });
-    prev.addEventListener('click',function(){ if (playing) say(); }); next.addEventListener('click',function(){ if (playing) say(); }); addEventListener('pagehide',function(){ sy.cancel(); }); }
-  /* follow me on foot: your position on the plan, and each stop opens as you reach it; nothing leaves this device */
-  var fb=$('#wkFollow'), watch=null, me=null, fmsg=$('#wkProg');
-  if (navigator.geolocation){ fb.hidden=false; fb.addEventListener('click',function(){
-    if (watch!==null){ navigator.geolocation.clearWatch(watch); watch=null; fb.setAttribute('aria-pressed','false'); fb.textContent='Follow me on foot'; if (me && map) map.removeLayer(me); me=null; return; }
-    need(); fb.setAttribute('aria-pressed','true'); fb.textContent='Stop following';
-    watch=navigator.geolocation.watchPosition(function(p){ var here=[p.coords.latitude,p.coords.longitude];
-      if (map){ if (!me) me=L.circleMarker(here,{radius:8, className:'mu-me-pt', interactive:false}).addTo(map); else me.setLatLng(here); }
-      var best=-1, bd=1e9; stops.forEach(function(li,i){ var d=km(here,LL(li))*1000; if (d<bd){ bd=d; best=i; } });
-      if (bd>2000){ fmsg.textContent='You look to be away from Broadway. Following starts working when you are in downtown Cassopolis.'; return; }
-      if (bd<=40+Math.min(p.coords.accuracy||0,40) && best!==cur){ show(best); if (navigator.vibrate) navigator.vibrate(90); fmsg.textContent='You are at stop '+(best+1)+': '+stops[best].dataset.n+'.'; if (playing) say(); }
-    }, function(){ fmsg.textContent='No location shared, so following is off.'; fb.click(); }, {enableHighAccuracy:true, maximumAge:5000, timeout:30000}); }); }
-  /* save the walk for the street: the page, the plan, the map code and the postcards go into this device's saved copy */
-  var ob=$('#wkOff');
-  if ('caches' in window && navigator.serviceWorker && navigator.serviceWorker.controller){ ob.hidden=false; ob.addEventListener('click',function(){ ob.textContent='Saving…';
-    var urls=['/walk/','/img/cass1860.webp','/vendor/leaflet-1.9.4/leaflet.js?v=1','/vendor/leaflet-1.9.4/leaflet.css?v=1'].concat($$('.wk-list img').map(function(i){ return i.currentSrc||i.src; }), $$('link[rel=stylesheet][href*="?v="],script[src*="?v="]').map(function(e){ return e.getAttribute('href')||e.getAttribute('src'); }));
-    caches.keys().then(function(k){ return caches.open(k.filter(function(x){ return /^ps-[0-9a-f]{6,}$/.test(x); })[0]||'ps-files'); })
-      .then(function(c){ return Promise.all(urls.map(function(u){ return c.add(new Request(u,{cache:'reload'})).catch(function(){}); })); })
-      .then(function(){ return navigator.storage && navigator.storage.persist ? navigator.storage.persist() : false; })
-      .then(function(){ ob.textContent='Saved for no-signal use ✓'; fmsg.textContent='Saved. The walk, the 1860 plan and the postcards now open on this device without signal.'; })
-      .catch(function(){ ob.textContent='Could not save'; }); }); }
-  var h=location.hash.slice(1), at=stops.findIndex(function(li){ return li.id===h; });
-  show(at>=0? at : 0, false); if (at>=0) $('#wkBox').scrollIntoView();
-})();
-</script>
-    <aside class="colophon" aria-labelledby="colH">
+      <h2>Every stop</h2>
+      <ol class="wk-list"><li class="wk" id="first-courthouse" data-ll="41.9138,-86.0128" data-n="Site of the first courthouse">
+          <p class="mu-k">Stop 1 of 11 · built about 1836 (gone)<span class="wk-st"></span></p>
+          <h3>Site of the first courthouse</h3>
+          
+          <p class="wk-then"><b>Then.</b> Cass County’s first courthouse was a plain wooden building, 34 by 24 feet, ordered by the county board in 1835 for about $450. It stood north of the original village rather than on the public square, and served until the second courthouse opened in 1841.</p>
+          <p class="wk-now"><b>Now.</b> Nothing of it survives, and the exact lot has not been pinned down: this stop marks the stretch of Broadway where the 1906 county history places it.</p>
+          <p class="mu-a">West side of North Broadway, north of York Street</p>
+          <p class="wk-src"><a href="https://archive.org/details/twentiethcentury00glov" rel="noopener">source 1</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=242" rel="noopener">source 2</a> <a href="https://tedshideler.com/2022/10/10/the-cass-county-michigan-courthouse-1899-2003/" rel="noopener">source 3</a> <a href="https://www.leaderpub.com/?p=702332" rel="noopener">source 4</a></p>
+          <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
+        </li><li class="wk" id="carnegie-library" data-ll="41.9124,-86.01265" data-n="Local History Branch (Carnegie Library)">
+          <p class="mu-k">Stop 2 of 11 · built 1908-1909<span class="wk-st"></span></p>
+          <h3>Local History Branch (Carnegie Library)</h3>
+          
+          <p class="wk-then"><b>Then.</b> Built over the winter of 1908-09 with a $10,000 gift from Andrew Carnegie, this was the town’s public library for more than 80 years; Cassopolis was one of 53 Michigan communities to receive Carnegie library money. From 1947 to 1957 its basement also housed the Cass County Library, and after the 1993 merger that created the Cass District Library it reopened in October 1994 as the Local History Branch.</p>
+          <p class="wk-now"><b>Now.</b> The Cass District Library&#x27;s Local History Branch, a genealogy and county-history research library (Mon-Thu 9-4), restored in 2012 and renovated again in 2020-21.</p>
+          <p class="mu-a">145 N. Broadway, Cassopolis, MI 49031</p>
+          <p class="wk-src"><a href="https://www.cassdistrictlibrary.org/locations/local-history-branch/" rel="noopener">source 1</a> <a href="https://www.leaderpub.com/?p=618042" rel="noopener">source 2</a> <a href="https://www.leaderpub.com/?p=29535" rel="noopener">source 3</a> <a href="https://en.wikipedia.org/wiki/Cass_District_Library" rel="noopener">source 4</a></p>
+          <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
+        </li><li class="wk" id="historic-courthouse" data-ll="41.91202,-86.01243" data-n="Cass County Historic Courthouse">
+          <p class="mu-k">Stop 3 of 11 · built 1898-1900 (cornerstone Oct. 5, 1898; accepted Oct. 1900)<span class="wk-st"></span></p>
+          <h3>Cass County Historic Courthouse</h3>
+          
+          <p class="wk-then"><b>Then.</b> The stone courthouse with its tall clock tower was designed by the Grand Rapids firm Rush, Bowman &amp; Rush and finished in 1900 by the contractors James Rowson and August Mohnke, after the county dismissed its first builder in 1898. It cost $43,797.88 with furniture and heating, and stands on the northeast quarter of the old public square, where the 1841 courthouse stood for nearly sixty years. The county jail of 1852 stood just north of it.</p>
+          <p class="wk-now"><b>Now.</b> Empty after the courts moved out in 2003, it was restored with federal ARPA and USDA money and reopened in October 2024 as county offices: administrator, clerk/register of deeds, treasurer and the Board of Commissioners.</p>
+          <p class="mu-a">120 N. Broadway, Cassopolis, MI 49031</p>
+          <p class="wk-src"><a href="https://watershedvoice.com/2024/09/30/cass-county-historic-courthouse-reopening-after-major-renovation" rel="noopener">source 1</a> <a href="https://courthouses.co/?p=10460" rel="noopener">source 2</a> <a href="https://tedshideler.com/2022/10/10/the-cass-county-michigan-courthouse-1899-2003/" rel="noopener">source 3</a> <a href="https://leaderpub.com/?p=880680" rel="noopener">source 4</a> <a href="https://archive.org/details/twentiethcentury00glov" rel="noopener">source 5</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=243" rel="noopener">source 6</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=245" rel="noopener">source 7</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=246" rel="noopener">source 8</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=247" rel="noopener">source 9</a></p>
+          <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
+        </li><li class="wk" id="the-fort" data-ll="41.91177,-86.01266" data-n="“The Fort”: the county office building">
+          <p class="mu-k">Stop 4 of 11 · built 1860<span class="wk-st"></span></p>
+          <h3>“The Fort”: the county office building</h3>
+          
+          <p class="wk-then"><b>Then.</b> Built in 1860, this brick building held the county’s offices — the clerk, the probate court, the register of deeds and the treasurer — until the stone courthouse across the way was finished in 1899. It was later a laundry, and in 1923 the Masons bought it for their temple and added the large hall at the back in 1925. Somewhere along the way it took the name “The Fort”; no source we have read says why.</p>
+          <p class="wk-now"><b>Now.</b> The state lists it on the Michigan State Register of Historic Sites (1985) as the Cass County Office Building/Masonic Temple. For some years it has been the Turtle Lodge, an event hall with offices and apartments; it changed hands in 2022.</p>
+          <p class="mu-a">105 N. Broadway, Cassopolis, MI 49031</p>
+          <p class="wk-src"><a href="https://en.wikipedia.org/wiki/List_of_Michigan_State_Historic_Sites_in_Cass_County" rel="noopener">source 1</a> <a href="https://migenweb.org/cass/postcards/county_photos.htm" rel="noopener">source 2</a> <a href="https://tedshideler.com/2022/10/10/the-cass-county-michigan-courthouse-1899-2003/" rel="noopener">source 3</a> <a href="https://leaderpub.com/?p=736830" rel="noopener">source 4</a> <a href="https://leaderpub.com/?p=860064" rel="noopener">source 5</a> <a href="https://www.weichert.com/133779767/" rel="noopener">source 6</a> <a href="https://archive.org/details/twentiethcentury00glov" rel="noopener">source 7</a></p>
+          <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
+        </li><li class="wk" id="public-square" data-ll="41.91165,-86.01255" data-n="The Old Public Square (Broadway &amp; State)">
+          <p class="mu-k">Stop 5 of 11 · platted 1831<span class="wk-st"></span></p>
+          <h3>The Old Public Square (Broadway &amp; State)</h3>
+          <figure class="wk-pc"><picture><source type="image/avif" srcset="/img/strip/carriages-800.avif 800w, /img/strip/carriages.avif 1600w" sizes="(min-width:900px) 30rem, 92vw"><img src="/img/strip/carriages-800.webp" srcset="/img/strip/carriages-800.webp 800w, /img/strip/carriages.webp 1600w" sizes="(min-width:900px) 30rem, 92vw" width="1600" height="400" alt="Carriages drawn up on Broadway, from an old postcard" loading="lazy" decoding="async"></picture><figcaption>Carriages drawn up on Broadway, from an old postcard</figcaption></figure>
+          <p class="wk-then"><b>Then.</b> The 1831 village plat set aside a public square of 26 by 20 rods for county buildings, with Broadway and State Street crossing at its center. In 1839 the county deeded most of it to the &#x27;Court House Company,&#x27; which built the 1841 courthouse. Merchants then built on the other quarters, among them Asa Kingsbury&#x27;s brick stores of 1869-70 on the southwest quarter. The county sued in 1879 to win the square back and lost in the Michigan Supreme Court in 1880, which is why the old square is now a row of business blocks. Early taverns faced it too: the Union Hotel on the west side of Broadway and the Eagle Hotel on the east side.</p>
+          <p class="wk-now"><b>Now.</b> A downtown crossroads of two state highways, with streetscape improvements laid along Broadway and East State in 2020.</p>
+          <p class="mu-a">Intersection of Broadway (M-62) and State Street (M-60)</p>
+          <p class="wk-src"><a href="https://archive.org/details/twentiethcentury00glov" rel="noopener">source 1</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=176" rel="noopener">source 2</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=177" rel="noopener">source 3</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=180" rel="noopener">source 4</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=181" rel="noopener">source 5</a> <a href="https://www.leaderpub.com/?p=830414" rel="noopener">source 6</a></p>
+          <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
+        </li><li class="wk" id="gem-theatre-site" data-ll="41.9115,-86.01375" data-n="The old courthouse’s second life">
+          <p class="mu-k">Stop 6 of 11 · built 1841 (moved 1898-99; razed 1968)<span class="wk-st"></span></p>
+          <h3>The old courthouse’s second life</h3>
+          
+          <p class="wk-then"><b>Then.</b> The county’s second courthouse was a two-storey frame building with classical columns, finished in 1841 for $6,000. When the stone courthouse replaced it, it was sold at auction for $25 and moved a block west. A theatre history says it became the 420-seat Colonial Opera House, then the Colonial Theatre in 1909, and in 1937 was remodelled as the Gem Theatre, which showed films until about 1960; the 1906 county history, though, calls it a storage house, so its early years here are uncertain.</p>
+          <p class="wk-now"><b>Now.</b> The building was torn down in 1968. The county’s first log jail, finished in 1834, also stood on this stretch of State Street west of Broadway.</p>
+          <p class="mu-a">State Street at Disbrow Street, one block west of Broadway</p>
+          <p class="wk-src"><a href="https://cinematreasures.org/theaters/18611" rel="noopener">source 1</a> <a href="https://www.leaderpub.com/?p=702332" rel="noopener">source 2</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=242" rel="noopener">source 3</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=243" rel="noopener">source 4</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=244" rel="noopener">source 5</a> <a href="https://tedshideler.com/2022/10/10/the-cass-county-michigan-courthouse-1899-2003/" rel="noopener">source 6</a></p>
+          <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
+        </li><li class="wk" id="bank-corner" data-ll="41.91118,-86.01272" data-n="The bank corner">
+          <p class="mu-k">Stop 7 of 11 · built c. 1900 per sale listing; renovated 1990<span class="wk-st"></span></p>
+          <h3>The bank corner</h3>
+          <figure class="wk-pc"><picture><source type="image/avif" srcset="/img/strip/broadway1-800.avif 800w, /img/strip/broadway1.avif 1600w" sizes="(min-width:900px) 30rem, 92vw"><img src="/img/strip/broadway1-800.webp" srcset="/img/strip/broadway1-800.webp 800w, /img/strip/broadway1.webp 1600w" sizes="(min-width:900px) 30rem, 92vw" width="1600" height="400" alt="Broadway in the days of wagons, from an old postcard" loading="lazy" decoding="async"></picture><figcaption>Broadway in the days of wagons, from an old postcard</figcaption></figure>
+          <p class="wk-then"><b>Then.</b> Banking began on this side of the old square in 1857, when Asa Kingsbury opened a private bank, and in 1869–70 he built a brick banking house among the new stores on the square’s southwest quarter. The First National Bank of Cassopolis was organised in 1870 with Kingsbury as president, and around 1899 it bought $32,000 of the county’s bonds to pay for the new courthouse.</p>
+          <p class="wk-now"><b>Now.</b> The two-storey brick building at 116 South Broadway is a former bank with its vaults still inside. Whether it is the First National’s own building has not been confirmed.</p>
+          <p class="mu-a">116 S. Broadway, Cassopolis, MI 49031 (corner of W. State St.)</p>
+          <p class="wk-src"><a href="https://carwm.resimplifi.com/listings/d8ce9f41-former-downtown-bank-facility-cassopolis-mi" rel="noopener">source 1</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=181" rel="noopener">source 2</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=228" rel="noopener">source 3</a> <a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;page=246" rel="noopener">source 4</a></p>
+          <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
+        </li><li class="wk" id="presbyterian-church" data-ll="41.91151,-86.01055" data-n="United Presbyterian Church">
+          <p class="mu-k">Stop 8 of 11 · begun early 1890s<span class="wk-st"></span></p>
+          <h3>United Presbyterian Church</h3>
+          
+          <p class="wk-then"><b>Then.</b> The congregation was founded in March 1842 as the First Presbyterian Church, when Cassopolis was still &#x27;little more than a clearing in the woods.&#x27; Work on the present building began in the early 1890s, and in 1938 the congregation joined with the village&#x27;s Baptist church. It long served as a federated church for several denominations before taking its present Presbyterian name in 1968.</p>
+          <p class="wk-now"><b>Now.</b> Still a Presbyterian congregation, half a block east of Broadway.</p>
+          <p class="mu-a">209 E. State St., Cassopolis, MI 49031</p>
+          <p class="wk-src"><a href="https://www.leaderpub.com/?p=782143" rel="noopener">source 1</a></p>
+          <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
+        </li><li class="wk" id="old-post-office" data-ll="41.91065,-86.01241" data-n="The old post office storefront">
+          <p class="mu-k">Stop 9 of 11 · late 1800s (a wainscot board inside is signed 1897)<span class="wk-st"></span></p>
+          <h3>The old post office storefront</h3>
+          <figure class="wk-pc"><picture><source type="image/avif" srcset="/img/strip/broadway3-800.avif 800w, /img/strip/broadway3.avif 1600w" sizes="(min-width:900px) 30rem, 92vw"><img src="/img/strip/broadway3-800.webp" srcset="/img/strip/broadway3-800.webp 800w, /img/strip/broadway3.webp 1600w" sizes="(min-width:900px) 30rem, 92vw" width="1600" height="400" alt="Broadway when the first cars came, from an old postcard" loading="lazy" decoding="async"></picture><figcaption>Broadway when the first cars came, from an old postcard</figcaption></figure>
+          <p class="wk-then"><b>Then.</b> Local accounts say this storefront was one of the village’s post offices in the late 1800s; a board inside is signed 1897. It later held a barbershop and a thrift shop, and about 2011 a local dentist, Dr. Roger Pecina, fitted it out as a Prohibition-style room with a salvaged 38-foot bar.</p>
+          <p class="wk-now"><b>Now.</b> Steve and Shelley Schroeder bought it in 2018 and have run it since 2021 as Holden Green Tavern. Check before you go in.</p>
+          <p class="mu-a">151 S. Broadway, Cassopolis, MI 49031</p>
+          <p class="wk-src"><a href="https://leaderpub.com/?p=851367" rel="noopener">source 1</a> <a href="https://www.leaderpub.com/?p=217543" rel="noopener">source 2</a> <a href="https://www.leaderpub.com/?p=568162" rel="noopener">source 3</a></p>
+          <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
+        </li><li class="wk" id="sinclair-station" data-ll="41.90962,-86.0126" data-n="The Sinclair Station">
+          <p class="mu-k">Stop 10 of 11 · mid-20th century (date not found); restored c. 2009-2012<span class="wk-st"></span></p>
+          <h3>The Sinclair Station</h3>
+          
+          <p class="wk-then"><b>Then.</b> An old DX filling station that had stood empty for about thirty years was bought by Dr. Roger Pecina, who spent three years restoring it as a 1952-style Sinclair station, with period pumps, a vintage police car and a wrecker. It opened free to visitors around 2011, although no Sinclair station had ever stood here.</p>
+          <p class="wk-now"><b>Now.</b> A 2019 report said the antiques had been sold and the building had become an auto-detailing shop. See it from the sidewalk.</p>
+          <p class="mu-a">200 S. Broadway (Broadway at Jefferson St.), Cassopolis, MI 49031</p>
+          <p class="wk-src"><a href="https://www.leaderpub.com/?p=568232" rel="noopener">source 1</a> <a href="https://abc57.com/news/retired-dentist-trying-to-boost-tourism-in-cassopolis" rel="noopener">source 2</a> <a href="https://www.roadsideamerica.com/tip/34584" rel="noopener">source 3</a> <a href="https://www.leaderpub.com/?p=568162" rel="noopener">source 4</a></p>
+          <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
+        </li><li class="wk" id="log-cabin" data-ll="41.90652,-86.01267" data-n="Pioneer Log Cabin Museum">
+          <p class="mu-k">Stop 11 of 11 · built 1923 (built May 23; dedicated June 20, 1923)<span class="wk-st"></span></p>
+          <h3>Pioneer Log Cabin Museum</h3>
+          <figure class="wk-pc"><picture><source type="image/avif" srcset="/img/strip/cabin-postcard-800.avif 800w, /img/strip/cabin-postcard.avif 1600w" sizes="(min-width:900px) 30rem, 92vw"><img src="/img/strip/cabin-postcard-800.webp" srcset="/img/strip/cabin-postcard-800.webp 800w, /img/strip/cabin-postcard.webp 1600w" sizes="(min-width:900px) 30rem, 92vw" width="1600" height="400" alt="The Pioneer Log Cabin, Cassopolis, on an old postcard" loading="lazy" decoding="async"></picture><figcaption>The Pioneer Log Cabin, Cassopolis, on an old postcard</figcaption></figure>
+          <p class="wk-then"><b>Then.</b> Proposed by Charles Harmon of the Cass County Pioneer Society, the cabin was raised in a single day, May 23, 1923, by a crew of 46 men led by Ed Ferguson. They used numbered logs donated from farms across the county, each matched to its giver and tree species. Its doors are black walnut, and its stair rail came from an 1845 barn. It opened as a pioneer relic museum in June 1924.</p>
+          <p class="wk-now"><b>Now.</b> A volunteer-run museum in a village park, open at times through the season; see the museum’s website, pioneerlogcabinmuseum.com.</p>
+          <p class="mu-a">400 S. Broadway, Cassopolis, MI 49031</p>
+          <p class="wk-src"><a href="https://cassopolis-mi.us/services/parks_and_recreation.php" rel="noopener">source 1</a> <a href="https://en.wikipedia.org/wiki/Pioneer_Log_Cabin_Museum" rel="noopener">source 2</a> <a href="https://digitalcollections.detroitpubliclibrary.org/islandora/object/islandora%3A221296" rel="noopener">source 3</a></p>
+          <p class="mu-me"><button type="button" class="mu-sb wk-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>
+        </li></ol>
+      <h2>The fire-insurance sheets</h2><p>The Sanborn Map Company drew Cassopolis building by building for fire insurers. Each sheet shows what every building was made of and what it was used for. Open one beside this walk:</p><ul class="dis"><li><a href="https://www.loc.gov/item/sanborn03951_001/" rel="noopener">1884</a></li><li><a href="https://www.loc.gov/item/sanborn03951_002/" rel="noopener">1892</a></li><li><a href="https://www.loc.gov/item/sanborn03951_003/" rel="noopener">1899</a></li><li><a href="https://www.loc.gov/item/sanborn03951_004/" rel="noopener">1909</a></li><li><a href="https://www.loc.gov/item/sanborn03951_005/" rel="noopener">1924</a></li><li><a href="https://www.loc.gov/item/sanborn03951_006/" rel="noopener">1947</a></li></ul>
+      <h2>Historical markers in town</h2><ul class="dis"><li><a href="https://en.wikipedia.org/wiki/List_of_Michigan_State_Historic_Sites_in_Cass_County" rel="noopener">Cass County Courthouse (Michigan State Register of Historic Sites, 1976)</a> · 120 N. Broadway, Cassopolis</li><li><a href="https://www.hmdb.org/m.asp?m=75408" rel="noopener">Cass County Veterans Memorial</a> · Cass County Veterans Memorial Roadside Park, M-62 north of Beeson St., near Cassopolis (41.94007, -86.03508)</li></ul>
+      <h2>Walking it for real</h2>
+      <ul class="dis">
+        <li><b>Start at the north end and walk south with the stops in order</b>; the whole walk is under a mile.</li>
+        <li><b>Let the page follow you.</b> “Follow me on foot” opens each stop as you reach it, and “Play the tour aloud” reads it to you, so you can keep your eyes on the street.</li>
+        <li><b>Stamp as you go.</b> “I’m here” checks your location once, on your phone, and stamps that stop. Nothing leaves your device.</li>
+        <li><b>Stay on the sidewalk</b> and on public ground, and be kind to the businesses: many of these buildings are still working shops and offices.</li>
+        <li><b>Take the same picture.</b> Where a stop has an old postcard, stand where the photographer stood and <a href="/postcards/">send us your photo</a>.</li>
+      </ul>
+      <p class="note">The stops come from the county histories of 1875, 1882 and 1906, the Sanborn sheets, and the village and county records, each linked under its stop. The plan is the 1860 county wall map’s inset of Cassopolis. Where a date or name could not be confirmed, the stop says so. Corrections are welcome at research@projectscroll.com.</p>
+  <script>
+  (function(){ "use strict";
+    var $=function(s){ return document.querySelector(s); }, $$=function(s){ return [].slice.call(document.querySelectorAll(s)); };
+    var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var stops=$$('.wk'), N=stops.length, cur=0, map=null, pins=[], plan=null, osm=null, line=null;
+    var seen={}, stamp={}; try{ seen=JSON.parse(localStorage.getItem('ps-walk')||'{}')||{}; stamp=JSON.parse(localStorage.getItem('ps-walk-stamp')||'{}')||{}; }catch(e){}
+    var save=function(){ try{ localStorage.setItem('ps-walk',JSON.stringify(seen)); localStorage.setItem('ps-walk-stamp',JSON.stringify(stamp)); }catch(e){} };
+    var LL=function(li){ return li.dataset.ll.split(',').map(Number); };
+    var km=function(a,b){ var R=6371, r=Math.PI/180, dl=(b[0]-a[0])*r, dn=(b[1]-a[1])*r, h=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dn/2)*Math.sin(dn/2); return 2*R*Math.asin(Math.sqrt(h)); };
+    var stage=$('#wkStage'), num=$('#wkNum'), prev=$('#wkPrev'), next=$('#wkNext'), prog=$('#wkProg');
+    var paint=function(){ var n=Object.keys(seen).length; prog.textContent=n? 'You have walked '+n+' of '+N+' stops'+(Object.keys(stamp).length? ', and stamped '+Object.keys(stamp).length+' in person' : '')+'.' : '';
+      stops.forEach(function(li,i){ var s=li.querySelector('.wk-st'); s.textContent=stamp[li.id]? ' · stamped '+stamp[li.id] : (seen[li.id]? ' · walked' : '');
+        var b=li.querySelector('.wk-sb'); if (b){ b.hidden=!navigator.geolocation; b.disabled=!!stamp[li.id]; b.textContent=stamp[li.id]? 'Stamped ✓' : 'I’m here: stamp it'; }
+        if (pins[i]){ var el=pins[i].getElement(); if (el){ el.classList.toggle('seen',!!seen[li.id]); el.classList.toggle('cur',i===cur); } } }); };
+    var show=function(i, fly){ cur=(i+N)%N; var li=stops[cur]; seen[li.id]=1; save();
+      stage.innerHTML=''; var c=document.createElement('div'); c.className='wk wk-card'; c.innerHTML=li.innerHTML; c.querySelectorAll('[id]').forEach(function(x){ x.removeAttribute('id'); }); c.querySelectorAll('.mu-me,.mu-msg,.cshare-w').forEach(function(x){ x.remove(); });
+      var h3=c.querySelector('h3'); if (h3){ var h2=document.createElement('h2'); h2.className='wk-h'; h2.textContent=h3.textContent; h3.replaceWith(h2); }
+      stage.appendChild(c); num.textContent='Stop '+(cur+1)+' of '+N; prev.disabled=false; next.disabled=false;
+      if (map && fly!==false){ map.flyTo(LL(li), 18, {duration:calm?0:.8}); }
+      if (Object.keys(seen).length===N && window.psEarn) window.psEarn('walker');
+      paint(); };
+    prev.addEventListener('click',function(){ show(cur-1); }); next.addEventListener('click',function(){ show(cur+1); });
+    $('#wkBox').addEventListener('keydown',function(e){ if (e.target.closest('input,select,textarea')) return; if (e.key==='ArrowRight'){ show(cur+1); e.preventDefault(); } if (e.key==='ArrowLeft'){ show(cur-1); e.preventDefault(); } });
+    stops.forEach(function(li,i){ var b=li.querySelector('.wk-sb'), m=li.querySelector('.mu-msg'); if (!b) return;
+      b.addEventListener('click',function(){ if (!navigator.geolocation) return; m.textContent='Checking where you are…';
+        navigator.geolocation.getCurrentPosition(function(p){ var d=km([p.coords.latitude,p.coords.longitude], LL(li)), reach=.12+Math.min(p.coords.accuracy||0,300)/1000;
+          if (d<=reach){ stamp[li.id]=new Date().toISOString().slice(0,10); seen[li.id]=1; save(); paint(); m.textContent='Stamped. It is in your passport, on this device only.'; if (window.psEarn) window.psEarn('stamp'); if (window.psStampCheck) window.psStampCheck(); }
+          else m.textContent='You look to be about '+(d*0.621371<10?(d*0.621371).toFixed(1):Math.round(d*0.621371))+' mi away. The stamp works on the spot.'; },
+          function(){ m.textContent='No location shared, so nothing changed.'; }, {enableHighAccuracy:true, timeout:20000, maximumAge:0}); }); });
+    /* the map: the 1860 plan of the village with the stops on it; today's streets only if asked for */
+    var start=function(){ if (map || !window.L) return;
+      [].forEach.call(document.querySelectorAll('.mu-mapph'),function(x){ x.remove(); });
+    map=L.map('wkMap',{zoomSnap:.25, minZoom:15, maxZoom:19, scrollWheelZoom:false, maxBounds:[[41.9, -86.03], [41.925, -85.995]]}); map.attributionControl.setPrefix(false);
+      /* today's streets, drawn here from OpenStreetMap data saved with the site */
+      var dec=function(a){ var o=[], la=0, lo=0; for (var i=0;i<a.length;i+=2){ la+=a[i]; lo+=a[i+1]; o.push([la/1e5, lo/1e5]); } return o; };
+      map.createPane('today').style.zIndex=300;
+      fetch('/map/cassopolis/today.json?v=1').then(function(r){ return r.json(); }).then(function(d){
+        (d.w||[]).forEach(function(p){ L.polygon(p.map(dec),{pane:'today', className:'wk-w', interactive:false}).addTo(map); });
+        [['s','wk-w2'],['r','wk-r'],['m','wk-m'],['x','wk-x']].forEach(function(k){ (d[k[0]]||[]).forEach(function(a){ L.polyline(dec(a),{pane:'today', className:k[1], interactive:false}).addTo(map); }); });
+        map.attributionControl.addAttribution('Today’s streets: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'); }).catch(function(){});
+      var PL=["/img/cass1860.webp", [[41.9061, -86.018103], [41.917772, -86.007168]], "1860 plan: Geil, Harley &amp; Siverd, Library of Congress"]; map.createPane('plan').style.zIndex=350;
+      if (PL){ plan=L.imageOverlay(PL[0],PL[1],{pane:'plan', opacity:.85, className:'wk-plan'}).addTo(map); map.attributionControl.addAttribution(PL[2]); }
+      line=L.polyline([[41.9138, -86.0128], [41.9124, -86.01265], [41.91202, -86.01243], [41.91177, -86.01266], [41.91165, -86.01255], [41.9115, -86.01375], [41.91118, -86.01272], [41.91151, -86.01055], [41.91065, -86.01241], [41.90962, -86.0126], [41.90652, -86.01267]],{className:'wk-route', interactive:false}).addTo(map);
+      stops.forEach(function(li,i){ var m=L.marker(LL(li),{icon:L.divIcon({className:'wk-pin', html:'<span>'+(i+1)+'</span>', iconSize:[26,26]}), title:'Stop '+(i+1)+': '+li.dataset.n, alt:'Stop '+(i+1)}).addTo(map);
+        m.on('click',function(){ show(i,false); map.panTo(LL(li)); }); pins.push(m); });
+      map.fitBounds(line.getBounds().pad(.25));
+      map.on('focus click',function(){ map.scrollWheelZoom.enable(); }); map.on('blur mouseout',function(){ map.scrollWheelZoom.disable(); });
+      var op=$('#wkOp'); if (plan){ op.hidden=false; } op.querySelector('input').addEventListener('input',function(e){ plan.setOpacity(+e.target.value/100); });
+      var sb=$('#wkOSM'); sb.hidden=false; sb.addEventListener('click',function(){ var on=sb.getAttribute('aria-pressed')!=='true'; sb.setAttribute('aria-pressed',String(on));
+        if (on){ if (!osm) osm=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19, attribution:'Streets: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}); osm.addTo(map); osm.bringToBack(); }
+        else map.removeLayer(osm); });
+      paint(); };
+    var need=function(){ if (window.L){ start(); return; } if (need.on) return; need.on=1;
+      var l=document.createElement('link'); l.rel='stylesheet'; l.href='/vendor/leaflet-1.9.4/leaflet.css?v=1'; document.head.appendChild(l);
+      var s=document.createElement('script'); s.src='/vendor/leaflet-1.9.4/leaflet.js?v=1'; s.onload=start; document.head.appendChild(s); };
+    if ('IntersectionObserver' in window){ var io=new IntersectionObserver(function(e){ if (e.some(function(x){ return x.isIntersecting; })){ io.disconnect(); need(); } },{rootMargin:'300px'}); io.observe($('#wkMap')); } else need();
+    /* play the tour aloud: the browser's own voice reads each stop, then moves on */
+    var pb=$('#wkPlay'), playing=false, sy=window.speechSynthesis;
+    var say=function(){ if (!playing) return; var li=stops[cur], t=li.dataset.n+'. '+[].slice.call(li.querySelectorAll('.wk-then,.wk-now')).map(function(p){ return p.textContent; }).join(' ');
+      var u=new SpeechSynthesisUtterance(t); u.lang='en-US'; u.rate=.98;
+      u.onend=function(){ if (!playing) return; if (cur<N-1) setTimeout(function(){ if (playing){ show(cur+1); say(); } },1200); else { playing=false; pb.setAttribute('aria-pressed','false'); pb.textContent='Play the tour aloud'; } };
+      sy.cancel(); sy.speak(u); };
+    if (sy && window.SpeechSynthesisUtterance){ pb.hidden=false; pb.addEventListener('click',function(){ playing=!playing; pb.setAttribute('aria-pressed',String(playing)); pb.textContent=playing?'Stop reading':'Play the tour aloud'; if (playing) say(); else sy.cancel(); });
+      prev.addEventListener('click',function(){ if (playing) say(); }); next.addEventListener('click',function(){ if (playing) say(); }); addEventListener('pagehide',function(){ sy.cancel(); }); }
+    /* follow me on foot: your position on the plan, and each stop opens as you reach it; nothing leaves this device */
+    var fb=$('#wkFollow'), watch=null, me=null, fmsg=$('#wkProg');
+    if (navigator.geolocation){ fb.hidden=false; fb.addEventListener('click',function(){
+      if (watch!==null){ navigator.geolocation.clearWatch(watch); watch=null; fb.setAttribute('aria-pressed','false'); fb.textContent='Follow me on foot'; if (me && map) map.removeLayer(me); me=null; return; }
+      need(); fb.setAttribute('aria-pressed','true'); fb.textContent='Stop following';
+      watch=navigator.geolocation.watchPosition(function(p){ var here=[p.coords.latitude,p.coords.longitude];
+        if (map){ if (!me) me=L.circleMarker(here,{radius:8, className:'mu-me-pt', interactive:false}).addTo(map); else me.setLatLng(here); }
+        var best=-1, bd=1e9; stops.forEach(function(li,i){ var d=km(here,LL(li))*1000; if (d<bd){ bd=d; best=i; } });
+        if (bd>2000){ fmsg.textContent='You look to be away from Broadway. Following starts working when you are in downtown Cassopolis.'; return; }
+        if (bd<=40+Math.min(p.coords.accuracy||0,40) && best!==cur){ show(best); if (navigator.vibrate) navigator.vibrate(90); fmsg.textContent='You are at stop '+(best+1)+': '+stops[best].dataset.n+'.'; if (playing) say(); }
+      }, function(){ fmsg.textContent='No location shared, so following is off.'; fb.click(); }, {enableHighAccuracy:true, maximumAge:5000, timeout:30000}); }); }
+    /* save the walk for the street: the page, the plan, the map code and the postcards go into this device's saved copy */
+    var ob=$('#wkOff'), PLANURL="/img/cass1860.webp";
+    if ('caches' in window && navigator.serviceWorker && navigator.serviceWorker.controller){ ob.hidden=false; ob.addEventListener('click',function(){ ob.textContent='Saving…';
+      var urls=['/walk/','/map/cassopolis/today.json?v=1'].concat(PLANURL? [PLANURL] : []).concat(['/vendor/leaflet-1.9.4/leaflet.js?v=1','/vendor/leaflet-1.9.4/leaflet.css?v=1']).concat($$('.wk-list img').map(function(i){ return i.currentSrc||i.src; }), $$('link[rel=stylesheet][href*="?v="],script[src*="?v="]').map(function(e){ return e.getAttribute('href')||e.getAttribute('src'); }));
+      caches.keys().then(function(k){ return caches.open(k.filter(function(x){ return /^ps-[0-9a-f]{6,}$/.test(x); })[0]||'ps-files'); })
+        .then(function(c){ return Promise.all(urls.map(function(u){ return c.add(new Request(u,{cache:'reload'})).catch(function(){}); })); })
+        .then(function(){ return navigator.storage && navigator.storage.persist ? navigator.storage.persist() : false; })
+        .then(function(){ ob.textContent='Saved for no-signal use ✓'; fmsg.textContent='Saved. The walk, its map and its pictures now open on this device without signal.'; })
+        .catch(function(){ ob.textContent='Could not save'; }); }); }
+    var h=location.hash.slice(1), at=stops.findIndex(function(li){ return li.id===h; });
+    show(at>=0? at : 0, false); if (at>=0) $('#wkBox').scrollIntoView();
+  })();
+  </script>
+      <aside class="colophon" aria-labelledby="colH">
       <h2 id="colH">Sources cited on this page</h2>
       <ol><li><a href="https://archive.org/details/twentiethcentury00glov" rel="noopener">source 1</a> <span class="col-host">Internet Archive</span></li><li><a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;amp;page=242" rel="noopener">source 2</a> <span class="col-host">Internet Archive</span></li><li><a href="https://www.cassdistrictlibrary.org/locations/local-history-branch/" rel="noopener">source 1</a> <span class="col-host">Cass District Library</span></li><li><a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;amp;page=243" rel="noopener">source 6</a> <span class="col-host">Internet Archive</span></li><li><a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;amp;page=245" rel="noopener">source 7</a> <span class="col-host">Internet Archive</span></li><li><a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;amp;page=246" rel="noopener">source 8</a> <span class="col-host">Internet Archive</span></li><li><a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;amp;page=247" rel="noopener">source 9</a> <span class="col-host">Internet Archive</span></li><li><a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;amp;page=176" rel="noopener">source 2</a> <span class="col-host">Internet Archive</span></li><li><a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;amp;page=177" rel="noopener">source 3</a> <span class="col-host">Internet Archive</span></li><li><a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;amp;page=180" rel="noopener">source 4</a> <span class="col-host">Internet Archive</span></li><li><a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;amp;page=181" rel="noopener">source 5</a> <span class="col-host">Internet Archive</span></li><li><a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;amp;page=244" rel="noopener">source 5</a> <span class="col-host">Internet Archive</span></li><li><a href="https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&amp;amp;page=228" rel="noopener">source 3</a> <span class="col-host">Internet Archive</span></li><li><a href="https://www.loc.gov/item/sanborn03951_001/" rel="noopener">1884</a> <span class="col-host">Library of Congress</span></li><li><a href="https://www.loc.gov/item/sanborn03951_002/" rel="noopener">1892</a> <span class="col-host">Library of Congress</span></li><li><a href="https://www.loc.gov/item/sanborn03951_003/" rel="noopener">1899</a> <span class="col-host">Library of Congress</span></li><li><a href="https://www.loc.gov/item/sanborn03951_004/" rel="noopener">1909</a> <span class="col-host">Library of Congress</span></li><li><a href="https://www.loc.gov/item/sanborn03951_005/" rel="noopener">1924</a> <span class="col-host">Library of Congress</span></li><li><a href="https://www.loc.gov/item/sanborn03951_006/" rel="noopener">1947</a> <span class="col-host">Library of Congress</span></li></ol>
       <p class="note">Every link above opens the source where it is held. If one has moved, <a href="mailto:research@projectscroll.com?subject=A%20broken%20link">tell us</a>.</p>
@@ -295,6 +303,6 @@
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=d6cb2950" defer></script>
+<script src="/site.min.js?v=89a64aac" defer></script>
 </body>
 </html>

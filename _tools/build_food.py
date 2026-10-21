@@ -28,6 +28,7 @@ def card(d):
         {f'<p>{E(d["what"])}</p>' if d.get('what') else ''}
         {f'<p class="mu-a">{E(d["address"])}</p>' if d.get('address') else ''}
         <p class="mu-acts">{' · '.join(acts)}</p>
+        {'<p class="mu-me"><button type="button" class="mu-sb fd-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>' if d.get('ll') else ''}
       </li>'''
 def group(ty):
     out=''
@@ -73,6 +74,7 @@ JS = r'''<script>
   var go=function(li){ li.scrollIntoView({behavior:glide, block:'center'}); li.classList.remove('flash'); void li.offsetWidth; li.classList.add('flash'); };
   var pins=function(){ marks.forEach(function(m){ var on=!m.li.hidden; if (on && !map.hasLayer(m.c)) m.c.addTo(map); if (!on && map.hasLayer(m.c)) map.removeLayer(m.c); }); };
   var start=function(){ if (map || !window.L) return;
+    [].forEach.call(document.querySelectorAll('.mu-mapph'),function(x){ x.remove(); });
     map=L.map('fdMap',{zoomSnap:.25, minZoom:7, maxZoom:17, scrollWheelZoom:false, maxBounds:[[40.9,-87.9],[42.95,-84.3]]}); map.attributionControl.setPrefix(false);
     map.fitBounds([[41.42,-86.95],[42.43,-85.35]]);
     map.on('focus click',function(){ map.scrollWheelZoom.enable(); }); map.on('blur mouseout',function(){ map.scrollWheelZoom.disable(); });
@@ -111,6 +113,16 @@ JS = r'''<script>
         S.querySelectorAll('.fd-st').forEach(function(h){ h.classList.add('gone'); }); });
       nm.textContent='Sorted from where you are now. Your location stays on this device.'; draw(); },
       function(){ nm.textContent='No location shared, so nothing changed.'; }, {maximumAge:600000, timeout:15000}); });
+  /* a stamp for the table: pressing "I'm here" at the place itself; the location is checked once and stays on this device */
+  var fst={}; try{ fst=JSON.parse(localStorage.getItem('ps-food-stamp')||'{}')||{}; }catch(e){}
+  var fpaint=function(){ items.forEach(function(li){ var b=li.querySelector('.fd-sb'); if (!b) return; b.hidden=!navigator.geolocation; b.disabled=!!fst[li.id]; b.textContent=fst[li.id]? 'Stamped ✓ '+fst[li.id] : 'I’m here: stamp it'; }); };
+  items.forEach(function(li){ var b=li.querySelector('.fd-sb'), m=li.querySelector('.mu-msg'); if (!b) return;
+    b.addEventListener('click',function(){ m.textContent='Checking where you are…';
+      navigator.geolocation.getCurrentPosition(function(p){ var d=km([p.coords.latitude,p.coords.longitude], li.dataset.ll.split(',').map(Number)), reach=.35+Math.min(p.coords.accuracy||0,400)/1000;
+        if (d<=reach){ fst[li.id]=new Date().toISOString().slice(0,10); try{ localStorage.setItem('ps-food-stamp',JSON.stringify(fst)); }catch(e){} fpaint(); m.innerHTML='Stamped. It is in your <a href="/passport/">passport</a>, on this device only.'; if (window.psEarn) window.psEarn('stamp'); if (window.psStampCheck) window.psStampCheck(); }
+        else m.textContent='You look to be about '+((d*.621371)<10?(d*.621371).toFixed(1):Math.round(d*.621371))+' mi away. The stamp works at the door.'; },
+        function(){ m.textContent='No location shared, so nothing changed.'; }, {enableHighAccuracy:true, timeout:20000, maximumAge:0}); }); });
+  fpaint();
   /* the recipe box: ticks for the ones you have cooked, kept on this device */
   var made={}; try{ made=JSON.parse(localStorage.getItem('ps-cooked')||'{}')||{}; }catch(e){}
   $$('.rc').forEach(function(li){ var b=document.createElement('button'); b.type='button'; b.className='mu-bb rc-b';

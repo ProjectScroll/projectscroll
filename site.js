@@ -531,7 +531,13 @@ window.PS_BADGES=[
   ['visitor','Out in the field','Mark three museums or historic places as “Been there.”'],
   ['stamp','Passport stamp','Stamp a museum or historic place by standing at its door.'],
   ['walker','Broadway walker','Walk every stop of the Broadway Virtual Walk.'],
+  ['walker2','Front Street walker','Walk every stop of the Front Street walk in Dowagiac.'],
   ['cook','From the old kitchen','Cook a recipe from the valley kitchen and tick it off.'],
+  ['beneath','What lies beneath','Light the miner’s lamp and look closely at the heron.'],
+  ['pass10','Ten stamps','Collect ten stamps in your passport, at museums, walks, tables and festivals.'],
+  ['pass25','Twenty-five stamps','Collect twenty-five stamps in your passport.'],
+  ['pass50','Fifty stamps','Collect fifty stamps in your passport.'],
+  ['harvest','The harvest trail','In the fall, stamp the mill, the orchard and the stove town: Bonneyville Mill, Jollay Orchards and the Dowagiac Area History Museum.'],
   ['notes','Field notes','Open the book of field notes.'],
   ['legend','Legend tester','Test a family legend.'],
   ['toolkit','Toolmaker','Use a tool in the hunter’s toolkit.'],
@@ -696,7 +702,7 @@ try{ (function(){
 /* ---------- the ledger that travels: badges, follows and notes as one checked file, read back on another device ---------- */
 try{ (function(){
   const out=document.getElementById('ledgerOut'), inp=document.getElementById('ledgerIn'), msg=document.getElementById('ledgerMsg'); if (!out || !inp) return;
-  const KEYS=/^(ps-badges|ps-mine|ps-days|ps-note-\d+|ps-inked|ps-tn-[a-z-]+|ps-nh(-[a-z]+)?|ps-junior|ps-valley|ps-mu-trip|ps-mu-been|ps-mu-stamp|ps-walk|ps-walk-stamp|ps-rf|ps-cooked|ps-hint-\d+)$/;
+  const KEYS=/^(ps-badges|ps-mine|ps-days|ps-note-\d+|ps-inked|ps-tn-[a-z-]+|ps-nh(-[a-z]+)?|ps-junior|ps-valley|ps-mu-trip|ps-mu-been|ps-mu-stamp|ps-walk(-dowagiac)?(-stamp)?|ps-food-stamp|ps-fest-stamp|ps-rf|ps-cooked|ps-hint-\d+)$/;
   const gather=function(){ const d={}; for (let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); if (KEYS.test(k)) d[k]=localStorage.getItem(k); } return d; };
   const sum=function(txt){ if (!(crypto && crypto.subtle)) return Promise.resolve(''); return crypto.subtle.digest('SHA-256', new TextEncoder().encode(txt)).then(function(h){ return [].slice.call(new Uint8Array(h)).map(function(b){ return ('0'+b.toString(16)).slice(-2); }).join(''); }); };
   out.addEventListener('click', function(){
@@ -788,6 +794,40 @@ try{ (function(){
   mh.addEventListener('keydown', function(e){ if (e.key==='ArrowRight'){ next(); arm(); e.preventDefault(); } else if (e.key==='ArrowLeft'){ prev(); arm(); e.preventDefault(); } else if (e.key==='Enter' && e.target===mh){ mh.classList.toggle('open'); } });
   mh.addEventListener('click', function(e){ if (e.target.closest('button')) return; mh.classList.toggle('open'); });
   mh.addEventListener('keydown', function(e){ if (e.key==='Escape') mh.classList.remove('open'); });
+})(); }catch(err){ psFail(err); }
+
+/* ---------- the passport: every stamp, wherever it was earned, counts toward the milestones and the season's trail ---------- */
+window.PS_STAMP_KEYS={'ps-mu-stamp':'museum','ps-walk-stamp':'walk','ps-walk-dowagiac-stamp':'walk','ps-food-stamp':'table','ps-fest-stamp':'festival'};
+window.psStamps=function(){ const all=[]; Object.keys(window.PS_STAMP_KEYS).forEach(function(k){ let o={}; try{ o=JSON.parse(localStorage.getItem(k)||'{}')||{}; }catch(e){} Object.keys(o).forEach(function(id){ all.push({key:k, id:id, date:o[id], kind:window.PS_STAMP_KEYS[k]}); }); }); return all; };
+window.psStampCheck=function(){ if (!window.psEarn) return; const all=window.psStamps(), n=all.length;
+  if (n>=10) window.psEarn('pass10'); if (n>=25) window.psEarn('pass25'); if (n>=50) window.psEarn('pass50');
+  const fall=function(k,id){ const s=all.filter(function(x){ return x.key===k && x.id===id; })[0]; if (!s) return null; const m=+s.date.slice(5,7); return (m>=9 && m<=11)? s.date.slice(0,4) : null; };
+  const a=fall('ps-mu-stamp','bonneyville-mill'), b=fall('ps-food-stamp','jollay-orchards'), c=fall('ps-mu-stamp','dowagiac-area-history-museum');
+  if (a && a===b && b===c) window.psEarn('harvest'); };
+try{ window.psStampCheck(); }catch(e){}
+
+/* ---------- the picture buttons tilt toward the pointer and catch the light (mouse only; still when motion is reduced) ---------- */
+try{ (function(){
+  if (!matchMedia('(hover:hover) and (pointer:fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.tcard, .vshow').forEach(function(c){ let raf=0;
+    c.classList.add('tilt'); const g=document.createElement('span'); g.className='gleam'; g.setAttribute('aria-hidden','true'); c.appendChild(g);
+    c.addEventListener('pointermove', function(e){ const r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+      cancelAnimationFrame(raf); raf=requestAnimationFrame(function(){ c.style.setProperty('--rx', ((.5-y)*9).toFixed(2)+'deg'); c.style.setProperty('--ry', ((x-.5)*11).toFixed(2)+'deg'); c.style.setProperty('--gx', (x*100).toFixed(1)+'%'); c.style.setProperty('--gy', (y*100).toFixed(1)+'%'); }); }, {passive:true});
+    c.addEventListener('pointerleave', function(){ cancelAnimationFrame(raf); c.style.setProperty('--rx','0deg'); c.style.setProperty('--ry','0deg'); });
+  });
+})(); }catch(err){ psFail(err); }
+
+/* ---------- the plate's hidden picture: only the lit miner's lamp shows it, in a small circle round the pointer ---------- */
+try{ (function(){
+  const pic=document.querySelector('.hero .plate picture'); if (!pic) return;
+  const src=pic.closest('.plate').dataset.hidden || '/img/plate-hidden.webp';
+  const h=document.createElement('span'); h.className='plate-hid'; h.setAttribute('aria-hidden','true'); pic.appendChild(h);
+  let loaded=false; const root=document.documentElement;
+  const at=function(e){ if (!root.classList.contains('lamp-on')) return; if (!loaded){ h.style.backgroundImage='url("'+src+'")'; loaded=true; }
+    const r=pic.getBoundingClientRect(); h.style.setProperty('--hx',(e.clientX-r.left)+'px'); h.style.setProperty('--hy',(e.clientY-r.top)+'px'); h.classList.add('on'); };
+  pic.addEventListener('pointermove', at, {passive:true}); pic.addEventListener('pointerdown', at, {passive:true});
+  pic.addEventListener('pointerleave', function(){ h.classList.remove('on'); });
+  if (window.psEarn) pic.addEventListener('pointermove', function once(e){ if (root.classList.contains('lamp-on')){ setTimeout(function(){ if (h.classList.contains('on')) window.psEarn('beneath'); },1500); pic.removeEventListener('pointermove', once); } }, {passive:true});
 })(); }catch(err){ psFail(err); }
 
 /* ---------- the miner's lamp: a warm glow that follows the pointer, off until it is lit ---------- */

@@ -512,9 +512,9 @@ main.page{max-width:var(--col); margin-left:auto; margin-right:auto}
 
 /* 1 the ink writes itself (first visit only; JS adds .ink) */
 @media (prefers-reduced-motion: no-preference){
-  html.ink .hero h1{animation:write 1.9s cubic-bezier(.6,.1,.3,1) both; clip-path:inset(0 100% 0 0)}
+  html.ink .hero h1{animation:write 1.9s cubic-bezier(.6,.1,.3,1) both; clip-path:inset(-.2em 100% -.4em 0)}
   html.ink .hero h1 .fn{animation:dot .5s 1.8s both}
-  @keyframes write{to{clip-path:inset(0 -2% 0 0)}}
+  @keyframes write{to{clip-path:inset(-.2em -2% -.4em 0)}}
   @keyframes dot{from{opacity:0; transform:scale(.4)} to{opacity:1; transform:none}}
 }
 
@@ -2025,7 +2025,7 @@ p,li,dd,figcaption,.lede{text-wrap:pretty}
 /* ===== Draft 77 ===== */
 /* 12 the case question writes itself on a first visit */
 @media (prefers-reduced-motion: no-preference){
-  html.ink-case main.page h1{animation:write 1.7s cubic-bezier(.6,.1,.3,1) both; clip-path:inset(0 100% 0 0)}
+  html.ink-case main.page h1{animation:write 1.7s cubic-bezier(.6,.1,.3,1) both; clip-path:inset(-.2em 100% -.4em 0)}
 }
 /* 13 the next sealed year glows at the edge */
 .tl li.next{box-shadow:0 0 0 1px color-mix(in srgb, var(--gold) 55%, transparent), 0 0 18px -2px color-mix(in srgb, var(--gold) 55%, transparent)}
@@ -3259,3 +3259,95 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 .cshare{font:inherit; font-size:.85rem; background:none; border:0; padding:0; color:var(--ink); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:3px; cursor:pointer}
 .cshare:hover{text-decoration-color:var(--gold)}
 @media print{ .cshare{display:none} }
+/* Draft 150: the twelve-month calendar on Seasons & Festivals */
+.sc{margin:1.4rem 0}
+.sc-k{color:var(--ink-soft); font-size:.92rem}
+.sc-key{white-space:nowrap; margin-left:.4rem}
+.sc-key i{display:inline-block; width:.9rem; height:.9rem; border-radius:3px; vertical-align:-.12rem; margin:0 .2rem 0 .5rem}
+.sc-key i.sc-on{background:color-mix(in srgb, var(--gold) 70%, transparent)} .sc-key i.sc-today{border:2px solid var(--rule)}
+.sc-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(13.5rem,1fr)); gap:.9rem 1.1rem}
+.sc-m{border:1px solid var(--line); border-radius:4px; padding:.5rem .55rem .6rem; background:color-mix(in srgb, var(--paper-2) 50%, transparent)}
+.sc-mh{display:block; width:100%; font:inherit; font-size:.82rem; letter-spacing:.12em; text-transform:uppercase; text-align:center; background:none; border:0; border-bottom:1px solid var(--line); padding:.2rem 0 .35rem; margin-bottom:.35rem; color:var(--ink); cursor:pointer}
+.sc-mh:hover{color:var(--rule)}
+.sc-d{display:grid; grid-template-columns:repeat(7,1fr); gap:2px; text-align:center; font-size:.78rem}
+.sc-d > *{display:grid; place-items:center; aspect-ratio:1; min-height:1.6rem; border-radius:3px; font:inherit; color:var(--ink-soft); padding:0}
+.sc-dn{font-size:.62rem; color:var(--ink-soft); opacity:.75; aspect-ratio:auto!important; min-height:0!important}
+button.sc-on{border:0; background:color-mix(in srgb, var(--gold) 70%, transparent); color:#1b1408; font-weight:bold; cursor:pointer}
+button.sc-on:hover,button.sc-on:focus-visible{background:var(--gold); outline:2px solid var(--rule); outline-offset:1px}
+.sc-today{box-shadow:inset 0 0 0 2px var(--rule); color:var(--ink)!important; font-weight:bold}
+.sc-past:not(.sc-on){opacity:.45}
+@media (max-width:640px){ .sc-grid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:.6rem} .sc-m{padding:.4rem} .sc-d{font-size:.7rem} .sc-d > *{min-height:1.3rem} }
+@media print{ .sc{break-inside:avoid} }
+/* the heron's hidden picture, seen only through the lit miner's lamp */
+.hero .plate picture{position:relative}
+.plate-hid{position:absolute; inset:1px; border-radius:3px; background:center/cover no-repeat; opacity:0; pointer-events:none; z-index:1;
+  -webkit-mask-image:radial-gradient(circle 74px at var(--hx,-200px) var(--hy,-200px), #000 0 55%, transparent 100%); mask-image:radial-gradient(circle 74px at var(--hx,-200px) var(--hy,-200px), #000 0 55%, transparent 100%); transition:opacity .35s}
+.lamp-on .plate-hid.on{opacity:1}
+@media (pointer:coarse){ .plate-hid{-webkit-mask-image:radial-gradient(circle 90px at var(--hx,-200px) var(--hy,-200px), #000 0 55%, transparent 100%); mask-image:radial-gradient(circle 90px at var(--hx,-200px) var(--hy,-200px), #000 0 55%, transparent 100%)} }
+@media print{ .plate-hid{display:none} }
+/* Draft 150: the picture buttons tilt and catch the light; a slow gleam crosses them once */
+.tcard.tilt, .vshow.tilt{transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)); transition:transform .25s ease-out, filter .25s; transform-style:preserve-3d; will-change:transform}
+.tcard.tilt:hover, .vshow.tilt:hover{transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-3px)}
+.gleam{position:absolute; inset:0; border-radius:10px; pointer-events:none; z-index:3; opacity:0; transition:opacity .3s; background:radial-gradient(circle at var(--gx,50%) var(--gy,30%), rgba(255,236,180,.38), rgba(255,236,180,0) 45%); mix-blend-mode:screen}
+.tcard.tilt:hover .gleam, .vshow.tilt:hover .gleam{opacity:1}
+@media (prefers-reduced-motion: no-preference){
+  .tcard::before{content:""; position:absolute; inset:0; z-index:2; border-radius:10px; pointer-events:none; background:linear-gradient(105deg, rgba(255,240,200,0) 42%, rgba(255,240,200,.42) 50%, rgba(255,240,200,0) 58%) no-repeat; background-size:260% 100%; background-position:120% 0; animation:psgleam 2.4s .9s ease-in-out 1 both; mix-blend-mode:screen}
+  .doors .door:nth-child(2) .tcard::before{animation-delay:1.15s} .doors .door:nth-child(3) .tcard::before{animation-delay:1.4s} .doors .door:nth-child(4) .tcard::before{animation-delay:1.65s} .tri .tcard:nth-child(2)::before{animation-delay:1.15s}
+  @keyframes psgleam{from{background-position:120% 0} to{background-position:-20% 0}}
+  .sc-today{animation:scpulse 2.4s ease-in-out infinite}
+  @keyframes scpulse{50%{box-shadow:inset 0 0 0 2px var(--rule), 0 0 0 3px color-mix(in srgb, var(--rule) 30%, transparent)}}
+}
+/* the foil headline: room below the line so the tail of the y is painted, not clipped */
+h1 .foil{padding-bottom:.24em; margin-bottom:-.24em}
+/* the walks: today's streets drawn on the page, under the old plan */
+.wk-map .wk-w{fill:#9cc3d6; fill-opacity:.7; stroke:none}
+.wk-map .wk-w2{stroke:#9cc3d6; stroke-width:8; fill:none; stroke-opacity:.7}
+.wk-map .wk-r{stroke:#b9ad92; stroke-width:3; fill:none}
+.wk-map .wk-m{stroke:#a08c62; stroke-width:5; fill:none}
+.wk-map .wk-x{stroke:#6f6a60; stroke-width:2; stroke-dasharray:6 5; fill:none}
+/* Draft 150: the passport */
+.pp-sum{border:1px solid var(--line); border-left:3px solid var(--rule); border-radius:4px; padding:.9rem 1.2rem 1.1rem; margin:1.2rem 0; background:var(--paper)}
+.pp-sum h2{margin:0 0 .2rem}
+.pp-kinds{color:var(--ink-soft); font-size:.92rem; margin:.2rem 0 1rem}
+.pp-bar{position:relative; height:.75rem; border-radius:999px; background:color-mix(in srgb, var(--line) 60%, transparent); margin:1.4rem .8rem 1.6rem}
+.pp-bar > span{position:absolute; inset:0 auto 0 0; width:var(--p,0%); border-radius:999px; background:linear-gradient(90deg, var(--gold-lo), var(--gold), var(--gold-hi)); transition:width .8s ease}
+.pp-m{position:absolute; left:var(--at); top:50%; transform:translate(-50%,-50%); display:grid; place-items:center; width:2.1rem; height:2.1rem; border-radius:50%; background:var(--paper); border:2px solid var(--line); font-size:.75rem; color:var(--ink-soft)}
+.pp-m.done{border-color:var(--gold); background:var(--gold); color:#1b1408}
+.pp-next{margin:0; font-size:.92rem}
+.pp-list{margin:1.2rem 0}
+.pp-k{font-size:.55rem!important; letter-spacing:.14em; opacity:.8}
+.mu-stamp.pp-walk{border-color:var(--ledger); color:var(--ledger)} .mu-stamp.pp-table{border-color:#c0623a; color:#c0623a} .mu-stamp.pp-festival{border-color:#5a6fb0; color:#5a6fb0}
+.pp-trail{border:1px solid var(--gold); border-radius:4px; padding:.8rem 1.2rem; margin:1.6rem 0; background:color-mix(in srgb, var(--gold) 7%, var(--paper))}
+.pp-trail h2{margin-top:.2rem}
+.pp-tl{padding-left:1.4rem} .pp-tl li{margin:.35rem 0}
+.pp-tl li.done::after{content:" ✓ stamped"; color:var(--ledger); font-weight:bold}
+.pp-nl{display:inline-flex; flex-direction:column; gap:.3rem; margin-right:.6rem; font-size:.9rem}
+.pp-nl input{font:inherit; padding:.5rem .6rem; border:1px solid var(--line); border-radius:4px; background:var(--paper); color:var(--ink); min-width:16rem}
+.pp-cf{display:none}
+@media print{
+  html.pp-printing body *{visibility:hidden}
+  html.pp-printing .pp-cf, html.pp-printing .pp-cf *{visibility:visible}
+  html.pp-printing .pp-cf{display:block; position:absolute; inset:0; padding:1.2cm}
+  .cf-in{border:6px double #8a6a1f; padding:1.4cm 1.2cm; text-align:center; min-height:16cm; font-family:"Libre Caslon Text",serif; color:#1d2733}
+  .cf-k{letter-spacing:.2em; text-transform:uppercase; font-size:10pt; color:#7a5a18}
+  .cf-t{font-family:"Libre Caslon Display",serif; font-size:30pt; margin:.4cm 0 .6cm}
+  .cf-p{font-size:12pt; margin:.2cm 0}
+  .cf-n{font-family:"Libre Caslon Display",serif; font-size:26pt; border-bottom:1px solid #8a6a1f; display:inline-block; padding:0 1cm .1cm; margin:.2cm 0 .4cm}
+  .cf-m{font-size:18pt; letter-spacing:.12em; text-transform:uppercase; color:#7a5a18; margin:.3cm 0}
+  .cf-l{font-size:9pt; color:#4b5663; margin:.6cm auto; max-width:16cm; line-height:1.5}
+  .cf-d{font-size:10pt; font-style:italic; margin-top:.8cm}
+}
+
+/* ── Rhythm pass (21 Oct): even, slightly roomier space between text and pictures ── */
+.secfig{margin:1.9rem auto 1.7rem}
+.tncorner{margin:1.9rem auto 1.6rem}
+.scale{margin:1.8rem 0 .9rem}
+.wk-pc{margin:.9rem 0 .85rem}
+.wk-pc figcaption{margin-top:.4rem; line-height:1.4}
+.secfig figcaption, .tncorner figcaption, .fp-pics figcaption, .wk-pc figcaption{text-wrap:balance}
+p, li, dd, figcaption{text-wrap:pretty}
+p + :is(ul, ol):not([class]){margin-top:-.25rem}
+:is(.page, main section) :is(ul, ol):not([class]) > li + li{margin-top:.3rem}
+.lede + p, .kicker + h1{margin-top:0}
+h3 + p{margin-top:.35rem}
+@media print{ .secfig, .tncorner{margin:.8rem auto!important} }

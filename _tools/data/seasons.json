@@ -14,7 +14,11 @@
   "dates2026": {
    "start": "2026-01-02",
    "end": "2026-01-02"
-  }
+  },
+  "ll": [
+   41.585,
+   -85.8344
+  ]
  },
  {
   "name": "Shipshewana Ice Festival & Chili Cook-Off",
@@ -31,7 +35,11 @@
   "dates2026": {
    "start": "2027-01-16",
    "end": "2027-01-16"
-  }
+  },
+  "ll": [
+   41.6728,
+   -85.5803
+  ]
  },
  {
   "name": "St. Joseph Ice Fest",
@@ -48,7 +56,11 @@
   "dates2026": {
    "start": "2027-01-29",
    "end": "2027-01-31"
-  }
+  },
+  "ll": [
+   42.1096,
+   -86.48
+  ]
  },
  {
   "name": "Dowagiac Ice Time Festival",
@@ -65,7 +77,11 @@
   "dates2026": {
    "start": "2027-02-06",
    "end": "2027-02-06"
-  }
+  },
+  "ll": [
+   41.9825,
+   -86.1089
+  ]
  },
  {
   "name": "South Haven Ice Breaker Festival",
@@ -82,7 +98,11 @@
   "dates2026": {
    "start": "2027-02-05",
    "end": "2027-02-07"
-  }
+  },
+  "ll": [
+   42.4031,
+   -86.2736
+  ]
  },
  {
   "name": "Candlelight Christmas Parade",
@@ -99,7 +119,11 @@
   "dates2026": {
    "start": "2026-12-04",
    "end": "2026-12-04"
-  }
+  },
+  "ll": [
+   41.9825,
+   -86.1089
+  ]
  },
  {
   "name": "Santa's Candy Cane Express at Hesston Steam Museum",
@@ -116,7 +140,11 @@
   "dates2026": {
    "start": "2026-12-05",
    "end": "2026-12-13"
-  }
+  },
+  "ll": [
+   41.75492,
+   -86.67985
+  ]
  },
  {
   "name": "Christmas at Copshaholm",
@@ -129,7 +157,11 @@
   "what": "The History Museum decorates the Oliver family's 38-room Copshaholm mansion with Christmas trees on all three floors and themed table settings, and opens it for self-guided holiday tours.",
   "history": null,
   "url": "https://historymuseumsb.org/christmas-at-copshaholm",
-  "verified": true
+  "verified": true,
+  "ll": [
+   41.6834,
+   -86.25
+  ]
  },
  {
   "name": "Shipshewana Lights of Joy",
@@ -146,7 +178,11 @@
   "dates2026": {
    "start": "2026-11-10",
    "end": "2026-12-31"
-  }
+  },
+  "ll": [
+   41.6728,
+   -85.5803
+  ]
  },
  {
   "name": "Sturgis Tree Lighting & Parade of Lights",
@@ -159,7 +195,11 @@
   "what": "Sturgis lights its community tree with a children's reading of a Christmas poem, and the next evening more than fifty lighted floats from local businesses and clubs roll downtown.",
   "history": null,
   "url": "https://sturgisareachamber.com/visit-sturgis/christmas-time-in-sturgis/",
-  "verified": true
+  "verified": true,
+  "ll": [
+   41.7992,
+   -85.4191
+  ]
  },
  {
   "name": "Kalamazoo Nature Center Maple Sugar Festival",
@@ -176,7 +216,11 @@
   "dates2026": {
    "start": "2027-03-07",
    "end": "2027-03-07"
-  }
+  },
+  "ll": [
+   42.2917,
+   -85.5872
+  ]
  },
  {
   "name": "Sugar Camp Days at Bendix Woods",
@@ -193,7 +237,11 @@
   "dates2026": {
    "start": "2026-03-14",
    "end": "2026-03-15"
-  }
+  },
+  "ll": [
+   41.7057,
+   -86.5098
+  ]
  },
  {
   "name": "Kalamazoo Living History Show",
@@ -210,7 +258,11 @@
   "dates2026": {
    "start": "2027-03-20",
    "end": "2027-03-21"
-  }
+  },
+  "ll": [
+   42.2917,
+   -85.5872
+  ]
  },
  {
   "name": "Wakarusa Maple Syrup Festival",
@@ -227,7 +279,11 @@
   "dates2026": {
    "start": "2026-04-24",
    "end": "2026-04-26"
-  }
+  },
+  "ll": [
+   41.5361,
+   -86.021
+  ]
  },
  {
   "name": "Bonneyville Mill season",
@@ -240,7 +296,11 @@
   "what": "Elkhart County Parks' grist mill, billed as Indiana's oldest operating grist mill, grinds grain and sells its flour through the warm months; the park adds schoolhouse open houses, a Feature Grain Day and autumn leaf walks.",
   "history": null,
   "url": "https://elkhartcountyparks.org/destinations/bonneyville-mill",
-  "verified": true
+  "verified": true,
+  "ll": [
+   41.7214,
+   -85.8175
+  ]
  },
  {
   "name": "Blossomtime Festival",
@@ -257,7 +317,11 @@
   "dates2026": {
    "start": "2026-05-09",
    "end": "2026-05-09"
-  }
+  },
+  "ll": [
+   42.1096,
+   -86.48
+  ]
  },
  {
   "name": "Dogwood Fine Arts Festival",
@@ -270,7 +334,11 @@
   "what": "Dowagiac's spring arts festival brings readings by visiting authors, concerts, art shows and a downtown art walk, and has commissioned public sculpture for the city.",
   "history": "Began in 1995, pairing visiting sculptors with local donors who commissioned public art (City of Dowagiac).",
   "url": "https://www.cityofdowagiac.com/arts_recreation/embrace_the_arts/index.php",
-  "verified": false
+  "verified": false,
+  "ll": [
+   41.9825,
+   -86.1089
+  ]
  },
  {
   "name": "Shipshewana Flea Market season",
@@ -287,7 +355,11 @@
   "dates2026": {
    "start": "2026-05-05",
    "end": "2026-09-30"
-  }
+  },
+  "ll": [
+   41.6728,
+   -85.5803
+  ]
  },
  {
   "name": "Hesston Steam Museum operating season",
@@ -300,7 +372,11 @@
   "what": "The La Porte County Historical Steam Society runs its steam and diesel railroads and antique machinery on summer weekends, opening with National Train Day and Memorial Day weekend.",
   "history": "First show and reunion held in 1957; the steam society was chartered as a nonprofit in 1968.",
   "url": "https://www.hesston.org/",
-  "verified": true
+  "verified": true,
+  "ll": [
+   41.75492,
+   -86.67985
+  ]
  },
  {
   "name": "Quilt Gardens along the Heritage Trail",
@@ -326,7 +402,11 @@
   "what": "Billed as the world's largest Flag Day parade, Three Oaks turns out for a weekend of patriotic celebration honoring veterans and the flag.",
   "history": "First parade June 14, 1953, organized by Herb Flick under American Legion Post 204; it grew to a three-day celebration in the late 1970s.",
   "url": "https://threeoaksflagday.com/",
-  "verified": true
+  "verified": true,
+  "ll": [
+   41.7987,
+   -86.6106
+  ]
  },
  {
   "name": "Vicksburg Old Car Festival",
@@ -343,7 +423,11 @@
   "dates2026": {
    "start": "2026-06-12",
    "end": "2026-06-13"
-  }
+  },
+  "ll": [
+   42.12,
+   -85.5328
+  ]
  },
  {
   "name": "Elkhart Jazz Festival",
@@ -360,7 +444,11 @@
   "dates2026": {
    "start": "2027-06-17",
    "end": "2027-06-20"
-  }
+  },
+  "ll": [
+   41.682,
+   -85.9767
+  ]
  },
  {
   "name": "Three Rivers Water Festival",
@@ -377,7 +465,11 @@
   "dates2026": {
    "start": "2026-06-18",
    "end": "2026-06-20"
-  }
+  },
+  "ll": [
+   41.9443,
+   -85.6346
+  ]
  },
  {
   "name": "Civil War Train Raids at Hesston",
@@ -394,7 +486,11 @@
   "dates2026": {
    "start": "2026-06-27",
    "end": "2026-06-28"
-  }
+  },
+  "ll": [
+   41.75492,
+   -86.67985
+  ]
  },
  {
   "name": "St. Joseph County 4-H Fair",
@@ -411,7 +507,11 @@
   "dates2026": {
    "start": "2026-07-03",
    "end": "2026-07-11"
-  }
+  },
+  "ll": [
+   41.6834,
+   -86.25
+  ]
  },
  {
   "name": "Krasl Art Fair on the Bluff",
@@ -428,7 +528,11 @@
   "dates2026": {
    "start": "2026-07-11",
    "end": "2026-07-12"
-  }
+  },
+  "ll": [
+   42.1096,
+   -86.48
+  ]
  },
  {
   "name": "LaGrange County 4-H Fair",
@@ -445,7 +549,11 @@
   "dates2026": {
    "start": "2026-07-11",
    "end": "2026-07-18"
-  }
+  },
+  "ll": [
+   41.6417,
+   -85.4167
+  ]
  },
  {
   "name": "LaPorte County Fair",
@@ -462,7 +570,11 @@
   "dates2026": {
    "start": "2027-07-10",
    "end": "2027-07-17"
-  }
+  },
+  "ll": [
+   41.6106,
+   -86.7225
+  ]
  },
  {
   "name": "Van Buren Youth Fair",
@@ -479,7 +591,11 @@
   "dates2026": {
    "start": "2026-07-18",
    "end": "2026-07-25"
-  }
+  },
+  "ll": [
+   42.2067,
+   -86.1667
+  ]
  },
  {
   "name": "Elkhart County 4-H Fair",
@@ -496,7 +612,11 @@
   "dates2026": {
    "start": "2026-07-24",
    "end": "2026-08-01"
-  }
+  },
+  "ll": [
+   41.585,
+   -85.8344
+  ]
  },
  {
   "name": "Blueberry u-pick season",
@@ -509,7 +629,11 @@
   "what": "South Haven sits at the heart of Michigan's blueberry country, and through July and August farms and u-pick fields around town open for picking.",
   "history": "The area claims the world's largest concentration of blueberry growers, nearly 300 farmers within 50 miles.",
   "url": "https://www.southhaven.org/blog/all-about-blueberries-in-south-haven-mi/",
-  "verified": true
+  "verified": true,
+  "ll": [
+   42.4031,
+   -86.2736
+  ]
  },
  {
   "name": "Coloma Glad-Peach Festival",
@@ -526,7 +650,11 @@
   "dates2026": {
    "start": "2026-07-31",
    "end": "2026-08-01"
-  }
+  },
+  "ll": [
+   42.1861,
+   -86.3084
+  ]
  },
  {
   "name": "Fort St. Joseph Archaeology Open House",
@@ -543,7 +671,11 @@
   "dates2026": {
    "start": "2026-08-01",
    "end": "2026-08-02"
-  }
+  },
+  "ll": [
+   41.8298,
+   -86.2542
+  ]
  },
  {
   "name": "Cass County Fair",
@@ -560,7 +692,11 @@
   "dates2026": {
    "start": "2027-08-01",
    "end": "2027-08-07"
-  }
+  },
+  "ll": [
+   41.9117,
+   -86.01
+  ]
  },
  {
   "name": "Kalamazoo County Fair",
@@ -577,7 +713,11 @@
   "dates2026": {
    "start": "2026-08-04",
    "end": "2026-08-08"
-  }
+  },
+  "ll": [
+   42.2917,
+   -85.5872
+  ]
  },
  {
   "name": "Abbott's Magic Get-Together",
@@ -594,7 +734,11 @@
   "dates2026": {
    "start": "2027-08-11",
    "end": "2027-08-14"
-  }
+  },
+  "ll": [
+   41.9584,
+   -85.325
+  ]
  },
  {
   "name": "National Blueberry Festival",
@@ -611,7 +755,11 @@
   "dates2026": {
    "start": "2026-08-06",
    "end": "2026-08-09"
-  }
+  },
+  "ll": [
+   42.4031,
+   -86.2736
+  ]
  },
  {
   "name": "Berrien County Youth Fair",
@@ -628,7 +776,11 @@
   "dates2026": {
    "start": "2026-08-17",
    "end": "2026-08-22"
-  }
+  },
+  "ll": [
+   41.9464,
+   -86.3389
+  ]
  },
  {
   "name": "Hesston Labor Day Weekend Steam & Power Show",
@@ -645,7 +797,11 @@
   "dates2026": {
    "start": "2026-09-04",
    "end": "2026-09-07"
-  }
+  },
+  "ll": [
+   41.75492,
+   -86.67985
+  ]
  },
  {
   "name": "Michigan Flywheelers Antique Engine & Tractor Show",
@@ -662,7 +818,11 @@
   "dates2026": {
    "start": "2026-09-10",
    "end": "2026-09-13"
-  }
+  },
+  "ll": [
+   42.4031,
+   -86.2736
+  ]
  },
  {
   "name": "Paw Paw Wine & Harvest Festival",
@@ -679,7 +839,11 @@
   "dates2026": {
    "start": "2026-09-11",
    "end": "2026-09-13"
-  }
+  },
+  "ll": [
+   42.2178,
+   -85.8911
+  ]
  },
  {
   "name": "Nappanee Apple Festival",
@@ -696,7 +860,11 @@
   "dates2026": {
    "start": "2026-09-17",
    "end": "2026-09-20"
-  }
+  },
+  "ll": [
+   41.4428,
+   -86.0014
+  ]
  },
  {
   "name": "La Porte Sunflower Fair",
@@ -713,7 +881,11 @@
   "dates2026": {
    "start": "2026-09-19",
    "end": "2026-09-19"
-  }
+  },
+  "ll": [
+   41.6106,
+   -86.7225
+  ]
  },
  {
   "name": "St. Joseph County Grange Fair",
@@ -730,7 +902,11 @@
   "dates2026": {
    "start": "2026-09-20",
    "end": "2026-09-26"
-  }
+  },
+  "ll": [
+   41.9234,
+   -85.5287
+  ]
  },
  {
   "name": "Michiana Mennonite Relief Sale",
@@ -747,7 +923,11 @@
   "dates2026": {
    "start": "2026-09-25",
    "end": "2026-09-26"
-  }
+  },
+  "ll": [
+   41.585,
+   -85.8344
+  ]
  },
  {
   "name": "Vicksburg Harvest Festival",
@@ -760,7 +940,11 @@
   "what": "The Vicksburg Historical Society opens its Historic Village, general store, print shop and schoolhouse for a free day of crafts and fiber demonstrations, antique tractors, wagon rides and pumpkin decorating, celebrating the area's farm heritage.",
   "history": "The 2024 festival was the 14th annual.",
   "url": "https://vicksburghistory.org/signature-events/",
-  "verified": true
+  "verified": true,
+  "ll": [
+   42.12,
+   -85.5328
+  ]
  },
  {
   "name": "Apple Cider Century",
@@ -777,7 +961,11 @@
   "dates2026": {
    "start": "2027-09-26",
    "end": "2027-09-26"
-  }
+  },
+  "ll": [
+   41.7987,
+   -86.6106
+  ]
  },
  {
   "name": "Apple-picking season in the Fruit Belt",
@@ -824,7 +1012,11 @@
   "dates2026": {
    "start": "2026-10-10",
    "end": "2026-10-10"
-  }
+  },
+  "ll": [
+   41.9825,
+   -86.1089
+  ]
  },
  {
   "name": "Fall colour in Southwest Michigan",
@@ -850,6 +1042,10 @@
   "what": "Kalamazoo's downtown holiday parade of marching bands, giant balloons and floats, with shops on the Kalamazoo Mall opening the holiday season.",
   "history": "Founded in 1962 by the Gilmore Brothers department store.",
   "url": "https://www.kalamazooholidayparade.org/",
-  "verified": true
+  "verified": true,
+  "ll": [
+   42.2917,
+   -85.5872
+  ]
  }
 ]

@@ -208,7 +208,7 @@ JS = r'''<script>
     if (sb) sb.addEventListener('click',function(){ msg.textContent='Checking where you are…';
       where(function(p,acc){ var d=km(p,LL(li)), reach=(li.dataset.approx?2.5:0.35)+Math.min(acc,500)/1000;
         if (d<=reach){ stamp[li.id]=new Date().toISOString().slice(0,10); save('ps-mu-stamp',stamp); if (been.indexOf(li.id)<0){ been.push(li.id); save('ps-mu-been',been); }
-          paint(); msg.textContent='Stamped. It is in your passport, kept on this device only.'; if (window.psEarn){ window.psEarn('stamp'); if (been.length>=3) window.psEarn('visitor'); } }
+          paint(); msg.textContent='Stamped. It is in your passport, kept on this device only.'; if (window.psEarn){ window.psEarn('stamp'); if (been.length>=3) window.psEarn('visitor'); } if (window.psStampCheck) window.psStampCheck(); }
         else msg.textContent='You look to be about '+miles(d)+' mi away. The stamp works at the door.'; },
         function(m){ msg.textContent=m; }, true); }); });
   $('#muTripClear').addEventListener('click',function(){ trip=[]; save('ps-mu-trip',trip); tmsg.textContent=''; paint(); q.focus(); });
@@ -301,6 +301,7 @@ JS = r'''<script>
       var fly=function(){ box.scrollIntoView({behavior:glide, block:'center'}); map.once('moveend',function(){ cluster(); li._m.c.openPopup(); }); map.setView(ll, 15, {animate:!calm}); };
       if (map) fly(); else { need(); var w=setInterval(function(){ if (map && markers.length){ clearInterval(w); fly(); } },120); setTimeout(function(){ clearInterval(w); },8000); } }); });
   var start=function(){ if (map || !window.L) return;
+    [].forEach.call(document.querySelectorAll('.mu-mapph'),function(x){ x.remove(); });
     map=L.map(box,{zoomSnap:.25, minZoom:7, maxZoom:17, scrollWheelZoom:false, attributionControl:true, maxBounds:[[40.9,-87.9],[42.95,-84.3]]});
     map.attributionControl.setPrefix(false); group=L.layerGroup().addTo(map);
     map._home=L.latLngBounds([[41.42,-86.95],[42.43,-85.35]]); map.fitBounds(map._home);
@@ -374,7 +375,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <dialog class="mu-qr" id="muQR" aria-labelledby="muQRh"><h2 id="muQRh">Scan for this trip</h2><div id="muQRc"></div><p class="mu-qrl" id="muQRl"></p><p class="mu-tacts"><button type="button" class="btn" id="muQRp">Print the code</button> <button type="button" class="btn" id="muQRx">Close</button></p></dialog>
     <p class="mu-mine" id="muMine"><span id="muBeenN"></span></p>
     <section class="mu-pass" id="muPass" hidden aria-labelledby="muPassH"><h2 id="muPassH">My passport <span class="mu-n"><span id="muPassN">0</span> stamps</span></h2><ol class="mu-stamps" id="muStamps"></ol>
-      <p class="note">A stamp is earned by pressing “I’m here” at the place itself. Your browser checks your location once; it stays on this device.</p></section>
+      <p class="note">A stamp is earned by pressing “I’m here” at the place itself. Your browser checks your location once; it stays on this device. <a href="/passport/">See your whole passport</a>, with the walks, tables and festivals too.</p></section>
     <section class="mu-dts" aria-labelledby="muDtH"><h2 id="muDtH">Day trips</h2><p>Six ready-made days out. Load one, press “Best order”, and check each place’s hours before you go.</p><ul class="mu-dtl">{dts}</ul></section>
     <section class="mu-c mu-near" id="muNearSec" hidden><h2>Nearest to you</h2><ul class="mu-list" id="muNearList"></ul></section>
 {sections}

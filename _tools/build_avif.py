@@ -1,7 +1,9 @@
 """The cover plates also as AVIF, about 40% smaller than WebP; browsers that cannot show AVIF keep the WebP.
 Made only when missing or older than the WebP. No metadata is written (AVIF from pixels only)."""
 import glob, os
-from PIL import Image
+from PIL import Image, features
+if not features.check('avif'):
+    print('avif plates skipped: this Pillow cannot write AVIF'); raise SystemExit(0)
 n = 0
 for f in sorted(glob.glob(os.path.join(os.path.dirname(__file__), '..', 'img', 'strip', '*.webp'))):
     a = f[:-5] + '.avif'

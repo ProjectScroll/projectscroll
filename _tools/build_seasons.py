@@ -23,12 +23,14 @@ def card(d):
     link = f'<a class="mu-go" href="{E(d["url"])}" rel="noopener">Their website ›</a>' if d.get('url') else '<span class="mu-none">No website: ask locally</span>'
     chk = '' if d.get('verified') else '<span class="mu-chk" title="We could not confirm the latest dates online. Check before you go.">check the dates</span>'
     cal = '<button type="button" class="linkbtn se-cal">Add to my calendar</button>' if dt else ''
-    return f'''<li class="se" id="{slug(d['name'])}" data-m="{d['month']}" data-c="{E(d['county'])}"{exact} data-n="{E(d['name'])}" data-town="{E(d['town'])}" data-u="{E(d.get('url') or '')}" data-t="{E((d['name']+' '+d['town']+' '+d['county']+' '+d.get('what','')).lower())}">
+    stp = '<p class="mu-me"><button type="button" class="mu-sb se-sb" hidden>I’m here: stamp it</button></p><p class="mu-msg" aria-live="polite"></p>' if (dt and d.get('ll')) else ''
+    return f'''<li class="se" id="{slug(d['name'])}"{(' data-ll="'+str(d['ll'][0])+','+str(d['ll'][1])+'"') if d.get('ll') else ''} data-m="{d['month']}" data-c="{E(d['county'])}"{exact} data-n="{E(d['name'])}" data-town="{E(d['town'])}" data-u="{E(d.get('url') or '')}" data-t="{E((d['name']+' '+d['town']+' '+d['county']+' '+d.get('what','')).lower())}">
         <p class="mu-k">{E(MON[d['month']])} · {E(d['town'])}, {E(d['state'])}{chk}</p>
         <h3>{E(d['name'])}</h3>
         <p class="se-w"><b>{when}</b><span class="se-d"></span></p>
         <p>{E(d.get('what',''))}</p>{hist}
         <p class="mu-acts">{link}{' · '+cal if cal else ''}</p>
+        {stp}
       </li>'''
 secs = ''
 for k, t, sub, ms in SEAS:
@@ -98,6 +100,41 @@ JS = r'''<script>
     var esc=function(t){ return t.replace(/[\\,;]/g,function(m){ return '\\'+m; }).replace(/\n/g,'\\n'); };
     var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Project Scroll//Seasons//EN','BEGIN:VEVENT','UID:'+li.id+'-'+s+'@projectscroll.com','DTSTAMP:'+stamp,'DTSTART;VALUE=DATE:'+s,'DTEND;VALUE=DATE:'+ee,'SUMMARY:'+esc(li.dataset.n),'LOCATION:'+esc(li.dataset.town),'DESCRIPTION:'+esc('Check the dates and times on the event’s own website before you go. '+(li.dataset.u||'')),(li.dataset.u?'URL:'+li.dataset.u:''),'END:VEVENT','END:VCALENDAR'].filter(Boolean).join('\r\n');
     var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'})); a.download=li.id+'.ics'; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); },500); }); });
+  /* the twelve-month calendar, drawn on this device from the events above */
+  var grid=$('#scGrid'), smsg=$('#scMsg'), day=null, DN=['S','M','T','W','T','F','S'];
+  var ymd=function(d){ return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); };
+  var byDay={}; items.forEach(function(li){ if (!li.dataset.start) return; var a=new Date(li.dataset.start+'T12:00:00'), b=new Date((li.dataset.end||li.dataset.start)+'T12:00:00');
+    for (var d=new Date(a), k=0; d<=b && k<400; d.setDate(d.getDate()+1), k++){ var key=ymd(d); (byDay[key]=byDay[key]||[]).push(li); } });
+  var tkey=ymd(now);
+  for (var i=0;i<12;i++){ var first=new Date(now.getFullYear(), now.getMonth()+i, 1), m=first.getMonth()+1, y=first.getFullYear();
+    var box=document.createElement('div'); box.className='sc-m';
+    var hb=document.createElement('button'); hb.type='button'; hb.className='sc-mh'; hb.textContent=MON[m]+' '+y; hb.dataset.m=m;
+    var usual=items.filter(function(li){ return +li.dataset.m===m; }).length; hb.setAttribute('aria-label',MON[m]+' '+y+': '+usual+' events usually this month');
+    hb.addEventListener('click',(function(mm){ return function(){ day=null; mon=mm; mbs.forEach(function(x){ x.setAttribute('aria-pressed',String(+x.dataset.m===mm)); }); draw(); smsg.textContent='Showing the events usually held in '+MON[mm]+'.'; $('#'+(secs.filter(function(s){ return !s.hidden; })[0]||{id:'seCal'}).id).scrollIntoView({behavior:'smooth', block:'start'}); }; })(m));
+    box.appendChild(hb);
+    var t=document.createElement('div'); t.className='sc-d'; t.setAttribute('role','group'); t.setAttribute('aria-label',MON[m]+' '+y);
+    DN.forEach(function(n){ var e=document.createElement('span'); e.className='sc-dn'; e.textContent=n; e.setAttribute('aria-hidden','true'); t.appendChild(e); });
+    for (var b=0;b<first.getDay();b++){ var e=document.createElement('span'); e.className='sc-x'; t.appendChild(e); }
+    var last=new Date(y, m, 0).getDate();
+    for (var dd=1; dd<=last; dd++){ var key=y+'-'+('0'+m).slice(-2)+'-'+('0'+dd).slice(-2), evs=byDay[key]||[], c;
+      if (evs.length){ c=document.createElement('button'); c.type='button'; c.className='sc-on'; c.setAttribute('aria-label',MON[m]+' '+dd+': '+evs.map(function(li){ return li.dataset.n; }).join(', '));
+        c.title=evs.map(function(li){ return li.dataset.n; }).join('\n');
+        c.addEventListener('click',(function(k,list){ return function(){ day=k; mon=0; mbs.forEach(function(x){ x.setAttribute('aria-pressed','false'); }); items.forEach(function(li){ li.hidden=list.indexOf(li)<0; }); secs.forEach(function(s){ s.hidden=!s.querySelector('.se:not([hidden])'); });
+          cnt.textContent=list.length+' of '+items.length+' events'; smsg.textContent=fmt(k)+': '+list.map(function(li){ return li.dataset.n; }).join(' · ')+'.'; list[0].scrollIntoView({behavior:'smooth', block:'center'}); }; })(key, evs)); }
+      else { c=document.createElement('span'); }
+      c.textContent=dd; if (key===tkey) c.classList.add('sc-today'); if (key<tkey) c.classList.add('sc-past'); t.appendChild(c); }
+    box.appendChild(t); grid.appendChild(box); }
+  /* a festival stamp: only on the days of the event, and only in or near its town */
+  var est={}; try{ est=JSON.parse(localStorage.getItem('ps-fest-stamp')||'{}')||{}; }catch(e){}
+  var km=function(a,b){ var R=6371, r=Math.PI/180, dl=(b[0]-a[0])*r, dn=(b[1]-a[1])*r, h=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dn/2)*Math.sin(dn/2); return 2*R*Math.asin(Math.sqrt(h)); };
+  items.forEach(function(li){ var b=li.querySelector('.se-sb'), m=li.querySelector('.mu-msg'); if (!b) return;
+    var open=new Date(li.dataset.start+'T00:00:00')<=now && new Date((li.dataset.end||li.dataset.start)+'T23:59:00')>=now;
+    var set=function(){ var k=li.id+'-'+li.dataset.start.slice(0,4); b.hidden=!navigator.geolocation || (!open && !est[k]); b.disabled=!!est[k]; b.textContent=est[k]? 'Stamped ✓ '+est[k] : 'I’m here: stamp it'; }; set();
+    b.addEventListener('click',function(){ m.textContent='Checking where you are…';
+      navigator.geolocation.getCurrentPosition(function(p){ var d=km([p.coords.latitude,p.coords.longitude], li.dataset.ll.split(',').map(Number));
+        if (d<=10){ est[li.id+'-'+li.dataset.start.slice(0,4)]=new Date().toISOString().slice(0,10); try{ localStorage.setItem('ps-fest-stamp',JSON.stringify(est)); }catch(e){} set(); m.innerHTML='Stamped. It is in your <a href="/passport/">passport</a>, on this device only.'; if (window.psEarn) window.psEarn('stamp'); if (window.psStampCheck) window.psStampCheck(); }
+        else m.textContent='You look to be about '+Math.round(d*.621371)+' mi from '+li.dataset.town+'. The stamp works at the festival.'; },
+        function(){ m.textContent='No location shared, so nothing changed.'; }, {enableHighAccuracy:false, timeout:20000, maximumAge:60000}); }); });
   draw();
   var h=location.hash.slice(1); if (h){ var t=document.getElementById(h); if (t && t.classList.contains('se')){ t.classList.add('flash'); } }
 })();
@@ -114,6 +151,10 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <div class="nm-chips"><button type="button" class="btn" id="seWk" aria-pressed="false">This weekend</button><label class="mu-ol"><span class="vh">County</span><select id="seC"><option value="">Every county</option>{copts}</select></label></div>
       <p class="nm-count" id="seCount" aria-live="polite">{n} events</p>
     </div>
+    <section class="sc" id="seCal" aria-labelledby="scH"><h2 id="scH">The year ahead</h2>
+      <p class="sc-k">Twelve months from this one. Gold days have an event with set dates; press a day or a month to see its events. <span class="sc-key"><i class="sc-on"></i> event day <i class="sc-today"></i> today</span></p>
+      <div class="sc-grid" id="scGrid"></div>
+      <p class="mu-nmsg" id="scMsg" aria-live="polite"></p></section>
 {secs}
     <h2>Keep the calendar</h2>
     <p>All {nev} events with set dates, in one calendar file. <a class="btn" href="webcal://projectscroll.com/seasons/valley.ics">Subscribe in your calendar</a> <a class="btn" href="/seasons/valley.ics" download>Download the file</a></p>
