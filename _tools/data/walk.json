@@ -2,19 +2,21 @@
  "stops": [
   {
    "name": "Site of the first courthouse",
-   "address": "West side of North Broadway, north of York Street",
-   "lat": 41.9138,
-   "lon": -86.0128,
+   "address": "West side of North Broadway, second block north of State Street",
+   "lat": 41.913,
+   "lon": -86.01285,
    "built": "about 1836 (gone)",
-   "then": "Cass County’s first courthouse was a plain wooden building, 34 by 24 feet, ordered by the county board in 1835 for about $450. It stood north of the original village rather than on the public square, and served until the second courthouse opened in 1841.",
-   "now": "Nothing of it survives, and the exact lot has not been pinned down: this stop marks the stretch of Broadway where the 1906 county history places it.",
+   "then": "Cass County’s first courthouse was a plain wooden building, 34 by 24 feet, ordered by the county board in 1835 for about $450 and built by Joseph Harper. All three county histories put it on Lot 4, Block 2 north, Range 1 west of the village plat: the west side of Broadway, in the second block north of State Street. It served until the second courthouse opened in 1841.",
+   "now": "Nothing of it survives. This stop marks that stretch of Broadway; the exact building line is not known.",
    "sources": [
     "https://archive.org/details/twentiethcentury00glov",
     "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=242",
     "https://tedshideler.com/2022/10/10/the-cass-county-michigan-courthouse-1899-2003/",
-    "https://www.leaderpub.com/?p=702332"
+    "https://www.leaderpub.com/?p=702332",
+    "https://archive.org/details/historyofcasscou00wate",
+    "https://archive.org/details/historyofcasscou00roge"
    ],
-   "verified": false,
+   "verified": true,
    "id": "first-courthouse"
   },
   {
@@ -63,7 +65,7 @@
    "lat": 41.91177,
    "lon": -86.01266,
    "built": "1860",
-   "then": "Built in 1860, this brick building held the county’s offices — the clerk, the probate court, the register of deeds and the treasurer — until the stone courthouse across the way was finished in 1899. It was later a laundry, and in 1923 the Masons bought it for their temple and added the large hall at the back in 1925. Somewhere along the way it took the name “The Fort”; no source we have read says why.",
+   "then": "Built in 1860, this brick building held the county’s offices — the clerk, the probate court, the register of deeds and the treasurer — until the stone courthouse across the way was finished in 1899. The supervisors ordered it built fireproof, after a fire in the village had alarmed them about the county’s records. It was later a laundry, and in 1923 the Masons bought it for their temple and added the large hall at the back in 1925. By 1906 it was “commonly called the ‘Fort’”; no source we have read says why.",
    "now": "The state lists it on the Michigan State Register of Historic Sites (1985) as the Cass County Office Building/Masonic Temple. For some years it has been the Turtle Lodge, an event hall with offices and apartments; it changed hands in 2022.",
    "sources": [
     "https://en.wikipedia.org/wiki/List_of_Michigan_State_Historic_Sites_in_Cass_County",
@@ -72,7 +74,9 @@
     "https://leaderpub.com/?p=736830",
     "https://leaderpub.com/?p=860064",
     "https://www.weichert.com/133779767/",
-    "https://archive.org/details/twentiethcentury00glov"
+    "https://archive.org/details/twentiethcentury00glov",
+    "https://archive.org/details/historyofcasscou00roge",
+    "https://archive.org/details/historyofcasscou00wate"
    ],
    "verified": true
   },
@@ -105,8 +109,8 @@
    "lat": 41.9115,
    "lon": -86.01375,
    "built": "1841 (moved 1898-99; razed 1968)",
-   "then": "The county’s second courthouse was a two-storey frame building with classical columns, finished in 1841 for $6,000. When the stone courthouse replaced it, it was sold at auction for $25 and moved a block west. A theatre history says it became the 420-seat Colonial Opera House, then the Colonial Theatre in 1909, and in 1937 was remodelled as the Gem Theatre, which showed films until about 1960; the 1906 county history, though, calls it a storage house, so its early years here are uncertain.",
-   "now": "The building was torn down in 1968. The county’s first log jail, finished in 1834, also stood on this stretch of State Street west of Broadway.",
+   "then": "The county’s second courthouse was a two-storey frame building with classical columns, finished in 1841 for $6,000. When the stone courthouse replaced it, it was sold at auction for $25 and moved to the south side of State Street, west of Broadway, where the 1906 county history found it in use as a storage house. A theatre history says it later became the 420-seat Colonial Opera House, then the Colonial Theatre in 1909, and in 1937 was remodelled as the Gem Theatre, which showed films until about 1960.",
+   "now": "The building was torn down in 1968.",
    "sources": [
     "https://cinematreasures.org/theaters/18611",
     "https://www.leaderpub.com/?p=702332",
@@ -124,13 +128,14 @@
    "lat": 41.91118,
    "lon": -86.01272,
    "built": "c. 1900 per sale listing; renovated 1990",
-   "then": "Banking began on this side of the old square in 1857, when Asa Kingsbury opened a private bank, and in 1869–70 he built a brick banking house among the new stores on the square’s southwest quarter. The First National Bank of Cassopolis was organised in 1870 with Kingsbury as president, and around 1899 it bought $32,000 of the county’s bonds to pay for the new courthouse.",
+   "then": "Banking began on this side of the old square in 1855, when Asa and Charles Kingsbury opened a private bank; the brothers parted in 1857. In 1868 Asa Kingsbury divided the square’s southwest quarter into six lots, and by 1869–70 two-storey brick stores stood there, with his own brick banking house among them. The First National Bank of Cassopolis was organised in November 1870 with Kingsbury as president, and around 1899 it bought $32,000 of the county’s bonds to pay for the new courthouse.",
    "now": "The two-storey brick building at 116 South Broadway is a former bank with its vaults still inside. Whether it is the First National’s own building has not been confirmed.",
    "sources": [
     "https://carwm.resimplifi.com/listings/d8ce9f41-former-downtown-bank-facility-cassopolis-mi",
     "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=181",
     "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=228",
-    "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=246"
+    "https://ia601504.us.archive.org/BookReader/BookReaderGetTextWrapper.php?path=/12/items/twentiethcentury00glov/twentiethcentury00glov_djvu.xml&page=246",
+    "https://archive.org/details/historyofcasscou00wate"
    ],
    "verified": false,
    "id": "bank-corner",
@@ -145,12 +150,13 @@
    "lat": 41.91151,
    "lon": -86.01055,
    "built": "Begun early 1890s",
-   "then": "The congregation was founded in March 1842 as the First Presbyterian Church, when Cassopolis was still 'little more than a clearing in the woods.' Work on the present building began in the early 1890s, and in 1938 the congregation joined with the village's Baptist church. It long served as a federated church for several denominations before taking its present Presbyterian name in 1968.",
+   "then": "The congregation was founded in March 1842 as the First Presbyterian Church, when Cassopolis was still 'little more than a clearing in the woods.' Its first church, begun in 1845, was dedicated in November 1846, and the present brick church at State and O’Keefe streets was completed on 10 December 1893. In 1938 the congregation joined with the village's Baptist church; it long served as a federated church for several denominations before taking its present Presbyterian name in 1968.",
    "now": "Still a Presbyterian congregation, half a block east of Broadway.",
    "sources": [
-    "https://www.leaderpub.com/?p=782143"
+    "https://www.leaderpub.com/?p=782143",
+    "https://archive.org/details/twentiethcentury00glov"
    ],
-   "verified": false,
+   "verified": true,
    "id": "presbyterian-church"
   },
   {
@@ -159,8 +165,8 @@
    "lat": 41.91065,
    "lon": -86.01241,
    "built": "Late 1800s (a wainscot board inside is signed 1897)",
-   "then": "Local accounts say this storefront was one of the village’s post offices in the late 1800s; a board inside is signed 1897. It later held a barbershop and a thrift shop, and about 2011 a local dentist, Dr. Roger Pecina, fitted it out as a Prohibition-style room with a salvaged 38-foot bar.",
-   "now": "Steve and Shelley Schroeder bought it in 2018 and have run it since 2021 as Holden Green Tavern. Check before you go in.",
+   "then": "Local accounts (though not the old county histories) say this storefront was one of the village’s post offices in the late 1800s; a board inside is signed 1897. It later held a barbershop and a thrift shop, and about 2011 a local dentist, Dr. Roger Pecina, fitted it out as a Prohibition-style room with a salvaged 38-foot bar.",
+   "now": "Steve and Shelley Schroeder bought it in 2018 and have run it since 2021 as Holden Green Tavern. Its address is given as both 151 and 159 South Broadway. Check before you go in.",
    "sources": [
     "https://leaderpub.com/?p=851367",
     "https://www.leaderpub.com/?p=217543",
