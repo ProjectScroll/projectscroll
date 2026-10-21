@@ -1406,3 +1406,11 @@ try{ (function(){
       else { const a=document.createElement('a'); a.href=URL.createObjectURL(bl); a.download='project-scroll-badges.png'; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 2000); } }, 'image/png');
   });
 })(); }catch(err){ psFail(err); }
+try{ (function(){
+  /* the museums button: its pictures cross-fade slowly, only while on screen, and not at all for those who ask for less motion */
+  const box=document.getElementById('vShow'); if (!box) return;
+  const imgs=[].slice.call(box.querySelectorAll('.vs-f img')); if (imgs.length<2 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let i=0, t=0, seen=false;
+  const step=function(){ imgs[i].classList.remove('on'); i=(i+1)%imgs.length; imgs[i].classList.add('on'); };
+  new IntersectionObserver(function(es){ seen=es[0].isIntersecting; clearInterval(t); if (seen) t=setInterval(step, 4500); }).observe(box);
+})(); }catch(err){ psFail(err); }
