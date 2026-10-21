@@ -530,6 +530,8 @@ window.PS_BADGES=[
   ['records','Record keeper','Visit “Where the records are.”'],
   ['visitor','Out in the field','Mark three museums or historic places as “Been there.”'],
   ['stamp','Passport stamp','Stamp a museum or historic place by standing at its door.'],
+  ['walker','Broadway walker','Walk every stop of the Broadway Virtual Walk.'],
+  ['cook','From the old kitchen','Cook a recipe from the valley kitchen and tick it off.'],
   ['notes','Field notes','Open the book of field notes.'],
   ['legend','Legend tester','Test a family legend.'],
   ['toolkit','Toolmaker','Use a tool in the hunter’s toolkit.'],
@@ -694,7 +696,7 @@ try{ (function(){
 /* ---------- the ledger that travels: badges, follows and notes as one checked file, read back on another device ---------- */
 try{ (function(){
   const out=document.getElementById('ledgerOut'), inp=document.getElementById('ledgerIn'), msg=document.getElementById('ledgerMsg'); if (!out || !inp) return;
-  const KEYS=/^(ps-badges|ps-mine|ps-days|ps-note-\d+|ps-inked|ps-tn-[a-z-]+|ps-nh(-[a-z]+)?|ps-junior|ps-valley|ps-mu-trip|ps-mu-been|ps-mu-stamp|ps-hint-\d+)$/;
+  const KEYS=/^(ps-badges|ps-mine|ps-days|ps-note-\d+|ps-inked|ps-tn-[a-z-]+|ps-nh(-[a-z]+)?|ps-junior|ps-valley|ps-mu-trip|ps-mu-been|ps-mu-stamp|ps-walk|ps-walk-stamp|ps-rf|ps-cooked|ps-hint-\d+)$/;
   const gather=function(){ const d={}; for (let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); if (KEYS.test(k)) d[k]=localStorage.getItem(k); } return d; };
   const sum=function(txt){ if (!(crypto && crypto.subtle)) return Promise.resolve(''); return crypto.subtle.digest('SHA-256', new TextEncoder().encode(txt)).then(function(h){ return [].slice.call(new Uint8Array(h)).map(function(b){ return ('0'+b.toString(16)).slice(-2); }).join(''); }); };
   out.addEventListener('click', function(){
@@ -1344,6 +1346,22 @@ try{ (function(){
       else if (navigator.clipboard) navigator.clipboard.writeText(text+' '+url).then(function(){ if (say) say.textContent='Copied. Paste it to a friend and see who finishes first.'; }, function(){});
     });
     form.insertAdjacentElement('afterend', b);
+  });
+})(); }catch(err){ psFail(err); }
+try{ (function(){
+  /* the four doors under the trust line: each opens a small panel of its pages; without native pop-ups the button is simply a link */
+  const pop=!!(window.HTMLElement && HTMLElement.prototype.hasOwnProperty('popover'));
+  document.querySelectorAll('.dcard[data-door]').forEach(function(a){
+    const d=document.getElementById(a.dataset.door); if (!d || !pop) return;
+    const place=function(){ const r=a.getBoundingClientRect(), w=d.offsetWidth, h=d.offsetHeight, below=innerHeight-r.bottom-12;
+      let top=below>=Math.min(h,320) ? r.bottom+8 : Math.max(8, r.top-h-8); d.style.top=Math.round(top)+'px';
+      d.style.maxHeight=Math.max(200, innerHeight-top-12)+'px';
+      d.style.left=Math.round(Math.max(12, Math.min(r.left+r.width/2-w/2, innerWidth-w-12)))+'px'; };
+    let was=false; a.addEventListener('pointerdown', function(){ was=d.matches(':popover-open'); });
+    a.addEventListener('click', function(e){ if (e.metaKey||e.ctrlKey||e.shiftKey||e.button) return; e.preventDefault(); try{ if (was || d.matches(':popover-open')) d.hidePopover(); else d.showPopover(); }catch(err){ location.href=a.href; } was=false; });
+    d.addEventListener('toggle', function(e){ const o=e.newState==='open'; a.setAttribute('aria-expanded', String(o)); if (o){ place(); const f=d.querySelector('a'); if (f) f.focus({preventScroll:true}); } });
+    const re=function(){ if (d.matches(':popover-open')) place(); }; addEventListener('resize', re, {passive:true}); addEventListener('scroll', re, {passive:true});
+    d.addEventListener('keydown', function(e){ if (e.key==='Escape'){ a.focus(); } });
   });
 })(); }catch(err){ psFail(err); }
 try{ (function(){
