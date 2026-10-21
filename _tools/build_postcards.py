@@ -24,7 +24,7 @@ body=f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
       <li><b>Stay safe and on public ground.</b> Never step into the road for a shot, and never go onto private property without leave.</li>
       <li><b>Send it in</b> to <a href="mailto:research@projectscroll.com?subject=Rephotographed%20postcard">research@projectscroll.com</a>, saying which card and when you took it. By sending it you let us show it here with your name.</li>
     </ol>
-    <p class="note">The pictures are taken from old postcards of Cassopolis, published before 1929 and in the public domain. The pairings will be added as readers send them in.</p>
+    <p class="note">The pictures are taken from old postcards of Cassopolis. Each was published before 1931, or published without a copyright notice, and is in the public domain in the United States. The pairings will be added as readers send them in.</p>
 '''
 page('postcards/index.html','Stand where the photographer stood · Postcards, then and now · Project Scroll','Old postcards of Cassopolis, Michigan, from the days of wagons to the first cars: find where each was taken, take it again today, and see the two side by side.',body,og='https://projectscroll.com/og/cassopolis.jpg')
 print('postcards built')
