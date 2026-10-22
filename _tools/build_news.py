@@ -103,7 +103,7 @@ for k, st in enumerate(S):
     <section class="nw-morebox" aria-labelledby="nwMoreH"><h2 id="nwMoreH">More news of the hunt</h2>{morelist(st["slug"])}</section>
 '''
     b += SHARE
-    page(f'news/{st["slug"]}/index.html', f'{st["headline"]} · News of the hunt · Project Scroll', st['dek'], b)
+    page(f'news/{st["slug"]}/index.html', f'{st["headline"]} · News of the hunt · Project Scroll', st['dek'], b, og=f'https://projectscroll.com/news/{st["slug"]}/card.jpg?v=1')
 
 # ---------- 3. the news index ----------
 cards = ''.join(f'''<li class="nw-card"><a href="/news/{x["slug"]}/">{npic(x["pic"][0], "", "(min-width:900px) 15rem, 100vw", cls="nw-cimg")}<span class="nw-k">{E(x["kicker"])} · <time datetime="{x["date"]}">{day(x["date"])}</time></span><b>{E(x["headline"])}</b><span>{E(x["dek"])}</span></a></li>''' for x in S)
@@ -210,5 +210,5 @@ b = f'''    <div class="hn"><p class="crumb"><a href="/">← Front page</a> · <
       <li><b>Stay on paper.</b> Never dig, never go near a grave, and never set foot on anyone’s land.</li><li><b>Be kind.</b> These are real people, and their families are still here.</li></ul>
       <p class="note">Tools for the hunt: <a href="/records/">where the records are</a>, <a href="/glossary/">the glossary</a>, <a href="/toolkit/">the toolkit</a> and <a href="/worksheet/project-scroll-hunters-worksheet.pdf">the hunter’s worksheet (PDF)</a>.</p></section></div>
 ''' + JS + '\n'
-page('hunt/index.html', 'The hunt: every clue is true · Project Scroll', 'Project Scroll’s free online treasure hunt: real mysteries of the St. Joseph River valley, solved from county histories, maps and certificates. Levels, side quests and badges, no sign-up.', b)
+page('hunt/index.html', 'The hunt: every clue is true · Project Scroll', 'Project Scroll’s free online treasure hunt: real mysteries of the St. Joseph River valley, solved from county histories, maps and certificates. Levels, side quests and badges, no sign-up.', b, og='https://projectscroll.com/hunt/card.jpg?v=1')
 print('news built:', len(S), 'stories, the hunt page and the front page')
