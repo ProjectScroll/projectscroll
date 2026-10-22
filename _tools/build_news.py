@@ -34,6 +34,7 @@ NUGGET = ('<svg class="nw-nug" viewBox="0 0 64 50" aria-hidden="true">'
           '<path d="M27 35 40 33 57 35 46 44 28 46z" fill="#8F6013"/>'
           '<path d="M23 11 30 9 27 14z" fill="#FFF8DD"/><path d="M52 3v7M48.5 6.5h7" stroke="#FFF3C0" stroke-width="1.4" stroke-linecap="round"/></svg>')
 top, more = S[:4], S[4:]
+TOP = ([x for x in S if x.get('featured')] + [x for x in S if not x.get('featured')])[:2]
 brief = lambda s: (f'<article class="nw-b" data-d="{s["date"]}"><a class="nw-th" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{sqpic(s["pic"][0])}</a><p class="nw-k">{E(s["kicker"])}<span class="nw-new" hidden> · New</span></p>'
                    f'<h2><a href="/news/{s["slug"]}/">{E(s["headline"])}</a></h2></article>')
 line = lambda s: (f'<li data-d="{s["date"]}"><span class="nw-k">{E(s["kicker"])}</span> <a href="/news/{s["slug"]}/">{E(s["short"])}</a><span class="nw-new" hidden> · New</span></li>')
@@ -46,8 +47,8 @@ BLOCK = f'''<!--news-->
       <div class="nw" role="region" aria-labelledby="nwLead">
         <p class="nw-bar"><span>Front page</span><time class="nw-date" id="nwDate" datetime="{today.isoformat()}">{today.strftime('%A, %-d %B %Y')}</time><span>News of the hunt</span></p>
         <div class="nw-paper">
-        <div class="nw-sec">{''.join(second(s) for s in S[:2])}</div>
-        <ul class="nw-more" aria-label="More news">{''.join(line(s) for s in S[2:])}</ul>
+        <div class="nw-sec">{''.join(second(s) for s in TOP)}</div>
+        <ul class="nw-more" aria-label="More news">{''.join(line(s) for s in S if s not in TOP)}</ul>
         <article class="nw-lead nw-lead-last">
           <p class="nw-k nw-play">{E(L["kicker"])} <span>· Free to play</span></p>{NUGGET}
           <h1 id="nwLead"><a href="{L["url"]}"><span class="foil">{E(L["headline"])}</span></a><button class="fn" type="button" id="star" aria-label="Read the footnote">*</button></h1>
@@ -131,6 +132,8 @@ for k, st in enumerate(S):
               + '<p>Every fact on this page comes from a source listed above, and each one can be checked where it is held. If you find an error, or hold a record that adds to the story, write to <a href="mailto:research@projectscroll.com">research@projectscroll.com</a>; corrections are made and noted on the page.</p></div>')
     from urllib.parse import quote as _q
     visit = ('<aside class="nw-visit" aria-labelledby="vis-h"><p class="nw-visit-h" id="vis-h">Visit and see</p><ul>' + ''.join(f'<li><b>{E(v["name"])}</b> {E(v["note"])} <a class="nw-dir" href="https://www.google.com/maps/dir/?api=1&amp;destination={_q(v["where"])}">Directions ›</a></li>' for v in st['visit']) + '</ul><p class="nw-visit-n">Public places only. Please respect private land and posted hours.</p></aside>') if st.get('visit') else ''
+    SER = [x for x in S if x.get('series') == 'names']
+    series = ('<aside class="nw-series" aria-labelledby="ser-h"><p class="nw-series-h" id="ser-h">How the valley’s towns got their names</p><ol>' + ''.join((f'<li aria-current="page"><b>{E(x["town"])}</b></li>' if x['slug'] == st['slug'] else f'<li><a href="/news/{x["slug"]}/">{E(x["town"])}</a></li>') for x in SER) + '</ol><p class="nw-series-m"><a href="/place-names/">See them all on the map ›</a></p></aside>') if st.get('series') == 'names' else ''
     changes = ('<aside class="nw-changes" aria-labelledby="chg-h"><p class="nw-changes-h" id="chg-h">Changes to this page</p><ul>' + ''.join(f'<li><time datetime="{d}">{day(d, True)}</time> {E(x)}</li>' for d,x in st['changes']) + '</ul></aside>') if st.get('changes') else ''
     live = f'<div class="nw-live" role="note"><p class="nw-live-h"><span class="nw-dot" aria-hidden="true"></span>Live research document</p><p>{st["live"]}</p></div>' if st.get('live') else ''
     b = f'''    <p class="crumb"><a href="/">← Front page</a> · <a href="/news/">All the news</a></p>
@@ -142,6 +145,7 @@ for k, st in enumerate(S):
       {fig}
       <div class="nw-text">{body}{reveal}</div>
       {gal}
+      {series}
       {cta}
       {src}
       {visit}
