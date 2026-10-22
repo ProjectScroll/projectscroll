@@ -72,6 +72,7 @@ def morelist(skip):
 for k, st in enumerate(S):
     pc = st['pic']
     fig = f'<figure class="nw-fig">{npic(pc[0], pc[1], "(min-width:900px) 46rem, 100vw", lazy=False)}<figcaption>{E(pc[2])}</figcaption></figure>'
+    gal = ('<div class="nw-gal">' + ''.join(f'<figure><a href="{E(g[0])}"><img src="{E(g[0])}" width="{g[1]}" height="{g[2]}" alt="{E(g[3])}" loading="lazy" decoding="async"></a><figcaption>{E(g[3])}</figcaption></figure>' for g in st['gallery']) + '</div>') if st.get('gallery') else ''
     words = len(re.sub('<[^>]+>', ' ', ' '.join(st['body'])).split()); mins = max(1, round(words/200))
     prv, nxt = S[k-1] if k else None, S[k+1] if k+1 < len(S) else None
     pn = '<nav class="nw-pn" aria-label="Previous and next story">' + (f'<a class="nw-prev" href="/news/{prv["slug"]}/"><span>‹ Previous story</span>{E(prv["headline"])}</a>' if prv else '<a class="nw-prev" href="/hunt/"><span>‹ The lead story</span>Every clue is true.</a>') + (f'<a class="nw-next" href="/news/{nxt["slug"]}/"><span>Next story ›</span>{E(nxt["headline"])}</a>' if nxt else '<a class="nw-next" href="/"><span>Back to ›</span>The front page</a>') + '</nav>'
@@ -87,6 +88,7 @@ for k, st in enumerate(S):
       <p class="nw-by">Project Scroll · <time datetime="{st["date"]}">{day(st["date"], True)}</time> · {mins} min read <button type="button" class="linkbtn nw-share" data-t="{E(st["headline"])}">Share this story</button></p>
       {fig}
       <div class="nw-text">{body}{reveal}</div>
+      {gal}
       {cta}
       {src}
       {pn}

@@ -3673,3 +3673,7 @@ h3 + p{margin-top:.35rem}
 @media (max-width:560px){ .hn-pic{width:6rem} }
 .hn-head > div::after{content:""; display:block; clear:both}
 .hero .nw-lead p.lede{font-size:.97rem; line-height:1.48}
+/* Draft 172: the photographed pages under a story */
+.nw-gal{display:grid; grid-template-columns:repeat(auto-fill,minmax(13rem,1fr)); gap:1rem; margin:1.6rem 0}
+.nw-gal figure{margin:0} .nw-gal img{width:100%; height:auto; display:block; border:1px solid var(--line); border-radius:3px; background:#fff}
+.nw-gal figcaption{font-size:.8rem; color:var(--ink-soft); margin-top:.35rem; line-height:1.35}
