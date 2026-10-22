@@ -48,6 +48,7 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">The sources shelf</p>
     <h1>What the hunt is built on</h1>
     <p class="lede" style="font-size:1.15rem">Every clue on Project Scroll comes from a book, a map or a record you can open yourself. Here they are on one shelf, with where to read each one free and a plain word on how far to trust it.</p>
+    <p class="note"><b>New:</b> <a href="/sources/libraries/">The libraries behind the stories</a>: every library, archive and newspaper our news stories draw on, and which stories use each one.</p>
 {chr(10).join(out)}
     <p class="note">For the free archives to search, country by country, see <a href="/records/">where the records are</a>. For the names in the town directories, see <a href="/names/">who was in town</a>.</p>
 '''

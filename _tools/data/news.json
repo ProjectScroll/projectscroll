@@ -310,6 +310,28 @@
    "credit": "Michael Urbanski",
    "modified": "2026-10-22",
    "featured": true,
+   "visit": [
+    {
+     "name": "Bronson Park, Kalamazoo.",
+     "note": "Durant wrote in 1880 that the park was about the only remembrance left of the founder; not even a street bore his name.",
+     "where": "Bronson Park, Kalamazoo, MI"
+    },
+    {
+     "name": "Galesburg, on the river east of town.",
+     "note": "“Galesburg, or Toland’s Prairie,” where the 1867 telling puts the race to the river.",
+     "where": "Galesburg, MI"
+    },
+    {
+     "name": "The Kalamazoo Public Library, Central Library.",
+     "note": "The local history room keeps the subject files on the name and on Bronson, and the Gazette articles of 1901 and 1922.",
+     "where": "Kalamazoo Public Library, 315 S Rose St, Kalamazoo, MI"
+    },
+    {
+     "name": "Saugatuck and Douglas, at the river’s mouth.",
+     "note": "Saugatuck was once called Kalamazoo; Greason painted the bayou at Douglas, across the water.",
+     "where": "Saugatuck, MI"
+    }
+   ],
    "cardpos": "88% center",
    "changes": [
     [

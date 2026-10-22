@@ -4054,3 +4054,19 @@ table.rg{width:100%;border-collapse:collapse;font-size:.9rem;line-height:1.4}
 :root[data-theme="dark"] .nw-citebox-h{color:#e3bb62}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nw-citebox-h{color:#e3bb62} }
 @media print{ .nw-cite,.nw-listen,.nw-listen-stop,.nw-citebox{display:none!important} }
+/* libraries page, visit box */
+.nw-src-more{margin:.6rem 0 0!important;font-size:.95rem}
+.nw-visit{margin:1.4rem 0 1rem;padding:.9rem 1rem;border:1px solid var(--gold);border-radius:6px;background:color-mix(in srgb,var(--ledger) 7%,transparent)}
+.nw-visit-h{margin:0 0 .4rem!important;font-size:.76rem!important;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#2B4A41}
+.nw-visit ul{margin:0;padding-left:1.1rem} .nw-visit li{margin:.35rem 0}
+.nw-dir{white-space:nowrap;font-size:.92rem}
+.nw-visit-n{margin:.5rem 0 0!important;font-size:.85rem!important;opacity:.8}
+:root[data-theme="dark"] .nw-visit-h{color:#74d3a2}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nw-visit-h{color:#74d3a2} }
+.lb-sec{margin:1.6rem 0}
+.lb-h{border-top:1px solid var(--line);padding:.5rem 0}
+.lb-h summary{cursor:pointer;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline}
+.lb-n{font-weight:600;font-size:1.08rem} .lb-c{font-size:.9rem;opacity:.75}
+.lb-l{margin:.3rem 0!important;font-style:italic}
+.lb-s{margin:.4rem 0 .6rem;padding-left:1.1rem} .lb-s ul{padding-left:1.1rem;font-size:.92rem}
+.lb-p li{margin:.3rem 0} .lb-in{font-size:.9rem;opacity:.8}

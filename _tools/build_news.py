@@ -124,11 +124,13 @@ for k, st in enumerate(S):
         body = ''.join(para(x) for x in st['body'])
     reveal = f'<details class="nw-reveal"><summary>Show the answer</summary>{st["reveal"]}</details>' if st.get('reveal') else ''
     cta = '<p class="nw-cta">' + ' '.join(f'<a class="btn{" primary" if i==0 else ""}" href="{E(u)}">{E(t)}</a>' for i,(t,u) in enumerate(st['cta'])) + '</p>'
-    src = ('<div class="nw-src"><h2 id="sources">Sources</h2><ul>' + ''.join((f'<li><a href="{E(u)}" rel="noopener">{E(t)}</a></li>' if u else f'<li>{E(t)}</li>') for t,u in st['sources']) + '</ul></div>') if st['sources'] else ''
+    src = ('<div class="nw-src"><h2 id="sources">Sources</h2><ul>' + ''.join((f'<li><a href="{E(u)}" rel="noopener">{E(t)}</a></li>' if u else f'<li>{E(t)}</li>') for t,u in st['sources']) + '</ul><p class="nw-src-more"><a href="/sources/libraries/">The libraries behind all our stories ›</a></p></div>') if st['sources'] else ''
     who = st.get('credit')
     credit = (f'<div class="nw-about" role="note"><p class="nw-about-h">About this research</p>'
               + (f'<p class="nw-about-by">Discovery and research by <b>{E(who)}</b>.</p>' if who else '<p class="nw-about-by">Researched and written by the Project Scroll research desk.</p>')
               + '<p>Every fact on this page comes from a source listed above, and each one can be checked where it is held. If you find an error, or hold a record that adds to the story, write to <a href="mailto:research@projectscroll.com">research@projectscroll.com</a>; corrections are made and noted on the page.</p></div>')
+    from urllib.parse import quote as _q
+    visit = ('<aside class="nw-visit" aria-labelledby="vis-h"><p class="nw-visit-h" id="vis-h">Visit and see</p><ul>' + ''.join(f'<li><b>{E(v["name"])}</b> {E(v["note"])} <a class="nw-dir" href="https://www.google.com/maps/dir/?api=1&amp;destination={_q(v["where"])}">Directions ›</a></li>' for v in st['visit']) + '</ul><p class="nw-visit-n">Public places only. Please respect private land and posted hours.</p></aside>') if st.get('visit') else ''
     changes = ('<aside class="nw-changes" aria-labelledby="chg-h"><p class="nw-changes-h" id="chg-h">Changes to this page</p><ul>' + ''.join(f'<li><time datetime="{d}">{day(d, True)}</time> {E(x)}</li>' for d,x in st['changes']) + '</ul></aside>') if st.get('changes') else ''
     live = f'<div class="nw-live" role="note"><p class="nw-live-h"><span class="nw-dot" aria-hidden="true"></span>Live research document</p><p>{st["live"]}</p></div>' if st.get('live') else ''
     b = f'''    <p class="crumb"><a href="/">← Front page</a> · <a href="/news/">All the news</a></p>
@@ -142,6 +144,7 @@ for k, st in enumerate(S):
       {gal}
       {cta}
       {src}
+      {visit}
       {changes}
       {credit}
       {CONTRIB}
