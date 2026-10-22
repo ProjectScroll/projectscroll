@@ -129,6 +129,7 @@ for k, st in enumerate(S):
     credit = (f'<div class="nw-about" role="note"><p class="nw-about-h">About this research</p>'
               + (f'<p class="nw-about-by">Discovery and research by <b>{E(who)}</b>.</p>' if who else '<p class="nw-about-by">Researched and written by the Project Scroll research desk.</p>')
               + '<p>Every fact on this page comes from a source listed above, and each one can be checked where it is held. If you find an error, or hold a record that adds to the story, write to <a href="mailto:research@projectscroll.com">research@projectscroll.com</a>; corrections are made and noted on the page.</p></div>')
+    changes = ('<aside class="nw-changes" aria-labelledby="chg-h"><p class="nw-changes-h" id="chg-h">Changes to this page</p><ul>' + ''.join(f'<li><time datetime="{d}">{day(d, True)}</time> {E(x)}</li>' for d,x in st['changes']) + '</ul></aside>') if st.get('changes') else ''
     live = f'<div class="nw-live" role="note"><p class="nw-live-h"><span class="nw-dot" aria-hidden="true"></span>Live research document</p><p>{st["live"]}</p></div>' if st.get('live') else ''
     b = f'''    <p class="crumb"><a href="/">← Front page</a> · <a href="/news/">All the news</a></p>
     <article class="nw-art">
@@ -141,6 +142,7 @@ for k, st in enumerate(S):
       {gal}
       {cta}
       {src}
+      {changes}
       {credit}
       {CONTRIB}
       {pn}

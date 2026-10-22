@@ -4037,3 +4037,10 @@ table.rg{width:100%;border-collapse:collapse;font-size:.9rem;line-height:1.4}
 .nw-svg .lkm{font-size:12px}
 .nw-svg .m.c,.nw-key .m.c{fill:var(--ink-soft)}
 .nw-kzmap{background:color-mix(in srgb,var(--ledger) 10%,transparent);border-radius:4px}
+/* changes to this page */
+.nw-changes{margin:1.4rem 0 1rem;padding:.8rem 1rem;border-left:3px solid var(--gold);background:color-mix(in srgb,var(--gold) 7%,transparent)}
+.nw-changes-h{margin:0 0 .3rem!important;font-size:.74rem!important;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#8a6510}
+.nw-changes ul{margin:0;padding-left:1.1rem} .nw-changes li{margin:.2rem 0;font-size:.95rem}
+.nw-changes time{font-weight:600;margin-right:.3rem}
+:root[data-theme="dark"] .nw-changes-h{color:#e3bb62}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nw-changes-h{color:#e3bb62} }

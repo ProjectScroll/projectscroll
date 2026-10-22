@@ -298,7 +298,17 @@
    "by": "Michael Urbanski",
    "credit": "Michael Urbanski",
    "modified": "2026-10-22",
-   "featured": true
+   "featured": true,
+   "changes": [
+    [
+     "2026-10-22",
+     "Added: the river map, the printable poster, the Story or record? quiz and the spelling player."
+    ],
+    [
+     "2026-10-22",
+     "Corrected: Michigan joined the Union nearly eleven months after the act, not ten; the Potier pages are 144 to 151; Bronson’s death is given as January 1853, as the library has it."
+    ]
+   ]
   },
   {
    "slug": "e-clampus-vitus-in-cassopolis-1846",
@@ -638,7 +648,21 @@
    "by": "Michael Urbanski",
    "credit": "Michael Urbanski",
    "featured": true,
-   "modified": "2026-10-22"
+   "modified": "2026-10-22",
+   "changes": [
+    [
+     "2026-10-22",
+     "Claim narrowed: the Cassopolis lodge is the earliest of the order yet found with its members named. A Connersville, Indiana, letter of February 1846 is the earliest dated mention of the order."
+    ],
+    [
+     "2026-10-22",
+     "Corrected: Steamboat Jake was initiated at Yreka in 1856 (Wells, 1881), not in 1852."
+    ],
+    [
+     "2026-10-22",
+     "Added: the Indiana House record of the Jackson Lodge bill (1846–47), Judge Hall’s account of the Bedford lodge, more early records, and updates to the open questions."
+    ]
+   ]
   },
   {
    "slug": "e-clampus-vitus-the-complete-record",
@@ -751,7 +775,17 @@
    ],
    "by": "Michael Urbanski",
    "credit": "Michael Urbanski",
-   "modified": "2026-10-22"
+   "modified": "2026-10-22",
+   "changes": [
+    [
+     "2026-10-22",
+     "The register grew from 58 to 61 places: Vincennes, 1854; Jackson, Ohio, 1858; Springville and Mitchell, 1859."
+    ],
+    [
+     "2026-10-22",
+     "Added: the time-lapse map, the Myth or record? quiz, the Bedford initiation and the printable poster. The register is licensed CC BY 4.0."
+    ]
+   ]
   },
   {
    "slug": "the-day-3000-came-to-watch-one-log",
