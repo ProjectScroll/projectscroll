@@ -3798,3 +3798,11 @@ blockquote.nw-q{margin:1rem 0; padding:.6rem 1rem; border-left:3px solid var(--r
 .nw-note{font-size:.86rem;color:var(--ink-soft)}
 :root[data-theme="dark"] .nw-clip{background:#2b261b;color:#efe6cf;border-color:#5a4d30}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nw-clip{background:#2b261b;color:#efe6cf;border-color:#5a4d30} }
+/* case-in-brief verdict box */
+.nw-verdict{border:2px solid #1f2a33;border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0 1.4rem;background:color-mix(in srgb,#c9a227 6%,transparent);position:relative}
+.nw-verdict::before{content:"CASE FILE";position:absolute;top:-.7rem;right:1rem;background:#b3362b;color:#fff;font:700 .66rem/1 var(--sans,system-ui),sans-serif;letter-spacing:.16em;padding:.3rem .5rem;border-radius:2px;transform:rotate(2deg)}
+.nw-v-h{font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.76rem!important;margin:.6rem 0 .2rem!important;color:#8a6510}
+.nw-verdict ul{margin:.2rem 0 .4rem;padding-left:1.1rem}
+.nw-verdict li{margin:.25rem 0}
+:root[data-theme="dark"] .nw-verdict{border-color:#c9a227}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nw-verdict{border-color:#c9a227} }

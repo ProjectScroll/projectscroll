@@ -102,7 +102,12 @@ for k, st in enumerate(S):
         if x.startswith('## '):
             t=x[3:]; return f'<h2 id="{re.sub(r"[^a-z0-9]+","-",t.lower()).strip("-")}">{t}</h2>'
         return x if re.match(r'<(aside|nav|blockquote|ul|ol|p|div|figure)\b', x) else f'<p>{x}</p>'
-    body = ''.join(para(x) for x in st['body'])
+    if '{{toc}}' in st['body']:
+        hs=[x[3:] for x in st['body'] if x.startswith('## ')]
+        toc='<nav class="nw-toc" aria-label="On this page"><b>On this page</b><ol>'+''.join(f'<li><a href="#{re.sub(r"[^a-z0-9]+","-",h.lower()).strip("-")}">{h}</a></li>' for h in hs)+'<li><a href="#sources">Sources</a></li></ol></nav>'
+        body = ''.join(toc if x=='{{toc}}' else para(x) for x in st['body'])
+    else:
+        body = ''.join(para(x) for x in st['body'])
     reveal = f'<details class="nw-reveal"><summary>Show the answer</summary>{st["reveal"]}</details>' if st.get('reveal') else ''
     cta = '<p class="nw-cta">' + ' '.join(f'<a class="btn{" primary" if i==0 else ""}" href="{E(u)}">{E(t)}</a>' for i,(t,u) in enumerate(st['cta'])) + '</p>'
     src = ('<div class="nw-src"><h2 id="sources">Sources</h2><ul>' + ''.join((f'<li><a href="{E(u)}" rel="noopener">{E(t)}</a></li>' if u else f'<li>{E(t)}</li>') for t,u in st['sources']) + '</ul></div>') if st['sources'] else ''
