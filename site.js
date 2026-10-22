@@ -1303,6 +1303,12 @@ try{ (function(){
     nx.addEventListener('click',function(){ go(i<st.length-1?i+1:0,true); });
     go(0,false);
   }); }catch(err){ psFail(err); }
+  try{ document.querySelectorAll('[data-share]').forEach(function(sb){
+    var u=sb.dataset.url||location.href.split('#')[0], t=sb.dataset.title||document.title, cp=sb.querySelector('.sb-copy'), mo=sb.querySelector('.sb-more');
+    if(navigator.share){ mo.hidden=false; mo.addEventListener('click',function(){ navigator.share({title:t,url:u}).catch(function(){}); }); }
+    cp.addEventListener('click',function(){ var done=function(){ cp.textContent='Link copied ✓'; setTimeout(function(){cp.textContent='Copy link';},2500); };
+      if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(u).then(done,fb); else fb(); function fb(){ var i=document.createElement('input'); i.value=u; i.readOnly=true; i.className='sb-l'; i.setAttribute('aria-label','Link to this page'); cp.replaceWith(i); i.select(); try{ if(document.execCommand('copy')) i.value='Link copied ✓'; }catch(e){} } });
+  }); }catch(err){ psFail(err); }
   try{ document.querySelectorAll('.nw-print').forEach(function(b){ b.addEventListener('click', function(){ document.querySelectorAll('.nw-art img[loading=lazy]').forEach(function(i){ i.loading='eager'; }); setTimeout(function(){ window.print(); }, 400); }); }); }catch(err){ psFail(err); }
   /* ---------- story pictures: open large, with caption, step through with the arrow keys ---------- */
   try{ (function(){
