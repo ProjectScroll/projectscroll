@@ -184,7 +184,8 @@ for k, st in enumerate(S):
     page(f'news/{st["slug"]}/index.html', f'{st["headline"]} · News of the hunt · Project Scroll', st['dek'], b, og=f'https://projectscroll.com/news/{st["slug"]}/card.jpg?v=1')
 
 # ---------- 3. the news index ----------
-cards = ''.join(f'''<li class="nw-card" data-f="{1 if x.get("featured") else 0}" data-t="{E((x["kicker"]+" "+x["headline"]+" "+x["dek"]).lower())}"><a href="/news/{x["slug"]}/">{npic(x["pic"][0], "", "(min-width:900px) 15rem, 100vw", cls="nw-cimg")}<span class="nw-k">{E(x["kicker"])} · <time datetime="{x["date"]}">{day(x["date"])}</time></span><b>{E(x["headline"])}</b><span>{E(x["dek"])}</span></a></li>''' for x in S)
+_ORDER = TOP + [y for y in S if y not in TOP]
+cards = ''.join(f'''<li class="nw-card" data-f="{1 if (x.get("featured") or x["slug"] in _RIB) else 0}" data-t="{E((x["kicker"]+" "+x["headline"]+" "+x["dek"]).lower())}"><a href="/news/{x["slug"]}/">{npic(x["pic"][0], "", "(min-width:900px) 15rem, 100vw", cls="nw-cimg")}<span class="nw-k">{E(x["kicker"])} · <time datetime="{x["date"]}">{day(x["date"])}</time></span><b>{E(x["headline"])}</b><span>{E(x["dek"])}</span></a></li>''' for x in _ORDER)
 b = f'''    <div class="nw-index"><p class="crumb"><a href="/">← Front page</a></p>
     <p class="kicker">News of the hunt</p>
     <h1>All the news</h1>

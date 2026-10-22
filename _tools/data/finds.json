@@ -55,8 +55,8 @@
   {
    "id": "bonine-elk-park-1953",
    "town": "Vandalia",
-   "t": "The Bonine Elk Park outlived its founder by half a century. Isaac A. Bonine wrote to the federal Biological Survey in 1907 that he had bred elk “for about thirty-five years”; a 1908 newspaper reports elk sold at $100 a head to parks in Detroit and Grand Rapids; and in October 1953 a newspaper photograph shows “a herd of 12 to 15 elk at Bonine Elk Park” on M-60, still owned by the founder’s great-grandson.",
-   "s": "The Underground Railroad Society of Cass County’s pages on the house, carriage house and Quaker timeline; eight Leader articles of 2009–2021; the Clio entry; local radio and television features; Wikipedia; Internet Archive full-text searches for “Bonine Elk Park” and “Elk Park farm”; the Biological Survey bulletins.",
+   "t": "The Bonine Elk Park outlived its founder by half a century. Isaac A. Bonine wrote to the federal Biological Survey in 1907 that he had bred elk “for about thirty-five years”; a 1908 newspaper reports elk sold at $100 a head to parks in Detroit and Grand Rapids; the WPA’s 1941 guide to Michigan found “more than a score of American elk” there, sold “to zoos, parks, and private gardens, and sometimes to Elk lodges”; and in October 1953 a newspaper photograph shows 12 to 15 elk still on the park. That was the year the farm left the family: G. Elwood Bonine’s 1976 obituary says the Elk Park Farms were in the family “from 1837 to 1953.”",
+   "s": "The Underground Railroad Society of Cass County’s pages on the house, carriage house and Quaker timeline; eight Leader articles of 2009–2021; the Clio entries; local radio and television features; Wikipedia; Internet Archive full-text searches for “Bonine Elk Park” and “Elk Park farm”; the Biological Survey bulletins; the WPA guide; the Friends of Silverbrook obituary transcriptions.",
    "card": "East Jordan News-Herald|“A herd of 12 to 15 elk”|8 October 1953"
   },
   {
@@ -72,6 +72,24 @@
    "t": "James E. Bonine was superintendent of the Air Line railroad through Penn Township, giving “three years time, $6,000 right of way, and $6,000 cash,” by the 1882 county history. The line was the Michigan Air Line, opened through Vandalia in 1871. No modern account of the Bonine House we have read mentions it.",
    "s": "The Underground Railroad Society of Cass County’s pages on the house, carriage house and Quaker timeline; eight Leader articles of 2009–2021; the Clio entry; local radio and television features; Wikipedia; web searches for Bonine with “Air Line” and railroad.",
    "card": "History of Cass County|Chicago|1882, p. 258"
+  },
+  {
+   "id": "bonine-death-1897",
+   "town": "Vandalia",
+   "t": "James E. Bonine, the builder of the Bonine House, died at his home in Niles on 18 February 1897, “in the eighty-first year of his age,” after an illness of four months, by his obituary in the Quaker weekly <i>The American Friend</i>. It says he built “principally one house for worship” and helped build three others. No modern account we have read gives the date; a 1906 Berrien County history gives 1898.",
+   "s": "The Underground Railroad Society of Cass County’s pages on the house, carriage house and Quaker timeline; eight Leader articles of 2009–2021; the Clio entries; local radio and television features; Wikipedia; Find a Grave (a bot check stopped us) and Geni (a title only); Internet Archive full-text searches for James E. Bonine with died, funeral and 1897; the Friends of Silverbrook obituaries; Glover’s necrology.",
+   "img": "/img/news/ugrr/american-friend-1897-bonine.webp",
+   "alt": "The American Friend 1897: Died at his home in Niles, Michigan, Second month 18th, 1897, James E. Bonine",
+   "cap": "The American Friend, vol. 4 (1897), p. 308. Internet Archive."
+  },
+  {
+   "id": "bonine-italy-castiglione",
+   "town": "Vandalia",
+   "t": "The Italian side of the Bonine elk story has a record of its own. In 1871 the naturalist of the King of Italy’s park of La Mandria reported that the king had sent the Count di Castiglione “to America to buy wapiti,” that the first shipment of 60 landed 47 alive, and that the American elk kept dying through 1873. No account of the Bonine sale we have read connects it with the king’s buying in America.",
+   "s": "The Underground Railroad Society of Cass County’s pages on the house, carriage house and Quaker timeline; eight Leader articles of 2009–2021; the Clio entries; local radio and television features; Wikipedia; Italian accounts of La Mandria (Rivista Savej, Fondazione 1563, Wikipedia); Internet Archive full-text searches for wapiti with Mandria and Castiglione.",
+   "img": "/img/news/ugrr/comba-1871-wapiti-america.webp",
+   "alt": "Comba 1871: the comte de Castiglione was sent by His Majesty to America to buy wapiti; 60 animals, 47 arrived alive in Italy",
+   "cap": "Bulletin de la Société d’acclimatation (Paris, 1871), p. 500. Internet Archive."
   }
  ],
  "_about": "New findings, by story slug. Merged into each story's 'finds' by build_news.py and build_discoveries.py. Each: id, t (the finding, html), s (what we searched, html), town (filter label), img, alt, cap. Only findings checked as not previously published go here.",
