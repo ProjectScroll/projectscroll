@@ -379,7 +379,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     </div>
     <figure class="mu-mapf">
       <div class="mu-map" id="muMap" role="region" aria-label="Map of the places in this directory. Every place is also in the list below.">
-        <p class="mu-mapph">The map of all {nmap} places opens here.</p>
+        <p class="mu-mapph">The map opens here: {nmap} of the {n} places have a pin, and places in the same building share one.</p>
       </div>
       <figcaption><span class="mu-lg"><i class="mu-dot"></i> Museum, house or site</span> <span class="mu-lg"><i class="mu-dot lib"></i> Library, archive or society</span> <span class="mu-lg"><i class="mu-dot t"></i> On my trip</span>
         <button type="button" class="btn mu-osm" id="muOSM" aria-pressed="false" hidden>Show today’s streets</button> <button type="button" class="btn" id="muHome" hidden>Whole valley</button>

@@ -2928,6 +2928,7 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
 .l3d-key i{display:inline-block; width:.8rem; height:.8rem; border-radius:50%; margin-right:.4rem; vertical-align:-.05rem}
 @media (max-width:640px){ .l3d{aspect-ratio:3/4} .l3d-help{display:none} .l3d-b{font-size:.72rem; padding:.28rem .55rem} }
 .l3d-v{aspect-ratio:16/10}
+@media (max-width:640px){ .l3d-v{aspect-ratio:3/4} }
 .l3d-r{display:inline-flex; align-items:center; gap:.4rem; cursor:default}
 .l3d-r input{width:6rem; accent-color:#e8b84a}
 .l3d-r output{min-width:2.2em; color:#f6d27a}
@@ -3550,3 +3551,6 @@ h3 + p{margin-top:.35rem}
 .whatsnew{border:1px solid var(--line); border-left:4px solid var(--vp-green); border-radius:4px; padding:.6rem 1rem; margin:1.2rem 0}
 .whatsnew h2{font-size:1.05rem; margin:.1rem 0 .3rem} .whatsnew ul{list-style:none; padding:0; margin:0} .whatsnew li{margin:.35rem 0}
 .whatsnew time{display:inline-block; min-width:3.4rem; font-size:.78rem; color:var(--rule)} .whatsnew span{display:block; font-size:.88rem; color:var(--ink-soft); margin-left:3.4rem}
+
+/* Draft 166: a bigger tap target for Send this postcard */
+.oc-send{padding:.3rem 0; min-height:24px}
