@@ -4044,3 +4044,13 @@ table.rg{width:100%;border-collapse:collapse;font-size:.9rem;line-height:1.4}
 .nw-changes time{font-weight:600;margin-right:.3rem}
 :root[data-theme="dark"] .nw-changes-h{color:#e3bb62}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nw-changes-h{color:#e3bb62} }
+
+/* cite and listen */
+.nw-citebox{margin:.6rem 0 1rem;padding:.7rem .9rem;border:1px solid var(--gold);border-radius:6px;background:color-mix(in srgb,var(--gold) 7%,transparent)}
+.nw-citebox-h{margin:0 0 .25rem!important;font-size:.74rem!important;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#8a6510}
+.nw-citebox-t{margin:0!important;user-select:all;font-size:.98rem}
+.nw-citebox-n{margin:.3rem 0 0!important;font-size:.85rem!important;opacity:.8}
+.nw-reading{background:color-mix(in srgb,var(--gold) 16%,transparent);box-shadow:0 0 0 .3rem color-mix(in srgb,var(--gold) 16%,transparent);border-radius:3px}
+:root[data-theme="dark"] .nw-citebox-h{color:#e3bb62}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nw-citebox-h{color:#e3bb62} }
+@media print{ .nw-cite,.nw-listen,.nw-listen-stop,.nw-citebox{display:none!important} }

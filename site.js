@@ -1332,6 +1332,29 @@ try{ (function(){
     cp.addEventListener('click',function(){ var done=function(){ cp.textContent='Link copied ✓'; setTimeout(function(){cp.textContent='Copy link';},2500); };
       if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(u).then(done,fb); else fb(); function fb(){ var i=document.createElement('input'); i.value=u; i.readOnly=true; i.className='sb-l'; i.setAttribute('aria-label','Link to this page'); cp.replaceWith(i); i.select(); try{ if(document.execCommand('copy')) i.value='Link copied ✓'; }catch(e){} } });
   }); }catch(err){ psFail(err); }
+  try{ document.querySelectorAll('.nw-cite').forEach(function(b){ b.addEventListener('click', function(){
+      var d=new Date(), M=['January','February','March','April','May','June','July','August','September','October','November','December'];
+      var t=b.getAttribute('data-cite')+' (accessed '+d.getDate()+' '+M[d.getMonth()]+' '+d.getFullYear()+').';
+      var box=document.querySelector('.nw-citebox'); if(!box){ box=document.createElement('div'); box.className='nw-citebox'; box.setAttribute('role','status'); b.closest('p').after(box); }
+      box.innerHTML='<p class="nw-citebox-h">Cite this story</p><p class="nw-citebox-t"></p><p class="nw-citebox-n"></p>'; box.querySelector('.nw-citebox-t').textContent=t;
+      var n=box.querySelector('.nw-citebox-n');
+      function ok(){ n.textContent='Copied. Paste it into your notes or bibliography.'; } function no(){ n.textContent='Select the line above and copy it.'; }
+      try{ navigator.clipboard.writeText(t).then(ok,no); }catch(e){ no(); }
+  }); }); }catch(err){ psFail(err); }
+  try{ if('speechSynthesis' in window){ document.querySelectorAll('.nw-listen').forEach(function(b){
+      var art=b.closest('.nw-art'); if(!art) return; b.hidden=false; var on=false, paused=false, q=[], i=0, cur=null, fails=0;
+      var stop=document.createElement('button'); stop.type='button'; stop.className='linkbtn nw-listen-stop'; stop.textContent='Stop'; stop.hidden=true; b.after(stop); b.after(document.createTextNode(' '));
+      function blocks(){ var h=art.querySelector('h1'), l=art.querySelector('.lede'), out=[h,l].filter(Boolean);
+        art.querySelectorAll('.nw-text > p, .nw-text > h2, .nw-text > ul > li, .nw-text > ol > li, .nw-text .nw-verdict li').forEach(function(e){ if(e.closest('figure,.nw-myths,.kz-spell,.nw-map,svg')) return; if((e.textContent||'').trim().length>1) out.push(e); }); return out; }
+      function mark(e){ if(cur) cur.classList.remove('nw-reading'); cur=e; if(e){ e.classList.add('nw-reading'); var r=e.getBoundingClientRect(); if(r.top<80||r.bottom>innerHeight-40) e.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}); } }
+      function next(){ if(!on) return; if(i>=q.length){ end(); return; } var e=q[i++]; mark(e); var u=new SpeechSynthesisUtterance(e.textContent.replace(/\s+/g,' ').trim()); u.lang='en-US'; u.rate=1; u.onend=function(){ fails=0; next(); }; u.onerror=function(ev){ if(!on||(ev&&ev.error==='interrupted')) return; if(++fails>=3){ end(); b.textContent='Listen (no voice on this device)'; b.disabled=true; return; } next(); }; speechSynthesis.speak(u); }
+      function end(){ on=false; paused=false; speechSynthesis.cancel(); mark(null); b.textContent='Listen'; stop.hidden=true; }
+      b.addEventListener('click', function(){
+        if(!on){ q=blocks(); i=0; on=true; paused=false; speechSynthesis.cancel(); b.textContent='Pause'; stop.hidden=false; next(); }
+        else if(!paused){ speechSynthesis.pause(); paused=true; b.textContent='Resume'; }
+        else { speechSynthesis.resume(); paused=false; b.textContent='Pause'; } });
+      stop.addEventListener('click', end); addEventListener('pagehide', end);
+  }); } }catch(err){ psFail(err); }
   try{ document.querySelectorAll('.nw-print').forEach(function(b){ b.addEventListener('click', function(){ document.querySelectorAll('.nw-art img[loading=lazy]').forEach(function(i){ i.loading='eager'; }); setTimeout(function(){ window.print(); }, 400); }); }); }catch(err){ psFail(err); }
   /* ---------- story pictures: open large, with caption, step through with the arrow keys ---------- */
   try{ (function(){
