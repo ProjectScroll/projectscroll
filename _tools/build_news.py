@@ -76,10 +76,14 @@ for k, st in enumerate(S):
     words = len(re.sub('<[^>]+>', ' ', ' '.join(st['body'])).split()); mins = max(1, round(words/200))
     prv, nxt = S[k-1] if k else None, S[k+1] if k+1 < len(S) else None
     pn = '<nav class="nw-pn" aria-label="Previous and next story">' + (f'<a class="nw-prev" href="/news/{prv["slug"]}/"><span>‹ Previous story</span>{E(prv["headline"])}</a>' if prv else '<a class="nw-prev" href="/hunt/"><span>‹ The lead story</span>Every clue is true.</a>') + (f'<a class="nw-next" href="/news/{nxt["slug"]}/"><span>Next story ›</span>{E(nxt["headline"])}</a>' if nxt else '<a class="nw-next" href="/"><span>Back to ›</span>The front page</a>') + '</nav>'
-    body = ''.join(f'<p>{x}</p>' for x in st['body'])
+    def para(x):
+        if x.startswith('## '):
+            t=x[3:]; return f'<h2 id="{re.sub(r"[^a-z0-9]+","-",t.lower()).strip("-")}">{t}</h2>'
+        return x if re.match(r'<(aside|nav|blockquote|ul|ol|p|div|figure)\b', x) else f'<p>{x}</p>'
+    body = ''.join(para(x) for x in st['body'])
     reveal = f'<details class="nw-reveal"><summary>Show the answer</summary>{st["reveal"]}</details>' if st.get('reveal') else ''
     cta = '<p class="nw-cta">' + ' '.join(f'<a class="btn{" primary" if i==0 else ""}" href="{E(u)}">{E(t)}</a>' for i,(t,u) in enumerate(st['cta'])) + '</p>'
-    src = ('<div class="nw-src"><h2>Sources</h2><ul>' + ''.join(f'<li><a href="{E(u)}" rel="noopener">{E(t)}</a></li>' for t,u in st['sources']) + '</ul></div>') if st['sources'] else ''
+    src = ('<div class="nw-src"><h2 id="sources">Sources</h2><ul>' + ''.join((f'<li><a href="{E(u)}" rel="noopener">{E(t)}</a></li>' if u else f'<li>{E(t)}</li>') for t,u in st['sources']) + '</ul></div>') if st['sources'] else ''
     b = f'''    <p class="crumb"><a href="/">← Front page</a> · <a href="/news/">All the news</a></p>
     <article class="nw-art">
       <p class="kicker">{E(st["kicker"])}</p>

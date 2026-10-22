@@ -3677,3 +3677,20 @@ h3 + p{margin-top:.35rem}
 .nw-gal{display:grid; grid-template-columns:repeat(auto-fill,minmax(13rem,1fr)); gap:1rem; margin:1.6rem 0}
 .nw-gal figure{margin:0} .nw-gal img{width:100%; height:auto; display:block; border:1px solid var(--line); border-radius:3px; background:#fff}
 .nw-gal figcaption{font-size:.8rem; color:var(--ink-soft); margin-top:.35rem; line-height:1.35}
+/* Draft 173: the research-grade story page */
+.nw-text h2{font-size:1.35rem; margin:2rem 0 .6rem; padding-top:.6rem; border-top:1px solid var(--line)}
+.nw-text h2 + p::first-letter{all:unset}
+.nw-glance{margin:1.2rem 0 1.4rem; padding:1rem 1.2rem; border:1px solid color-mix(in srgb, var(--gold) 55%, var(--line)); border-left:4px solid var(--gold); border-radius:6px; background:color-mix(in srgb, var(--paper-2) 60%, transparent)}
+.nw-glance h3{margin:0 0 .5rem; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-lo)}
+.nw-glance dl{display:grid; grid-template-columns:9rem 1fr; gap:.35rem .9rem; margin:0; font-size:.95rem} .nw-glance dt{font-weight:600} .nw-glance dd{margin:0}
+@media (max-width:560px){ .nw-glance dl{grid-template-columns:1fr} .nw-glance dd{margin-bottom:.4rem} }
+.nw-toc{font-size:.92rem} .nw-toc ol{margin:.3rem 0 0; padding-left:1.3rem; columns:2; column-gap:2rem} @media (max-width:560px){ .nw-toc ol{columns:1} }
+.nw-tl{list-style:none; padding:0; margin:.6rem 0; border-left:2px solid var(--gold); } .nw-tl li{position:relative; padding:.25rem 0 .45rem 1.1rem} .nw-tl li::before{content:""; position:absolute; left:-6px; top:.65rem; width:10px; height:10px; border-radius:50%; background:var(--gold)} .nw-tl b{display:inline-block; min-width:6.5rem}
+.nw-tier{display:inline-block; font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; padding:.05rem .4rem; border-radius:99px; border:1px solid currentColor; margin-right:.35rem; vertical-align:.1em}
+.nw-tier.d{color:#2E7D56} .nw-tier.r{color:#2F6DB5} .nw-tier.o{color:#B3362B}
+.nw-qs li{margin:.45rem 0} .nw-cite{font-size:.88rem; padding:.7rem .9rem; background:var(--paper-2); border-radius:4px}
+blockquote.nw-q{margin:1rem 0; padding:.6rem 1rem; border-left:3px solid var(--rule); font-style:italic; background:color-mix(in srgb, var(--paper-2) 50%, transparent)}
+@media (max-width:640px){ .nw-lead .lede br{display:none} }
+.nw-text p:first-child::first-letter{all:unset} .nw-text > p:first-child::first-letter{font-size:3.1em; float:left; line-height:.85; margin:.08em .1em 0 0; color:var(--gold-lo)}
+.nw-tl li{display:grid; grid-template-columns:7.5rem 1fr; gap:.6rem} .nw-tl b{min-width:0}
+@media (max-width:560px){ .nw-tl li{grid-template-columns:1fr; gap:0} }
