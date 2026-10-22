@@ -1265,6 +1265,44 @@ try{ (function(){
     function sel(i){ tabs.forEach(function(b,j){ var on=i===j; b.setAttribute('aria-selected',on); b.tabIndex=on?0:-1; document.getElementById(b.getAttribute('aria-controls')).hidden=!on; }); }
     tabs.forEach(function(b,i){ b.addEventListener('click',function(){sel(i);}); b.addEventListener('keydown',function(e){ var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0; if(d){ var n=(i+d+tabs.length)%tabs.length; sel(n); tabs[n].focus(); e.preventDefault(); } }); });
   }); }catch(err){ psFail(err); }
+  try{ document.querySelectorAll('[data-spread]').forEach(function(f){
+    var pts=[].slice.call(f.querySelectorAll('.sp')), yr=f.querySelector('.sp-year'), cnt=f.querySelector('.sp-count'), rg=f.querySelector('.sp-range'), pl=f.querySelector('.sp-play'), tk=f.querySelector('.sp-tick'), timer=null;
+    var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function show(y){ var n=0, fresh=[]; pts.forEach(function(p){ var py=Math.floor(+p.dataset.y), on=py<=y; p.classList.toggle('off',!on); p.classList.toggle('new',on&&py===y); if(on)n++; if(py===y)fresh.push(p.dataset.n+' <span>('+p.dataset.e+')</span>'); });
+      yr.textContent=y; rg.value=y; cnt.textContent=n+' of '+pts.length+' places on the map';
+      tk.innerHTML=fresh.length?'<b>'+y+':</b> '+fresh.join('; '):(y===1905?'Every place in the register, to 1905.':''); }
+    function stop(){ clearInterval(timer); timer=null; pl.textContent='▶ Play'; pl.setAttribute('aria-label','Play the years from 1845'); }
+    pl.addEventListener('click',function(){ if(timer){stop();return;} var y=+rg.value>=1905?1845:+rg.value; show(y); pl.textContent='❚❚ Pause'; pl.setAttribute('aria-label','Pause');
+      timer=setInterval(function(){ y++; show(y); if(y>=1905)stop(); }, rm?120:330); });
+    rg.addEventListener('input',function(){ stop(); show(+rg.value); });
+    pts.forEach(function(p){ p.setAttribute('tabindex','-1'); });
+    show(1905);
+  }); }catch(err){ psFail(err); }
+  try{ document.querySelectorAll('[data-quiz]').forEach(function(qz){
+    var cards=[].slice.call(qz.querySelectorAll('.nw-myth')), L={'true':'True','false':'False','none':'No record'}, got=0, done=0;
+    var sc=document.createElement('div'); sc.className='nw-quiz-score'; sc.setAttribute('aria-live','polite'); qz.parentNode.insertBefore(sc,qz);
+    function score(){ sc.innerHTML='<span>Your calls: <b>'+got+'</b> of '+done+' match the record</span><span>'+(cards.length-done)+' to go</span>'; if(done===cards.length) sc.innerHTML='<span>Final score: <b>'+got+'</b> of '+cards.length+'. '+(got>=9?'Satisfactory!':got>=6?'A respectable Clamper.':'Poor Blind Candidate. Read on.')+'</span>'; }
+    cards.forEach(function(c){ c.classList.add('q'); var bx=document.createElement('div'); bx.className='nw-myth-btns'; bx.setAttribute('role','group'); bx.setAttribute('aria-label','Your call');
+      ['true','false','none'].forEach(function(k){ var b=document.createElement('button'); b.type='button'; b.textContent=L[k]; b.setAttribute('aria-pressed','false');
+        b.addEventListener('click',function(){ var ok=k===c.dataset.a; done++; if(ok)got++; b.setAttribute('aria-pressed','true'); bx.querySelectorAll('button').forEach(function(x){x.disabled=true;});
+          var r=document.createElement('p'); r.className='nw-myth-res '+(ok?'ok':'no'); r.textContent=ok?'Your call matches the record.':'The record says: '+L[c.dataset.a]+'.'; bx.after(r); c.classList.remove('q'); c.classList.add('done'); score(); });
+        bx.appendChild(b); });
+      c.querySelector('.nw-myth-c').after(bx); });
+    score();
+  }); }catch(err){ psFail(err); }
+  try{ document.querySelectorAll('[data-init]').forEach(function(w){
+    var st=[].slice.call(w.querySelectorAll('.in-step')), i=0; w.classList.add('js');
+    var cd=document.createElement('div'); cd.className='in-candle'; cd.setAttribute('aria-hidden','true');
+    cd.innerHTML='<svg viewBox="0 0 44 70"><defs><radialGradient id="glw"><stop offset="0" stop-color="#ffd27a" stop-opacity=".55"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="22" r="22" fill="url(#glw)"/><path class="in-flame" d="M22 6 C27 15 29 21 22 30 C15 21 17 15 22 6Z" fill="#ffcf5c"/><path d="M22 14 C24 19 24 23 22 28 C20 23 20 19 22 14Z" fill="#fff4cf"/><rect x="16" y="30" width="12" height="20" rx="2" fill="#e9dcb5"/><ellipse cx="22" cy="52" rx="10" ry="3" fill="#cdbf98"/></svg>';
+    w.insertBefore(cd,w.querySelector('.in-steps'));
+    var nav=document.createElement('div'); nav.className='in-nav'; nav.innerHTML='<button type="button" class="in-back">‹ Back</button><span class="in-prog" aria-live="polite"></span><button type="button" class="in-next">Knock ›</button>'; w.appendChild(nav);
+    var bk=nav.querySelector('.in-back'), nx=nav.querySelector('.in-next'), pg=nav.querySelector('.in-prog');
+    var lab=['Knock ›','Enter ›','Listen ›','Swear ›','Make the sign ›','Repeat after him ›','Laugh ›','Begin again ↺'];
+    function go(n,focus){ i=n; st.forEach(function(s,j){ s.classList.toggle('on',j===i); }); bk.disabled=i===0; pg.textContent='Step '+(i+1)+' of '+st.length; nx.textContent=lab[i]||'Next ›'; w.classList.toggle('lit',i>=6); if(focus){ var h=st[i].querySelector('.in-h'); h.setAttribute('tabindex','-1'); h.focus({preventScroll:true}); } }
+    bk.addEventListener('click',function(){ if(i>0)go(i-1,true); });
+    nx.addEventListener('click',function(){ go(i<st.length-1?i+1:0,true); });
+    go(0,false);
+  }); }catch(err){ psFail(err); }
   try{ document.querySelectorAll('.nw-print').forEach(function(b){ b.addEventListener('click', function(){ document.querySelectorAll('.nw-art img[loading=lazy]').forEach(function(i){ i.loading='eager'; }); setTimeout(function(){ window.print(); }, 400); }); }); }catch(err){ psFail(err); }
   /* ---------- story pictures: open large, with caption, step through with the arrow keys ---------- */
   try{ (function(){

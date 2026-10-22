@@ -3921,3 +3921,61 @@ table.rg{width:100%;border-collapse:collapse;font-size:.9rem;line-height:1.4}
 @media print{.nw-doc{break-inside:avoid}.nw-doc .nw-doc-t{display:block}.rg-tools,.nw-tabs{display:none}.nw-maps .nw-map[hidden]{display:block}}
 .nw-reg.rg-short tbody tr:nth-child(n+16){display:none}
 .rg-more{margin:.6rem 0 0}
+/* Complete record: watch it spread */
+.nw-spread{margin:1.4rem 0 1.8rem;padding:1rem 1rem .6rem;border:1px solid var(--line);border-radius:6px;background:color-mix(in srgb,var(--gold) 5%,transparent)}
+.nw-spread figcaption{font-size:.95rem;margin:0 0 .4rem}
+.sp-top{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.sp-year{font-family:"Libre Caslon Display","Caslon Display Fallback",serif;font-size:2.6rem;line-height:1;color:var(--rule);font-variant-numeric:tabular-nums}
+.sp-count{font-size:.9rem;color:var(--ink-soft)}
+.sp-ctl{display:flex;gap:.8rem;align-items:center;margin:.4rem 0 .2rem}
+.sp-play{min-width:6.5rem;min-height:44px}
+.sp-range{flex:1;accent-color:var(--rule);min-height:44px}
+.sp-tick{min-height:2.6em;font-size:.88rem;margin:.2rem 0 .4rem;color:var(--ink)}
+.sp-tick b{color:var(--rule)}
+.nw-spread-svg .sp{transition:opacity .35s ease,transform .35s ease;transform-box:fill-box;transform-origin:center}
+.nw-spread-svg .sp.off{opacity:0;transform:scale(.2)}
+.nw-spread-svg .sp.new{stroke:var(--rule);stroke-width:2.5}
+@media (prefers-reduced-motion:reduce){.nw-spread-svg .sp{transition:none}}
+/* Myth or record */
+.nw-quiz-score{position:sticky;top:3.6rem;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:.6rem;padding:.5rem .8rem;margin:.8rem 0 .2rem;border:1px solid var(--line);border-radius:6px;background:var(--paper);font-size:.9rem}
+.nw-quiz-score b{font-family:"Libre Caslon Display","Caslon Display Fallback",serif;font-size:1.2rem;color:var(--rule)}
+.nw-myth.q .nw-myth-ans{display:none}
+.nw-myth-btns{display:flex;flex-wrap:wrap;gap:.35rem;margin:.5rem 0 .2rem}
+.nw-myth-btns button{font:inherit;font-size:.85rem;min-height:44px;padding:.3rem .8rem;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);cursor:pointer}
+.nw-myth-btns button:hover{border-color:var(--ink)}
+.nw-myth-btns button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.nw-myth-btns button:disabled{cursor:default;opacity:.85}
+.nw-myth-res{font-size:.85rem;font-weight:700;margin:.3rem 0 0}
+.nw-myth-res.ok{color:var(--ledger)} .nw-myth-res.no{color:var(--rule)}
+.nw-myth.done{animation:mythIn .35s ease}
+@keyframes mythIn{from{transform:translateY(4px);opacity:.6}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.nw-myth.done{animation:none}}
+/* Be initiated */
+.nw-init{margin:1.2rem 0 1.8rem;border-radius:8px;border:1px solid #2a2118;background:radial-gradient(ellipse at 50% 18%,#3a2a12 0%,#17120c 55%,#0d0b08 100%);color:#efe4cc;padding:1.1rem 1.2rem 1rem;position:relative;overflow:hidden}
+.nw-init .in-src{font-size:.8rem;color:#c9b88f;margin:0 0 .6rem}
+.nw-init q{quotes:"“" "”" "‘" "’";color:#fff6df}
+.in-steps{list-style:none;margin:0;padding:0;counter-reset:st}
+.in-step{margin:0 0 1rem}
+.in-h{font-family:"Libre Caslon Display","Caslon Display Fallback",serif;font-size:1.35rem;color:#f2c96b;margin:.2rem 0 .3rem}
+.nw-init.js .in-step{display:none} .nw-init.js .in-step.on{display:block;animation:stepIn .45s ease}
+@keyframes stepIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.in-candle{display:flex;justify-content:center;margin:.2rem 0 .6rem}
+.in-candle svg{width:44px;height:70px}
+.in-flame{transform-origin:22px 30px;animation:flick 1.6s ease-in-out infinite}
+@keyframes flick{0%,100%{transform:scale(1,1) rotate(-1deg)}30%{transform:scale(.92,1.08) rotate(2deg)}60%{transform:scale(1.05,.95) rotate(-2deg)}}
+@media (prefers-reduced-motion:reduce){.in-flame{animation:none}.nw-init.js .in-step.on{animation:none}}
+.in-nav{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-top:.4rem;flex-wrap:wrap}
+.in-nav button{font:inherit;min-height:44px;padding:.35rem 1rem;border-radius:4px;border:1px solid #c9a24a;background:transparent;color:#f2c96b;cursor:pointer}
+.in-nav button.in-next{background:#c9a24a;color:#17120c;font-weight:700}
+.in-nav button:disabled{opacity:.35;cursor:default}
+.in-nav button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.in-prog{font-size:.8rem;color:#c9b88f}
+.in-mules{display:block;width:100%;max-width:360px;margin:.8rem auto .2rem;transform-origin:top center}
+.in-step.on .in-mules{animation:unroll .9s ease-out .15s both}
+@keyframes unroll{from{transform:scaleY(.04);opacity:.4}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.in-step.on .in-mules{animation:none}}
+.in-paper{fill:#efe2bf;stroke:#8a6a2a;stroke-width:2}
+.in-mule path:first-child{fill:#5b4630} .in-eye{fill:#efe2bf} .in-line{fill:none;stroke:#efe2bf;stroke-width:2}
+.in-cap{font:600 11px Georgia,serif;letter-spacing:.12em;fill:#5b4630}
+.nw-init.lit{background:radial-gradient(ellipse at 50% 30%,#6a4a18 0%,#2a1d0e 60%,#120d07 100%)}
+@media print{.nw-init{background:none;color:inherit;border-color:var(--line)}.nw-init .in-step{display:block!important}.in-nav,.in-candle,.nw-quiz-score,.nw-myth-btns,.sp-ctl{display:none}.nw-myth.q .nw-myth-ans{display:block}}
