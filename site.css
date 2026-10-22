@@ -3645,3 +3645,15 @@ h3 + p{margin-top:.35rem}
 @media (max-width:560px){ .nw-pn{grid-template-columns:1fr} .nw-pn .nw-next{text-align:left} .nw-side{width:6.5rem} }
 :root[data-theme="dark"] .nw-enter a{background:#E2B33F; color:#151B21}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nw-enter a{background:#E2B33F; color:#151B21} }
+/* Draft 170: the news section on white paper, in either theme; its masthead band keeps the page's own colours */
+.nw-paper{background:#fff; color-scheme:light; color:#1D2733; padding:.75rem .85rem .55rem; border:1px solid #C9CFC6; border-top:0; border-radius:0 0 6px 6px;
+  --paper:#fff; --paper-2:#F1F3EF; --ink:#1D2733; --ink-soft:#4B5663; --rule:#B3362B; --ledger:#2B4A41; --line:#D3D8D0; --gold:#b8892b; --gold-hi:#e6c46a; --gold-lo:#7a5a18}
+.nw-bar{margin-bottom:0}
+:root[data-theme="dark"] .nw-paper .nw-lead, .nw-paper .nw-lead{background:linear-gradient(135deg, color-mix(in srgb, #F1D77A 62%, #fff), color-mix(in srgb, #F6E6B0 45%, #fff) 55%, color-mix(in srgb, #F8EFCF 30%, #fff))}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nw-paper .nw-lead{background:linear-gradient(135deg, color-mix(in srgb, #F1D77A 62%, #fff), color-mix(in srgb, #F6E6B0 45%, #fff) 55%, color-mix(in srgb, #F8EFCF 30%, #fff))} }
+:root[data-theme="dark"] .nw-paper .nw-enter a{background:#1D2733; color:#F6D27A}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nw-paper .nw-enter a{background:#1D2733; color:#F6D27A} }
+:root[data-theme="dark"] .nw-paper .lede .hi{color:#2B4A41}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nw-paper .lede .hi{color:#2B4A41} }
+.nw-paper .nw-b h2 a:visited, .nw-paper .nw-more a:visited{color:#4B5663}
+.nw-nug{pointer-events:none} @media (max-width:640px){ .nw-nug{width:2.1rem; top:.45rem; right:.5rem} .hero .nw-lead h1{padding-right:1.8rem} }

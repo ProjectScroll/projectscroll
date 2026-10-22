@@ -33,6 +33,7 @@ today = datetime.date.today()
 BLOCK = f'''<!--news-->
       <div class="nw" role="region" aria-labelledby="nwLead">
         <p class="nw-bar"><span>Front page</span><time class="nw-date" id="nwDate" datetime="{today.isoformat()}">{today.strftime('%A, %-d %B %Y')}</time><span>News of the hunt</span></p>
+        <div class="nw-paper">
         <article class="nw-lead">
           <p class="nw-k nw-play">{E(L["kicker"])} <span>· Free to play</span></p>{NUGGET}
           <h1 id="nwLead"><a href="{L["url"]}"><span class="foil">{E(L["headline"])}</span></a><button class="fn" type="button" id="star" aria-label="Read the footnote">*</button></h1>
@@ -42,6 +43,7 @@ BLOCK = f'''<!--news-->
         </article>
         <div class="nw-top">{''.join(brief(s) for s in top)}</div>
         <ul class="nw-more" aria-label="More news">{''.join(line(s) for s in more)}</ul>
+        </div>
       </div>
       <script>(function(){{try{{var K='ps-news-last',last=localStorage.getItem(K)||'',t=new Date();var d=document.getElementById('nwDate');d.textContent=t.toLocaleDateString('en-US',{{weekday:'long',day:'numeric',month:'long',year:'numeric'}});d.setAttribute('datetime',t.toISOString().slice(0,10));if(last)document.querySelectorAll('.nw [data-d]').forEach(function(e){{if(e.dataset.d>last){{var n=e.querySelector('.nw-new');if(n)n.hidden=false;}}}});localStorage.setItem(K,t.toISOString().slice(0,10));}}catch(e){{}}}})();</script>
 <!--/news-->'''
