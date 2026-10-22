@@ -1,6 +1,22 @@
 """Cassopolis on old postcards: stand where the photographer stood.  python3 _tools/build_postcards.py"""
 import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
-from oldcards import gallery, D as OC
+from oldcards import gallery, D as OC, BY as OCB
+import json, html as _h
+SEND=open(pathlib.Path(__file__).parent/'pcsend.html').read()
+_E=lambda x: _h.escape(str(x or ''), quote=True)
+PAIRS=json.load(open(pathlib.Path(__file__).parent/'data'/'thennow_pairs.json'))
+def pair(x):
+    if x['card'] in OCB:
+        d=OCB[x['card']]; old=f'/img/oldcards/{d["id"]}.webp'; title=d['title']; w,h=d['w'],d['h']
+    else:
+        old=f'/img/strip/{x["card"]}.webp'; title=x.get('title',''); w,h=1600,400
+    return (f'<figure class="tn"><div class="tn-box" style="aspect-ratio:{w}/{h}"><img src="{x["photo"]}" alt="{_E(title)}, today, photographed by {_E(x["by"])}" loading="lazy">'
+            f'<div class="tn-old"><img src="{old}" alt="{_E(title)}, on the old postcard" loading="lazy"></div><input type="range" min="0" max="100" value="50" aria-label="Slide between the old postcard and today"></div>'
+            f'<figcaption><b>{_E(title)}</b>: the old card on the left, today on the right. Photograph by {_E(x["by"])}, {_E(x["date"])}.</figcaption></figure>')
+PAIRSEC=('<section id="pairs" aria-labelledby="tnH"><h2 id="tnH">Then and now: your photographs</h2>'
+  +(f'<div class="tn-grid">{"".join(pair(x) for x in PAIRS)}</div>' if PAIRS else
+    '<p class="hl-empty"><b>The first pair is waiting for you.</b> Take the same picture as one of these postcards, from the same spot, and send it in. Your photograph will go here beside the old one, with a slider to move between then and now, and your name under it.</p>')
+  +'</section>')
 OCJS = r"""<script>
 (function(){ "use strict";
   var q=document.getElementById('ocQ'), cnt=document.getElementById('ocCount'); if (!q) return;
@@ -42,10 +58,11 @@ body=f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
       <li><b>Send it in</b> to <a href="mailto:research@projectscroll.com?subject=Rephotographed%20postcard">research@projectscroll.com</a>, saying which card and when you took it. By sending it you let us show it here with your name.</li>
     </ol>
     <p class="note">The pictures are taken from old postcards of Cassopolis. Each was published before 1931, or published without a copyright notice, and is in the public domain in the United States. The pairings will be added as readers send them in.</p>
+    {PAIRSEC}
     <h2 id="valley">The valley on old postcards and photographs</h2>
     <p>{len(OC)} more views of the towns of the St. Joseph River valley, from Cassopolis to Michigan City: main streets, depots, courthouses, libraries, hotels, mills, fairs and parades, most of them between 1900 and 1930. Each one links to the library or archive that holds it. Press a picture to see it full size.</p>
     <nav class="oc-jump" aria-label="Jump to a town">{''.join(f'<a href="#{a}">{b}</a>' for a,b in [('cassopolis','Cassopolis'),('dowagiac','Dowagiac'),('edwardsburg','Edwardsburg'),('marcellus','Marcellus'),('vandalia','Vandalia'),('the-villages','Villages'),('niles','Niles'),('benton-harbor-and-st-joseph','Benton Harbor'),('south-haven','South Haven'),('three-rivers','Three Rivers'),('kalamazoo','Kalamazoo'),('south-bend-and-mishawaka','South Bend'),('elkhart','Elkhart'),('goshen','Goshen'),('la-porte','La Porte'),('michigan-city','Michigan City')])}</nav>
 {gallery()}    <p class="note">Every picture here is in the public domain in the United States: published before 1931, or published without a copyright notice. The libraries named under each one hold the originals and are thanked for making them free to see; none of them endorses this site. Have an old postcard of the valley? <a href="/story/">Tell us about it</a>.</p>
-'''+OCJS+'\n'
+'''+OCJS+SEND+'\n'
 page('postcards/index.html','Old postcards and photographs of the valley · Project Scroll','Old postcards and photographs of Cassopolis, Dowagiac, Niles, South Bend, Elkhart, Goshen and the other towns of the St. Joseph River valley, about 1900 to 1945, each linked to the library that holds it.',body,og='https://projectscroll.com/og/cassopolis.jpg')
 print('postcards built')

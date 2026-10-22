@@ -10,7 +10,7 @@ spec = importlib.util.spec_from_file_location('bv', pathlib.Path(__file__).paren
 # read DAYS from build_visit without building the page again
 src = open(pathlib.Path(__file__).parent/'build_visit.py').read()
 ns = {}
-exec(src[src.index('DAYS=['):src.index('COL=[')], {'V': V}, ns)
+exec(src[src.index('DAYS=['):src.index('import oldcards as O')], {'V': V}, ns)
 DAYS = ns['DAYS']
 COL = ['#B3362B','#2E7D56','#2F6DB5','#8A5A9E','#C77A12','#0F8B8D','#A23B72','#5B7F1F','#6B4F2A']
 pins = []

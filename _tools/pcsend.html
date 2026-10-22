@@ -1,0 +1,43 @@
+
+<dialog class="pc-send" id="pcSend" aria-labelledby="pcSendH">
+  <form method="dialog" class="pc-sf">
+    <h2 id="pcSendH">Send an old postcard</h2>
+    <p class="note" id="pcSendT"></p>
+    <label><span>To</span><input id="pcTo" type="text" maxlength="40" placeholder="Aunt May"></label>
+    <label><span>Your message</span><textarea id="pcMsg" rows="5" maxlength="320" placeholder="Wish you were here!"></textarea></label>
+    <label><span>From</span><input id="pcFrom" type="text" maxlength="40"></label>
+    <canvas id="pcCanvas" width="1800" height="700" aria-label="Preview of your postcard"></canvas>
+    <p class="pc-acts"><button type="button" class="btn primary" id="pcShare">Share it</button> <button type="button" class="btn" id="pcSave">Save the picture</button> <button type="submit" class="linkbtn">Close</button></p>
+    <p class="note">The card is made here in your browser; nothing you write is sent to us. The old picture is in the public domain.</p>
+  </form>
+</dialog>
+<script>
+(function(){ "use strict";
+  var dlg=document.getElementById('pcSend'); if (!dlg || !window.HTMLCanvasElement) return;
+  var cv=document.getElementById('pcCanvas'), cx=cv.getContext('2d'), to=document.getElementById('pcTo'), msg=document.getElementById('pcMsg'), fr=document.getElementById('pcFrom'), img=new Image(), cur=null;
+  var wrap=function(t, x, y, w, lh, max){ var words=t.split(/\s+/), line='', n=0; for (var i=0;i<words.length;i++){ var test=line?line+' '+words[i]:words[i]; if (cx.measureText(test).width>w && line){ cx.fillText(line,x,y); y+=lh; line=words[i]; if (++n>=max) return; } else line=test; } if (line) cx.fillText(line,x,y); };
+  var draw=function(){ if (!cur || !img.naturalWidth) return; var W=1800, H=700, half=900, pad=36;
+    cx.fillStyle='#E9E3D3'; cx.fillRect(0,0,W,H);
+    var iw=img.naturalWidth, ih=img.naturalHeight, sc=Math.min((half-2*pad)/iw,(H-2*pad)/ih), dw=iw*sc, dh=ih*sc;
+    cx.fillStyle='#fff'; cx.fillRect((half-dw)/2-10,(H-dh)/2-10,dw+20,dh+20); cx.drawImage(img,(half-dw)/2,(H-dh)/2,dw,dh);
+    var bx=half+pad, bw=half-2*pad; cx.fillStyle='#F7F1E1'; cx.fillRect(bx,pad,bw,H-2*pad); cx.strokeStyle='#C9B98F'; cx.lineWidth=2; cx.strokeRect(bx,pad,bw,H-2*pad);
+    cx.fillStyle='#8A7A55'; cx.font='600 26px Georgia, serif'; cx.textAlign='center'; cx.fillText('POST CARD', bx+bw/2, pad+50); cx.textAlign='left';
+    cx.beginPath(); cx.moveTo(bx+bw/2, pad+80); cx.lineTo(bx+bw/2, H-pad-50); cx.stroke();
+    cx.strokeStyle='#B3362B'; cx.lineWidth=3; cx.strokeRect(bx+bw-140, pad+75, 100, 115); cx.fillStyle='#B3362B'; cx.font='600 18px Georgia, serif'; cx.textAlign='center'; cx.fillText('PROJECT', bx+bw-90, pad+128); cx.fillText('SCROLL', bx+bw-90, pad+152); cx.textAlign='left';
+    cx.fillStyle='#1D2733'; cx.font='italic 34px Georgia, serif'; wrap(msg.value||'Wish you were here!', bx+30, pad+130, bw/2-60, 42, 9);
+    cx.font='italic 30px Georgia, serif'; if (fr.value) cx.fillText('— '+fr.value, bx+30, H-pad-60);
+    cx.strokeStyle='#C9B98F'; cx.lineWidth=2; for (var k=0;k<4;k++){ cx.beginPath(); cx.moveTo(bx+bw/2+30, pad+290+k*70); cx.lineTo(bx+bw-30, pad+290+k*70); cx.stroke(); }
+    cx.fillStyle='#1D2733'; cx.font='italic 34px Georgia, serif'; if (to.value) cx.fillText('To '+to.value, bx+bw/2+36, pad+278);
+    cx.fillStyle='#6B6250'; cx.font='18px Georgia, serif'; wrap(cur.t+' · old postcard, public domain · projectscroll.com', bx+30, H-pad-18, bw-60, 22, 1); };
+  [to,msg,fr].forEach(function(e){ e.addEventListener('input', draw); });
+  img.onload=draw;
+  var open=function(fig){ var a=fig.querySelector('.oc-a'); cur={src:a.getAttribute('href'), t:(fig.querySelector('img').alt||'').replace(/, on an old postcard$/,'')}; document.getElementById('pcSendT').textContent=cur.t; img.src=cur.src; draw(); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open',''); to.focus(); };
+  document.querySelectorAll('.oc-grid .oc').forEach(function(fig){ var b=document.createElement('button'); b.type='button'; b.className='linkbtn oc-send'; b.textContent='Send this postcard'; b.addEventListener('click', function(){ open(fig); }); var c=fig.querySelector('figcaption'); c.appendChild(document.createTextNode(' · ')); c.appendChild(b); });
+  var blob=function(cb){ cv.toBlob(function(b){ cb(b); }, 'image/jpeg', .9); };
+  document.getElementById('pcSave').addEventListener('click', function(){ blob(function(b){ var u=URL.createObjectURL(b), a=document.createElement('a'); a.href=u; a.download='project-scroll-postcard.jpg'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(u); }, 4000); }); });
+  document.getElementById('pcShare').addEventListener('click', function(){ blob(function(b){ var f=new File([b], 'project-scroll-postcard.jpg', {type:'image/jpeg'});
+    if (navigator.canShare && navigator.canShare({files:[f]})) navigator.share({files:[f], title:'An old postcard', text:'An old postcard from the St. Joseph River valley, via projectscroll.com'}).catch(function(){});
+    else document.getElementById('pcSave').click(); }); });
+})();
+document.querySelectorAll('.tn-box input').forEach(function(r){ var o=r.parentNode.querySelector('.tn-old'); var set=function(){ o.style.clipPath='inset(0 '+(100-r.value)+'% 0 0)'; }; r.addEventListener('input', set); set(); });
+</script>

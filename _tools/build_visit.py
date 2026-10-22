@@ -39,7 +39,33 @@ document.addEventListener('DOMContentLoaded', function(){ "use strict";
     if (d && w.h<d[0]) return {open:true, txt:'open today from '+clock(d[0])};
     for (var k=1;k<=7;k++){ var x=(w.dow+k)%7; if (o.d[x]) return {open:false, txt:(d?'closed for today':'closed today')+' · next open '+(k===1?'tomorrow':DN[x])}; }
     return null; };
-  $$('.vs-days li[data-oh]').forEach(function(li){ try{ var st=state(li.dataset.oh, li.dataset.tz), e=li.querySelector('.vs-open'); if (st && e){ e.textContent=' · '+st.txt; e.classList.toggle('on', st.open); } }catch(e){} });
+  var MN=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var onDate=function(oh,iso){ var o=parse(oh); if (o.always) return {open:true, txt:'open every day'}; var dt=new Date(iso+'T12:00:00'), dow=dt.getDay(), mon=dt.getMonth()+1;
+    if (o.season && (mon<o.season[0] || mon>o.season[1])) return {open:false, txt:'closed that time of year'};
+    var d=o.d[dow]; return d? {open:true, txt:'open '+clock(d[0])+'–'+clock(d[1])+' that day'} : {open:false, txt:'closed on '+DN[dow]+'s'}; };
+  var DKEY='ps-visit-date', pick=''; try{ pick=localStorage.getItem(DKEY)||''; }catch(e){}
+  var di=$('#vsDate'), dx=$('#vsDateX'), dm=$('#vsDateMsg'), fl=$('#vsFest'), FEST=JSON.parse($('#vsFestJ').textContent);
+  var nice=function(iso){ var d=new Date(iso+'T12:00:00'); return DN[d.getDay()]+' '+d.getDate()+' '+MN[d.getMonth()]; };
+  var hours=function(){ var today=new Date().toISOString().slice(0,10); if (pick && pick<today){ pick=''; }
+    $$('.vs-days li[data-oh]').forEach(function(li){ try{ var st=pick? onDate(li.dataset.oh,pick) : state(li.dataset.oh, li.dataset.tz), e=li.querySelector('.vs-open'); if (st && e){ e.textContent=' · '+st.txt; e.classList.toggle('on', st.open); e.classList.toggle('off', !st.open); } }catch(err){} });
+    $$('.vs-day').forEach(function(day){ var f=day.querySelector('.vs-fit'); if (!pick){ f.hidden=true; return; }
+      var shut=[].slice.call(day.querySelectorAll('li[data-oh]')).filter(function(li){ var st=onDate(li.dataset.oh,pick); return !st.open; }).map(function(li){ return li.dataset.n; }).filter(function(v,i,a){ return a.indexOf(v)===i; });
+      f.hidden=false; f.className='vs-fit '+(shut.length?'no':'ok'); f.textContent=shut.length? 'On '+nice(pick)+': '+shut.length+(shut.length>1?' museums are':' museum is')+' closed: '+shut.join('; ')+'.' : 'Works on '+nice(pick)+': every museum on this day is open.'; });
+    di.value=pick; dx.hidden=!pick; fl.innerHTML=''; fl.hidden=true;
+    if (pick){ var on=FEST.filter(function(f){ return f[1]<=pick && pick<=f[2]; }); dm.textContent=on.length? 'Going on in the valley that day:' : 'No festival on our calendar that day. The days below show which museums are open.';
+      on.forEach(function(f){ var li=document.createElement('li'), a=document.createElement('a'); a.href='/seasons/#'+f[4]; a.textContent=f[0]; li.appendChild(a); li.appendChild(document.createTextNode(' · '+f[3])); fl.appendChild(li); }); fl.hidden=!on.length; }
+    else dm.textContent='';
+    if (window.vbPaint) window.vbPaint(); };
+  di.min=new Date().toISOString().slice(0,10);
+  di.addEventListener('change',function(){ pick=di.value; try{ pick? localStorage.setItem(DKEY,pick) : localStorage.removeItem(DKEY); }catch(e){} hours(); });
+  dx.addEventListener('click',function(){ pick=''; try{ localStorage.removeItem(DKEY); }catch(e){} hours(); });
+  hours();
+  /* stamps: how much of each ready-made day you have stamped, and the Day-tripper badge for all of one */
+  var stamps={}; try{ (window.psStamps? window.psStamps() : []).forEach(function(x){ var pre=x.key==='ps-mu-stamp'?'m:':x.key==='ps-food-stamp'?'f:':x.key==='ps-walk-stamp'?'w:walk':x.key==='ps-walk-dowagiac-stamp'?'w:dowagiac':''; if (pre) stamps[pre.length>2?pre:pre+x.id]=1; }); }catch(e){}
+  $$('.vs-day').forEach(function(day){ var ids=[].slice.call(day.querySelectorAll('li[data-i]')).map(function(li){ return li.dataset.i; }).filter(function(v,i,a){ return a.indexOf(v)===i; });
+    var got=ids.filter(function(i){ return stamps[i]; }); var pg=day.querySelector('.vs-prog'); if (!ids.length || !got.length) return;
+    pg.hidden=false; pg.textContent=got.length===ids.length? '✓ Every stop of this day is stamped in your passport.' : 'Your passport: '+got.length+' of '+ids.length+' stops stamped.';
+    if (got.length===ids.length && window.psEarn) window.psEarn('daytrip'); });
 
   /* weather: the National Weather Service forecast for Cassopolis */
   var w=$('#vsWx'); if (w && window.fetch){ var go=function(){ fetch('https://api.weather.gov/points/41.912,-86.010',{headers:{'Accept':'application/geo+json'}}).then(function(r){ return r.json(); }).then(function(j){ return fetch(j.properties.forecast).then(function(r){ return r.json(); }); }).then(function(f){ var p=f.properties.periods; if (!p||!p.length) return; var a=p[0], b=p[1];
@@ -63,11 +89,20 @@ document.addEventListener('DOMContentLoaded', function(){ "use strict";
     DAYS.forEach(function(d){ var g=L.featureGroup(); var ll=d.p.map(function(q){ return [q[0],q[1]]; });
       if (ll.length>1) L.polyline(ll,{color:d.c, weight:3, opacity:.85, dashArray:'6 5', interactive:false}).addTo(g);
       d.p.forEach(function(q,i){ L.circleMarker([q[0],q[1]],{radius:7, color:'#fff', weight:1.5, fillColor:d.c, fillOpacity:1, bubblingMouseEvents:false}).bindTooltip((i+1)+'. '+q[2]+' · '+d.t,{direction:'top', offset:[0,-6]}).on('click',function(){ focus(d.k,true); }).addTo(g); });
-      g.addTo(map); layers[d.k]=g; }); };
+      g.addTo(map); layers[d.k]=g; }); drawMine(); };
+  var mine=null, mineBtn=null;
+  var drawMine=function(){ if (!map || !P) return; if (mine){ map.removeLayer(mine); mine=null; }
+    var pts=day.map(function(i){ return byI[i]; }).filter(function(x){ return x && x.ll; });
+    if (!mineBtn){ mineBtn=document.createElement('button'); mineBtn.type='button'; mineBtn.className='vs-lg vs-mine'; mineBtn.dataset.k='mine'; mineBtn.style.setProperty('--dc','var(--ink)'); mineBtn.innerHTML='<i class="vs-dot"></i>My day'; mineBtn.addEventListener('click',function(){ focus('mine',false); }); lg.appendChild(mineBtn); }
+    mineBtn.hidden=!pts.length; if (!pts.length){ delete layers.mine; return; }
+    mine=L.featureGroup(); var css=getComputedStyle(document.documentElement).getPropertyValue('--ink').trim()||'#1D2733';
+    if (pts.length>1) L.polyline(pts.map(function(x){ return x.ll; }),{color:css, weight:3.5, opacity:.9, interactive:false}).addTo(mine);
+    pts.forEach(function(x,i){ L.marker(x.ll,{icon:L.divIcon({className:'vs-num', html:'<span>'+(i+1)+'</span>', iconSize:[22,22]}), keyboard:false}).bindTooltip((i+1)+'. '+x.n+' · My day',{direction:'top', offset:[0,-8]}).addTo(mine); });
+    mine.addTo(map); layers.mine=mine; };
   var focus=function(k, toList){ if (!map) return; $$('.vs-lg').forEach(function(b){ b.setAttribute('aria-pressed',String(b.dataset.k===k)); });
     Object.keys(layers).forEach(function(x){ layers[x].eachLayer(function(l){ if (l.setStyle) l.setStyle(x===k?{opacity:1, fillOpacity:1}:{opacity:.25, fillOpacity:.25}); }); });
     var g=layers[k]; if (g && g.getLayers().length) map.fitBounds(g.getBounds().pad(.35),{maxZoom:11, animate:!calm});
-    if (toList){ var li=document.getElementById('day-'+k); li.scrollIntoView({behavior:glide, block:'start'}); } };
+    if (toList){ var li=document.getElementById(k==='mine'?'build':'day-'+k); li.scrollIntoView({behavior:glide, block:'start'}); } };
   var need=function(cb){ if (window.L){ start(); if (cb) cb(); return; } if (need.q){ if (cb) need.q.push(cb); return; } need.q=cb?[cb]:[];
     var l=document.createElement('link'); l.rel='stylesheet'; l.href='/vendor/leaflet-1.9.4/leaflet.css?v=1'; document.head.appendChild(l);
     var sc=document.createElement('script'); sc.src='/vendor/leaflet-1.9.4/leaflet.js?v=1'; sc.onload=function(){ start(); need.q.forEach(function(f){ f(); }); }; document.head.appendChild(sc); };
@@ -81,16 +116,31 @@ document.addEventListener('DOMContentLoaded', function(){ "use strict";
   var km=function(a,b){ var R=6371, r=Math.PI/180, dl=(b[0]-a[0])*r, dn=(b[1]-a[1])*r, h=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dn/2)*Math.sin(dn/2); return 2*R*Math.asin(Math.sqrt(h)); };
   var mi=function(k){ var m=k*0.621371*1.25; return m<10? m.toFixed(1) : String(Math.round(m)); };
   var load=function(cb){ if (P){ cb(); return; } fetch('/visit/places.json?v=1').then(function(r){ return r.json(); }).then(function(j){ P=j; P.forEach(function(x){ byI[x.i]=x; }); day=day.filter(function(i){ return byI[i]; }); cb(); }).catch(function(){ msg.textContent='The list of places could not load. Try again in a moment.'; }); };
-  var paint=function(){ list.innerHTML=''; $('#vbN').textContent=day.length; $('#vbEmpty').hidden=!!day.length;
-    day.forEach(function(i,ix){ var x=byI[i], r=document.createElement('li'), a=document.createElement('a'); a.href=x.u; a.textContent=x.n; r.appendChild(a);
-      var s=document.createElement('span'); s.className='mu-tt'; s.textContent=' · '+x.t+(ix>0 && x.ll && byI[day[ix-1]].ll? ' · '+mi(km(byI[day[ix-1]].ll,x.ll))+' mi' : ''); r.appendChild(s);
+  /* rough timing: about 35 mph between stops, and a usual length of stay for each kind of place */
+  var stay=function(x){ var k=(x.k||'').toLowerCase(), g=x.g||'';
+    if (g==='Places to stay') return 0; if (g==='Walking tours') return 60;
+    if (/ice cream|candy|bakery|pastry|soda/.test(k)) return 25; if (/orchard|market|cider/.test(k)) return 45;
+    if (g==='Places to eat') return 60; if (/library|archive/.test(k)) return 90; if (/historic site/.test(k)) return 40; if (/museum/.test(k)) return 75; return 60; };
+  var hm=function(m){ var h=Math.floor(m/60)%24, mm=m%60; return (h%12||12)+':'+('0'+mm).slice(-2)+(h<12?' am':' pm'); };
+  var dur=function(m){ return m<60? m+' min' : Math.floor(m/60)+' h'+(m%60? ' '+m%60+' min':''); };
+  var paint=function(){ list.innerHTML=''; $('#vbN').textContent=day.length; $('#vbEmpty').hidden=!!day.length; var clockAt=9*60+30;
+    day.forEach(function(i,ix){ var x=byI[i], r=document.createElement('li'), a=document.createElement('a');
+      var drive=0, gap=(ix>0 && x.ll && byI[day[ix-1]].ll)? km(byI[day[ix-1]].ll,x.ll) : null; if (gap!==null) drive=gap<0.5? 5 : Math.max(5, Math.round(gap*1.25/56*60/5)*5); clockAt+=drive;
+      var tm=document.createElement('span'); tm.className='vb-time'; tm.textContent=(stay(x)===0 && ix>0? 'Evening' : hm(clockAt)); r.appendChild(tm);
+      a.href=x.u; a.textContent=x.n; r.appendChild(a);
+      var s=document.createElement('span'); s.className='mu-tt'; s.textContent=' · '+x.t+(gap===null? '' : gap<0.5? ' · a short walk from the last stop' : ' · about '+dur(drive)+' drive, '+mi(gap)+' mi')+(stay(x)? ' · stay about '+dur(stay(x)) : ''); r.appendChild(s);
+      clockAt+=stay(x);
+      if (pick && x.oh){ var st=onDate(x.oh,pick); if (!st.open){ var w2=document.createElement('span'); w2.className='vb-warn'; w2.textContent=' · '+st.txt+' ('+nice(pick)+')'; r.appendChild(w2); } }
       var up=document.createElement('button'); up.type='button'; up.className='mu-up'; up.textContent='↑'; up.disabled=ix===0; up.setAttribute('aria-label','Move '+x.n+' earlier');
       up.addEventListener('click',function(){ day.splice(ix,1); day.splice(ix-1,0,i); save(); paint(); }); r.appendChild(up);
       var xb=document.createElement('button'); xb.type='button'; xb.className='mu-x'; xb.textContent='×'; xb.setAttribute('aria-label','Take '+x.n+' off my day');
       xb.addEventListener('click',function(){ day.splice(ix,1); save(); paint(); find(); }); r.appendChild(xb); list.appendChild(r); });
     var ds=day.map(function(i){ return byI[i].d; }).slice(0,10);
     if (ds.length){ gob.href='https://www.google.com/maps/dir/?api=1&travelmode=driving&destination='+encodeURIComponent(ds[ds.length-1])+(ds.length>1?'&waypoints='+ds.slice(0,-1).map(encodeURIComponent).join('%7C'):''); gob.hidden=false; gob.textContent=day.length>10?'Open the first ten in Google Maps':'Open in Google Maps'; } else gob.hidden=true;
-    var mt=[]; try{ mt=JSON.parse(localStorage.getItem('ps-mu-trip')||'[]')||[]; }catch(e){} $('#vbMu').hidden=!mt.length; };
+    var mt=[]; try{ mt=JSON.parse(localStorage.getItem('ps-mu-trip')||'[]')||[]; }catch(e){} $('#vbMu').hidden=!mt.length;
+    if (day.length) { var nt=document.createElement('li'); nt.className='vb-note'; nt.textContent='Times are rough: they start at 9:30 am and allow about 35 mph between stops.'; list.appendChild(nt); }
+    drawMine(); };
+  window.vbPaint=function(){ if (P) paint(); };
   var find=function(){ var w=bq.value.trim().toLowerCase().split(/\s+/).filter(Boolean); res.innerHTML=''; if (!w.length || !P) return;
     var hits=P.filter(function(x){ var tx=(x.n+' '+x.t+' '+x.k+' '+x.g).toLowerCase(); return w.every(function(q){ return tx.indexOf(q)>=0; }); }).slice(0,8);
     if (!hits.length){ var e=document.createElement('li'); e.className='vb-none'; e.textContent='Nothing by that name yet.'; res.appendChild(e); return; }
@@ -191,6 +241,12 @@ DAYS=[
    ('Supper','Bell’s Eccentric Café in Kalamazoo.',None,('f',"Bell's Eccentric Café")),
    ('Stay','Henderson Castle or The Kalamazoo House.',None,('f','Henderson Castle'))]),
 ]
+import oldcards as O
+PIC={'cass-dow':'ps002','research':'ps005','niles':'ps046','free':'ps011','rainy':'ps071','fall':'ps054','fruit':'ps050','amish':'ps081','kzoo':'ps067'}
+def dpic(k):
+    d=O.BY[PIC[k]]
+    return f'<figure class="vs-pic">{O.pic(d, "(min-width:900px) 11rem, 40vw")}<figcaption>{E(d["title"])} · {E(d["date"])}</figcaption></figure>'
+FEST=[[d['name'],d['dates2026']['start'],d['dates2026'].get('end') or d['dates2026']['start'],d['town'],slug(d['name'])] for d in S if isinstance(d.get('dates2026'),dict)]
 COL=['#B3362B','#2E7D56','#2F6DB5','#8A5A9E','#C77A12','#0F8B8D','#A23B72','#5B7F1F','#6B4F2A']
 DJSON=[]
 def stop(a,b,h,r,k,n):
@@ -200,7 +256,8 @@ def stop(a,b,h,r,k,n):
     tz = ' data-tz="C"' if pl and pl.get('tz')=='C' else ''
     open_ = '<span class="vs-open"></span>' if oh else ''
     link = f'<a href="{E(href)}">{E(b)}</a>' if href else E(b)
-    return f'<li{oh}{tz}><span class="vs-t">{E(a)}</span> {link}{open_}</li>', pl
+    di_ = (f' data-i="{pl["i"]}"' if pl and pl.get('i') else '') + (f' data-n="{E(pl["n"].split(" (")[0])}"' if pl else '')
+    return f'<li{oh}{tz}{di_}><span class="vs-t">{E(a)}</span> {link}{open_}</li>', pl
 days=''
 for di,(k,t,w,st) in enumerate(DAYS):
     lis=[]; pls=[]
@@ -212,10 +269,11 @@ for di,(k,t,w,st) in enumerate(DAYS):
     for p in pls:
         if p.get('ll') and (not pts or pts[-1][:2]!=list(p['ll'])): pts.append([p['ll'][0],p['ll'][1],p['n']])
     DJSON.append({'k':k,'t':t,'c':COL[di%len(COL)],'p':pts})
-    days+=(f'<li class="vs-day" id="day-{k}" style="--dc:{COL[di%len(COL)]}"><h3><i class="vs-dot" aria-hidden="true"></i>{E(t)}</h3><p class="vs-when">{E(w)}</p><ol>'+''.join(lis)+
+    days+=(f'<li class="vs-day" id="day-{k}" data-k="{k}" style="--dc:{COL[di%len(COL)]}">{dpic(k)}<h3><i class="vs-dot" aria-hidden="true"></i>{E(t)}</h3><p class="vs-when">{E(w)}</p><p class="vs-fit" hidden></p><p class="vs-prog" hidden></p><ol>'+''.join(lis)+
       f'</ol><p class="vs-acts">'+(f'<a class="btn vs-gm" href="{E(gm)}" rel="noopener">Open this day in Google Maps</a> ' if gm else '')+
       f'<button type="button" class="btn vs-show" data-k="{k}">Show on the map</button> <button type="button" class="btn vs-print" data-day="day-{k}">Print this day</button></p></li>')
 JS=JS.replace('__TOWNS__', json.dumps([[n,la,lo] for n,la,lo in V.TOWNS]))
+FESTJSON=json.dumps(FEST,ensure_ascii=False).replace('</','<\\/')
 DAYJSON=json.dumps(DJSON,ensure_ascii=False).replace('</','<\\/')
 open(pathlib.Path(__file__).parent.parent/'visit'/'places.json','w').write(json.dumps(V.all_places(),ensure_ascii=False,separators=(',',':')))
 
@@ -226,8 +284,10 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="lede" style="font-size:1.15rem">Cassopolis and the towns around it, from Kalamazoo to Lake Michigan and down into northern Indiana, are an easy trip from Chicago, Detroit and Indianapolis. Here is what to see, where to eat and stay, what’s on, and how to get here, all in one place.</p>
     <ul class="vs-cards">{cards}</ul>
     <section aria-labelledby="vsDH"><h2 id="vsDH">Ready-made days out</h2>
-      <p>Days planned for you, each in an order that saves driving. Open any of them in Google Maps for the route, or print it. Museum hours below are worked out from each place’s posted hours; they don’t know about holidays, so check before you go.</p>
+      <p>Days planned for you, each in an order that saves driving. Open any of them in Google Maps for the route, or print it. Museum hours below are worked out from each place’s posted hours; they don’t know about holidays, so check before you go. Every place’s posted hours were last checked in October 2026.</p>
       <p class="mu-wx" id="vsWx" hidden></p>
+      <div class="vs-date"><label><span>Coming on a particular day?</span> <input type="date" id="vsDate"></label> <button type="button" class="linkbtn" id="vsDateX" hidden>Back to today</button>
+        <p id="vsDateMsg" aria-live="polite"></p><ul class="vs-fest" id="vsFest" hidden></ul></div>
       <figure class="mu-mapf vs-mapf">
         <div class="mu-map vs-map" id="vsMap" role="region" aria-label="Map of the ready-made days. Every stop is also listed below."><p class="mu-mapph">The map of the days opens here.</p></div>
         <figcaption class="vs-legend" id="vsLegend"></figcaption>
@@ -282,7 +342,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
         <li><a href="https://www.michigan.org/" rel="noopener">Pure Michigan</a>, the state’s travel site.</li>
       </ul>
       <p class="note">Project Scroll is independent and not affiliated with any of these. Spotted something out of date? <a href="/story/">Tell us</a>.</p></section>
-''' + f'<script type="application/json" id="vsDays">{DAYJSON}</script>\n' + JS + '\n'
+''' + f'<script type="application/json" id="vsDays">{DAYJSON}</script><script type="application/json" id="vsFestJ">{FESTJSON}</script>\n' + JS + '\n'
 page('visit/index.html', 'Visit & Plan: coming to Cassopolis and the St. Joseph River valley · Project Scroll',
      'Planning a trip to Cassopolis and the St. Joseph River valley: places to eat and stay with a story, festivals and fairs, museums, walking tours, getting here by car, air or train, and when to come.', body, og='https://projectscroll.com/og/cassopolis.jpg')
 print('visit built', len(up))

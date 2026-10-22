@@ -109,3 +109,20 @@ def svg_map(pins=(), w=600, h=420, bounds=(41.40, -86.98, 42.47, -85.35), towns=
         out.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="6.5" fill="{col}" stroke="#fff" stroke-width="1.2"/><text x="{x:.1f}" y="{y+3:.1f}" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#fff">{lab}</text>')
     out.append('</svg>')
     return ''.join(out)
+
+def html_to_pdf(doc, out, w='8.5in', h='11in'):
+    """Print an HTML string to a PDF with Playwright's Chromium, then strip every bit of document metadata."""
+    import subprocess, os
+    cache = ROOT/'_tools'/'.cache'; cache.mkdir(exist_ok=True)
+    hp = cache/(pathlib.Path(out).stem+'.html'); hp.write_text(doc); tmp = cache/(pathlib.Path(out).stem+'-raw.pdf')
+    js = f"const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const p=await b.newPage();await p.goto('file://{hp}');await p.pdf({{path:'{tmp}',width:'{w}',height:'{h}',printBackground:true}});await b.close();}})();"
+    root = subprocess.run(['npm', 'root', '-g'], capture_output=True, text=True).stdout.strip()
+    subprocess.run(['node', '-e', js], check=True, env={**os.environ, 'NODE_PATH': root}, capture_output=True, timeout=180)
+    from pypdf import PdfReader, PdfWriter
+    r = PdfReader(str(tmp)); wr = PdfWriter()
+    for pg in r.pages: wr.add_page(pg)
+    wr._info = None
+    try: del wr._root_object['/Metadata']
+    except KeyError: pass
+    with open(out, 'wb') as f: wr.write(f)
+    return len(r.pages)

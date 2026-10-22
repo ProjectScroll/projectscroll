@@ -28,6 +28,13 @@ def near(d):
     if k>8: return ''
     mi=k*0.621371; t='next door' if mi<0.15 else (f'{mi:.1f} mi away' if mi<10 else f'{round(mi)} mi away')
     return f'<p class="fd-near">Nearby: <a href="/museums/#{_MID[best["name"]]}">{E(best["name"])}</a>, {t}</p>'
+def kclass(d):
+    k=(d.get('kind','')+' '+d['name']).lower()
+    if d['type']=='lodging': return 'inn' if re.search(r'inn|hotel|castle|estate', k) and 'b&b' not in k else 'bnb'
+    if re.search(r'orchard|market|cider|distill', k): return 'orchard'
+    if re.search(r'ice cream|candy|bakery|pastry|soda', k): return 'sweet'
+    if re.search(r'tavern|pub|saloon|brew|supper club', k): return 'tavern'
+    return 'dine'
 def card(d):
     di = directions(d)
     acts = [f'<a class="mu-go" href="{E(d["url"])}" rel="noopener">Their website ›</a>' if d.get('url') else '<span class="mu-none">No website: call ahead</span>']
@@ -36,7 +43,7 @@ def card(d):
     if d.get('ll'): acts.append(f'<button type="button" class="mu-tb fd-add" data-i="f:{d["_id"]}" aria-pressed="false">Add to my day</button>')
     chk = '' if d.get('verified') else '<span class="mu-chk" title="We could not confirm every detail online. Check before you go.">check before you go</span>'
     ll = f' data-ll="{d["ll"][0]},{d["ll"][1]}"' if d.get('ll') else ''
-    return f'''<li class="mu fd" id="{d['_id']}" data-ty="{d['type']}" data-c="{E(d['county'])}"{ll} data-n="{E(d['name'])}" data-t="{E((d['name']+' '+d['town']+' '+d['county']+' '+d.get('kind','')+' '+d.get('story','')+' '+d.get('what','')).lower())}">
+    return f'''<li class="mu fd" id="{d['_id']}" data-ty="{d['type']}" data-kc="{kclass(d)}" data-c="{E(d['county'])}"{ll} data-n="{E(d['name'])}" data-t="{E((d['name']+' '+d['town']+' '+d['county']+' '+d.get('kind','')+' '+d.get('story','')+' '+d.get('what','')).lower())}">
         <p class="mu-k">{E(d.get('kind',''))} · {E(d['town'])}{chk}</p>
         <h3>{E(d['name'])}</h3>
         <p class="fd-story">{E(d.get('story',''))}</p>
@@ -53,6 +60,13 @@ def group(ty):
         if ys: out+=f'<h3 class="fd-st">{ST[st]}</h3><ul class="mu-list">{"".join(card(d) for d in ys)}</ul>'
     return out, len(xs)
 eat, ne = group('restaurant'); stay, ns = group('lodging')
+RLINK={'Celery Soup':('Kalamazoo grew celery for a century','/made-in-the-valley/#kalamazoo-celery'),
+ 'Apple Fritters':('Apples and cider today: the fall orchards','/visit/#day-fall'),
+ 'Apple Butter With Cider':('Apples and cider today: the fall orchards','/visit/#day-fall'),
+ 'Cream Peach Pie':('The fruit belt and its great market','/made-in-the-valley/#benton-harbor-fruit-market'),
+ 'Pickle Peaches':('The fruit belt and its great market','/made-in-the-valley/#benton-harbor-fruit-market'),
+ 'Boiled Huckleberry Pudding':('Blueberry season on the calendar','/seasons/#blueberry-u-pick-season'),
+ 'Maple Creams':('Maple sugar festivals on the calendar','/seasons/#kalamazoo-nature-center-maple-sugar-festival')}
 def rec(d):
     who = f' · {E(d["contributor"])}' if d.get('contributor') else ''
     src = f'<a href="{E(d["url"])}" rel="noopener">{E(d["source_title"])}</a>' if d.get('url') else E(d['source_title'])
@@ -61,6 +75,7 @@ def rec(d):
         <h3>{E(d['title'])}</h3>
         <blockquote class="rc-t">{E(d['text'])}</blockquote>
         <p class="rc-src">From {src}{who}</p>
+        {f'<p class="fd-near">Its story today: <a href="{RLINK[d["title"]][1]}">{E(RLINK[d["title"]][0])}</a></p>' if d['title'] in RLINK else ''}
         {f'<details class="rc-m"><summary>Making it today</summary><p>{E(d["modern"])}</p></details>' if d.get('modern') else ''}
       </li>'''
 recipes = ''.join(rec(d) for d in R if d['kind']=='recipe') + ''.join(rec(d) for d in R if d['kind']=='hint')
@@ -77,15 +92,20 @@ JS = r'''<script>
 (function(){ "use strict";
   var $=function(s){ return document.querySelector(s); }, $$=function(s){ return [].slice.call(document.querySelectorAll(s)); };
   var calm=matchMedia('(prefers-reduced-motion: reduce)').matches, glide=calm?'auto':'smooth';
-  var items=$$('.fd'), q=$('#fdQ'), cs=$('#fdC'), tys=$$('.fd-f'), cnt=$('#fdCount'), ty='', map=null, marks=[], showMu=false, mu=[];
+  var items=$$('.fd'), q=$('#fdQ'), cs=$('#fdC'), tys=$$('.fd-f'), kcs=$$('.fd-k'), kc='', cnt=$('#fdCount'), ty='', map=null, marks=[], showMu=false, mu=[];
   var draw=function(){ var w=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean), c=cs.value, n=0;
-    items.forEach(function(li){ var ok=(!ty||li.dataset.ty===ty) && (!c||li.dataset.c===c) && w.every(function(x){ return li.dataset.t.indexOf(x)>=0; }); li.hidden=!ok; if (ok) n++; });
+    items.forEach(function(li){ var ok=(!ty||li.dataset.ty===ty) && (!kc||li.dataset.kc===kc) && (!c||li.dataset.c===c) && w.every(function(x){ return li.dataset.t.indexOf(x)>=0; }); li.hidden=!ok; if (ok) n++; });
     $$('.fd-sec').forEach(function(s){ s.hidden=!s.querySelector('.fd:not([hidden])'); });
     $$('.fd-sec h3.fd-st').forEach(function(h){ var ul=h.nextElementSibling; h.hidden=h.classList.contains('gone') || !ul.querySelector('.fd:not([hidden])'); });
     cnt.textContent=n===items.length? n+' places' : n+' of '+items.length+' places';
     if (map) pins(); };
   tys.forEach(function(b){ b.addEventListener('click',function(){ ty=b.dataset.ty; tys.forEach(function(x){ x.setAttribute('aria-pressed',String(x===b)); }); draw(); }); });
+  kcs.forEach(function(b){ b.addEventListener('click',function(){ kc=b.dataset.kc; kcs.forEach(function(x){ x.setAttribute('aria-pressed',String(x===b)); }); draw(); }); });
   q.addEventListener('input',draw); cs.addEventListener('change',draw);
+  /* in season now: what the valley is picking, pressing or boiling down this month */
+  var SEA=__SEASON__, sa=$('#fdSeason'), mo=new Date().getMonth(), z=SEA[mo];
+  if (sa && z){ sa.innerHTML='<p class="fd-sk">In season in '+z[0]+'</p><p></p><p class="fd-sl"></p>'; sa.children[1].textContent=z[1];
+    z[2].forEach(function(l,i){ var a=document.createElement('a'); a.href=l[1]; a.textContent=l[0]; if (i) sa.children[2].appendChild(document.createTextNode(' · ')); sa.children[2].appendChild(a); }); sa.hidden=false; }
   var go=function(li){ li.scrollIntoView({behavior:glide, block:'center'}); li.classList.remove('flash'); void li.offsetWidth; li.classList.add('flash'); };
   var pins=function(){ marks.forEach(function(m){ var on=!m.li.hidden; if (on && !map.hasLayer(m.c)) m.c.addTo(map); if (!on && map.hasLayer(m.c)) map.removeLayer(m.c); }); };
   var start=function(){ if (map || !window.L) return;
@@ -159,6 +179,21 @@ JS = r'''<script>
   var h=location.hash.slice(1), t=h && document.getElementById(h); if (t && t.classList.contains('fd')) setTimeout(function(){ go(t); },300);
 })();
 </script>'''
+SEASON=[
+ ['January','Winter. The orchards are resting; the ice festivals are on the calendar.',[['The year’s calendar','/seasons/']]],
+ ['February','Still winter. Maple sugaring usually begins as the days start to warm.',[['Maple festivals on the calendar','/seasons/#kalamazoo-nature-center-maple-sugar-festival']]],
+ ['March','Maple syrup time. The Kalamazoo Nature Center’s Maple Sugar Festival comes early in the month.',[['Maple Sugar Festival','/seasons/#kalamazoo-nature-center-maple-sugar-festival'],['Maple creams from the valley kitchen','#maple-creams']]],
+ ['April','Sugaring ends with the Wakarusa Maple Syrup Festival late in the month, and the fruit belt starts to bloom.',[['Wakarusa Maple Syrup Festival','/seasons/#wakarusa-maple-syrup-festival']]],
+ ['May','Blossom time in the fruit belt, with Blossomtime in St. Joseph and Benton Harbor.',[['Blossomtime Festival','/seasons/#blossomtime-festival'],['A weekend in the fruit belt','/visit/#day-fruit']]],
+ ['June','Early summer: the orchards are setting fruit and the u-pick season is coming.',[['A weekend in the fruit belt','/visit/#day-fruit']]],
+ ['July','Blueberry u-pick season opens, and the Coloma Glad-Peach Festival comes at the end of the month.',[['Blueberry season','/seasons/#blueberry-u-pick-season'],['Coloma Glad-Peach Festival','/seasons/#coloma-glad-peach-festival']]],
+ ['August','Blueberries and peaches, the National Blueberry Festival in South Haven, and apple picking from the middle of the month.',[['National Blueberry Festival','/seasons/#national-blueberry-festival'],['Cream peach pie from the valley kitchen','#cream-peach-pie']]],
+ ['September','Apple-picking season, the Nappanee Apple Festival, and cider again at the orchards.',[['Nappanee Apple Festival','/seasons/#nappanee-apple-festival'],['Jollay Orchards','#jollay-orchards'],['Kercher’s Sunrise Orchards','#kercher-s-sunrise-orchards']]],
+ ['October','Apples, cider and doughnuts at the orchards, through the end of the month.',[['A fall drive to the orchards','/visit/#day-fall'],['Jollay Orchards','#jollay-orchards'],['Apple fritters from the valley kitchen','#apple-fritters']]],
+ ['November','The orchard season closes. Time for apple butter with cider from the valley kitchen.',[['Apple butter with cider','#apple-butter-with-cider']]],
+ ['December','Holiday candy from the valley kitchen: maple creams and popcorn candy.',[['Maple creams','#maple-creams'],['Popcorn candy','#popcorn-candy']]],
+]
+JS = JS.replace('__SEASON__', json.dumps(SEASON, ensure_ascii=False))
 import visitdata as _V
 JS = JS.replace('__TOWNS__', json.dumps([[n,la,lo] for n,la,lo in _V.TOWNS]))
 FIELDS = [
@@ -174,9 +209,11 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <h1>A table and a bed in the valley</h1>
     <p class="lede" style="font-size:1.15rem">Where to eat and where to stay, chosen for their stories: dining rooms in old banks and depots, family tables that have fed a town for generations, inns in houses built before the railroad came. And from the old cookbooks and weekly papers, what the valley cooked.</p>
     <p class="nm-chips fd-jump"><a class="btn" href="#eat">Places to eat</a><a class="btn" href="#stay">Places to stay</a><a class="btn" href="#recipes">The valley kitchen</a><a class="btn" href="#fields">Where the food came from</a></p>
+    <aside class="fd-season" id="fdSeason" hidden aria-label="In season now"></aside>
     <div class="mu-bar">
       <label class="nm-q"><span>Find a place</span><input type="search" id="fdQ" placeholder="A town, a kind of place, a building" autocomplete="off" spellcheck="false"></label>
       <div class="nm-chips" role="group" aria-label="Show one kind"><button type="button" class="btn fd-f" data-ty="" aria-pressed="true">Everything</button><button type="button" class="btn fd-f" data-ty="restaurant" aria-pressed="false">Places to eat</button><button type="button" class="btn fd-f" data-ty="lodging" aria-pressed="false">Places to stay</button><button type="button" class="btn" id="fdNear" aria-pressed="false">Nearest to me</button><label class="mu-ol"><span class="vh">County</span><select id="fdC"><option value="">Every county</option>{copts}</select></label></div>
+      <div class="nm-chips" role="group" aria-label="Show one sort of place"><button type="button" class="btn fd-k" data-kc="" aria-pressed="true">Any sort</button><button type="button" class="btn fd-k" data-kc="tavern" aria-pressed="false">Taverns &amp; pubs</button><button type="button" class="btn fd-k" data-kc="dine" aria-pressed="false">Restaurants &amp; diners</button><button type="button" class="btn fd-k" data-kc="sweet" aria-pressed="false">Sweets &amp; soda fountains</button><button type="button" class="btn fd-k" data-kc="orchard" aria-pressed="false">Orchards, markets &amp; cider</button><button type="button" class="btn fd-k" data-kc="inn" aria-pressed="false">Historic inns &amp; hotels</button><button type="button" class="btn fd-k" data-kc="bnb" aria-pressed="false">Bed &amp; breakfasts</button></div>
       <p class="mu-nmsg" id="fdNearMsg" aria-live="polite"></p>
       <p class="nm-count" id="fdCount" aria-live="polite">{len(F)} places</p>
     </div>
@@ -187,7 +224,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <section class="fd-sec" id="eat"><h2>Places to eat with a story <span class="mu-n">{ne} places</span></h2>{eat}</section>
     <section class="fd-sec" id="stay"><h2>Places to stay <span class="mu-n">{ns} places</span></h2>{stay}</section>
     <section id="recipes"><h2>The valley kitchen</h2>
-      <p><button type="button" class="btn" id="rcAll">Print the whole recipe box</button></p>
+      <p><button type="button" class="btn" id="rcAll">Print the whole recipe box</button> <a class="btn" href="/food/valley-kitchen-recipes.pdf" download>Download the recipe booklet (PDF)</a></p>
       <p>Recipes and household hints as they were printed in the valley’s own cookbooks and newspapers, word for word, with a note on how to make each one today. Tick the ones you have cooked: one earns a badge for your <a href="/badges/">field book</a>.</p>
       <ul class="rc-list">{recipes}</ul></section>
     <section id="fields"><h2>Where the food came from</h2><ul class="fd-fields">{fields}</ul></section>

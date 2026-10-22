@@ -540,6 +540,7 @@ window.PS_BADGES=[
   ['pass25','Twenty-five stamps','Collect twenty-five stamps in your passport.'],
   ['pass50','Fifty stamps','Collect fifty stamps in your passport.'],
   ['harvest','The harvest trail','In the fall, stamp the mill, the orchard and the stove town: Bonneyville Mill, Jollay Orchards and the Dowagiac Area History Museum.'],
+  ['daytrip','Day-tripper','Stamp every stop of one of the ready-made days out on the Visit & Plan page.'],
   ['teller','Keeper of a story','Send the research desk a story of the valley, and say how you know it.'],
   ['notes','Field notes','Open the book of field notes.'],
   ['legend','Legend tester','Test a family legend.'],
