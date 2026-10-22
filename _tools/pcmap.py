@@ -6,7 +6,7 @@ LL = {'Cassopolis':(41.9065,-86.0127),'Dowagiac':(41.9836,-86.1061),'Edwardsburg
  'Union (Cass County)':(41.783,-85.867),'Penn (Cass County)':(41.95,-85.925),'Adamsville (Cass County)':(41.7853,-85.9939),'Adamsville':(41.7853,-85.9939),
  'Niles':(41.8296,-86.2528),'Berrien Springs':(41.948,-86.3404),'Benton Harbor':(42.119,-86.4466),'Benton Harbor / St. Joseph':(42.113,-86.47),'St. Joseph':(42.1161,-86.4935),
  'Coloma':(42.1814,-86.3126),'Coloma (Paw Paw Lake)':(42.2,-86.27),'Paw Paw':(42.2178,-85.8911),'South Haven':(42.4065,-86.2743),'Three Rivers':(41.9448,-85.6336),
- 'Constantine':(41.8397,-85.6647),'Kalamazoo':(42.2765,-85.607),'South Bend':(41.6758,-86.2521),'South Bend / Mishawaka':(41.67,-86.2),'Mishawaka':(41.6642,-86.1102),
+ 'Constantine':(41.8397,-85.6647),'White Pigeon':(41.7981,-85.6433),'Kalamazoo':(42.2765,-85.607),'South Bend':(41.6758,-86.2521),'South Bend / Mishawaka':(41.67,-86.2),'Mishawaka':(41.6642,-86.1102),
  'Elkhart':(41.6932,-85.9734),'Goshen':(41.5856,-85.8343),'Bristol':(41.7217,-85.8202),'La Porte':(41.5955,-86.7082),'Michigan City':(41.7148,-86.9028)}
 def section():
     towns = {}

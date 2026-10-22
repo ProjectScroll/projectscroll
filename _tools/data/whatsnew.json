@@ -1,10 +1,56 @@
 [
- ["2026-10-22","/passport/","A paper passport, a teachers’ pack and a recipe booklet","Printables: a passport booklet with a stamp box for every place, a one-day field trip with two worksheets for teachers, and the valley kitchen as a little book."],
- ["2026-10-22","/visit/","Plan your visit for a date","Pick the day you are coming and see which museums are open, what festival is on, and your own day on the map with rough times."],
- ["2026-10-22","/postcards/","Send an old postcard","Turn any old card in the gallery into a postcard of your own, with your message on the back."],
- ["2026-10-22","/made-in-the-valley/#mktime","The makers on a map and a timeline","Where the valley’s makers worked, and when, from the stove works to the guitar shop."],
- ["2026-10-21","/visit/","Visit & Plan","Nine ready-made days out, a day builder, Google Maps routes and a pocket guide to print."],
- ["2026-10-21","/made-in-the-valley/","Made in the Valley","Twenty-three makers, from Round Oak stoves and Heddon lures to Studebaker wagons and Gibson guitars."],
- ["2026-10-21","/heirlooms/","The heirloom cabinet","A place for the things the valley handed down, shown with their owners’ yes."],
- ["2026-10-21","/postcards/","Old postcards, searchable and on the map","More than a hundred postcards and photographs of the valley’s towns, with search, filters and a map."]
+ [
+  "2026-10-22",
+  "/postcards/",
+  "Eleven more old postcards",
+  "The Pioneer Log Cabin going up in 1923, the depots at Cassopolis and Vandalia, Chicago Street in Edwardsburg, Main Street in Niles, and a steam shovel at White Pigeon."
+ ],
+ [
+  "2026-10-22",
+  "/passport/",
+  "A paper passport, a teachers’ pack and a recipe booklet",
+  "Printables: a passport booklet with a stamp box for every place, a one-day field trip with two worksheets for teachers, and the valley kitchen as a little book."
+ ],
+ [
+  "2026-10-22",
+  "/visit/",
+  "Plan your visit for a date",
+  "Pick the day you are coming and see which museums are open, what festival is on, and your own day on the map with rough times."
+ ],
+ [
+  "2026-10-22",
+  "/postcards/",
+  "Send an old postcard",
+  "Turn any old card in the gallery into a postcard of your own, with your message on the back."
+ ],
+ [
+  "2026-10-22",
+  "/made-in-the-valley/#mktime",
+  "The makers on a map and a timeline",
+  "Where the valley’s makers worked, and when, from the stove works to the guitar shop."
+ ],
+ [
+  "2026-10-21",
+  "/visit/",
+  "Visit & Plan",
+  "Nine ready-made days out, a day builder, Google Maps routes and a pocket guide to print."
+ ],
+ [
+  "2026-10-21",
+  "/made-in-the-valley/",
+  "Made in the Valley",
+  "Twenty-three makers, from Round Oak stoves and Heddon lures to Studebaker wagons and Gibson guitars."
+ ],
+ [
+  "2026-10-21",
+  "/heirlooms/",
+  "The heirloom cabinet",
+  "A place for the things the valley handed down, shown with their owners’ yes."
+ ],
+ [
+  "2026-10-21",
+  "/postcards/",
+  "Old postcards, searchable and on the map",
+  "More than a hundred postcards and photographs of the valley’s towns, with search, filters and a map."
+ ]
 ]

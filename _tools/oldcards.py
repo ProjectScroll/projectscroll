@@ -5,7 +5,7 @@ BY = {d['id']: d for d in D}
 E = lambda s: html.escape(s or '', quote=True)
 GROUPS = [
  ('Cass County, Michigan', [('Cassopolis',['Cassopolis']),('Dowagiac',['Dowagiac']),('Edwardsburg',['Edwardsburg']),('Marcellus',['Marcellus']),('Vandalia',['Vandalia']),('The villages',['Union (Cass County)','Penn (Cass County)','Adamsville (Cass County)','Adamsville'])]),
- ('Southwest Michigan', [('Niles',['Niles']),('Berrien Springs',['Berrien Springs']),('Benton Harbor and St. Joseph',['Benton Harbor','Benton Harbor / St. Joseph','St. Joseph']),('Coloma',['Coloma','Coloma (Paw Paw Lake)']),('Paw Paw',['Paw Paw']),('South Haven',['South Haven']),('Three Rivers',['Three Rivers']),('Constantine',['Constantine']),('Kalamazoo',['Kalamazoo'])]),
+ ('Southwest Michigan', [('Niles',['Niles']),('Berrien Springs',['Berrien Springs']),('Benton Harbor and St. Joseph',['Benton Harbor','Benton Harbor / St. Joseph','St. Joseph']),('Coloma',['Coloma','Coloma (Paw Paw Lake)']),('Paw Paw',['Paw Paw']),('South Haven',['South Haven']),('Three Rivers',['Three Rivers']),('Constantine',['Constantine']),('White Pigeon',['White Pigeon']),('Kalamazoo',['Kalamazoo'])]),
  ('Northern Indiana', [('South Bend and Mishawaka',['South Bend','South Bend / Mishawaka','Mishawaka']),('Elkhart',['Elkhart']),('Goshen',['Goshen']),('Bristol',['Bristol']),('La Porte',['La Porte']),('Michigan City',['Michigan City'])]),
 ]
 def slug(s): return re.sub(r'[^a-z0-9]+','-',s.lower()).strip('-')
@@ -24,7 +24,7 @@ def pic(d, sizes, lazy=True, cls=''):
 SUBJ=[('streets','Main streets',r'\b(st\.?|street|broadway|main|avenue|birds? ?eye|view|looking|business)\b'),('rail','Depots & railways',r'depot|station|r\.\s?r|railway|train|special|hump|g\. ?t\.'),
  ('civic','Courthouses & halls',r'court ?house|city hall|post ?office|jail|water works|opera'),('schools','Schools & libraries',r'school|library'),
  ('churches','Churches',r'church|chapel'),('inns','Hotels & resorts',r'hotel|inn\b|resort|tavern|hall\b|cottage|pavil'),
- ('work','Mills, farms & industry',r'mill|works|factory|warehouse|market|peach|orchard|corn|fruit|switchboard|car co|lumber'),
+ ('work','Mills, farms & industry',r'mill|shovel|works|factory|warehouse|market|peach|orchard|corn|fruit|switchboard|car co|lumber'),
  ('events','Events & people',r'parade|homecoming|day\b|fire|disaster|snow|giants|concert|chautauqua|dedication|contest|spectators|crowd|building the|men building|activities'),
  ('water','Rivers, lakes & parks',r'river|lake|pond|bridge|park|beach|slide|rocky')]
 def subjects(d):
