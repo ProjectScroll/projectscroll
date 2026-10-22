@@ -1,0 +1,147 @@
+{
+ "lead": {
+  "kicker": "The hunt",
+  "headline": "Every clue is true.",
+  "url": "/hunt/",
+  "dek": "Project Scroll now has a new, free online treasure hunt. Real mysteries, history and clues hide in pages, websites, county histories, survey maps, certificates, forgotten newspapers, lore and <b>local legends</b>. Every one of them can be <em class=\"hi\">solved by you</em>."
+ },
+ "stories": [
+  {
+   "slug": "the-day-3000-came-to-watch-one-log",
+   "date": "2026-10-22",
+   "kicker": "From 1923",
+   "headline": "The day 3,000 people came to watch one log",
+   "short": "The day 3,000 came to watch one log",
+   "dek": "Twenty-four men carried the first log of the Pioneer Log Cabin while a band played. Four weeks later the cabin was finished.",
+   "img": ["/img/oldcards/ps112", 1400, 866, "The card of 1923: Building the Pioneer Log Cabin, Cassopolis, Michigan, May 23 to June 20, 1923"],
+   "body": [
+    "<span class=\"dl\">Cassopolis, Mich.</span> At half past eight on the morning of 23 May 1923, a black walnut log twenty-six feet long was carried to its place by twenty-four men. A band played and the crowd sang. About three thousand people stood and watched, and many had driven up to fifty miles to be there.",
+    "It was the first log of the Cass County Pioneer Log Cabin. A note written on the back of one card of the day says fifty-two volunteers did the first morning’s work.",
+    "The logs came from families across the county, given from their own land. Each log was numbered, and a list kept the family’s name, the town and the kind of tree. The card printed for the occasion gives the whole job in one line: May 23 to June 20, 1923. Four weeks, from the first log to Pioneer Day.",
+    "The cabin still stands in Cassopolis today, as the Pioneer Log Cabin Museum."
+   ],
+   "cta": [["See the cards of the day", "/postcards/#cassopolis"], ["The museum, its hours and directions", "/museums/"]],
+   "sources": [["Laying first log of Cass County Pioneer Cabin, Cassopolis, Michigan (postcard, 1923), Burton Historical Collection, Detroit Public Library", "https://digitalcollections.detroitpubliclibrary.org/bh012198"], ["Men building the Cass County Pioneer Cabin, Cassopolis, Michigan (postcard, 1923), Burton Historical Collection, Detroit Public Library", "https://digitalcollections.detroitpubliclibrary.org/bh012201"]]
+  },
+  {
+   "slug": "case-1-is-still-open",
+   "date": "2026-10-22",
+   "kicker": "Still open",
+   "headline": "Did the joke lodge of 1846 ever have a real charter?",
+   "short": "Case 1: did the lodge of 1846 have a charter?",
+   "dek": "Nobody has cracked Case 1 yet. The book that first told the story is free to read online, and the clue is one word.",
+   "img": ["/img/strip/rogers-800", 800, 200, "A page of Rogers’s History of Cass County, 1875"],
+   "body": [
+    "<span class=\"dl\">Cassopolis, Mich.</span> In the spring of 1846, the county histories say, a lodge of the “Ancient and Honorable Order of the Eclampsus Vitus” was founded at Cassopolis, all halters and blindfolds. That winter it gave a grand ball at the Union Hotel, where more than two hundred of its badges were on show.",
+    "Howard S. Rogers told the story first, in his <i>History of Cass County, from 1825 to 1875</i> (1875), on pages 253 and 254. He names four charter members. Alfred Mathews printed the story again in 1882.",
+    "So the question on the case board is simple to ask and hard to settle: was there ever a real charter, or only a joke one? Read the two books side by side, and watch the word “charter.”",
+    "The first person to answer it, with the book and the page, is named on the case board for good."
+   ],
+   "cta": [["Open Case 1", "/cases/1/"], ["The whole case board", "/#cases"]],
+   "sources": []
+  },
+  {
+   "slug": "pick-a-date-and-see-whats-open",
+   "date": "2026-10-22",
+   "kicker": "Visit & Plan",
+   "headline": "Pick a date, and see what’s open",
+   "short": "Pick a date, and see what’s open",
+   "dek": "Tell the Visit & Plan page the day you’re coming. It shows the museums open that day, what’s on, and your own day on the map.",
+   "img": ["/img/card-walk-art-270", 270, 480, ""],
+   "body": [
+    "<span class=\"dl\">The St. Joseph River valley.</span> Many of the valley’s museums are run by volunteers and open only a few days a week, some only in summer. Turning up to a locked door is the commonest way a day out goes wrong.",
+    "The Visit &amp; Plan page now takes a date. Pick the day you’re coming and it shows which museums are open, using each place’s posted hours, and any festival on that day.",
+    "There are ready-made days out to start from, each one in an order that saves driving and opens in Google Maps with one tap. Or build your own day, and see it on the map with rough times.",
+    "Hours change, and the page can’t know about holidays, so check each place before you go."
+   ],
+   "cta": [["Plan your visit", "/visit/"], ["Museums and historic places", "/museums/"]],
+   "sources": []
+  },
+  {
+   "slug": "send-someone-an-old-postcard",
+   "date": "2026-10-22",
+   "kicker": "New",
+   "headline": "Send someone an old postcard",
+   "short": "Send someone an old postcard",
+   "dek": "Pick any card in the gallery, write on the back, and share it from your phone.",
+   "img": ["/img/oldcards/ps115-700", 700, 447, "Road to Town, Cassopolis, Mich., on an old postcard"],
+   "body": [
+    "<span class=\"dl\">Cassopolis, Mich.</span> A century ago this is how you told someone you were thinking of them: a picture of your town on the front, a few lines on the back, and a stamp.",
+    "Every card in the old postcard gallery now has a button under it: Send this postcard. Write who it’s to, your message and your name, and the back of the card is laid out as you type.",
+    "Then share it straight from your phone, or save the picture to post, text or print.",
+    "Nothing you write is sent to Project Scroll. The card is made on your own phone or computer."
+   ],
+   "cta": [["Choose a card", "/postcards/"]],
+   "sources": []
+  },
+  {
+   "slug": "where-is-this",
+   "date": "2026-10-22",
+   "kicker": "Where is this?",
+   "headline": "A depot, a water tower and three clues",
+   "short": "A depot, a water tower, three clues",
+   "dek": "An old real-photo postcard of a station somewhere in the valley. Can you name the town?",
+   "img": ["/img/news/where-is-this", 1400, 777, "A small wooden depot and a water tower on iron legs, on an old real-photo postcard. The station sign is blurred."],
+   "body": [
+    "A small wooden depot. A water tower on iron legs. A field of tall grass, and not one person in sight. The card’s caption has been cut off, and the station sign blurred.",
+    "<b>Clue one.</b> The railroad here was the Michigan Central’s Air Line, which ran from Jackson to Niles.",
+    "<b>Clue two.</b> The town is in Cass County, east of Cassopolis.",
+    "<b>Clue three.</b> The Air Line came through in 1871, and the station was set up the same year."
+   ],
+   "reveal": "<p><b>Vandalia.</b> The caption at the foot of the card reads “R.R. Station Vandalia Mich.” The town’s other cards show the same depot with a train at the platform, and with passengers and a baggage cart. The Air Line between Jackson and Niles was abandoned in 1937.</p>",
+   "cta": [["See every Vandalia card", "/postcards/#vandalia"]],
+   "sources": [["Station: Vandalia, MI, Michigan Railroads", "https://michiganrailroads.com/stations-locations/78-cass-county-14/599-vandalia-mi"], ["Station: Cassopolis, MI, Michigan Railroads", "https://michiganrailroads.com/stations-locations/78-cass-county-14/593-cassopolis-mi"]]
+  },
+  {
+   "slug": "cassopolis-in-lidar",
+   "date": "2026-10-21",
+   "kicker": "The map room",
+   "headline": "Fly over Cassopolis, laser point by laser point",
+   "short": "Cassopolis in 355,650 laser points",
+   "dek": "355,650 real laser points from the 2015 survey, in 3D, with the 1860 town plan laid on the ground.",
+   "img": ["/img/card-lidar-art-270", 270, 480, ""],
+   "body": [
+    "<span class=\"dl\">Cassopolis, Mich.</span> In 2015 an aircraft flew over Cass County firing laser pulses at the ground, hundreds of thousands a second, and timing each echo. Every dot in the new model is one of those echoes, from the blocks around the courthouse: 355,650 of them.",
+    "The buildings and trees stand where the laser found them, 125,189 points of roofs and 230,461 of trees, over the bare ground of the town.",
+    "Press “1860 plan” and the old town plan from the county wall map is laid on the ground beneath them. Raise the heights, tilt it, fly around it, or go full screen.",
+    "Fly over it, and you earn the Laser surveyor badge."
+   ],
+   "cta": [["Fly over Cassopolis", "/map/3d/cassopolis/"], ["The whole valley in 3D", "/map/3d/valley/"]],
+   "sources": []
+  },
+  {
+   "slug": "what-the-valley-made",
+   "date": "2026-10-21",
+   "kicker": "Made in the Valley",
+   "headline": "Stoves, lures, wagons and guitars",
+   "short": "Stoves, lures, wagons and guitars",
+   "dek": "Twenty-three makers from the valley: what they made, how they ended, and where you can still see their work.",
+   "img": ["/img/oldcards/ps011-700", 700, 446, "The Beckwith Building, Dowagiac, on an old postcard"],
+   "body": [
+    "<span class=\"dl\">The St. Joseph River valley.</span> For a century the towns of the valley made things the whole country knew by name.",
+    "Round Oak stoves came out of Dowagiac from 1871. James Heddon’s Sons made fishing lures there from 1902. Studebaker built wagons in South Bend, then cars. Gibson made mandolins and guitars in Kalamazoo, and C. G. Conn made band instruments in Elkhart.",
+    "The new Made in the Valley page follows twenty-three of them: who founded each one, what it made, when it peaked, how it ended, and the museums where its work is still on show.",
+    "Every maker is pinned on a map, and set on a timeline that runs from the 1850s to today."
+   ],
+   "cta": [["Meet the makers", "/made-in-the-valley/"], ["The makers on a map and a timeline", "/made-in-the-valley/#mktime"]],
+   "sources": []
+  },
+  {
+   "slug": "a-paper-passport",
+   "date": "2026-10-22",
+   "kicker": "Printables",
+   "headline": "A paper passport to stamp, and a teachers’ pack",
+   "short": "A paper passport to print",
+   "dek": "A passport booklet with a stamp box for every place, a one-day field trip for classes, and the valley kitchen as a little book.",
+   "img": ["/img/card-food-art-270", 270, 480, ""],
+   "body": [
+    "<span class=\"dl\">The St. Joseph River valley.</span> The passport on Project Scroll lives in your phone: press “I’m here” at a museum, a walk stop, a table or a festival, and the stamp lands in it.",
+    "Now there is a paper one too. Print the booklet, fold it, and carry it. Every place in the valley has its own stamp box.",
+    "For teachers there is a one-day field trip, with the Broadway walk, the Local History Branch and the photo spots, and two worksheets: rephotographing an old postcard, and reading an old record.",
+    "And the recipes of the valley kitchen are now a little book to print and keep in the drawer."
+   ],
+   "cta": [["Your passport", "/passport/"], ["For classrooms", "/classrooms/"], ["The valley kitchen", "/food/"]],
+   "sources": []
+  }
+ ]
+}
