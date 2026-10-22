@@ -1,4 +1,49 @@
 {
+ "the-kentucky-raid-of-1847": [
+  {
+   "id": "raid-bail-four-thousand",
+   "town": "Vandalia",
+   "t": "The raiders’ own home paper, the Covington <i>Licking Valley Register</i> of 17 September 1847, put their bail at “something over four thousand dollars.” Every later account we have found gives $2,600, the 1882 county history’s figure.",
+   "s": "The county histories of 1875, 1882 and 1906; the House Divided project’s narrative of the 1847 stampedes; D. G. Chardavoyne’s article in <i>The Court Legacy</i> (2004); Wikipedia; the Underground Railroad Society of Cass County’s pages; the Clio entry; the State Bar of Michigan’s milestone pages; web searches for the bail figure.",
+   "card": "Licking Valley Register|Covington, Kentucky|17 September 1847"
+  },
+  {
+   "id": "raid-wagon-delivered-up",
+   "town": "Vandalia",
+   "t": "The same 1847 Kentucky account says the raiders’ baggage wagon, its wheels taken, “was then delivered up.” The earliest telling we know of the story that it was rolled into Birch Lake is in newspapers of 1936–37, and no account we have found sets the two side by side.",
+   "s": "The county histories of 1875 and 1882, searched for “wagon”; the House Divided narrative; Wikipedia; the society’s pages; web searches for the wagon and Birch Lake.",
+   "card": "Licking Valley Register|Covington, Kentucky|17 September 1847"
+  }
+ ],
+ "the-bonine-house": [
+  {
+   "id": "bonine-storehouse-1882",
+   "town": "Vandalia",
+   "t": "The earliest description we have found of the building now called the Bonine carriage house: in 1882, “exactly opposite his residence, which is on a corner,” “the finely-built storehouse,” with two rows of arbor vitae running from it. The history says nothing of fugitives there.",
+   "s": "The Underground Railroad Society of Cass County’s pages on the house and carriage house; eight Leader articles of 2009–2021; the Clio entries; local radio and television features; Wikipedia; web searches for Bonine with “storehouse” and “arbor vitae”.",
+   "img": "/img/news/ugrr/bonine-1882-elk-park.webp",
+   "alt": "The 1882 county history on the Bonine farm",
+   "cap": "History of Cass County (1882), p. 251. Internet Archive."
+  },
+  {
+   "id": "siebert-names-isaac-bonine",
+   "town": "Vandalia",
+   "t": "The Bonine named in Wilbur Siebert’s national directory of Underground Railroad workers (1898) is Isaac, the father: “Bogue, Steven. Bonine, Isaac. Shugart, Zachariah.” Modern accounts credit his son James E., and none we have found cites Siebert.",
+   "s": "The same sources as for the storehouse, with web searches for Siebert with “Isaac Bonine”.",
+   "img": "/img/news/ugrr/siebert-1898-cass.webp",
+   "alt": "Siebert 1898: Cass County, Bogue, Steven. Bonine, Isaac. Shugart, Zachariah.",
+   "cap": "Siebert, The Underground Railroad (1898), Appendix E. Internet Archive."
+  },
+  {
+   "id": "anti-slavery-friends-elk-park",
+   "town": "Vandalia",
+   "t": "Glover’s history of 1906 places the meeting of the Anti-Slavery Friends of Cass County, with the Rev. Charles Osborn as pastor, “in a log building in the grove on the farm of the late James E. Bonine … known as the Elk Park.” Modern accounts say only that the Bonines were members.",
+   "s": "The same sources as for the storehouse, with web searches for the Anti-Slavery Friends with Bonine and Elk Park.",
+   "img": "/img/news/ugrr/glover-1906-elk-park-friends.webp",
+   "alt": "Glover 1906 on the Anti-Slavery Friends at the Elk Park",
+   "cap": "Glover, Twentieth Century History of Cass County (1906), p. 386. Internet Archive."
+  }
+ ],
  "_about": "New findings, by story slug. Merged into each story's 'finds' by build_news.py and build_discoveries.py. Each: id, t (the finding, html), s (what we searched, html), town (filter label), img, alt, cap. Only findings checked as not previously published go here.",
  "e-clampus-vitus-the-complete-record": [
   {
