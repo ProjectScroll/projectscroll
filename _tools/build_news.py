@@ -37,8 +37,9 @@ top, more = S[:4], S[4:]
 brief = lambda s: (f'<article class="nw-b" data-d="{s["date"]}"><a class="nw-th" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{sqpic(s["pic"][0])}</a><p class="nw-k">{E(s["kicker"])}<span class="nw-new" hidden> · New</span></p>'
                    f'<h2><a href="/news/{s["slug"]}/">{E(s["headline"])}</a></h2></article>')
 line = lambda s: (f'<li data-d="{s["date"]}"><span class="nw-k">{E(s["kicker"])}</span> <a href="/news/{s["slug"]}/">{E(s["short"])}</a><span class="nw-new" hidden> · New</span></li>')
-second = lambda s: (f'<article class="nw-s" data-d="{s["date"]}"><a class="nw-simg" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{npic(s["pic"][0], "", "(min-width:900px) 16rem, 92vw", lazy=False)}</a>'
-                    f'<p class="nw-k">{E(s["kicker"])}<span class="nw-new" hidden> · New</span></p><h2><a href="/news/{s["slug"]}/">{E(s["headline"])}</a></h2><p class="nw-sd">{E(s.get("sdek") or s["dek"])}</p></article>')
+FEAT = '<span class="nw-feat-k"><span aria-hidden="true">★</span> Featured</span> · '
+second = lambda s: (f'<article class="nw-s{" nw-feat" if s.get("featured") else ""}" data-d="{s["date"]}"><a class="nw-simg" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{npic(s["pic"][0], "", "(min-width:900px) 16rem, 92vw", lazy=False)}{"<span class=nw-ribbon>Featured</span>" if s.get("featured") else ""}</a>'
+                    f'<p class="nw-k">{FEAT if s.get("featured") else ""}{E(s["kicker"])}<span class="nw-new" hidden> · New</span></p><h2><a href="/news/{s["slug"]}/">{E(s["headline"])}</a></h2><p class="nw-sd">{E(s.get("sdek") or s["dek"])}</p></article>')
 line = lambda s: (f'<li data-d="{s["date"]}"><a class="nw-th" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{sqpic(s["pic"][0])}</a><span class="nw-lt"><span class="nw-k">{E(s["kicker"])}</span> <a href="/news/{s["slug"]}/">{E(s["short"])}</a><span class="nw-new" hidden> · New</span></span></li>')
 today = datetime.date.today()
 BLOCK = f'''<!--news-->
@@ -93,7 +94,7 @@ for k, st in enumerate(S):
     live = f'<div class="nw-live" role="note"><p class="nw-live-h"><span class="nw-dot" aria-hidden="true"></span>Live research document</p><p>{st["live"]}</p></div>' if st.get('live') else ''
     b = f'''    <p class="crumb"><a href="/">← Front page</a> · <a href="/news/">All the news</a></p>
     <article class="nw-art">
-      <p class="kicker">{E(st["kicker"])}</p>
+      <p class="kicker">{FEAT if st.get("featured") else ""}{E(st["kicker"])}</p>
       <h1>{E(st["headline"])}</h1>
       <p class="lede">{E(st["dek"])}</p>
       {live}<p class="nw-by">{("By " + E(st["by"]) + " · ") if st.get("by") else ""}Project Scroll · {"First published " if st.get("updated") else ""}<time datetime="{st["date"]}">{day(st["date"], True)}</time>{(" · Updated <time datetime=\""+st["updated"]+"\">"+day(st["updated"], True)+"</time>") if st.get("updated") else ""} · {mins} min read <button type="button" class="linkbtn nw-share" data-t="{E(st["headline"])}">Share this story</button></p>
