@@ -23,8 +23,9 @@ def colophon(body):
         host=re.sub(r'^https?://(www\.)?','',url).split('/')[0]
         if not any(h in url for h in RECORD_HOSTS): continue
         if url in seen or not text or len(text)>140: continue
-        if re.match(r'^(read it|read the|open|see|view|free online|read it free online)\b', text, re.I) or len(text)<6:
+        if 'class="btn' not in m.group(0)[:60] and (re.match(r'^(read it|read the|open|see|view|free online|read it free online)\b', text, re.I) or len(text)<6):
             li=body.rfind('<li>', 0, m.start()); seg=body[li+4:m.start()] if li>=0 and m.start()-li<600 else body[max(0,m.start()-260):m.start()]
+            seg=re.sub(r'^[^<]*?>','',seg) if seg.find('>')!=-1 and (seg.find('<')==-1 or seg.find('>')<seg.find('<')) else seg
             seg=re.sub(r'\s+',' ',re.sub('<[^>]+>','',seg)).strip(' :;,—–-')
             cite=re.match(r'^(.*?\(\d{4}\)[^.]*)', seg)
             text=(cite.group(1) if cite else re.split(r'(?<=[.!?])\s+', seg)[0]).strip(' :;,—–-')[:140] or text
