@@ -18,8 +18,8 @@ for (const [w,cs,label] of [[1280,'light','computer/light'],[1280,'dark','comput
  const sw=await q.evaluate(()=>[document.documentElement.scrollWidth,innerWidth]); ok(P+'no sideways scrolling', sw[0]<=sw[1], sw.join('/'));
  // menu or nav
  if (w<880){ await q.click('#menu'); await q.waitForTimeout(200); const open=await q.evaluate(()=>getComputedStyle(document.querySelector('.bar nav')).display!=='none'); ok(P+'phone Menu opens',open);
-   await q.click('.bar nav a[href="#cases"]'); await q.waitForTimeout(700); const closed=await q.evaluate(()=>!document.querySelector('.bar').classList.contains('open')); ok(P+'Menu closes after choosing a section',closed); }
- else { const tg=await q.evaluate(()=>[...document.querySelectorAll('.bar nav a[href^="#"]')].every(a=>document.querySelector(a.getAttribute('href')))); ok(P+'every top-bar link has a section',tg); }
+   await q.click('.bar nav a[href="/#cases"]'); await q.waitForTimeout(700); const closed=await q.evaluate(()=>!document.querySelector('.bar').classList.contains('open')); ok(P+'Menu closes after choosing a section',closed); }
+ else { const tg=await q.evaluate(()=>[...document.querySelectorAll('.bar nav a[href^="/#"]')].every(a=>document.querySelector(a.getAttribute('href').slice(1)))); ok(P+'every top-bar link has a section',tg); }
  // all anchor targets
  const missing=await q.evaluate(()=>[...document.querySelectorAll('a[href^="#"]')].map(a=>a.getAttribute('href')).filter(h=>h.length>1&&!document.querySelector(h))); ok(P+'every on-page link points somewhere', missing.length===0, missing.join(' '));
  const dup=await q.evaluate(()=>{const s={},d=[];document.querySelectorAll('[id]').forEach(e=>{if(s[e.id])d.push(e.id);s[e.id]=1});return d}); ok(P+'no duplicate ids', dup.length===0, dup.join(' '));

@@ -1226,6 +1226,39 @@ try{ (function(){
       img.addEventListener('click', open); img.addEventListener('keydown', function(e){ if (e.key==='Enter' || e.key===' '){ e.preventDefault(); open(); } }); });
   })(); }catch(err){ psFail(err); }
 
+  try{ document.querySelectorAll('.nw-tl[data-filter]').forEach(function(tl){
+    var R=[['all','Everything',''],['c','Cassopolis','var(--rule)'],['i','Indiana','var(--gold)'],['e','The East','var(--ledger)'],['w','The West','var(--ink-soft)']];
+    var bar=document.createElement('div'); bar.className='nw-tlf'; bar.setAttribute('role','group'); bar.setAttribute('aria-label','Show timeline events for');
+    var live=document.createElement('p'); live.className='vh'; live.setAttribute('aria-live','polite');
+    R.forEach(function(r){ var b=document.createElement('button'); b.type='button'; b.setAttribute('aria-pressed', r[0]==='all'?'true':'false');
+      b.innerHTML=(r[2]?'<i style="background:'+r[2]+'"></i>':'')+r[1];
+      b.addEventListener('click',function(){ bar.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false');}); b.setAttribute('aria-pressed','true'); var n=0;
+        tl.querySelectorAll('li[data-r]').forEach(function(li){ var show=r[0]==='all'||li.getAttribute('data-r').split(' ').indexOf(r[0])>-1; li.hidden=!show; if(show) n++; });
+        live.textContent=n+' events shown'; });
+      bar.appendChild(b); });
+    tl.parentNode.insertBefore(bar,tl); tl.parentNode.insertBefore(live,tl);
+  }); }catch(err){ psFail(err); }
+  try{ document.querySelectorAll('.nw-print').forEach(function(b){ b.addEventListener('click', function(){ document.querySelectorAll('.nw-art img[loading=lazy]').forEach(function(i){ i.loading='eager'; }); setTimeout(function(){ window.print(); }, 400); }); }); }catch(err){ psFail(err); }
+  /* ---------- story pictures: open large, with caption, step through with the arrow keys ---------- */
+  try{ (function(){
+    const all=[].slice.call(document.querySelectorAll('.nw-art a.nw-pz')); if (!all.length || !window.HTMLDialogElement) return; const seen={}, links=[]; all.forEach(function(a){ if (!(a.href in seen)){ seen[a.href]=links.length; links.push(a); } });
+    let z=null, i=0, back=null;
+    const cap=function(a){ const f=a.closest('figure'); const c=f&&f.querySelector('figcaption'); return c?c.innerHTML:''; };
+    const show=function(){ const a=links[i], im=a.querySelector('img'); z.querySelector('img').src=a.href; z.querySelector('img').alt=im?im.alt:''; z.querySelector('.zc').innerHTML=cap(a); z.querySelector('.zn').textContent=(i+1)+' / '+links.length; };
+    const close=function(){ if (!z) return; if (z.open) z.close(); z.remove(); z=null; document.body.style.overflow=''; if (back) back.focus({preventScroll:true}); };
+    const open=function(n){ i=n; back=links[n];
+      z=document.createElement('dialog'); z.className='fp-zoom nw-zoom'; z.setAttribute('aria-label','Picture viewer');
+      z.innerHTML='<figure><img alt=""><figcaption><span class="zn"></span> <span class="zc"></span></figcaption></figure><button type="button" class="fp-x" aria-label="Close">×</button><button type="button" class="zp" aria-label="Previous picture">‹</button><button type="button" class="zx" aria-label="Next picture">›</button>';
+      document.body.appendChild(z); document.body.style.overflow='hidden'; show(); z.showModal(); z.querySelector('.fp-x').focus();
+      z.addEventListener('click', function(e){ if (e.target===z || e.target.classList.contains('fp-x')) close(); });
+      z.querySelector('.zp').addEventListener('click', function(e){ e.stopPropagation(); i=(i-1+links.length)%links.length; show(); });
+      z.querySelector('.zx').addEventListener('click', function(e){ e.stopPropagation(); i=(i+1)%links.length; show(); });
+      z.addEventListener('cancel', function(e){ e.preventDefault(); close(); });
+      z.addEventListener('keydown', function(e){ if (e.key==='ArrowLeft'){ i=(i-1+links.length)%links.length; show(); } else if (e.key==='ArrowRight'){ i=(i+1)%links.length; show(); } });
+    };
+    all.forEach(function(a){ const n=seen[a.href]; a.setAttribute('aria-label','Enlarge picture '+(n+1)+' of '+links.length); a.addEventListener('click', function(e){ if (e.metaKey||e.ctrlKey||e.shiftKey) return; e.preventDefault(); open(n); }); });
+  })(); }catch(err){ psFail(err); }
+
   /* ---------- the case board: your own progress on this device ---------- */
   try{ (function(){
     const tally=document.querySelector('#cases .tally'); if (!tally) return;
