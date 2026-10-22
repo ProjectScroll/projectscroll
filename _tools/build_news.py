@@ -42,6 +42,12 @@ FEAT = '<span class="nw-feat-k"><span aria-hidden="true">★</span> Featured</sp
 second = lambda s: (f'<article class="nw-s{" nw-feat" if s.get("featured") else ""}" data-d="{s["date"]}"><a class="nw-simg" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{npic(s["pic"][0], "", "(min-width:900px) 16rem, 92vw", lazy=False)}{"<span class=nw-ribbon>Featured</span>" if s.get("featured") else ""}</a>'
                     f'<p class="nw-k">{E(s["kicker"])}<span class="nw-new" hidden> · New</span></p><h2><a href="/news/{s["slug"]}/">{E(s["headline"])}</a></h2><p class="nw-sd">{E(s.get("sdek") or s["dek"])}</p></article>')
 line = lambda s: (f'<li data-d="{s["date"]}"><a class="nw-th" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{sqpic(s["pic"][0])}</a><span class="nw-lt"><span class="nw-k">{E(s["kicker"])}</span> <a href="/news/{s["slug"]}/">{E(s["short"])}</a><span class="nw-new" hidden> · New</span></span></li>')
+_NF = sum(len(x.get('finds', [])) for x in S)
+_SEAL = ('<svg class="dsc-seal" viewBox="0 0 60 60" aria-hidden="true"><g transform="translate(30 30)">' + ''.join(f'<path d="M0-29 5-22-5-22z" fill="#B7811C" transform="rotate({i*22.5})"/>' for i in range(16))
+         + '<circle r="22" fill="#E9BE4C" stroke="#6E4A0C" stroke-width="1.3"/><circle r="18" fill="none" stroke="#FFF3C0" stroke-width="1" stroke-dasharray="2 2"/><path d="M-14-8 0-17 14-8" fill="none" stroke="#F7DC86" stroke-width="1.2"/><text y="5" text-anchor="middle" font-family="Georgia,serif" font-size="12.5" font-weight="700" fill="#4a300a" letter-spacing=".5">NEW</text></g></svg>')
+DSC = (f'<a class="dsc-col" href="/discoveries/"><span class="dsc-pic"><img src="/img/news/dsc-lodge-1846.webp" width="480" height="266" alt="A passage in the 1882 county history: the first secret society in Cassopolis was a lodge of the Ancient and Honorable Order of the Eclampsus Vitus, instituted in the spring of 1846" loading="lazy" decoding="async">{_SEAL}</span>'
+       f'<span class="dsc-tx"><span class="nw-k">New findings <span>· From the original records</span></span><span class="dsc-h"><b>{_NF} new finding{"s" if _NF != 1 else ""}</b>, not in any earlier history we could find</span>'
+       f'<span class="dsc-l">Found in county histories, newspapers, maps and acts, and checked against every earlier history we could find.</span><span class="dsc-m">See them all ›</span></span></a>') if _NF else ''
 today = datetime.date.today()
 BLOCK = f'''<!--news-->
       <div class="nw" role="region" aria-labelledby="nwLead">
@@ -49,6 +55,7 @@ BLOCK = f'''<!--news-->
         <div class="nw-paper">
         <div class="nw-sec">{''.join(second(s) for s in TOP)}</div>
         <ul class="nw-more" aria-label="More news">{''.join(line(s) for s in S if s not in TOP)}</ul>
+        {DSC}
         <article class="nw-lead nw-lead-last">
           <p class="nw-k nw-play">{E(L["kicker"])} <span>· Free to play</span></p>{NUGGET}
           <h1 id="nwLead"><a href="{L["url"]}"><span class="foil">{E(L["headline"])}</span></a><button class="fn" type="button" id="star" aria-label="Read the footnote">*</button></h1>

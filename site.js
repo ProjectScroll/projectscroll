@@ -1298,6 +1298,19 @@ try{ (function(){
       n.textContent=(t.length||fo)?(k+' of '+cards.length+' stories'):''; if(none) none.hidden=k>0; }
     q.addEventListener('input',run); b.addEventListener('click',function(){ b.setAttribute('aria-pressed', b.getAttribute('aria-pressed')==='true'?'false':'true'); run(); });
   }); }catch(err){ psFail(err); }
+  try{ document.querySelectorAll('[data-dscfilter]').forEach(function(f){
+    var list=f.parentNode.querySelector('.dsc-list'), none=f.parentNode.querySelector('.dsc-none'); if(!list) return; f.hidden=false;
+    var bs=[].slice.call(f.querySelectorAll('button')), li=[].slice.call(list.children);
+    function go(t){ var k=0; bs.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.t===t?'true':'false'); }); li.forEach(function(x){ var ok=!t||x.dataset.town===t; x.hidden=!ok; if(ok)k++; }); if(none) none.hidden=k>0; }
+    bs.forEach(function(b){ b.addEventListener('click',function(){ go(b.dataset.t); }); });
+    var h=location.hash.slice(1); if(h && document.getElementById(h)) go('');
+  }); }catch(err){ psFail(err); }
+  try{ document.querySelectorAll('[data-dsclink]').forEach(function(a){
+    a.addEventListener('click',function(e){ var u=location.origin+location.pathname+a.getAttribute('href'); if(navigator.clipboard&&navigator.clipboard.writeText){ e.preventDefault(); history.replaceState(null,'',a.getAttribute('href')); navigator.clipboard.writeText(u).then(function(){ var o=a.textContent; a.textContent='Link copied'; setTimeout(function(){ a.textContent=o; },1800); },function(){ location.hash=a.getAttribute('href'); }); } });
+  }); }catch(err){ psFail(err); }
+  try{ document.querySelectorAll('[data-placemap]').forEach(function(sec){
+    sec.querySelectorAll('.sm-map a[href^="#place-"]').forEach(function(a){ a.addEventListener('click',function(e){ var li=sec.querySelector(a.getAttribute('href')); if(!li) return; e.preventDefault(); sec.querySelectorAll('.sm-hit').forEach(function(x){x.classList.remove('sm-hit');}); var d=li.querySelector('details'); if(d) d.open=true; li.classList.add('sm-hit'); li.scrollIntoView({block:'nearest',behavior:'smooth'}); var f=li.querySelector('ul a'); if(f) f.focus({preventScroll:true}); }); });
+  }); }catch(err){ psFail(err); }
   try{ document.querySelectorAll('[data-spell]').forEach(function(ul){
     var it=[].slice.call(ul.querySelectorAll('li')).map(function(li){ var y=li.querySelector('b').textContent.trim(), t=li.querySelector('span').textContent.trim(), m=t.match(/^(.*?)\s*\(([^)]*)\)\s*$/), w=(m?m[1]:t), src=(m?m[2]:''); w=w.split(/[;,]/)[0].trim(); var mw=li.getAttribute('data-w'); return {y:y,w:mw||w,s:src,m:!!mw}; });
     if(!it.length) return;
