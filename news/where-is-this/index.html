@@ -29,7 +29,7 @@
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
-<link rel="stylesheet" href="/site.min.css?v=195478d0">
+<link rel="stylesheet" href="/site.min.css?v=322d641f">
 <script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/*.pdf","/*.zip","/*.xml","/*.json"]}},{"not":{"selector_matches":"[download], [target=_blank]"}}]},"eagerness":"moderate"}],"prerender":[{"where":{"and":[{"selector_matches":".bar a, .toolrow .nd a, .crumb a, footer nav a, .partrail a, .search-res a"},{"href_matches":"/*"},{"not":{"href_matches":["/*.pdf","/map/3d/*"]}}]},"eagerness":"conservative"}]}</script>
 </head>
 <body>
@@ -70,13 +70,16 @@
       <p class="kicker">Where is this?</p>
       <h1>A depot, a water tower and three clues</h1>
       <p class="lede">An old real-photo postcard of a station somewhere in the valley. Can you name the town?</p>
-      <p class="nw-by">Project Scroll · <time datetime="2026-10-22">22 October 2026</time></p>
+      <p class="nw-by">Project Scroll · <time datetime="2026-10-22">22 October 2026</time> · 1 min read <button type="button" class="linkbtn nw-share" data-t="A depot, a water tower and three clues">Share this story</button></p>
       <figure class="nw-fig"><picture><source type="image/avif" srcset="/img/news/where-is-this.avif"><img src="/img/news/where-is-this.webp" width="1400" height="777" alt="A small wooden depot and a water tower on iron legs, on an old real-photo postcard. The station sign is blurred." sizes="(min-width:900px) 46rem, 100vw" decoding="async"></picture><figcaption>A small wooden depot and a water tower on iron legs, on an old real-photo postcard. The station sign is blurred.</figcaption></figure>
       <div class="nw-text"><p>A small wooden depot. A water tower on iron legs. A field of tall grass, and not one person in sight. The card’s caption has been cut off, and the station sign blurred.</p><p><b>Clue one.</b> The railroad here was the Michigan Central’s Air Line, which ran from Jackson to Niles.</p><p><b>Clue two.</b> The town is in Cass County, east of Cassopolis.</p><p><b>Clue three.</b> The Air Line came through in 1871, and the station was set up the same year.</p><details class="nw-reveal"><summary>Show the answer</summary><p><b>Vandalia.</b> The caption at the foot of the card reads “R.R. Station Vandalia Mich.” The town’s other cards show the same depot with a train at the platform, and with passengers and a baggage cart. The Air Line between Jackson and Niles was abandoned in 1937.</p></details></div>
       <p class="nw-cta"><a class="btn primary" href="/postcards/#vandalia">See every Vandalia card</a></p>
-      <aside class="nw-src"><h2>Sources</h2><ul><li><a href="https://michiganrailroads.com/stations-locations/78-cass-county-14/599-vandalia-mi" rel="noopener">Station: Vandalia, MI, Michigan Railroads</a></li><li><a href="https://michiganrailroads.com/stations-locations/78-cass-county-14/593-cassopolis-mi" rel="noopener">Station: Cassopolis, MI, Michigan Railroads</a></li></ul></aside>
+      <div class="nw-src"><h2>Sources</h2><ul><li><a href="https://michiganrailroads.com/stations-locations/78-cass-county-14/599-vandalia-mi" rel="noopener">Station: Vandalia, MI, Michigan Railroads</a></li><li><a href="https://michiganrailroads.com/stations-locations/78-cass-county-14/593-cassopolis-mi" rel="noopener">Station: Cassopolis, MI, Michigan Railroads</a></li></ul></div>
+      <nav class="nw-pn" aria-label="Previous and next story"><a class="nw-prev" href="/news/send-someone-an-old-postcard/"><span>‹ Previous story</span>Send someone an old postcard</a><a class="nw-next" href="/news/cassopolis-in-lidar/"><span>Next story ›</span>Fly over Cassopolis, laser point by laser point</a></nav>
     </article>
     <section class="nw-morebox" aria-labelledby="nwMoreH"><h2 id="nwMoreH">More news of the hunt</h2><ul class="nw-list"><li><span class="nw-k">From 1923</span> <a href="/news/the-day-3000-came-to-watch-one-log/">The day 3,000 people came to watch one log</a> <time datetime="2026-10-22">22 Oct</time></li><li><span class="nw-k">Still open</span> <a href="/news/case-1-is-still-open/">Did the joke lodge of 1846 ever have a real charter?</a> <time datetime="2026-10-22">22 Oct</time></li><li><span class="nw-k">Visit &amp; Plan</span> <a href="/news/pick-a-date-and-see-whats-open/">Pick a date, and see what’s open</a> <time datetime="2026-10-22">22 Oct</time></li><li><span class="nw-k">New</span> <a href="/news/send-someone-an-old-postcard/">Send someone an old postcard</a> <time datetime="2026-10-22">22 Oct</time></li><li><span class="nw-k">The map room</span> <a href="/news/cassopolis-in-lidar/">Fly over Cassopolis, laser point by laser point</a> <time datetime="2026-10-21">21 Oct</time></li><li><span class="nw-k">Made in the Valley</span> <a href="/news/what-the-valley-made/">Stoves, lures, wagons and guitars</a> <time datetime="2026-10-21">21 Oct</time></li><li><span class="nw-k">Printables</span> <a href="/news/a-paper-passport/">A paper passport to stamp, and a teachers’ pack</a> <time datetime="2026-10-22">22 Oct</time></li></ul></section>
+<script>document.querySelectorAll('.nw-share').forEach(function(b){ b.addEventListener('click', function(){ var u=location.href.split('#')[0], t=b.dataset.t;
+  if (navigator.share) navigator.share({title:t, url:u}).catch(function(){}); else if (navigator.clipboard) navigator.clipboard.writeText(u).then(function(){ b.textContent='Link copied ✓'; }); }); });</script>
   </main>
   <div class="trailx" aria-hidden="true"><svg viewBox="0 0 640 64" focusable="false"><defs><mask id="trailM" maskUnits="userSpaceOnUse"><path class="tx-draw" pathLength="1" d="M52 36C96 12 136 56 186 34S276 10 326 34 426 58 478 30 560 20 590 32"/></mask></defs><g class="tx-compass"><circle cx="26" cy="32" r="15"/><circle cx="26" cy="32" r="10.5"/><path class="tx-n" d="M26 19l3 13h-6z"/><path d="M26 45l3-13h-6z"/><path d="M13 32h26M26 17v30"/></g><path class="tx-path" mask="url(#trailM)" d="M52 36C96 12 136 56 186 34S276 10 326 34 426 58 478 30 560 20 590 32"/><g class="tx-x"><path d="M598 22l18 20M616 22l-18 20"/></g><g class="tx-gem"><path d="M607 10l3.2 3.2-3.2 7.6-3.2-7.6z"/><path class="tx-spark" d="M607 2v6M607 22v-1M600 12h-3M614 12h3"/></g></svg></div>
   <footer class="site">
@@ -96,6 +99,6 @@
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=195478d0" defer></script>
+<script src="/site.min.js?v=322d641f" defer></script>
 </body>
 </html>

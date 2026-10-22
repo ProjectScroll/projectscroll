@@ -23,6 +23,8 @@ add('https://projectscroll.com/document/', 'Document of the month: October 2026'
 for _i,(_d,_u,_t,_s) in enumerate(json.load(open(R/'_tools'/'data'/'whatsnew.json'))):
     _b,_h=(_u.split('#',1)+[''])[:2]
     add('https://projectscroll.com'+_b+'?new='+_d+'-'+str(_i)+('#'+_h if _h else ''), _t, _s, _d)
+for _n in json.load(open(R/'_tools'/'data'/'news.json'))['stories']:
+    add('https://projectscroll.com/news/'+_n['slug']+'/', _n['headline'], _n['dek'], _n['date'])
 entries.sort(reverse=True)
 upd=entries[0][0]+'T12:00:00Z'
 x=['<?xml version="1.0" encoding="utf-8"?>','<feed xmlns="http://www.w3.org/2005/Atom">','<title>Project Scroll</title>','<subtitle>An online treasure hunt through real history, from the St. Joseph River Valley. Every clue is true.</subtitle>',

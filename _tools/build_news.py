@@ -18,7 +18,14 @@ def pic(src, w, h, alt, sizes, lazy=True, cls=''):
             f'{" loading=\"lazy\"" if lazy else ""} decoding="async"></picture>')
 
 # ---------- 1. the front-page block on the home page ----------
-top, more = S[:4], S[4:8]
+NUGGET = ('<svg class="nw-nug" viewBox="0 0 64 50" aria-hidden="true">'
+          '<path d="M6 30 10 16 22 7 37 5 50 10 59 22 57 35 46 44 28 46 13 41z" fill="#B7811C" stroke="#6E4A0C" stroke-width="1.3" stroke-linejoin="round"/>'
+          '<path d="M10 16 22 7 37 5 33 17 20 21z" fill="#F7DC86"/><path d="M37 5 50 10 59 22 44 21 33 17z" fill="#E9BE4C"/>'
+          '<path d="M6 30 10 16 20 21 18 33z" fill="#D9A73A"/><path d="M20 21 33 17 44 21 40 33 27 35 18 33z" fill="#F2CB5B"/>'
+          '<path d="M44 21 59 22 57 35 40 33z" fill="#C8922A"/><path d="M18 33 27 35 28 46 13 41 6 30z" fill="#A9741A"/>'
+          '<path d="M27 35 40 33 57 35 46 44 28 46z" fill="#8F6013"/>'
+          '<path d="M23 11 30 9 27 14z" fill="#FFF8DD"/><path d="M52 3v7M48.5 6.5h7" stroke="#FFF3C0" stroke-width="1.4" stroke-linecap="round"/></svg>')
+top, more = S[:4], S[4:]
 brief = lambda s: (f'<article class="nw-b" data-d="{s["date"]}"><p class="nw-k">{E(s["kicker"])}<span class="nw-new" hidden> · New</span></p>'
                    f'<h2><a href="/news/{s["slug"]}/">{E(s["headline"])}</a></h2></article>')
 line = lambda s: (f'<li data-d="{s["date"]}"><span class="nw-k">{E(s["kicker"])}</span> <a href="/news/{s["slug"]}/">{E(s["short"])}</a><span class="nw-new" hidden> · New</span></li>')
@@ -27,14 +34,14 @@ BLOCK = f'''<!--news-->
       <div class="nw" role="region" aria-labelledby="nwLead">
         <p class="nw-bar"><span>Front page</span><time class="nw-date" id="nwDate" datetime="{today.isoformat()}">{today.strftime('%A, %-d %B %Y')}</time><span>News of the hunt</span></p>
         <article class="nw-lead">
-          <p class="nw-k">{E(L["kicker"])} <span class="nw-stat">{nopen} cases open · {ncracked} cracked · {len(halls)} halls lit</span></p>
+          <p class="nw-k nw-play">{E(L["kicker"])} <span>· Free to play</span></p>{NUGGET}
           <h1 id="nwLead"><a href="{L["url"]}"><span class="foil">{E(L["headline"])}</span></a><button class="fn" type="button" id="star" aria-label="Read the footnote">*</button></h1>
           <p class="lede">{L["dek"]}</p>
           <p class="foot" id="foot"><span>*</span> And every answer is in the record.</p>
+          <p class="nw-enter"><a href="{L["url"]}">Enter the hunt <span aria-hidden="true">›</span></a></p>
         </article>
         <div class="nw-top">{''.join(brief(s) for s in top)}</div>
         <ul class="nw-more" aria-label="More news">{''.join(line(s) for s in more)}</ul>
-        <p class="nw-all"><a href="/news/">All the news ›</a></p>
       </div>
       <script>(function(){{try{{var K='ps-news-last',last=localStorage.getItem(K)||'',t=new Date();var d=document.getElementById('nwDate');d.textContent=t.toLocaleDateString('en-US',{{weekday:'long',day:'numeric',month:'long',year:'numeric'}});d.setAttribute('datetime',t.toISOString().slice(0,10));if(last)document.querySelectorAll('.nw [data-d]').forEach(function(e){{if(e.dataset.d>last){{var n=e.querySelector('.nw-new');if(n)n.hidden=false;}}}});localStorage.setItem(K,t.toISOString().slice(0,10));}}catch(e){{}}}})();</script>
 <!--/news-->'''
@@ -47,29 +54,39 @@ else:
 open(p, 'w').write(s)
 
 # ---------- 2. a page for every story ----------
+SHARE = """<script>document.querySelectorAll('.nw-share').forEach(function(b){ b.addEventListener('click', function(){ var u=location.href.split('#')[0], t=b.dataset.t;
+  if (navigator.share) navigator.share({title:t, url:u}).catch(function(){}); else if (navigator.clipboard) navigator.clipboard.writeText(u).then(function(){ b.textContent='Link copied ✓'; }); }); });</script>
+"""
 def morelist(skip):
     return '<ul class="nw-list">' + ''.join(f'<li><span class="nw-k">{E(x["kicker"])}</span> <a href="/news/{x["slug"]}/">{E(x["headline"])}</a> <time datetime="{x["date"]}">{day(x["date"])}</time></li>' for x in S if x['slug'] != skip) + '</ul>'
-for st in S:
+for k, st in enumerate(S):
     im = st.get('img'); fig = ''
     if im and not im[0].endswith('-270'):
         fig = f'<figure class="nw-fig">{pic(im[0], im[1], im[2], im[3], "(min-width:900px) 46rem, 100vw", lazy=False)}<figcaption>{E(im[3])}</figcaption></figure>'
+    elif im:
+        fig = f'<a class="nw-side tcard" href="{E(st["cta"][0][1])}" aria-label="{E(st["cta"][0][0])}">{pic(im[0], 270, 480, "", "9rem", lazy=False)}</a>'
+    words = len(re.sub('<[^>]+>', ' ', ' '.join(st['body'])).split()); mins = max(1, round(words/200))
+    prv, nxt = S[k-1] if k else None, S[k+1] if k+1 < len(S) else None
+    pn = '<nav class="nw-pn" aria-label="Previous and next story">' + (f'<a class="nw-prev" href="/news/{prv["slug"]}/"><span>‹ Previous story</span>{E(prv["headline"])}</a>' if prv else '<a class="nw-prev" href="/hunt/"><span>‹ The lead story</span>Every clue is true.</a>') + (f'<a class="nw-next" href="/news/{nxt["slug"]}/"><span>Next story ›</span>{E(nxt["headline"])}</a>' if nxt else '<a class="nw-next" href="/"><span>Back to ›</span>The front page</a>') + '</nav>'
     body = ''.join(f'<p>{x}</p>' for x in st['body'])
     reveal = f'<details class="nw-reveal"><summary>Show the answer</summary>{st["reveal"]}</details>' if st.get('reveal') else ''
     cta = '<p class="nw-cta">' + ' '.join(f'<a class="btn{" primary" if i==0 else ""}" href="{E(u)}">{E(t)}</a>' for i,(t,u) in enumerate(st['cta'])) + '</p>'
-    src = ('<aside class="nw-src"><h2>Sources</h2><ul>' + ''.join(f'<li><a href="{E(u)}" rel="noopener">{E(t)}</a></li>' for t,u in st['sources']) + '</ul></aside>') if st['sources'] else ''
+    src = ('<div class="nw-src"><h2>Sources</h2><ul>' + ''.join(f'<li><a href="{E(u)}" rel="noopener">{E(t)}</a></li>' for t,u in st['sources']) + '</ul></div>') if st['sources'] else ''
     b = f'''    <p class="crumb"><a href="/">← Front page</a> · <a href="/news/">All the news</a></p>
     <article class="nw-art">
       <p class="kicker">{E(st["kicker"])}</p>
       <h1>{E(st["headline"])}</h1>
       <p class="lede">{E(st["dek"])}</p>
-      <p class="nw-by">Project Scroll · <time datetime="{st["date"]}">{day(st["date"], True)}</time></p>
+      <p class="nw-by">Project Scroll · <time datetime="{st["date"]}">{day(st["date"], True)}</time> · {mins} min read <button type="button" class="linkbtn nw-share" data-t="{E(st["headline"])}">Share this story</button></p>
       {fig}
       <div class="nw-text">{body}{reveal}</div>
       {cta}
       {src}
+      {pn}
     </article>
     <section class="nw-morebox" aria-labelledby="nwMoreH"><h2 id="nwMoreH">More news of the hunt</h2>{morelist(st["slug"])}</section>
 '''
+    b += SHARE
     page(f'news/{st["slug"]}/index.html', f'{st["headline"]} · News of the hunt · Project Scroll', st['dek'], b)
 
 # ---------- 3. the news index ----------
@@ -133,7 +150,7 @@ b = f'''    <p class="crumb"><a href="/">← Front page</a> · <a href="/news/">
         <p class="kicker">The hunt</p>
         <h1>Every clue is true.</h1>
         <p class="lede">Project Scroll now has a new, free online treasure hunt. Real mysteries, history and clues hide in county histories, survey maps, certificates, forgotten newspapers, lore and local legends. Every one of them can be solved by you, and every answer is in the record.</p>
-        <ul class="hn-stats"><li><b>{nopen}</b> cases open</li><li><b>{ncracked}</b> cracked</li><li><b>{len(halls)}</b> halls lit</li><li><b>Free</b> no sign-up</li></ul>
+        <ul class="hn-stats"><li><b>{nopen}</b> cases open</li><li><b>{len(halls)}</b> halls lit</li><li><b>Free</b> no sign-up</li></ul>
         <p class="nw-cta"><a class="btn primary" href="/cases/1/">Start with Case 1</a> <a class="btn" href="{FB1}">Open the first door on Facebook</a></p>
       </div>
       <aside class="hn-card" id="hnCard" hidden aria-labelledby="hnCardH">
