@@ -3979,3 +3979,4 @@ table.rg{width:100%;border-collapse:collapse;font-size:.9rem;line-height:1.4}
 .in-cap{font:600 11px Georgia,serif;letter-spacing:.12em;fill:#5b4630}
 .nw-init.lit{background:radial-gradient(ellipse at 50% 30%,#6a4a18 0%,#2a1d0e 60%,#120d07 100%)}
 @media print{.nw-init{background:none;color:inherit;border-color:var(--line)}.nw-init .in-step{display:block!important}.in-nav,.in-candle,.nw-quiz-score,.nw-myth-btns,.sp-ctl{display:none}.nw-myth.q .nw-myth-ans{display:block}}
+.rg-plq{display:block;font-size:.8rem;margin-top:.2rem;color:var(--ink-soft)} .rg-plq::before{content:"▣ ";color:var(--gold)}

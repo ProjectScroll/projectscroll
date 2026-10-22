@@ -29,7 +29,7 @@ for (const [w,cs,lab] of [[1280,'light','computer'],[390,'dark','phone']]){
  await q.fill('#faqq','zzzz'); ok(P+'question search: no match shows a note', await q.evaluate(()=>!document.getElementById('faqnone').hidden));
  await q.fill('#faqq',''); n=await q.evaluate(()=>[...document.querySelectorAll('details.faq')].filter(d=>!d.hidden).length); ok(P+'question search: clearing shows all', n===15, String(n));
  // messenger
- await q.fill('[name=names]','Test'); await q.click('#copy'); await q.waitForTimeout(300); ok(P+'after copying, the Open Messenger button appears', await q.evaluate(()=>!document.getElementById('openMsgr').hidden));
+ await q.fill('[name=names]','Test'); await q.click('#copy'); await q.waitForFunction(()=>!document.getElementById('openMsgr').hidden,null,{timeout:3000}).catch(()=>{}); ok(P+'after copying, the Open Messenger button appears', await q.evaluate(()=>!document.getElementById('openMsgr').hidden));
  // magnifier
  const fig=q.locator('#lensFig img'); await fig.scrollIntoViewIfNeeded(); const bx=await fig.boundingBox();
  if (w>500){ await q.mouse.move(bx.x+bx.width/2,bx.y+bx.height/2); await q.mouse.move(bx.x+bx.width/2+10,bx.y+bx.height/2+5); await q.waitForTimeout(300);
