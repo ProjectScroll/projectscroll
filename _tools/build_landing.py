@@ -21,7 +21,7 @@ cass='''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <h2>What the hunt has found in Cassopolis</h2>
     <p>The hunt began here, with a joke secret society of 1846 whose story is told in Rogers and Mathews, a village hotel that was hauled across town and turned into a mill, and a doctor who kept a bone. Each is an open case on <a href="/#cases">the case board</a>; the first two are listed here, and each has its sources free online.</p>
     <ul>
-      <li><a href="/cases/1/">Did the joke lodge of 1846 ever have a real charter?</a></li>
+      <li><a href="/cases/1/">Who told Shepard the story of the 1846 lodge?</a></li>
       <li><a href="/cases/2/">Where did the Union Hotel go when it became a mill?</a></li>
       <li><a href="/document/">Document of the month: one page of Rogers, 1875, read slowly</a></li>
       <li><a href="/notes/one-letter-two-certificates/">A field note: one letter, two certificates</a></li>

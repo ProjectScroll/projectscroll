@@ -1,11 +1,11 @@
 {
- "updated": "2026-10-18",
+ "updated": "2026-10-22",
  "cases": [
   {
    "n": 1,
    "hall": "h1",
    "hallName": "The first hall · The Cassopolis Hall of Comparative Ovations",
-   "question": "Did the joke lodge of 1846 ever have a real charter? Even the man who first wrote its story wasn’t sure.",
+   "question": "Who told James M. Shepard the story of the 1846 lodge? He wasn’t there, and he put a question mark in it.",
    "opened": "15 Oct 2026",
    "solved": null,
    "solvedOn": null,
@@ -17,12 +17,21 @@
      "label": "Read the post ›"
     },
     {
-     "text": "Howard S. Rogers, <i>History of Cass County, from 1825 to 1875</i> (1875), pp. 253–254. Read past the quotation, and watch the word “charter.”",
+     "text": "Howard S. Rogers, <i>History of Cass County, from 1825 to 1875</i> (1875), pp. 253–254: the story as Shepard first gave it. Look for the question mark.",
      "url": "https://name.umdl.umich.edu/BAD0871.0001.001"
     },
     {
-     "text": "Alfred Mathews, <i>History of Cass County, Michigan</i> (1882), p. 174, which prints the story again. Compare the two.",
+     "text": "Alfred Mathews, <i>History of Cass County, Michigan</i> (1882), p. 174, whose footnote names Shepard as the writer.",
      "url": "https://name.umdl.umich.edu/BAD0870.0001.001"
+    },
+    {
+     "text": "L. H. Glover, <i>A Twentieth Century History of Cass County</i> (1906), pp. 556–558: who Shepard was, and when he came to Cassopolis.",
+     "url": "https://archive.org/details/twentiethcentury00glov"
+    },
+    {
+     "text": "The research so far, and what is still unknown: <b>A lodge of E Clampus Vitus, in Cassopolis, in 1846.</b>",
+     "url": "/news/e-clampus-vitus-in-cassopolis-1846/",
+     "label": "Read the story ›"
     }
    ],
    "post": "https://www.facebook.com/comparativeovations/posts/pfbid02kNrY5zSfjzqrtEPnhHMZtHYXuuuMjvLw3ZANME5PfBcnNVSwsUSEqyVJajL9TAnbl",
@@ -41,7 +50,7 @@
       "w": 700,
       "h": 1089,
       "alt": "Page 254 of Rogers’s 1875 History of Cass County, the end of the lodge story boxed in red.",
-      "cap": "Rogers, p. 254. Just below the box: “the charter (?) members.” There is the question mark."
+      "cap": "Rogers, p. 254. Just below the box: “the charter (?) members.” Whose doubt was that?"
      },
      {
       "src": "/img/pages/mathews-1882-p174",

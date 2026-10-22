@@ -3694,3 +3694,12 @@ blockquote.nw-q{margin:1rem 0; padding:.6rem 1rem; border-left:3px solid var(--r
 .nw-text p:first-child::first-letter{all:unset} .nw-text > p:first-child::first-letter{font-size:3.1em; float:left; line-height:.85; margin:.08em .1em 0 0; color:var(--gold-lo)}
 .nw-tl li{display:grid; grid-template-columns:7.5rem 1fr; gap:.6rem} .nw-tl b{min-width:0}
 @media (max-width:560px){ .nw-tl li{grid-template-columns:1fr; gap:0} }
+/* Draft 174: two secondary stories with matching wide pictures; a picture beside every other story */
+.nw-sec{display:grid; grid-template-columns:1fr 1fr; gap:1rem; padding:.75rem 0 .7rem; border-bottom:1px solid var(--line)}
+.nw-s .nw-simg{display:block; line-height:0; margin-bottom:.45rem} .nw-s .nw-simg img{width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:3px; outline:1px solid #D3D8D0}
+.nw-s h2{margin:0 0 .25rem; font-size:1.12rem; line-height:1.22; font-weight:600} .nw-s h2 a{color:var(--ink); text-decoration:none} .nw-s h2 a:hover, .nw-s h2 a:focus-visible{text-decoration:underline; text-underline-offset:.18em}
+.nw-sd{margin:0; font-size:.86rem; line-height:1.4; color:var(--ink-soft)}
+.nw-more{row-gap:.55rem; padding:.7rem 0 .5rem} .nw-more li{display:grid; grid-template-columns:2.9rem minmax(0,1fr); column-gap:.6rem; align-items:start; padding:0}
+.nw-more .nw-th{line-height:0} .nw-more .nw-th img{width:100%; height:auto; border-radius:3px; outline:1px solid #D3D8D0}
+@media (max-width:640px){ .nw-sec{grid-template-columns:1fr} .nw-sd{font-size:.84rem} }
+@media (max-width:640px){ .nw-more{grid-template-columns:1fr} }

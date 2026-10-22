@@ -37,6 +37,9 @@ top, more = S[:4], S[4:]
 brief = lambda s: (f'<article class="nw-b" data-d="{s["date"]}"><a class="nw-th" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{sqpic(s["pic"][0])}</a><p class="nw-k">{E(s["kicker"])}<span class="nw-new" hidden> · New</span></p>'
                    f'<h2><a href="/news/{s["slug"]}/">{E(s["headline"])}</a></h2></article>')
 line = lambda s: (f'<li data-d="{s["date"]}"><span class="nw-k">{E(s["kicker"])}</span> <a href="/news/{s["slug"]}/">{E(s["short"])}</a><span class="nw-new" hidden> · New</span></li>')
+second = lambda s: (f'<article class="nw-s" data-d="{s["date"]}"><a class="nw-simg" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{npic(s["pic"][0], "", "(min-width:900px) 16rem, 92vw", lazy=False)}</a>'
+                    f'<p class="nw-k">{E(s["kicker"])}<span class="nw-new" hidden> · New</span></p><h2><a href="/news/{s["slug"]}/">{E(s["headline"])}</a></h2><p class="nw-sd">{E(s.get("sdek") or s["dek"])}</p></article>')
+line = lambda s: (f'<li data-d="{s["date"]}"><a class="nw-th" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{sqpic(s["pic"][0])}</a><span class="nw-lt"><span class="nw-k">{E(s["kicker"])}</span> <a href="/news/{s["slug"]}/">{E(s["short"])}</a><span class="nw-new" hidden> · New</span></span></li>')
 today = datetime.date.today()
 BLOCK = f'''<!--news-->
       <div class="nw" role="region" aria-labelledby="nwLead">
@@ -49,8 +52,8 @@ BLOCK = f'''<!--news-->
           <p class="foot" id="foot"><span>*</span> And every answer is in the record.</p>
           <p class="nw-enter"><a href="{L["url"]}">Enter the hunt <span aria-hidden="true">›</span></a></p>
         </article>
-        <div class="nw-top">{''.join(brief(s) for s in top)}</div>
-        <ul class="nw-more" aria-label="More news">{''.join(line(s) for s in more)}</ul>
+        <div class="nw-sec">{''.join(second(s) for s in S[:2])}</div>
+        <ul class="nw-more" aria-label="More news">{''.join(line(s) for s in S[2:])}</ul>
         </div>
       </div>
       <script>(function(){{try{{var K='ps-news-last',last=localStorage.getItem(K)||'',t=new Date();var d=document.getElementById('nwDate');d.textContent=t.toLocaleDateString('en-US',{{weekday:'long',day:'numeric',month:'long',year:'numeric'}});d.setAttribute('datetime',t.toISOString().slice(0,10));if(last)document.querySelectorAll('.nw [data-d]').forEach(function(e){{if(e.dataset.d>last){{var n=e.querySelector('.nw-new');if(n)n.hidden=false;}}}});localStorage.setItem(K,t.toISOString().slice(0,10));}}catch(e){{}}}})();</script>
