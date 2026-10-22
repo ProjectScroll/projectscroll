@@ -9,7 +9,7 @@ REFRESH-INTERVAL;VALUE=DURATION:P1W
 X-PUBLISHED-TTL:P1W
 BEGIN:VEVENT
 UID:shipshewana-ice-festival-chili-cook-off-20270116@projectscroll.com
-DTSTAMP:20261022T095643Z
+DTSTAMP:20261022T095848Z
 DTSTART;VALUE=DATE:20270116
 DTEND;VALUE=DATE:20270117
 SUMMARY:Shipshewana Ice Festival & Chili Cook-Off
@@ -19,7 +19,7 @@ URL:https://visitshipshewana.org/wintertime
 END:VEVENT
 BEGIN:VEVENT
 UID:st-joseph-ice-fest-20270129@projectscroll.com
-DTSTAMP:20261022T095643Z
+DTSTAMP:20261022T095848Z
 DTSTART;VALUE=DATE:20270129
 DTEND;VALUE=DATE:20270201
 SUMMARY:St. Joseph Ice Fest
@@ -29,7 +29,7 @@ URL:https://www.stjoetoday.com/icefest
 END:VEVENT
 BEGIN:VEVENT
 UID:dowagiac-ice-time-festival-20270206@projectscroll.com
-DTSTAMP:20261022T095643Z
+DTSTAMP:20261022T095848Z
 DTSTART;VALUE=DATE:20270206
 DTEND;VALUE=DATE:20270207
 SUMMARY:Dowagiac Ice Time Festival
@@ -39,7 +39,7 @@ URL:https://www.dowagiacchamber.com/events/upcoming-events
 END:VEVENT
 BEGIN:VEVENT
 UID:south-haven-ice-breaker-festival-20270205@projectscroll.com
-DTSTAMP:20261022T095643Z
+DTSTAMP:20261022T095848Z
 DTSTART;VALUE=DATE:20270205
 DTEND;VALUE=DATE:20270208
 SUMMARY:South Haven Ice Breaker Festival
@@ -49,7 +49,7 @@ URL:https://www.southhaven.org/events/ice-breaker-festival-2/
 END:VEVENT
 BEGIN:VEVENT
 UID:candlelight-christmas-parade-20261204@projectscroll.com
-DTSTAMP:20261022T095643Z
+DTSTAMP:20261022T095848Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:Candlelight Christmas Parade
@@ -59,7 +59,7 @@ URL:https://www.dowagiacchamber.com/events/upcoming-events
 END:VEVENT
 BEGIN:VEVENT
 UID:santa-s-candy-cane-express-at-hesston-steam-museum-20261205@projectscroll.com
-DTSTAMP:20261022T095643Z
+DTSTAMP:20261022T095848Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261214
 SUMMARY:Santa's Candy Cane Express at Hesston Steam Museum
@@ -69,7 +69,7 @@ URL:https://www.hesston.org/plan
 END:VEVENT
 BEGIN:VEVENT
 UID:shipshewana-lights-of-joy-20261110@projectscroll.com
-DTSTAMP:20261022T095643Z
+DTSTAMP:20261022T095848Z
 DTSTART;VALUE=DATE:20261110
 DTEND;VALUE=DATE:20270101
 SUMMARY:Shipshewana Lights of Joy
@@ -79,7 +79,7 @@ URL:https://shipshewanalightsofjoy.com/
 END:VEVENT
 BEGIN:VEVENT
 UID:kalamazoo-nature-center-maple-sugar-festival-20270307@projectscroll.com
-DTSTAMP:20261022T095643Z
+DTSTAMP:20261022T095848Z
 DTSTART;VALUE=DATE:20270307
 DTEND;VALUE=DATE:20270308
 SUMMARY:Kalamazoo Nature Center Maple Sugar Festival
@@ -89,7 +89,7 @@ URL:https://naturecenter.org/events/maplesugar/
 END:VEVENT
 BEGIN:VEVENT
 UID:kalamazoo-living-history-show-20270320@projectscroll.com
-DTSTAMP:20261022T095643Z
+DTSTAMP:20261022T095848Z
 DTSTART;VALUE=DATE:20270320
 DTEND;VALUE=DATE:20270322
 SUMMARY:Kalamazoo Living History Show
@@ -99,7 +99,7 @@ URL:https://www.kalamazooshow.com/
 END:VEVENT
 BEGIN:VEVENT
 UID:elkhart-jazz-festival-20270617@projectscroll.com
-DTSTAMP:20261022T095643Z
+DTSTAMP:20261022T095848Z
 DTSTART;VALUE=DATE:20270617
 DTEND;VALUE=DATE:20270621
 SUMMARY:Elkhart Jazz Festival
@@ -109,7 +109,7 @@ URL:https://elkhartjazzfestival.com/
 END:VEVENT
 BEGIN:VEVENT
 UID:laporte-county-fair-20270710@projectscroll.com
-DTSTAMP:20261022T095643Z
+DTSTAMP:20261022T095848Z
 DTSTART;VALUE=DATE:20270710
 DTEND;VALUE=DATE:20270718
 SUMMARY:LaPorte County Fair
@@ -119,7 +119,7 @@ URL:https://lpfair.com/
 END:VEVENT
 BEGIN:VEVENT
 UID:cass-county-fair-20270801@projectscroll.com
-DTSTAMP:20261022T095643Z
+DTSTAMP:20261022T095848Z
 DTSTART;VALUE=DATE:20270801
 DTEND;VALUE=DATE:20270808
 SUMMARY:Cass County Fair
@@ -129,7 +129,7 @@ URL:https://www.mycasscountyfair.com/
 END:VEVENT
 BEGIN:VEVENT
 UID:abbott-s-magic-get-together-20270811@projectscroll.com
-DTSTAMP:20261022T095643Z
+DTSTAMP:20261022T095848Z
 DTSTART;VALUE=DATE:20270811
 DTEND;VALUE=DATE:20270815
 SUMMARY:Abbott's Magic Get-Together
@@ -139,7 +139,7 @@ URL:https://www.magicgettogether.com/
 END:VEVENT
 BEGIN:VEVENT
 UID:apple-cider-century-20270926@projectscroll.com
-DTSTAMP:20261022T095643Z
+DTSTAMP:20261022T095848Z
 DTSTART;VALUE=DATE:20270926
 DTEND;VALUE=DATE:20270927
 SUMMARY:Apple Cider Century
@@ -149,7 +149,7 @@ URL:https://www.applecidercentury.com/
 END:VEVENT
 BEGIN:VEVENT
 UID:giant-straw-bale-art-trail-20260901@projectscroll.com
-DTSTAMP:20261022T095643Z
+DTSTAMP:20261022T095848Z
 DTSTART;VALUE=DATE:20260901
 DTEND;VALUE=DATE:20261025
 SUMMARY:Giant Straw Bale Art Trail
@@ -159,7 +159,7 @@ URL:https://visitshipshewana.org/events/autumn-adventures/straw-bale-art/
 END:VEVENT
 BEGIN:VEVENT
 UID:christmas-in-cassopolis-20261205@projectscroll.com
-DTSTAMP:20261022T095643Z
+DTSTAMP:20261022T095848Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Christmas in Cassopolis
