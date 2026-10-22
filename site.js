@@ -1238,6 +1238,33 @@ try{ (function(){
       bar.appendChild(b); });
     tl.parentNode.insertBefore(bar,tl); tl.parentNode.insertBefore(live,tl);
   }); }catch(err){ psFail(err); }
+  try{ document.querySelectorAll('[data-reg]').forEach(function(box){
+    var tb=box.querySelector('tbody'), rows=[].slice.call(tb.rows), tools=document.createElement('div'); tools.className='rg-tools';
+    tools.innerHTML='<label class="vh" for="rgQ">Search the register</label><input id="rgQ" type="search" placeholder="Search a place, a name, a newspaper…">'+
+      '<label class="vh" for="rgT">Tier</label><select id="rgT"><option value="">Every tier</option><option value="record">Record</option><option value="reported">Reported</option><option value="remembered">Remembered</option><option value="legend">Legend</option></select>'+
+      '<label class="vh" for="rgR">Region</label><select id="rgR"><option value="">Everywhere</option><option value="midwest">Middle West</option><option value="east">East</option><option value="south">South</option><option value="west">West</option><option value="pacific">Pacific</option></select>'+
+      '<span class="rg-count" aria-live="polite"></span>';
+    box.insertBefore(tools, box.querySelector('.rg-wrap'));
+    var q=tools.querySelector('input'), t=tools.querySelector('#rgT'), r=tools.querySelector('#rgR'), c=tools.querySelector('.rg-count');
+    function run(){ var s=q.value.trim().toLowerCase(), n=0; rows.forEach(function(tr){ var ok=(!s||tr.textContent.toLowerCase().indexOf(s)>-1)&&(!t.value||tr.dataset.t===t.value)&&(!r.value||tr.dataset.r===r.value); tr.hidden=!ok; if(ok)n++; }); c.textContent=n+' of '+rows.length+' places'; }
+    [q,t,r].forEach(function(e){ e.addEventListener('input',run); });
+    box.querySelectorAll('th[data-sort]').forEach(function(th){ var b=document.createElement('button'); b.type='button'; b.innerHTML=th.innerHTML; th.innerHTML=''; th.appendChild(b);
+      b.addEventListener('click',function(){ var k=th.dataset.sort, dir=th.getAttribute('aria-sort')==='ascending'?-1:1;
+        box.querySelectorAll('th[data-sort]').forEach(function(o){o.removeAttribute('aria-sort');}); th.setAttribute('aria-sort',dir>0?'ascending':'descending');
+        var ord={record:0,reported:1,remembered:2,legend:3};
+        rows.sort(function(a,b){ var x,y; if(k==='y'){x=+a.dataset.y||9999;y=+b.dataset.y||9999;} else if(k==='t'){x=ord[a.dataset.t];y=ord[b.dataset.t];} else {x=a.cells[0].textContent;y=b.cells[0].textContent; return dir*x.localeCompare(y);} return dir*(x-y); });
+        rows.forEach(function(tr){tb.appendChild(tr);}); }); });
+    var more=document.createElement('p'); more.className='rg-more'; more.innerHTML='<button type="button" class="btn">Show all '+rows.length+' places</button>';
+    box.insertBefore(more, box.querySelector('.rg-dl')); box.classList.add('rg-short');
+    function open(){ box.classList.remove('rg-short'); more.hidden=true; }
+    more.querySelector('button').addEventListener('click', open);
+    [q,t,r].forEach(function(e){ e.addEventListener('input',open); }); box.querySelectorAll('th[data-sort] button').forEach(function(b){ b.addEventListener('click',open); });
+    run();
+  }); }catch(err){ psFail(err); }
+  try{ document.querySelectorAll('[data-tabs]').forEach(function(w){ var tabs=[].slice.call(w.querySelectorAll('[role=tab]'));
+    function sel(i){ tabs.forEach(function(b,j){ var on=i===j; b.setAttribute('aria-selected',on); b.tabIndex=on?0:-1; document.getElementById(b.getAttribute('aria-controls')).hidden=!on; }); }
+    tabs.forEach(function(b,i){ b.addEventListener('click',function(){sel(i);}); b.addEventListener('keydown',function(e){ var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0; if(d){ var n=(i+d+tabs.length)%tabs.length; sel(n); tabs[n].focus(); e.preventDefault(); } }); });
+  }); }catch(err){ psFail(err); }
   try{ document.querySelectorAll('.nw-print').forEach(function(b){ b.addEventListener('click', function(){ document.querySelectorAll('.nw-art img[loading=lazy]').forEach(function(i){ i.loading='eager'; }); setTimeout(function(){ window.print(); }, 400); }); }); }catch(err){ psFail(err); }
   /* ---------- story pictures: open large, with caption, step through with the arrow keys ---------- */
   try{ (function(){
