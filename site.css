@@ -4140,3 +4140,6 @@ section.sm{margin:1.4rem 0;padding:1rem 1.1rem;border:1px solid var(--line);bord
 .sm-list summary span{opacity:.7;font-size:.88rem}.sm-list ul{margin:.3rem 0 .3rem 1rem;padding:0}
 .sm-list li.sm-hit{background:color-mix(in srgb,#e3bb62 18%,transparent)}
 @media (max-width:760px){.sm-grid{grid-template-columns:1fr}.sm-list{max-height:none}}
+
+.nw-ribbon.disc{background:linear-gradient(180deg,#c0392b,#8e2318);color:#fff8ec}
+.nw-ribbon.hl{background:linear-gradient(180deg,#3f7f86,#24575d);color:#f2fbfb}

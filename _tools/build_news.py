@@ -37,12 +37,15 @@ NUGGET = ('<svg class="nw-nug" viewBox="0 0 64 50" aria-hidden="true">'
           '<path d="M27 35 40 33 57 35 46 44 28 46z" fill="#8F6013"/>'
           '<path d="M23 11 30 9 27 14z" fill="#FFF8DD"/><path d="M52 3v7M48.5 6.5h7" stroke="#FFF3C0" stroke-width="1.4" stroke-linecap="round"/></svg>')
 top, more = S[:4], S[4:]
-TOP = ([x for x in S if x.get('featured')] + [x for x in S if not x.get('featured')])[:2]
+_TOPCFG = json.load(open(f'{R}/_tools/data/top.json'))['top']
+_RIB = dict(_TOPCFG)
+TOP = [x for k, _ in _TOPCFG for x in S if x['slug'] == k] or ([x for x in S if x.get('featured')] + [x for x in S if not x.get('featured')])[:2]
+_RCLS = {'Featured': '', 'Discovery': ' disc', 'Highlight': ' hl'}
 brief = lambda s: (f'<article class="nw-b" data-d="{s["date"]}"><a class="nw-th" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{sqpic(s["pic"][0])}</a><p class="nw-k">{E(s["kicker"])}<span class="nw-new" hidden> · New</span></p>'
                    f'<h2><a href="/news/{s["slug"]}/">{E(s["headline"])}</a></h2></article>')
 line = lambda s: (f'<li data-d="{s["date"]}"><span class="nw-k">{E(s["kicker"])}</span> <a href="/news/{s["slug"]}/">{E(s["short"])}</a><span class="nw-new" hidden> · New</span></li>')
 FEAT = '<span class="nw-feat-k"><span aria-hidden="true">★</span> Featured</span> · '
-second = lambda s: (f'<article class="nw-s{" nw-feat" if s.get("featured") else ""}" data-d="{s["date"]}"><a class="nw-simg" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{npic(s["pic"][0], "", "(min-width:900px) 16rem, 92vw", lazy=False)}{"<span class=nw-ribbon>Featured</span>" if s.get("featured") else ""}</a>'
+second = lambda s: (f'<article class="nw-s{" nw-feat" if s["slug"] in _RIB else ""}" data-d="{s["date"]}"><a class="nw-simg" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{npic(s["pic"][0], "", "(min-width:900px) 16rem, 92vw", lazy=False)}{f'<span class="nw-ribbon{_RCLS.get(_RIB[s["slug"]], "")}">{_RIB[s["slug"]]}</span>' if s["slug"] in _RIB else ""}</a>'
                     f'<p class="nw-k">{E(s["kicker"])}<span class="nw-new" hidden> · New</span></p><h2><a href="/news/{s["slug"]}/">{E(s["headline"])}</a></h2><p class="nw-sd">{E(s.get("sdek") or s["dek"])}</p></article>')
 line = lambda s: (f'<li data-d="{s["date"]}"><a class="nw-th" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{sqpic(s["pic"][0])}</a><span class="nw-lt"><span class="nw-k">{E(s["kicker"])}</span> <a href="/news/{s["slug"]}/">{E(s["short"])}</a><span class="nw-new" hidden> · New</span></span></li>')
 _NF = sum(len(x.get('finds', [])) for x in S)
