@@ -68,6 +68,7 @@ else:
 open(p, 'w').write(s)
 
 # ---------- 2. a page for every story ----------
+CONTRIB = '<div class="nw-contrib"><p class="nw-contrib-h">Write for Project Scroll</p><p>We welcome research, stories and finds from readers, families, historians and other researchers. Contributed articles carry the contributor’s name. Send your story, your sources or your idea to <a href="mailto:research@projectscroll.com?subject=A%20story%20for%20Project%20Scroll">research@projectscroll.com</a>.</p></div>'
 SHARE = """<script>document.querySelectorAll('.nw-share').forEach(function(b){ b.addEventListener('click', function(){ var u=location.href.split('#')[0], t=b.dataset.t;
   if (navigator.share) navigator.share({title:t, url:u}).catch(function(){}); else if (navigator.clipboard) navigator.clipboard.writeText(u).then(function(){ b.textContent='Link copied ✓'; }); }); });</script>
 """
@@ -88,18 +89,21 @@ for k, st in enumerate(S):
     reveal = f'<details class="nw-reveal"><summary>Show the answer</summary>{st["reveal"]}</details>' if st.get('reveal') else ''
     cta = '<p class="nw-cta">' + ' '.join(f'<a class="btn{" primary" if i==0 else ""}" href="{E(u)}">{E(t)}</a>' for i,(t,u) in enumerate(st['cta'])) + '</p>'
     src = ('<div class="nw-src"><h2 id="sources">Sources</h2><ul>' + ''.join((f'<li><a href="{E(u)}" rel="noopener">{E(t)}</a></li>' if u else f'<li>{E(t)}</li>') for t,u in st['sources']) + '</ul></div>') if st['sources'] else ''
+    credit = f'<p class="nw-credit">{E(st["credit"])}</p>' if st.get('credit') else ''
     live = f'<div class="nw-live" role="note"><p class="nw-live-h"><span class="nw-dot" aria-hidden="true"></span>Live research document</p><p>{st["live"]}</p></div>' if st.get('live') else ''
     b = f'''    <p class="crumb"><a href="/">← Front page</a> · <a href="/news/">All the news</a></p>
     <article class="nw-art">
       <p class="kicker">{E(st["kicker"])}</p>
       <h1>{E(st["headline"])}</h1>
       <p class="lede">{E(st["dek"])}</p>
-      {live}<p class="nw-by">Project Scroll · {"First published " if st.get("updated") else ""}<time datetime="{st["date"]}">{day(st["date"], True)}</time>{(" · Updated <time datetime=\""+st["updated"]+"\">"+day(st["updated"], True)+"</time>") if st.get("updated") else ""} · {mins} min read <button type="button" class="linkbtn nw-share" data-t="{E(st["headline"])}">Share this story</button></p>
+      {live}<p class="nw-by">{("By " + E(st["by"]) + " · ") if st.get("by") else ""}Project Scroll · {"First published " if st.get("updated") else ""}<time datetime="{st["date"]}">{day(st["date"], True)}</time>{(" · Updated <time datetime=\""+st["updated"]+"\">"+day(st["updated"], True)+"</time>") if st.get("updated") else ""} · {mins} min read <button type="button" class="linkbtn nw-share" data-t="{E(st["headline"])}">Share this story</button></p>
       {fig}
       <div class="nw-text">{body}{reveal}</div>
       {gal}
+      {credit}
       {cta}
       {src}
+      {CONTRIB}
       {pn}
     </article>
     <section class="nw-morebox" aria-labelledby="nwMoreH"><h2 id="nwMoreH">More news of the hunt</h2>{morelist(st["slug"])}</section>
@@ -115,6 +119,7 @@ b = f'''    <div class="nw-index"><p class="crumb"><a href="/">← Front page</a
     <p class="lede">What’s new on the trail: new cases, new tools, new old pictures. The newest are on the front page too.</p>
     <article class="nw-card nw-card-lead"><a href="/hunt/"><span class="nw-k">{E(L["kicker"])}</span><b>{E(L["headline"])}</b><span>Project Scroll now has a new, free online treasure hunt. Here is how to play.</span></a></article>
     <ul class="nw-cards">{cards}</ul>
+    {CONTRIB}
     <p class="note">Every story is also in the <a href="/feed.xml">news feed</a> and on <a href="https://www.facebook.com/projectscroll/">Project Scroll’s Facebook page</a>.</p></div>
 '''
 page('news/index.html', 'News of the hunt · Project Scroll', 'The latest from Project Scroll: new cases, new tools and new old pictures from the St. Joseph River valley.', b)

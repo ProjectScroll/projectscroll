@@ -370,6 +370,13 @@ function psWhenNear(el, fn){ if (!el) return; if (!('IntersectionObserver' in wi
     'census':['Census','The national head-count taken every ten years. Old schedules list every person in a household, with ages and birthplaces.'],
     'transcription':['Transcription','A typed copy of an old handwritten record. Useful, but every copy can add mistakes, so check the original when you can.']
   };
+  /* words noted only in the front-page lead, where they introduce the hunt */
+  const GLL={
+    'treasure':['Treasure','Mostly not gold. The treasure is a lost fact found again: a name, a date, a place or a story set right from the record. Find one first and your name goes on the board.'],
+    'hunt':['Hunt','A set of open cases, each starting from clues that point to a real record. Follow the trail, read the page, send in your answer. Free, and played from anywhere.'],
+    'history':['History','What the record shows happened here: the people, places and dates, read from the pages themselves rather than retold. Where the record and the story disagree, a hunt begins.'],
+    'records':['Records','The written trail: county histories, deeds, plats, court and probate files, census schedules, church registers and lodge books. Most are free to read online or in a local library.']
+  };
   const host=document.querySelector('main'); let gi=0; const used={};
   const glossaryRun=function(scope){ if (scope && 'showPopover' in HTMLElement.prototype){
     const walker=document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {acceptNode:function(n){
@@ -379,7 +386,8 @@ function psWhenNear(el, fn){ if (!el) return; if (!('IntersectionObserver' in wi
       let cur=n;
       while (cur && cur.parentNode){
         let best=null;
-        Object.keys(GL).forEach(function(term){
+        const inLead=!!(cur.parentElement && cur.parentElement.closest('.nw-lead .lede'));
+        Object.keys(GL).concat(inLead?Object.keys(GLL):[]).forEach(function(term){
           if (used[term]) return;
           const m=cur.nodeValue.match(new RegExp('\\b('+term+')\\b','i'));
           if (m && (!best || m.index<best.m.index)) best={term:term, m:m};
@@ -388,7 +396,7 @@ function psWhenNear(el, fn){ if (!el) return; if (!('IntersectionObserver' in wi
         const term=best.term, m=best.m; used[term]=true; gi++;
         const id='gl'+gi, after=cur.splitText(m.index); after.nodeValue=after.nodeValue.slice(m[0].length);
         const b=document.createElement('button'); b.type='button'; b.className='gl'; b.textContent=m[0]; b.setAttribute('popovertarget',id); b.setAttribute('aria-label',m[0]+': what this means');
-        const pop=document.createElement('div'); pop.id=id; pop.setAttribute('popover',''); pop.className='gloss'; pop.innerHTML='<b></b>'; pop.querySelector('b').textContent=GL[term][0]; pop.appendChild(document.createTextNode(GL[term][1]));
+        const pop=document.createElement('div'); pop.id=id; pop.setAttribute('popover',''); pop.className='gloss'; pop.innerHTML='<b></b>'; const G=GL[term]||GLL[term]; pop.querySelector('b').textContent=G[0]; pop.appendChild(document.createTextNode(G[1]));
         const pm=after.nodeValue.match(/^[,.;:!?)’”]+/);
         if (pm){ const w=document.createElement('span'); w.className='glw'; w.appendChild(b); w.appendChild(document.createTextNode(pm[0])); after.nodeValue=after.nodeValue.slice(pm[0].length); cur.parentNode.insertBefore(w, after); } else cur.parentNode.insertBefore(b, after);
         document.body.appendChild(pop);
