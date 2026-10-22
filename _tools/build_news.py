@@ -91,13 +91,13 @@ for k, st in enumerate(S):
 
 # ---------- 3. the news index ----------
 cards = ''.join(f'''<li class="nw-card"><a href="/news/{x["slug"]}/"><span class="nw-k">{E(x["kicker"])} · <time datetime="{x["date"]}">{day(x["date"])}</time></span><b>{E(x["headline"])}</b><span>{E(x["dek"])}</span></a></li>''' for x in S)
-b = f'''    <p class="crumb"><a href="/">← Front page</a></p>
+b = f'''    <div class="nw-index"><p class="crumb"><a href="/">← Front page</a></p>
     <p class="kicker">News of the hunt</p>
     <h1>All the news</h1>
     <p class="lede">What’s new on the trail: new cases, new tools, new old pictures. The newest are on the front page too.</p>
     <article class="nw-card nw-card-lead"><a href="/hunt/"><span class="nw-k">{E(L["kicker"])}</span><b>{E(L["headline"])}</b><span>Project Scroll now has a new, free online treasure hunt. Here is how to play.</span></a></article>
     <ul class="nw-cards">{cards}</ul>
-    <p class="note">Every story is also in the <a href="/feed.xml">news feed</a> and on <a href="https://www.facebook.com/projectscroll/">Project Scroll’s Facebook page</a>.</p>
+    <p class="note">Every story is also in the <a href="/feed.xml">news feed</a> and on <a href="https://www.facebook.com/projectscroll/">Project Scroll’s Facebook page</a>.</p></div>
 '''
 page('news/index.html', 'News of the hunt · Project Scroll', 'The latest from Project Scroll: new cases, new tools and new old pictures from the St. Joseph River valley.', b)
 
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function(){ "use strict";
   $('hnCard').hidden=false;
 });
 </script>'''
-b = f'''    <p class="crumb"><a href="/">← Front page</a> · <a href="/news/">All the news</a></p>
+b = f'''    <div class="hn"><p class="crumb"><a href="/">← Front page</a> · <a href="/news/">All the news</a></p>
     <div class="hn-head">
       <div>
         <p class="kicker">The hunt</p>
@@ -191,7 +191,7 @@ b = f'''    <p class="crumb"><a href="/">← Front page</a> · <a href="/news/">
     <section aria-labelledby="hnRules"><h2 id="hnRules">The rules</h2>
       <ul class="hn-rules"><li><b>Read the record.</b> Every answer is in a book, on a map, or on a page.</li><li><b>Show your work.</b> A name without the page it came from is only a guess.</li>
       <li><b>Stay on paper.</b> Never dig, never go near a grave, and never set foot on anyone’s land.</li><li><b>Be kind.</b> These are real people, and their families are still here.</li></ul>
-      <p class="note">Tools for the hunt: <a href="/records/">where the records are</a>, <a href="/glossary/">the glossary</a>, <a href="/toolkit/">the toolkit</a> and <a href="/worksheet/project-scroll-hunters-worksheet.pdf">the hunter’s worksheet (PDF)</a>.</p></section>
+      <p class="note">Tools for the hunt: <a href="/records/">where the records are</a>, <a href="/glossary/">the glossary</a>, <a href="/toolkit/">the toolkit</a> and <a href="/worksheet/project-scroll-hunters-worksheet.pdf">the hunter’s worksheet (PDF)</a>.</p></section></div>
 ''' + JS + '\n'
 page('hunt/index.html', 'The hunt: every clue is true · Project Scroll', 'Project Scroll’s free online treasure hunt: real mysteries of the St. Joseph River valley, solved from county histories, maps and certificates. Levels, side quests and badges, no sign-up.', b)
 print('news built:', len(S), 'stories, the hunt page and the front page')
