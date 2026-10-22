@@ -1518,7 +1518,7 @@ try{ (function(){
 try{ (function(){
   /* the four doors under the trust line: each opens a small panel of its pages; without native pop-ups the button is simply a link */
   const pop=!!(window.HTMLElement && HTMLElement.prototype.hasOwnProperty('popover'));
-  document.querySelectorAll('.dcard[data-door]').forEach(function(a){
+  document.querySelectorAll('a[data-door]').forEach(function(a){
     const d=document.getElementById(a.dataset.door); if (!d || !pop) return;
     const place=function(){ const r=a.getBoundingClientRect(), w=d.offsetWidth, h=d.offsetHeight, below=innerHeight-r.bottom-12;
       let top=below>=Math.min(h,320) ? r.bottom+8 : Math.max(8, r.top-h-8); d.style.top=Math.round(top)+'px';

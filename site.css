@@ -3989,3 +3989,9 @@ table.rg{width:100%;border-collapse:collapse;font-size:.9rem;line-height:1.4}
 .sb-more{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 @media print{.sharebar{display:none}}
 .nw-paper .nw-lead.nw-lead-last{margin:.9rem 0 .1rem}
+/* three doors moved into the right-hand column, as wide tiles like the museums tile */
+.sidedoors{display:block}
+.sidedoors .door{position:relative}
+.sd-f picture,.sd-f img{display:block;width:100%;height:100%}
+.sd-f img{position:absolute;inset:0;object-fit:cover;opacity:1}
+@media (prefers-reduced-motion: no-preference){ .vshow.sdoor:hover .sd-f img{transform:scale(1.03); transition:transform 6s ease} }
