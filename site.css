@@ -3995,3 +3995,7 @@ table.rg{width:100%;border-collapse:collapse;font-size:.9rem;line-height:1.4}
 .sd-f picture,.sd-f img{display:block;width:100%;height:100%}
 .sd-f img{position:absolute;inset:0;object-fit:cover;opacity:1}
 @media (prefers-reduced-motion: no-preference){ .vshow.sdoor:hover .sd-f img{transform:scale(1.03); transition:transform 6s ease} }
+
+/* dark mode: brighter labels on the dark panels (clip headings, tiers, box headings) */
+:root[data-theme="dark"] .nw-clip-h{color:#e8cf8e;border-bottom-color:#7a6a44} :root[data-theme="dark"] .nw-tier.d{color:#74d3a2} :root[data-theme="dark"] .nw-tier.r{color:#93bdf2} :root[data-theme="dark"] .nw-tier.o,:root[data-theme="dark"] .nw-br-h{color:#f2968a} :root[data-theme="dark"] .kin-c,:root[data-theme="dark"] .nw-about-h,:root[data-theme="dark"] .nw-v-h{color:#e3bb62}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nw-clip-h{color:#e8cf8e;border-bottom-color:#7a6a44} :root:not([data-theme="light"]) .nw-tier.d{color:#74d3a2} :root:not([data-theme="light"]) .nw-tier.r{color:#93bdf2} :root:not([data-theme="light"]) .nw-tier.o,:root:not([data-theme="light"]) .nw-br-h{color:#f2968a} :root:not([data-theme="light"]) .kin-c,:root:not([data-theme="light"]) .nw-about-h,:root:not([data-theme="light"]) .nw-v-h{color:#e3bb62} }
