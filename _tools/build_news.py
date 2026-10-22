@@ -134,6 +134,10 @@ for k, st in enumerate(S):
     visit = ('<aside class="nw-visit" aria-labelledby="vis-h"><p class="nw-visit-h" id="vis-h">Visit and see</p><ul>' + ''.join(f'<li><b>{E(v["name"])}</b> {E(v["note"])} <a class="nw-dir" href="https://www.google.com/maps/dir/?api=1&amp;destination={_q(v["where"])}">Directions ›</a></li>' for v in st['visit']) + '</ul><p class="nw-visit-n">Public places only. Please respect private land and posted hours.</p></aside>') if st.get('visit') else ''
     SER = [x for x in S if x.get('series') == 'names']
     series = ('<aside class="nw-series" aria-labelledby="ser-h"><p class="nw-series-h" id="ser-h">How the valley’s towns got their names</p><ol>' + ''.join((f'<li aria-current="page"><b>{E(x["town"])}</b></li>' if x['slug'] == st['slug'] else f'<li><a href="/news/{x["slug"]}/">{E(x["town"])}</a></li>') for x in SER) + '</ol><p class="nw-series-m"><a href="/place-names/">See them all on the map ›</a></p></aside>') if st.get('series') == 'names' else ''
+    FINDER = 'Michael Urbanski'
+    finds = ('<aside class="nw-finds" aria-labelledby="fnd-h"><p class="nw-finds-h" id="fnd-h"><span class="nw-tier n">New finding</span> What’s new here</p><ul>'
+             + ''.join(f'<li><p>{x["t"]}</p><p class="nw-finds-by">Found by {FINDER}, Project Scroll, {day(x["d"], True)}.</p>' + (f'<details><summary>What we searched</summary><p>{x["s"]}</p></details>' if x.get("s") else '') + '</li>' for x in st['finds'])
+             + f'</ul><p class="nw-finds-n">A <b>new finding</b> is a fact found in a primary source that we could not find in any published history, article or website we searched. Credit: {FINDER}, Project Scroll. If you know of an earlier publication, <a href="mailto:research@projectscroll.com?subject=An%20earlier%20publication">tell us</a> and we will say so here. <a href="/discoveries/">All our discoveries ›</a></p></aside>') if st.get('finds') else ''
     changes = ('<aside class="nw-changes" aria-labelledby="chg-h"><p class="nw-changes-h" id="chg-h">Changes to this page</p><ul>' + ''.join(f'<li><time datetime="{d}">{day(d, True)}</time> {E(x)}</li>' for d,x in st['changes']) + '</ul></aside>') if st.get('changes') else ''
     live = f'<div class="nw-live" role="note"><p class="nw-live-h"><span class="nw-dot" aria-hidden="true"></span>Live research document</p><p>{st["live"]}</p></div>' if st.get('live') else ''
     b = f'''    <p class="crumb"><a href="/">← Front page</a> · <a href="/news/">All the news</a></p>
@@ -143,6 +147,7 @@ for k, st in enumerate(S):
       <p class="lede">{E(st["dek"])}</p>
       {live}<p class="nw-by">{("By " + E(st["by"]) + " · ") if st.get("by") else ""}Project Scroll · {"First published " if st.get("updated") else ""}<time datetime="{st["date"]}">{day(st["date"], True)}</time>{(" · Updated <time datetime=\""+st["updated"]+"\">"+day(st["updated"], True)+"</time>") if st.get("updated") else ""} · {mins} min read <button type="button" class="linkbtn nw-share" data-t="{E(st["headline"])}">Share this story</button> <button type="button" class="linkbtn nw-print">Print or save as PDF</button> <button type="button" class="linkbtn nw-cite" data-cite="{E((st["by"] + ", " if st.get("by") else "") + "“" + st["headline"] + ",” Project Scroll, " + day(st["date"], True) + ", https://projectscroll.com/news/" + st["slug"] + "/")}">Cite this story</button> <button type="button" class="linkbtn nw-listen" hidden>Listen</button></p>
       {fig}
+      {finds}
       <div class="nw-text">{body}{reveal}</div>
       {gal}
       {series}
