@@ -18,6 +18,23 @@ GOAFF=json.loads((_TD/'goshen_affine.json').read_text())
 ELAFF=json.loads((_TD/'elkhart_affine.json').read_text())
 UWM='https://cdm17272.contentdm.oclc.org/iiif/2/agdm:21064'
 ELKCREDIT='1861 plan: <i>Map of Elkhart Co. Indiana</i> (Philadelphia: Samuel Geil, 1861), published by Geil &amp; Harley, inset “{inset}.” American Geographical Society Library, University of Wisconsin–Milwaukee Libraries. Public domain, shown live from the Library’s image service.'
+import json as _json
+WALKS={'cassopolis':('walk.json','/walk/'),'dowagiac':('walk-dowagiac.json','/walk/dowagiac/')}
+def walklayer(t):
+    if t['slug'] not in WALKS: return ''
+    f,u=WALKS[t['slug']]; W=_json.load(open(pathlib.Path(__file__).parent/'data'/f))
+    S=[x for x in W['stops'] if x.get('keep',True)]
+    pts=[[x['lat'],x['lon'],i+1,x['name'],u+'#'+x['id'],bool(x.get('card'))] for i,x in enumerate(S)]
+    return """<script>
+(function(){ var b=document.getElementById('tnWalk'); if (!b) return; var P="""+_json.dumps(pts,ensure_ascii=False)+""", g=null;
+  b.addEventListener('click',function(){ var map=window.psTnMap; if (!map || !window.L) return; var on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',String(on));
+    if (!on){ if (g) map.removeLayer(g); return; }
+    if (!g){ g=L.layerGroup(); P.forEach(function(p){ var m=L.marker([p[0],p[1]],{icon:L.divIcon({className:'vs-num'+(p[5]?' tn-photo':''), html:'<span>'+p[2]+'</span>', iconSize:[22,22]})});
+      var a=document.createElement('a'); a.href=p[4]; a.textContent='Stop '+p[2]+': '+p[3]+(p[5]?' (photo spot)':'')+' ›'; m.bindPopup(a); m.bindTooltip(p[3]+(p[5]?' · 📷 photo spot':''),{direction:'top', offset:[0,-8]}); g.addLayer(m); }); }
+    g.addTo(map); });
+})();
+</script>
+"""
 TOWNS = [
  dict(slug='cassopolis', hunt={'h': [1370218351], 't': 'The street that changed its name', 'q': 'Timber Street ran between O’Keefe and East in 1860. It is still there today under another name. Fade the plan away and find it.', 'lab': 'What it is called today'}, name='Cassopolis', inset='Cassopolis, County Seat of Cass Co.', img='/img/cass1860.webp',
       N=41.917772, W=-86.018103, S=41.906100, E=-86.007168, maxb='[41.895,-86.035],[41.930,-85.990]',
@@ -157,7 +174,7 @@ def build(t):
       </span>
       <label class="tnrange" id="tnFadeBox"><span>Today</span><input type="range" id="tnOp" min="0" max="100" value="75" aria-label="How much of the {Y} plan to show"><span>{Y}</span></label>
       <button type="button" class="btn" id="tnHome">Back to town</button>
-      <button type="button" class="btn" id="tnHere" aria-pressed="false">Where am I?</button><button type="button" class="btn" id="tnFull">Full screen</button><button type="button" class="btn" id="tnShare">Share this view</button><button type="button" class="btn" id="tnPrint">Print</button><button type="button" class="btn" id="tnNames" aria-pressed="false" disabled title="Solve this town’s renamed-street challenge to unlock">Today’s names 🔒</button>
+      <button type="button" class="btn" id="tnHere" aria-pressed="false">Where am I?</button>{'<button type="button" class="btn" id="tnWalk" aria-pressed="false">Show the walk stops</button>' if t['slug'] in WALKS else ''}<button type="button" class="btn" id="tnFull">Full screen</button><button type="button" class="btn" id="tnShare">Share this view</button><button type="button" class="btn" id="tnPrint">Print</button><button type="button" class="btn" id="tnNames" aria-pressed="false" disabled title="Solve this town’s renamed-street challenge to unlock">Today’s names 🔒</button>
       <span class="mapstat" id="tnStat" aria-live="polite">Loading…</span>
     </div>
     <div class="tnwrap">
@@ -182,7 +199,7 @@ def build(t):
       const B=L.latLngBounds([{t["S"]},{t["W"]}],[{t["N"]},{t["E"]}]);
       const map=L.map('tnMap',{{{'zoomAnimation:false, ' if t.get('aff') else ''}zoomSnap:0.25, minZoom:13, maxZoom:19, maxBounds:L.latLngBounds({t["maxb"]}), maxBoundsViscosity:0.8, scrollWheelZoom:true}});
       const home=()=>map.fitBounds(B.pad(0.02));
-      home();
+      home(); window.psTnMap=map;
       // today's streets and water, drawn from OpenStreetMap data (no labels, by design)
       const dec=a=>{{ const o=[]; let la=0, lo=0; for(let i=0;i<a.length;i+=2){{ la+=a[i]; lo+=a[i+1]; o.push([la/1e5, lo/1e5]); }} return o; }};
       const isDark=()=>{{ const t=document.documentElement.dataset.theme; return t ? t==='dark' : matchMedia('(prefers-color-scheme: dark)').matches; }};
@@ -315,6 +332,6 @@ def hubpage():
     page('map/then-and-now/index.html','Seven towns, then and now · Project Scroll','Seven old town plans of the St. Joseph River Valley, from Cassopolis to South Bend, Goshen and Elkhart, laid over today’s streets, each with a renamed street to find.',body,og='https://projectscroll.com/og/then-and-now.jpg')
 
 for t in TOWNS:
-    page(f'map/{t["slug"]}/index.html', f'{t["name"]}, {t.get("year","1860")} and today · Project Scroll', t['desc'], build(t), og=f'https://projectscroll.com/og/{t["og"]}.jpg')
+    page(f'map/{t["slug"]}/index.html', f'{t["name"]}, {t.get("year","1860")} and today · Project Scroll', t['desc'], build(t)+walklayer(t), og=f'https://projectscroll.com/og/{t["og"]}.jpg')
 hubpage()
 print('then-and-now built:', ', '.join(t['name'] for t in TOWNS))

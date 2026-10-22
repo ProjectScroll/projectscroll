@@ -63,6 +63,15 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="lede" style="font-size:1.15rem">Every county history has a page of places that were platted, named, given a mill or a store, and then left behind. Here are ten from the valley: why they were started, and what became of them.</p>
     <p>Most died the same way. A mill town grew up where a creek could turn a wheel; then the railroad came through somewhere else, trade followed the rails, and the mill was all that was left. Others never lived at all: paper towns drawn up in the land boom of 1836 and sold, or not sold, to people back East.</p>
     {''.join(card(t) for t in T)}
+    <section class="lt-tour" aria-labelledby="ltTH"><h2 id="ltTH">Drive three lost towns of Cass County</h2>
+      <p>A short drive for an afternoon, about 30 miles from end to end. There is nothing to visit at any of them: look from the public road, and never go onto private land.</p>
+      <ol>
+        <li><b>Dowagiac,</b> which grew over the paper town of <a href="#venice">Venice</a>: 538 lots platted in 1836, and not one sold.</li>
+        <li><b><a href="#wakelee">Wakelee</a>,</b> the lumber station on the railroad, where four townships meet.</li>
+        <li><b><a href="#adamsport">Adamsville</a>,</b> once Adamsport and Christiana, facing each other across Christiana Creek.</li>
+      </ol>
+      <p><a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;travelmode=driving&amp;origin=Dowagiac%2C%20MI&amp;waypoints=41.98389%2C-85.87889&amp;destination=41.7853%2C-85.9939" rel="noopener">Open the loop in Google Maps</a> <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;travelmode=driving&amp;destination=41.54306%2C-85.83056" rel="noopener">Directions to Waterford, Indiana</a></p>
+      <p class="note">Williamsville and Kessington are not on the drive: the histories name their townships but not a spot we can pin. If you know where they stood, tell us.</p></section>
     <h2>How to find a lost town</h2>
     <ul class="dis">
       <li><b>Read the township chapter,</b> not the index. Lost villages are usually a paragraph near the end, under “villages” or “early settlement.”</li>

@@ -20,6 +20,9 @@ for p in sorted((R/'notes').rglob('index.html')):
     add('https://projectscroll.com/'+rel.replace('index.html',''), html.unescape(t), html.unescape(desc), d(k.group(1)) if k else '2026-10-18')
 s=(R/'document/index.html').read_text(encoding='utf-8'); desc=re.search(r'name="description" content="([^"]*)"',s).group(1)
 add('https://projectscroll.com/document/', 'Document of the month: October 2026', html.unescape(desc), '2026-10-19')
+for _i,(_d,_u,_t,_s) in enumerate(json.load(open(R/'_tools'/'data'/'whatsnew.json'))):
+    _b,_h=(_u.split('#',1)+[''])[:2]
+    add('https://projectscroll.com'+_b+'?new='+_d+'-'+str(_i)+('#'+_h if _h else ''), _t, _s, _d)
 entries.sort(reverse=True)
 upd=entries[0][0]+'T12:00:00Z'
 x=['<?xml version="1.0" encoding="utf-8"?>','<feed xmlns="http://www.w3.org/2005/Atom">','<title>Project Scroll</title>','<subtitle>An online treasure hunt through real history, from the St. Joseph River Valley. Every clue is true.</subtitle>',

@@ -3538,3 +3538,15 @@ h3 + p{margin-top:.35rem}
 .tl-b.unk{background:linear-gradient(90deg, var(--rule) 10%, transparent)}
 .tl-y{font-size:.78rem; color:var(--ink-soft); text-align:right}
 @media (max-width:600px){ .mk-tl a{grid-template-columns:1fr 4.6rem} .tl-t{grid-column:1 / -1; grid-row:2} }
+.follow-box{border:1px solid var(--line); border-left:4px solid var(--gold); border-radius:4px; padding:.6rem 1rem; margin:1.5rem 0; font-size:.95rem}
+.nm-also{border:1px dashed var(--gold); border-radius:4px; padding:.6rem 1rem; margin:1rem 0} .nm-also h2{font-size:1.05rem; margin:0 0 .3rem} .nm-also ul{margin:0; padding-left:1.1rem} .nm-also span{color:var(--ink-soft); font-size:.88rem}
+.rf-saved ul{padding-left:1.1rem} .rf-saved li{margin:.25rem 0}
+.sol-week{border-left:4px solid var(--rule); padding:.5rem 1rem; margin:1rem 0; background:color-mix(in srgb, var(--paper-2) 50%, transparent)} .sol-week h2{margin:.1rem 0 .3rem; font-size:1.1rem} .sol-week ul{padding-left:1.1rem; margin:.2rem 0}
+.sh-tick{margin-right:.45rem; transform:scale(1.15); accent-color:var(--vp-green)}
+.sh-prog{font-size:.9rem; color:var(--vp-green); margin:.3rem 0}
+.tn-photo span{background:var(--gold-lo, #7a5a18)}
+.vs-spon{margin:.3rem 0 0; font-size:.78rem} .vs-spon a{color:var(--ink-soft)}
+@media print{ .vs-spon{display:none} }
+.whatsnew{border:1px solid var(--line); border-left:4px solid var(--vp-green); border-radius:4px; padding:.6rem 1rem; margin:1.2rem 0}
+.whatsnew h2{font-size:1.05rem; margin:.1rem 0 .3rem} .whatsnew ul{list-style:none; padding:0; margin:0} .whatsnew li{margin:.35rem 0}
+.whatsnew time{display:inline-block; min-width:3.4rem; font-size:.78rem; color:var(--rule)} .whatsnew span{display:block; font-size:.88rem; color:var(--ink-soft); margin-left:3.4rem}

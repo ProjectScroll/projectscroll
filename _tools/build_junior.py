@@ -78,5 +78,8 @@ body2=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li>Ideas, corrections, or a class that solved a case? Write to <a href="mailto:research@projectscroll.com?subject=Classroom">research@projectscroll.com</a>.</li>
     </ul>
 '''
+body2 = body2.replace('    <h1>Project Scroll for classrooms</h1>', '''    <h1>Project Scroll for classrooms</h1>
+    <aside class="follow-box"><p><b>New: the teachers’ pack.</b> A one-day field trip to Cassopolis (the Broadway walk, the Local History Branch and the photo spots), with two printable worksheets: rephotographing an old postcard, and reading an old record. <a class="btn" href="/classrooms/project-scroll-teachers-pack.pdf" download>Download the teachers’ pack (PDF)</a></p></aside>''', 1)
+
 page('classrooms/index.html','Project Scroll for classrooms · Project Scroll','Four free, ready lessons in local history and map reading for grades 3 to 12, built on the real 1860s maps, directories and county histories of the St. Joseph River Valley.',body2,og='https://projectscroll.com/og/hunt.jpg')
 print('junior and classrooms built')

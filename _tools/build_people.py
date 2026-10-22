@@ -68,6 +68,20 @@ JS = r'''<script>
     if (navigator.share){ navigator.share({title:'Where to look', text:head.textContent, url:url}).catch(function(){}); return; }
     if (navigator.clipboard) navigator.clipboard.writeText(url).then(function(){ m.textContent='Link copied.'; },function(){ m.textContent=url; }); else m.textContent=url; });
   $('#rfPrint').addEventListener('click',function(){ window.print(); });
+  /* saved searches (this device only), and a ready-written email to the research desk */
+  var SK='ps-rf-saved', sv=[]; try{ sv=JSON.parse(localStorage.getItem(SK)||'[]')||[]; }catch(e){}
+  var label=function(x){ var o=$('#rfCounty').querySelector('option[value="'+x.c+'"]'), w=$('#rfWant').querySelector('option[value="'+x.w+'"]'); return (x.n? x.n+': ' : '')+(w?w.textContent:'')+(o? ', '+o.textContent : '')+', '+ERA[x.e]; };
+  var paintSv=function(){ var l=$('#rfSvL'); l.innerHTML=''; sv.forEach(function(x,i){ var li=document.createElement('li'), a=document.createElement('a'); a.href='?'+new URLSearchParams({c:x.c, e:x.e, w:x.w, n:x.n||''}).toString()+'#rfOut'; a.textContent=label(x); li.appendChild(a);
+      var b=document.createElement('button'); b.type='button'; b.className='mu-x'; b.textContent='×'; b.setAttribute('aria-label','Forget this search'); b.addEventListener('click',function(){ sv.splice(i,1); try{ localStorage.setItem(SK,JSON.stringify(sv)); }catch(e){} paintSv(); }); li.appendChild(b); l.appendChild(li); });
+    $('#rfSaved').hidden=!sv.length; };
+  var cur=function(){ return {n:$('#rfName').value.trim(), c:$('#rfCounty').value, e:+$('#rfEra').value, w:$('#rfWant').value}; };
+  $('#rfSave').addEventListener('click',function(){ var x=cur(); sv=sv.filter(function(y){ return JSON.stringify(y)!==JSON.stringify(x); }); sv.unshift(x); sv=sv.slice(0,8); try{ localStorage.setItem(SK,JSON.stringify(sv)); }catch(e){} paintSv(); $('#rfShareMsg').textContent='Saved on this device.'; });
+  var desk=function(){ var x=cur(), o=$('#rfCounty').selectedOptions[0], w=$('#rfWant').selectedOptions[0];
+    var body=['A question for the research desk','','Who: '+(x.n||'(surname not given)'),'Where they lived: '+(o?o.textContent:''),'About when: '+ERA[x.e],'What I want to find: '+(w?w.textContent:''),'','WHAT I KNOW SO FAR','(names, dates, places, and where each fact came from)','','WHAT I HAVE ALREADY TRIED','','PAPERS OR PHOTOS I CAN SEND',''].join('\n');
+    $('#rfDesk').href='mailto:research@projectscroll.com?subject='+encodeURIComponent('Research question: '+(x.n||'a family question'))+'&body='+encodeURIComponent(body); };
+  ['#rfName','#rfCounty','#rfEra','#rfWant'].forEach(function(k){ $(k).addEventListener('input',desk); $(k).addEventListener('change',desk); }); desk();
+  try{ var nq=new URLSearchParams(location.search).get('n'); if (nq) { $('#rfName').value=nq; desk(); } }catch(e){}
+  paintSv();
   var sp=new URLSearchParams(location.search);
   if (sp.get('c') && SEAT[sp.get('c')]){ $('#rfCounty').value=sp.get('c'); $('#rfEra').value=String(Math.max(0,Math.min(3,+sp.get('e')||0))); var wv=sp.get('w'); if ([].some.call($('#rfWant').options,function(o){ return o.value===wv; })) $('#rfWant').value=wv; $('#rfName').value=(sp.get('n')||'').slice(0,40);
     setTimeout(function(){ f.requestSubmit ? f.requestSubmit() : f.dispatchEvent(new Event('submit')); },60); }
@@ -100,8 +114,9 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <p><button class="btn primary" type="submit">Show me where to look</button></p>
     </form>
     <section class="rf-out" id="rfOut" hidden aria-live="polite"><h2 id="rfHead" tabindex="-1"></h2><ol class="rf-list" id="rfList"></ol>
-      <p class="mu-tacts"><button type="button" class="btn" id="rfShare">Share this list</button> <button type="button" class="btn" id="rfPrint">Print it</button> <span class="mu-nmsg" id="rfShareMsg" aria-live="polite"></span></p>
+      <p class="mu-tacts"><button type="button" class="btn" id="rfShare">Share this list</button> <button type="button" class="btn" id="rfPrint">Print it</button> <button type="button" class="btn" id="rfSave">Save this search</button> <a class="btn primary" id="rfDesk" href="mailto:research@projectscroll.com">Ask the research desk</a> <span class="mu-nmsg" id="rfShareMsg" aria-live="polite"></span></p>
       <p class="note">Nothing you type is sent anywhere unless you share the link yourself; a shared link carries your three answers and the surname, if you typed one. The page’s own address never holds the surname. The list is a starting order, not a guarantee: records were lost, burned or never kept in some places and years. The <a href="/records/">records page</a> has the rest.</p></section>
+    <section class="rf-saved" id="rfSaved" hidden aria-labelledby="rfSvH"><h2 id="rfSvH">Your saved searches</h2><ul id="rfSvL"></ul><p class="note">Kept in this browser only.</p></section>
     <h2>The people tools</h2>
     <ul class="pp-tools">{tools}</ul>
     <h2>Three habits that find more</h2>

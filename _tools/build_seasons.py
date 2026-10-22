@@ -13,6 +13,17 @@ def iso(d):
         v = d.get(k)
         if isinstance(v, dict) and v.get('start'): return v
     return None
+import math as _m
+_F=[x for x in json.load(open(pathlib.Path(__file__).parent/'data'/'food.json')) if x.get('ll') and x.get('type')=='restaurant']
+def _km(a,b):
+    r=_m.pi/180; dl=(b[0]-a[0])*r; dn=(b[1]-a[1])*r; h=_m.sin(dl/2)**2+_m.cos(a[0]*r)*_m.cos(b[0]*r)*_m.sin(dn/2)**2; return 12742*_m.asin(_m.sqrt(h))
+def _fid(n): return re.sub(r'[^a-z0-9]+','-',n.lower()).strip('-')
+def eatnear(d):
+    if not d.get('ll'): return ''
+    xs=sorted(((_km(d['ll'],x['ll'] if isinstance(x['ll'],list) else json.loads(x['ll'])),x) for x in _F), key=lambda t:t[0])
+    xs=[(k,x) for k,x in xs if k<=12][:2]
+    if not xs: return ''
+    return '<p class="fd-near">A table nearby: '+' · '.join(f'<a href="/food/#{_fid(x["name"])}">{E(x["name"])}</a> ({(k*0.621371):.0f} mi)' if k*0.621371>=1 else f'<a href="/food/#{_fid(x["name"])}">{E(x["name"])}</a> (in town)' for k,x in xs)+'</p>'
 def card(d):
     dt = iso(d)
     when = E(d.get('when') or '')
@@ -29,7 +40,7 @@ def card(d):
         <h3>{E(d['name'])}</h3>
         <p class="se-w"><b>{when}</b><span class="se-d"></span></p>
         <p>{E(d.get('what',''))}</p>{hist}
-        <p class="mu-acts">{link}{' · '+cal if cal else ''}</p>
+        {eatnear(d)}<p class="mu-acts">{link}{' · '+cal if cal else ''}{(' · <button type="button" class="mu-tb fd-add" data-i="s:'+slug(d['name'])+'" aria-pressed="false">Add to my day</button>') if d.get('ll') else ''}</p>
         {stp}
       </li>'''
 secs = ''
@@ -169,6 +180,15 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
 {ld}
 {JS}
 '''
+body += """<script>
+(function(){ var day=[]; try{ day=JSON.parse(localStorage.getItem('ps-day')||'[]')||[]; }catch(e){}
+  var bs=[].slice.call(document.querySelectorAll('.fd-add'));
+  var paint=function(){ bs.forEach(function(b){ var on=day.indexOf(b.dataset.i)>=0; b.setAttribute('aria-pressed',String(on)); b.textContent=on?'On my day ✓':'Add to my day'; }); };
+  bs.forEach(function(b){ b.addEventListener('click',function(){ var i=day.indexOf(b.dataset.i); if (i>=0) day.splice(i,1); else day.push(b.dataset.i); try{ localStorage.setItem('ps-day',JSON.stringify(day)); }catch(e){} paint(); }); });
+  paint(); })();
+</script>
+"""
+
 page('seasons/index.html', 'Seasons & festivals of the valley · Project Scroll',
      f'{n} fairs, festivals, harvests, living-history days and holiday walks across the St. Joseph River valley in Michigan and Indiana, season by season, each checked against its own website.',
      body, og='https://projectscroll.com/og/records.jpg')

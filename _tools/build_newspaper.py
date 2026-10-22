@@ -44,5 +44,8 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     </ul>
     <p class="note">Source: <i>The True Northerner</i> (Paw Paw, Mich.), 1 February 1899, page 8, digitized by Central Michigan University’s Clarke Historical Library for Chronicling America, Library of Congress. The clippings were cut from the Library’s scan; tap one to open it at full size there. Every quotation on this page was checked against the page image.</p>
 '''
+body += '''    <aside class="follow-box" aria-label="Follow along"><p><b>Never miss the next one.</b> New pages, papers and dates are announced on <a href="https://www.facebook.com/projectscroll/" rel="noopener">Project Scroll on Facebook</a> the day they go up, and in the site’s <a href="/feed.xml">news feed</a> for feed readers.</p></aside>
+'''
+
 page('newspaper/index.html','The True Northerner, 1 February 1899 · Newspaper of the month · Project Scroll','One page of an old valley paper, read slowly: the back page of Paw Paw’s True Northerner for 1 February 1899, with egg prices, a farmers’ institute and the Spanish-American War at the opera house.',body,og='https://projectscroll.com/og/records.jpg')
 print('newspaper built',len(CL))

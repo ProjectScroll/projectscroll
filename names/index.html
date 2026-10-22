@@ -29,7 +29,7 @@
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
-<link rel="stylesheet" href="/site.min.css?v=94265223">
+<link rel="stylesheet" href="/site.min.css?v=ad8eccfe">
 <script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/*.pdf","/*.zip","/*.xml","/*.json"]}},{"not":{"selector_matches":"[download], [target=_blank]"}}]},"eagerness":"moderate"}],"prerender":[{"where":{"and":[{"selector_matches":".bar a, .toolrow .nd a, .crumb a, footer nav a, .partrail a, .search-res a"},{"href_matches":"/*"},{"not":{"href_matches":["/*.pdf","/map/3d/*"]}}]},"eagerness":"conservative"}]}</script>
 </head>
 <body>
@@ -75,6 +75,7 @@
       <p class="nm-count" id="nmCount" aria-live="polite">416 entries</p>
     </div>
     <div id="nmOut" class="nm-out"></div>
+    <aside class="nm-also" id="nmAlso" hidden aria-live="polite"><h2>Elsewhere on the site</h2><ul></ul></aside>
     <noscript><p class="note">Turn on JavaScript to search the roll. Each town’s directory can also be read on its plan in the <a href="/map/">map room</a>.</p></noscript>
     <h2>How to read the roll</h2>
     <ul class="dis">
@@ -110,6 +111,17 @@
       setTown(town);
     })();
     </script>
+<script>
+(function(){ "use strict"; var q=document.getElementById('nmQ'), box=document.getElementById('nmAlso'), ul=box.querySelector('ul'), A=null, t=null;
+  var norm=function(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9 ]+/g,' ').replace(/\s+/g,' ').trim(); };
+  var run=function(){ var w=norm(q.value).split(' ').filter(function(x){ return x.length>2; }); ul.innerHTML=''; if (!w.length || !A){ box.hidden=true; return; }
+    var hits=A.filter(function(r){ return w.every(function(x){ return (' '+r[3]+' ').indexOf(' '+x)>=0; }); }).slice(0,8);
+    hits.forEach(function(r){ var li=document.createElement('li'), a=document.createElement('a'); a.href=r[2]; a.textContent=r[0]; li.appendChild(a); var s=document.createElement('span'); s.textContent=' · '+r[1]; li.appendChild(s); ul.appendChild(li); });
+    box.hidden=!hits.length; };
+  var load=function(){ if (A){ run(); return; } fetch('/names/also.json?v=1').then(function(r){ return r.json(); }).then(function(j){ A=j; run(); }).catch(function(){}); };
+  q.addEventListener('input',function(){ clearTimeout(t); t=setTimeout(load,200); }); if (q.value) load();
+})();
+</script>
   </main>
   <div class="trailx" aria-hidden="true"><svg viewBox="0 0 640 64" focusable="false"><defs><mask id="trailM" maskUnits="userSpaceOnUse"><path class="tx-draw" pathLength="1" d="M52 36C96 12 136 56 186 34S276 10 326 34 426 58 478 30 560 20 590 32"/></mask></defs><g class="tx-compass"><circle cx="26" cy="32" r="15"/><circle cx="26" cy="32" r="10.5"/><path class="tx-n" d="M26 19l3 13h-6z"/><path d="M26 45l3-13h-6z"/><path d="M13 32h26M26 17v30"/></g><path class="tx-path" mask="url(#trailM)" d="M52 36C96 12 136 56 186 34S276 10 326 34 426 58 478 30 560 20 590 32"/><g class="tx-x"><path d="M598 22l18 20M616 22l-18 20"/></g><g class="tx-gem"><path d="M607 10l3.2 3.2-3.2 7.6-3.2-7.6z"/><path class="tx-spark" d="M607 2v6M607 22v-1M600 12h-3M614 12h3"/></g></svg></div>
   <footer class="site">
@@ -129,6 +141,6 @@
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=94265223" defer></script>
+<script src="/site.min.js?v=ad8eccfe" defer></script>
 </body>
 </html>

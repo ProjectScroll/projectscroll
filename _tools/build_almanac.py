@@ -26,5 +26,8 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       if (el.length){{ el.forEach(function(li){{ li.classList.add('today'); }}); t.innerHTML='Today’s date is in the almanac. <a href="#'+el[0].id+'">See what happened on this day →</a>'; }} }})();
     </script>
 '''
+body += '''    <aside class="follow-box" aria-label="Follow along"><p><b>Never miss the next one.</b> New pages, papers and dates are announced on <a href="https://www.facebook.com/projectscroll/" rel="noopener">Project Scroll on Facebook</a> the day they go up, and in the site’s <a href="/feed.xml">news feed</a> for feed readers.</p></aside>
+'''
+
 page('almanac/index.html','The valley’s almanac · This day in the valley · Project Scroll',f'{len(out)} dated days from the county histories of the St. Joseph River Valley, each with its book and page: first trains, first newspapers, fires, charters and dedications.',body,og='https://projectscroll.com/og/records.jpg')
 print('almanac built:',len(out),'days')

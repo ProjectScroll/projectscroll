@@ -45,8 +45,10 @@ WALKS = {
 
 def all_places():
     out = [WALKS['walk'], WALKS['dowagiac']]
-    out += [mplace(d) for d in M if d.get('ll')]
+    out += [mplace(d) for d in M]
     out += [fplace(d) for d in F if d.get('ll')]
+    for d in json.load(open(P/'seasons.json')):
+        if d.get('ll'): out.append({'i': 's:'+slug(d['name']), 'n': d['name'], 't': d['town'], 'k': 'festival', 'g': 'Festivals & events', 'll': d['ll'], 'd': d['name']+', '+d['town']+', '+ST.get(d['state'], d['state']), 'u': '/seasons/#'+slug(d['name'])})
     return out
 
 BYM = {d['name']: d for d in M}; BYF = {d['name']: d for d in F}

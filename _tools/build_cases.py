@@ -26,7 +26,12 @@ for c in C:
 '''
     if c.get('start'):
         items=''.join(f'<li>{x["text"]} <a href="{esc(x["url"])}">{esc(x.get("label","Read it free online ›"))}</a></li>' for x in c['start'])
-        starthere=f'<aside class="starthere" aria-labelledby="sh{n}"><h2 id="sh{n}">Start here</h2><ol>{items}</ol><p class="note">These are the first pages to open. The answer is in the record; the rest of the trail is yours.</p></aside>'
+        starthere=f'<aside class="starthere" aria-labelledby="sh{n}"><h2 id="sh{n}">Start here</h2><ol class="sh-trail" data-case="{n}">{items}</ol><p class="sh-prog" aria-live="polite"></p><p class="note">These are the first pages to open. Tick each one when you have read it; your ticks stay on this device. The answer is in the record; the rest of the trail is yours.</p></aside>'
+        starthere+='''<script>(function(){var ol=document.querySelector('.sh-trail'); if(!ol) return; var K='ps-trail-'+ol.dataset.case, got={}; try{got=JSON.parse(localStorage.getItem(K)||'{}')||{};}catch(e){}
+  var lis=[].slice.call(ol.children), pr=document.querySelector('.sh-prog');
+  var paint=function(){var n=lis.filter(function(li,i){return got[i];}).length; pr.textContent=n? 'Your trail: '+n+' of '+lis.length+' sources read'+(n===lis.length?'. Now follow where they lead.':'.') : '';};
+  lis.forEach(function(li,i){var c=document.createElement('input'); c.type='checkbox'; c.className='sh-tick'; c.checked=!!got[i]; c.setAttribute('aria-label','I have read this source'); c.addEventListener('change',function(){ if(c.checked) got[i]=new Date().toISOString().slice(0,10); else delete got[i]; try{localStorage.setItem(K,JSON.stringify(got));}catch(e){} paint(); }); li.insertBefore(c, li.firstChild);});
+  paint();})();</script>'''
     elif c['hall']=='h2':
         starthere=f'<aside class="starthere" aria-labelledby="sh{n}"><h2 id="sh{n}">Start here</h2><p>This case belongs to the second hall. Its sources are posted on the hall’s own page, and that page is behind the first hall’s last door. Find the door, and the trail starts there.</p></aside>'
     else: starthere=''

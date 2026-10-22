@@ -50,7 +50,7 @@ tips = '''<h2>Good to know</h2><ul class="tips">
 <li><b>Check before you go.</b> Many museums are run by volunteers and open a few days a week, some only in summer.</li>
 <li><b>Mind the clock.</b> La Porte County, Indiana, including La Porte and Michigan City, keeps Central time.</li>
 <li><b>Amish country.</b> Many businesses close on Sundays. Slow down and pass buggies wide.</li>
-<li><b>Be a good guest.</b> Look from the sidewalk; never go onto private property without leave.</li></ul>'''
+<li><b>Be a good guest.</b> Look from the sidewalk; never go onto private property without leave.</li></ul><p class="note">Project Scroll is free and independent, kept going by sponsors: projectscroll.com/sponsors</p>'''
 p1 = f'<div class="sheet"><div class="p"><h2>Days out</h2>{D[0]}{D[1]}{D[2]}</div><div class="p"><h2>More days</h2>{D[3]}{D[4]}{D[5]}</div>{cover}</div>'
 p2 = (f'<div class="sheet"><div class="p map"><h2>The valley</h2>{svg}<p class="note">Numbers mark where each day begins. County lines: US Census Bureau. Rivers: USGS.</p>{tips}</div>'
       f'<div class="p"><h2>Further afield</h2>{D[6]}{D[7]}{D[8]}</div>'

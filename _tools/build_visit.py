@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function(){ "use strict";
 
   /* build your own day: places from the museums, food and lodging, and the walks */
   var KEY='ps-day', day=[]; try{ day=JSON.parse(localStorage.getItem(KEY)||'[]')||[]; }catch(e){}
-  var save=function(){ try{ localStorage.setItem(KEY,JSON.stringify(day)); }catch(e){} };
+  var save=function(){ try{ localStorage.setItem(KEY,JSON.stringify(day)); localStorage.setItem('ps-mu-trip', JSON.stringify(day.filter(function(i){ return i.indexOf('m:')===0; }).map(function(i){ return i.slice(2); }))); }catch(e){} };
   var P=null, byI={}, bq=$('#vbQ'), res=$('#vbRes'), list=$('#vbList'), msg=$('#vbMsg'), gob=$('#vbGo');
   var km=function(a,b){ var R=6371, r=Math.PI/180, dl=(b[0]-a[0])*r, dn=(b[1]-a[1])*r, h=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dn/2)*Math.sin(dn/2); return 2*R*Math.asin(Math.sqrt(h)); };
   var mi=function(k){ var m=k*0.621371*1.25; return m<10? m.toFixed(1) : String(Math.round(m)); };
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function(){ "use strict";
       xb.addEventListener('click',function(){ day.splice(ix,1); save(); paint(); find(); }); r.appendChild(xb); list.appendChild(r); });
     var ds=day.map(function(i){ return byI[i].d; }).slice(0,10);
     if (ds.length){ gob.href='https://www.google.com/maps/dir/?api=1&travelmode=driving&destination='+encodeURIComponent(ds[ds.length-1])+(ds.length>1?'&waypoints='+ds.slice(0,-1).map(encodeURIComponent).join('%7C'):''); gob.hidden=false; gob.textContent=day.length>10?'Open the first ten in Google Maps':'Open in Google Maps'; } else gob.hidden=true;
-    var mt=[]; try{ mt=JSON.parse(localStorage.getItem('ps-mu-trip')||'[]')||[]; }catch(e){} $('#vbMu').hidden=!mt.length;
+    var mt=[]; try{ mt=JSON.parse(localStorage.getItem('ps-mu-trip')||'[]')||[]; }catch(e){} $('#vbMu').hidden=!mt.filter(function(id){ return day.indexOf('m:'+id)<0; }).length;
     if (day.length) { var nt=document.createElement('li'); nt.className='vb-note'; nt.textContent='Times are rough: they start at 9:30 am and allow about 35 mph between stops.'; list.appendChild(nt); }
     drawMine(); };
   window.vbPaint=function(){ if (P) paint(); };
@@ -271,7 +271,7 @@ for di,(k,t,w,st) in enumerate(DAYS):
     DJSON.append({'k':k,'t':t,'c':COL[di%len(COL)],'p':pts})
     days+=(f'<li class="vs-day" id="day-{k}" data-k="{k}" style="--dc:{COL[di%len(COL)]}">{dpic(k)}<h3><i class="vs-dot" aria-hidden="true"></i>{E(t)}</h3><p class="vs-when">{E(w)}</p><p class="vs-fit" hidden></p><p class="vs-prog" hidden></p><ol>'+''.join(lis)+
       f'</ol><p class="vs-acts">'+(f'<a class="btn vs-gm" href="{E(gm)}" rel="noopener">Open this day in Google Maps</a> ' if gm else '')+
-      f'<button type="button" class="btn vs-show" data-k="{k}">Show on the map</button> <button type="button" class="btn vs-print" data-day="day-{k}">Print this day</button></p></li>')
+      f'<button type="button" class="btn vs-show" data-k="{k}">Show on the map</button> <button type="button" class="btn vs-print" data-day="day-{k}">Print this day</button></p><p class="vs-spon"><a href="/sponsors/">Sponsor this day ›</a></p></li>')
 JS=JS.replace('__TOWNS__', json.dumps([[n,la,lo] for n,la,lo in V.TOWNS]))
 FESTJSON=json.dumps(FEST,ensure_ascii=False).replace('</','<\\/')
 DAYJSON=json.dumps(DJSON,ensure_ascii=False).replace('</','<\\/')
@@ -295,7 +295,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <ol class="vs-days">{days}</ol>
       <p><a class="btn" href="/visit/project-scroll-pocket-guide.pdf" download>Download the pocket guide (PDF, to print and fold)</a></p></section>
     <section aria-labelledby="vsBH" id="build"><h2 id="vsBH">Build your own day</h2>
-      <p>Pick museums, places to eat and stay, and the walks. We’ll put them in a sensible driving order, and you can open the route in Google Maps, print it, or send it to someone. Your day is kept on this device only.</p>
+      <p>Pick museums, places to eat and stay, and the walks. We’ll put them in a sensible driving order, and you can open the route in Google Maps, print it, or send it to someone. Your day is kept on this device only, and it is the same list as “My trip” on the museums page.</p>
       <div class="vs-build">
         <label class="nm-q"><span>Find a place to add</span><input type="search" id="vbQ" placeholder="A town, a museum, a restaurant, an inn" autocomplete="off" spellcheck="false"></label>
         <ul class="vb-res" id="vbRes" aria-live="polite"></ul>

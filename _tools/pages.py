@@ -11,7 +11,7 @@ def proc(html):
     for m in re.finditer(r'<(script|style|pre)\b.*?</\1>|<!--.*?-->|<[^>]+>',html,re.S):
         out.append(smart(html[i:m.start()])); out.append(m.group(0)); i=m.end()
     out.append(smart(html[i:])); return ''.join(out)
-import pathlib
+import pathlib, json as _json, html as _html, datetime as _dt
 R=str(pathlib.Path(__file__).resolve().parent.parent)
 RECORD_HOSTS=('loc.gov','hathitrust.org','archive.org','familysearch.org','michiganology.org','umich.edu','glorecords.blm.gov','ancestry','findagrave','newspapers.com','chroniclingamerica','digmichnews','cmich.edu','michigan.gov','rumsey','books.google','jstor','worldcat','openlibrary','wikisource','gutenberg','nypl','cassdistrictlibrary','seekingmichigan','preservica')
 def colophon(body):
@@ -101,7 +101,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=94265223">
+<link rel="stylesheet" href="/site.min.css?v=ad8eccfe">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"href_matches":"/*"}},{{"not":{{"href_matches":["/*.pdf","/*.zip","/*.xml","/*.json"]}}}},{{"not":{{"selector_matches":"[download], [target=_blank]"}}}}]}},"eagerness":"moderate"}}],"prerender":[{{"where":{{"and":[{{"selector_matches":".bar a, .toolrow .nd a, .crumb a, footer nav a, .partrail a, .search-res a"}},{{"href_matches":"/*"}},{{"not":{{"href_matches":["/*.pdf","/map/3d/*"]}}}}]}},"eagerness":"conservative"}}]}}</script>
 </head>
 <body>
@@ -157,7 +157,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=94265223" defer></script>
+<script src="/site.min.js?v=ad8eccfe" defer></script>
 </body>
 </html>
 '''
@@ -229,6 +229,7 @@ if __name__=='__main__':
         <h1>Field notes</h1>
         <p>Short lessons from real cases: how to read an old record, weigh it against another, and know when a question is settled. A new lesson is bound in each time a case teaches one.</p>
         <p><a class="btn" href="/notes/book/">Open the field notes as a book</a></p>
+    <aside class="whatsnew" aria-labelledby="wnH"><h2 id="wnH">New on the site</h2><ul>'''+''.join(f'<li><time datetime="{_d}">{_dt.date.fromisoformat(_d).strftime("%-d %b")}</time> <a href="{_u}">{_html.escape(_t)}</a> <span>{_html.escape(_s)}</span></li>' for _d,_u,_t,_s in _json.load(open(pathlib.Path(__file__).parent/'data'/'whatsnew.json'))[:8])+'''</ul></aside>
     <ul class="notelist">
           <li><a href="/notes/one-letter-two-certificates/">One Letter, Two Certificates</a><span>No. 1 · 17 October 2026 · What to do when two old records tell you two different things.</span></li>
         </ul>

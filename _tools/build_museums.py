@@ -122,7 +122,9 @@ JS = r'''<script>
   var calm=matchMedia('(prefers-reduced-motion: reduce)').matches, glide=calm?'auto':'smooth';
   var q=$('#muQ'), cnt=$('#muCount'), items=$$('.mu'), fs=$$('.mu-f'), sel=$('#muOpen'), kind='', research=false, openF='', near=null, store=true;
   var load=function(k,d){ try{ var v=JSON.parse(localStorage.getItem(k)||'null'); return v==null? d : v; }catch(e){ store=false; return d; } };
-  var save=function(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} };
+  var save=function(k,v){ try{ localStorage.setItem(k,JSON.stringify(v));
+      /* one trip across the site: the museums on "My trip" are the museums on "My day" on the Visit & Plan page */
+      if (k==='ps-mu-trip'){ var d=JSON.parse(localStorage.getItem('ps-day')||'[]')||[], rest=d.filter(function(i){ return i.indexOf('m:')!==0; }); localStorage.setItem('ps-day', JSON.stringify(v.map(function(id){ return 'm:'+id; }).concat(rest))); } }catch(e){} };
   var trip=load('ps-mu-trip',[]), been=load('ps-mu-been',[]), stamp=load('ps-mu-stamp',{});
   var byId={}; items.forEach(function(li,i){ byId[li.id]=li; li._p=li.parentNode; li._i=i; });
   trip=trip.filter(function(id){ return byId[id]; }); been=been.filter(function(id){ return byId[id]; });
@@ -388,6 +390,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <h2 id="muTripH">My trip <span class="mu-n"><span id="muTripN">0</span> stops</span></h2>
       <ol id="muTripList"></ol>
       <p class="mu-tacts"><a class="btn" id="muTripDir" href="#" rel="noopener" hidden>Directions for the whole trip</a> <button type="button" class="btn" id="muTripBest">Best order</button> <button type="button" class="btn" id="muTripShare">Share this trip</button> <button type="button" class="btn" id="muTripQR">QR code</button> <button type="button" class="btn" id="muTripPrint">Print my trip</button> <button type="button" class="btn" id="muTripClear">Clear the trip</button></p>
+      <p class="note">Your trip is also your day on the <a href="/visit/#build">Visit &amp; Plan page</a>, where you can add places to eat and stay, see rough times and plan it for a date.</p>
       <p class="mu-tmsg" id="muTripMsg" aria-live="polite"></p>
       <p class="note">Your trip list stays in this browser. Distances between stops are rough road miles. Directions open Google Maps, starting from wherever you are. A shared link or QR code carries only the list of stops.</p>
     </aside>

@@ -26,6 +26,7 @@ body=f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
       <p class="nm-count" id="nmCount" aria-live="polite">{n} entries</p>
     </div>
     <div id="nmOut" class="nm-out"></div>
+    <aside class="nm-also" id="nmAlso" hidden aria-live="polite"><h2>Elsewhere on the site</h2><ul></ul></aside>
     <noscript><p class="note">Turn on JavaScript to search the roll. Each town’s directory can also be read on its plan in the <a href="/map/">map room</a>.</p></noscript>
     <h2>How to read the roll</h2>
     <ul class="dis">
@@ -62,5 +63,34 @@ body=f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
     }})();
     </script>
 '''
+import re as _re, sys as _sys
+_sys.path.insert(0, str(pathlib.Path(__file__).parent))
+import oldcards as _O, visitdata as _V
+_A=[]
+for _f,_u in (('walk.json','/walk/'),('walk-dowagiac.json','/walk/dowagiac/')):
+    for _s in json.load(open(pathlib.Path(__file__).parent/'data'/_f))['stops']:
+        _A.append([_s['name'], 'A stop on the '+('Broadway' if _u=='/walk/' else 'Front Street')+' walk', _u+'#'+_s['id'], (_s['name']+' '+_s.get('then','')+' '+_s.get('now',''))])
+for _m in json.load(open(pathlib.Path(__file__).parent/'data'/'makers.json')):
+    _A.append([_m['name'], 'Made in the Valley · '+_m['town'], '/made-in-the-valley/#'+_m['id'], _m['name']+' '+(_m.get('founder') or '')+' '+_m.get('story','')])
+for _d in _O.D:
+    _A.append([_d['title'], 'Old postcard · '+(_d.get('date') or ''), '/postcards/#oc-'+_d['id'], _d['title']+' '+(_d.get('publisher') or '')])
+for _p in _V.all_places():
+    if _p['i'].startswith(('m:','f:')): _A.append([_p['n'], _p['g']+' · '+_p['t'], _p['u'], _p['n']])
+def _norm(x): return _re.sub(r'\s+',' ',_re.sub(r'[^a-z0-9 ]+',' ',x.lower())).strip()
+for _r in _A: _r[3]=_norm(_r[3])
+open(pathlib.Path(__file__).parent.parent/'names'/'also.json','w').write(json.dumps(_A,ensure_ascii=False,separators=(',',':')))
+body += r"""<script>
+(function(){ "use strict"; var q=document.getElementById('nmQ'), box=document.getElementById('nmAlso'), ul=box.querySelector('ul'), A=null, t=null;
+  var norm=function(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9 ]+/g,' ').replace(/\s+/g,' ').trim(); };
+  var run=function(){ var w=norm(q.value).split(' ').filter(function(x){ return x.length>2; }); ul.innerHTML=''; if (!w.length || !A){ box.hidden=true; return; }
+    var hits=A.filter(function(r){ return w.every(function(x){ return (' '+r[3]+' ').indexOf(' '+x)>=0; }); }).slice(0,8);
+    hits.forEach(function(r){ var li=document.createElement('li'), a=document.createElement('a'); a.href=r[2]; a.textContent=r[0]; li.appendChild(a); var s=document.createElement('span'); s.textContent=' · '+r[1]; li.appendChild(s); ul.appendChild(li); });
+    box.hidden=!hits.length; };
+  var load=function(){ if (A){ run(); return; } fetch('/names/also.json?v=1').then(function(r){ return r.json(); }).then(function(j){ A=j; run(); }).catch(function(){}); };
+  q.addEventListener('input',function(){ clearTimeout(t); t=setTimeout(load,200); }); if (q.value) load();
+})();
+</script>
+"""
+
 page('names/index.html','Who was in town · Names on the old maps · Project Scroll',f'{n} names from the business directories printed beside the 1860 and 1861 town plans of Cassopolis, Dowagiac, Niles, Paw Paw and Goshen, and the roll of Company D, Sixth Michigan Infantry, searchable by surname, trade or town.',body,og='https://projectscroll.com/og/map.jpg')
 print('names roll built:',n,'entries')
