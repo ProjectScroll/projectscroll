@@ -3739,3 +3739,24 @@ blockquote.nw-q{margin:1rem 0; padding:.6rem 1rem; border-left:3px solid var(--r
 .nw-s.nw-feat h2 a{background:linear-gradient(transparent 62%,rgba(230,197,90,.35) 62%)}
 .nw-glance h2.nw-gh{margin:0 0 .5rem; font:inherit; font-size:.78rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-lo); border:0; padding:0}
 .nw-lead h1 .fn{min-width:24px; min-height:24px; box-sizing:border-box; text-align:center}
+/* illustrations inside a story: wide, captioned, marked as not a record */
+.nw-ill{margin:1.4rem 0}
+.nw-ill img{display:block;width:100%;height:auto;aspect-ratio:4/1;object-fit:cover;border-radius:4px}
+.nw-ill figcaption{font-size:.86rem;color:var(--ink-soft);margin-top:.4rem;line-height:1.45}
+.nw-ill-k{display:inline-block;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid currentColor;border-radius:3px;padding:.05rem .35rem;margin-right:.35rem;vertical-align:.1em}
+/* kinship chart */
+.nw-kin{margin:1.4rem 0;padding:1rem;border:1px solid var(--line);border-radius:6px;background:color-mix(in srgb,var(--gold,#b8892b) 6%,transparent)}
+.nw-kin figcaption{font-size:.92rem;margin-bottom:.8rem}
+.kin-top{text-align:center;position:relative;padding-bottom:1rem}
+.kin-top::after{content:"";position:absolute;left:50%;bottom:0;height:1rem;border-left:2px solid #c9a227}
+.kin-p{display:inline-block;padding:.4rem .8rem;border:1px solid var(--line);border-radius:4px;background:var(--paper,#fff)}
+.kin-p small{color:var(--ink-soft)}
+.kin-row{list-style:none;margin:0;padding:1rem 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;border-top:2px solid #c9a227;position:relative}
+.kin-row li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.2rem;position:relative}
+.kin-row li::before{content:"";position:absolute;top:-1rem;left:50%;height:1rem;border-left:2px solid #c9a227}
+.kin-w{padding:.3rem .5rem;border:1px solid var(--line);border-radius:4px;background:var(--paper,#fff);font-weight:600}
+.kin-m{font-size:.75rem;color:var(--ink-soft)}
+.kin-c{color:#8a6510;font-weight:700}
+.kin-note{font-size:.85rem;margin:.8rem 0 0}
+@media (max-width:520px){.kin-row{grid-template-columns:1fr;border-top:0;border-left:2px solid #c9a227;padding:0 0 0 1rem}.kin-row li{align-items:flex-start;text-align:left}.kin-row li::before{top:.9rem;left:-1rem;width:1rem;height:0;border-left:0;border-top:2px solid #c9a227}.kin-top{text-align:left}.kin-top::after{left:.1rem}}
+.nw-pics li{margin:.4rem 0}
