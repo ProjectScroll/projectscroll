@@ -14,6 +14,6 @@ git checkout -q -B "$B" || exit 1; git add -A; git commit -qm "$M
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01HMuVy4MP32mW96WdEuAjrt"
 git push -qu origin "$B" 2>/dev/null; git config --add remote.origin.fetch "+refs/heads/$B:refs/remotes/origin/$B"
-git checkout -q main; git merge -q --ff-only "$B"; git push -q origin HEAD:main 2>/dev/null; sleep 8
+git checkout -q main || { echo "could not switch to main (uncommitted changes?); not published"; exit 1; }; git merge -q --ff-only "$B" || { echo "main cannot fast-forward to $B; not published"; git checkout -q "$B"; exit 1; }; git push -q origin main:main 2>/dev/null; sleep 8
 gh run list -L1 --json databaseId -q '.[0].databaseId' | xargs -I{} gh run watch {} --exit-status >/dev/null && echo DEPLOYED
 git checkout -q "$B"; git push -q origin "$B" 2>/dev/null; true
