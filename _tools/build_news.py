@@ -6,6 +6,9 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from pages import page, R
 E = lambda s: html.escape(str(s), quote=True)
 N = json.load(open(f'{R}/_tools/data/news.json')); L = N['lead']; S = N['stories']
+_FD = json.load(open(f'{R}/_tools/data/finds.json'))
+for _s in S:
+    if _s['slug'] in _FD: _s['finds'] = [dict(x, d=x.get('d') or _s['date']) for x in _FD[_s['slug']]]
 CASES = json.load(open(f'{R}/cases.json'))['cases']
 nopen = sum(1 for c in CASES if not c.get('solved')); ncracked = len(CASES) - nopen
 halls = sorted({c['hall'] for c in CASES if c['hall'].startswith('h')})

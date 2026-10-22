@@ -13,7 +13,11 @@ M = ['January','February','March','April','May','June','July','August','Septembe
 day = lambda d: (lambda x: f'{x.day} {M[x.month-1]} {x.year}')(datetime.date.fromisoformat(d))
 slug = lambda s: re.sub(r'[^a-z0-9]+', '-', s.lower()).strip('-')
 N = json.load(open(R / '_tools/data/news.json'))
-rows = [(x, s) for s in N['stories'] for x in s.get('finds', [])]
+_FD = json.load(open(R / '_tools/data/finds.json'))
+for _s in N['stories']:
+    if _s['slug'] in _FD: _s['finds'] = [dict(x, d=x.get('d') or _s['date']) for x in _FD[_s['slug']]]
+_ORD = [k for k in _FD if not k.startswith('_')]
+rows = [(x, s) for s in sorted(N['stories'], key=lambda s: _ORD.index(s['slug']) if s['slug'] in _ORD else 99) for x in s.get('finds', [])]
 rows.sort(key=lambda r: r[0]['d'], reverse=True)
 
 SEAL = ('<svg class="dsc-seal" viewBox="0 0 60 60" aria-hidden="true"><g transform="translate(30 30)">'
@@ -26,12 +30,15 @@ def town(x, s):
 
 def item(i, x, s):
     fid = x.get('id') or f'{s["slug"]}-{i}'
-    img = x.get('img') or f'/img/news/{s["slug"]}-sq.webp'
-    alt = x.get('alt') or ''
     cap = f'<span class="dsc-cap">{E(x["cap"])}</span>' if x.get('cap') else ''
+    if x.get('img'):
+        pic = f'<img src="{E(x["img"])}" alt="{E(x.get("alt", ""))}" loading="lazy" decoding="async">'
+    else:
+        a, b, c = (x.get('card') or f'{s["headline"]}||').split('|')
+        pic = f'<span class="dsc-card"><b>{E(a)}</b><span>{E(b)}</span><i>{E(c)}</i></span>'
     srch = f'<div class="dsc-srch"><p class="dsc-srch-h">What we searched</p><p>{x["s"]}</p></div>' if x.get('s') else ''
     tw = town(x, s)
-    return (f'<li id="{E(fid)}" data-town="{E(slug(tw))}"><span class="dsc-pic"><img src="{E(img)}" alt="{E(alt)}" loading="lazy" decoding="async">{SEAL}{cap}</span>'
+    return (f'<li id="{E(fid)}" data-town="{E(slug(tw))}"><span class="dsc-pic">{pic}{SEAL}{cap}</span>'
             f'<div class="dsc-body"><p class="dsc-tw">{E(tw)}</p><p class="dsc-t">{x["t"]}</p>'
             f'<p class="dsc-s">In <a href="/news/{E(s["slug"])}/">{E(s["headline"])}</a> · found by Michael Urbanski, Project Scroll, {day(x["d"])}</p>'
             f'{srch}<p class="dsc-act"><a class="dsc-link" href="#{E(fid)}" data-dsclink>Link to this finding</a></p></div></li>')
