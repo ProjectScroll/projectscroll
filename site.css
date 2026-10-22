@@ -3860,3 +3860,7 @@ blockquote.nw-q{margin:1rem 0; padding:.6rem 1rem; border-left:3px solid var(--r
 @media print{.nw-tlf{display:none}.nw-tl li[hidden]{display:grid}}
 .nw-svg text{text-decoration:none!important}
 @media (max-width:560px){.nw-map,.nw-gapchart{overflow-x:auto;-webkit-overflow-scrolling:touch}.nw-map .nw-svg,.nw-gapchart .nw-svg{min-width:620px}.nw-map figcaption::after,.nw-gapchart figcaption::after{content:" Swipe sideways to see it all.";color:var(--ink-soft);font-style:italic}}
+.nw-svg .land path{fill:color-mix(in srgb,var(--ink) 5%,var(--paper));stroke:none}
+.nw-map .nw-svg{overflow:hidden}
+.nw-key .fam{fill:none;stroke:var(--rule);stroke-width:1.6;stroke-dasharray:3 3}
+.nw-key svg[viewBox="0 0 22 14"]{width:22px}
