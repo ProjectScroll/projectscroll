@@ -1047,5 +1047,115 @@
    42.2917,
    -85.5872
   ]
+ },
+ {
+  "town": "Cassopolis",
+  "county": "Cass",
+  "state": "MI",
+  "verified": true,
+  "ll": [
+   41.9093,
+   -86.0063
+  ],
+  "history": "Organized by Cassopolis Main Street, the village’s downtown organization.",
+  "name": "Stone Lake Ice Fishing Bowl",
+  "season": "winter",
+  "month": 1,
+  "when": "A Saturday in January, when the ice is at least six inches thick; lines in at 6 am, fish measured by 11 am",
+  "what": "A hook-and-line contest for the longest bluegill, crappie and perch through the ice of Stone Lake, with check-in at the beach Snack Shack near 203 S. Disbrow and awards afterward on Broadway. Entry is $30 cash; the 2026 bowl was postponed for thin ice, so watch for the new date.",
+  "url": "https://cassopolismainstreet.com/stone-lake-ice-fishing-bowl/"
+ },
+ {
+  "town": "Cassopolis",
+  "county": "Cass",
+  "state": "MI",
+  "verified": true,
+  "ll": [
+   41.9093,
+   -86.0063
+  ],
+  "history": "Organized by Cassopolis Main Street, the village’s downtown organization.",
+  "name": "Beach Bash",
+  "season": "summer",
+  "month": 6,
+  "when": "First weekend of June, Friday and Saturday",
+  "what": "Two days on Broadway and at Stone Lake Beach: food trucks, a beer garden, a vendor market, a kids’ area and foam party, live music each night, fireworks on Friday and a drone show on Saturday.",
+  "url": "https://cassopolismainstreet.com/beach-bash/",
+  "dates2026": {
+   "start": "2026-06-05",
+   "end": "2026-06-06"
+  }
+ },
+ {
+  "town": "Cassopolis",
+  "county": "Cass",
+  "state": "MI",
+  "verified": true,
+  "ll": [
+   41.9093,
+   -86.0063
+  ],
+  "history": "Organized by Cassopolis Main Street, the village’s downtown organization.",
+  "name": "Lakeside Live",
+  "season": "summer",
+  "month": 6,
+  "when": "Thursday evenings, June to August, 6–9 pm",
+  "what": "A different band every Thursday night on the beach at Stone Lake, all summer long. Bring a blanket and a friend.",
+  "url": "https://cassopolismainstreet.com/lakeside-live/"
+ },
+ {
+  "town": "Cassopolis",
+  "county": "Cass",
+  "state": "MI",
+  "verified": true,
+  "ll": [
+   41.9093,
+   -86.0063
+  ],
+  "history": "Organized by Cassopolis Main Street, the village’s downtown organization.",
+  "name": "Beach Blankets & Blockbusters",
+  "season": "summer",
+  "month": 6,
+  "when": "Friday evenings, June to early September, films at 7 pm",
+  "what": "Family movie nights on the sand at Stone Lake Beach, with popcorn from the Snack Shack and the odd double feature.",
+  "url": "https://cassopolismainstreet.com/beach-blankets-and-blockbusters/"
+ },
+ {
+  "town": "Cassopolis",
+  "county": "Cass",
+  "state": "MI",
+  "verified": true,
+  "ll": [
+   41.9093,
+   -86.0063
+  ],
+  "history": "Organized by Cassopolis Main Street, the village’s downtown organization.",
+  "name": "Rock the Block",
+  "season": "summer",
+  "month": 7,
+  "when": "A Saturday in July and one in August, 7–10 pm",
+  "what": "Downtown Cassopolis’s summer concert series: two Saturday nights of live bands, with food vendors.",
+  "url": "https://cassopolismainstreet.com/rock-the-block-summer-concert-series/"
+ },
+ {
+  "town": "Cassopolis",
+  "county": "Cass",
+  "state": "MI",
+  "verified": true,
+  "ll": [
+   41.9093,
+   -86.0063
+  ],
+  "history": "Organized by Cassopolis Main Street, the village’s downtown organization.",
+  "name": "Christmas in Cassopolis",
+  "season": "winter",
+  "month": 12,
+  "when": "First Saturday of December, late afternoon into the evening",
+  "what": "Santa and crafts at the Marketplace on Broadway, cookies and cocoa at the VFW, an elf scavenger hunt that starts at the 1899 courthouse, caroling down Broadway at 6, and the tree lit under the arches at Stone Lake Beach just after. Broadway is closed to traffic from York to Water Street.",
+  "url": "https://cassopolismainstreet.com/christmas-in-cassopolis/",
+  "dates2026": {
+   "start": "2026-12-05",
+   "end": "2026-12-05"
+  }
  }
 ]

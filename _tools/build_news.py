@@ -69,6 +69,20 @@ else:
 open(p, 'w').write(s)
 
 # ---------- 2. a page for every story ----------
+
+PICS = json.load(open(f'{R}/_tools/data/ecv_pics.json'))
+def pic1(k, sizes, cls=''):
+    alt, cap, lic, w, h = PICS[k]
+    img = (f'<a class="nw-pz" href="/img/ecv/{k}.webp"><picture><source type="image/avif" srcset="/img/ecv/{k}-700.avif 700w, /img/ecv/{k}.avif {w}w" sizes="{sizes}">'
+           f'<img src="/img/ecv/{k}-700.webp" srcset="/img/ecv/{k}-700.webp 700w, /img/ecv/{k}.webp {w}w" sizes="{sizes}" width="{w}" height="{h}" alt="{alt}" loading="lazy" decoding="async"></picture></a>')
+    return f'<figure class="nw-fig{cls}">{img}<figcaption>{cap} <span class="nw-lic">{lic}</span></figcaption></figure>'
+def picblock(kind, keys):
+    keys=[k.strip() for k in keys if k.strip()]
+    if kind=='fig': return pic1(keys[0], '(min-width:800px) 22rem, 94vw', ' nw-fig-r')
+    if kind=='wide': return pic1(keys[0], '(min-width:800px) 46rem, 94vw', ' nw-fig-w')
+    if kind=='row': return '<div class="nw-fig-row">' + ''.join(pic1(k, '(min-width:800px) 15rem, 94vw') for k in keys) + '</div>'
+    ks = keys or list(PICS)
+    return '<div class="nw-album">' + ''.join(pic1(k, '(min-width:800px) 15rem, 46vw') for k in ks) + '</div>'
 CONTRIB = '<div class="nw-contrib"><p class="nw-contrib-h">Write for Project Scroll</p><p>We welcome research, stories and finds from readers, families, historians and other researchers. Contributed articles carry the contributor’s name. Send your story, your sources or your idea to <a href="mailto:research@projectscroll.com?subject=A%20story%20for%20Project%20Scroll">research@projectscroll.com</a>.</p></div>'
 SHARE = """<script>document.querySelectorAll('.nw-share').forEach(function(b){ b.addEventListener('click', function(){ var u=location.href.split('#')[0], t=b.dataset.t;
   if (navigator.share) navigator.share({title:t, url:u}).catch(function(){}); else if (navigator.clipboard) navigator.clipboard.writeText(u).then(function(){ b.textContent='Link copied ✓'; }); }); });</script>
@@ -83,6 +97,8 @@ for k, st in enumerate(S):
     prv, nxt = S[k-1] if k else None, S[k+1] if k+1 < len(S) else None
     pn = '<nav class="nw-pn" aria-label="Previous and next story">' + (f'<a class="nw-prev" href="/news/{prv["slug"]}/"><span>‹ Previous story</span>{E(prv["headline"])}</a>' if prv else '<a class="nw-prev" href="/hunt/"><span>‹ The lead story</span>Every clue is true.</a>') + (f'<a class="nw-next" href="/news/{nxt["slug"]}/"><span>Next story ›</span>{E(nxt["headline"])}</a>' if nxt else '<a class="nw-next" href="/"><span>Back to ›</span>The front page</a>') + '</nav>'
     def para(x):
+        m = re.match(r'^\{\{(fig|wide|row|album)(?::([^}]*))?\}\}$', x)
+        if m: return picblock(m.group(1), (m.group(2) or '').split(','))
         if x.startswith('## '):
             t=x[3:]; return f'<h2 id="{re.sub(r"[^a-z0-9]+","-",t.lower()).strip("-")}">{t}</h2>'
         return x if re.match(r'<(aside|nav|blockquote|ul|ol|p|div|figure)\b', x) else f'<p>{x}</p>'
@@ -90,7 +106,10 @@ for k, st in enumerate(S):
     reveal = f'<details class="nw-reveal"><summary>Show the answer</summary>{st["reveal"]}</details>' if st.get('reveal') else ''
     cta = '<p class="nw-cta">' + ' '.join(f'<a class="btn{" primary" if i==0 else ""}" href="{E(u)}">{E(t)}</a>' for i,(t,u) in enumerate(st['cta'])) + '</p>'
     src = ('<div class="nw-src"><h2 id="sources">Sources</h2><ul>' + ''.join((f'<li><a href="{E(u)}" rel="noopener">{E(t)}</a></li>' if u else f'<li>{E(t)}</li>') for t,u in st['sources']) + '</ul></div>') if st['sources'] else ''
-    credit = f'<p class="nw-credit">{E(st["credit"])}</p>' if st.get('credit') else ''
+    who = st.get('credit')
+    credit = (f'<div class="nw-about" role="note"><p class="nw-about-h">About this research</p>'
+              + (f'<p class="nw-about-by">Discovery and research by <b>{E(who)}</b>.</p>' if who else '<p class="nw-about-by">Researched and written by the Project Scroll research desk.</p>')
+              + '<p>Every fact on this page comes from a source listed above, and each one can be checked where it is held. If you find an error, or hold a record that adds to the story, write to <a href="mailto:research@projectscroll.com">research@projectscroll.com</a>; corrections are made and noted on the page.</p></div>')
     live = f'<div class="nw-live" role="note"><p class="nw-live-h"><span class="nw-dot" aria-hidden="true"></span>Live research document</p><p>{st["live"]}</p></div>' if st.get('live') else ''
     b = f'''    <p class="crumb"><a href="/">← Front page</a> · <a href="/news/">All the news</a></p>
     <article class="nw-art">
@@ -101,9 +120,9 @@ for k, st in enumerate(S):
       {fig}
       <div class="nw-text">{body}{reveal}</div>
       {gal}
-      {credit}
       {cta}
       {src}
+      {credit}
       {CONTRIB}
       {pn}
     </article>
@@ -111,7 +130,7 @@ for k, st in enumerate(S):
 '''
     b += SHARE
     import pages as _P
-    _x={"datePublished":st["date"],"dateModified":st.get("updated") or st["date"],"image":[f'https://projectscroll.com{st["pic"][0]}.webp',f'https://projectscroll.com/news/{st["slug"]}/card.jpg'],"articleSection":"News of the hunt","mainEntityOfPage":f'https://projectscroll.com/news/{st["slug"]}/'}
+    _x={"datePublished":st["date"],"dateModified":st.get("modified") or st.get("updated") or st["date"],"image":[f'https://projectscroll.com{st["pic"][0]}.webp',f'https://projectscroll.com/news/{st["slug"]}/card.jpg'],"articleSection":"News of the hunt","mainEntityOfPage":f'https://projectscroll.com/news/{st["slug"]}/'}
     if st.get('by'): _x["author"]={"@type":"Person","name":st["by"]}
     if st.get('live'): _x["creativeWorkStatus"]="Live research document, updated as new records are found"
     _P.EXTRA[f'news/{st["slug"]}/index.html']=_x
