@@ -14,7 +14,7 @@ li = ''.join(f'<li id="{pid(pl)}"><details><summary><b>{E(pl)}</b> <span>{len(ss
 n = sum(len(ss) for _, ss in groups)
 SEC = (f'<!--placemap-->\n    <section class="sm" aria-labelledby="smH" data-placemap><div class="sm-head"><h2 id="smH">Explore by place</h2>'
        f'<p>{n} stories, {len(groups)} places, one map. Press a town to read its story; where there are several, pick from the list.</p></div>'
-       f'<div class="sm-grid"><figure class="sm-fig">{D["svg"]}</figure><ul class="sm-list">{li}</ul></div></section>\n    <!--/placemap-->')
+       f'<div class="sm-grid"><figure class="sm-fig">{D["svg"].replace('role="img"', 'role="group"', 1)}</figure><ul class="sm-list">{li}</ul></div></section>\n    <!--/placemap-->')
 p = R / 'index.html'; s = open(p).read()
 if '<!--placemap-->' in s:
     s = re.sub(r'<!--placemap-->.*?<!--/placemap-->', lambda m: SEC, s, flags=re.S)

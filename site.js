@@ -647,13 +647,13 @@ try{ (function(){
    parts rail, breadcrumbs) stay in the same tab, so Back works. Other links to the site's own pages still open a new tab. */
 try{ (function(){
   const here=location.origin+location.pathname, MENU='.bar, footer.site nav, #searchRes, .partrail, .skip, .toolrow, .heroside, .doors, .drp, .crumb, .wk-tools, .fd-jump, .pp-tools, .mu-dtl, .mu-acts .mu-old, .se-up, .pshows, .oc-jump, .tr-visit';
-  const BTN='.btn, .pshow, .vshow, .tcard, .dcard, .ctas a, .nw, .nw-art, .nw-morebox, .nw-cards, .nw-card-lead, .nw-pn, .hn-head, .hn-card, .hn-level, .hn-cases, .hn-quests, .hn-fogs, .hn, .nw-index';
+  const BTN='.btn, .pshow, .vshow, .tcard, .dcard, .ctas a, .nw, .nw-art, .nw-morebox, .nw-cards, .nw-card-lead, .nw-pn, .hn-head, .hn-card, .hn-level, .hn-cases, .hn-quests, .hn-fogs, .hn, .nw-index, .sm, .dsc-col, .dsc-list, .dsc-filter';
   const mark=function(a){
     const h=a.getAttribute('href'); if (!h || h.charAt(0)==='#' || /^(mailto:|tel:|javascript:)/i.test(h)) return;
     let u; try{ u=new URL(h, location.href); }catch(e){ return; }
     if (u.origin+u.pathname===here && u.hash) return;
-    if (a.closest(BTN) || (u.origin===location.origin && a.closest(MENU))){ if (a.target==='_blank') a.removeAttribute('target'); return; }
-    a.target='_blank'; const r=(a.getAttribute('rel')||'').split(/\s+/); if (r.indexOf('noopener')<0) r.push('noopener'); a.setAttribute('rel', r.join(' ').trim());
+    if (a.closest(BTN) || (u.origin===location.origin && a.closest(MENU))){ if (a.getAttribute('target')==='_blank') a.removeAttribute('target'); return; }
+    a.setAttribute('target','_blank'); const r=(a.getAttribute('rel')||'').split(/\s+/); if (r.indexOf('noopener')<0) r.push('noopener'); a.setAttribute('rel', r.join(' ').trim());
   };
   document.querySelectorAll('a[href]').forEach(mark);
   document.addEventListener('click', function(e){ const a=e.target.closest && e.target.closest('a[href]'); if (a) mark(a); }, true);
