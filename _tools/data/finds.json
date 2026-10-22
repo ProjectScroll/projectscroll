@@ -42,6 +42,36 @@
    "img": "/img/news/ugrr/glover-1906-elk-park-friends.webp",
    "alt": "Glover 1906 on the Anti-Slavery Friends at the Elk Park",
    "cap": "Glover, Twentieth Century History of Cass County (1906), p. 386. Internet Archive."
+  },
+  {
+   "id": "bonine-elk-italy-1885",
+   "town": "Vandalia",
+   "t": "The earliest eyewitness account of the Bonine elk park, in the <i>Michigan Farmer</i> of 18 August 1885, says <b>two</b> elk “went to Victor Emanual, the King of Italy, … to grace the Royal Park,” with no warship, against the seven elk and “war vessel” of the 1882 county history. The same visitor describes a 40-acre park behind a ten-foot fence, ten elk and thirteen deer, the elk coming to the call “Come Bill!”, and a large fountain and flagstone walks before the house.",
+   "s": "The Underground Railroad Society of Cass County’s pages on the house, carriage house and Quaker timeline; eight Leader articles of 2009–2021; the Clio entry; local radio and television features; Wikipedia; Internet Archive full-text searches for Bonine with elk, Italy and “Victor Emmanuel”; Italian sources on the wapiti of La Mandria, none of which names Michigan.",
+   "img": "/img/news/ugrr/michigan-farmer-1885-king-of-italy.webp",
+   "alt": "Michigan Farmer 1885: two went to Victor Emanual, the King of Italy, to grace the Royal Park",
+   "cap": "Michigan Farmer, 18 August 1885. Internet Archive."
+  },
+  {
+   "id": "bonine-elk-park-1953",
+   "town": "Vandalia",
+   "t": "The Bonine Elk Park outlived its founder by half a century. Isaac A. Bonine wrote to the federal Biological Survey in 1907 that he had bred elk “for about thirty-five years”; a 1908 newspaper reports elk sold at $100 a head to parks in Detroit and Grand Rapids; and in October 1953 a newspaper photograph shows “a herd of 12 to 15 elk at Bonine Elk Park” on M-60, still owned by the founder’s great-grandson.",
+   "s": "The Underground Railroad Society of Cass County’s pages on the house, carriage house and Quaker timeline; eight Leader articles of 2009–2021; the Clio entry; local radio and television features; Wikipedia; Internet Archive full-text searches for “Bonine Elk Park” and “Elk Park farm”; the Biological Survey bulletins.",
+   "card": "East Jordan News-Herald|“A herd of 12 to 15 elk”|8 October 1953"
+  },
+  {
+   "id": "bonine-family-dates",
+   "town": "Vandalia",
+   "t": "The dates missing from modern accounts of the Bonines: James E. Bonine was born in Wayne County, Indiana, on 5 September 1816 and married Sarah Ann Bogue at Cassopolis on 8 August 1844; she was born in Preble County, Ohio, on 30 April 1825 and died at Vandalia on 17 September 1909. The Pioneer Society roll printed in 1906 gives James E. as coming to the county in 1841, a year before his father, not in 1843.",
+   "s": "The Underground Railroad Society of Cass County’s pages on the house, carriage house and Quaker timeline; eight Leader articles of 2009–2021; the Clio entry; local radio and television features; Wikipedia; the Sharpless (1887), Bogue (1944) and Hannum (1911) genealogies; Indiana Quaker meeting abstracts; Glover’s 1906 history, p. 352, checked against the page image.",
+   "card": "Genealogy of the Sharpless Family|Philadelphia|1887"
+  },
+  {
+   "id": "bonine-air-line",
+   "town": "Vandalia",
+   "t": "James E. Bonine was superintendent of the Air Line railroad through Penn Township, giving “three years time, $6,000 right of way, and $6,000 cash,” by the 1882 county history. The line was the Michigan Air Line, opened through Vandalia in 1871. No modern account of the Bonine House we have read mentions it.",
+   "s": "The Underground Railroad Society of Cass County’s pages on the house, carriage house and Quaker timeline; eight Leader articles of 2009–2021; the Clio entry; local radio and television features; Wikipedia; web searches for Bonine with “Air Line” and railroad.",
+   "card": "History of Cass County|Chicago|1882, p. 258"
   }
  ],
  "_about": "New findings, by story slug. Merged into each story's 'finds' by build_news.py and build_discoveries.py. Each: id, t (the finding, html), s (what we searched, html), town (filter label), img, alt, cap. Only findings checked as not previously published go here.",
