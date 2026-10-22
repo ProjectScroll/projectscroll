@@ -3657,3 +3657,19 @@ h3 + p{margin-top:.35rem}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nw-paper .lede .hi{color:#2B4A41} }
 .nw-paper .nw-b h2 a:visited, .nw-paper .nw-more a:visited{color:#4B5663}
 .nw-nug{pointer-events:none} @media (max-width:640px){ .nw-nug{width:2.1rem; top:.45rem; right:.5rem} .hero .nw-lead h1{padding-right:1.8rem} }
+/* Draft 171: pictures for the news — the lead's tall picture at its side, square thumbnails on the top stories, a wide picture on every story page */
+.nw-lp{float:left; width:8rem; margin:.2rem .95rem .35rem 0; line-height:0}
+.nw-lp img{width:100%; height:auto; border-radius:4px; box-shadow:0 8px 18px -10px rgba(40,25,5,.7); outline:1px solid color-mix(in srgb, #b8892b 55%, transparent)}
+.nw-lead::after{content:""; display:block; clear:both}
+.hero .nw-lead p.lede{font-size:1rem}
+@media (max-width:640px){ .nw-lp{float:none; display:block; width:auto; margin:.1rem 0 .65rem} .nw-lp img{aspect-ratio:16/9; object-fit:cover} }
+.nw-b{display:grid; grid-template-columns:3.4rem minmax(0,1fr); column-gap:.65rem; align-items:start}
+.nw-th{grid-row:1 / span 2; line-height:0; margin-top:.15rem} .nw-th img{width:100%; height:auto; border-radius:3px; outline:1px solid #D3D8D0}
+@media (max-width:640px){ .nw-b{grid-template-columns:2.8rem minmax(0,1fr); column-gap:.5rem} }
+.nw-more{grid-template-columns:1fr 1fr}
+.nw-card .nw-cimg{width:calc(100% + 2rem); max-width:none; height:auto; aspect-ratio:16/9; object-fit:cover; margin:-.9rem -1rem .5rem; border-radius:6px 6px 0 0; display:block}
+.nw-card a{overflow:hidden}
+.hn-pic{float:left; width:8rem; margin:.3rem 1.1rem .5rem 0; line-height:0} .hn-pic img{width:100%; height:auto; border-radius:5px; box-shadow:0 10px 22px -12px rgba(0,0,0,.6)}
+@media (max-width:560px){ .hn-pic{width:6rem} }
+.hn-head > div::after{content:""; display:block; clear:both}
+.hero .nw-lead p.lede{font-size:.97rem; line-height:1.48}

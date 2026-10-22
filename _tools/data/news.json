@@ -3,9 +3,57 @@
   "kicker": "The hunt",
   "headline": "Every clue is true.",
   "url": "/hunt/",
-  "dek": "Project Scroll now has a new, <em class=\"hi\">free</em> online treasure hunt.<br>Real mysteries, history and clues hide in pages, websites,<br>county histories, survey maps, certificates, newspapers,<br>forgotten lore and <b>local legends</b>.<br>Every one of them can be <em class=\"hi\">solved by you</em>."
+  "dek": "Project Scroll now has a new, <em class=\"hi\">free</em> online treasure hunt.<br>Real mysteries, history and clues hide in pages, websites,<br>county histories, survey maps, certificates, newspapers,<br>forgotten lore and <b>local legends</b>.<br>Every one of them can be <em class=\"hi\">solved by you</em>.",
+  "pic": [
+   "/img/news/lead-hunt",
+   "An old county wall map on its wooden roller falls from a lamplit desk, beside a county history, with one gold nugget resting on the map"
+  ]
  },
  "stories": [
+  {
+   "slug": "e-clampus-vitus-in-cassopolis-1846",
+   "date": "2026-10-22",
+   "kicker": "Discovery",
+   "headline": "A lodge of E Clampus Vitus, in Cassopolis, in 1846",
+   "short": "E Clampus Vitus in Cassopolis, 1846",
+   "dek": "Two county histories record a lodge of the “Ancient and Honorable Order of the Eclampsus Vitus” at Cassopolis in the spring of 1846, with its charter members named and a ball of two hundred badges.",
+   "pic": [
+    "/img/news/e-clampus-vitus-in-cassopolis-1846",
+    "Howard S. Rogers, History of Cass County, from 1825 to 1875, page 253: the first secret society of which there is any record",
+    "Rogers, History of Cass County, from 1825 to 1875 (1875), p. 253."
+   ],
+   "body": [
+    "<span class=\"dl\">Cassopolis, Mich.</span> “The first Secret Society, of which there is any record, was a Lodge of the ‘Ancient and Honorable Order of the Eclampsus Vitus,’ which was instituted in the spring of 1846, with Dr. E. J. Bonine, Laban Harter, J. P. Osborn and Dr. L. Osborn as charter members.” So wrote Howard S. Rogers in his <i>History of Cass County, from 1825 to 1875</i>, published in 1875, on page 253.",
+    "It was, he says, a lodge “in broadest burlesque of legitimate secret organizations.” Candidates were bound fast, blindfolded and dragged into the hall by halters, and made to pledge themselves to things impossible or ridiculous. In the winter of 1846 and 1847 the lodge gave a grand ball at the Union Hotel, where more than two hundred of its badges were displayed, “by men who stood among the highest in popular esteem and respectability.”",
+    "Alfred Mathews told the story again in his <i>History of Cass County, Michigan</i> in 1882, on page 174. Both books say the order was afterward merged into the “Sons of Malta.”",
+    "Why it matters: E Clampus Vitus is known today as the historical society of the old West, the “Clampers” who put up plaques across California. The order dates its founding to 1845, at Lewisport, Virginia, now West Union, West Virginia, and a lodge was organized at Mokelumne Hill, California, in 1851. If the Cass County histories are right, a lodge was meeting in a small Michigan county seat in 1846, within a year of that founding date.",
+    "Did the Cassopolis lodge ever have a real charter, or only a joke one? That is Case 1 on the board, and nobody has cracked it yet. Both books are free to read online."
+   ],
+   "cta": [
+    [
+     "Read page 253, slowly",
+     "/document/"
+    ],
+    [
+     "Open Case 1",
+     "/cases/1/"
+    ]
+   ],
+   "sources": [
+    [
+     "Howard S. Rogers, History of Cass County, from 1825 to 1875 (1875), pp. 253–254, University of Michigan",
+     "https://name.umdl.umich.edu/BAD0871.0001.001"
+    ],
+    [
+     "Alfred Mathews, History of Cass County, Michigan (1882), p. 174, University of Michigan",
+     "https://name.umdl.umich.edu/BAD0870.0001.001"
+    ],
+    [
+     "E Clampus Vitus, Wikipedia",
+     "https://en.wikipedia.org/wiki/E_Clampus_Vitus"
+    ]
+   ]
+  },
   {
    "slug": "the-day-3000-came-to-watch-one-log",
    "date": "2026-10-22",
@@ -13,12 +61,6 @@
    "headline": "The day 3,000 people came to watch one log",
    "short": "The day 3,000 came to watch one log",
    "dek": "Twenty-four men carried the first log of the Pioneer Log Cabin while a band played. Four weeks later the cabin was finished.",
-   "img": [
-    "/img/oldcards/ps112",
-    1400,
-    866,
-    "The card of 1923: Building the Pioneer Log Cabin, Cassopolis, Michigan, May 23 to June 20, 1923"
-   ],
    "body": [
     "<span class=\"dl\">Cassopolis, Mich.</span> At half past eight on the morning of 23 May 1923, a black walnut log twenty-six feet long was carried to its place by twenty-four men. A band played and the crowd sang. About three thousand people stood and watched, and many had driven up to fifty miles to be there.",
     "It was the first log of the Cass County Pioneer Log Cabin. A note written on the back of one card of the day says fifty-two volunteers did the first morning’s work.",
@@ -44,38 +86,12 @@
      "Men building the Cass County Pioneer Cabin, Cassopolis, Michigan (postcard, 1923), Burton Historical Collection, Detroit Public Library",
      "https://digitalcollections.detroitpubliclibrary.org/bh012201"
     ]
+   ],
+   "pic": [
+    "/img/news/the-day-3000-came-to-watch-one-log",
+    "Building the Pioneer Log Cabin, Cassopolis, Michigan, May 23 to June 20, 1923: a card printed for the occasion",
+    "The card of 1923, Building the Pioneer Log Cabin. Private collection."
    ]
-  },
-  {
-   "slug": "case-1-is-still-open",
-   "date": "2026-10-22",
-   "kicker": "Still open",
-   "headline": "Did the joke lodge of 1846 ever have a real charter?",
-   "short": "Case 1: did the lodge of 1846 have a charter?",
-   "dek": "Nobody has cracked Case 1 yet. The book that first told the story is free to read online, and the clue is one word.",
-   "img": [
-    "/img/strip/rogers-800",
-    800,
-    200,
-    "A page of Rogers’s History of Cass County, 1875"
-   ],
-   "body": [
-    "<span class=\"dl\">Cassopolis, Mich.</span> In the spring of 1846, the county histories say, a lodge of the “Ancient and Honorable Order of the Eclampsus Vitus” was founded at Cassopolis, all halters and blindfolds. That winter it gave a grand ball at the Union Hotel, where more than two hundred of its badges were on show.",
-    "Howard S. Rogers told the story first, in his <i>History of Cass County, from 1825 to 1875</i> (1875), on pages 253 and 254. He names four charter members. Alfred Mathews printed the story again in 1882.",
-    "So the question on the case board is simple to ask and hard to settle: was there ever a real charter, or only a joke one? Read the two books side by side, and watch the word “charter.”",
-    "The first person to answer it, with the book and the page, is named on the case board for good."
-   ],
-   "cta": [
-    [
-     "Open Case 1",
-     "/cases/1/"
-    ],
-    [
-     "The whole case board",
-     "/#cases"
-    ]
-   ],
-   "sources": []
   },
   {
    "slug": "pick-a-date-and-see-whats-open",
@@ -84,12 +100,6 @@
    "headline": "Pick a date, and see what’s open",
    "short": "Pick a date, and see what’s open",
    "dek": "Tell the Visit & Plan page the day you’re coming. It shows the museums open that day, what’s on, and your own day on the map.",
-   "img": [
-    "/img/card-walk-art-270",
-    270,
-    480,
-    ""
-   ],
    "body": [
     "<span class=\"dl\">The St. Joseph River valley.</span> Many of the valley’s museums are run by volunteers and open only a few days a week, some only in summer. Turning up to a locked door is the commonest way a day out goes wrong.",
     "The Visit &amp; Plan page now takes a date. Pick the day you’re coming and it shows which museums are open, using each place’s posted hours, and any festival on that day.",
@@ -106,7 +116,12 @@
      "/museums/"
     ]
    ],
-   "sources": []
+   "sources": [],
+   "pic": [
+    "/img/news/pick-a-date-and-see-whats-open",
+    "The Pioneer Log Cabin Museum, Cassopolis, in autumn",
+    "The Pioneer Log Cabin Museum, Cassopolis."
+   ]
   },
   {
    "slug": "send-someone-an-old-postcard",
@@ -115,12 +130,6 @@
    "headline": "Send someone an old postcard",
    "short": "Send someone an old postcard",
    "dek": "Pick any card in the gallery, write on the back, and share it from your phone.",
-   "img": [
-    "/img/oldcards/ps115-700",
-    700,
-    447,
-    "Road to Town, Cassopolis, Mich., on an old postcard"
-   ],
    "body": [
     "<span class=\"dl\">Cassopolis, Mich.</span> A century ago this is how you told someone you were thinking of them: a picture of your town on the front, a few lines on the back, and a stamp.",
     "Every card in the old postcard gallery now has a button under it: Send this postcard. Write who it’s to, your message and your name, and the back of the card is laid out as you type.",
@@ -133,7 +142,42 @@
      "/postcards/"
     ]
    ],
-   "sources": []
+   "sources": [],
+   "pic": [
+    "/img/news/send-someone-an-old-postcard",
+    "Road to Town, Cassopolis, Mich., on an old real-photo postcard",
+    "Road to Town, Cassopolis, Mich., about 1908 to 1915. Private collection."
+   ]
+  },
+  {
+   "slug": "case-1-is-still-open",
+   "date": "2026-10-22",
+   "kicker": "Still open",
+   "headline": "Did the joke lodge of 1846 ever have a real charter?",
+   "short": "Case 1: did the lodge of 1846 have a charter?",
+   "dek": "Nobody has cracked Case 1 yet. The book that first told the story is free to read online, and the clue is one word.",
+   "body": [
+    "<span class=\"dl\">Cassopolis, Mich.</span> In the spring of 1846, the county histories say, a lodge of the “Ancient and Honorable Order of the Eclampsus Vitus” was founded at Cassopolis, all halters and blindfolds. That winter it gave a grand ball at the Union Hotel, where more than two hundred of its badges were on show.",
+    "Howard S. Rogers told the story first, in his <i>History of Cass County, from 1825 to 1875</i> (1875), on pages 253 and 254. He names four charter members. Alfred Mathews printed the story again in 1882.",
+    "So the question on the case board is simple to ask and hard to settle: was there ever a real charter, or only a joke one? Read the two books side by side, and watch the word “charter.”",
+    "The first person to answer it, with the book and the page, is named on the case board for good."
+   ],
+   "cta": [
+    [
+     "Open Case 1",
+     "/cases/1/"
+    ],
+    [
+     "The whole case board",
+     "/#cases"
+    ]
+   ],
+   "sources": [],
+   "pic": [
+    "/img/news/case-1-is-still-open",
+    "Alfred Mathews, History of Cass County, Michigan (1882), page 174: the lodge of the Eclampsus Vitus",
+    "Mathews, History of Cass County, Michigan (1882), p. 174, where the story is told again."
+   ]
   },
   {
    "slug": "where-is-this",
@@ -142,12 +186,6 @@
    "headline": "A depot, a water tower and three clues",
    "short": "A depot, a water tower, three clues",
    "dek": "An old real-photo postcard of a station somewhere in the valley. Can you name the town?",
-   "img": [
-    "/img/news/where-is-this",
-    1400,
-    777,
-    "A small wooden depot and a water tower on iron legs, on an old real-photo postcard. The station sign is blurred."
-   ],
    "body": [
     "A small wooden depot. A water tower on iron legs. A field of tall grass, and not one person in sight. The card’s caption has been cut off, and the station sign blurred.",
     "<b>Clue one.</b> The railroad here was the Michigan Central’s Air Line, which ran from Jackson to Niles.",
@@ -170,7 +208,42 @@
      "Station: Cassopolis, MI, Michigan Railroads",
      "https://michiganrailroads.com/stations-locations/78-cass-county-14/593-cassopolis-mi"
     ]
+   ],
+   "pic": [
+    "/img/news/where-is-this",
+    "A small wooden depot and a water tower on iron legs, on an old real-photo postcard; the station sign is blurred",
+    "The mystery card, with its caption cut off and the station sign blurred."
    ]
+  },
+  {
+   "slug": "the-hotel-that-walked",
+   "date": "2026-10-22",
+   "kicker": "Case 2",
+   "headline": "The hotel that walked away",
+   "short": "The hotel that walked away",
+   "dek": "In 1867 the old hotel where the lodge held its ball was hauled across Cassopolis and turned into a mill. Where did it end up?",
+   "pic": [
+    "/img/news/the-hotel-that-walked",
+    "The hotel’s block on the 1860 wall map of Cass County, Van Buren and Berrien counties",
+    "The hotel’s block on the 1860 Geil, Harley & Siverd wall map. Library of Congress."
+   ],
+   "body": [
+    "<span class=\"dl\">Cassopolis, Mich.</span> The old hotel stood at the northwest corner of Broadway and State Street, at the heart of the village.",
+    "It was the Union Hotel, where the lodge of 1846 held its grand ball. In 1852 the Masons held their first meeting under the same roof, and on the 1860 wall map of the county the engraver cut one word on its block: HOTEL.",
+    "Then, in 1867, the building was hauled across the village and turned into a mill, and a new hotel rose on its ground.",
+    "Where did the old hotel end up, and is any of it still standing? That is Case 2 on the board. The first sources are the county histories of 1882 and 1906, free to read online."
+   ],
+   "cta": [
+    [
+     "Open Case 2",
+     "/cases/2/"
+    ],
+    [
+     "Drag the corner from 1860 to today",
+     "/map/cassopolis/"
+    ]
+   ],
+   "sources": []
   },
   {
    "slug": "cassopolis-in-lidar",
@@ -179,12 +252,6 @@
    "headline": "Fly over Cassopolis, laser point by laser point",
    "short": "Cassopolis in 355,650 laser points",
    "dek": "355,650 real laser points from the 2015 survey, in 3D, with the 1860 town plan laid on the ground.",
-   "img": [
-    "/img/card-lidar-art-270",
-    270,
-    480,
-    ""
-   ],
    "body": [
     "<span class=\"dl\">Cassopolis, Mich.</span> In 2015 an aircraft flew over Cass County firing laser pulses at the ground, hundreds of thousands a second, and timing each echo. Every dot in the new model is one of those echoes, from the blocks around the courthouse: 355,650 of them.",
     "The buildings and trees stand where the laser found them, 125,189 points of roofs and 230,461 of trees, over the bare ground of the town.",
@@ -201,7 +268,12 @@
      "/map/3d/valley/"
     ]
    ],
-   "sources": []
+   "sources": [],
+   "pic": [
+    "/img/news/cassopolis-in-lidar",
+    "Cassopolis in 3D: buildings in gold and trees in green, drawn from 355,650 laser points of the 2015 survey",
+    "Cassopolis in LiDAR: every dot is one laser echo from the 2015 survey."
+   ]
   },
   {
    "slug": "what-the-valley-made",
@@ -210,12 +282,6 @@
    "headline": "Stoves, lures, wagons and guitars",
    "short": "Stoves, lures, wagons and guitars",
    "dek": "Twenty-three makers from the valley: what they made, how they ended, and where you can still see their work.",
-   "img": [
-    "/img/oldcards/ps011-700",
-    700,
-    446,
-    "The Beckwith Building, Dowagiac, on an old postcard"
-   ],
    "body": [
     "<span class=\"dl\">The St. Joseph River valley.</span> For a century the towns of the valley made things the whole country knew by name.",
     "Round Oak stoves came out of Dowagiac from 1871. James Heddon’s Sons made fishing lures there from 1902. Studebaker built wagons in South Bend, then cars. Gibson made mandolins and guitars in Kalamazoo, and C. G. Conn made band instruments in Elkhart.",
@@ -232,6 +298,133 @@
      "/made-in-the-valley/#mktime"
     ]
    ],
+   "sources": [],
+   "pic": [
+    "/img/news/what-the-valley-made",
+    "New Round Oak Warehouse, Dowagiac, Mich., under construction, on a real-photo postcard",
+    "New Round Oak Warehouse, Dowagiac, about 1910 to 1918. Tinder Collection, Clements Library, University of Michigan."
+   ]
+  },
+  {
+   "slug": "company-d-sixth-michigan",
+   "date": "2026-10-22",
+   "kicker": "Soldiers of the valley",
+   "headline": "Company D: the 85 men Dowagiac sent in 1861",
+   "short": "Company D: the 85 men of 1861",
+   "dek": "Raised at Dowagiac in the summer of 1861: who they were, where they fought, and the nineteen who did not come home.",
+   "pic": [
+    "/img/news/company-d-sixth-michigan",
+    "Monument Day, Dowagiac, Mich.: a great crowd around a monument, on a real-photo postcard",
+    "Monument Day, Dowagiac, on a real-photo postcard. Tinder Collection, Clements Library, University of Michigan."
+   ],
+   "body": [
+    "<span class=\"dl\">Dowagiac, Mich.</span> In the summer of 1861 a company was raised at Dowagiac, the second organized in Cass County, under Captain Charles E. Clarke. It became Company D of the Sixth Michigan Infantry.",
+    "The regiment gathered at Kalamazoo and left for the East on 30 August 1861, 944 strong. After garrison duty at Baltimore it went to New Orleans and the lower Mississippi, fought at Baton Rouge, and joined the assault on Port Hudson on 27 May 1863, where Lieutenant Frederick J. Clarke was killed. It ended the war as heavy artillery, and was discharged at Jackson, Michigan, on 5 September 1865.",
+    "Of its men, four were killed or died of wounds and fifteen died of disease. As in the whole war, sickness killed more of them than battle did.",
+    "The roll of all 85 men, as Mathews printed it in 1882, is now on the site, checked line by line against the page scans, with this week’s anniversaries from their service."
+   ],
+   "cta": [
+    [
+     "Read the roll",
+     "/soldiers/"
+    ],
+    [
+     "Search every name",
+     "/names/"
+    ]
+   ],
+   "sources": [
+    [
+     "Alfred Mathews, History of Cass County, Michigan (1882), pp. 117–120, University of Michigan",
+     "https://name.umdl.umich.edu/BAD0870.0001.001"
+    ]
+   ]
+  },
+  {
+   "slug": "who-was-in-town-in-1860",
+   "date": "2026-10-22",
+   "kicker": "Names on the old maps",
+   "headline": "Who was in town in 1860?",
+   "short": "Who was in town in 1860?",
+   "dek": "331 names from the business directories printed beside the old town plans, with the men of Company D, in one roll you can search.",
+   "pic": [
+    "/img/news/who-was-in-town-in-1860",
+    "The Cassopolis business directory beside the village plan on the 1860 wall map: hotels, merchants, physicians and surgeons",
+    "The Cassopolis directory beside the village plan, 1860 wall map. Library of Congress."
+   ],
+   "body": [
+    "<span class=\"dl\">The St. Joseph River valley.</span> Beside each town plan on the old county maps, the mapmakers printed a business directory: the lawyers, doctors, merchants, smiths, hotel keepers and county officers who paid to be listed.",
+    "Now 331 of those entries, from Cassopolis, Dowagiac, Niles and Paw Paw in 1860 and Goshen in 1861, are in one roll you can search by surname, trade or town, together with the 85 men of Company D.",
+    "A directory is not a census. It lists the people who paid to appear, so most farmers, labourers, women and children are not in it. But a directory line puts a person in a town, in a trade, in a year, and that is often the first step to finding a family.",
+    "Every entry links to its map, so you can find the name in the engraving yourself."
+   ],
+   "cta": [
+    [
+     "Search the roll",
+     "/names/"
+    ],
+    [
+     "The map room",
+     "/map/"
+    ]
+   ],
+   "sources": []
+  },
+  {
+   "slug": "eleven-more-old-postcards",
+   "date": "2026-10-22",
+   "kicker": "Old postcards",
+   "headline": "Eleven more old postcards",
+   "short": "Eleven more old postcards",
+   "dek": "The Pioneer Log Cabin going up in 1923, the depots at Cassopolis and Vandalia, Chicago Street in Edwardsburg, Main Street in Niles and a steam shovel at White Pigeon.",
+   "pic": [
+    "/img/news/eleven-more-old-postcards",
+    "Main Street, now Broadway, Cassopolis: a long arched brick block with awnings, on an early postcard",
+    "Main Street, now Broadway, Cassopolis, about 1905 to 1912. Private collection."
+   ],
+   "body": [
+    "<span class=\"dl\">Cassopolis, Mich.</span> Eleven more cards have joined the old postcard gallery, all from before 1931 and so in the public domain.",
+    "Two show the Pioneer Log Cabin going up in May and June of 1923. There are the Michigan Central depots at Cassopolis and Vandalia, the corner of State and Main in Vandalia, the north side of Chicago Street in Edwardsburg, a crowd on Main Street in Niles, and the long arched block on what was then Main Street, now Broadway, in Cassopolis.",
+    "White Pigeon joins the gallery for the first time, with a steam shovel at work on the paper mill track.",
+    "Every card can be searched, found on the map, and sent as a postcard of your own."
+   ],
+   "cta": [
+    [
+     "See the new cards",
+     "/postcards/"
+    ]
+   ],
+   "sources": []
+  },
+  {
+   "slug": "the-harvest-trail",
+   "date": "2026-10-22",
+   "kicker": "In season",
+   "headline": "The harvest trail: a mill, an orchard and the stove town",
+   "short": "The harvest trail, this fall",
+   "dek": "Stamp three places in your passport this fall, from September to November, and earn the harvest badge.",
+   "pic": [
+    "/img/news/the-harvest-trail",
+    "An orchard at its best, near Benton Harbor and St. Joseph, Mich., on a linen postcard",
+    "An orchard at its best, near Benton Harbor and St. Joseph, about 1930 to 1945. Boston Public Library, Tichnor Brothers Collection."
+   ],
+   "body": [
+    "<span class=\"dl\">The St. Joseph River valley.</span> Fall is harvest time in the valley, and the passport has a trail just for it.",
+    "<b>The mill.</b> Bonneyville Mill near Bristol, Indiana, a county park around a historic grist mill that still grinds flour, open Tuesday to Sunday until mid-November.",
+    "<b>The orchard.</b> Jollay Orchards near Coloma, where the same family has farmed since 1857: u-pick fruit, fresh cider and apple-cinnamon doughnuts.",
+    "<b>The stove town.</b> The Dowagiac Area History Museum, free, where the story of the Round Oak Stove Company is told.",
+    "Press “I’m here” at all three between September and November of the same year, and the harvest badge is yours. Check each place’s hours before you go."
+   ],
+   "cta": [
+    [
+     "Your passport",
+     "/passport/"
+    ],
+    [
+     "Plan the day",
+     "/visit/"
+    ]
+   ],
    "sources": []
   },
   {
@@ -241,12 +434,6 @@
    "headline": "A paper passport to stamp, and a teachers’ pack",
    "short": "A paper passport to print",
    "dek": "A passport booklet with a stamp box for every place, a one-day field trip for classes, and the valley kitchen as a little book.",
-   "img": [
-    "/img/card-food-art-270",
-    270,
-    480,
-    ""
-   ],
    "body": [
     "<span class=\"dl\">The St. Joseph River valley.</span> The passport on Project Scroll lives in your phone: press “I’m here” at a museum, a walk stop, a table or a festival, and the stamp lands in it.",
     "Now there is a paper one too. Print the booklet, fold it, and carry it. Every place in the valley has its own stamp box.",
@@ -267,7 +454,12 @@
      "/food/"
     ]
    ],
-   "sources": []
+   "sources": [],
+   "pic": [
+    "/img/news/a-paper-passport",
+    "The printable Project Scroll passport: its cover and a page of stamp boxes",
+    "The paper passport: the cover, and a page of stamp boxes."
+   ]
   }
  ]
 }
