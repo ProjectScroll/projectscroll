@@ -8,6 +8,8 @@ const {chromium}=require('playwright'); const fs=require('fs'), path=require('pa
 const postcss=require(process.env.POSTCSS_DIR ? path.join(process.env.POSTCSS_DIR,'postcss') : 'postcss');
 const R=path.resolve(__dirname,'..'), PORT=process.env.PORT||8765;
 const pages=fs.readFileSync(path.join(__dirname,'pages.txt'),'utf8').split('\n').map(s=>s.trim().replace(/^\.\//,'')).filter(Boolean);
+// the news pages and the hunt are made by build_news.py; take them all, so new stories get a first screen too
+for (const extra of ['hunt/index.html','news/index.html'].concat(fs.readdirSync(path.join(R,'news'),{withFileTypes:true}).filter(d=>d.isDirectory()&&fs.existsSync(path.join(R,'news',d.name,'index.html'))).map(d=>'news/'+d.name+'/index.html'))) if (!pages.includes(extra)) pages.push(extra);
 const VIEWS=[{width:412,height:915},{width:1280,height:900}];
 const JSMADE=/\.(gl|glw|gloss|whisper|w-l|navink|listen|btoast|bt-x|diamond|riddle|fresh|mh-[a-z]+|totop|consent|keyhint|partrail|fp-zoom|search-res|mic|tl-thread|nextmk|touched|has-navink|lamp)\b|\[popover\]|html\.(ink|reveal|has-navink|lamp)/;
 // the stylesheet as a flat list: [{wrap:[...conditions], sel, text}] in source order, plus the at-rules kept whole

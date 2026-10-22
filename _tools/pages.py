@@ -40,20 +40,22 @@ def colophon(body):
     return ('    <aside class="colophon" aria-labelledby="colH">\n      <h2 id="colH">Sources cited on this page</h2>\n      <ol>%s</ol>\n'
             '      <p class="note">Every link above opens the source where it is held. If one has moved, <a href="mailto:research@projectscroll.com?subject=A%%20broken%%20link">tell us</a>.</p>\n    </aside>\n') % items
 
+EXTRA={}  # per-page schema fields set by a builder (dates, authors)
 def schema(path, title, desc, canon, og):
     import json, datetime, os
     top=path.split('/')[0]; parts=[p for p in path.replace('index.html','').split('/') if p]
     crumbs=[{"@type":"ListItem","position":1,"name":"Project Scroll","item":"https://projectscroll.com/"}]
-    names={'notes':'Field notes','map':'Map room','cases':'Cases','guide':'Guides','families':'Family histories','legends':'Family legends','records':'Where the records are','glossary':'Glossary','toolkit':'Toolkit','badges':'Badges','about':'About','document':'Document of the month','privacy':'Privacy','cassopolis':'Cassopolis','research':'Research services'}
+    names={'news':'News of the hunt','hunt':'The hunt','notes':'Field notes','map':'Map room','cases':'Cases','guide':'Guides','families':'Family histories','legends':'Family legends','records':'Where the records are','glossary':'Glossary','toolkit':'Toolkit','badges':'Badges','about':'About','document':'Document of the month','privacy':'Privacy','cassopolis':'Cassopolis','research':'Research services'}
     url='https://projectscroll.com/'
     for i,p in enumerate(parts):
         url+=p+'/'; crumbs.append({"@type":"ListItem","position":i+2,"name":names.get(p, title.split(' · ')[0]) if i<len(parts)-1 else title.split(' · ')[0],"item":url})
-    kind='Article' if top in ('notes','cases','document') else 'WebPage'
+    kind='NewsArticle' if (top=='news' and len(parts)==2) else ('Article' if top in ('notes','cases','document') else 'WebPage')
     try: mod=datetime.date.fromtimestamp(os.path.getmtime(os.path.join(R, path))).isoformat()
     except Exception: mod=datetime.date.today().isoformat()
     g=[{"@type":"BreadcrumbList","itemListElement":crumbs},
        {"@type":kind,"@id":canon+"#page","url":canon,"name":title.split(' · ')[0],"headline":title.split(' · ')[0],"description":desc,"image":og,"inLanguage":"en-US","isPartOf":{"@id":"https://projectscroll.com/#site"},"publisher":{"@id":"https://projectscroll.com/#org"},"dateModified":mod}]
-    if kind=='Article': g[1]["author"]={"@id":"https://projectscroll.com/#org"}
+    if kind in ('Article','NewsArticle'): g[1]["author"]={"@id":"https://projectscroll.com/#org"}
+    if path in EXTRA: g[1].update(EXTRA[path])
     # the towns are places: say so, with where they are, so search engines can file each page under its town
     PL={'cassopolis':('Cassopolis','Michigan',41.9117,-86.0097),'niles':('Niles','Michigan',41.8298,-86.2541),'dowagiac':('Dowagiac','Michigan',41.9842,-86.1086),'paw-paw':('Paw Paw','Michigan',42.2178,-85.8911),
         'south-bend':('South Bend','Indiana',41.6764,-86.2520),'goshen':('Goshen','Indiana',41.5823,-85.8345),'elkhart':('Elkhart','Indiana',41.6820,-85.9767)}
@@ -101,7 +103,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=866cb9ff">
+<link rel="stylesheet" href="/site.min.css?v=fd2165a2">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"href_matches":"/*"}},{{"not":{{"href_matches":["/*.pdf","/*.zip","/*.xml","/*.json"]}}}},{{"not":{{"selector_matches":"[download], [target=_blank]"}}}}]}},"eagerness":"moderate"}}],"prerender":[{{"where":{{"and":[{{"selector_matches":".bar a, .toolrow .nd a, .crumb a, footer nav a, .partrail a, .search-res a"}},{{"href_matches":"/*"}},{{"not":{{"href_matches":["/*.pdf","/map/3d/*"]}}}}]}},"eagerness":"conservative"}}]}}</script>
 </head>
 <body>
@@ -157,7 +159,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=866cb9ff" defer></script>
+<script src="/site.min.js?v=fd2165a2" defer></script>
 </body>
 </html>
 '''

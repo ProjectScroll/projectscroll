@@ -110,6 +110,11 @@ for k, st in enumerate(S):
     <section class="nw-morebox" aria-labelledby="nwMoreH"><h2 id="nwMoreH">More news of the hunt</h2>{morelist(st["slug"])}</section>
 '''
     b += SHARE
+    import pages as _P
+    _x={"datePublished":st["date"],"dateModified":st.get("updated") or st["date"],"image":[f'https://projectscroll.com{st["pic"][0]}.webp',f'https://projectscroll.com/news/{st["slug"]}/card.jpg'],"articleSection":"News of the hunt","mainEntityOfPage":f'https://projectscroll.com/news/{st["slug"]}/'}
+    if st.get('by'): _x["author"]={"@type":"Person","name":st["by"]}
+    if st.get('live'): _x["creativeWorkStatus"]="Live research document, updated as new records are found"
+    _P.EXTRA[f'news/{st["slug"]}/index.html']=_x
     page(f'news/{st["slug"]}/index.html', f'{st["headline"]} · News of the hunt · Project Scroll', st['dek'], b, og=f'https://projectscroll.com/news/{st["slug"]}/card.jpg?v=1')
 
 # ---------- 3. the news index ----------

@@ -3737,3 +3737,5 @@ blockquote.nw-q{margin:1rem 0; padding:.6rem 1rem; border-left:3px solid var(--r
 .nw-s.nw-feat .nw-simg::after{content:"";position:absolute;inset:5px;border:1px solid rgba(201,162,39,.9);border-radius:2px;pointer-events:none}
 .nw-ribbon{position:absolute;top:12px;left:-30px;transform:rotate(-38deg);background:linear-gradient(180deg,#e6c55a,#b8892b);color:#1f1a0e;font:700 .62rem/1 var(--sans,system-ui),sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:.32rem 2.2rem;box-shadow:0 1px 3px rgba(0,0,0,.35);line-height:1}
 .nw-s.nw-feat h2 a{background:linear-gradient(transparent 62%,rgba(230,197,90,.35) 62%)}
+.nw-glance h2.nw-gh{margin:0 0 .5rem; font:inherit; font-size:.78rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-lo); border:0; padding:0}
+.nw-lead h1 .fn{min-width:24px; min-height:24px; box-sizing:border-box; text-align:center}
