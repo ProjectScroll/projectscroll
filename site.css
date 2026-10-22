@@ -3999,3 +3999,35 @@ table.rg{width:100%;border-collapse:collapse;font-size:.9rem;line-height:1.4}
 /* dark mode: brighter labels on the dark panels (clip headings, tiers, box headings) */
 :root[data-theme="dark"] .nw-clip-h{color:#e8cf8e;border-bottom-color:#7a6a44} :root[data-theme="dark"] .nw-tier.d{color:#74d3a2} :root[data-theme="dark"] .nw-tier.r{color:#93bdf2} :root[data-theme="dark"] .nw-tier.o,:root[data-theme="dark"] .nw-br-h{color:#f2968a} :root[data-theme="dark"] .kin-c,:root[data-theme="dark"] .nw-about-h,:root[data-theme="dark"] .nw-v-h{color:#e3bb62}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nw-clip-h{color:#e8cf8e;border-bottom-color:#7a6a44} :root:not([data-theme="light"]) .nw-tier.d{color:#74d3a2} :root:not([data-theme="light"]) .nw-tier.r{color:#93bdf2} :root:not([data-theme="light"]) .nw-tier.o,:root:not([data-theme="light"]) .nw-br-h{color:#f2968a} :root:not([data-theme="light"]) .kin-c,:root:not([data-theme="light"]) .nw-about-h,:root:not([data-theme="light"]) .nw-v-h{color:#e3bb62} }
+
+/* Kalamazoo: watch the L arrive */
+.kz-spell{margin:1rem 0 .6rem;padding:1rem 1.1rem;border:1px solid var(--gold);border-radius:6px;background:color-mix(in srgb,var(--gold) 8%,transparent);text-align:center}
+.kz-sp-h{margin:0 0 .4rem!important;font-size:.76rem!important;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#8a6510}
+.kz-sp-stage{display:flex;flex-direction:column;align-items:center;gap:.15rem;min-height:7.2rem;justify-content:center}
+.kz-sp-y{font-size:.95rem;letter-spacing:.08em;color:#8a6510}
+.kz-sp-w{font-size:clamp(1.9rem,6.5vw,3.2rem);line-height:1.1;letter-spacing:.03em;overflow-wrap:anywhere}
+.kz-sp-w span{display:inline-block;animation:kzIn .35s both}
+.kz-sp-w .n,.kz-sp-key .n{color:#2E7D56;font-weight:700;text-decoration:underline 3px;text-underline-offset:.18em}
+.kz-sp-w .l,.kz-sp-key .l{color:#B3362B;font-weight:700;text-decoration:underline 3px;text-underline-offset:.18em}
+.kz-sp-s{font-size:.9rem;font-style:italic;opacity:.85}
+.kz-sp-ctl{display:flex;gap:.5rem;align-items:center;justify-content:center;margin-top:.5rem;flex-wrap:wrap}
+.kz-sp-ctl input{flex:1 1 10rem;max-width:22rem;accent-color:#8a6510}
+.kz-sp-ctl button{min-width:2.6rem;min-height:2.6rem;border:1px solid var(--gold);border-radius:99px;background:transparent;color:inherit;font:inherit;cursor:pointer;padding:0 .8rem}
+.kz-sp-key{margin:.5rem 0 0!important;font-size:.85rem!important;opacity:.85}
+@keyframes kzIn{from{opacity:0;transform:translateY(.3em)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.kz-sp-w span{animation:none}}
+:root[data-theme="dark"] .kz-sp-h,:root[data-theme="dark"] .kz-sp-y{color:#e3bb62} :root[data-theme="dark"] .kz-sp-w .n,:root[data-theme="dark"] .kz-sp-key .n{color:#74d3a2} :root[data-theme="dark"] .kz-sp-w .l,:root[data-theme="dark"] .kz-sp-key .l{color:#f2968a}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .kz-sp-h,:root:not([data-theme="light"]) .kz-sp-y{color:#e3bb62} :root:not([data-theme="light"]) .kz-sp-w .n,:root:not([data-theme="light"]) .kz-sp-key .n{color:#74d3a2} :root:not([data-theme="light"]) .kz-sp-w .l,:root:not([data-theme="light"]) .kz-sp-key .l{color:#f2968a} }
+
+/* news: keep reading, all-news drawer, index search */
+.nw-related{list-style:none;padding:0;margin:.6rem 0 1rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:1rem}
+.nw-related a{display:flex;flex-direction:column;gap:.25rem;text-decoration:none;color:inherit}
+.nw-related img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:4px}
+.nw-related b{font-weight:400;font-size:1.08rem;line-height:1.25}
+.nw-related a:hover b,.nw-related a:focus-visible b{text-decoration:underline}
+.nw-allnews{margin-top:.4rem} .nw-allnews summary{cursor:pointer;padding:.4rem 0;font-weight:600}
+.nw-filter{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:1rem 0}
+.nw-filter input{flex:1 1 16rem;min-height:2.6rem;padding:.4rem .8rem;border:1px solid var(--gold);border-radius:99px;font:inherit;background:transparent;color:inherit}
+.nw-fbtn{min-height:2.6rem;padding:0 1rem;border:1px solid var(--gold);border-radius:99px;background:transparent;color:inherit;font:inherit;cursor:pointer}
+.nw-fbtn[aria-pressed="true"]{background:var(--gold);color:#1D2733}
+.nw-fcount{margin:0!important;width:100%;font-size:.9rem;opacity:.8}

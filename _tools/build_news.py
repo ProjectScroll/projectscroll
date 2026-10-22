@@ -91,6 +91,16 @@ CONTRIB = '<div class="nw-contrib"><p class="nw-contrib-h">Write for Project Scr
 SHARE = """<script>document.querySelectorAll('.nw-share').forEach(function(b){ b.addEventListener('click', function(){ var u=location.href.split('#')[0], t=b.dataset.t;
   if (navigator.share) navigator.share({title:t, url:u}).catch(function(){}); else if (navigator.clipboard) navigator.clipboard.writeText(u).then(function(){ b.textContent='Link copied ✓'; }); }); });</script>
 """
+def related(st):
+    """Three stories to read next: same kicker first, then featured, then the nearest in date."""
+    from datetime import date as _d
+    D=lambda x:_d.fromisoformat(x['date'])
+    words=set(w for w in re.findall(r'[a-z]+', st['kicker'].lower()) if len(w)>3)
+    def key(x):
+        kw=set(w for w in re.findall(r'[a-z]+', x['kicker'].lower()) if len(w)>3)
+        return (-(len(words & kw)>0), -bool(x.get('featured')), abs((D(x)-D(st)).days))
+    pick=sorted([x for x in S if x['slug']!=st['slug']], key=key)[:3]
+    return '<ul class="nw-related">' + ''.join(f'<li><a href="/news/{x["slug"]}/">{npic(x["pic"][0], "", "(min-width:900px) 14rem, 92vw", cls="nw-cimg")}<span class="nw-k">{E(x["kicker"])}</span><b>{E(x["headline"])}</b></a></li>' for x in pick) + '</ul>'
 def morelist(skip):
     return '<ul class="nw-list">' + ''.join(f'<li><span class="nw-k">{E(x["kicker"])}</span> <a href="/news/{x["slug"]}/">{E(x["headline"])}</a> <time datetime="{x["date"]}">{day(x["date"])}</time></li>' for x in S if x['slug'] != skip) + '</ul>'
 for k, st in enumerate(S):
@@ -135,7 +145,7 @@ for k, st in enumerate(S):
       {CONTRIB}
       {pn}
     </article>
-    <section class="nw-morebox" aria-labelledby="nwMoreH"><h2 id="nwMoreH">More news of the hunt</h2>{morelist(st["slug"])}</section>
+    <section class="nw-morebox" aria-labelledby="nwMoreH"><h2 id="nwMoreH">Keep reading</h2>{related(st)}<details class="nw-allnews"><summary>All the news ({len(S)-1} more stories)</summary>{morelist(st["slug"])}</details></section>
 '''
     b += SHARE
     import pages as _P
@@ -146,13 +156,15 @@ for k, st in enumerate(S):
     page(f'news/{st["slug"]}/index.html', f'{st["headline"]} · News of the hunt · Project Scroll', st['dek'], b, og=f'https://projectscroll.com/news/{st["slug"]}/card.jpg?v=1')
 
 # ---------- 3. the news index ----------
-cards = ''.join(f'''<li class="nw-card"><a href="/news/{x["slug"]}/">{npic(x["pic"][0], "", "(min-width:900px) 15rem, 100vw", cls="nw-cimg")}<span class="nw-k">{E(x["kicker"])} · <time datetime="{x["date"]}">{day(x["date"])}</time></span><b>{E(x["headline"])}</b><span>{E(x["dek"])}</span></a></li>''' for x in S)
+cards = ''.join(f'''<li class="nw-card" data-f="{1 if x.get("featured") else 0}" data-t="{E((x["kicker"]+" "+x["headline"]+" "+x["dek"]).lower())}"><a href="/news/{x["slug"]}/">{npic(x["pic"][0], "", "(min-width:900px) 15rem, 100vw", cls="nw-cimg")}<span class="nw-k">{E(x["kicker"])} · <time datetime="{x["date"]}">{day(x["date"])}</time></span><b>{E(x["headline"])}</b><span>{E(x["dek"])}</span></a></li>''' for x in S)
 b = f'''    <div class="nw-index"><p class="crumb"><a href="/">← Front page</a></p>
     <p class="kicker">News of the hunt</p>
     <h1>All the news</h1>
     <p class="lede">What’s new on the trail: new cases, new tools, new old pictures. The newest are on the front page too.</p>
     <article class="nw-card nw-card-lead"><a href="/hunt/"><span class="nw-k">{E(L["kicker"])}</span><b>{E(L["headline"])}</b><span>Project Scroll now has a new, free online treasure hunt. Here is how to play.</span></a></article>
+    <div class="nw-filter" data-newsfilter hidden><label for="nwQ" class="vh">Search the news</label><input id="nwQ" type="search" placeholder="Search the news: a town, a name, a year" autocomplete="off"><button type="button" class="nw-fbtn" aria-pressed="false">Featured only</button><p class="nw-fcount" aria-live="polite"></p></div>
     <ul class="nw-cards">{cards}</ul>
+    <p class="nw-fnone" hidden>No story matches that yet. Try another word, or <a href="mailto:research@projectscroll.com">tell us what you are looking for</a>.</p>
     {CONTRIB}
     <p class="note">Every story is also in the <a href="/feed.xml">news feed</a> and on <a href="https://www.facebook.com/projectscroll/">Project Scroll’s Facebook page</a>.</p></div>
 '''

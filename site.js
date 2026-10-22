@@ -1279,9 +1279,9 @@ try{ (function(){
     show(1905);
   }); }catch(err){ psFail(err); }
   try{ document.querySelectorAll('[data-quiz]').forEach(function(qz){
-    var cards=[].slice.call(qz.querySelectorAll('.nw-myth')), L={'true':'True','false':'False','none':'No record'}, got=0, done=0;
+    var cards=[].slice.call(qz.querySelectorAll('.nw-myth')), L={'true':'True','false':'False','none':'No record'}, got=0, done=0; var MS=(qz.getAttribute('data-msgs')||'Satisfactory!|A respectable Clamper.|Poor Blind Candidate. Read on.').split('|');
     var sc=document.createElement('div'); sc.className='nw-quiz-score'; sc.setAttribute('aria-live','polite'); qz.parentNode.insertBefore(sc,qz);
-    function score(){ sc.innerHTML='<span>Your calls: <b>'+got+'</b> of '+done+' match the record</span><span>'+(cards.length-done)+' to go</span>'; if(done===cards.length) sc.innerHTML='<span>Final score: <b>'+got+'</b> of '+cards.length+'. '+(got>=9?'Satisfactory!':got>=6?'A respectable Clamper.':'Poor Blind Candidate. Read on.')+'</span>'; }
+    function score(){ sc.innerHTML='<span>Your calls: <b>'+got+'</b> of '+done+' match the record</span><span>'+(cards.length-done)+' to go</span>'; if(done===cards.length) sc.innerHTML='<span>Final score: <b>'+got+'</b> of '+cards.length+'. '+(got>=cards.length*.75?MS[0]:got>=cards.length*.5?MS[1]:MS[2])+'</span>'; }
     cards.forEach(function(c){ c.classList.add('q'); var bx=document.createElement('div'); bx.className='nw-myth-btns'; bx.setAttribute('role','group'); bx.setAttribute('aria-label','Your call');
       ['true','false','none'].forEach(function(k){ var b=document.createElement('button'); b.type='button'; b.textContent=L[k]; b.setAttribute('aria-pressed','false');
         b.addEventListener('click',function(){ var ok=k===c.dataset.a; done++; if(ok)got++; b.setAttribute('aria-pressed','true'); bx.querySelectorAll('button').forEach(function(x){x.disabled=true;});
@@ -1289,6 +1289,29 @@ try{ (function(){
         bx.appendChild(b); });
       c.querySelector('.nw-myth-c').after(bx); });
     score();
+  }); }catch(err){ psFail(err); }
+  try{ document.querySelectorAll('[data-newsfilter]').forEach(function(f){
+    var q=f.querySelector('input'), b=f.querySelector('.nw-fbtn'), n=f.querySelector('.nw-fcount'), list=f.parentNode.querySelector('.nw-cards'), none=f.parentNode.querySelector('.nw-fnone'); if(!list) return;
+    var cards=[].slice.call(list.querySelectorAll('.nw-card')); f.hidden=false;
+    function run(){ var t=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean), fo=b.getAttribute('aria-pressed')==='true', k=0;
+      cards.forEach(function(c){ var ok=(!fo||c.dataset.f==='1') && t.every(function(w){ return (c.dataset.t||'').indexOf(w)>-1; }); c.hidden=!ok; if(ok)k++; });
+      n.textContent=(t.length||fo)?(k+' of '+cards.length+' stories'):''; if(none) none.hidden=k>0; }
+    q.addEventListener('input',run); b.addEventListener('click',function(){ b.setAttribute('aria-pressed', b.getAttribute('aria-pressed')==='true'?'false':'true'); run(); });
+  }); }catch(err){ psFail(err); }
+  try{ document.querySelectorAll('[data-spell]').forEach(function(ul){
+    var it=[].slice.call(ul.querySelectorAll('li')).map(function(li){ var y=li.querySelector('b').textContent.trim(), t=li.querySelector('span').textContent.trim(), m=t.match(/^(.*?)\s*\(([^)]*)\)\s*$/), w=(m?m[1]:t), src=(m?m[2]:''); w=w.split(/[;,]/)[0].trim(); return {y:y,w:w,s:src}; });
+    if(!it.length) return;
+    var bx=document.createElement('div'); bx.className='kz-spell'; bx.innerHTML='<p class="kz-sp-h">Watch the L arrive</p><div class="kz-sp-stage" aria-live="polite"><span class="kz-sp-y"></span><span class="kz-sp-w" lang="und"></span><span class="kz-sp-s"></span></div><div class="kz-sp-ctl"><button type="button" class="kz-sp-prev" aria-label="Earlier spelling">‹</button><input type="range" min="0" max="'+(it.length-1)+'" value="0" aria-label="Spelling, oldest to newest"><button type="button" class="kz-sp-next" aria-label="Later spelling">›</button><button type="button" class="kz-sp-play">Play</button></div><p class="kz-sp-key"><span class="n">n</span> the old N &nbsp; <span class="l">l</span> the later L</p>';
+    ul.parentNode.insertBefore(bx,ul);
+    var Y=bx.querySelector('.kz-sp-y'), W=bx.querySelector('.kz-sp-w'), S=bx.querySelector('.kz-sp-s'), R=bx.querySelector('input'), P=bx.querySelector('.kz-sp-play'), tm=null, i=0;
+    function show(k){ i=Math.max(0,Math.min(it.length-1,k)); R.value=i; var o=it[i]; Y.textContent=o.y; S.textContent=o.s;
+      W.innerHTML=''; o.w.split('').forEach(function(ch,j){ var e=document.createElement('span'); e.textContent=ch; if(/[nN]/.test(ch))e.className='n'; else if(/[lL]/.test(ch))e.className='l'; e.style.animationDelay=(j*25)+'ms'; W.appendChild(e); }); }
+    function stop(){ if(tm){clearInterval(tm);tm=null;P.textContent='Play';} }
+    P.addEventListener('click',function(){ if(tm){stop();return;} if(i>=it.length-1)show(0); P.textContent='Pause'; tm=setInterval(function(){ if(i>=it.length-1){stop();return;} show(i+1); },1700); });
+    bx.querySelector('.kz-sp-prev').addEventListener('click',function(){stop();show(i-1);});
+    bx.querySelector('.kz-sp-next').addEventListener('click',function(){stop();show(i+1);});
+    R.addEventListener('input',function(){stop();show(+R.value);});
+    show(0);
   }); }catch(err){ psFail(err); }
   try{ document.querySelectorAll('[data-init]').forEach(function(w){
     var st=[].slice.call(w.querySelectorAll('.in-step')), i=0; w.classList.add('js');
