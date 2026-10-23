@@ -4397,3 +4397,4 @@ a.nw-tag:hover{text-decoration:underline}
 .tw-facts dd{margin:0}
 @media (max-width:560px){ .tw-facts div{grid-template-columns:1fr; gap:.1rem} }
 .dr-map .wk-pin{display:grid; place-items:center; border-radius:50%; background:#C06A1A; border:2px solid #fff; color:#fff; font:700 .78rem/1 system-ui,sans-serif; box-shadow:0 1px 4px rgba(0,0,0,.35)}
+.nw-lk{color:var(--ink); font-weight:700; font-size:.68rem; letter-spacing:.12em}
