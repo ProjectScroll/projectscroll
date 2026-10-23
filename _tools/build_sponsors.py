@@ -20,19 +20,19 @@ body=f'''    <p class="crumb"><a href="/sponsor-and-advertise/">← Sponsor &amp
         <p><a class="btn primary" href="{M}Friend%20of%20the%20hunt">Become a friend</a></p>
       </section>
       <section class="tier" aria-labelledby="t2">
-        <p class="tier-k">Individuals and families</p><h3 id="t2">Patron of a case</h3><p class="tier-amt">$150 · one case</p>
+        <p class="tier-k">Individuals and families</p><h3 id="t2">Patron of a case</h3><p class="tier-amt">$300 · one case</p>
         <ul><li>Underwrites the next case on the board: research hours, scans, certificates</li><li>Named on that case’s page: “Opened with the help of …”</li><li>A copy of the sourced report when the case closes</li><li>The <b>Patron</b> badge</li></ul>
         <p class="tier-note">Patrons fund the next case in line. They do not choose it, and they never choose the answer.</p>
         <p><a class="btn primary" href="{M}Patron%20of%20a%20case">Fund a case</a></p>
       </section>
       <section class="tier" aria-labelledby="t3">
-        <p class="tier-k">Businesses</p><h3 id="t3">Business sponsor</h3><p class="tier-amt">$300 a year · three places</p>
+        <p class="tier-k">Businesses</p><h3 id="t3">Business sponsor</h3><p class="tier-amt">$500 a year · three places</p>
         <ul><li>A card in the sponsors’ strip on the home page: your name, one line, a link</li><li>Named on this page and in the yearly ledger</li><li>Thanked once a quarter on Project Scroll’s Facebook page</li><li>Never placed beside a case’s evidence, never in a post</li></ul>
         <p class="tier-note">Set like the business cards in an old county newspaper. Three places only, so each is worth having.</p>
         <p><a class="btn primary" href="{M}Business%20sponsor">Ask about a place</a></p>
       </section>
       <section class="tier" aria-labelledby="t4">
-        <p class="tier-k">Organizations</p><h3 id="t4">Underwriter</h3><p class="tier-amt">$1,000 and up · a season</p>
+        <p class="tier-k">Organizations</p><h3 id="t4">Underwriter</h3><p class="tier-amt">$3,000 and up · a season</p>
         <ul><li>Underwrites a whole hall of the hunt, a document series, or a year of the Document of the Month</li><li>“Presented with …” on the hall’s page and in the feed</li><li>A short letter of agreement, and the ledger line that shows what it paid for</li></ul>
         <p class="tier-note">For a library, a historical society, a lake association, a family reunion, a foundation. Research to your own question is a commission, not a sponsorship: <a href="/research/">the research desk</a>.</p>
         <p><a class="btn primary" href="{M}Underwriting">Talk to us</a></p>

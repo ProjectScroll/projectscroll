@@ -4210,3 +4210,11 @@ table.ad-cmp{width:100%; border-collapse:collapse; font-size:.95rem; line-height
 .ad-steps{padding-left:1.3rem; line-height:1.55}
 .ad-steps li{margin:.45rem 0}
 @media (max-width:640px){.ad-cmp{font-size:.9rem}.ad-cmp td.hall{width:5.5rem}}
+.rc-photo figcaption a{color:#fff; text-decoration-color:rgba(255,255,255,.5)}
+.rc-cred{margin:.15rem 0 .5rem; font-size:.68rem; line-height:1.35; color:var(--ink-soft)}
+.rc-cred a{color:inherit}
+.rc-words{display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin:.8rem 0 1rem}
+.rc-words figure{margin:0}
+.rc-words img{width:100%; aspect-ratio:1/1; object-fit:contain; background:#f3efe6; border-radius:4px; display:block}
+.rc-words figcaption{font-size:.7rem; line-height:1.3; color:var(--ink-soft); margin-top:.3rem}
+@media (max-width:560px){.rc-words{grid-template-columns:repeat(3,1fr); gap:.4rem}.rc-words figcaption{font-size:.62rem}}

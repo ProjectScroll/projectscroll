@@ -1,0 +1,62 @@
+{
+ "header": [
+  {
+   "src": "/img/food/photos/art-luncheon-still-life.webp",
+   "alt": "Luncheon Still Life: fruit, cake and wine",
+   "credit": "John F. Francis, Luncheon Still Life, c. 1860 (public domain)",
+   "page": "https://commons.wikimedia.org/wiki/File:John_F._Francis_-_Luncheon_Still_Life_-_Google_Art_Project.jpg"
+  }
+ ],
+ "eat": [
+  {
+   "src": "/img/oldcards/ps057-700.webp",
+   "alt": "Rose Inn and Rose Cottages, Paw Paw Lake Road, Coloma, Mich, on an old postcard",
+   "credit": "Rose Inn and Rose Cottages, Paw Paw Lake Road, Coloma, Mich, on a Tichnor Brothers postcard, about 1930–45. Boston Public Library, Tichnor Brothers Collection",
+   "page": "/postcards/#oc-ps057"
+  }
+ ],
+ "stay": [
+  {
+   "src": "/img/oldcards/ps053-700.webp",
+   "alt": "Whitcomb Hotel, St. Joseph, Michigan, on an old postcard",
+   "credit": "Whitcomb Hotel, St. Joseph, Michigan, on a Tichnor Brothers postcard, about 1930–45. Boston Public Library, Tichnor Brothers Collection",
+   "page": "/postcards/#oc-ps053"
+  }
+ ],
+ "kitchen": [
+  {
+   "src": "/img/food/photos/art-rural-kitchen.webp",
+   "alt": "A rural kitchen (Index of American Design watercolor)",
+   "credit": "Rural Kitchen, by Perkins Harnly, 1935–42. Index of American Design, National Gallery of Art (CC0)",
+   "page": "https://commons.wikimedia.org/wiki/File:Perkins_Harnly%2C_Rural_Kitchen%2C_1935-1942%2C_NGA_28938.jpg"
+  }
+ ],
+ "kitchen-hero": [
+  {
+   "src": "/img/food/photos/art-rural-kitchen.webp",
+   "alt": "A rural kitchen (Index of American Design watercolor)",
+   "credit": "Rural Kitchen, by Perkins Harnly, 1935–42. Index of American Design, National Gallery of Art (CC0)",
+   "page": "https://commons.wikimedia.org/wiki/File:Perkins_Harnly%2C_Rural_Kitchen%2C_1935-1942%2C_NGA_28938.jpg"
+  }
+ ],
+ "words": [
+  {
+   "src": "/img/food/photos/art-cook-stove.webp",
+   "alt": "A wood-burning cook stove (Index of American Design watercolor)",
+   "credit": "Walter L. Webster, Index of American Design, National Gallery of Art (CC0)",
+   "page": "https://commons.wikimedia.org/wiki/File:Walter_L._Webster%2C_Wood_Burner_Cook_Stove%2C_c._1939%2C_NGA_27039.jpg"
+  },
+  {
+   "src": "/img/food/photos/art-kitchen-utensils.webp",
+   "alt": "Old kitchen utensils (Index of American Design watercolor)",
+   "credit": "Fritz Boehmer, Index of American Design, National Gallery of Art (CC0)",
+   "page": "https://commons.wikimedia.org/wiki/File:Fritz_Boehmer%2C_Kitchen_Utensils%2C_c._1939%2C_NGA_26301.jpg"
+  },
+  {
+   "src": "/img/food/photos/art-apple-parer.webp",
+   "alt": "An apple parer (Index of American Design watercolor)",
+   "credit": "Regina Henderer, Index of American Design, National Gallery of Art (CC0)",
+   "page": "https://commons.wikimedia.org/wiki/File:Regina_Henderer%2C_Apple_Parer%2C_c._1939%2C_NGA_20550.jpg"
+  }
+ ]
+}

@@ -76,6 +76,9 @@ def _wh(src):
         with _Img.open(ROOT/src.lstrip('/')) as im: return im.size
     except Exception: return None
 def rplace(d): return (d.get('source_place') or '').split(',')[0].strip()
+def _cr(f):
+    c = E(f.get('credit',''))
+    return f'<a href="{E(f["page"])}" rel="noopener">{c}</a>' if f.get('page') else c
 def rec(d):
     who = f' · {E(d["contributor"])}' if d.get('contributor') else ''
     src = f'<a href="{E(d["url"])}" rel="noopener">{E(d["source_title"])}</a>' if d.get('url') else E(d['source_title'])
@@ -84,13 +87,15 @@ def rec(d):
     if ph:
         f0 = ph[0]; wh0 = _wh(f0['src']); w0 = f' width="{wh0[0]}" height="{wh0[1]}"' if wh0 else ''
         big = (f'<figure class="rc-photo"><a class="nw-pz" href="{E(f0["src"])}"><img src="{E(f0["src"])}"{w0} alt="{E(f0.get("alt") or d["title"])}" loading="lazy" decoding="async"></a>'
-               f'<figcaption>{E(f0.get("credit",""))}</figcaption></figure>')
+               f'<figcaption>{_cr(f0)}</figcaption></figure>')
         th = ''
         if d.get('img'):
             th += f'<a class="nw-pz rc-printed" href="{E(d["img"])}"><img src="{E(d["img"])}" alt="{E(d["title"])}, as printed in {E(d["source_title"])}" loading="lazy" decoding="async"><span>As printed{(", "+E(str(d["year"]))) if d.get("year") else ""}</span></a>'
         for f in ph[1:3]:
             th += f'<a class="nw-pz" href="{E(f["src"])}"><img src="{E(f["src"])}" alt="{E(f.get("alt") or d["title"])}" loading="lazy" decoding="async"><span>{E(f.get("short") or "More")}</span></a>'
-        pic = big + (f'<div class="rc-thumbs">{th}</div>' if th else '')
+        more = ph[1:3]
+        cr = (f'<p class="rc-cred">Small photos: ' + '; '.join(_cr(f) for f in more) + '.</p>') if more else ''
+        pic = big + (f'<div class="rc-thumbs">{th}</div>' if th else '') + cr
     elif d.get('img'):
         wh = _wh(d['img']); whs = f' width="{wh[0]}" height="{wh[1]}"' if wh else ''
         pic = (f'<figure class="rc-pic"><a class="nw-pz" href="{E(d["img"])}"><img src="{E(d["img"])}"{whs} alt="{E(d["title"])}, as printed in {E(d["source_title"])}" loading="lazy" decoding="async"></a>'
@@ -393,6 +398,7 @@ page('food/eat/index.html', 'Places to eat with a story · Project Scroll',
      f'{ne} places to eat in the St. Joseph River valley chosen for their history, with a map: old banks and depots, taverns, soda fountains, orchards and cider mills.', eat_body, og='https://projectscroll.com/og/food-eat.jpg?v=1')
 page('food/stay/index.html', 'Places to stay · Project Scroll',
      f'{ns} inns and bed and breakfasts in the St. Joseph River valley, chosen for their history, with a map.', stay_body, og='https://projectscroll.com/og/food-stay.jpg?v=1')
+wordpics = ''.join(f'<figure>{pic(a["src"], a["alt"].split(" (")[0])}<figcaption>{E(a["alt"].split(" (")[0])}. {E(a["credit"])}</figcaption></figure>' for a in ART.get('words', []))
 kitchen_body = f"""    {CRUMB}
     <p class="kicker">Food, recipes &amp; lodging</p>
     <h1>The valley kitchen</h1>
@@ -415,6 +421,7 @@ kitchen_body = f"""    {CRUMB}
       <ul class="cb-list">{shelf}</ul></section>
     <section id="words"><h2>Old kitchen words</h2>
       <p>The old cooks wrote for readers who already knew how. Here is what their words mean in a kitchen today.</p>
+      <div class="rc-words">{wordpics}</div>
       <dl class="rc-gloss">{gloss}</dl></section>
     <p class="note">The recipes are from cookbooks and newspapers published before 1929, now in the public domain, quoted as printed; the notes on making them today are ours. Photographs of the dishes are credited on each one.</p>
 {KJS}
