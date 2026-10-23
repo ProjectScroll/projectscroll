@@ -4165,18 +4165,3 @@ section.sm{margin:1.4rem 0;padding:1rem 1.1rem;border:1px solid var(--line);bord
 .rc-pic .rc-card{line-height:1.25; min-height:7rem; padding:.5rem}
 .cb-pic .rc-card b{font-size:.9rem}
 .fd-pic{margin:0 0 .6rem; line-height:0}.fd-pic img{width:100%; height:auto; border-radius:3px; box-shadow:0 1px 4px rgba(0,0,0,.2)}.fd-pic figcaption{line-height:1.3; font-size:.75rem; color:var(--ink-soft); margin-top:.3rem}
-/* legends and lore of the valley */
-.lo-list{list-style:none; padding:0; display:grid; gap:1.2rem}
-.lo{border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:4px; padding:.9rem 1.1rem; background:color-mix(in srgb, var(--paper-2) 60%, transparent)}
-.lo h3{margin:.1rem 0 .6rem; font-size:1.25rem}
-.lo-pic{float:right; width:min(42%,19rem); margin:.2rem 0 .6rem 1rem; line-height:0}
-.lo-pic img{width:100%; height:auto; border:1px solid var(--line); border-radius:3px; box-shadow:0 1px 4px rgba(0,0,0,.2)}
-.lo-pic figcaption{line-height:1.3; font-size:.75rem; color:var(--ink-soft); margin-top:.3rem}
-.lo-h{font-variant:small-caps; letter-spacing:.06em; font-size:.85rem; color:var(--ink-soft); margin:.3rem 0 .1rem!important}
-.lo-told p:last-child{font-style:italic}
-.lo-ts{font-style:normal; font-size:.85rem; color:var(--ink-soft)}
-.lo-v{clear:both; margin:.7rem 0 .3rem; padding:.45rem .7rem; border-radius:3px; border-left:4px solid; background:var(--paper)}
-.lo-v.lo-t{border-color:#2f7d4a} .lo-v.lo-p{border-color:#b7811c} .lo-v.lo-f{border-color:#a3302b} .lo-v.lo-n{border-color:#6b6b6b} .lo-v.lo-o{border-color:#3a6ea5}
-.lo-s summary{cursor:pointer; font-size:.9rem} .lo-s ul{font-size:.88rem; margin:.3rem 0}
-.lo-new{font-size:.92rem}
-@media (max-width:620px){ .lo-pic{float:none; width:100%; margin:.2rem 0 .6rem} }
