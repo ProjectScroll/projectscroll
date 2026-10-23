@@ -908,7 +908,7 @@ try{ (function(){
 
 /* ---------- the advertisement: a light catches the paper as the pointer moves ---------- */
 try{ (function(){
-  const ad=document.querySelector('.promo.ad'); if (!ad || !matchMedia('(hover: hover) and (pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const ad=document.querySelector('.promo.sv'); if (!ad || !matchMedia('(hover: hover) and (pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   let q=0, x=0, y=0;
   ad.addEventListener('pointermove', function(e){ const r=ad.getBoundingClientRect(); x=(e.clientX-r.left)/r.width*100; y=(e.clientY-r.top)/r.height*100;
     if (!q) q=requestAnimationFrame(function(){ q=0; ad.style.setProperty('--gx', x.toFixed(1)+'%'); ad.style.setProperty('--gy', y.toFixed(1)+'%'); ad.classList.add('glow'); }); }, {passive:true});
@@ -928,7 +928,7 @@ try{ (function(){
 
 /* ---------- the advertisement: "What do you have?" points to the right service ---------- */
 try{ (function(){
-  const box=document.getElementById('adFinder'), out=document.getElementById('adFa'); if (!box || !out) return;
+  const box=document.getElementById('svFinder'), out=document.getElementById('svFa'); if (!box || !out) return;
   const A={
     q:['The research desk traces it through the record: certificates, deeds, censuses, county histories and old newspapers, every statement marked.','Research: a mystery or an ancestor'],
     photo:['The studio images it at high resolution, repairs what time has done to it, and studies its details: the clothes, the buildings, the signs in a window.','Image creation or restoration'],
@@ -1411,8 +1411,8 @@ try{ (function(){
 
   /* ---------- the advertisement: share it with someone who needs it ---------- */
   try{ (function(){
-    const box=document.querySelector('.promo.ad .ad-coupon'); if (!box) return;
-    const p=document.createElement('p'); p.className='ad-share';
+    const box=document.querySelector('.promo.sv .sv-coupon'); if (!box) return;
+    const p=document.createElement('p'); p.className='sv-share';
     const b=document.createElement('button'); b.type='button'; b.className='linkbtn'; b.textContent='Know someone who needs this? Share it ›'; p.appendChild(b); box.appendChild(p);
     const url=location.origin+'/services/', text='Project Scroll: research, imaging, design, 3D and film. Serving the St. Joseph River Valley and anywhere the records reach.';
     b.addEventListener('click', function(){
