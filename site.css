@@ -4480,3 +4480,13 @@ img,picture,svg image{-webkit-touch-callout:none;-webkit-user-drag:none;user-sel
 .rprof figcaption{font-size:.88rem; color:var(--ink-soft); margin-top:.3rem}
 .rprof{overflow-x:auto}
 @media (max-width:600px){ .rprof svg{min-width:640px} }
+/* the services ad: modern hero picture with the headline over its empty left side */
+.promo.ad .ad-hero{position:relative; margin:1.1rem 0 0; border-radius:10px; overflow:hidden; box-shadow:0 10px 30px -12px rgba(10,30,80,.45)}
+.promo.ad .ad-hero img{display:block; width:100%; height:auto}
+.promo.ad .ad-hero-t{position:absolute; left:0; top:0; bottom:0; width:34%; display:flex; flex-direction:column; justify-content:center; gap:.7rem; padding:0 0 0 4.5%; text-align:left; color:#fff; text-shadow:0 1px 10px rgba(0,20,60,.45)}
+.promo.ad .ad-hero-t b{font:600 clamp(1.25rem,2.6vw,2.1rem)/1.12 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; letter-spacing:-.01em; text-wrap:balance}
+.promo.ad .ad-hero-t span{font:500 clamp(.78rem,1.15vw,.95rem)/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; opacity:.95}
+@media (max-width:640px){
+  .promo.ad .ad-hero img{aspect-ratio:4/3; object-fit:cover; object-position:88% 50%}
+  .promo.ad .ad-hero-t{position:static; width:auto; padding:.9rem 1rem 1rem; background:linear-gradient(90deg,#0b3fa8,#0f8fb0); text-shadow:none}
+}
