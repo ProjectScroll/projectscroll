@@ -29,7 +29,7 @@ for f in pages:
         if not tg: continue
         dest,frag=tg
         if not dest.exists(): bad.append(f'{f.relative_to(R)}: {u} -> missing'); continue
-        if frag and dest.suffix=='.html' and frag not in ids.get(dest,set()) and not re.match(r'(town|map|twp|sanborn|case|q|d)-|\d',frag) and frag not in ('top',):
+        if frag and dest.suffix=='.html' and frag not in ids.get(dest,set()) and not re.match(r'(town|map|twp|sanborn|case|q|d|v)-|\d',frag) and frag not in ('top',):
             bad.append(f'{f.relative_to(R)}: {u} -> no #{frag}')
     if not re.search(r'<title>[^<]{3,}</title>',t): bad.append(f'{f.relative_to(R)}: no <title>')
     if 'name="description"' not in t and 'noindex' not in t: bad.append(f'{f.relative_to(R)}: no description')
