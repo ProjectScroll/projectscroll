@@ -4579,3 +4579,21 @@ blockquote.nw-q footer{margin-top:.35rem; font-style:normal; font-size:.86rem; c
 .page > .kicker, .page .nw-index > .kicker, main.page > div > .kicker{width:fit-content; max-width:100%}
 .page > .kicker a, .page > .kicker span, .page .nw-index > .kicker a{color:var(--dusk-gold)!important}
 .page > .kicker::after, .page .nw-index > .kicker::after{display:none!important}
+/* ===== Blue glow, round two: section headings, picture tiles, the Top Ten, buttons and boxes ===== */
+:root{--glow-pool:rgba(160,196,226,.55); --glow-cy:rgba(43,140,190,.45); --glow-edge:rgba(43,140,190,.35); --glow-deep:rgba(20,80,140,.30); --glow-gold:rgba(214,150,40,.40)}
+:root[data-theme="dark"]{--glow-pool:rgba(19,52,90,.95); --glow-cy:rgba(43,184,214,.55); --glow-edge:rgba(95,227,255,.30); --glow-deep:rgba(19,90,150,.55); --glow-gold:rgba(255,192,97,.55)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--glow-pool:rgba(19,52,90,.95); --glow-cy:rgba(43,184,214,.55); --glow-edge:rgba(95,227,255,.30); --glow-deep:rgba(19,90,150,.55); --glow-gold:rgba(255,192,97,.55)} }
+/* 1. a pool of light behind each big section heading */
+main > section:not(.contact){background-image:radial-gradient(48rem 14rem at 50% 4rem, var(--glow-pool), transparent 72%)!important; background-repeat:no-repeat!important}
+/* 2. the front page's picture tiles, lit from behind */
+.heroside a.tcard, .heroside a.vshow, .door a.tcard, .door a.vshow, .tri a.tcard, .vmt-w a.vshow, .dsc-col{box-shadow:0 0 0 1px var(--glow-edge), 0 0 26px -4px var(--glow-cy)}
+/* 3. the Top Ten floats on its own light */
+.nw-paper{box-shadow:0 0 0 1px var(--glow-edge), 0 0 40px 2px var(--glow-deep), 0 30px 60px -30px var(--glow-cy); border-radius:6px}
+/* 5. things to press, and the boxes that hold them */
+.bar .ibtn, .bar button, .tk-btn, .tk-all, .clue{box-shadow:0 0 0 1px var(--glow-edge), 0 0 16px -2px var(--glow-cy)}
+.btn{box-shadow:0 0 0 1px var(--glow-edge), 0 0 14px -4px var(--glow-cy)}
+.btn.primary{box-shadow:0 0 0 1px var(--glow-gold), 0 0 22px -2px var(--glow-gold)}
+.clue{box-shadow:0 0 0 1px var(--glow-edge), 0 0 34px -6px var(--glow-cy)}
+@media print{ main > section{background-image:none!important} .nw-paper, .clue, .btn, .heroside a{box-shadow:none!important} }
+@media (prefers-reduced-transparency: reduce){ main > section{background-image:none} }
+main > section:nth-of-type(even):not(.contact){background-image:radial-gradient(48rem 14rem at 50% 4rem, var(--glow-pool), transparent 72%)!important; background-repeat:no-repeat!important}
