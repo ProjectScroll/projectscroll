@@ -4291,3 +4291,12 @@ main > section#timeline, main > section#hunt, main > section#cases, main > secti
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nw-tag{filter:brightness(1.6); background:transparent} }
 :root[data-theme="dark"] .nw-tag{filter:brightness(1.6); background:transparent}
 .nw-card .nw-tags{display:flex; margin:.3rem 0}
+.vm-today{margin:.6rem 0 0; padding:.5rem .8rem; border-left:4px solid #3F7F4A; background:color-mix(in srgb, #3F7F4A 10%, transparent); font-size:.95rem}
+/* the valley map tile on the home page */
+.vmt{margin:0 0 .7rem}
+.vmt .vs-l{padding-bottom:.45rem}
+.vmt-live{display:block; margin-top:.25rem; font-size:.62rem; letter-spacing:.06em; text-transform:none; color:#eaf3f7}
+.vmt-dots{position:absolute; inset:0; z-index:1; pointer-events:none}
+.vmt-dots i{position:absolute; width:.55rem; height:.55rem; margin:-.275rem 0 0 -.275rem; border-radius:50%; background:#f6d27a; box-shadow:0 0 0 0 rgba(246,210,122,.8); animation:vmtp 2s ease-out infinite}
+@keyframes vmtp{0%{box-shadow:0 0 0 0 rgba(246,210,122,.8)} 100%{box-shadow:0 0 0 .9rem rgba(246,210,122,0)}}
+@media (prefers-reduced-motion: reduce){ .vmt-dots i{animation:none} }

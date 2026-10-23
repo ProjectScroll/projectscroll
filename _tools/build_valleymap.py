@@ -34,6 +34,7 @@ for d in [x for x in load('food.json', []) if x.get('keep', True)]:
 MON = ['','January','February','March','April','May','June','July','August','September','October','November','December']
 for d in load('seasons.json', []):
     add('fest', d['name'], d.get('when') or MON[d.get('month') or 0], d['town'], d.get('ll'), f'/seasons/#{slug(d["name"])}', str(d.get('month') or ''))
+    if d.get('dates2026') and d.get('ll'): pts[-1] += [d['dates2026']['start'], d['dates2026'].get('end') or d['dates2026']['start']]
 
 # the two virtual walks
 w = load('walk.json', {})
@@ -102,11 +103,16 @@ body = f'''    <p class="crumb"><a href="/visit/">← Visit &amp; Plan</a></p>
   var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
   [].forEach.call(document.querySelectorAll('.vm-chip'),function(b){{ on[b.dataset.l]=true;
     b.addEventListener('click',function(){{ on[b.dataset.l]=!on[b.dataset.l]; b.setAttribute('aria-pressed',String(on[b.dataset.l])); draw(); }}); }});
-  var thisMonth=new Date().getMonth()+1;
+  var thisMonth=new Date().getMonth()+1, today=null;
+  var iso=function(d){{ return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }};
+  if (location.hash==='#today'){{ var t0=new Date(), wd=t0.getDay(), t1=new Date(t0); t1.setDate(t0.getDate()+(wd>=5||wd===0? (7-wd)%7 : 6-wd+1));
+    var a=iso(t0), z=iso(t1), hits=P.filter(function(p){{ return p[0]==='fest' && p[8] && p[8]<=z && p[9]>=a; }});
+    if (hits.length){{ today=hits; Object.keys(on).forEach(function(k){{ on[k]=(k==='fest'); }}); [].forEach.call(document.querySelectorAll('.vm-chip'),function(b){{ b.setAttribute('aria-pressed',String(on[b.dataset.l])); }});
+      var m=document.createElement('p'); m.className='vm-today'; m.textContent='On now and coming up through '+t1.toLocaleDateString('en-US',{{weekday:'long',month:'long',day:'numeric'}})+': '+hits.length+(hits.length===1?' event':' events')+'. Turn the other layers on to see what is near them.'; $('.vm-bar').before(m); }} }}
   $('#vmMonth').addEventListener('click',function(){{ month=!month; this.setAttribute('aria-pressed',String(month)); draw(); }});
   q.addEventListener('input',function(){{ draw(); }});
   var km=function(a,b){{ var r=Math.PI/180, dl=(b[0]-a[0])*r, dn=(b[1]-a[1])*r, h=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dn/2)*Math.sin(dn/2); return 12742*Math.asin(Math.sqrt(h)); }};
-  var vis=function(p){{ if (!on[p[0]]) return false; if (month && p[0]==='fest' && String(p[7])!==String(thisMonth)) return false;
+  var vis=function(p){{ if (!on[p[0]]) return false; if (today && p[0]==='fest' && today.indexOf(p)<0) return false; if (month && p[0]==='fest' && String(p[7])!==String(thisMonth)) return false;
     var t=q.value.trim().toLowerCase(); if (t && (p[1]+' '+p[3]+' '+p[2]).toLowerCase().indexOf(t)<0) return false; return true; }};
   var esc=function(s){{ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }};
   var draw=function(){{ var v=P.filter(vis);
@@ -151,3 +157,17 @@ page('valley-map/index.html', 'The valley map · every place on one map · Proje
      f'One map of the St. Joseph River valley with {N} places: museums and historic places, places to eat and stay, festivals, walk stops, lost towns and old town plans. Switch layers on and off and find what is near you.',
      body, og='https://projectscroll.com/og/valley-map.jpg?v=1')
 print('valley map built', N, cnt)
+
+# ---------- the home-page tile's live data: the dated festivals, placed on the tile picture ----------
+import math as _m
+_W, _H, _lat0, _lat1, _lon0, _lon1 = 960, 540, 41.45, 42.42, -86.95, -85.35
+_k = _m.cos(_m.radians(41.95)); _sc = min(_W/((_lon1-_lon0)*_k), _H/(_lat1-_lat0)); _cx = (_lon0+_lon1)/2; _cy = (_lat0+_lat1)/2
+def _xy(la, lo): return (round((_W/2+(lo-_cx)*_k*_sc)/_W*100, 2), round((_H/2-(la-_cy)*_sc)/_H*100, 2))
+_ev = []
+for d in load('seasons.json', []):
+    dt = d.get('dates2026')
+    if not dt: continue
+    x, y = _xy(*d['ll']) if d.get('ll') else (None, None)
+    _ev.append([d['name'], d['town'], dt['start'], dt.get('end') or dt['start'], x if x is not None and 0 <= x <= 100 else None, y if y is not None and 0 <= y <= 100 else None, slug(d['name'])])
+open(pathlib.Path(__file__).parent.parent/'valley-map'/'today.json', 'w').write(json.dumps({'n': N, 'ev': _ev}, ensure_ascii=False, separators=(',',':')))
+print('valley map tile data', len(_ev))
