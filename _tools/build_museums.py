@@ -3,6 +3,7 @@ python3 _tools/build_museums.py   (data in _tools/data/museums.json, every entry
 the map's county outlines are in museums/base.json, from the US Census county outlines and the valley model's rivers)"""
 import sys, pathlib, json, html, re, urllib.parse
 sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
+import basemap
 E = html.escape
 D = json.load(open(pathlib.Path(__file__).parent/'data'/'museums.json'))
 ORDER = [('Cass','MI'),('Berrien','MI'),('Van Buren','MI'),('St. Joseph','MI'),('Kalamazoo','MI'),('Barry','MI'),('St. Joseph','IN'),('Elkhart','IN'),('LaGrange','IN'),('LaPorte','IN')]
@@ -98,7 +99,7 @@ for i, d in enumerate([d for k in keys for d in sorted(groups[k], key=lambda x:(
     items.append({'@type':'ListItem','position':i,'item':it})
 ld = '<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@type':'ItemList','name':'Museums & historic places of the St. Joseph River valley','numberOfItems':n,'itemListElement':items}, ensure_ascii=False).replace('</','<\\/')+'</script>'
 
-JS = r'''<script>
+JS = '<script>'+basemap.BASE_JS+'</script>' + r'''<script>
 (function(){
   var w=document.getElementById('muWx'); if (!w || !window.fetch) return;
   var go=function(){
@@ -347,10 +348,7 @@ JS = r'''<script>
       c.bindPopup(div,{maxWidth:260}); c.bindTooltip(lis.map(function(li){ return li.dataset.n; }).join(' · '),{direction:'top', offset:[0,-6]});
       var m={c:c, lis:lis}; lis.forEach(function(li){ li._m=m; }); markers.push(m); });
     draw(false); paint(); if (near) nearOn(near);
-    var osm=null, sb=$('#muOSM');
-    sb.hidden=false; sb.addEventListener('click',function(){ var on=sb.getAttribute('aria-pressed')!=='true'; sb.setAttribute('aria-pressed',String(on));
-      if (on){ if (!osm) osm=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19, attribution:'Streets: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}); osm.addTo(map); box.classList.add('osm'); }
-      else { map.removeLayer(osm); box.classList.remove('osm'); } });
+    window.psBase(map, box, $('#muBase'), 'topo');
     $('#muHome').hidden=false; $('#muHome').addEventListener('click',function(){ map.fitBounds(map._home); });
   };
   var need=function(){ if (window.L){ start(); return; } if (need.on) return; need.on=1;
@@ -382,7 +380,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
         <p class="mu-mapph">The map opens here: {nmap} of the {n} places have a pin, and places in the same building share one.</p>
       </div>
       <figcaption><span class="mu-lg"><i class="mu-dot"></i> Museum, house or site</span> <span class="mu-lg"><i class="mu-dot lib"></i> Library, archive or society</span> <span class="mu-lg"><i class="mu-dot t"></i> On my trip</span>
-        <button type="button" class="btn mu-osm" id="muOSM" aria-pressed="false" hidden>Show today’s streets</button> <button type="button" class="btn" id="muHome" hidden>Whole valley</button>
+        {basemap.buttons('topo','muBase')} <button type="button" class="btn" id="muHome" hidden>Whole valley</button>
         <span class="mu-stat" id="muMapStat" aria-live="polite"></span></figcaption>
     </figure>
     <p class="mu-shared" id="muShared" hidden role="status">Someone shared a trip of <b id="muSharedN"></b> stops with you. <button type="button" class="btn" id="muSharedUse">Use the shared trip</button> <button type="button" class="btn" id="muSharedNo">Keep my own</button></p>
@@ -411,7 +409,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li><b>Know of a place we missed?</b> <a href="/#contact">Tell us</a> and we will add it.</li>
     </ul>
     <p class="vs-plan"><a class="btn" href="/visit/">Plan your visit: ready-made days out, food, lodging and festivals</a></p>
-    <p class="note">Every place on this page was checked against its own website, or a city, county, library or university page about it, in October 2026. Places marked “check before you go” could not be confirmed online. The “open now” and “open today” lines are worked out from each place’s posted hours and seasons, in its own time zone; they do not know about holidays, events or a volunteer’s day off. Hours change: always look at the place’s own site before travelling. Map pins come from each street address; a few pins marked “near, not exact” sit at the town or road. The map draws its own county lines (US Census Bureau) and rivers (USGS). Only if you press “Show today’s streets” does your browser ask OpenStreetMap’s tile server for street maps, under <a href="https://osmfoundation.org/wiki/Privacy_Policy" rel="noopener">its privacy policy</a>. “Sort by distance” asks your browser for your location and uses it only on this page. The weather line comes from the National Weather Service forecast for Cassopolis (weather.gov), fetched by your browser.</p>
+    <p class="note">Every place on this page was checked against its own website, or a city, county, library or university page about it, in October 2026. Places marked “check before you go” could not be confirmed online. The “open now” and “open today” lines are worked out from each place’s posted hours and seasons, in its own time zone; they do not know about holidays, events or a volunteer’s day off. Hours change: always look at the place’s own site before travelling. Map pins come from each street address; a few pins marked “near, not exact” sit at the town or road. The base map, with town names, highways and street names, and the aerial photographs are from the USGS National Map, a free public-domain service of the US Geological Survey; your browser fetches its map pieces from the USGS while the map is open (choose “Plain” for only the site’s own county lines and rivers). “Sort by distance” asks your browser for your location and uses it only on this page. The weather line comes from the National Weather Service forecast for Cassopolis (weather.gov), fetched by your browser.</p>
 {ld}
 {JS}
 '''

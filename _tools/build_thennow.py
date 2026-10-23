@@ -8,7 +8,7 @@ Placement: least-squares fit to 19 street corners that keep their 1860 names
 OpenStreetMap. Root-mean-square error about 5 m, worst about 9 m.
 """
 import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
-import json
+import json, basemap
 _TD=pathlib.Path(__file__).parent/'towns'
 NILES=json.loads((_TD/'niles_bounds.json').read_text())
 DOWAGIAC=json.loads((_TD/'dowagiac_bounds.json').read_text())
@@ -173,6 +173,7 @@ def build(t):
         <button type="button" class="btn" id="tnFade" aria-pressed="true">Fade</button><button type="button" class="btn" id="tnSwipe" aria-pressed="false">Side by side</button>
       </span>
       <label class="tnrange" id="tnFadeBox"><span>Today</span><input type="range" id="tnOp" min="0" max="100" value="75" aria-label="How much of the {Y} plan to show"><span>{Y}</span></label>
+      {basemap.buttons('photo','tnBase',(('photo','Photo'),('plain','Lines')))}
       <button type="button" class="btn" id="tnHome">Back to town</button>
       <button type="button" class="btn" id="tnHere" aria-pressed="false">Where am I?</button>{'<button type="button" class="btn" id="tnWalk" aria-pressed="false">Show the walk stops</button>' if t['slug'] in WALKS else ''}<button type="button" class="btn" id="tnFull">Full screen</button><button type="button" class="btn" id="tnShare">Share this view</button><button type="button" class="btn" id="tnPrint">Print</button><button type="button" class="btn" id="tnNames" aria-pressed="false" disabled title="Solve this town’s renamed-street challenge to unlock">Today’s names 🔒</button>
       <span class="mapstat" id="tnStat" aria-live="polite">Loading…</span>
@@ -187,11 +188,12 @@ def build(t):
 {hunt(t,Y)}    <h2>How this was made</h2>
     <p>{t["how"]}</p>
     {t.get("extra","")}
-    <p class="note tncredit">{t.get("credit") or CREDIT.format(inset=t["inset"])} Today’s streets and water: drawn from OpenStreetMap data, © OpenStreetMap contributors, available under the Open Database License.</p>
+    <p class="note tncredit">{t.get("credit") or CREDIT.format(inset=t["inset"])} Today’s aerial photograph and, once the challenge is solved, today’s names: USGS The National Map (public domain). Today’s streets and water drawn as lines: OpenStreetMap data, © OpenStreetMap contributors, available under the Open Database License.</p>
     {('<p class="note">The business directory printed beside this plan is in the roll of names: <a href="/names/?town='+t['slug']+'">who was in '+t['name']+' in '+Y+' →</a></p>') if t['slug'] in ('cassopolis','niles','dowagiac','paw-paw','goshen') else ''}
     <p class="tnnext"><a href="/map/{nx['slug']}/">Next town: {nx['name']}, {nx.get('year','1860')} →</a> <span aria-hidden="true">·</span> <a href="/map/then-and-now/">All seven towns</a></p>
     <link rel="stylesheet" href="/vendor/leaflet-1.9.4/leaflet.css?v=1">
     <script src="/vendor/leaflet-1.9.4/leaflet.js?v=1"></script>
+    <script>{basemap.BASE_JS}</script>
     <script>
     (function(){{ "use strict";
       const stat=document.getElementById('tnStat');
@@ -204,7 +206,8 @@ def build(t):
       const dec=a=>{{ const o=[]; let la=0, lo=0; for(let i=0;i<a.length;i+=2){{ la+=a[i]; lo+=a[i+1]; o.push([la/1e5, lo/1e5]); }} return o; }};
       const isDark=()=>{{ const t=document.documentElement.dataset.theme; return t ? t==='dark' : matchMedia('(prefers-color-scheme: dark)').matches; }};
       const pal=()=>isDark() ? {{land:'#1d2329', water:'#2c4656', minor:'#7d8994', major:'#c9d1d8', rail:'#8a7f72'}} : {{land:'#f1efe8', water:'#b9d0dc', minor:'#a6a39a', major:'#5d5a54', rail:'#8a7560'}};
-      const cv=L.canvas({{padding:0.5}});
+      map.createPane('today').style.zIndex=300;
+      const cv=L.canvas({{padding:0.5, pane:'today'}});
       const groups={{w:[], s:[], r:[], m:[], x:[]}}; let sw=4;
       const style={{
         w:c=>({{renderer:cv, stroke:false, fillColor:c.water, fillOpacity:1, interactive:false}}),
@@ -225,6 +228,9 @@ def build(t):
       map.attributionControl.addAttribution('Today: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors');
       map.getContainer().style.background=pal().land;
       map.createPane('old').style.zIndex=450;
+      // today's map underneath: an aerial photograph with no names (the street-name challenge stays a challenge); the drawn streets sit lightly over it
+      map.on('psbase',e=>{{ map.getPane('today').style.opacity= e.base==='plain' ? '' : (e.base==='photo' ? '.5' : '0'); }});
+      const base=window.psBase(map, map.getContainer(), document.getElementById('tnBase'), 'photo');
 {overlay(t,Y)}      old.on('load',()=>{{ stat.textContent='{Y} plan placed over today’s streets.'; clip(); }});
       old.on('error',()=>{{ stat.textContent='The {Y} plan did not load. Try refreshing the page.'; }});
       const op=document.getElementById('tnOp');
@@ -299,8 +305,8 @@ def build(t):
       const unlock=()=>{{ if (solved()){{ bNames.disabled=false; bNames.title='Show today’s street names under the old plan'; bNames.textContent='Today’s names'; }} }};
       unlock(); document.addEventListener('ps-badge',unlock); document.addEventListener('submit',()=>setTimeout(unlock,50),true);
       bNames.onclick=()=>{{ if (bNames.disabled) return; namesOn=!namesOn; bNames.setAttribute('aria-pressed',String(namesOn));
-        if (namesOn){{ if (!osm) osm=L.tileLayer('https://tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png',{{maxZoom:19, attribution:'Street names: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}}); osm.addTo(map); osm.bringToBack(); stat.textContent='Today’s names on, from OpenStreetMap. Fade the old plan to read them.'; }}
-        else {{ if (osm) map.removeLayer(osm); stat.textContent='Today’s names off.'; }} }};
+        if (namesOn){{ base.set('topo'); stat.textContent='Today’s names on, from the USGS National Map. Fade the old plan to read them.'; }}
+        else {{ base.set('photo'); stat.textContent='Today’s names off.'; }} }};
     }})();
     </script>
 '''

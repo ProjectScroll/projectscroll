@@ -2,6 +2,7 @@
 python3 _tools/build_walk.py   (stops in _tools/data/walk.json)"""
 import sys, pathlib, json, html, re
 sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
+import basemap
 E = html.escape
 CFG = [
   dict(data='walk.json', out='walk/index.html', url='/walk/', key='ps-walk', badge='walker', slug='cassopolis', town='Cassopolis', street='Broadway',
@@ -17,7 +18,7 @@ CFG = [
        lede='Dowagiac, Michigan, the stove town: {n} stops through the downtown that the Round Oak works, the lure makers and the railroad built, each with what stood there and what is there now. Walk it from your chair, or bring this page to Front Street and stamp each stop on the spot.',
        plan=None, bounds=[[41.97,-86.125],[41.995,-86.095]], extra='<a class="btn" href="/map/dowagiac/">Dowagiac’s 1860 plan over today’s streets</a> <a class="btn" href="/walk/">Also: Broadway, Cassopolis ›</a>',
        start='Start at the history museum on Division Street and follow the stops in order; the whole walk is about a mile.',
-       note='The stops come from the Dowagiac Area History Museum’s walking tour, the museum and city websites, the National Register file for the depot and the county histories, each linked under its stop. The map shows today’s streets from OpenStreetMap data, drawn on this page. Where a date or name could not be confirmed, the stop says so. Corrections are welcome at research@projectscroll.com.',
+       note='The stops come from the Dowagiac Area History Museum’s walking tour, the museum and city websites, the National Register file for the depot and the county histories, each linked under its stop. The base map and aerial photographs are from the USGS National Map, a public-domain service of the US Geological Survey; “Plain” shows only today’s streets drawn on this page from OpenStreetMap data. Where a date or name could not be confirmed, the stop says so. Corrections are welcome at research@projectscroll.com.',
        desc='Walk Front Street in Dowagiac, Michigan, stop by stop: {n} buildings and sites from the Round Oak stove works and the Heddon lure makers to the 1903 depot, with their history and what is there now.', og='dowagiac'),
 ]
 for C in CFG:
@@ -59,7 +60,7 @@ for C in CFG:
   sanborn = ''.join(f'<li><a href="{E(x["url"])}" rel="noopener">{E(str(x["year"]))}</a>{(" · "+E(x["note"])) if x.get("note") else ""}</li>' for x in W.get('sanborn', []))
   markers = ''.join(f'<li><a href="{E(x["url"])}" rel="noopener">{E(x["title"])}</a>{(" · "+E(x["location"])) if x.get("location") else ""}</li>' for x in W.get('markers', []))
   route = json.dumps([[s['lat'], s['lon']] for s in S])
-  JS = r'''<script>
+  JS = '<script>'+basemap.BASE_JS+'</script>'+r'''<script>
   (function(){ "use strict";
     var $=function(s){ return document.querySelector(s); }, $$=function(s){ return [].slice.call(document.querySelectorAll(s)); };
     var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -107,9 +108,8 @@ for C in CFG:
       map.fitBounds(line.getBounds().pad(.25));
       map.on('focus click',function(){ map.scrollWheelZoom.enable(); }); map.on('blur mouseout',function(){ map.scrollWheelZoom.disable(); });
       var op=$('#wkOp'); if (plan){ op.hidden=false; } op.querySelector('input').addEventListener('input',function(e){ plan.setOpacity(+e.target.value/100); });
-      var sb=$('#wkOSM'); sb.hidden=false; sb.addEventListener('click',function(){ var on=sb.getAttribute('aria-pressed')!=='true'; sb.setAttribute('aria-pressed',String(on));
-        if (on){ if (!osm) osm=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19, attribution:'Streets: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}); osm.addTo(map); osm.bringToBack(); }
-        else map.removeLayer(osm); });
+      map.on('psbase',function(e){ map.getPane('today').style.opacity= e.base==='plain'? '' : (e.base==='topo'? '0' : '.55'); });
+      window.psBase(map, map.getContainer(), $('#wkBase'), 'topo');
       paint(); };
     var need=function(){ if (window.L){ start(); return; } if (need.on) return; need.on=1;
       var l=document.createElement('link'); l.rel='stylesheet'; l.href='/vendor/leaflet-1.9.4/leaflet.css?v=1'; document.head.appendChild(l);
@@ -158,7 +158,7 @@ for C in CFG:
           <p class="wk-nav"><button type="button" class="btn" id="wkPrev">‹ Back</button> <span id="wkNum" aria-live="polite"></span> <button type="button" class="btn primary" id="wkNext">Next stop ›</button></p>
           <div class="wk-stage" id="wkStage" aria-live="polite"></div>
         </div>
-        <p class="wk-tools"><label class="wk-op" id="wkOp" hidden>1860 plan <input type="range" min="0" max="100" value="90" aria-label="How strongly the 1860 plan shows"></label> <button type="button" class="btn mu-osm" id="wkOSM" aria-pressed="false" hidden>Show today’s streets</button> <button type="button" class="btn" id="wkPlay" aria-pressed="false" hidden>Play the tour aloud</button> <button type="button" class="btn" id="wkFollow" aria-pressed="false" hidden>Follow me on foot</button> {C['extra']} <button type="button" class="btn" id="wkOff" hidden>Save for no-signal use</button></p>
+        <p class="wk-tools"><label class="wk-op" id="wkOp" hidden>1860 plan <input type="range" min="0" max="100" value="90" aria-label="How strongly the 1860 plan shows"></label> {basemap.buttons("topo","wkBase")} <button type="button" class="btn" id="wkPlay" aria-pressed="false" hidden>Play the tour aloud</button> <button type="button" class="btn" id="wkFollow" aria-pressed="false" hidden>Follow me on foot</button> {C['extra']} <button type="button" class="btn" id="wkOff" hidden>Save for no-signal use</button></p>
         <p class="mu-mine" id="wkProg" aria-live="polite"></p>
       </div>
       <h2>Every stop</h2>
