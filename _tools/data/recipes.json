@@ -15,14 +15,6 @@
   "img": "/img/food/celery-soup.webp",
   "photos": [
    {
-    "src": "/img/food/photos/celery-soup-1.webp",
-    "alt": "A bowl of cream of celery soup",
-    "credit": "Photo: Derick Schaefer, CC BY 2.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Cream_of_celery_soup.jpg",
-    "short": "Made today",
-    "license": "CC BY 2.0"
-   },
-   {
     "src": "/img/food/photos/celery-soup-2.webp",
     "alt": "A bunch of celery",
     "credit": "Renee Comet, National Cancer Institute (public domain)",
@@ -106,14 +98,6 @@
   "img": "/img/food/rabbit-fricassee.webp",
   "photos": [
    {
-    "src": "/img/food/photos/rabbit-fricassee-1.webp",
-    "alt": "A bowl of rabbit stew",
-    "credit": "Photo: Mike Czyzewski, CC BY-SA 2.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Rabbit_stew_in_a_bowl.jpg",
-    "short": "Made today",
-    "license": "CC BY-SA 2.0"
-   },
-   {
     "src": "/img/food/photos/rabbit-fricassee-2.webp",
     "alt": "Rabbits, a plate from The Rabbit (Fur, Feather and Fin series)",
     "credit": "From J. E. Harting, The Rabbit, 1898, Biodiversity Heritage Library (public domain)",
@@ -172,14 +156,6 @@
   "img": "/img/food/marlborough-pie.webp",
   "photos": [
    {
-    "src": "/img/food/photos/marlborough-pie-1.webp",
-    "alt": "A home-baked apple pie",
-    "credit": "Photo: Shisma, CC BY 4.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Apple_pie_24.jpg",
-    "short": "Made today",
-    "license": "CC BY 4.0"
-   },
-   {
     "src": "/img/food/photos/marlborough-pie-2.webp",
     "alt": "Rhode Island Greening apples, a tart pie apple (USDA Pomological Watercolor)",
     "credit": "Royal Charles Steadman, USDA Pomological Watercolor Collection, National Agricultural Library (public domain)",
@@ -204,14 +180,6 @@
   "course": "pie-cake",
   "img": "/img/food/cream-peach-pie.webp",
   "photos": [
-   {
-    "src": "/img/food/photos/cream-peach-pie-1.webp",
-    "alt": "A peach pie",
-    "credit": "Photo: Stephanie Clifford, CC BY 2.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Peach_Pie_%2825619766983%29.jpg",
-    "short": "Made today",
-    "license": "CC BY 2.0"
-   },
    {
     "src": "/img/food/photos/cream-peach-pie-2.webp",
     "alt": "Elberta peaches (USDA Pomological Watercolor)",
@@ -337,14 +305,6 @@
   "img": "/img/food/maple-creams.webp",
   "photos": [
    {
-    "src": "/img/food/photos/maple-creams-1.webp",
-    "alt": "Maple-sugar candies",
-    "credit": "Photo: Michael Harrison, CC BY-SA 2.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Maple_candy_%2814847028916%29.jpg",
-    "short": "Made today",
-    "license": "CC BY-SA 2.0"
-   },
-   {
     "src": "/img/food/photos/maple-creams-2.webp",
     "alt": "Sugaring Off, a maple-sugar camp (oil sketch)",
     "credit": "Eastman Johnson, Sugaring Off, RISD Museum (public domain)",
@@ -369,14 +329,6 @@
   "course": "candy",
   "img": "/img/food/popcorn-candy.webp",
   "photos": [
-   {
-    "src": "/img/food/photos/popcorn-candy-1.webp",
-    "alt": "Candied (caramel) popcorn",
-    "credit": "Photo: Monica Nguyen, CC BY 2.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:CaramelCorn.jpg",
-    "short": "Made today",
-    "license": "CC BY 2.0"
-   },
    {
     "src": "/img/food/photos/popcorn-candy-2.webp",
     "alt": "A bowl of popped corn",
@@ -424,17 +376,7 @@
   "verified": true,
   "note": "Read in the Internet Archive OCR text (p. 177). The same page also lists hints using muriatic and oxalic acid; those were left out deliberately because they are poisons.",
   "course": "hint",
-  "img": "/img/food/kitchen-hints-1906.webp",
-  "photos": [
-   {
-    "src": "/img/food/photos/doughnuts-and-silver-two-kitchen-hints-1.webp",
-    "alt": "A tray of old-fashioned doughnuts",
-    "credit": "Photo: Arnold Gatilao, CC BY 2.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Old_fashioned_doughnuts.jpg",
-    "short": "Made today",
-    "license": "CC BY 2.0"
-   }
-  ]
+  "img": "/img/food/kitchen-hints-1906.webp"
  },
  {
   "title": "To take rust out of linen",
@@ -458,14 +400,6 @@
     "page": "https://commons.wikimedia.org/wiki/File:Pomological_Watercolor_POM00006416.jpg",
     "short": "Eureka lemons",
     "license": "Public domain"
-   },
-   {
-    "src": "/img/food/photos/to-take-rust-out-of-linen-2.webp",
-    "alt": "A red-checked linen cloth",
-    "credit": "Photo: W.carter, CC BY-SA 4.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Linen_table_cloth_made_by_Tampella%2C_Finland_1.jpg",
-    "short": "A red-checked linen cloth",
-    "license": "CC BY-SA 4.0"
    }
   ]
  },
@@ -516,14 +450,6 @@
   "img": "/img/food/graham-nut-bread.webp",
   "photos": [
    {
-    "src": "/img/food/photos/graham-nut-bread-1.webp",
-    "alt": "A loaf of walnut bread",
-    "credit": "Photo: Neil Conway, CC BY 2.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Walnut_bread._%288619938178%29.jpg",
-    "short": "Made today",
-    "license": "CC BY 2.0"
-   },
-   {
     "src": "/img/food/photos/graham-nut-bread-2.webp",
     "alt": "English walnut (Juglans regia), botanical plate",
     "credit": "Köhler's Medizinal-Pflanzen, 1897 (public domain)",
@@ -569,25 +495,7 @@
   "modern": "Mix 1 lb ground beef with 1 egg, salt, pepper and a little minced onion. Make about 2 cups of your usual bread stuffing (bread cubes, butter, onion, celery, sage, moistened with broth). Butter a 12-cup muffin tin; press a thin layer of beef in each cup, then a spoonful of stuffing, then another layer of beef. Bake at 375°F about 25 minutes, until the meat reaches 160°F. Turn out and garnish with parsley. 'Gem pans' are muffin tins.",
   "url": "https://archive.org/details/michiganstatefed0000sara/page/79/mode/1up",
   "note": "Read on the page scan (archive.org page images, printed p. 79). The book prints each contributor with her home town; it was compiled by Mrs. Sarah Marshall Weaver for the Michigan State Federation of Women's Clubs and printed by Perry, Nies & Company, Charlotte, Mich., September 1909. The book itself is statewide; this recipe is valley-local only through its contributor. The OCR text garbles this title; it was read from the page image.",
-  "img": "/img/food/hamburg-german-style.webp",
-  "photos": [
-   {
-    "src": "/img/food/photos/hamburg-german-style-1.webp",
-    "alt": "Chopped-beef steak with brown gravy",
-    "credit": "Photo: jeffreyw, CC BY 2.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Salisbury_steak_with_brown_sauce.jpg",
-    "short": "Made today",
-    "license": "CC BY 2.0"
-   },
-   {
-    "src": "/img/food/photos/hamburg-german-style-2.webp",
-    "alt": "An antique hand meat grinder (food chopper)",
-    "credit": "Photo: Thomas Quine, CC BY 2.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Antique_meat_grinder_%2828893938062%29.jpg",
-    "short": "An antique hand meat…",
-    "license": "CC BY 2.0"
-   }
-  ]
+  "img": "/img/food/hamburg-german-style.webp"
  },
  {
   "title": "Escalloped Parsnips",
@@ -625,17 +533,7 @@
   "modern": "Thinly slice 3 medium potatoes and 1 onion. In a buttered 1½-quart dish, layer potatoes and onion, a sprinkle of cracker crumbs, salt and pepper, and thin slices of cheese (mild cheddar or Colby); repeat until full. Pour about ¾ cup milk over the top, cover, and bake at 325–350°F for 1 hour, uncovering for the last 15 minutes to brown.",
   "url": "https://archive.org/details/michiganstatefed0000sara/page/108/mode/1up",
   "note": "Read on the page scan (archive.org page images, printed p. 108). The book prints each contributor with her home town; it was compiled by Mrs. Sarah Marshall Weaver for the Michigan State Federation of Women's Clubs and printed by Perry, Nies & Company, Charlotte, Mich., September 1909. The book itself is statewide; this recipe is valley-local only through its contributor. ",
-  "img": "/img/food/potato-entree.webp",
-  "photos": [
-   {
-    "src": "/img/food/photos/potato-entree-1.webp",
-    "alt": "A baked potato gratin",
-    "credit": "Photo: pelican, CC BY-SA 2.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Potato_gratin_%287620845914%29.jpg",
-    "short": "Made today",
-    "license": "CC BY-SA 2.0"
-   }
-  ]
+  "img": "/img/food/potato-entree.webp"
  },
  {
   "title": "Stuffed Peppers",
@@ -673,17 +571,7 @@
   "modern": "Break ½ lb spaghetti into short pieces and boil in salted water until just tender (about 10 minutes for modern pasta); drain. Butter a 2-quart dish and cover the bottom with fine cracker crumbs dotted with butter. Layer spaghetti, then stewed or canned tomatoes (about a 28-oz can in all), dotting each tomato layer with butter, salt and pepper; repeat, and finish with butter and crumbs. Bake at 350°F for 45 minutes.",
   "url": "https://archive.org/details/michiganstatefed0000sara/page/110/mode/1up",
   "note": "Read on the page scan (archive.org page images, printed p. 110). The book prints each contributor with her home town; it was compiled by Mrs. Sarah Marshall Weaver for the Michigan State Federation of Women's Clubs and printed by Perry, Nies & Company, Charlotte, Mich., September 1909. The book itself is statewide; this recipe is valley-local only through its contributor. ",
-  "img": "/img/food/escalloped-spaghetti.webp",
-  "photos": [
-   {
-    "src": "/img/food/photos/escalloped-spaghetti-1.webp",
-    "alt": "A dish of baked spaghetti",
-    "credit": "Photo: Robert Loescher, CC BY-SA 4.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Baked_Spaghetti_with_mushrooms.JPG",
-    "short": "Made today",
-    "license": "CC BY-SA 4.0"
-   }
-  ]
+  "img": "/img/food/escalloped-spaghetti.webp"
  },
  {
   "title": "A pancake hint",
@@ -761,17 +649,7 @@
   "modern": "A golden sponge cake. Sift 1 cup sugar and 1 cup cake flour separately, several times each. Beat 5 yolks until thick and set aside. Beat 7 whites with a pinch of salt until foamy, add ¼ tsp cream of tartar and beat to stiff peaks. Beat in the sugar a spoonful at a time, then the yolks; gently fold in the flour and 1 tsp vanilla or lemon. Turn into an ungreased 10-inch tube pan and bake at once at 325°F for 40–50 minutes. Cool upside down. Icing: beat 1 yolk with 2 Tbsp cream and enough powdered sugar to spread (or skip the raw yolk and use a little more cream). 'XXXX' was the grade name for fine powdered sugar.",
   "url": "https://archive.org/details/michiganstatefed0000sara/page/23/mode/1up",
   "note": "Read on the page scan (archive.org page images, printed p. 23). The book prints each contributor with her home town; it was compiled by Mrs. Sarah Marshall Weaver for the Michigan State Federation of Women's Clubs and printed by Perry, Nies & Company, Charlotte, Mich., September 1909. The book itself is statewide; this recipe is valley-local only through its contributor. ",
-  "img": "/img/food/sunshine-cake.webp",
-  "photos": [
-   {
-    "src": "/img/food/photos/sunshine-cake-1.webp",
-    "alt": "A light sponge (angel food) cake",
-    "credit": "Photo: boviate, CC BY-SA 2.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Angel_food_cake_texture.jpg",
-    "short": "Made today",
-    "license": "CC BY-SA 2.0"
-   }
-  ]
+  "img": "/img/food/sunshine-cake.webp"
  },
  {
   "title": "Fruit Cookies",
@@ -787,14 +665,6 @@
   "note": "Read on the page scan (archive.org page images, printed p. 31). The book prints each contributor with her home town; it was compiled by Mrs. Sarah Marshall Weaver for the Michigan State Federation of Women's Clubs and printed by Perry, Nies & Company, Charlotte, Mich., September 1909. The book itself is statewide; this recipe is valley-local only through its contributor. There are two Fruit Cookies recipes on this page; this is the second one, signed from Constantine.",
   "img": "/img/food/fruit-cookies.webp",
   "photos": [
-   {
-    "src": "/img/food/photos/fruit-cookies-1.webp",
-    "alt": "Raisin cookies",
-    "credit": "Photo: Douglas Paul Perkins, CC BY 3.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Oatmeal_raisin_cookies_1.jpg",
-    "short": "Made today",
-    "license": "CC BY 3.0"
-   },
    {
     "src": "/img/food/photos/fruit-cookies-2.webp",
     "alt": "An old tin cookie cutter (Index of American Design watercolor)",
@@ -819,14 +689,6 @@
   "note": "Read on the page scan (archive.org page images, printed p. 42). The book prints each contributor with her home town; it was compiled by Mrs. Sarah Marshall Weaver for the Michigan State Federation of Women's Clubs and printed by Perry, Nies & Company, Charlotte, Mich., September 1909. The book itself is statewide; this recipe is valley-local only through its contributor. ",
   "img": "/img/food/orange-conserve.webp",
   "photos": [
-   {
-    "src": "/img/food/photos/orange-conserve-1.webp",
-    "alt": "Jars of home-made marmalade",
-    "credit": "Photo: Leslie Seaton, CC BY 2.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Finished_marmalades_%288449071267%29.jpg",
-    "short": "Made today",
-    "license": "CC BY 2.0"
-   },
    {
     "src": "/img/food/photos/orange-conserve-2.webp",
     "alt": "Washington Navel oranges (USDA Pomological Watercolor)",
@@ -858,14 +720,6 @@
     "page": "https://commons.wikimedia.org/wiki/File:A_cook_of_the_Royal_Household_displaying_the_ingredients_used_in_the_making_of_a_Christmas_Pudding.png",
     "short": "A cook with the…",
     "license": "Public domain"
-   },
-   {
-    "src": "/img/food/photos/graham-pudding-with-foam-sauce-2.webp",
-    "alt": "Cooks preparing a great boiled plum pudding (wood engraving)",
-    "credit": "The Illustrated London News, 1863; Wellcome Collection (CC BY 4.0)",
-    "page": "https://commons.wikimedia.org/wiki/File:Members_of_the_United_Cooks%27_Society_preparing_plum_pudding._Wellcome_L0004802.jpg",
-    "short": "Cooks preparing a great…",
-    "license": "CC BY 4.0"
    }
   ]
  },
@@ -964,14 +818,6 @@
   "img": "/img/food/tomato-soup.webp",
   "photos": [
    {
-    "src": "/img/food/photos/tomato-soup-1.webp",
-    "alt": "A bowl of tomato soup",
-    "credit": "Photo: JIP, CC BY-SA 4.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Tomato_soup_-_Bon_App%C3%A9tit.jpg",
-    "short": "Made today",
-    "license": "CC BY-SA 4.0"
-   },
-   {
     "src": "/img/food/photos/tomato-soup-2.webp",
     "alt": "Ripe tomatoes",
     "credit": "Scott Bauer, USDA Agricultural Research Service (public domain)",
@@ -1025,17 +871,7 @@
   "modern": "Combine 2 cups sugar, ½ cup milk, 1–2 Tbsp butter and 2 oz unsweetened chocolate in a heavy pan. Stir over medium heat until the sugar dissolves, then boil without stirring to the soft-ball stage (234–238°F, when a drop forms a soft ball in cold water). Cool for 10 minutes, beat until it thickens and loses its gloss, spread in a buttered 8×4 pan and cut in squares.",
   "url": "https://archive.org/details/inglenookcookboo0000vari/page/200/mode/1up",
   "note": "Read on the page scan (archive.org page images, printed p. 200). The book was published in Elgin, Illinois, by the Brethren Publishing House (copyright 1901); the scanned copy is the thirteenth edition dated 1909 on its title page. Recipes are signed by the contributing Sister and her town; this one is valley-local through its contributor, not its publisher. The book prints old-style numerals (the figure one looks like a small capital I); they are given here as ordinary figures. Recipe No. 938.",
-  "img": "/img/food/candy-fudge.webp",
-  "photos": [
-   {
-    "src": "/img/food/photos/candy-fudge-1.webp",
-    "alt": "Six squares of chocolate fudge",
-    "credit": "Photo: Simon Cousins, CC BY 2.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Quick_fudge_-_six_squares.jpg",
-    "short": "Made today",
-    "license": "CC BY 2.0"
-   }
-  ]
+  "img": "/img/food/candy-fudge.webp"
  },
  {
   "title": "Corn Bread",
@@ -1049,25 +885,7 @@
   "modern": "Mix 2 cups fine cornmeal, 2 cups flour, 2 cups buttermilk, 2 eggs, ½ cup sugar and ¼ cup melted butter. Stir 1 tsp baking soda into 2 Tbsp milk and add it last. Pour into a greased 9×13 pan and bake at 375°F for 25–30 minutes. 'Bolted' meal is sifted, finer corn meal; 'thick sour milk' is closest to buttermilk.",
   "url": "https://archive.org/details/inglenookcookboo0000vari/page/96/mode/1up",
   "note": "Read on the page scan (archive.org page images, printed p. 96). The book was published in Elgin, Illinois, by the Brethren Publishing House (copyright 1901); the scanned copy is the thirteenth edition dated 1909 on its title page. Recipes are signed by the contributing Sister and her town; this one is valley-local through its contributor, not its publisher. The book prints old-style numerals (the figure one looks like a small capital I); they are given here as ordinary figures. Recipe No. 403.",
-  "img": "/img/food/corn-bread.webp",
-  "photos": [
-   {
-    "src": "/img/food/photos/corn-bread-1.webp",
-    "alt": "A pan of corn bread",
-    "credit": "Photo: Evan Prodromou, CC BY 4.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Cornbread_2.jpg",
-    "short": "Made today",
-    "license": "CC BY 4.0"
-   },
-   {
-    "src": "/img/food/photos/corn-bread-2.webp",
-    "alt": "A square of corn bread",
-    "credit": "Photo: Douglas P. Perkins, CC BY 3.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Piece_of_cornbread_on_plate.jpg",
-    "short": "Made today",
-    "license": "CC BY 3.0"
-   }
-  ]
+  "img": "/img/food/corn-bread.webp"
  },
  {
   "title": "Corn Meal Doughnuts",
@@ -1081,25 +899,7 @@
   "modern": "Whisk 2 cups cornmeal, 1 cup flour, 1 Tbsp sugar and 1 tsp salt. Beat 3 eggs with 1 cup buttermilk and 1 tsp baking soda, and stir into the dry mix. Drop by tablespoons into oil or lard heated to 350°F and fry 2–3 minutes, turning, until brown. Drain and serve warm with molasses or sorghum. These are more like fritters than ring doughnuts.",
   "url": "https://archive.org/details/inglenookcookboo0000vari/page/146/mode/1up",
   "note": "Read on the page scan (archive.org page images, printed p. 146). The book was published in Elgin, Illinois, by the Brethren Publishing House (copyright 1901); the scanned copy is the thirteenth edition dated 1909 on its title page. Recipes are signed by the contributing Sister and her town; this one is valley-local through its contributor, not its publisher. The book prints old-style numerals (the figure one looks like a small capital I); they are given here as ordinary figures. Recipe No. 672. The contributor's name is hyphenated across a line on the page (\"Hil-derbrand\").",
-  "img": "/img/food/corn-meal-doughnuts.webp",
-  "photos": [
-   {
-    "src": "/img/food/photos/corn-meal-doughnuts-1.webp",
-    "alt": "Old-fashioned cake doughnuts",
-    "credit": "Photo: Kenny Louie, CC BY 2.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Old_fashioned_doughnut1.jpg",
-    "short": "Made today",
-    "license": "CC BY 2.0"
-   },
-   {
-    "src": "/img/food/photos/corn-meal-doughnuts-2.webp",
-    "alt": "Yellow corn meal",
-    "credit": "Photo: Popo le Chien, CC BY-SA 3.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Polenta_uncooked.jpg",
-    "short": "Yellow corn meal",
-    "license": "CC BY-SA 3.0"
-   }
-  ]
+  "img": "/img/food/corn-meal-doughnuts.webp"
  },
  {
   "title": "Buttermilk Delda",
@@ -1115,14 +915,6 @@
   "note": "Read on the page scan (archive.org page images, printed p. 209). The book was published in Elgin, Illinois, by the Brethren Publishing House (copyright 1901); the scanned copy is the thirteenth edition dated 1909 on its title page. Recipes are signed by the contributing Sister and her town; this one is valley-local through its contributor, not its publisher. The book prints old-style numerals (the figure one looks like a small capital I); they are given here as ordinary figures. Recipe No. 982.",
   "img": "/img/food/buttermilk-delda.webp",
   "photos": [
-   {
-    "src": "/img/food/photos/buttermilk-delda-1.webp",
-    "alt": "A glass of buttermilk beside a glass of milk",
-    "credit": "Photo: Ukko-wc, CC BY-SA 3.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Buttermilk-%28right%29-and-Milk-%28left%29.jpg",
-    "short": "A glass of buttermilk…",
-    "license": "CC BY-SA 3.0"
-   },
    {
     "src": "/img/food/photos/buttermilk-delda-2.webp",
     "alt": "A butter churn, from The Encyclopedia of Food",
@@ -1154,14 +946,6 @@
     "page": "https://commons.wikimedia.org/wiki/File:Apple_cobbler.jpg",
     "short": "Made today",
     "license": "Public domain"
-   },
-   {
-    "src": "/img/food/photos/fruit-potpie-2.webp",
-    "alt": "A peach cobbler",
-    "credit": "Photo: NumismaticLinguist, CC BY-SA 4.0, via Wikimedia Commons",
-    "page": "https://commons.wikimedia.org/wiki/File:Fresh_Peach_Cobbler.jpg",
-    "short": "Made today",
-    "license": "CC BY-SA 4.0"
    }
   ]
  },
