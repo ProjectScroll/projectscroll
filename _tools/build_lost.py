@@ -9,12 +9,12 @@ T=[
   f='The two plats grew together under one name, Adamsville. When the railroads made new trading towns, it slipped back; by 1906 the mill was its only industry.',
   q=[('Both now are known by the name of Adamsville.','Rogers, 1875',R)],
   d='The histories disagree on dates: Rogers puts Adamsport in September 1832 and Christiana in 1834; Mathews has March 1833 and May 1831.'),
- dict(n='Williamsville',w='Porter Township, Cass County, Michigan',
+ dict(n='Williamsville',w='Porter Township, Cass County, Michigan',ll=(41.8667,-85.8642),
   b='Josiah Williams laid it out in 1848 and had a hand in its first store. William R. Merritt’s store, opened in 1854, became “the trading place for miles around.” In 1882: two stores, two blacksmiths, a grist mill and a sawmill, one physician, 88 people.',
   f='It simply never grew.',
   q=[('Its population has never reached much beyond the hundred mark.','Glover, 1906',G)],
   d='Rogers says it was laid out in March 1848; Glover says the plat was filed on 5 July 1849.'),
- dict(n='Kessington',aka='also called Sailor',w='Mason Township, Cass County, Michigan',
+ dict(n='Kessington',aka='also called Sailor',w='Mason Township, Cass County, Michigan',ll=(41.7767,-85.8969),
   b='Moses McKessick platted 19 lots on the Chicago road in 1872. In 1882 it had his general store, a blacksmith shop, a United Brethren church, a few houses and a schoolhouse.',
   f='By 1906 the store and the smithy were gone.',
   q=[('one might drive over this site and notice nothing more remarkable at this country crossroads than a church and a school','Glover, 1906',G)],
@@ -71,7 +71,7 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
         <li><b><a href="#adamsport">Adamsville</a>,</b> once Adamsport and Christiana, facing each other across Christiana Creek.</li>
       </ol>
       <p><a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;travelmode=driving&amp;origin=Dowagiac%2C%20MI&amp;waypoints=41.98389%2C-85.87889&amp;destination=41.7853%2C-85.9939" rel="noopener">Open the loop in Google Maps</a> <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;travelmode=driving&amp;destination=41.54306%2C-85.83056" rel="noopener">Directions to Waterford, Indiana</a></p>
-      <p class="note">Williamsville and Kessington are not on the drive: the histories name their townships but not a spot we can pin. If you know where they stood, tell us.</p></section>
+      <p class="note">Williamsville and Kessington are not on the drive. The histories name only their townships, but the U.S. Geological Survey’s place names still mark both sites, and each now has an “on today’s map” link. If you know more about where they stood, tell us.</p></section>
     <h2>How to find a lost town</h2>
     <ul class="dis">
       <li><b>Read the township chapter,</b> not the index. Lost villages are usually a paragraph near the end, under “villages” or “early settlement.”</li>

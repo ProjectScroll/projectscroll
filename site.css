@@ -4446,3 +4446,37 @@ img,picture,svg image{-webkit-touch-callout:none;-webkit-user-drag:none;user-sel
 
 /* badge toast: the small label at full strength, for contrast */
 .btoast small{opacity:1}
+
+/* 3D: story pins, the card's close button, the sun slider */
+.l3d-pins{position:absolute; inset:0; pointer-events:none; z-index:2; overflow:hidden}
+.l3d-pin{position:absolute; left:0; top:0; width:1.15rem; height:1.15rem; margin:-1.15rem 0 0 -.575rem; padding:0; border:0; background:none; cursor:pointer; pointer-events:auto; visibility:hidden}
+.l3d-pin::before{content:""; position:absolute; left:50%; top:0; width:.8rem; height:.8rem; margin-left:-.4rem; border-radius:50% 50% 50% 0; transform:rotate(-45deg); background:#f6d27a; box-shadow:0 0 0 2px rgba(11,22,34,.8), 0 0 10px rgba(246,210,122,.8)}
+.l3d-pin:hover::before,.l3d-pin:focus-visible::before{background:#fff1c4}
+.l3d-pin:focus-visible{outline:2px solid #f6d27a; outline-offset:2px; border-radius:4px}
+.l3d-card a{color:#f6d27a}
+.l3d-x{position:absolute; top:.2rem; right:.35rem; border:0; background:none; color:#e9e2cf; font-size:1.2rem; line-height:1; cursor:pointer; padding:.2rem .35rem}
+.l3d-card{padding-right:2rem}
+.l3d-r output{min-width:4.2em; font-variant-numeric:tabular-nums}
+.l3d-r input[type=range]{width:6rem; accent-color:#e8b84a}
+@media (max-width:600px){ .l3d-r input[type=range]{width:4.5rem} }
+
+/* 3D pages: the quiet note about the LiDAR service */
+.l3d-svc{margin:1.4rem 0 1rem; padding:.7rem 1rem; border-left:3px solid var(--gold, #b8892e); background:color-mix(in srgb, var(--paper) 92%, var(--ink) 8%); font-size:.92rem; border-radius:0 6px 6px 0}
+.l3d-svc p{margin:0}
+
+/* the valley in 3D: landform labels, the story list in the card, the river's fall */
+.l3d-geo{font-style:italic; color:#cfe6e2; font-size:.78rem; letter-spacing:.04em; text-transform:none; margin:-1rem 0 0 -3rem}
+.l3d-list{margin:.35rem 0 0; padding-left:1.1rem}
+.l3d-list li{margin:.15rem 0}
+.rprof{margin:1rem 0 1.4rem}
+.rprof svg{width:100%; height:auto; display:block}
+.rprof .rp-g{stroke:color-mix(in srgb, var(--ink) 14%, transparent); stroke-width:1}
+.rprof .rp-t{font-size:11px; fill:var(--ink-soft)}
+.rprof .rp-a{fill:color-mix(in srgb, var(--gold) 18%, transparent)}
+.rprof .rp-l{fill:none; stroke:var(--gold); stroke-width:2.4; stroke-linejoin:round}
+.rprof .rp-town circle{fill:var(--gold)}
+.rprof .rp-town line{stroke:var(--ink-soft); stroke-width:1}
+.rprof .rp-town text{font-size:11px; fill:var(--ink)}
+.rprof figcaption{font-size:.88rem; color:var(--ink-soft); margin-top:.3rem}
+.rprof{overflow-x:auto}
+@media (max-width:600px){ .rprof svg{min-width:640px} }

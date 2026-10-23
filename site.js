@@ -534,7 +534,7 @@ window.PS_BADGES=[
   ['surveyor','Town surveyor','Find all twelve renamed streets in the seven towns.'],
   ['junior','Junior surveyor','Answer all seven questions of the junior hunt.'],
   ['lidar','Laser surveyor','Fly over Cassopolis in the LiDAR model.'],
-  ['valley','Keeper of the valley','Find the three lost towns on the 3D river valley.'],
+  ['valley','Keeper of the valley','Find the ten lost towns on the 3D river valley.'],
   ['informant','Informant','Read the guide to the death certificate.'],
   ['oldhand','The old hand','Read the guide to old handwriting.'],
   ['records','Record keeper','Visit “Where the records are.”'],

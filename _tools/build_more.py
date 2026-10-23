@@ -150,7 +150,7 @@ about = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p>Project Scroll is run by an independent researcher and author who writes narrative nonfiction about the history of the Great Lakes country, and who trained in visual communications. The research behind that writing is the same research we offer you: old certificates, deeds, surveys, county histories and newspapers, read line by line and compared until they agree, or until we can say exactly why they don’t.</p>
     <h2>What we offer</h2>
     <p><b>Professional research.</b> Lost ancestors, family histories and registers, family legends tested against the record, forgotten places, maps and land surveys, heirlooms, lodges and old societies, historical research for authors, films and local groups, and a second pair of eyes on anything you mean to publish. <a href="/#services">Research services</a>.</p>
-    <p><b>Imaging, design and video.</b> Digital imaging of photographs, documents, maps and heirlooms; imaging analysis of faded ink, damaged pages and the details in old photographs; image creation and restoration; graphic design for family books, charts, covers and keepsakes; photography; and video production, from family-history films to recorded interviews.</p>
+    <p><b>Imaging, design and video.</b> Digital imaging of photographs, documents, maps and heirlooms; imaging analysis of faded ink, damaged pages and the details in old photographs; image creation and restoration; graphic design for family books, charts, covers and keepsakes; web design for families, societies and small businesses; photography; and video production, from family-history films to recorded interviews.</p>
     <p><b>3D and living documents.</b> Landscapes modeled in three dimensions from public LiDAR elevation surveys, 3D animations and fly-throughs, every reconstruction labeled as one, and living documents: research papers, timelines and family records that keep growing as new evidence turns up, with every change dated. <a href="/#studio">The studio</a>.</p>
     <p>Every commission starts with an honest first read: what can be done, and what it will take, before you commit to anything.</p>
     <h2>What we believe</h2>
@@ -296,7 +296,7 @@ print('records, glossary, about, privacy, badges built')
 for slug, title, desc, og, tgt in [
   ('hunt', 'The hunt · Project Scroll', 'Ten mysteries from one Michigan county, each begun as a single question. Free to play, solved with clues from real pages. Every clue is true, and every answer is in the record.', 'hunt', '/#hunt'),
   ('services', 'Professional research · Project Scroll', 'Lost ancestors, family histories, legends tested against the record, forgotten places and land. Every source cited, every statement marked. An honest first read before you commit to anything.', 'services', '/#services'),
-  ('studio', 'The studio · Project Scroll', 'Digital imaging, imaging analysis, graphic design, photography, video, 3D LiDAR landscapes, animation and living documents, from the desk that runs the hunt.', 'studio', '/#studio'),
+  ('studio', 'The studio · Project Scroll', 'Digital imaging, imaging analysis, graphic design, web design, photography, video, 3D LiDAR landscapes, animation and living documents, from the desk that runs the hunt.', 'studio', '/#studio'),
 ]:
     body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <h1>{title.split(' · ')[0]}</h1>

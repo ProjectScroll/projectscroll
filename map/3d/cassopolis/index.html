@@ -78,12 +78,17 @@
         <button type="button" class="l3d-b" id="l3dMore" hidden>Whole area</button>
         <button type="button" class="l3d-b" id="l3dTall" aria-pressed="false">Height ×3</button>
         <button type="button" class="l3d-b" id="l3dSpin" aria-pressed="false">Fly around</button>
+        <button type="button" class="l3d-b" id="l3dPins" aria-pressed="true">Story pins</button>
+        <button type="button" class="l3d-b" id="l3dTour" aria-pressed="false">Guided tour</button>
+        <label class="l3d-b l3d-r">Sun <input type="range" id="l3dSun" min="0" max="100" step="1" value="30" aria-label="Time of day for the sun and shadows"><output id="l3dSunO">off</output></label>
         <button type="button" class="l3d-b" id="l3dReset">Reset view</button>
         <button type="button" class="l3d-b" id="l3dFull">Full screen</button>
       </div>
       <div class="l3d-tags" id="l3dTags" aria-hidden="true"></div>
+      <div class="l3d-pins" id="l3dPinBox"></div>
+      <div class="l3d-card" id="l3dCard" role="status" hidden></div>
       <p class="l3d-load" id="l3dLoad" role="status">Loading the survey…</p>
-      <p class="l3d-help">Drag to turn · scroll or pinch to zoom · right-drag or two fingers to move</p>
+      <p class="l3d-help">Drag to turn · scroll or pinch to zoom · right-drag or two fingers to move · tap the ground for a reading</p>
       <noscript><img src="/img/l3d-cassopolis.webp" width="1058" height="898" alt="Central Cassopolis from above, built from laser survey points: buildings in gold, trees in green, on the bare ground."></noscript>
     </figure>
     <ul class="l3d-key" aria-label="What the colours mean">
@@ -99,16 +104,21 @@
       <li><b>Buildings and trees.</b> The survey does not say which of the other points are roofs and which are leaves, so we sorted them: a laser pulse that hits a roof comes back once; one that hits a tree comes back several times, from leaves, branches and the ground below. Flat, single echoes in a patch the size of a building are coloured gold. A few porches and dense evergreens may be the wrong colour.</li>
       <li><b>The lakes and the land around.</b> Stone Lake lies just west of the courthouse, and Diamond Lake, with Grand Island in it, a short way east. The wider ground comes from the same 2015 flight, as the survey’s bare-earth elevation: the shape of the land every six metres or so, and its light and shade from a grid one and a half metres apart, sharp enough to show field edges, ditches and old roadbeds. The lakes are drawn flat at their surface, because the survey does not see through water. Buildings and trees are shown only in the town blocks, where every point is kept.</li>
       <li><b>The 1860 plan.</b> Press <i>1860 plan</i> to lay the town plan from the 1860 county wall map on the ground. Its west part reaches into these blocks. Compare it with the <a href="/map/cassopolis/">flat then-and-now page</a>.</li>
+      <li><b>Story pins.</b> The gold pins are the stops of our <a href="/walk/">walking tour of Cassopolis</a>, from the site of the first courthouse to the bank corner, and the island in Diamond Lake. Press one for a line of its history.</li>
+      <li><b>Guided tour.</b> Press <i>Guided tour</i> and the view flies itself from Stone Lake to the courthouse square and out to Diamond Lake. Touch the model to stop it.</li>
+      <li><b>Sun and shadows.</b> Move the <i>Sun</i> slider through a midsummer day, from six in the morning to eight at night, and every roof and tree in the town blocks casts its shadow on the ground. The shadows are worked out from the laser points themselves.</li>
+      <li><b>Tap for a reading.</b> Tap or click the bare ground anywhere, and the model tells you how high it stands above sea level and how far it is from the courthouse.</li>
       <li><b>Buildings and Trees.</b> Each button hides or shows its points, so you can see the bare land under the town, or the trees alone.</li>
       <li><b>Height ×3.</b> The town is fairly level, so tripling the heights makes the rise of the land easier to see. The buildings stretch too.</li>
     </ul>
+    <aside class="l3d-svc" aria-label="A service we offer"><p><b>Your own place in 3D.</b> Project Scroll makes LiDAR models like this one for other places: a farm, a lake, a town, an old mill site, a family’s home ground, from the same public surveys, with fly-throughs and still pictures to keep. <a href="/#studio">See the studio</a>, or write to research@projectscroll.com.</p></aside>
     <p class="note">Source: U.S. Geological Survey, 3D Elevation Program, Michigan Cass County LiDAR, 2015 (public domain), read from the survey’s public point-cloud archive. In the town blocks every building and tree point is shown. Across the wider country the page shows the survey’s lighter sampling, about one point in ten, so that it stays quick to load (on a phone, press <i>Whole area</i> to load it); press <i>Buildings</i> or <i>Trees</i> to hide either. The points cover the blocks north and east of the courthouse; the ground around them is the survey’s bare-earth elevation from the 3D Elevation Program, shaped every six metres or so and shaded from a grid about one and a half metres apart. Town plan: <i>Map of the Counties of Cass, Van Buren and Berrien, Michigan</i> (Geil, Harley &amp; Siverd, 1860), Library of Congress. 3D drawing by three.js.</p>
     <script type="importmap">{"imports":{"three":"/vendor/three-0.169.0/three.module.min.js"}}</script>
     <script type="module">
     import * as THREE from 'three';
     import { OrbitControls } from '/vendor/three-0.169.0/OrbitControls.min.js';
     (async()=>{
-    const M={"w": 787.31, "h": 668.24, "gx": 394, "gy": 335, "step": 2.0, "z0": 266.62, "n": 775557, "nb": 93640, "nv": 681917, "west": -86.01370000000001, "east": -86.00419999999998, "south": 41.9112, "north": 41.91720000000001, "survey": "USGS 3DEP, Michigan Cass County 2015 LiDAR, point cloud USGS_LPC_MI_Cass_2015_LAS_2018", "ground_range": [266.64, 281.07], "wgx": 1200, "wgy": 560, "wwest": -86.03, "weast": -85.955, "wsouth": 41.885, "wnorth": 41.92, "wbase": 250.0, "wn": 759226, "wnb": 100351, "wnv": 658875}, PLAN={"src": "/img/cass1860.webp", "N": 41.917772, "W": -86.018103, "S": 41.9061, "E": -86.007168}, SPOTS=[["The Cass County Courthouse", 41.91167, -86.01278, 22], ["Stone Lake", 41.9042, -86.0175, 12], ["Diamond Lake", 41.898, -85.989, 12], ["Grand Island", 41.9039, -85.9769, 18]];
+    const M={"w": 787.31, "h": 668.24, "gx": 394, "gy": 335, "step": 2.0, "z0": 266.62, "n": 775557, "nb": 93640, "nv": 681917, "west": -86.01370000000001, "east": -86.00419999999998, "south": 41.9112, "north": 41.91720000000001, "survey": "USGS 3DEP, Michigan Cass County 2015 LiDAR, point cloud USGS_LPC_MI_Cass_2015_LAS_2018", "ground_range": [266.64, 281.07], "wgx": 1200, "wgy": 560, "wwest": -86.03, "weast": -85.955, "wsouth": 41.885, "wnorth": 41.92, "wbase": 250.0, "wn": 759226, "wnb": 100351, "wnv": 658875}, PLAN={"src": "/img/cass1860.webp", "N": 41.917772, "W": -86.018103, "S": 41.9061, "E": -86.007168}, SPOTS=[["The Cass County Courthouse", 41.91202, -86.01243, 26], ["Stone Lake", 41.9042, -86.0175, 12], ["Diamond Lake", 41.898, -85.989, 12], ["Grand Island", 41.9039, -85.9769, 18]], PINS=[{"n": "Site of the first courthouse", "la": 41.913, "lo": -86.01285, "b": "about 1836 (gone)", "t": "Cass County\u2019s first courthouse was a plain wooden building, 34 by 24 feet, ordered by the county board in 1835 for about $450 and built by Joseph Harper.", "u": "/walk/#first-courthouse", "l": "Read this stop on the walking tour"}, {"n": "Local History Branch (Carnegie Library)", "la": 41.9124, "lo": -86.01265, "b": "1908-1909", "t": "Built over the winter of 1908-09 with a $10,000 gift from Andrew Carnegie, this was the town\u2019s public library for more than 80 years; Cassopolis was one of 53 Michigan communities to receive Carnegie library money.", "u": "/walk/#carnegie-library", "l": "Read this stop on the walking tour"}, {"n": "Cass County Historic Courthouse", "la": 41.91202, "lo": -86.01243, "b": "1898-1900 (cornerstone Oct. 5, 1898; accepted Oct. 1900)", "t": "The stone courthouse with its tall clock tower was designed by the Grand Rapids firm Rush, Bowman & Rush and finished in 1900 by the contractors James Rowson and August Mohnke, after the county dismissed its first builder in 1898.", "u": "/walk/#historic-courthouse", "l": "Read this stop on the walking tour"}, {"n": "\u201cThe Fort\u201d: the county office building", "la": 41.91177, "lo": -86.01266, "b": "1860", "t": "Built in 1860, this brick building held the county\u2019s offices \u2014 the clerk, the probate court, the register of deeds and the treasurer \u2014 until the stone courthouse across the way was finished in 1899.", "u": "/walk/#the-fort", "l": "Read this stop on the walking tour"}, {"n": "The Old Public Square (Broadway & State)", "la": 41.91165, "lo": -86.01255, "b": "Platted 1831", "t": "The 1831 village plat set aside a public square of 26 by 20 rods for county buildings, with Broadway and State Street crossing at its center.", "u": "/walk/#public-square", "l": "Read this stop on the walking tour"}, {"n": "The old courthouse\u2019s second life", "la": 41.9115, "lo": -86.01375, "b": "1841 (moved 1898-99; razed 1968)", "t": "The county\u2019s second courthouse was a two-storey frame building with classical columns, finished in 1841 for $6,000.", "u": "/walk/#gem-theatre-site", "l": "Read this stop on the walking tour"}, {"n": "The bank corner", "la": 41.91118, "lo": -86.01272, "b": "c. 1900 per sale listing; renovated 1990", "t": "Banking began on this side of the old square in 1855, when Asa and Charles Kingsbury opened a private bank; the brothers parted in 1857.", "u": "/walk/#bank-corner", "l": "Read this stop on the walking tour"}, {"n": "United Presbyterian Church", "la": 41.91151, "lo": -86.01055, "b": "Begun early 1890s", "t": "The congregation was founded in March 1842 as the First Presbyterian Church, when Cassopolis was still 'little more than a clearing in the woods.' Its first church, begun in 1845, was dedicated in November 1846, and the present brick church at State and O\u2019Keefe streets was completed on 10 December 1893.", "u": "/walk/#presbyterian-church", "l": "Read this stop on the walking tour"}, {"n": "The old post office storefront", "la": 41.91065, "lo": -86.01241, "b": "Late 1800s (a wainscot board inside is signed 1897)", "t": "Local accounts (though not the old county histories) say this storefront was one of the village\u2019s post offices in the late 1800s; a board inside is signed 1897.", "u": "/walk/#old-post-office", "l": "Read this stop on the walking tour"}, {"n": "The Sinclair Station", "la": 41.90962, "lo": -86.0126, "b": "Mid-20th century (date not found); restored c. 2009-2012", "t": "An old DX filling station that had stood empty for about thirty years was bought by Dr.", "u": "/walk/#sinclair-station", "l": "Read this stop on the walking tour"}, {"n": "Forest Hall and the island", "la": 41.9039, "lo": -85.9769, "b": "summers of the 1890s on", "t": "Grand Island and its resort hotel drew summer people to Diamond Lake for generations.", "u": "/news/summer-on-diamond-lake/", "l": "Read the story"}];
     const fig=document.getElementById('l3d'), cv=document.getElementById('l3dC'), load=document.getElementById('l3dLoad'), tags=document.getElementById('l3dTags');
     const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
     let gl; try{ gl=new THREE.WebGLRenderer({canvas:cv, antialias:true, powerPreference:'high-performance'}); }catch(e){ load.textContent='This browser cannot draw 3D. Here is the model from above.'; fig.classList.add('no3d'); return; }
@@ -130,15 +140,18 @@
     geo.translate(-M.w/2+((gx-1)*M.step)/2,0,M.h/2-((gy-1)*M.step)/2); geo.computeVertexNormals();
     const hdTex=new THREE.TextureLoader().load('ground-hd.webp'); hdTex.colorSpace=THREE.SRGBColorSpace; hdTex.anisotropy=8;
     const planTex=new THREE.TextureLoader().load(PLAN.src); planTex.colorSpace=THREE.SRGBColorSpace; planTex.anisotropy=8;
-    const gu={uPlan:{value:0}, uTex:{value:planTex}, uBox:{value:new THREE.Vector4(M.west,M.east,M.south,M.north)}, uPB:{value:new THREE.Vector4(PLAN.W,PLAN.E,PLAN.S,PLAN.N)}, uSize:{value:new THREE.Vector2(M.w,M.h)}, uHD:{value:hdTex}, uWB:{value:new THREE.Vector4(M.wwest,M.weast,M.wsouth,M.wnorth)}};
-    const gmat=new THREE.ShaderMaterial({uniforms:gu, vertexShader:`varying vec3 vN; varying vec3 vP; void main(){ vN=normal; vP=position; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }`,
-      fragmentShader:`uniform float uPlan; uniform sampler2D uTex, uHD; uniform vec4 uBox, uPB, uWB; uniform vec2 uSize; varying vec3 vN; varying vec3 vP;
+    const gu={uPlan:{value:0}, uTex:{value:planTex}, uBox:{value:new THREE.Vector4(M.west,M.east,M.south,M.north)}, uPB:{value:new THREE.Vector4(PLAN.W,PLAN.E,PLAN.S,PLAN.N)}, uSize:{value:new THREE.Vector2(M.w,M.h)}, uHD:{value:hdTex}, uWB:{value:new THREE.Vector4(M.wwest,M.weast,M.wsouth,M.wnorth)}, uSunOn:{value:0}, uSun:{value:new THREE.Vector3(-.5,1,.35).normalize()}, uShadow:{value:null}, uSM:{value:new THREE.Matrix4()}};
+    const gmat=new THREE.ShaderMaterial({uniforms:gu, vertexShader:`varying vec3 vN; varying vec3 vP; varying vec3 vW; void main(){ vN=normal; vP=position; vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }`,
+      fragmentShader:`uniform float uPlan, uSunOn; uniform sampler2D uTex, uHD, uShadow; uniform vec4 uBox, uPB, uWB; uniform vec2 uSize; uniform vec3 uSun; uniform mat4 uSM; varying vec3 vN; varying vec3 vP; varying vec3 vW;
       void main(){ float sh=clamp(dot(normalize(vN),normalize(vec3(-.5,1.,.35))),0.,1.); vec3 c=mix(vec3(.003,.01,.02),vec3(.025,.075,.12),sh);
         float h=vP.y*.5; float fw=max(fwidth(h),1e-4); float l=(1.-smoothstep(0.,1.,abs(fract(h-.5)-.5)/fw))*(1.-smoothstep(.15,.45,fw)); c=mix(c,vec3(.08,.42,.48),l*.35);
         float lon=uBox.x+(vP.x/uSize.x+.5)*(uBox.y-uBox.x), lat=uBox.z+(-vP.z/uSize.y+.5)*(uBox.w-uBox.z);
         vec2 uv=vec2((lon-uPB.x)/(uPB.y-uPB.x),(lat-uPB.z)/(uPB.w-uPB.z));
         vec2 hw=vec2((lon-uWB.x)/(uWB.y-uWB.x),(lat-uWB.z)/(uWB.w-uWB.z)); if (hw.x>=0. && hw.x<=1. && hw.y>=0. && hw.y<=1.) c=texture2D(uHD,hw).rgb*(.88+.24*sh);
         if (uPlan>0. && uv.x>=0. && uv.x<=1. && uv.y>=0. && uv.y<=1.){ vec3 pc=texture2D(uTex,uv).rgb; c=mix(c,pc*mix(.75,1.05,sh),uPlan*.92); }
+        if (uSunOn>0.){ float ls=clamp(dot(normalize(vN),uSun),0.,1.); float lit=.55+.6*ls*smoothstep(0.,.25,uSun.y); vec4 sc=uSM*vec4(vW,1.); vec3 q=sc.xyz/sc.w*.5+.5;
+          if (q.x>0. && q.x<1. && q.y>0. && q.y<1. && q.z<1.){ float dd=texture2D(uShadow,q.xy).r; if (q.z-.0008>dd) lit*=.5; }
+          c*=mix(1.,lit,uSunOn); }
         gl_FragColor=vec4(c,1.);
 #include <colorspace_fragment>
       }` });
@@ -157,15 +170,23 @@
     for (let i=0;i<n;i++){ const o=i*8, x=dv.getInt16(o,true)/10, y=dv.getInt16(o+2,true)/10, z=dv.getInt16(o+4,true)/10, k=dv.getUint8(o+6), s=dv.getUint8(o+7)/255;
       P[i*3]=x; P[i*3+1]=z; P[i*3+2]=-y; K[i]=k; const a=k===1?gold:leaf, t=Math.min(1,s*1.6); C[i*3]=a[0].r+(a[1].r-a[0].r)*t; C[i*3+1]=a[0].g+(a[1].g-a[0].g)*t; C[i*3+2]=a[0].b+(a[1].b-a[0].b)*t; }
     const pg=new THREE.BufferGeometry(); pg.setAttribute('position',new THREE.BufferAttribute(P,3)); pg.setAttribute('color',new THREE.BufferAttribute(C,3)); pg.setAttribute('kind',new THREE.BufferAttribute(K,1));
-    const pu={uTrees:{value:1}, uBld:{value:1}, uPx:{value:gl.getPixelRatio()}, uTime:{value:0}};
+    const pu={uTrees:{value:1}, uBld:{value:1}, uPx:{value:gl.getPixelRatio()}, uTime:{value:0}, uLight:{value:1}};
     const pmat=new THREE.ShaderMaterial({uniforms:pu, transparent:true, depthWrite:true,
       vertexShader:`attribute float kind; attribute vec3 color; uniform float uTrees, uBld, uPx, uTime; varying vec3 vC; varying float vK;
         void main(){ vC=color; vK=kind; vec4 mv=modelViewMatrix*vec4(position,1.); gl_Position=projectionMatrix*mv;
           float s=(kind<1.5?1.9:1.6)*uPx*260./-mv.z; gl_PointSize=clamp(s,1.,7.); if ((kind>1.5 && uTrees<.5) || (kind<1.5 && uBld<.5)){ gl_PointSize=0.; gl_Position=vec4(2.,2.,2.,1.); } }`,
-      fragmentShader:`varying vec3 vC; varying float vK; void main(){ vec2 d=gl_PointCoord-.5; float r=dot(d,d); if (r>.25) discard; float glow=vK<1.5?1.15:1.; gl_FragColor=vec4(vC*glow*(1.-r*1.2),1.);
+      fragmentShader:`uniform float uLight; varying vec3 vC; varying float vK; void main(){ vec2 d=gl_PointCoord-.5; float r=dot(d,d); if (r>.25) discard; float glow=vK<1.5?1.15:1.; gl_FragColor=vec4(vC*glow*uLight*(1.-r*1.2),1.);
 #include <colorspace_fragment>
 }`});
     world.add(new THREE.Points(pg,pmat));
+    /* the shadow pass: the same points, seen from the sun, write only their depth */
+    const shScene=new THREE.Scene(), shSize=innerWidth<700?1024:2048, shR=900;
+    const shRT=new THREE.WebGLRenderTarget(shSize,shSize); shRT.depthTexture=new THREE.DepthTexture(shSize,shSize); gu.uShadow.value=shRT.depthTexture;
+    const sunCam=new THREE.OrthographicCamera(-shR,shR,shR,-shR,10,9000);
+    const dmat=new THREE.ShaderMaterial({uniforms:{uTrees:pu.uTrees, uBld:pu.uBld, uPs:{value:2.4*shSize/(2*shR)}},
+      vertexShader:`attribute float kind; uniform float uTrees, uBld, uPs; void main(){ gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); gl_PointSize=max(2.,uPs); if ((kind>1.5 && uTrees<.5) || (kind<1.5 && uBld<.5)){ gl_PointSize=0.; gl_Position=vec4(2.,2.,2.,1.); } }`,
+      fragmentShader:`void main(){ gl_FragColor=vec4(1.); }`});
+    const shWorld=new THREE.Group(); shScene.add(shWorld); shWorld.add(new THREE.Points(pg,dmat));
     /* a soft gold ring marks the courthouse */
     const spots=SPOTS.map(([name,la,lo,hy])=>{ const [x,z]=ll2xz(la,lo); const el=document.createElement('span'); el.className='l3d-tag'; el.textContent=name; tags.appendChild(el); return {v:new THREE.Vector3(x,hy,z), el}; });
     const size=()=>{ const w=cv.clientWidth, h=cv.clientHeight; gl.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix(); };
@@ -181,6 +202,52 @@
     B('l3dReset',()=>home());
     B('l3dFull',()=>{ if (document.fullscreenElement) document.exitFullscreen(); else if (fig.requestFullscreen) fig.requestFullscreen().catch(()=>{}); });
     if (!still){ ctl.autoRotate=true; press(spin,true); ctl.addEventListener('start',()=>{ ctl.autoRotate=false; press(spin,false); }, {once:true}); }
+    /* the card */
+    const card=document.getElementById('l3dCard');
+    const show=(h,parts)=>{ card.innerHTML=''; const b=document.createElement('b'); b.textContent=h; card.append(b); parts.forEach(p=>card.append(p)); const x=document.createElement('button'); x.type='button'; x.className='l3d-x'; x.setAttribute('aria-label','Close'); x.textContent='×'; x.addEventListener('click',()=>{ card.hidden=true; }); card.append(x); card.hidden=false; };
+    const span=s=>{ const e=document.createElement('span'); e.textContent=s; return e; };
+    /* story pins: buttons that ride on the model */
+    const pinBox=document.getElementById('l3dPinBox'); let pinsOn=true;
+    const pins=PINS.map(q=>{ const [x,z]=ll2xz(q.la,q.lo); const e=document.createElement('button'); e.type='button'; e.className='l3d-pin'; e.setAttribute('aria-label',q.n); e.title=q.n;
+      e.addEventListener('click',()=>{ const a=document.createElement('a'); a.href=q.u; a.textContent=q.l+' ›'; show(q.n,[span(' '+q.b+'. '+q.t+' '),a]); }); pinBox.append(e); return {v:new THREE.Vector3(x,0,z), e, q}; });
+    const gH=(x,z)=>{ ray.set(new THREE.Vector3(x,600,z),new THREE.Vector3(0,-1,0)); const inTown=Math.abs(x)<M.w/2&&Math.abs(z)<M.h/2; const hit=ray.intersectObjects(inTown?[ground]:grounds,false)[0]; return hit?hit.point.y/world.scale.y:0; };
+    const ray=new THREE.Raycaster(), grounds=world.children.filter(o=>o.isMesh);
+    pins.forEach(p=>{ p.v.y=gH(p.v.x,p.v.z)+6; });
+    B('l3dPins',b=>{ pinsOn=!pinsOn; press(b,pinsOn); pinBox.hidden=!pinsOn; });
+    /* tap the ground for a reading */
+    const ptr=new THREE.Vector2(); let downAt=null; const ch=ll2xz(SPOTS[0][1],SPOTS[0][2]);
+    cv.addEventListener('pointerdown',e=>{ downAt=[e.clientX,e.clientY]; });
+    cv.addEventListener('pointerup',e=>{ if (!downAt || Math.hypot(e.clientX-downAt[0],e.clientY-downAt[1])>6) return; const r=cv.getBoundingClientRect(); ptr.set((e.clientX-r.left)/r.width*2-1, -(e.clientY-r.top)/r.height*2+1); ray.setFromCamera(ptr,cam);
+      const hit=ray.intersectObjects(grounds,false)[0]; if (!hit) return; const y=hit.point.y/world.scale.y, el=y+M.z0, dx=hit.point.x-ch[0], dz=hit.point.z-ch[1], d=Math.hypot(dx,dz);
+      const dirs=['north','north-east','east','south-east','south','south-west','west','north-west'], dir=dirs[Math.round(((Math.atan2(dx,-dz)*180/Math.PI)+360)%360/45)%8];
+      show('The ground here',[span(' '+el.toFixed(1)+' metres ('+Math.round(el*3.2808).toLocaleString('en-US')+' feet) above sea level. '+(d<40?'You are at the courthouse.':(d<1000?Math.round(d)+' metres':(d/1000).toFixed(2)+' km')+' '+dir+' of the courthouse.'))]); });
+    /* the sun: a midsummer day at Cassopolis, six in the morning to eight at night */
+    const sunI=document.getElementById('l3dSun'), sunO=document.getElementById('l3dSunO'); let shDirty=false, sunOn=false;
+    const setSun=()=>{ const f=+sunI.value/100, hr=6+f*14, h=(hr-13.6)*Math.PI/12; const lat=41.91*Math.PI/180, dec=23.4*Math.PI/180;
+      const el=Math.asin(Math.sin(lat)*Math.sin(dec)+Math.cos(lat)*Math.cos(dec)*Math.cos(h)), az=Math.atan2(Math.sin(h),Math.cos(h)*Math.sin(lat)-Math.tan(dec)*Math.cos(lat))+Math.PI;
+      const s=new THREE.Vector3(Math.sin(az)*Math.cos(el), Math.sin(el), -Math.cos(az)*Math.cos(el)).normalize(); gu.uSun.value.copy(s); gu.uSunOn.value=1; sunOn=true;
+      pu.uLight.value=.45+.55*Math.max(0,Math.min(1,s.y*2.5)); const hh=Math.floor(hr), mm=Math.round((hr-hh)*60/15)*15%60; sunO.textContent=((hh+11)%12+1)+':'+String(mm).padStart(2,'0')+(hh<12?' am':' pm'); shDirty=true; };
+    sunI.addEventListener('input',setSun);
+    const shadowPass=()=>{ const s=gu.uSun.value; if (s.y<.03){ gl.setRenderTarget(shRT); gl.clear(); gl.setRenderTarget(null); } else {
+      shWorld.scale.y=world.scale.y; sunCam.position.set(s.x*4000, s.y*4000, s.z*4000); sunCam.up.set(0,0,-1); sunCam.lookAt(0,0,0); sunCam.updateMatrixWorld(); sunCam.updateProjectionMatrix();
+      gl.setRenderTarget(shRT); gl.clear(); gl.render(shScene,sunCam); gl.setRenderTarget(null); }
+      gu.uSM.value.multiplyMatrices(sunCam.projectionMatrix,sunCam.matrixWorldInverse); shDirty=false; };
+    /* the guided tour */
+    const tourB=document.getElementById('l3dTour'); let tour=null;
+    const at=(la,lo)=>{ const [x,z]=ll2xz(la,lo); return new THREE.Vector3(x,0,z); };
+    const STOPS=[
+      [at(41.9005,-85.998), [-2400,1900,2300], 'The county seat between two lakes: Stone Lake to the west, Diamond Lake to the east, and the town on the higher ground between.'],
+      [at(41.9048,-86.0175), [-520,360,620], 'Stone Lake, at the foot of the town, a few minutes’ walk west of the courthouse.'],
+      [at(41.91165,-86.01255), [-170,150,230], 'The public square of the 1831 plat, where Broadway crosses State Street. The stone courthouse, finished in 1900, stands on it.'],
+      [at(41.9135,-86.0110), [260,220,330], 'The town blocks: every gold dot is a laser echo from a roof, every green one an echo from a tree.'],
+      [at(41.9015,-85.9800), [-900,700,1000], 'Diamond Lake, a little over a mile east of the courthouse, with Grand Island in the middle.'],
+    ];
+    const ease=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
+    const stopTour=()=>{ if (!tour) return; tour=null; press(tourB,false); };
+    const goStop=i=>{ if (i>=STOPS.length){ stopTour(); home(); return; } const [tg,off,cap]=STOPS[i]; const k=Math.max(1,1.2/Math.max(.3,cam.aspect));
+      tour={i, t0:performance.now(), dur:still?1:5200, fp:cam.position.clone(), ft:ctl.target.clone(), tp:new THREE.Vector3(tg.x+off[0]*k,off[1]*k,tg.z+off[2]*k), tt:tg.clone()}; show('Guided tour, '+(i+1)+' of '+STOPS.length,[span(' '+cap)]); };
+    tourB.addEventListener('click',()=>{ if (tour){ stopTour(); return; } ctl.autoRotate=false; press(spin,false); press(tourB,true); goStop(0); });
+    cv.addEventListener('pointerdown',stopTour); cv.addEventListener('wheel',stopTour,{passive:true});
     load.hidden=true; fig.classList.add('ready');
     /* the wider country: x and z in decimetres from the north-west corner, height in decimetres, then the class and a height shade */
     const more=document.getElementById('l3dMore'); let wideOn=false;
@@ -188,15 +255,19 @@
       const Q=new Float32Array(m*3), QC=new Float32Array(m*3), QK=new Float32Array(m);
       for (let i=0;i<m;i++){ const o=i*8, k=dw.getUint8(o+6), s=dw.getUint8(o+7)/255, a=k===1?gold:leaf, t=Math.min(1,s*1.6); Q[i*3]=x0+dw.getUint16(o,true)/10; Q[i*3+1]=dw.getInt16(o+4,true)/10; Q[i*3+2]=z0+dw.getUint16(o+2,true)/10; QK[i]=k;
         QC[i*3]=a[0].r+(a[1].r-a[0].r)*t; QC[i*3+1]=a[0].g+(a[1].g-a[0].g)*t; QC[i*3+2]=a[0].b+(a[1].b-a[0].b)*t; }
-      const qg=new THREE.BufferGeometry(); qg.setAttribute('position',new THREE.BufferAttribute(Q,3)); qg.setAttribute('color',new THREE.BufferAttribute(QC,3)); qg.setAttribute('kind',new THREE.BufferAttribute(QK,1)); world.add(new THREE.Points(qg,pmat)); }).catch(()=>{}); };
+      const qg=new THREE.BufferGeometry(); qg.setAttribute('position',new THREE.BufferAttribute(Q,3)); qg.setAttribute('color',new THREE.BufferAttribute(QC,3)); qg.setAttribute('kind',new THREE.BufferAttribute(QK,1)); world.add(new THREE.Points(qg,pmat)); shWorld.add(new THREE.Points(qg,dmat)); shDirty=true; }).catch(()=>{}); };
     /* on a big screen the whole area loads at once; on a phone, when asked */
     more.addEventListener('click',loadWide); if (innerWidth>=700 && (navigator.deviceMemory||8)>=4) loadWide(); else more.hidden=false;
     let vis=true; new IntersectionObserver(es=>{ vis=es[0].isIntersecting; }).observe(fig);
     const tmp=new THREE.Vector3();
     gl.setAnimationLoop(()=>{ if (!vis) return;
-      tall+=(tallTo-tall)*(still?1:.12); plan+=(planTo-plan)*(still?1:.15); world.scale.y=tall; gu.uPlan.value=plan;
+      const t0=tall; tall+=(tallTo-tall)*(still?1:.12); plan+=(planTo-plan)*(still?1:.15); world.scale.y=tall; gu.uPlan.value=plan; if (Math.abs(t0-tall)>1e-4) shDirty=true;
+      if (tour){ const f=Math.min(1,(performance.now()-tour.t0)/tour.dur), e=ease(f); cam.position.lerpVectors(tour.fp,tour.tp,e); ctl.target.lerpVectors(tour.ft,tour.tt,e); if (f>=1 && performance.now()-tour.t0>tour.dur+(still?6000:3500)) goStop(tour.i+1); }
+      if (sunOn && shDirty) shadowPass();
       ctl.update(); gl.render(scene,cam);
-      const w=cv.clientWidth, h=cv.clientHeight; spots.forEach(s=>{ tmp.copy(s.v); tmp.y*=tall; tmp.project(cam); const on=tmp.z<1; s.el.style.opacity=on&&Math.abs(tmp.x)<1.05&&Math.abs(tmp.y)<1.05?1:0; s.el.style.transform=`translate(${(tmp.x*.5+.5)*w}px,${(-tmp.y*.5+.5)*h}px)`; });
+      const w=cv.clientWidth, h=cv.clientHeight, dcam=cam.position.distanceTo(ctl.target);
+      if (pinsOn) pins.forEach(p=>{ tmp.copy(p.v); tmp.y*=tall; tmp.project(cam); const on=tmp.z<1&&Math.abs(tmp.x)<1.02&&Math.abs(tmp.y)<1.02&&dcam<2600; p.e.style.visibility=on?'visible':'hidden'; p.e.style.transform=`translate(${(tmp.x*.5+.5)*w}px,${(-tmp.y*.5+.5)*h}px)`; });
+      spots.forEach(s=>{ tmp.copy(s.v); tmp.y*=tall; tmp.project(cam); const on=tmp.z<1; s.el.style.opacity=on&&Math.abs(tmp.x)<1.05&&Math.abs(tmp.y)<1.05?1:0; s.el.style.transform=`translate(${(tmp.x*.5+.5)*w}px,${(-tmp.y*.5+.5)*h}px)`; });
     });
     })();
     </script>
