@@ -4239,3 +4239,21 @@ table.ad-cmp{width:100%; border-collapse:collapse; font-size:.95rem; line-height
 @media (max-width:640px){ .vm-stat{margin-left:0; width:100%} .vm-q input{min-width:0; width:100%} .vm-q{flex:1 1 100%} }
 .se-wk{border-left:4px solid var(--rule)}
 .se-wkn{margin:.3rem 0 0; font-size:.92rem; color:var(--ink-soft)}
+/* valley voices and corrections */
+.cm-nav{font-size:.92rem; margin:.4rem 0 1.4rem}
+.cm-empty{border:1px dashed var(--line); border-radius:6px; padding:1rem 1.1rem; color:var(--ink-soft); font-size:.95rem}
+.cm-list{display:grid; grid-template-columns:repeat(auto-fill,minmax(16rem,1fr)); gap:1rem; margin:.6rem 0 1rem}
+.cm-it{border:1px solid var(--line); border-radius:4px; padding:.9rem 1rem; background:var(--paper)}
+.cm-it img{width:100%; height:auto; border-radius:3px; margin-bottom:.5rem}
+.cm-it h3{margin:.2rem 0 .3rem; font-size:1.15rem}
+.cm-tag{color:var(--rule)}
+.cm-ans{border-left:3px solid var(--gold); padding-left:.7rem}
+.cm-by{font-size:.82rem; color:var(--ink-soft)}
+.cm-tbl{width:100%; border-collapse:collapse; font-size:.92rem}
+.cm-tbl th{text-align:left; font-weight:400; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); border-bottom:1.5px solid var(--ink); padding:.35rem .6rem .35rem 0}
+.cm-tbl td{padding:.6rem .6rem .6rem 0; border-bottom:1px dotted var(--line); vertical-align:top}
+.tblwrap{overflow-x:auto}
+.pp-start{border:1px solid var(--line); border-left:4px solid var(--gold); border-radius:4px; padding:.9rem 1.1rem; margin:1.4rem 0; background:color-mix(in srgb, var(--paper-2) 50%, transparent)}
+.pp-start h2{margin-top:0}
+.pp-steps{padding-left:1.3rem; line-height:1.55}
+.pp-steps li{margin:.45rem 0}

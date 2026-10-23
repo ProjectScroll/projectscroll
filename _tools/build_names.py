@@ -76,6 +76,13 @@ for _d in _O.D:
     _A.append([_d['title'], 'Old postcard · '+(_d.get('date') or ''), '/postcards/#oc-'+_d['id'], _d['title']+' '+(_d.get('publisher') or '')])
 for _p in _V.all_places():
     if _p['i'].startswith(('m:','f:')): _A.append([_p['n'], _p['g']+' · '+_p['t'], _p['u'], _p['n']])
+for _x in json.load(open(pathlib.Path(__file__).parent/'data'/'almanac_raw.json')):
+    _A.append([str(_x['year'])+' · '+_x['place'], 'The almanac · '+_x['text'][:60]+('…' if len(_x['text'])>60 else ''), '/almanac/#d-'+_x['md']+'-'+str(_x['year']), _x['place']+' '+_x['text']])
+for _x in json.load(open(pathlib.Path(__file__).parent/'data'/'recipes.json')):
+    if _x.get('contributor'): _A.append([_x['contributor'], 'A recipe: '+_x['title'], '/food/recipes/#'+_re.sub(r'[^a-z0-9]+','-',_x['title'].lower()).strip('-'), _x['contributor']+' '+_x['title']+' '+(_x.get('source_place') or '')])
+for _x in json.load(open(pathlib.Path(__file__).parent/'data'/'news.json'))['stories']:
+    _b=_x.get('body') or ''; _b=' '.join(_b) if isinstance(_b,list) else _b; _hb=_re.sub(r'<[^>]+>',' ',str(_b))
+    _A.append([_re.sub(r'<[^>]+>','',_x['headline']), 'A story · '+_re.sub(r'<[^>]+>','',_x.get('kicker') or ''), '/news/'+_x['slug']+'/', _x['headline']+' '+(_x.get('dek') or '')+' '+_hb[:6000]])
 def _norm(x): return _re.sub(r'\s+',' ',_re.sub(r'[^a-z0-9 ]+',' ',x.lower())).strip()
 for _r in _A: _r[3]=_norm(_r[3])
 open(pathlib.Path(__file__).parent.parent/'names'/'also.json','w').write(json.dumps(_A,ensure_ascii=False,separators=(',',':')))

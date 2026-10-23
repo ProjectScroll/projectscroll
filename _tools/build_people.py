@@ -117,6 +117,15 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <p class="mu-tacts"><button type="button" class="btn" id="rfShare">Share this list</button> <button type="button" class="btn" id="rfPrint">Print it</button> <button type="button" class="btn" id="rfSave">Save this search</button> <a class="btn primary" id="rfDesk" href="mailto:research@projectscroll.com">Ask the research desk</a> <span class="mu-nmsg" id="rfShareMsg" aria-live="polite"></span></p>
       <p class="note">Nothing you type is sent anywhere unless you share the link yourself; a shared link carries your three answers and the surname, if you typed one. The page’s own address never holds the surname. The list is a starting order, not a guarantee: records were lost, burned or never kept in some places and years. The <a href="/records/">records page</a> has the rest.</p></section>
     <section class="rf-saved" id="rfSaved" hidden aria-labelledby="rfSvH"><h2 id="rfSvH">Your saved searches</h2><ul id="rfSvL"></ul><p class="note">Kept in this browser only.</p></section>
+    <section class="pp-start" aria-labelledby="ppS"><h2 id="ppS">New to family research? Start here</h2>
+      <ol class="pp-steps">
+        <li><b>Write down what you know.</b> Names, dates and places, and how you know each one: a certificate, a Bible, a story. Mark the guesses as guesses.</li>
+        <li><b>Work backward, one generation at a time.</b> Start with the death record of the person you know least about; it names parents and a birthplace. <a href="/guide/death-certificate/">How to read a death certificate</a>.</li>
+        <li><b>Find them in every census.</b> Each one adds a fact; the gaps tell you where to look next. The record finder above lists where the census and the county books are.</li>
+        <li><b>Learn the old words and the old hand.</b> <a href="/glossary/">The glossary</a> and <a href="/guide/old-handwriting/">reading the old hand</a> explain what the clerks wrote.</li>
+        <li><b>Weigh what you find.</b> Two records that disagree are a clue, not a failure. <a href="/notes/one-letter-two-certificates/">One letter, two certificates</a> shows how, and <a href="/toolkit/">the toolkit</a> has the calculators.</li>
+      </ol>
+      <p class="note">Burials and obituaries: see <a href="/records/">where the records are</a>. Stuck? <a href="/story/#ask">Ask the desk</a>, or <a href="/research/">hire the research desk</a>.</p></section>
     <h2>The people tools</h2>
     <ul class="pp-tools">{tools}</ul>
     <h2>Three habits that find more</h2>

@@ -6,6 +6,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
 JS = r'''<script>
 document.addEventListener('DOMContentLoaded', function(){ "use strict";
   var $=function(s){ return document.querySelector(s); }, f=$('#stForm'), msg=$('#stMsg'), KEY='ps-story-draft';
+  setTimeout(function(){ try{ var hk=location.hash.slice(1), so=document.querySelector('#stKind option[value="'+hk+'"]'); if (so) so.selected=true; }catch(e){} },0);
   var F=['stName','stTown','stKind','stWhere','stWhen','stText','stHow','stPics'];
   /* a draft kept on this device only, so a long story is not lost if the page closes */
   try{ var d=JSON.parse(localStorage.getItem(KEY)||'{}'); F.forEach(function(id){ if (d[id]!=null) $('#'+id).value=d[id]; }); if (d.perm) { var r=f.querySelector('input[name=perm][value="'+d.perm+'"]'); if (r) r.checked=true; } }catch(e){}
@@ -46,10 +47,11 @@ body = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <section class="st-how" aria-labelledby="stHowH"><h2 id="stHowH">What happens to it</h2>
       <ol class="st-steps"><li><b>You write it here.</b> The page writes an email for you. Nothing is sent until you press send in your own email program.</li>
       <li><b>We read it, and look for the record.</b> A story the record bears out is marked as found in the record. A story it can’t yet confirm is marked as family memory, with your name if you want it.</li>
-      <li><b>Nothing goes on the site without your yes.</b> Before anything is published, we send you exactly what would appear, and you say yes, no, or change it.</li></ol></section>
+      <li><b>Nothing goes on the site without your yes.</b> Before anything is published, we send you exactly what would appear, and you say yes, no, or change it.</li></ol>
+      <p>Published stories, unnamed photographs and answered questions appear in <a href="/voices/">Valley Voices</a>; corrections are listed on the <a href="/corrections/">corrections page</a>.</p></section>
     <form class="rf st-form" id="stForm" aria-labelledby="stFH" novalidate>
       <h2 id="stFH">Your story</h2>
-      <label><span>What kind of story?</span><select id="stKind"><option value="family">A family story</option><option value="place">A place, a building or a business</option><option value="photo">A photograph or a paper I have</option><option value="event">Something that happened</option><option value="fix">A correction to this site</option></select></label>
+      <label><span>What kind of story?</span><select id="stKind"><option value="family">A family story</option><option value="place">A place, a building or a business</option><option value="photo">A photograph or a paper I have</option><option value="event">Something that happened</option><option value="who">Who is this? A photograph I can’t name</option><option value="ask">A question for Ask the desk</option><option value="listevent">An event for the valley calendar</option><option value="listplace">A place to add to the map</option><option value="fix">A correction to this site</option></select></label>
       <label><span>Where <small>(town, road or building)</small></span><input id="stWhere" type="text" maxlength="120" placeholder="For example, Front Street, Dowagiac"></label>
       <label><span>About when?</span><input id="stWhen" type="text" maxlength="60" placeholder="For example, the 1920s"></label>
       <label class="st-wide"><span>The story</span><textarea id="stText" rows="9" required aria-describedby="stCount stTip"></textarea><small id="stCount" aria-live="polite"></small></label>
