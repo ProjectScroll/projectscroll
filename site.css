@@ -4564,3 +4564,18 @@ blockquote.nw-q footer{margin-top:.35rem; font-style:normal; font-size:.86rem; c
 #timeline .tl-meter{grid-column:1 / -1; height:.45rem; border-radius:99px; background:color-mix(in srgb, #9a2f24 22%, var(--line)); overflow:hidden}
 #timeline .tl-meter i{display:block; height:100%; width:var(--tlp, 38%); border-radius:inherit; background:linear-gradient(90deg, var(--gold-lo), var(--gold-hi))}
 @media (max-width:520px){ #timeline .tl-tally{grid-template-columns:repeat(3, minmax(0,1fr)); gap:.4rem} #timeline .tl-tally > span:not(.tl-meter){font-size:.66rem; padding:.55rem .3rem} #timeline .tl-tally b{font-size:1.6rem} }
+/* ===== Dusk accents (option B): the services-ad palette, as a pill behind the opening line and a soft glow at the top of the page ===== */
+:root{--dusk-a:#0a1a4a; --dusk-b:#0b3a78; --dusk-c:#0c6f8f; --dusk-gold:#ffc061; --dusk-cyan:#5fe3ff; --dusk-glow:#d6e3ee}
+:root[data-theme="dark"]{--dusk-glow:#13345a}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--dusk-glow:#13345a} }
+.hero-k, .page > .kicker, .page .nw-index > .kicker, main.page > div > .kicker{background:linear-gradient(90deg, var(--dusk-a), var(--dusk-b) 55%, var(--dusk-c)); border-radius:10px; box-shadow:0 0 0 1px rgba(95,227,255,.18), 0 10px 26px -14px rgba(12,111,143,.8)}
+.hero-k{padding:.55rem .9rem; margin-bottom:.6rem!important}
+.hero-k, .hero-k *, .hero-k i{color:var(--dusk-gold)!important}
+.hero-k .hk2{color:var(--dusk-cyan)!important}
+.page > .kicker, .page .nw-index > .kicker, main.page > div > .kicker{display:inline-block; padding:.4rem .8rem; color:var(--dusk-gold)!important}
+#top{background:radial-gradient(70rem 26rem at 50% 0, var(--dusk-glow) 0, transparent 70%), var(--paper)!important}
+.nw-bar{border-color:#2bb8d6!important}
+@media print{ .hero-k, .page > .kicker{background:none!important; box-shadow:none!important; color:inherit!important} #top{background:none!important} }
+.page > .kicker, .page .nw-index > .kicker, main.page > div > .kicker{width:fit-content; max-width:100%}
+.page > .kicker a, .page > .kicker span, .page .nw-index > .kicker a{color:var(--dusk-gold)!important}
+.page > .kicker::after, .page .nw-index > .kicker::after{display:none!important}
