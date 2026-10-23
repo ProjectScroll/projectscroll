@@ -16,7 +16,7 @@ for (const [w,cs,lab] of [[1280,'light','computer'],[390,'dark','phone']]){
  const gp=await q.evaluate(()=>{const p=document.querySelector('.gloss:popover-open'); if(!p) return null; const r=p.getBoundingClientRect(); return [p.textContent.slice(0,40), r.left>=0 && r.right<=innerWidth && r.top>=0 && r.bottom<=innerHeight]}); ok(P+'glossary definition opens on screen', gp && gp[1], gp && gp[0]);
  await q.keyboard.press('Escape');
  // listen buttons
- const ln=await q.evaluate(()=>document.querySelectorAll('.listen').length); ok(P+'Listen button on every section', ln>=7, String(ln));
+ const ln=await q.evaluate(()=>document.querySelectorAll('.listen').length); ok(P+'Listen button on every section', ln>=6, String(ln));
  // ornaments
  const orn=await q.evaluate(()=>getComputedStyle(document.querySelector('#cases'),'::before').backgroundImage.includes('svg')); ok(P+'engraved flourish between sections', orn);
  // explore cards + case links

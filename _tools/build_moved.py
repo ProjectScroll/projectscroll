@@ -33,3 +33,17 @@ page('notes/from-the-desk/index.html', 'From the field notes: Lesson No. 1 · Pr
      'Lesson No. 1 from the desk: two old records, two different stories, and what to do. With the person of the month and a record to weigh yourself.',
      '    <p class="crumb"><a href="/notes/">← Field notes</a></p>\n' + frag('notes') + '\n')
 print('moved pages built')
+
+# ---- three small pieces that left the home page, injected into the pages that now carry them ----
+def inject(path, key, frag_name, before):
+    f = R / path; s = f.read_text(); frag = (H / frag_name).read_text().strip()
+    blk = f'<!--{key}-->\n    {frag}\n    <!--/{key}-->\n    '
+    if f'<!--{key}-->' in s:
+        s = re.sub(rf'<!--{key}-->.*?<!--/{key}-->\n    ', lambda m: blk, s, flags=re.S)
+    else:
+        i = s.index(before); s = s[:i] + blk + s[i:]
+    f.write_text(s)
+inject('map/index.html', 'mom', 'mom.html', '<h2 id="look">')                 # Map of the month, in the map room
+inject('lore/index.html', 'plate2', 'plate2.html', '\n  </main>'.lstrip('\n'))  # the window and the glacial-age quote
+inject('about/index.html', 'stats', 'stats.html', '\n  </main>'.lstrip('\n'))  # the four numbers
+print('moved pieces injected')
