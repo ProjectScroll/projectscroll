@@ -16,11 +16,11 @@ for (const [w,cs,lab] of [[1280,'light','computer'],[390,'dark','phone']]){
  const gp=await q.evaluate(()=>{const p=document.querySelector('.gloss:popover-open'); if(!p) return null; const r=p.getBoundingClientRect(); return [p.textContent.slice(0,40), r.left>=0 && r.right<=innerWidth && r.top>=0 && r.bottom<=innerHeight]}); ok(P+'glossary definition opens on screen', gp && gp[1], gp && gp[0]);
  await q.keyboard.press('Escape');
  // listen buttons
- const ln=await q.evaluate(()=>document.querySelectorAll('.listen').length); ok(P+'Listen button on every section', ln>=6, String(ln));
+ const ln=await q.evaluate(()=>document.querySelectorAll('.listen').length); ok(P+'Listen button on every section', ln>=5, String(ln));
  // ornaments
  const orn=await q.evaluate(()=>getComputedStyle(document.querySelector('#cases'),'::before').backgroundImage.includes('svg')); ok(P+'engraved flourish between sections', orn);
  // explore cards + case links
- ok(P+'eight explore cards present', await q.evaluate(()=>document.querySelectorAll('.explore a').length===8));
+ { await q.goto(BASE+'/hunt/'); await q.waitForTimeout(500); ok(P+'eight explore cards present', await q.evaluate(()=>document.querySelectorAll('.explore a').length===8)); await q.goto(BASE+'/'); await q.waitForTimeout(500); }
  { await q.goto(BASE+'/cases/'); await q.waitForTimeout(600); const pg=q.context().waitForEvent('page',{timeout:4000}).catch(()=>null); await q.click('#case-4 .qlink'); let cp=await pg; if(!cp){ await q.waitForURL(/\/cases\/4\/$/,{timeout:8000}).catch(()=>{}); cp=q; } await cp.waitForLoadState(); ok(P+'case question opens its own page', /\/cases\/4\/$/.test(cp.url()));
  ok(P+'case page has its own share card', (await cp.getAttribute('meta[property="og:image"]','content')).endsWith('/cases/4/card.jpg'));
  ok(P+'case page shows Open status', /Open/.test(await cp.textContent('.casestatus'))); if(cp!==q) await cp.close(); }

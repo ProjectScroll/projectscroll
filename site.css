@@ -4650,3 +4650,7 @@ main > section.teaser p.center, #marks.teaser p.center{display:flex; flex-wrap:w
 main > section.teaser p.center .btn{margin:0!important}
 .notes-lesson p:last-child{display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:.6rem}
 .notes-lesson .btn{margin:0!important}
+.pb-tag.pb-tag-r{padding:.42rem 0 .42rem .9rem}
+.pb-tag.pb-tag-r::after{display:none}
+.pb-tag.pb-tag-r::before{content:""; width:.38rem; height:.38rem; margin-right:.7rem; transform:rotate(45deg); background:var(--gold)}
+.placeband .pb-pause + .pb-tag-r{padding-left:.6rem}

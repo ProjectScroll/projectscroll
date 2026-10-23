@@ -355,6 +355,9 @@ b = f'''    <div class="hn"><p class="crumb"><a href="/">← Front page</a> · <
       <ul class="hn-quests">{quests}</ul>
       <p><a href="/badges/">All the badges, and the five ranks ›</a></p></section>
 
+    <section aria-labelledby="hnTools"><h2 id="hnTools">Tools for the hunt</h2>
+      {pathlib.Path(R, '_tools/data/home/explore.html').read_text().strip()}</section>
+
     <section aria-labelledby="hnSolvers"><h2 id="hnSolvers">The solvers</h2>
       <p>{"No case has been cracked yet. The first name on the board could be yours." if not ncracked else "Named on the case board, for good."}</p></section>
 

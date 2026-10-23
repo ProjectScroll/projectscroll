@@ -1025,7 +1025,7 @@ try{ (function(){
   requestAnimationFrame(speed); addEventListener('resize', speed, {passive:true}); box.classList.add('run');
   const pz=document.createElement('button'); pz.type='button'; pz.className='pb-pause'; pz.setAttribute('aria-label','Pause the place names'); pz.setAttribute('aria-pressed','false'); pz.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3" width="2.6" height="10" rx=".8"/><rect x="9.4" y="3" width="2.6" height="10" rx=".8"/></svg>';
   pz.addEventListener('click', function(){ const on=!box.classList.contains('held'); box.classList.toggle('held', on); pz.setAttribute('aria-pressed', String(on)); pz.setAttribute('aria-label', on?'Play the place names':'Pause the place names'); pz.innerHTML=on?'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3l8 5-8 5z"/></svg>':'<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3" width="2.6" height="10" rx=".8"/><rect x="9.4" y="3" width="2.6" height="10" rx=".8"/></svg>'; });
-  box.appendChild(pz);
+  const rt=box.querySelector('.pb-tag-r'); if (rt) box.insertBefore(pz, rt); else box.appendChild(pz);
 })(); }catch(err){ psFail(err); }
 
 /* ---------- Part I: every date has its own link, so a date can be shared ---------- */
