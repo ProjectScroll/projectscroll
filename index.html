@@ -902,18 +902,15 @@ document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-
 
 <script src="/site.min.js?v=65e19440" defer></script>
 <script>
-/* the valley map tile: today's and tomorrow's events, and the museums open today, live */
+/* the valley map tile: today's and tomorrow's fairs, festivals and celebrations, live */
 (function(){ var t=document.getElementById('vmTile'), L=document.getElementById('vmtList'); if (!t || !L || !window.fetch) return;
   var go=function(){ fetch('/valley-map/today.json?v=2').then(function(r){ return r.json(); }).then(function(d){
     var iso=function(x){ return x.getFullYear()+'-'+('0'+(x.getMonth()+1)).slice(-2)+'-'+('0'+x.getDate()).slice(-2); };
     var t0=new Date(), t1=new Date(t0); t1.setDate(t0.getDate()+1);
     var a=iso(t0), b=iso(t1), on=function(e,x){ return e[2]<=x && e[3]>=x; };
-    var today=d.ev.filter(function(e){ return on(e,a); }), tom=d.ev.filter(function(e){ return on(e,b); });
-    /* museums open today, from their posted hours */
-    var DK={Mo:1,Tu:2,We:3,Th:4,Fr:5,Sa:6,Su:0}, dow=t0.getDay(), mon=t0.getMonth()+1, nmu=0;
-    d.mu.forEach(function(m){ var s=m[0]; if (s==='always'){ nmu++; return; } var se=s.match(/@(\d+)-(\d+)/); if (se && (mon<+se[1] || mon>+se[2])) return; var hit=false;
-      s.replace(/@.*/,'').split(';').forEach(function(seg){ var p=seg.trim().split(' '); if (p.length<2) return; p[0].split(',').forEach(function(r){ var x=r.split('-'); if (x.length===2){ for (var i=DK[x[0]];;i=(i+1)%7){ if (i===dow) hit=true; if (i===DK[x[1]]) break; } } else if (DK[r]===dow) hit=true; }); });
-      if (hit) nmu++; });
+    var span=function(e){ return (new Date(e[3]+'T12:00:00')-new Date(e[2]+'T12:00:00'))/864e5+1; };
+    var longrun=d.ev.filter(function(e){ return span(e)>30 && on(e,a); });
+    var today=d.ev.filter(function(e){ return span(e)<=30 && on(e,a); }), tom=d.ev.filter(function(e){ return span(e)<=30 && on(e,b); });
     var el=function(tag,cls,txt){ var e=document.createElement(tag); if (cls) e.className=cls; if (txt) e.textContent=txt; return e; };
     var block=function(head,list){ var w=el('div','vmt-day'); w.appendChild(el('p','vmt-h',head)); var ul=el('ul');
       list.slice(0,4).forEach(function(e){ var li=el('li'), A=el('a','',e[0]); A.href='/seasons/#'+e[6]; li.appendChild(A); li.appendChild(el('span','',' · '+e[1])); ul.appendChild(li); });
@@ -921,11 +918,11 @@ document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-
       w.appendChild(ul); return w; };
     var fmt=function(x){ return x.toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric'}); };
     L.appendChild(block('Today, '+fmt(t0), today.length?today:[]));
-    if (!today.length) L.lastChild.querySelector('ul').appendChild(el('li','vmt-none','No festival on our calendar today.'));
+    if (!today.length) L.lastChild.querySelector('ul').appendChild(el('li','vmt-none','No fair or festival on our calendar today.'));
     var tnew=tom.filter(function(e){ return today.indexOf(e)<0; }), tcont=tom.filter(function(e){ return today.indexOf(e)>=0; });
     L.appendChild(block('Tomorrow, '+fmt(t1), tnew));
     if (!tnew.length){ var ul=L.lastChild.querySelector('ul'); ul.appendChild(el('li','vmt-none', tcont.length? 'Today’s '+(tcont.length>1?'events continue':'event continues')+'.' : 'Nothing new on our calendar.')); }
-    var mu=el('p','vmt-mu'); var A=el('a','',nmu+' museums and historic places open today'); A.href='/museums/'; mu.appendChild(A); L.appendChild(mu);
+    if (longrun.length){ var lr=el('p','vmt-mu','Also running: '); longrun.forEach(function(e,i){ var A=el('a','',e[0]); A.href='/seasons/#'+e[6]; if (i) lr.appendChild(document.createTextNode(' · ')); lr.appendChild(A); }); L.appendChild(lr); }
     if (!today.length && !tom.length){ var nx=d.ev.filter(function(e){ return e[2]>b; }).sort(function(x,y){ return x[2]<y[2]?-1:1; })[0];
       if (nx){ var p=el('p','vmt-mu','Next: '), B=el('a','',nx[0]); B.href='/seasons/#'+nx[6]; p.appendChild(B); p.appendChild(document.createTextNode(', '+new Date(nx[2]+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'}))); L.appendChild(p); } }
     var live=document.getElementById('vmtLive'), dots=document.getElementById('vmtDots'), both=today.concat(tnew);
