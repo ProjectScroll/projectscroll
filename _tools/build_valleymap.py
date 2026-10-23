@@ -169,5 +169,6 @@ for d in load('seasons.json', []):
     if not dt: continue
     x, y = _xy(*d['ll']) if d.get('ll') else (None, None)
     _ev.append([d['name'], d['town'], dt['start'], dt.get('end') or dt['start'], x if x is not None and 0 <= x <= 100 else None, y if y is not None and 0 <= y <= 100 else None, slug(d['name'])])
-open(pathlib.Path(__file__).parent.parent/'valley-map'/'today.json', 'w').write(json.dumps({'n': N, 'ev': _ev}, ensure_ascii=False, separators=(',',':')))
+_mu = [[d['oh'], d.get('tz') or 'E'] for d in load('museums.json', []) if d.get('oh')]
+open(pathlib.Path(__file__).parent.parent/'valley-map'/'today.json', 'w').write(json.dumps({'n': N, 'ev': _ev, 'mu': _mu}, ensure_ascii=False, separators=(',',':')))
 print('valley map tile data', len(_ev))

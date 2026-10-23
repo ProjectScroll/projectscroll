@@ -4298,3 +4298,17 @@ table.ad-cmp{width:100%; border-collapse:collapse; font-size:.95rem; line-height
 .vmt-dots i{position:absolute; width:.55rem; height:.55rem; margin:-.275rem 0 0 -.275rem; border-radius:50%; background:#f6d27a; box-shadow:0 0 0 0 rgba(246,210,122,.8); animation:vmtp 2s ease-out infinite}
 @keyframes vmtp{0%{box-shadow:0 0 0 0 rgba(246,210,122,.8)} 100%{box-shadow:0 0 0 .9rem rgba(246,210,122,0)}}
 @media (prefers-reduced-motion: reduce){ .vmt-dots i{animation:none} }
+.vmt-w{margin:0 0 .8rem}
+.vmt-w .vmt{margin:0}
+.vmt-list{margin:.45rem .1rem 0; font-size:.8rem; line-height:1.35}
+.vmt-list:empty{display:none}
+.vmt-day{margin:0 0 .45rem}
+.vmt-h{margin:0 0 .15rem; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-lo)}
+.vmt-list ul{list-style:none; margin:0; padding:0}
+.vmt-list li{margin:.12rem 0; padding-left:.8rem; position:relative}
+.vmt-list li::before{content:""; position:absolute; left:0; top:.45rem; width:.38rem; height:.38rem; border-radius:50%; background:#3F7F4A}
+.vmt-list li span{color:var(--ink-soft)}
+.vmt-list li.vmt-none{color:var(--ink-soft); font-style:italic}
+.vmt-list li.vmt-none::before{background:var(--line)}
+.vmt-mu{margin:.2rem 0 0; font-size:.78rem}
+.vmt-dots i.tm{background:#9fd3a8; animation:none; opacity:.9}
