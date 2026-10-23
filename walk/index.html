@@ -29,7 +29,7 @@
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
-<link rel="stylesheet" href="/site.min.css?v=6f9d1671">
+<link rel="stylesheet" href="/site.min.css?v=7eb2e9b6">
 <script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/*.pdf","/*.zip","/*.xml","/*.json"]}},{"not":{"selector_matches":"[download], [target=_blank]"}}]},"eagerness":"moderate"}],"prerender":[{"where":{"and":[{"selector_matches":".bar a, .toolrow .nd a, .crumb a, footer nav a, .partrail a, .search-res a"},{"href_matches":"/*"},{"not":{"href_matches":["/*.pdf","/map/3d/*"]}}]},"eagerness":"conservative"}]}</script>
 </head>
 <body>
@@ -76,7 +76,7 @@
           <p class="wk-nav"><button type="button" class="btn" id="wkPrev">‹ Back</button> <span id="wkNum" aria-live="polite"></span> <button type="button" class="btn primary" id="wkNext">Next stop ›</button></p>
           <div class="wk-stage" id="wkStage" aria-live="polite"></div>
         </div>
-        <p class="wk-tools"><label class="wk-op" id="wkOp" hidden>1860 plan <input type="range" min="0" max="100" value="90" aria-label="How strongly the 1860 plan shows"></label> <button type="button" class="btn mu-osm" id="wkOSM" aria-pressed="false" hidden>Show today’s streets</button> <button type="button" class="btn" id="wkPlay" aria-pressed="false" hidden>Play the tour aloud</button> <button type="button" class="btn" id="wkFollow" aria-pressed="false" hidden>Follow me on foot</button> <a class="btn" href="/map/3d/cassopolis/">Fly over it in 3D</a> <a class="btn" href="/map/cassopolis/">The full 1860 plan</a> <a class="btn" href="/walk/dowagiac/">Next: Front Street, Dowagiac ›</a> <button type="button" class="btn" id="wkOff" hidden>Save for no-signal use</button></p>
+        <p class="wk-tools"><label class="wk-op" id="wkOp" hidden>1860 plan <input type="range" min="0" max="100" value="90" aria-label="How strongly the 1860 plan shows"></label> <span class="ps-base" role="group" aria-label="Base map" hidden id="wkBase"><button type="button" data-base="topo" aria-pressed="true">Map</button><button type="button" data-base="photo" aria-pressed="false">Photo</button><button type="button" data-base="plain" aria-pressed="false">Plain</button></span> <button type="button" class="btn" id="wkPlay" aria-pressed="false" hidden>Play the tour aloud</button> <button type="button" class="btn" id="wkFollow" aria-pressed="false" hidden>Follow me on foot</button> <a class="btn" href="/map/3d/cassopolis/">Fly over it in 3D</a> <a class="btn" href="/map/cassopolis/">The full 1860 plan</a> <a class="btn" href="/walk/dowagiac/">Next: Front Street, Dowagiac ›</a> <button type="button" class="btn" id="wkOff" hidden>Save for no-signal use</button></p>
         <p class="mu-mine" id="wkProg" aria-live="polite"></p>
       </div>
       <h2>Every stop</h2>
@@ -193,6 +193,20 @@
       <p class="vs-plan"><a class="btn" href="/visit/">Plan your visit: ready-made days out, food, lodging and festivals</a></p>
       <p class="note">The stops come from the county histories of 1875, 1882 and 1906, the Sanborn sheets, and the village and county records, each linked under its stop. The plan is the 1860 county wall map’s inset of Cassopolis. Where a date or name could not be confirmed, the stop says so. Corrections are welcome at research@projectscroll.com.</p>
   <script>
+window.psBase=window.psBase||function(map, box, group, first){
+  var U='https://basemap.nationalmap.gov/arcgis/rest/services/', S={topo:'USGSTopo', photo:'USGSImageryOnly', photonames:'USGSImageryTopo'}, L1={}, cur='plain';
+  var CR='Base map: <a href="https://www.usgs.gov/programs/national-geospatial-program/national-map">USGS The National Map</a>';
+  var pane=map.getPane('psbase')||map.createPane('psbase'); pane.style.zIndex=150;
+  var set=function(k){ if (k===cur) return; if (L1[cur]) map.removeLayer(L1[cur]); cur=k;
+    if (S[k]){ if (!L1[k]) L1[k]=L.tileLayer(U+S[k]+'/MapServer/tile/{z}/{y}/{x}',{pane:'psbase', maxNativeZoom:16, maxZoom:20, attribution:CR, crossOrigin:false}); L1[k].addTo(map); }
+    if (box) box.classList.toggle('osm', !!S[k]); if (box) box.classList.toggle('photo', k==='photo'||k==='photonames');
+    map.fire('psbase',{base:k});
+    if (group) [].forEach.call(group.querySelectorAll('[data-base]'),function(b){ b.setAttribute('aria-pressed', String(b.dataset.base===k || (k==='photonames' && b.dataset.base==='photo'))); }); };
+  if (group){ group.hidden=false; group.addEventListener('click',function(e){ var b=e.target.closest('[data-base]'); if (b) set(b.dataset.base); }); }
+  set(first||'topo');
+  return {set:set, get:function(){ return cur; }};
+};
+</script><script>
   (function(){ "use strict";
     var $=function(s){ return document.querySelector(s); }, $$=function(s){ return [].slice.call(document.querySelectorAll(s)); };
     var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -240,9 +254,8 @@
       map.fitBounds(line.getBounds().pad(.25));
       map.on('focus click',function(){ map.scrollWheelZoom.enable(); }); map.on('blur mouseout',function(){ map.scrollWheelZoom.disable(); });
       var op=$('#wkOp'); if (plan){ op.hidden=false; } op.querySelector('input').addEventListener('input',function(e){ plan.setOpacity(+e.target.value/100); });
-      var sb=$('#wkOSM'); sb.hidden=false; sb.addEventListener('click',function(){ var on=sb.getAttribute('aria-pressed')!=='true'; sb.setAttribute('aria-pressed',String(on));
-        if (on){ if (!osm) osm=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19, attribution:'Streets: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}); osm.addTo(map); osm.bringToBack(); }
-        else map.removeLayer(osm); });
+      map.on('psbase',function(e){ map.getPane('today').style.opacity= e.base==='plain'? '' : (e.base==='topo'? '0' : '.55'); });
+      window.psBase(map, map.getContainer(), $('#wkBase'), 'topo');
       paint(); };
     var need=function(){ if (window.L){ start(); return; } if (need.on) return; need.on=1;
       var l=document.createElement('link'); l.rel='stylesheet'; l.href='/vendor/leaflet-1.9.4/leaflet.css?v=1'; document.head.appendChild(l);
@@ -305,6 +318,6 @@
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=6f9d1671" defer></script>
+<script src="/site.min.js?v=7eb2e9b6" defer></script>
 </body>
 </html>

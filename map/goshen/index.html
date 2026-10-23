@@ -29,7 +29,7 @@
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
-<link rel="stylesheet" href="/site.min.css?v=6f9d1671">
+<link rel="stylesheet" href="/site.min.css?v=7eb2e9b6">
 <script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/*.pdf","/*.zip","/*.xml","/*.json"]}},{"not":{"selector_matches":"[download], [target=_blank]"}}]},"eagerness":"moderate"}],"prerender":[{"where":{"and":[{"selector_matches":".bar a, .toolrow .nd a, .crumb a, footer nav a, .partrail a, .search-res a"},{"href_matches":"/*"},{"not":{"href_matches":["/*.pdf","/map/3d/*"]}}]},"eagerness":"conservative"}]}</script>
 </head>
 <body>
@@ -77,6 +77,7 @@
         <button type="button" class="btn" id="tnFade" aria-pressed="true">Fade</button><button type="button" class="btn" id="tnSwipe" aria-pressed="false">Side by side</button>
       </span>
       <label class="tnrange" id="tnFadeBox"><span>Today</span><input type="range" id="tnOp" min="0" max="100" value="75" aria-label="How much of the 1861 plan to show"><span>1861</span></label>
+      <span class="ps-base" role="group" aria-label="Base map" hidden id="tnBase"><button type="button" data-base="photo" aria-pressed="true">Photo</button><button type="button" data-base="plain" aria-pressed="false">Lines</button></span>
       <button type="button" class="btn" id="tnHome">Back to town</button>
       <button type="button" class="btn" id="tnHere" aria-pressed="false">Where am I?</button><button type="button" class="btn" id="tnFull">Full screen</button><button type="button" class="btn" id="tnShare">Share this view</button><button type="button" class="btn" id="tnPrint">Print</button><button type="button" class="btn" id="tnNames" aria-pressed="false" disabled title="Solve this town’s renamed-street challenge to unlock">Today’s names 🔒</button>
       <span class="mapstat" id="tnStat" aria-live="polite">Loading…</span>
@@ -99,11 +100,26 @@
     <h2>How this was made</h2>
     <p>The plan is shown live from the University of Wisconsin–Milwaukee Libraries’ image service, at full detail. Forty street corners that appear on both maps (Second, Third, Main, Fifth, Sixth and Seventh, where they meet Wilkinson, Pike, Clinton, Market, Washington, Jefferson, Madison, Monroe and Pearl) were matched by measurement, and the plan was fitted to them, turning it a little over half a degree. On average the old corners land within about four yards of the new ones. Monroe Street jogs at Main on both maps, and each side was measured on its own. Where today’s Main Street bends away south of Monroe it was left out of the fit.</p>
     <p class="note">The business directory printed beside the plan has been left off this copy, though a few of its letters show at the left edge. The whole directory is on the full county map in the <a href="/map/#town-goshen">map room</a>.</p>
-    <p class="note tncredit">1861 plan: <i>Map of Elkhart Co. Indiana</i> (Philadelphia: Samuel Geil, 1861), published by Geil &amp; Harley, inset “Goshen.” American Geographical Society Library, University of Wisconsin–Milwaukee Libraries. Public domain, shown live from the Library’s image service. Today’s streets and water: drawn from OpenStreetMap data, © OpenStreetMap contributors, available under the Open Database License.</p>
+    <p class="note tncredit">1861 plan: <i>Map of Elkhart Co. Indiana</i> (Philadelphia: Samuel Geil, 1861), published by Geil &amp; Harley, inset “Goshen.” American Geographical Society Library, University of Wisconsin–Milwaukee Libraries. Public domain, shown live from the Library’s image service. Today’s aerial photograph and, once the challenge is solved, today’s names: USGS The National Map (public domain). Today’s streets and water drawn as lines: OpenStreetMap data, © OpenStreetMap contributors, available under the Open Database License.</p>
     <p class="note">The business directory printed beside this plan is in the roll of names: <a href="/names/?town=goshen">who was in Goshen in 1861 →</a></p>
     <p class="tnnext"><a href="/map/elkhart/">Next town: Elkhart, 1861 →</a> <span aria-hidden="true">·</span> <a href="/map/then-and-now/">All seven towns</a></p>
     <link rel="stylesheet" href="/vendor/leaflet-1.9.4/leaflet.css?v=1">
     <script src="/vendor/leaflet-1.9.4/leaflet.js?v=1"></script>
+    <script>
+window.psBase=window.psBase||function(map, box, group, first){
+  var U='https://basemap.nationalmap.gov/arcgis/rest/services/', S={topo:'USGSTopo', photo:'USGSImageryOnly', photonames:'USGSImageryTopo'}, L1={}, cur='plain';
+  var CR='Base map: <a href="https://www.usgs.gov/programs/national-geospatial-program/national-map">USGS The National Map</a>';
+  var pane=map.getPane('psbase')||map.createPane('psbase'); pane.style.zIndex=150;
+  var set=function(k){ if (k===cur) return; if (L1[cur]) map.removeLayer(L1[cur]); cur=k;
+    if (S[k]){ if (!L1[k]) L1[k]=L.tileLayer(U+S[k]+'/MapServer/tile/{z}/{y}/{x}',{pane:'psbase', maxNativeZoom:16, maxZoom:20, attribution:CR, crossOrigin:false}); L1[k].addTo(map); }
+    if (box) box.classList.toggle('osm', !!S[k]); if (box) box.classList.toggle('photo', k==='photo'||k==='photonames');
+    map.fire('psbase',{base:k});
+    if (group) [].forEach.call(group.querySelectorAll('[data-base]'),function(b){ b.setAttribute('aria-pressed', String(b.dataset.base===k || (k==='photonames' && b.dataset.base==='photo'))); }); };
+  if (group){ group.hidden=false; group.addEventListener('click',function(e){ var b=e.target.closest('[data-base]'); if (b) set(b.dataset.base); }); }
+  set(first||'topo');
+  return {set:set, get:function(){ return cur; }};
+};
+</script>
     <script>
     (function(){ "use strict";
       const stat=document.getElementById('tnStat');
@@ -116,7 +132,8 @@
       const dec=a=>{ const o=[]; let la=0, lo=0; for(let i=0;i<a.length;i+=2){ la+=a[i]; lo+=a[i+1]; o.push([la/1e5, lo/1e5]); } return o; };
       const isDark=()=>{ const t=document.documentElement.dataset.theme; return t ? t==='dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
       const pal=()=>isDark() ? {land:'#1d2329', water:'#2c4656', minor:'#7d8994', major:'#c9d1d8', rail:'#8a7f72'} : {land:'#f1efe8', water:'#b9d0dc', minor:'#a6a39a', major:'#5d5a54', rail:'#8a7560'};
-      const cv=L.canvas({padding:0.5});
+      map.createPane('today').style.zIndex=300;
+      const cv=L.canvas({padding:0.5, pane:'today'});
       const groups={w:[], s:[], r:[], m:[], x:[]}; let sw=4;
       const style={
         w:c=>({renderer:cv, stroke:false, fillColor:c.water, fillOpacity:1, interactive:false}),
@@ -137,6 +154,9 @@
       map.attributionControl.addAttribution('Today: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors');
       map.getContainer().style.background=pal().land;
       map.createPane('old').style.zIndex=450;
+      // today's map underneath: an aerial photograph with no names (the street-name challenge stays a challenge); the drawn streets sit lightly over it
+      map.on('psbase',e=>{ map.getPane('today').style.opacity= e.base==='plain' ? '' : (e.base==='photo' ? '.5' : '0'); });
+      const base=window.psBase(map, map.getContainer(), document.getElementById('tnBase'), 'photo');
       const ll=(u,v)=>{ const x=7340+u*1.000000, y=2250+v*1.000000; return L.latLng(7.995389644824088e-08*x+-6.841604634039506e-06*y+41.61019023829292, 9.477363662688761e-06*x+1.5051755159249964e-07*y+-85.91108344528945); };
       const Aff=L.Layer.extend({
         onAdd(m){ const el=this._el=L.DomUtil.create('img','tnold leaflet-image-layer'); el.alt='1861 town plan of Goshen'; el.style.transformOrigin='0 0'; el.style.opacity=this._op;
@@ -224,8 +244,8 @@
       const unlock=()=>{ if (solved()){ bNames.disabled=false; bNames.title='Show today’s street names under the old plan'; bNames.textContent='Today’s names'; } };
       unlock(); document.addEventListener('ps-badge',unlock); document.addEventListener('submit',()=>setTimeout(unlock,50),true);
       bNames.onclick=()=>{ if (bNames.disabled) return; namesOn=!namesOn; bNames.setAttribute('aria-pressed',String(namesOn));
-        if (namesOn){ if (!osm) osm=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19, attribution:'Street names: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}); osm.addTo(map); osm.bringToBack(); stat.textContent='Today’s names on, from OpenStreetMap. Fade the old plan to read them.'; }
-        else { if (osm) map.removeLayer(osm); stat.textContent='Today’s names off.'; } };
+        if (namesOn){ base.set('topo'); stat.textContent='Today’s names on, from the USGS National Map. Fade the old plan to read them.'; }
+        else { base.set('photo'); stat.textContent='Today’s names off.'; } };
     })();
     </script>
 <aside class="sharebar" aria-label="Share this page" data-share data-url="https://projectscroll.com/map/goshen/" data-title="Goshen, 1861 and today"><p class="sb-h">Share this page</p><div class="sb-row"><a class="sb-l" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fprojectscroll.com%2Fmap%2Fgoshen%2F" rel="noopener nofollow">Facebook</a><a class="sb-l" href="https://x.com/intent/post?url=https%3A%2F%2Fprojectscroll.com%2Fmap%2Fgoshen%2F&amp;text=Goshen%2C%201861%20and%20today" rel="noopener nofollow">X</a><a class="sb-l" href="https://bsky.app/intent/compose?text=Goshen%2C%201861%20and%20today%20https%3A%2F%2Fprojectscroll.com%2Fmap%2Fgoshen%2F" rel="noopener nofollow">Bluesky</a><a class="sb-l" href="https://www.reddit.com/submit?url=https%3A%2F%2Fprojectscroll.com%2Fmap%2Fgoshen%2F&amp;title=Goshen%2C%201861%20and%20today" rel="noopener nofollow">Reddit</a><a class="sb-l" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fprojectscroll.com%2Fmap%2Fgoshen%2F" rel="noopener nofollow">LinkedIn</a><a class="sb-l" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fprojectscroll.com%2Fmap%2Fgoshen%2F&amp;media=https%3A%2F%2Fprojectscroll.com%2Fog%2Fgoshen.jpg&amp;description=Goshen%2C%201861%20and%20today" rel="noopener nofollow">Pinterest</a><a class="sb-l" href="mailto:?subject=Goshen%2C%201861%20and%20today&amp;body=Goshen%2C%201861%20and%20today%0A%0Ahttps%3A%2F%2Fprojectscroll.com%2Fmap%2Fgoshen%2F" rel="noopener nofollow">Email</a><button type="button" class="sb-l sb-copy">Copy link</button><button type="button" class="sb-l sb-more" hidden>More…</button></div></aside>
@@ -248,6 +268,6 @@
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=6f9d1671" defer></script>
+<script src="/site.min.js?v=7eb2e9b6" defer></script>
 </body>
 </html>

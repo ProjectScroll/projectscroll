@@ -351,7 +351,7 @@ body = f'''    <p class="crumb"><a href="/visit/">← Visit &amp; Plan</a></p>
       {basemap.buttons('topo','vmBase')}
       <button type="button" class="btn" id="vmHome" hidden>Whole valley</button>
       <button type="button" class="btn" id="vmShare">Share this view</button>
-      <a class="btn" href="/visit/#myday">My day<span id="vmDayN"></span></a>
+      <a class="btn" href="/visit/#build">My day<span id="vmDayN"></span></a>
       <span class="vm-stat" id="vmStat" aria-live="polite"></span>
     </div>
     <figure class="mu-mapf">
