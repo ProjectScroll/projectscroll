@@ -104,6 +104,15 @@ JS = r'''<script>
   /* coming up: the next few with known dates */
   var up=items.filter(function(li){ return li.dataset.start && new Date((li.dataset.end||li.dataset.start)+'T23:59:00')>=now; }).sort(function(a,b){ return a.dataset.start<b.dataset.start?-1:1; }).slice(0,4);
   var ul=$('#seUp'); if (up.length){ up.forEach(function(li){ var r=document.createElement('li'), a=document.createElement('a'); a.href='#'+li.id; a.textContent=li.dataset.n; r.appendChild(a); var s=document.createElement('span'); var on=new Date(li.dataset.start+'T00:00:00')<=now; s.textContent=' · '+li.dataset.town+' · '+(on? 'on now, until '+fmt(li.dataset.end) : fmt(li.dataset.start)); r.appendChild(s); ul.appendChild(r); }); $('#seUpW').hidden=false; }
+  /* this weekend: Friday to Sunday, or the rest of it if today is a weekend day */
+  (function(){ var t=new Date(); t.setHours(0,0,0,0); var d=t.getDay(), f=new Date(t);
+    if (d>=1 && d<=4) f.setDate(t.getDate()+(5-d)); var su=new Date(t); su.setDate(t.getDate()+((7-d)%7)); if (d>=1 && d<=4) su=new Date(f.getTime()+2*864e5);
+    var hits=$$('.se[data-start]').filter(function(li){ var s=new Date(li.dataset.start+'T00:00:00'), e=new Date(li.dataset.end+'T00:00:00'); return s<=su && e>=(d===0||d>=5? t : f); });
+    var wk=$('#seWk'); hits.forEach(function(li){ var r=document.createElement('li'), a=document.createElement('a'); a.href='#'+li.id; a.textContent=li.dataset.n; r.appendChild(a); var s=document.createElement('span'); s.textContent=' · '+li.dataset.town; r.appendChild(s); wk.appendChild(r); });
+    var o={weekday:'short',month:'short',day:'numeric'}; $('#seWkH').textContent='This weekend in the valley · '+(d===0||d>=5? t : f).toLocaleDateString('en-US',o)+' to '+su.toLocaleDateString('en-US',o);
+    if (!hits.length){ var nx=$$('.se[data-start]').filter(function(li){ return new Date(li.dataset.start+'T00:00:00')>su; }).sort(function(a,b){ return a.dataset.start<b.dataset.start?-1:1; })[0];
+      $('#seWkN').innerHTML=''; var p=$('#seWkN'); p.textContent='Nothing on our calendar this weekend. '; if (nx){ var a=document.createElement('a'); a.href='#'+nx.id; a.textContent=nx.dataset.n; p.appendChild(document.createTextNode('Next: ')); p.appendChild(a); p.appendChild(document.createTextNode(', '+nx.dataset.town+', '+new Date(nx.dataset.start+'T00:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric'})+'. The museums are open most weekends: ')); var m=document.createElement('a'); m.href='/museums/'; m.textContent='see what is open'; p.appendChild(m); p.appendChild(document.createTextNode('.')); } }
+    $('#seWkW').hidden=false; })();
   /* add to calendar: a small .ics file made on this device */
   var pad=function(n){ return ('0'+n).slice(-2); };
   $$('.se-cal').forEach(function(b){ b.addEventListener('click',function(){ var li=b.closest('.se'), s=li.dataset.start.replace(/-/g,''), e=new Date(li.dataset.end+'T12:00:00'); e.setDate(e.getDate()+1);
@@ -155,6 +164,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <figure class="pg-art"><picture><source type="image/avif" srcset="/img/card-seasons-art-270.avif 270w, /img/card-seasons-art.avif 540w" sizes="8rem"><img class="vt-seasons" src="/img/card-seasons-art-270.webp" srcset="/img/card-seasons-art-270.webp 270w, /img/card-seasons-art.webp 540w" sizes="8rem" width="540" height="960" alt="" decoding="async"></picture></figure>
     <h1>When to come, and why to come back</h1>
     <p class="lede" style="font-size:1.15rem">Here are {n} fairs, festivals, harvests, living-history days and holiday walks across the St. Joseph River valley, season by season. Most have run for decades; a few for more than a century. The season we are in comes first.</p>
+    <div class="se-up se-wk" id="seWkW" hidden><p class="mu-jl" id="seWkH">This weekend in the valley</p><ul id="seWk"></ul><p class="se-wkn" id="seWkN"></p></div>
     <div class="se-up" id="seUpW" hidden><p class="mu-jl">Coming up</p><ul id="seUp"></ul></div>
     <div class="mu-bar">
       <label class="nm-q"><span>Find an event</span><input type="search" id="seQ" placeholder="A town, a fair, a fruit…" autocomplete="off" spellcheck="false"></label>

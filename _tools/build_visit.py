@@ -170,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function(){ "use strict";
 });
 </script>'''
 CARDS = [
+ ('/valley-map/', 'The valley map', 'Every place on the site on one map, in layers: museums, food, lodging, festivals, walks, lost towns and old town plans. Find what is near you.'),
  ('/food/eat/', 'Eat', f'{n_eat} places to eat with a story: old taverns, soda fountains, a diner beside an auto museum, orchards and farm markets.'),
  ('/food/stay/', 'Stay', f'{n_stay} inns, bed and breakfasts and historic hotels, from Kalamazoo to the lakeshore.'),
  ('/seasons/', 'What’s on', f'{len(S)} fairs, festivals, harvests and holiday walks on a twelve-month calendar you can subscribe to.'),
