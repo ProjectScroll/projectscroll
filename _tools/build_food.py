@@ -246,7 +246,7 @@ SEASON=[
  ['September','Apple-picking season, the Nappanee Apple Festival, and cider again at the orchards.',[['Nappanee Apple Festival','/seasons/#nappanee-apple-festival'],['Jollay Orchards','#jollay-orchards'],['Kercher’s Sunrise Orchards','#kercher-s-sunrise-orchards']]],
  ['October','Apples, cider and doughnuts at the orchards, through the end of the month.',[['A fall drive to the orchards','/visit/#day-fall'],['Jollay Orchards','#jollay-orchards'],['Apple fritters from the valley kitchen','#apple-fritters']]],
  ['November','The orchard season closes. Time for apple butter with cider from the valley kitchen.',[['Apple butter with cider','#apple-butter-with-cider']]],
- ['December','Holiday candy from the valley kitchen: maple creams and popcorn candy.',[['Maple creams','#maple-creams'],['Popcorn candy','#popcorn-candy']]],
+ ['December','Holiday candy from the valley kitchen: maple creams and popcorn candy.',[['A $2.00 Christmas dinner, Benton Harbor, 1897','#black-pudding-and-sauce'],['Maple creams','#maple-creams'],['Popcorn candy','#popcorn-candy']]],
 ]
 JS = JS.replace('__SEASON__', json.dumps(SEASON, ensure_ascii=False))
 import visitdata as _V
@@ -289,7 +289,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <section class="fd-sec" id="stay"><h2>Places to stay <span class="mu-n">{ns} places</span></h2>{stay}</section>
     <section id="recipes"><h2>The valley kitchen</h2>
       <p><button type="button" class="btn" id="rcAll">Print the whole recipe box</button> <a class="btn" href="/food/valley-kitchen-recipes.pdf" download>Download the recipe booklet (PDF)</a></p>
-      <p>Recipes and household hints as they were printed in the valley’s own cookbooks and newspapers, word for word, with a note on how to make each one today. Tick the ones you have cooked: one earns a badge for your <a href="/badges/">field book</a>.</p>
+      <p>Recipes and household hints as they were printed, word for word: from the valley’s own cookbooks and newspapers, and from the club and church cookbooks where valley cooks signed their recipes with their home towns, from Cassopolis and Dowagiac to Goshen and South Bend. Each has a picture of the page it was printed on and a note on how to make it today. Tick the ones you have cooked: one earns a badge for your <a href="/badges/">field book</a>.</p>
       <div class="mu-bar rc-bar">
         <label class="nm-q"><span>Find a recipe</span><input type="search" id="rcQ" placeholder="An ingredient, a town, a cook" autocomplete="off" spellcheck="false"></label>
         <div class="nm-chips" role="group" aria-label="Show one kind of dish">{rchips}</div>

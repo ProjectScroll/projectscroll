@@ -18,6 +18,33 @@
   "about": "Compiled by the ladies of St. Luke’s Church, Kalamazoo, with nearly two hundred pages of signed recipes, household hints and local advertising. Library of Congress copy, on the Internet Archive."
  },
  {
+  "match": "Michigan State Federation Cook Book",
+  "title": "Michigan State Federation Cook Book",
+  "place": "Michigan (printed at Charlotte)",
+  "year": "1909",
+  "img": "/img/food/cover-federation.webp",
+  "url": "https://archive.org/details/michiganstatefed0000sara",
+  "about": "Gathered from members of women’s clubs across Michigan and edited by Sarah Marshall Weaver. Every recipe is signed with the cook’s name and town, which is how cooks from Dowagiac, Cassopolis, Marcellus, Three Rivers, Constantine, Sturgis, St. Joseph, Benton Harbor, Paw Paw and Bangor appear in it."
+ },
+ {
+  "match": "The Inglenook Cook Book",
+  "title": "The Inglenook Cook Book",
+  "place": "Elgin, Illinois",
+  "year": "1901 (this printing 1909)",
+  "img": "/img/food/cover-inglenook.webp",
+  "url": "https://archive.org/details/inglenookcookboo0000vari",
+  "about": "About a thousand numbered recipes sent in by women of the Church of the Brethren. The strong Brethren congregations of northern Indiana put cooks from Goshen, Nappanee, South Bend and Walkerton in its pages, with Pennsylvania Dutch dishes such as buttermilk delda and boiled potpie."
+ },
+ {
+  "match": "The Evening News (Benton Harbor)",
+  "title": "The Evening News, Benton Harbor",
+  "place": "Benton Harbor, Michigan",
+  "year": "1897",
+  "paper": true,
+  "url": "https://archive.org/details/benton-harbor-evening-news-1897-12-22",
+  "about": "Benton Harbor’s daily paper. For Christmas 1897 it ran a contest for a holiday dinner costing $2.00, printing readers’ menus with every item priced and the cook’s own recipes."
+ },
+ {
   "match": "Dr. Miles",
   "title": "Dr. Miles’ Candy Book",
   "place": "Elkhart, Indiana",
