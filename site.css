@@ -4543,3 +4543,9 @@ img,picture,svg image{-webkit-touch-callout:none;-webkit-user-drag:none;user-sel
 .promo.ad.mod .ad-own{color:var(--m-soft)}
 .promo.ad.mod .ad-share .linkbtn{color:var(--m-am)!important; font-family:inherit}
 .promo.ad.mod .ad-fq, .promo.ad.mod .ad-coupon b{font-family:inherit}
+/* scanned newspaper clippings */
+.nw-scan a{display:block; background:#fff; padding:.35rem; border:1px solid #d9cfb4; box-shadow:2px 4px 10px -4px rgba(40,30,10,.35); transform:rotate(-.3deg)}
+.nw-scan:nth-of-type(even) a{transform:rotate(.35deg)}
+.nw-scan img{display:block}
+@media (min-width:800px){ .nw-fig-r.nw-scan{width:17rem} }
+@media (max-width:799px){ .nw-fig-r.nw-scan{max-width:24rem; margin-left:auto; margin-right:auto} }
