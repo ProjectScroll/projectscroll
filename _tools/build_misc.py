@@ -17,6 +17,7 @@ def thumb(rel):
     if not out.exists() or out.stat().st_mtime<src.stat().st_mtime:
         Image.open(src).convert('RGB').resize((144,76),Image.LANCZOS).save(out,'WEBP',quality=72,method=6)
     return '/og/t/'+out.name
+ITEMPAGES={'/food/recipes/','/food/eat/','/food/stay/','/museums/','/seasons/','/lost-towns/','/made-in-the-valley/','/walk/','/walk/dowagiac/'}
 docs=[]
 for f in sorted(pathlib.Path(R).rglob('index.html')):
     rel=f.relative_to(R).as_posix()
@@ -38,6 +39,14 @@ for f in sorted(pathlib.Path(R).rglob('index.html')):
     d={'u':url,'t':title,'x':re.sub(r'\s+',' ',txt).strip()[:4000]}
     if og: d['i']=thumb(og.group(1))
     docs.append(d)
+    # long directory pages: each entry is its own result too, so a search finds a recipe, a museum, a festival or a lost town by name
+    if url in ITEMPAGES:
+        for m in re.finditer(r'<(li|article)\b[^>]*\bclass="(?:rc|mu|mu fd|se|lt|mk|wk)\b[^"]*"[^>]*\bid="([a-z0-9-]+)"[^>]*>(.*?)</\1>', body, re.S):
+            inner=m.group(3); h=re.search(r'<h[23][^>]*>(.*?)</h[23]>',inner,re.S)
+            if not h: continue
+            it=html.unescape(re.sub(r'<[^>]+>','',h.group(1))).strip()
+            tx=re.sub(r'\s+',' ',html.unescape(re.sub(r'<[^>]+>',' ',inner))).strip()[:500]
+            docs.append({'u':url+'#'+m.group(2),'t':it+' · '+title,'x':tx})
 G={'Plat':'A surveyor’s drawing of land divided into lots or parcels.','Probate':'The court process that settles a dead person’s estate.','Informant':'The person who answered the questions on a certificate.','Census':'The national head-count taken every ten years.','Soundex':'A code that groups surnames that sound alike, used in old census indexes.','Relict':'A widow: a woman who outlived her husband.'}
 for k,v in G.items(): docs.append({'u':'/toolkit/' if k=='Soundex' else '/guide/old-handwriting/' if k=='Relict' else '/#marks','t':'Glossary: '+k,'x':v})
 # each township sheet of about 1928 is its own result, so a search for "Calvin" or "Volinia" opens it
