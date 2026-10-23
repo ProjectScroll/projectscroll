@@ -3,25 +3,30 @@ import sys, pathlib, json, html, re
 sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
 E_ = html.escape
 G = json.load(open(pathlib.Path(__file__).parent/'data'/'cemeteries.json'))
+_MK = r'(search result|snippet|verified|bot check|robots|could not|refused|not confirmed|the brief|lookalike|title only)'
+def clean(t):
+    t = re.sub(r'\s*\((?:[^()]|\([^()]*\))*?' + _MK + r'(?:[^()]|\([^()]*\))*?\)', '', t or '', flags=re.I)
+    t = ' '.join(x for x in re.split(r'(?<=[.!?])\s+', t) if not re.search(_MK, x, re.I))
+    t = re.sub(r'\s*;\s*Find a Grave[^.;]*', '', t)
+    return re.sub(r'\s+([.,;])', r'\1', t).strip()
 def slug(s): return re.sub(r'[^a-z0-9]+', '-', s.lower()).strip('-')
 def items(xs, extra=()):
     out = []
     for x in xs:
         nm = f'<a href="{E_(x["url"])}" rel="noopener">{E_(x["name"])}</a>' if x.get('url') else E_(x['name'])
-        bits = [E_(x.get('what', ''))] + [f'<b>{lab}:</b> {E_(x[k])}' for k, lab in extra if x.get(k)]
+        bits = [E_(clean(x.get('what', '')))] + [f'<b>{lab}:</b> {E_(clean(x[k]))}' for k, lab in extra if x.get(k) and clean(x[k])]
         out.append(f'<li><b>{nm}</b>. ' + ' '.join(b for b in bits if b) + '</li>')
     return '<ul class="cg-list">' + ''.join(out) + '</ul>'
 secs, nav = [], []
 for c in G:
     sid = slug(c['county'] + ' ' + c['state']); name = f'{c["county"]} County, {c["state"]}'
     nav.append(f'<a href="#{sid}">{E_(name)}</a>')
-    walk = ''.join(f'<li><b>{E_(w["name"])}</b>{(", " + E_(w["address"])) if w.get("address") else ""}. {E_(w.get("why", ""))}{(" <a href=" + chr(34) + E_(w["url"]) + chr(34) + " rel=noopener>More</a>") if w.get("url") else ""}</li>' for w in c.get('walk', []))
+    walk = ''.join(f'<li><b>{E_(w["name"])}</b>{(", " + E_(clean(w["address"]))) if w.get("address") else ""}. {E_(clean(w.get("why", "")))}{(" <a href=" + chr(34) + E_(w["url"]) + chr(34) + " rel=noopener>More</a>") if w.get("url") else ""}</li>' for w in c.get('walk', []))
     secs.append(f'''    <section id="{sid}" aria-labelledby="{sid}-h" class="cg-c"><h2 id="{sid}-h">{E_(name)}</h2>
       <h3>Burials and cemetery records</h3>{items(c.get("burials", []))}
       <h3>Obituaries</h3>{items(c.get("obituaries", []), (("years", "Years"), ("how", "How to get a copy")))}
       <h3>Death records</h3>{items(c.get("deaths", []))}
       {f'<h3>Old cemeteries you can walk</h3><ul class="cg-list">{walk}</ul>' if walk else ''}
-      {f'<p class="note">{E_(c["notes"])}</p>' if c.get("notes") else ''}
     </section>''')
 body = f'''    <p class="crumb"><a href="/people/">← Family research</a></p>
     <p class="kicker">Family research, county by county</p>

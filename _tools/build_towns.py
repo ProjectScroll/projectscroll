@@ -1,6 +1,6 @@
 """Short town pages for the wider valley (data: _tools/data/towns.json). Towns marked partial in their notes are skipped.
 python3 _tools/build_towns.py"""
-import sys, pathlib, json, html
+import sys, pathlib, json, html, re
 sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
 E_ = html.escape
 T = json.load(open(pathlib.Path(__file__).parent/'data'/'towns.json'))
@@ -10,7 +10,9 @@ for t in done:
     others = ' · '.join(f'<a href="/{o["slug"]}/">{E_(o["name"])}</a>' for o in done if o is not t)
     facts = ''.join(f'<div><dt>{E_(a)}</dt><dd>{E_(b)}</dd></div>' for a, b in t['facts'])
     lm = ''.join(f'<li><b>{E_(l["name"])}</b>{(", " + E_(l["address"])) if l.get("address") else ""}. {E_(l.get("what",""))}</li>' for l in t.get('landmarks', []))
-    src = ''.join(f'<li>{E_(s["cite"])}{(" <a href=" + chr(34) + E_(s["url"]) + chr(34) + " rel=noopener>link</a>") if s.get("url") else ""}</li>' for s in t.get('sources', []))
+    cut = lambda c: re.sub(r'\s*\([^()]*(scan|snippet|search)[^()]*\)', '', re.split(r' — |; passages read|; its full-text', c)[0]).strip()
+    bal = lambda c: c + ')' * (c.count('(') - c.count(')'))
+    src = ''.join(f'<li>{E_(bal(cut(s["cite"])))}{(" <a href=" + chr(34) + E_(s["url"]) + chr(34) + " rel=noopener>link</a>") if s.get("url") else ""}</li>' for s in t.get('sources', []))
     body = f'''    <p class="crumb"><a href="/visit/">← Visit &amp; Plan</a></p>
     <p class="kicker">{E_(t["county"])}</p>
     <h1>{E_(t["name"])}</h1>
