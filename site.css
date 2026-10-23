@@ -4443,3 +4443,6 @@ img,picture,svg image{-webkit-touch-callout:none;-webkit-user-drag:none;user-sel
 .fold > :not(.part):not(h2):not(.intro):not(.std-name):not(.fold-b){display:none!important}
 .fold-b{display:inline-flex;align-items:center;gap:.4rem;margin:.4rem 0 1rem}
 .fold-b{display:flex;width:fit-content;margin-left:auto;margin-right:auto}
+
+/* badge toast: the small label at full strength, for contrast */
+.btoast small{opacity:1}
