@@ -28,12 +28,22 @@ def tags(st, ribbon=None):
         if not any(x == y for _, y in t): t.append(({'Open case':'open','Myth tested':'myth','From the archive':'arch','Then & now':'then','In season':'seas','For families':'fam','Reader find':'reader'}.get(x, 'x'), x))
     if st.get('updated'): t.append(('upd', 'Updated'))
     for name, xs in _TG['series'].items():
-        if st['slug'] in xs: t.append(('ser', f'Series · {xs.index(st["slug"])+1} of {len(xs)}')); break
+        if st['slug'] in xs:
+            k = xs.index(st['slug']); nx = xs[k+1] if k+1 < len(xs) else xs[0]
+            t.append(('ser', f'Series · {k+1} of {len(xs)}', f'/news/{nx}/', 'next part' if k+1 < len(xs) else 'part 1')); break
     if st.get('visit'): t.append(('visit', 'Go see it'))
     m = max(1, round(_words(st)/200))
-    if m <= 3: t.append(('len', 'Quick read'))
-    elif m >= 10: t.append(('len', 'Long read'))
-    return '<p class="nw-tags">' + ''.join(f'<span class="nw-tag t-{c}">{E(x)}</span>' for c, x in t) + '</p>' if t else ''
+    t.append(('len', f'{m} min read'))
+    def one(x):
+        if len(x) == 4: return f'<a class="nw-tag t-{x[0]}" href="{x[2]}" title="Go to the {x[3]}">{E(x[1])} ›</a>'
+        return f'<span class="nw-tag t-{x[0]}">{E(x[1])}</span>'
+    return '<p class="nw-tags">' + ''.join(one(x) for x in t) + '</p>' if t else ''
+def tagnames(st):
+    out = [x for x in _TG['tags'].get(st['slug'], [])]
+    if len(_FD.get(st['slug']) or []): out.append('Discovery')
+    return out
+def usday(d):
+    x = datetime.date.fromisoformat(d); return x.strftime('%b %-d')
 halls = sorted({c['hall'] for c in CASES if c['hall'].startswith('h')})
 def day(d, long=False):
     x = datetime.date.fromisoformat(d)
@@ -78,9 +88,9 @@ brief = lambda s: (f'<article class="nw-b" data-d="{s["date"]}"><a class="nw-th"
 line = lambda s: (f'<li data-d="{s["date"]}"><span class="nw-k">{E(s["kicker"])}</span> <a href="/news/{s["slug"]}/">{E(s["short"])}</a><span class="nw-new" hidden> · New</span></li>')
 FEAT = '<span class="nw-feat-k"><span aria-hidden="true">★</span> Featured</span> · '
 second = lambda s: (f'<article class="nw-s{" nw-feat" if s["slug"] in _RIB else ""}" data-d="{s["date"]}"><a class="nw-simg" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{npic(s["pic"][0], "", "(min-width:900px) 16rem, 92vw", lazy=False)}{f'<span class="nw-ribbon{_RCLS.get(_RIB[s["slug"]], "")}">{_RIB[s["slug"]]}</span>' if s["slug"] in _RIB else ""}</a>'
-                    f'<p class="nw-k">{E(s["kicker"])}<span class="nw-new" hidden> · New</span></p><h2><a href="/news/{s["slug"]}/">{E(s["headline"])}</a></h2>{tags(s, _RIB.get(s["slug"]))}<p class="nw-sd">{E(s.get("sdek") or s["dek"])}</p></article>')
+                    f'<p class="nw-k">{E(s["kicker"])}<span class="nw-dt"> · <time datetime="{s["date"]}">{usday(s["date"])}</time></span><span class="nw-new" hidden> · New</span></p><h2><a href="/news/{s["slug"]}/">{E(s["headline"])}</a></h2>{tags(s, _RIB.get(s["slug"]))}<p class="nw-sd">{E(s.get("sdek") or s["dek"])}</p></article>')
 _SHORTK = {'How the towns got their names': 'Town names'}
-line = lambda s: (f'<li data-d="{s["date"]}"><a class="nw-th" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{sqpic(s["pic"][0])}</a><span class="nw-lt"><span class="nw-k">{E(_SHORTK.get(s["kicker"], s["kicker"]))}</span> <a href="/news/{s["slug"]}/">{E(s["short"])}</a><span class="nw-new" hidden> · New</span></span></li>')
+line = lambda s: (f'<li data-d="{s["date"]}" data-g="{E("|".join([s["kicker"]]+tagnames(s)))}"><a class="nw-th" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{sqpic(s["pic"][0])}</a><span class="nw-lt"><span class="nw-k">{E(_SHORTK.get(s["kicker"], s["kicker"]))}</span> <a href="/news/{s["slug"]}/">{E(s["short"])}</a><span class="nw-new" hidden> · New</span></span></li>')
 _NF = sum(len(x.get('finds', [])) for x in S)
 _SEAL = ('<svg class="dsc-seal" viewBox="0 0 60 60" aria-hidden="true"><g transform="translate(30 30)">' + ''.join(f'<path d="M0-29 5-22-5-22z" fill="#B7811C" transform="rotate({i*22.5})"/>' for i in range(16))
          + '<circle r="22" fill="#E9BE4C" stroke="#6E4A0C" stroke-width="1.3"/><circle r="18" fill="none" stroke="#FFF3C0" stroke-width="1" stroke-dasharray="2 2"/><path d="M-14-8 0-17 14-8" fill="none" stroke="#F7DC86" stroke-width="1.2"/><text y="5" text-anchor="middle" font-family="Georgia,serif" font-size="12.5" font-weight="700" fill="#4a300a" letter-spacing=".5">NEW</text></g></svg>')
@@ -88,12 +98,28 @@ DSC = (f'<a class="dsc-col" href="/discoveries/"><span class="dsc-pic"><img src=
        f'<span class="dsc-tx"><span class="nw-k">New findings <span>· From the original records</span></span><span class="dsc-h"><b>{_NF} new finding{"s" if _NF != 1 else ""}</b>, not in any earlier history we could find</span>'
        f'<span class="dsc-l">Found in county histories, newspapers, maps and acts, and checked against every earlier history we could find.</span><span class="dsc-m">See them all ›</span></span></a>') if _NF else ''
 today = datetime.date.today()
+_MORE = [x for x in S if x not in TOP]
+_KC = {}
+for x in _MORE:
+    for g in [x['kicker']] + tagnames(x): _KC[g] = _KC.get(g, 0) + 1
+_CHIPS = [g for g, n in sorted(_KC.items(), key=lambda kv: -kv[1]) if n >= 2 and g != 'Open case'][:7]
+CHIPS = ('<div class="nw-flt" role="group" aria-label="Show only" hidden><button type="button" aria-pressed="true" data-g="">All</button>'
+         + ''.join(f'<button type="button" aria-pressed="false" data-g="{E(g)}">{E(_SHORTK.get(g, g))}</button>' for g in _CHIPS) + '</div>') if _CHIPS else ''
+_LATEST = max(S, key=lambda x: x['date'])
+_SEAS = json.load(open(f'{R}/_tools/data/inseason.json'))
+SEAS = ''.join(f'<a class="nw-seas" href="{E(z["href"])}" data-from="{z["from"]}" data-to="{z["to"]}" hidden><picture><source type="image/avif" srcset="{z["img"]}.avif"><img src="{z["img"]}.webp" width="270" height="270" alt="" loading="lazy" decoding="async"></picture><span><span class="nw-k">{E(z["kicker"])}</span><b>{E(z["title"])}</b><span class="nw-sd">{E(z["dek"])}</span></span></a>' for z in _SEAS)
 BLOCK = f'''<!--news-->
       <div class="nw" role="region" aria-labelledby="nwLead">
         <p class="nw-bar"><span>Front page</span><time class="nw-date" id="nwDate" datetime="{today.isoformat()}">{today.strftime('%A, %-d %B %Y')}</time><span>News of the hunt</span></p>
+        <p class="nw-latest"><span class="nw-lk">Latest</span> <a href="/news/{_LATEST["slug"]}/">{E(_LATEST["headline"])}</a> <span class="nw-dt">· <time datetime="{_LATEST["date"]}">{usday(_LATEST["date"])}</time></span><span class="nw-since" id="nwSince" hidden></span></p>
+        <p class="nw-otd" id="nwOtd" hidden></p>
         <div class="nw-paper">
+        <p class="nw-tt"><b>The Top Ten</b><span>the ten stories leading this week</span></p>
         <div class="nw-sec">{_secs()}</div>
-        <ul class="nw-more" aria-label="More news">{''.join(line(s) for s in S if s not in TOP)}</ul>
+        {SEAS}
+        <div class="nw-mh"><h2 class="nw-mt">More news</h2>{CHIPS}</div>
+        <ul class="nw-more" id="nwMore" aria-label="More news">{''.join(line(s) for s in _MORE)}</ul>
+        <p class="nw-foot"><a href="/valley-map/#v-41.9300_-86.1500_9_N__">See every story on the valley map ›</a> <span aria-hidden="true">·</span> <a href="/newsletter/">Get the week’s stories by email ›</a> <span aria-hidden="true">·</span> <a href="/news/">All the news ›</a></p>
         {DSC}
         <article class="nw-lead nw-lead-last">
           <p class="nw-k nw-play">{E(L["kicker"])} <span>· Free to play</span></p>{NUGGET}
@@ -105,7 +131,16 @@ BLOCK = f'''<!--news-->
         </article>
         </div>
       </div>
-      <script>(function(){{try{{var K='ps-news-last',last=localStorage.getItem(K)||'',t=new Date();var d=document.getElementById('nwDate');d.textContent=t.toLocaleDateString('en-US',{{weekday:'long',day:'numeric',month:'long',year:'numeric'}});d.setAttribute('datetime',t.toISOString().slice(0,10));if(last)document.querySelectorAll('.nw [data-d]').forEach(function(e){{if(e.dataset.d>last){{var n=e.querySelector('.nw-new');if(n)n.hidden=false;}}}});localStorage.setItem(K,t.toISOString().slice(0,10));}}catch(e){{}}}})();</script>
+      <script>(function(){{try{{var K='ps-news-last',last=localStorage.getItem(K)||'',t=new Date();var d=document.getElementById('nwDate');d.textContent=t.toLocaleDateString('en-US',{{weekday:'long',day:'numeric',month:'long',year:'numeric'}});d.setAttribute('datetime',t.toISOString().slice(0,10));if(last){{var seen={{}},c=0;document.querySelectorAll('.nw [data-d]').forEach(function(e){{if(e.dataset.d>last){{var n=e.querySelector('.nw-new');if(n)n.hidden=false;var h=(e.querySelector('h2 a,.nw-lt>a')||{{}}).href;if(h&&!seen[h]){{seen[h]=1;c++;}}}}}});if(c){{var ns=document.getElementById('nwSince');ns.textContent=' · '+c+(c===1?' new story':' new stories')+' since your last visit';ns.hidden=false;}}}}localStorage.setItem(K,t.toISOString().slice(0,10));}}catch(e){{}}
+var md=('0'+(new Date().getMonth()+1)).slice(-2)+'-'+('0'+new Date().getDate()).slice(-2);
+[].forEach.call(document.querySelectorAll('.nw-seas'),function(a){{var f=a.dataset.from,z=a.dataset.to;if(md>=f&&md<=z)a.hidden=false;}});
+var fl=document.querySelector('.nw-flt'),ul=document.getElementById('nwMore');if(fl&&ul){{fl.hidden=false;fl.addEventListener('click',function(e){{var b=e.target.closest('button');if(!b)return;[].forEach.call(fl.querySelectorAll('button'),function(x){{x.setAttribute('aria-pressed',String(x===b));}});var g=b.dataset.g;[].forEach.call(ul.children,function(li){{li.hidden=!!g&&li.dataset.g.split('|').indexOf(g)<0;}});}});}}
+var otd=function(){{fetch('/almanac.json').then(function(r){{return r.json();}}).then(function(A){{var best=null,lab='On this day';A.forEach(function(x){{if(x.md===md&&!best)best=x;}});
+  if(!best){{var nx=A.filter(function(x){{return x.md>md;}}).sort(function(a,b){{return a.md<b.md?-1:1;}})[0];if(nx){{var d=new Date(new Date().getFullYear()+'-'+nx.md+'T12:00:00');if((d-new Date())/864e5<=7){{best=nx;lab='This week';}}}}}}
+  if(!best)return;var p=document.getElementById('nwOtd'),M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],m=best.md.split('-');
+  p.innerHTML='<span class="nw-lk"></span> <span class="nw-od"></span> <a href="/almanac/">The almanac ›</a>';p.querySelector('.nw-lk').textContent=lab+' in the valley';p.querySelector('.nw-od').textContent=M[+m[0]-1]+' '+(+m[1])+', '+best.y+(best.p?', '+best.p:'')+': '+best.t;p.hidden=false;}}).catch(function(){{}});}};
+if('requestIdleCallback' in window)requestIdleCallback(otd,{{timeout:2500}});else setTimeout(otd,1200);
+}})();</script>
 <!--/news-->'''
 p = f'{R}/index.html'; s = open(p).read()
 if '<!--news-->' not in s:
@@ -218,7 +253,7 @@ for k, st in enumerate(S):
 
 # ---------- 3. the news index ----------
 _ORDER = TOP + [y for y in S if y not in TOP]
-cards = ''.join(f'''<li class="nw-card" data-f="{1 if (x.get("featured") or x["slug"] in _RIB) else 0}" data-t="{E((x["kicker"]+" "+x["headline"]+" "+x["dek"]).lower())}"><a href="/news/{x["slug"]}/">{npic(x["pic"][0], "", "(min-width:900px) 15rem, 100vw", cls="nw-cimg")}<span class="nw-k">{E(x["kicker"])} · <time datetime="{x["date"]}">{day(x["date"])}</time></span><b>{E(x["headline"])}</b>{tags(x, _RIB.get(x["slug"])).replace("<p ","<span ").replace("</p>","</span>")}<span>{E(x["dek"])}</span></a></li>''' for x in _ORDER)
+cards = ''.join(f'''<li class="nw-card" data-f="{1 if (x.get("featured") or x["slug"] in _RIB) else 0}" data-t="{E((x["kicker"]+" "+x["headline"]+" "+x["dek"]).lower())}"><a href="/news/{x["slug"]}/">{npic(x["pic"][0], "", "(min-width:900px) 15rem, 100vw", cls="nw-cimg")}<span class="nw-k">{E(x["kicker"])} · <time datetime="{x["date"]}">{day(x["date"])}</time></span><b>{E(x["headline"])}</b>{re.sub(r'<a class="nw-tag ([^"]*)" href="[^"]*" title="[^"]*">([^<]*) ›</a>', r'<span class="nw-tag \1">\2</span>', tags(x, _RIB.get(x["slug"]))).replace("<p ","<span ").replace("</p>","</span>")}<span>{E(x["dek"])}</span></a></li>''' for x in _ORDER)
 b = f'''    <div class="nw-index"><p class="crumb"><a href="/">← Front page</a></p>
     <p class="kicker">News of the hunt</p>
     <h1>All the news</h1>
