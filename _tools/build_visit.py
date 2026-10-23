@@ -172,6 +172,8 @@ document.addEventListener('DOMContentLoaded', function(){ "use strict";
 CARDS = [
  ('/valley-map/', 'The valley map', 'Every place on the site on one map, in layers: museums, food, lodging, festivals, walks, lost towns and old town plans. Find what is near you.'),
  ('/outdoors/', 'Outdoors & water', 'Beaches, parks, rail-trails, water trails, u-pick orchards and the wine trail, with fees, seasons and dog rules.'),
+ ('/drives/', 'History drives', 'Four self-guided drives, stop by stop: the Underground Railroad road, the fruit belt, the county seats and the makers’ road.'),
+ ('/cemeteries/', 'Find a grave or an obituary', 'Where the burial records, obituary indexes and death certificates are, county by county, and old cemeteries you can walk.'),
  ('/getting-here/', 'Getting here', 'Drive times from Chicago, Detroit and Indianapolis; the airports; Amtrak at Dowagiac and Niles; buses.'),
  ('/food/eat/', 'Eat', f'{n_eat} places to eat with a story: old taverns, soda fountains, a diner beside an auto museum, orchards and farm markets.'),
  ('/food/stay/', 'Stay', f'{n_stay} inns, bed and breakfasts and historic hotels, from Kalamazoo to the lakeshore.'),

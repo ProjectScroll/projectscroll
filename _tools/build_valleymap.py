@@ -66,6 +66,7 @@ for key, f, town, label, href in (('w1', 'walk.json', 'Cassopolis', 'Broadway wa
 
 # ---- stories with a place ----
 TC = {n: (la, lo) for n, la, lo in V.TOWNS}
+RING = {'Cassopolis': (41.9128, -86.0097)}   # downtown, north of the lake, so no story sits on the water
 for st in load('news.json', {}).get('stories', []):
     if not st.get('ll'): continue
     ll = st['ll']
@@ -81,7 +82,7 @@ for town, items in (sm.get('groups') or {}).items():
         if f'/news/{sl}/' in have: continue
         st = next((s for s in load('news.json', {}).get('stories', []) if s['slug'] == sl), {})
         # stories without their own spot sit in a small ring round the town centre, so none hides another
-        la, lo = TC[town]; r = 0.0028; a = k*2.4
+        la, lo = RING.get(town, TC[town]); r = 0.0022; a = k*2.4
         pic = img(st['pic'][0]) if st.get('pic') else ''
         add('story', title, st.get('kicker') or 'Story', town, (la+r*math.cos(a), lo+r*1.35*math.sin(a)), f'/news/{sl}/', (st.get('short') or st.get('dek') or '')[:150],
             p=pic, pa=(st['pic'][1] if pic else ''))

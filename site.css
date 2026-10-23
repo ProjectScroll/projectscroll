@@ -4373,3 +4373,26 @@ table.ad-cmp{width:100%; border-collapse:collapse; font-size:.95rem; line-height
 a.nw-tag{text-decoration:none}
 a.nw-tag:hover{text-decoration:underline}
 .nw .nw-mh h2.nw-mt{margin:0; font-family:inherit; font-size:.7rem; font-weight:400; line-height:1.2; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-lo)}
+/* history drives */
+.dr-cards{list-style:none; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(16rem,1fr)); gap:1rem; margin:1rem 0}
+.dr-card a{display:block; height:100%; padding:1rem; border:1px solid var(--line); border-left:4px solid #C06A1A; border-radius:4px; text-decoration:none; color:var(--ink)}
+.dr-card b{display:block; font:600 1.2rem/1.2 "Libre Caslon Display",Georgia,serif; margin-bottom:.3rem}
+.dr-card span{display:block; font-size:.92rem; color:var(--ink-soft)}
+.dr-card .dr-meta{font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--gold-lo); margin-bottom:.4rem}
+.dr-map{height:24rem}
+.dr-stops{list-style:none; padding:0; margin:1rem 0}
+.dr-stop{padding:1rem 0; border-bottom:1px dotted var(--line); scroll-margin-top:5rem}
+.dr-stop h3{margin:0 0 .2rem; display:flex; gap:.6rem; align-items:baseline}
+.dr-n{flex:none; display:inline-flex; align-items:center; justify-content:center; width:1.7rem; height:1.7rem; border-radius:50%; background:#C06A1A; color:#fff; font:700 .85rem/1 system-ui,sans-serif}
+.dr-ad{margin:0 0 .4rem; font-size:.86rem; color:var(--ink-soft)}
+.dr-open{font-size:.9rem}
+.dr-acts{font-size:.9rem}
+/* cemetery and obituary guide */
+.cg-nav{margin:.6rem 0 1.2rem; font-size:.95rem; line-height:1.8}
+.cg-c{padding-top:.4rem; border-top:1px solid var(--line); scroll-margin-top:5rem}
+.cg-list{padding-left:1.1rem} .cg-list li{margin:.35rem 0; line-height:1.45}
+.tw-facts{display:grid; gap:.5rem; margin:.6rem 0 1rem}
+.tw-facts div{display:grid; grid-template-columns:9rem minmax(0,1fr); gap:.8rem; padding:.35rem 0; border-bottom:1px dotted var(--line)}
+.tw-facts dt{font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--gold-lo)}
+.tw-facts dd{margin:0}
+@media (max-width:560px){ .tw-facts div{grid-template-columns:1fr; gap:.1rem} }

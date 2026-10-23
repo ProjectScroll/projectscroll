@@ -1,0 +1,662 @@
+[
+ {
+  "slug": "the-freedom-road",
+  "title": "The Freedom Road",
+  "intro": "In August 1847 a party of Kentuckians came to the Quaker farms of Young's Prairie to carry nine people back into slavery. Their neighbors stopped them near O'Dell's mill, where Vandalia stands now, walked raiders and captives together to Cassopolis, and a commissioner there set the nine free. That same day a party of fifty-two freedom seekers started north for Canada, fed on the way by Dr. Nathan Thomas and his wife at Schoolcraft. This drive follows the story in that order: the free Black farming community of Calvin Township, the markers at Vandalia, the Bonine House, the Bogue boulder, the courthouse square at Cassopolis, and then the road north to Schoolcraft and Battle Creek, where Erastus Hussey kept his station and Sojourner Truth made her home. Every stop is a public place or is seen from the public road; please respect private land and posted hours.",
+  "miles": 83,
+  "minutes": 120,
+  "route_note": "About 83 miles and 2 hours of driving, not counting stops (road distances from OpenStreetMap routing). The run from Cassopolis to Schoolcraft goes back east along M-60 through Vandalia.",
+  "stops": [
+   {
+    "name": "Chain Lake Baptist Church (view from the road)",
+    "address": "Chain Lake Street, 0.6 mile east of Carver Road, Calvin Township, Cass County, MI (the marker's nearest address, per HMdb: 16853 Chain Lake St., Cassopolis, MI 49031)",
+    "lat": 41.86015,
+    "lon": -85.88848,
+    "see": "A state historical marker (L1352, 1992) stands on Chain Lake Street at the site of the first African American church in Cass County, organized in 1838 by the marker's account; the Underground Railroad Society of Cass County dates the congregation's incorporation to 4 January 1848, with a frame church built in 1860. The marker tells how free Black families settled for good in Calvin Township alongside the Quaker farms. It is a working church on a quiet road: read the marker from the roadside and do not walk the grounds.",
+    "open": "View from the road; marker readable any time.",
+    "link": "/news/the-kentucky-raid-of-1847/",
+    "source": "https://www.hmdb.org/m.asp?m=64712 ; https://www.urscc.org/chain-lake-church.html"
+   },
+   {
+    "name": "Milo E. Barnes Park markers, Vandalia",
+    "address": "State Street (M-60) at Water Street, Vandalia, MI 49095",
+    "lat": 41.91792,
+    "lon": -85.91625,
+    "see": "Two markers stand a few steps apart in the village where O'Dell's mill stood: the state's 'Underground Railroad' marker (S137) of 1957, which calls Vandalia the junction of two Underground Railroad routes, and the Underground Railroad Society of Cass County's 'Kentucky Raid' marker. Near here, Rogers wrote in 1875, the raiders were surrounded by neighbors 'armed with rifles, shot-guns, straw cutters, axes, clubs.' The park is Stop 1 of the society's own Underground Railroad driving tour.",
+    "open": "Public park; markers readable any time.",
+    "link": "/news/the-kentucky-raid-of-1847/",
+    "source": "https://www.hmdb.org/m.asp?m=201617 ; https://www.hmdb.org/m.asp?m=201653 ; https://archive.org/details/historyofcasscou00roge"
+   },
+   {
+    "name": "James E. Bonine House and carriage house",
+    "address": "18970 M-60, Vandalia, MI 49095 (M-60 at Penn Road)",
+    "lat": 41.91906,
+    "lon": -85.933,
+    "see": "A brick house with a mansard tower and, across M-60, a small Gothic carriage house, owned since December 2010 by the Underground Railroad Society of Cass County. James E. Bonine married Sarah Ann Bogue, daughter of Stephen Bogue, whose farm the raiders struck; his farm was famous for an elk park, and the 1882 county history says elk from it were sold to the King of Italy. The tower came with a remodeling after the Civil War, and the story that freedom seekers sheltered in the carriage house is the society's tradition, not yet found in a written record.",
+    "open": "Seasonal: tours May to October, Monday to Friday, 2 to 5 p.m., and on the society's special days (Christmas, Underground Railroad Days in July); check urscc.org before you go. Grounds of the private houses nearby are not open.",
+    "link": "/news/the-bonine-house/",
+    "source": "https://urscc.org/the-house.html ; https://hsmichigan.org/michigan-one-room-schoolhouse-association-joins-underground-railroad-society-cass-county-fall ; https://archive.org/details/historyofcasscou00wate"
+   },
+   {
+    "name": "The Bogue boulder (view from the road)",
+    "address": "M-60 at Crooked Creek Road, southwest corner, between Vandalia and Cassopolis, MI",
+    "lat": 41.91869,
+    "lon": -85.95835,
+    "see": "A boulder set in 1931 by the Woman's Club of Cassopolis: 'This boulder commemorates a station of The Underground Railway used from 1840 to 1850. It was the home of Stephen Bogue who aided runaway slaves on their way to freedom.' Rogers named Bogue's farm as one of the two Underground Railroad stations in the county, and it was one of the farms the Kentuckians raided in 1847. The suit against Bogue in federal court was dismissed in 1852.",
+    "open": "View from the road; pull off only where it is safe on M-60.",
+    "link": "/news/the-kentucky-raid-of-1847/",
+    "source": "https://www.hmdb.org/m.asp?m=201671 ; https://www.urscc.org/ugrr-site-driving-tour.html"
+   },
+   {
+    "name": "Cass County Courthouse and the 'Freedom Road' marker",
+    "address": "120 N. Broadway St., Cassopolis, MI 49031 (marker on the south side, at State Street)",
+    "lat": 41.911717,
+    "lon": -86.011867,
+    "see": "The hearing of 1847 was held in Cassopolis, where a commissioner, Ebenezer McIlvain, freed all nine because no certified copy of Kentucky's slave laws was offered in evidence. The State Bar of Michigan's 'Freedom Road' legal-milestone marker (No. 30, 2005) stands by the sidewalk on the courthouse's south side. The building itself, the county's third courthouse, was completed in 1899 (state marker L487) and reopened in October 2024 after renovation as the home of county offices.",
+    "open": "Markers outdoors, readable any time; the building keeps county office hours.",
+    "link": "/news/the-kentucky-raid-of-1847/",
+    "source": "https://www.hmdb.org/m.asp?m=79005 ; https://www.hmdb.org/m.asp?m=64729 ; https://watershedvoice.com/2024/09/30/cass-county-historic-courthouse-reopening-after-major-renovation"
+   },
+   {
+    "name": "'Sanctuary and Deliverance' mural, downtown Cassopolis",
+    "address": "South Broadway Street, north of West Jefferson Street, Cassopolis, MI 49031 (nearest address, per HMdb: 160 S. Broadway St.)",
+    "lat": 41.91022,
+    "lon": -86.01281,
+    "see": "A downtown mural headed 'Sanctuary and Deliverance: the 1847 Kentucky raid in Cass County,' a short walk south of the courthouse. It is Stop 20 on the Underground Railroad Society's driving tour. Holden Green Tavern, nearby at 151 S. Broadway, is the place to eat on this drive.",
+    "open": "Outdoor mural, any time.",
+    "link": "/cassopolis/",
+    "source": "https://www.hmdb.org/m.asp?m=212595 ; https://www.urscc.org/ugrr-site-driving-tour.html"
+   },
+   {
+    "name": "Dr. Nathan M. Thomas House, Schoolcraft",
+    "address": "613 E. Cass St., Schoolcraft, MI 49087",
+    "lat": 42.11616,
+    "lon": -85.62923,
+    "see": "Built in 1835 and enlarged in 1840, this was the office and home of Kalamazoo County's first physician and one of Michigan's busiest Underground Railroad stops; Pamela Brown Thomas's memoir of 1892 estimated that she and her husband helped 1,000 to 1,500 freedom seekers. The 1882 Cass County history says the Thomases fed the party of fifty-two on its way north in 1847. The house was moved to this site in 1868, belongs to the Schoolcraft Historical Society, and reopened after restoration in October 2025.",
+    "open": "Tours by event or appointment through the Schoolcraft Historical Society; otherwise view from the street. (The 1867 brick house on W. Cass Street that Thomas built later is a private home.)",
+    "link": "/museums/#dr-nathan-m-thomas-house",
+    "source": "https://www.nps.gov/places/michigan-dr-nathan-thomas-house.htm ; https://southcountynews.org/2025/09/10/renovated-nathan-thomas-house-open-oct-4/"
+   },
+   {
+    "name": "Erastus Hussey marker and the Underground Railroad Memorial, Battle Creek",
+    "address": "W.K. Kellogg Foundation grounds: marker on Michigan Avenue, 0.1 mile east of Capital Avenue SW (One Michigan Ave., Battle Creek, MI 49017); memorial listed at 256 W. Van Buren St., Battle Creek, MI 49017",
+    "lat": 42.318267,
+    "lon": -85.18125,
+    "see": "Erastus and Sarah Hussey kept the Battle Creek station in their home and store, which stood where the Kellogg Foundation's headquarters is now; the state marker (S0637, 1992) quotes Hussey's 1885 answer to whether stationmasters were paid: 'We were working for humanity.' In 2024 the Hussey site was added to the National Park Service's Network to Freedom. Nearby, Ed Dwight's bronze memorial, 14 feet high and 28 feet long, shows Harriet Tubman leading freedom seekers and the Husseys bringing people into their house.",
+    "open": "Outdoor marker and sculpture; view any time from public walks.",
+    "link": "/news/the-kentucky-raid-of-1847/",
+    "source": "https://www.hmdb.org/m.asp?m=177310 ; https://www.kalamazooarts.org/print/public-art/8093 ; https://eddwight.com/battle-creek ; https://www.michigan.gov/dnr/about/newsroom/releases/2024/10/28/two-michigan-sites-added-to-national-underground-railroad-network-to-freedom"
+   },
+   {
+    "name": "Sojourner Truth statue, Monument Park",
+    "address": "Monument Park, Michigan Avenue at Division Street, Battle Creek, MI 49014 (nearest address, per HMdb: 110 Michigan Ave.)",
+    "lat": 42.31625,
+    "lon": -85.17992,
+    "see": "Tina Allen's 12-foot bronze of Sojourner Truth at a lectern, dedicated by the people of Battle Creek on 25 September 1999; the inscription reads 'It is for each of us who stand here to carry on the work of truth.' Truth made Battle Creek her home in her later years. Perry Sanford, who fought his way out through a cornfield on the night of the 1847 raid, also settled in Battle Creek and told his story to a local paper in 1884.",
+    "open": "Public park, any time.",
+    "link": "/news/the-kentucky-raid-of-1847/",
+    "source": "https://www.hmdb.org/m.asp?m=177333 ; https://www.battlecreekvisitors.org/blog/post/take-a-tour-of-african-american-history-in-battle-creek/ ; https://stampedes.dickinson.edu/document/battle-creek-mi-sunday-morning-call-out-bondage-august-3-1884"
+   }
+  ],
+  "food": "Food on the way, from the site's list: Holden Green Tavern, 151 S. Broadway, Cassopolis (/food/eat/#holden-green-tavern). The list has nothing yet in Vandalia, Schoolcraft or Battle Creek. Public restrooms: none confirmed on this route; plan on the Cassopolis stop.",
+  "sources": [
+   {
+    "cite": "Howard S. Rogers, History of Cass County, from 1825 to 1875 (Cassopolis, 1875), pp. 129-141. Internet Archive.",
+    "url": "https://archive.org/details/historyofcasscou00roge"
+   },
+   {
+    "cite": "History of Cass County, Michigan (Chicago: Waterman, Watkins & Co., 1882). Internet Archive.",
+    "url": "https://archive.org/details/historyofcasscou00wate"
+   },
+   {
+    "cite": "Project Scroll, 'The Kentucky Raid of 1847' (22 October 2026).",
+    "url": "https://projectscroll.com/news/the-kentucky-raid-of-1847/"
+   },
+   {
+    "cite": "Project Scroll, 'The Bonine House at Vandalia' (22 October 2026).",
+    "url": "https://projectscroll.com/news/the-bonine-house/"
+   },
+   {
+    "cite": "Underground Railroad Society of Cass County, UGRR Site Driving Tour.",
+    "url": "https://www.urscc.org/ugrr-site-driving-tour.html"
+   },
+   {
+    "cite": "Underground Railroad Society of Cass County, Chain Lake Church.",
+    "url": "https://www.urscc.org/chain-lake-church.html"
+   },
+   {
+    "cite": "Historical Marker Database: The Underground Railroad (S137), Vandalia.",
+    "url": "https://www.hmdb.org/m.asp?m=201617"
+   },
+   {
+    "cite": "Historical Marker Database: The Kentucky Raid, Vandalia.",
+    "url": "https://www.hmdb.org/m.asp?m=201653"
+   },
+   {
+    "cite": "Historical Marker Database: A Station of the Underground Railway (Bogue boulder, 1931).",
+    "url": "https://www.hmdb.org/m.asp?m=201671"
+   },
+   {
+    "cite": "Historical Marker Database: Chain Lake Baptist Church and Cemetery (L1352).",
+    "url": "https://www.hmdb.org/m.asp?m=64712"
+   },
+   {
+    "cite": "Historical Marker Database: Freedom Road (Michigan Legal Milestone 30).",
+    "url": "https://www.hmdb.org/m.asp?m=79005"
+   },
+   {
+    "cite": "Historical Marker Database: Cass County Courthouse (L487).",
+    "url": "https://www.hmdb.org/m.asp?m=64729"
+   },
+   {
+    "cite": "Historical Marker Database: Sanctuary and Deliverance.",
+    "url": "https://www.hmdb.org/m.asp?m=212595"
+   },
+   {
+    "cite": "Watershed Voice, 'Cass County Historic Courthouse reopening after major renovation' (30 September 2024).",
+    "url": "https://watershedvoice.com/2024/09/30/cass-county-historic-courthouse-reopening-after-major-renovation"
+   },
+   {
+    "cite": "National Park Service, Dr. Nathan Thomas House.",
+    "url": "https://www.nps.gov/places/michigan-dr-nathan-thomas-house.htm"
+   },
+   {
+    "cite": "South County News, 'Renovated Nathan Thomas House open Oct. 4' (10 September 2025).",
+    "url": "https://southcountynews.org/2025/09/10/renovated-nathan-thomas-house-open-oct-4/"
+   },
+   {
+    "cite": "Historical Marker Database: Erastus Hussey: Stationmaster (S0637).",
+    "url": "https://www.hmdb.org/m.asp?m=177310"
+   },
+   {
+    "cite": "Michigan DNR, 'Two Michigan sites added to National Underground Railroad Network to Freedom' (28 October 2024).",
+    "url": "https://www.michigan.gov/dnr/about/newsroom/releases/2024/10/28/two-michigan-sites-added-to-national-underground-railroad-network-to-freedom"
+   },
+   {
+    "cite": "Kalamazoo Arts, public art: Underground Railroad (Ed Dwight).",
+    "url": "https://www.kalamazooarts.org/print/public-art/8093"
+   },
+   {
+    "cite": "Historical Marker Database: Sojourner Truth Statue.",
+    "url": "https://www.hmdb.org/m.asp?m=177333"
+   },
+   {
+    "cite": "Battle Creek Visitors, 'Take a tour of African American history in Battle Creek.'",
+    "url": "https://www.battlecreekvisitors.org/blog/post/take-a-tour-of-african-american-history-in-battle-creek/"
+   }
+  ]
+ },
+ {
+  "slug": "the-fruit-belt",
+  "title": "The Fruit Belt",
+  "intro": "Lake Michigan tempers the weather along a narrow strip of shore, and by the 1840s Berrien County was already shipping peaches across the lake to Chicago. Apples, cherries, berries, grapes, pears and plums followed, and the market that opened at Benton Harbor in 1860 grew into what was called, in the 1940s, the largest cash-to-growers outlet in the world. 'No tour through Michigan is complete without a ride through the famous Fruit Belt,' a motorists' guide said in 1914. This drive starts in Benton Harbor at the oldest house in town and the market itself, climbs inland to the orchards around Coloma and the growers' cooperative at Watervliet, and ends among the fruit farms and the old county seat at Berrien Springs. Go in season: farm markets and u-pick fields follow the weather, so call ahead.",
+  "miles": 46,
+  "minutes": 75,
+  "route_note": "About 46 miles and 1 hour 15 minutes of driving, not counting stops (road distances from OpenStreetMap routing). Peaches run from mid-July; apples from mid-August through October; blossom time is late April to early May.",
+  "stops": [
+   {
+    "name": "Morton House Museum, Benton Harbor",
+    "address": "501 Territorial Road, Benton Harbor, MI 49022",
+    "lat": 42.118605,
+    "lon": -86.446561,
+    "see": "The oldest building in Benton Harbor, built in 1849 by the pioneer Eleazar Morton and his son Henry, one of the city's founders; four generations of Mortons lived here until 1936 (state marker L0037). J. Stanley Morton, Henry's son, was president of the Graham and Morton Transportation Company, whose steamboats ran between Benton Harbor and Chicago, and he added the pillars in 1912. It is now a museum of Benton Harbor history, including the city's African American community.",
+    "open": "Call ahead for hours: 269-313-2106.",
+    "link": "/museums/#morton-house-museum",
+    "source": "https://www.dnr.state.mi.us/PUBLICATIONS/PDFS/ArcGISOnline/StoryMaps/mhc_historical_markers/pdfs/MHC111964004.pdf ; https://swmichigan.org/member/morton-house"
+   },
+   {
+    "name": "Benton Harbor Fruit Market and 'The Fruit Belt' marker",
+    "address": "1891 Territorial Road, Benton Harbor, MI 49022 (marker on Territorial Road at the market)",
+    "lat": 42.12324,
+    "lon": -86.41347,
+    "see": "The market was established in 1860 as the outlet for the region's fruit; it began downtown and moved to this Territorial Road site in 1967 with urban-renewal funds, and in season nearly 100 commodities still pass through it. The state marker 'The Fruit Belt' (S0155, 1958) stands on Territorial Road and tells how the lake's influence made the coast a fruit country and Benton Harbor 'one of the world's major fruit markets.' It is a working wholesale market for growers and buyers: watch from the public road and keep clear of trucks.",
+    "open": "Marker any time. The market trades seasonally from summer, as produce arrives; it is wholesale, not a retail stand.",
+    "link": "/made-in-the-valley/#benton-harbor-fruit-market",
+    "source": "https://www.bhfm.com/index.php/about-us-2/ ; https://www2.dnr.state.mi.us/Publications/PDFS/ArcGISOnline/StoryMaps/mhc_historical_markers/pdfs/MHC111957005.pdf ; https://www.producemarketguide.com/company/151915/benton-harbor-fruit-market-inc"
+   },
+   {
+    "name": "Jollay Orchards, Coloma",
+    "address": "1850 Friday Road, Coloma, MI 49038",
+    "lat": 42.1475,
+    "lon": -86.30729,
+    "see": "The same family has farmed this land since 1857; the orchard counts the 2026 harvest as its 170th and its owners as the eighth generation. Cherries, blueberries and peaches are picked in summer, apples and grapes in fall, and the farm market sells fresh apple cider, apple-cinnamon doughnuts and caramel apples. It is one of the three stops on Project Scroll's harvest passport trail.",
+    "open": "Seasonal, June through November; hours and admission on the farm's Summer Hours page or by phone, 269-468-3075.",
+    "link": "/news/the-harvest-trail/",
+    "source": "https://www.jollayorchards.com/"
+   },
+   {
+    "name": "Fruit Acres Farm Market & U-Pick, Coloma",
+    "address": "U-pick: 2789 Friday Road, Coloma, MI 49038 (farm market: 3452 Friday Road)",
+    "lat": 42.16192,
+    "lon": -86.30712,
+    "see": "A mile up Friday Road, a second family fruit farm with u-pick sweet and tart cherries, peaches and apples, and pumpkins in fall. Peaches run from mid-July through September. Some of the availability notes on the farm's site are old, so check before you go.",
+    "open": "Seasonal; u-pick Saturdays and Sundays 10 to 4:30 in season, per the farm's site.",
+    "link": "/outdoors/#fruit-acres-farm-market-u-pick",
+    "source": "https://www.fruitacresfarms.com/"
+   },
+   {
+    "name": "North Berrien Historical Museum, Coloma",
+    "address": "300 Coloma Ave., Coloma, MI 49038",
+    "lat": 42.1814,
+    "lon": -86.31259,
+    "see": "The museum of the North Berrien Historical Society, free, with exhibits listed as 'Fruit Belt,' 'Crate Basket' and 'Paw Paw Lake,' the resort lake just north of town. It is the place to see the baskets and crates the orchards shipped in, and to ask about the history of Coloma and Watervliet.",
+    "open": "Tuesday to Friday, 10 to 4. Free; donations welcome. Call 269-468-3330.",
+    "link": "/museums/#north-berrien-historical-museum",
+    "source": "http://www.northberrienhistory.org/ ; http://www.northberrienhistory.org/exhibits"
+   },
+   {
+    "name": "Watervliet Fruit Exchange (The Country Store)",
+    "address": "7821 Red Arrow Highway, Watervliet, MI 49098",
+    "lat": 42.18604,
+    "lon": -86.2688,
+    "see": "Founded in 1940, when eighteen local fruit farms banded together to sell their harvest, the Exchange is now a year-round country store and farm-supply shop with seasonal produce, raw honey, pies and local cider. Watervliet itself grew around mills on the Paw Paw River; its paper mill ran from 1894 to 1994, and the old dams came out in 2011.",
+    "open": "Open year round; call ahead for hours, 269-463-3187.",
+    "link": null,
+    "source": "https://swmichigan.org/member/watervliet-fruit-exchange ; https://www.swmpc.org/downloads/mill_historysignfinal.pdf"
+   },
+   {
+    "name": "Stover's Farm Market & U-Pic, Berrien Springs",
+    "address": "7837 M-139, Berrien Springs, MI 49103",
+    "lat": 41.97669,
+    "lon": -86.38771,
+    "see": "A farm market with a long u-pick season: strawberries from late May or early June, sweet and tart cherries, raspberries, nine varieties of peaches, twenty-three of apples, and pumpkins, gourds and squash into October.",
+    "open": "Seasonal, late May through October; dates follow the weather, so call ahead.",
+    "link": "/outdoors/#stover-s-farm-market-u-pic",
+    "source": "https://swmichigan.org/member/stovers-farm-market-u-pic"
+   },
+   {
+    "name": "Lemon Creek Fruit Farms and Winery, Berrien Springs",
+    "address": "533 E. Lemon Creek Road, Berrien Springs, MI 49103",
+    "lat": 41.95747,
+    "lon": -86.446,
+    "see": "A family farm that describes itself as locally owned and operated for more than 160 years, with a farm market, pick-your-own fruit in season and a tasting room for wine made from its own grapes. It is one of the Lake Michigan Shore Wine Trail's members.",
+    "open": "Seasonal farm market, open daily in fruit season; tasting room Mon-Fri 11-6, Sat 10-6, Sun 12-6, per its site. Tastings are for visitors 21 and over.",
+    "link": "/outdoors/#wine",
+    "source": "https://www.lemoncreekwinery.com/"
+   },
+   {
+    "name": "History Center at Courthouse Square, Berrien Springs",
+    "address": "313 N. Cass St., Berrien Springs, MI 49103",
+    "lat": 41.94806,
+    "lon": -86.34111,
+    "see": "The 1839 Greek Revival courthouse, designed by Gilbert B. Avery and built by James Lewis, is called Michigan's oldest existing county courthouse; Berrien Springs was the county seat from 1837 until an election moved it to St. Joseph in 1894. The Berrien County Historical Association keeps it and four more buildings, including Bennett's Forge and the Murdoch log cabin, with exhibits on the county's history.",
+    "open": "Museum buildings Wednesday to Sunday, 10 to 5, by the site's museum list; call ahead, 269-471-1202. The forge and log cabin close when it is below 30 degrees.",
+    "link": "/museums/#history-center-at-courthouse-square-berrien-county-historical-association",
+    "source": "https://www.michigan.org/property/history-center-courthouse-square ; https://www.michbar.org/programs/milestone/milestones_BerrienCountyCourthouse ; https://en.wikipedia.org/wiki/Berrien_Springs_Courthouse"
+   }
+  ],
+  "food": "Food on the way, from the site's list: The Livery, brewpub, 190 5th St., Benton Harbor (/food/eat/#the-livery); Jollay Orchards' farm market for cider and doughnuts in season (/food/eat/#jollay-orchards); Blackbird Waterhouse, 4896 Paw Paw Lake Rd., Coloma (/food/eat/#blackbird-waterhouse). Restrooms: the museums and farm markets have them for customers; none confirmed for the public otherwise.",
+  "sources": [
+   {
+    "cite": "Project Scroll, Made in the Valley: Benton Harbor Fruit Market and the Michigan Fruit Belt.",
+    "url": "https://projectscroll.com/made-in-the-valley/#benton-harbor-fruit-market"
+   },
+   {
+    "cite": "Michigan historical marker S0155, 'The Fruit Belt' (Michigan DNR marker file).",
+    "url": "https://www2.dnr.state.mi.us/Publications/PDFS/ArcGISOnline/StoryMaps/mhc_historical_markers/pdfs/MHC111957005.pdf"
+   },
+   {
+    "cite": "Benton Harbor Fruit Market, About Us.",
+    "url": "https://www.bhfm.com/index.php/about-us-2/"
+   },
+   {
+    "cite": "Produce Market Guide: Benton Harbor Fruit Market Inc. (street address).",
+    "url": "https://www.producemarketguide.com/company/151915/benton-harbor-fruit-market-inc"
+   },
+   {
+    "cite": "Michigan historical marker L0037, 'The Morton House' (Michigan DNR marker file).",
+    "url": "https://www.dnr.state.mi.us/PUBLICATIONS/PDFS/ArcGISOnline/StoryMaps/mhc_historical_markers/pdfs/MHC111964004.pdf"
+   },
+   {
+    "cite": "Visit Southwest Michigan: Morton House Museum.",
+    "url": "https://swmichigan.org/member/morton-house"
+   },
+   {
+    "cite": "Jollay Orchards.",
+    "url": "https://www.jollayorchards.com/"
+   },
+   {
+    "cite": "Fruit Acres Farm Market & U-Pick.",
+    "url": "https://www.fruitacresfarms.com/"
+   },
+   {
+    "cite": "North Berrien Historical Society: museum and exhibits.",
+    "url": "http://www.northberrienhistory.org/"
+   },
+   {
+    "cite": "Visit Southwest Michigan: Watervliet Fruit Exchange.",
+    "url": "https://swmichigan.org/member/watervliet-fruit-exchange"
+   },
+   {
+    "cite": "Southwest Michigan Planning Commission, Watervliet Paper Mill history panel (images and information from the North Berrien Historical Museum).",
+    "url": "https://www.swmpc.org/downloads/mill_historysignfinal.pdf"
+   },
+   {
+    "cite": "Visit Southwest Michigan: Stover's Farm Market & U-Pic.",
+    "url": "https://swmichigan.org/member/stovers-farm-market-u-pic"
+   },
+   {
+    "cite": "Lemon Creek Winery.",
+    "url": "https://www.lemoncreekwinery.com/"
+   },
+   {
+    "cite": "Pure Michigan: History Center at Courthouse Square.",
+    "url": "https://www.michigan.org/property/history-center-courthouse-square"
+   },
+   {
+    "cite": "State Bar of Michigan, Michigan Legal Milestone 38: Berrien County Courthouse.",
+    "url": "https://www.michbar.org/programs/milestone/milestones_BerrienCountyCourthouse"
+   },
+   {
+    "cite": "Wikipedia, 'Berrien Springs Courthouse.'",
+    "url": "https://en.wikipedia.org/wiki/Berrien_Springs_Courthouse"
+   }
+  ]
+ },
+ {
+  "slug": "the-county-seats-loop",
+  "title": "The County Seats Loop",
+  "intro": "Every county in the valley fought over where its courthouse would stand, because the county seat brought the courts, the lawyers, the land office trade and the newspaper. Cassopolis was chosen in 1831 as a compromise between rival settlements; Centreville was named the seat of St. Joseph County the same year; Paw Paw won Van Buren County in 1837 and held it in a vote of 1901; and Berrien County moved its seat from Berrien Springs to St. Joseph by fewer than twenty votes in 1894. This loop visits four county seats and the old seat at Berrien Springs, where Michigan's oldest surviving courthouse still stands, and comes home through Niles, the river city that lost the contest. Most of these are working government buildings: look from the square, read the markers, and go inside only during office hours.",
+  "miles": 142,
+  "minutes": 200,
+  "route_note": "About 142 miles and 3 hours 20 minutes of driving as a full loop, not counting stops (road distances from OpenStreetMap routing). It splits easily into an eastern half (Cassopolis, Centreville, Paw Paw) and a western half (St. Joseph, Berrien Springs, Niles).",
+  "stops": [
+   {
+    "name": "Cass County Courthouse, Cassopolis",
+    "address": "120 N. Broadway St., Cassopolis, MI 49031",
+    "lat": 41.91183,
+    "lon": -86.01231,
+    "see": "The present courthouse, completed in 1899 as a wood frame with a limestone veneer, is the county's third (state marker L487, 1977): the first, of 1835, stood off the public square, and the second, a frame building of 1841, stood on it for more than half a century. That second courthouse was sold and moved to State Street, became the Colonial Opera House and later the Gem Theatre, and was torn down in 1968. The 1899 building reopened in October 2024 after renovation, as the home of county offices; the State Bar's 'Freedom Road' marker stands on its south side.",
+    "open": "Markers outdoors any time; building open county office hours.",
+    "link": "/news/the-courthouse-that-became-the-colonial/",
+    "source": "https://www.hmdb.org/m.asp?m=64729 ; https://watershedvoice.com/2024/09/30/cass-county-historic-courthouse-reopening-after-major-renovation ; https://projectscroll.com/news/the-courthouse-that-became-the-colonial/"
+   },
+   {
+    "name": "St. Joseph County Courthouse, Centreville",
+    "address": "125 W. Main St., Centreville, MI 49032",
+    "lat": 41.92365,
+    "lon": -85.52674,
+    "see": "Territorial Governor George B. Porter named Centreville the seat in 1831, and landowners gave the county the public square and 56 lots that November. The Greek Revival courthouse of 1842 came down in 1899, and this red brick and sandstone Romanesque Revival building by Sidney J. Osgood of Grand Rapids was dedicated on 1 August 1900, with a clock bought by the village (state marker L1150A; National Register, 1993). A courts building added on the south side of the square in the 1970s is joined to it by a glass passage.",
+    "open": "Exterior and marker any time; county offices keep weekday hours. (The district court is housed in the old courthouse during the courts building's renovation, from April 2026.)",
+    "link": null,
+    "source": "https://www.dnr.state.mi.us/PUBLICATIONS/PDFS/ArcGISOnline/StoryMaps/mhc_historical_markers/pdfs/MHC751984005.pdf ; https://en.wikipedia.org/wiki/St._Joseph_County_Courthouse_(Michigan)"
+   },
+   {
+    "name": "Van Buren County Courthouse, Paw Paw",
+    "address": "212 E. Paw Paw St., Paw Paw, MI 49079",
+    "lat": 42.21648,
+    "lon": -85.89008,
+    "see": "The Board of Supervisors chose Paw Paw as the county seat in 1837, and a county-seat fight ended with a vote of 1901 that kept it here (state marker 556, 1990). The cornerstone of this Classical Revival courthouse, with its Italian Renaissance clock tower, was laid on 2 September 1901 and the building dedicated on 23 February 1903; Claire Allen of Jackson was the architect. It is on the National Register (1979) and still serves as the county's courthouse.",
+    "open": "Marker on East Paw Paw Street any time; building open county office hours.",
+    "link": "/paw-paw/",
+    "source": "https://www.hmdb.org/m.asp?m=59383 ; https://en.wikipedia.org/wiki/Van_Buren_County_Courthouse_(Michigan)"
+   },
+   {
+    "name": "Paw Paw City Hall, the 1840s courthouse",
+    "address": "111 E. Michigan Ave., Paw Paw, MI 49079",
+    "lat": 42.21782,
+    "lon": -85.89247,
+    "see": "Two blocks away stands the county's first courthouse, begun in 1842 and occupied in 1845: a two-story Greek Revival temple front with six columns and a Palladian window. When the county decided in 1900 to build anew, it was moved off the courthouse lot to this corner, and it serves as Paw Paw's city hall. It is on the National Register (1972) and is a State Historic Site (1971).",
+    "open": "View from the street; city offices keep weekday hours.",
+    "link": "/paw-paw/",
+    "source": "https://en.wikipedia.org/wiki/Paw_Paw_City_Hall ; https://en.wikipedia.org/wiki/Van_Buren_County_Courthouse_(Michigan)"
+   },
+   {
+    "name": "Berrien County Courthouse, St. Joseph",
+    "address": "811 Port St., St. Joseph, MI 49085",
+    "lat": 42.10999,
+    "lon": -86.47799,
+    "see": "St. Joseph won the county seat back from Berrien Springs in the election of 1894, by fewer than twenty votes, and began a new courthouse in 1895; that building, designed by Bell & Kent, was razed for the present five-story concrete, stone and glass courthouse of 1964 to 1966 by Shaw, Metz & Associates of Chicago. It is a modern working court building, not a museum: the story is in the move, not the stones.",
+    "open": "Exterior any time; court building open on court days only, with security screening.",
+    "link": null,
+    "source": "https://en.wikipedia.org/wiki/Old_Berrien_County_Courthouse_Complex ; https://courthouses.co/?p=10444"
+   },
+   {
+    "name": "History Center at Courthouse Square, Berrien Springs (the 1839 courthouse)",
+    "address": "313 N. Cass St., Berrien Springs, MI 49103",
+    "lat": 41.94806,
+    "lon": -86.34111,
+    "see": "Berrien Springs was chosen as the seat in 1837 for its central place in the county, and the Greek Revival courthouse designed by Gilbert B. Avery was finished for the April 1839 term; it is called Michigan's oldest existing county courthouse. After the seat left in 1894 it was a dance hall, a militia drill hall, the first home of Emmanuel Missionary College (now Andrews University) and a church, until the Berrien County Historical Association bought it in 1967 and restored it. The square also keeps the 1860 records building, the sheriff's residence of 1869 to 1870, Bennett's Forge and the Murdoch log cabin.",
+    "open": "Museum buildings Wednesday to Sunday, 10 to 5, by the site's museum list; call ahead, 269-471-1202. Closed during the Youth Fair and over the winter holidays.",
+    "link": "/museums/#history-center-at-courthouse-square-berrien-county-historical-association",
+    "source": "https://www.michbar.org/programs/milestone/milestones_BerrienCountyCourthouse ; https://en.wikipedia.org/wiki/Old_Berrien_County_Courthouse_Complex ; https://www.michigan.org/property/history-center-courthouse-square"
+   },
+   {
+    "name": "Niles History Center (Fort St. Joseph Museum and Chapin Mansion)",
+    "address": "508 E. Main St., Niles, MI 49120",
+    "lat": 41.8296,
+    "lon": -86.25275,
+    "see": "Niles competed with St. Joseph for the Berrien County seat when the county was organized in 1831; one courthouse history says court sat at Niles in 1831-32, but the seat went to St. Joseph, then to Berrien Springs in 1837, and back to St. Joseph in 1894. The city museum, free, is in the carriage house of the Victorian Chapin Mansion and tells Niles history from earliest times through the railroad, business and industrial eras. Docents lead tours of the mansion itself.",
+    "open": "Museum Wednesday to Friday 10 to 4, Saturday 10 to 3, free. Mansion tours Fridays and Saturdays at 1 p.m. through December 2026, $5 adults, 18 and under free.",
+    "link": "/niles/",
+    "source": "https://www.nilesmi.org/departments_and_divisions/niles_history_center/ ; https://en.wikipedia.org/wiki/Old_Berrien_County_Courthouse_Complex"
+   }
+  ],
+  "food": "Food on the way, from the site's list: Holden Green Tavern, 151 S. Broadway, Cassopolis (/food/eat/#holden-green-tavern); La Cantina Ristorante Italiano, 139 W. Michigan Ave., Paw Paw (/food/eat/#la-cantina-ristorante-italiano); Old Tavern Inn, 61088 Indian Lake Rd., Niles (/food/eat/#old-tavern-inn). To stay: The Morris Estate, 1997 Morris Dr., Niles (/food/stay/#the-morris-estate). Restrooms: the Niles and Berrien Springs museums during open hours; none confirmed elsewhere.",
+  "sources": [
+   {
+    "cite": "Historical Marker Database: Cass County Courthouse (L487).",
+    "url": "https://www.hmdb.org/m.asp?m=64729"
+   },
+   {
+    "cite": "Project Scroll, 'The courthouse that became the Colonial' (22 October 2026).",
+    "url": "https://projectscroll.com/news/the-courthouse-that-became-the-colonial/"
+   },
+   {
+    "cite": "Watershed Voice, 'Cass County Historic Courthouse reopening after major renovation' (30 September 2024).",
+    "url": "https://watershedvoice.com/2024/09/30/cass-county-historic-courthouse-reopening-after-major-renovation"
+   },
+   {
+    "cite": "Michigan historical marker L1150A, 'St. Joseph County Courthouse' (Michigan DNR marker file).",
+    "url": "https://www.dnr.state.mi.us/PUBLICATIONS/PDFS/ArcGISOnline/StoryMaps/mhc_historical_markers/pdfs/MHC751984005.pdf"
+   },
+   {
+    "cite": "Wikipedia, 'St. Joseph County Courthouse (Michigan).'",
+    "url": "https://en.wikipedia.org/wiki/St._Joseph_County_Courthouse_(Michigan)"
+   },
+   {
+    "cite": "Historical Marker Database: Van Buren County / Van Buren County Courthouse (556).",
+    "url": "https://www.hmdb.org/m.asp?m=59383"
+   },
+   {
+    "cite": "Wikipedia, 'Van Buren County Courthouse (Michigan).'",
+    "url": "https://en.wikipedia.org/wiki/Van_Buren_County_Courthouse_(Michigan)"
+   },
+   {
+    "cite": "Wikipedia, 'Paw Paw City Hall.'",
+    "url": "https://en.wikipedia.org/wiki/Paw_Paw_City_Hall"
+   },
+   {
+    "cite": "Courthouses.co: Berrien County courthouses at St. Joseph.",
+    "url": "https://courthouses.co/?p=10444"
+   },
+   {
+    "cite": "Wikipedia, 'Old Berrien County Courthouse Complex.'",
+    "url": "https://en.wikipedia.org/wiki/Old_Berrien_County_Courthouse_Complex"
+   },
+   {
+    "cite": "State Bar of Michigan, Michigan Legal Milestone 38: Berrien County Courthouse.",
+    "url": "https://www.michbar.org/programs/milestone/milestones_BerrienCountyCourthouse"
+   },
+   {
+    "cite": "Pure Michigan: History Center at Courthouse Square.",
+    "url": "https://www.michigan.org/property/history-center-courthouse-square"
+   },
+   {
+    "cite": "City of Niles: Niles History Center.",
+    "url": "https://www.nilesmi.org/departments_and_divisions/niles_history_center/"
+   }
+  ]
+ },
+ {
+  "slug": "the-makers-road",
+  "title": "The Makers' Road",
+  "intro": "For a century the towns along the St. Joseph River made things the whole country knew by name: Round Oak stoves and Heddon lures at Dowagiac, Kawneer storefronts at Niles, Studebaker wagons and cars and Oliver plows at South Bend, Ball-Band boots at Mishawaka, Conn band horns and, later, recreational vehicles at Elkhart. This drive runs downriver and then east along it, from the stove town to Goshen, stopping at the museums that keep the makers' work and the markers that stand where the factories did. Most of the great works are gone; where something survives, it is noted, and where it is a working plant or private property, you look from the road.",
+  "miles": 64,
+  "minutes": 120,
+  "route_note": "About 64 miles and 2 hours of driving, not counting stops (road distances from OpenStreetMap routing). The South Bend museums and the Elkhart hall of fame each deserve an hour or more; Indiana and Michigan stops on this drive are all on Eastern time.",
+  "stops": [
+   {
+    "name": "Dowagiac Area History Museum",
+    "address": "201 E. Division St., Dowagiac, MI 49047",
+    "lat": 41.98363,
+    "lon": -86.10607,
+    "see": "The stove town's museum, free, with the story of the Round Oak Stove Company: Philo D. Beckwith cast his first stove around 1867 to heat his struggling foundry, and by 1900 Round Oak was one of the largest stove factories in the United States, with about 1,200 workers in the 1910s. The museum also keeps grain-drill artifacts from Beckwith's earlier drill trade. The 1910s Round Oak foundry complex on Spaulding Street still stands and is in industrial use; see it from the street only.",
+    "open": "Tuesday to Friday 10 to 5, Saturday 10 to 2. Free.",
+    "link": "/made-in-the-valley/#round-oak-stove",
+    "source": "https://dowagiacmuseum.info/round-oak/ ; https://projectscroll.com/made-in-the-valley/#round-oak-stove"
+   },
+   {
+    "name": "Heddon Museum",
+    "address": "115 S. Front St., Dowagiac, MI 49047",
+    "lat": 41.98352,
+    "lon": -86.10772,
+    "see": "James Heddon, a former beekeeper, is said to have got the idea for a top-water lure by Dowagiac's Mill Pond in the late 1890s; the company was founded in 1902, began in the family kitchen, and was making lures in a Dowagiac factory by 1904, most of its workers women. Lures were made here until 1984. The museum holds more than 1,000 lures, 140 reels and 150 rods, including an original James Heddon frog.",
+    "open": "Tuesday and Friday 10 to 5; run by volunteers, so call ahead: 269-783-2560.",
+    "link": "/made-in-the-valley/#heddon",
+    "source": "https://heddon.dowagiacmuseum.info/the-heddon-museum ; https://www.cityofdowagiac.com/arts_recreation/museums/the_heddon_museum.php"
+   },
+   {
+    "name": "Plym Park, Niles",
+    "address": "401 Marmont St., Niles, MI 49120",
+    "lat": 41.84129,
+    "lon": -86.25657,
+    "see": "Francis J. Plym, a Swedish-born architect, patented a copper frame for plate-glass shop windows in 1906 and moved his Kawneer Company to Niles in early 1907; it grew from window frames to door frames and complete storefronts. Plym gave this park to the city, and it is still in use. It is also the Niles end of the Indiana-Michigan River Valley Trail.",
+    "open": "City park, open daily.",
+    "link": "/made-in-the-valley/#kawneer",
+    "source": "https://www.leaderpub.com/2009/10/17/francis-j-plym-was-once-knighted-by-swedens-king/ ; https://projectscroll.com/made-in-the-valley/#kawneer"
+   },
+   {
+    "name": "Studebaker National Museum, South Bend",
+    "address": "201 Chapin St., South Bend, IN 46601",
+    "lat": 41.67464,
+    "lon": -86.26189,
+    "see": "Henry and Clement Studebaker opened a blacksmith shop in South Bend on 16 February 1852 with $68, built two wagons the first year, and by 1885 were making more than 75,000 vehicles a year; they built a gasoline car in 1904 and their last wagons in 1920. South Bend production ended in December 1963. The museum tells that whole run, 'from carriages to cars.' The self-guided Studebaker-Bendix Heritage Trail, about 90 minutes, starts downtown at Michigan Street and Jefferson Boulevard.",
+    "open": "Monday to Saturday 10 to 5, Sunday 12 to 5. Admission charged; see the museum's site.",
+    "link": "/made-in-the-valley/#studebaker",
+    "source": "https://studebakermuseum.org/ ; https://www.sil.si.edu/ondisplay/studebaker/intro.htm"
+   },
+   {
+    "name": "The History Museum and Copshaholm (the Oliver Mansion), South Bend",
+    "address": "808 W. Washington St., South Bend, IN 46601",
+    "lat": 41.67584,
+    "lon": -86.26211,
+    "see": "Next door to the Studebaker museum. James Oliver, a Scottish immigrant, took the first of 45 plow patents in 1857 for a chilled-iron plow that scoured clean in sticky prairie soil, and by 1901 his works called themselves the world's largest plow maker. His family's 38-room mansion, Copshaholm, completed in 1896-97, is shown on guided tours; the Oliver works' powerhouse and smokestack, still lettered with the name, are the only factory buildings left.",
+    "open": "Monday to Saturday 10 to 5, Sunday 12 to 5; mansion tours twice a day. Tickets at the visitor desk; 574-235-9664.",
+    "link": "/made-in-the-valley/#oliver-chilled-plow",
+    "source": "https://historymuseumsb.org/ ; https://historymuseumsb.org/oliver-mansion/ ; https://discoverindianahistory.org/items/show/441"
+   },
+   {
+    "name": "Ball-Band factory marker, Mishawaka",
+    "address": "South bank of the St. Joseph River, reached from N. Main St. at W. Mishawaka Ave., Mishawaka, IN 46544",
+    "lat": 41.66579,
+    "lon": -86.18168,
+    "see": "The marker overlooks the site of the Mishawaka Woolen Manufacturing Co., maker of Ball-Band boots and, from 1951, Red Ball Jets; at its height it had about 5,000 workers on more than 40 acres. The plant closed in 1997, the buildings came down in 2000, and Robert Buetter Riverfront Park (2005) occupies the ground. In July 2026 the city unveiled 'Shoe City,' giant Red Ball Jet sculptures around town, one at Ironworks Plaza. The Mishawaka Historical Museum, a few blocks south at 121 S. Main St., opens by appointment: call 574-217-8807.",
+    "open": "Riverside marker and park, any time.",
+    "link": "/made-in-the-valley/#ball-band",
+    "source": "https://www.hmdb.org/m.asp?m=64088 ; https://historymuseumsb.org/mishawaka-woolen-company-ball-band-rubber ; https://www.wndu.com/2026/07/25/mishawaka-unveils-shoe-city-project-honoring-citys-sneaker-legacy/"
+   },
+   {
+    "name": "C. G. Conn Company marker, Elkhart",
+    "address": "Northwest corner of Jackson Boulevard and Elkhart Avenue, Elkhart, IN 46516",
+    "lat": 41.689056,
+    "lon": -85.96778,
+    "see": "Indiana's state marker (2006) stands at the site of the Conn factory until 1910. Charles G. Conn was making rubber-rimmed cornet mouthpieces by 1874, patented one in 1875 and began making instruments that year; other makers followed him, and by the 1970s about 40 percent of the world's band instruments were made in Elkhart, the 'Band Industry Capital of the World.' The Conn-Selmer name continues in the city. A second state marker, for Dr. Franklin L. Miles, whose company made Alka-Seltzer, is at 403 W. Franklin St.",
+    "open": "Outdoor marker, any time.",
+    "link": "/made-in-the-valley/#conn",
+    "source": "https://www.in.gov/history/state-historical-markers/find-a-marker/cg-conn-company/ ; https://en.wikipedia.org/wiki/List_of_Indiana_state_historical_markers_in_Elkhart_County"
+   },
+   {
+    "name": "RV/MH Hall of Fame and Museum, Elkhart",
+    "address": "21565 Executive Parkway, Elkhart, IN 46514",
+    "lat": 41.72912,
+    "lon": -85.88022,
+    "see": "Elkhart's later industry was the recreational vehicle and the manufactured home, and this museum and hall of fame preserves the history of both and of the people who built them.",
+    "open": "April 1 to November 1: Monday to Saturday 9 to 5, Sunday 10 to 3. Closed Thanksgiving, Christmas and New Year's Day; winter hours on the museum's site.",
+    "link": "/museums/#rv-mh-hall-of-fame-and-museum",
+    "source": "https://www.rvmhhalloffame.org/"
+   },
+   {
+    "name": "Goshen Historical Society Museum",
+    "address": "124 S. Main St., Goshen, IN 46526",
+    "lat": 41.58557,
+    "lon": -85.83428,
+    "see": "Goshen's free museum is the start of the society's historic walking tour and keeps the story of the Goshen Hydraulic Canal, which gave the town water power. Goshen also drew in the mills of the country around it: in 1868 the Waterford dam, south of town, was taken down and its mill, and then the county's first pump works, moved to Goshen.",
+    "open": "Tuesday to Saturday 10 to 4, and until 8 on the first Friday of the month. Free.",
+    "link": "/lost-towns/#waterford",
+    "source": "https://www.goshenhistorical.org ; https://archive.org/details/historyofelkhart00chic"
+   }
+  ],
+  "food": "Food on the way, from the site's list: Caruso's Candy & Soda Fountain and Wood Fire Trattoria, side by side at 130 and 134 S. Front St., Dowagiac (/food/eat/#caruso-s-candy-soda-fountain); Sunny Italy Cafe, Rocco's, Barnaby's and Café Navarre in South Bend (/food/eat/#sunny-italy-cafe); Goshen Brewing Company, 315 W. Washington St., and South Side Soda Shop & Diner, 1122 S. Main St., Goshen (/food/eat/#goshen-brewing-company). To stay: Oliver Inn Bed & Breakfast, South Bend, and Hotel Elkhart (/food/stay/). Restrooms: at the museums during open hours.",
+  "sources": [
+   {
+    "cite": "Project Scroll, Made in the Valley.",
+    "url": "https://projectscroll.com/made-in-the-valley/"
+   },
+   {
+    "cite": "Dowagiac Area History Museum, Round Oak.",
+    "url": "https://dowagiacmuseum.info/round-oak/"
+   },
+   {
+    "cite": "Heddon Museum.",
+    "url": "https://heddon.dowagiacmuseum.info/the-heddon-museum"
+   },
+   {
+    "cite": "City of Dowagiac, The Heddon Museum.",
+    "url": "https://www.cityofdowagiac.com/arts_recreation/museums/the_heddon_museum.php"
+   },
+   {
+    "cite": "Niles Daily Star (Leader Publications), 'Francis J. Plym was once knighted by Sweden's king' (17 October 2009).",
+    "url": "https://www.leaderpub.com/2009/10/17/francis-j-plym-was-once-knighted-by-swedens-king/"
+   },
+   {
+    "cite": "Studebaker National Museum.",
+    "url": "https://studebakermuseum.org/"
+   },
+   {
+    "cite": "Smithsonian Libraries, Studebaker exhibition.",
+    "url": "https://www.sil.si.edu/ondisplay/studebaker/intro.htm"
+   },
+   {
+    "cite": "The History Museum, South Bend.",
+    "url": "https://historymuseumsb.org/"
+   },
+   {
+    "cite": "Discover Indiana History: Oliver Chilled Plow Works.",
+    "url": "https://discoverindianahistory.org/items/show/441"
+   },
+   {
+    "cite": "Historical Marker Database: Ball-Band Factory, Mishawaka.",
+    "url": "https://www.hmdb.org/m.asp?m=64088"
+   },
+   {
+    "cite": "The History Museum: Mishawaka Woolen Company / Ball-Band Rubber.",
+    "url": "https://historymuseumsb.org/mishawaka-woolen-company-ball-band-rubber"
+   },
+   {
+    "cite": "WNDU, 'Mishawaka unveils Shoe City project' (25 July 2026).",
+    "url": "https://www.wndu.com/2026/07/25/mishawaka-unveils-shoe-city-project-honoring-citys-sneaker-legacy/"
+   },
+   {
+    "cite": "Indiana Historical Bureau, marker 20.2006.1, CG Conn Company.",
+    "url": "https://www.in.gov/history/state-historical-markers/find-a-marker/cg-conn-company/"
+   },
+   {
+    "cite": "Wikipedia, 'List of Indiana state historical markers in Elkhart County' (marker locations and coordinates).",
+    "url": "https://en.wikipedia.org/wiki/List_of_Indiana_state_historical_markers_in_Elkhart_County"
+   },
+   {
+    "cite": "RV/MH Hall of Fame and Museum.",
+    "url": "https://www.rvmhhalloffame.org/"
+   },
+   {
+    "cite": "Goshen Historical Society.",
+    "url": "https://www.goshenhistorical.org"
+   },
+   {
+    "cite": "History of Elkhart County, Indiana (Chicago, 1881), on Waterford. Internet Archive.",
+    "url": "https://archive.org/details/historyofelkhart00chic"
+   }
+  ]
+ }
+]
