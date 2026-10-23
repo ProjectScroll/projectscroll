@@ -119,7 +119,7 @@ BLOCK = f'''<!--news-->
         {SEAS}
         <div class="nw-mh"><h2 class="nw-mt">More news</h2>{CHIPS}</div>
         <ul class="nw-more" id="nwMore" aria-label="More news">{''.join(line(s) for s in _MORE)}</ul>
-        <p class="nw-foot"><a href="/valley-map/#v-41.9300_-86.1500_9_N__">See every story on the valley map ›</a> <span aria-hidden="true">·</span> <a href="/newsletter/">Get the week’s stories by email ›</a> <span aria-hidden="true">·</span> <a href="/news/">All the news ›</a></p>
+        <p class="nw-foot"><a href="/valley-map/#v-41.9300_-86.1500_9_N__">See every story on the valley map ›</a> <span aria-hidden="true">·</span> <a href="/lore/">Lore and legends ›</a> <span aria-hidden="true">·</span> <a href="/newsletter/">Get the week’s stories by email ›</a> <span aria-hidden="true">·</span> <a href="/news/">All the news ›</a></p>
         {DSC}
         <article class="nw-lead nw-lead-last">
           <p class="nw-k nw-play">{E(L["kicker"])} <span>· Free to play</span></p>{NUGGET}
@@ -229,6 +229,7 @@ for k, st in enumerate(S):
       <p class="lede">{E(st["dek"])}</p>
       {live}<p class="nw-by">{("By " + E(st["by"]) + " · ") if st.get("by") else ""}Project Scroll · {"First published " if st.get("updated") else ""}<time datetime="{st["date"]}">{day(st["date"], True)}</time>{(" · Updated <time datetime=\""+st["updated"]+"\">"+day(st["updated"], True)+"</time>") if st.get("updated") else ""} · {mins} min read <button type="button" class="linkbtn nw-share" data-t="{E(st["headline"])}">Share this story</button> <button type="button" class="linkbtn nw-print">Print or save as PDF</button> <button type="button" class="linkbtn nw-cite" data-cite="{E((st["by"] + ", " if st.get("by") else "") + "“" + st["headline"] + ",” Project Scroll, " + day(st["date"], True) + ", https://projectscroll.com/news/" + st["slug"] + "/")}">Cite this story</button> <button type="button" class="linkbtn nw-listen" hidden>Listen</button></p>
       {fig}
+      {('<aside class="nw-short" aria-labelledby="short-h"><p class="nw-short-h" id="short-h">The short version</p>'+st['tldr']+'<p class="nw-short-m"><a href="#'+re.sub(r'[^a-z0-9]+','-',[x[3:] for x in st['body'] if x.startswith('## ')][0].lower()).strip('-')+'">Read the whole story ›</a></p></aside>') if st.get('tldr') else ''}
       {finds}
       <div class="nw-text">{body}{reveal}</div>
       {gal}

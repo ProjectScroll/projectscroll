@@ -4,7 +4,7 @@ import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).parent)); fro
 body = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Once a month, in your inbox</p>
     <h1>The valley letter</h1>
-    <p class="lede">One short email a month from the St. Joseph River valley: the coming month’s festivals and fairs, a new story from the record, the document and the newspaper of the month, a recipe from the old cookbooks, and a clue for the hunt.</p>
+    <p class="lede">One short email a month from the St. Joseph River valley: the coming month’s festivals and fairs, a new legend of the valley tested against the record, one new finding from the original records, the document and the newspaper of the month, a recipe from the old cookbooks, and a clue for the hunt.</p>
     <ul class="dis">
       <li><b>Once a month.</b> No more, and never a sales pitch. Paid partners, when there are any, are labeled.</li>
       <li><b>Your address stays with us.</b> It is never sold, swapped or shared.</li>
