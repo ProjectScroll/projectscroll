@@ -13,12 +13,14 @@ SPOTS = [('The Cass County Courthouse', 41.91167, -86.01278, 22), ('Stone Lake',
 body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
     <p class="kicker">Cassopolis in LiDAR</p>
     <h1>The county seat, laser by laser</h1>
-    <p class="lede" style="font-size:1.15rem">In 2015 an aircraft flew over Cass County firing laser pulses at the ground, hundreds of thousands a second, and timing each echo. Every dot below is one of those echoes: {M['n']:,} of them, from the blocks around the courthouse. Around them lies the land the same survey measured, from Stone Lake to Diamond Lake, about six kilometres across. Turn it, tilt it, and lay the 1860 town plan over the real ground.</p>
+    <p class="lede" style="font-size:1.15rem">In 2015 an aircraft flew over Cass County firing laser pulses at the ground, hundreds of thousands a second, and timing each echo. Every dot below is one of those echoes: {M['n']:,} of them in the blocks around the courthouse, every one the survey kept, and {M['wn']:,} more across the country around. Around them lies the land the same survey measured, from Stone Lake to Diamond Lake, about six kilometres across. Turn it, tilt it, and lay the 1860 town plan over the real ground.</p>
     <figure class="l3d" id="l3d" aria-label="A three-dimensional model of Cassopolis, Stone Lake and Diamond Lake built from laser survey data">
       <canvas id="l3dC" aria-hidden="true"></canvas>
       <div class="l3d-ui" role="toolbar" aria-label="Model controls">
         <button type="button" class="l3d-b" id="l3dPlan" aria-pressed="false">1860 plan</button>
+        <button type="button" class="l3d-b" id="l3dBld" aria-pressed="true">Buildings</button>
         <button type="button" class="l3d-b" id="l3dTrees" aria-pressed="true">Trees</button>
+        <button type="button" class="l3d-b" id="l3dMore" hidden>Whole area</button>
         <button type="button" class="l3d-b" id="l3dTall" aria-pressed="false">Height ×3</button>
         <button type="button" class="l3d-b" id="l3dSpin" aria-pressed="false">Fly around</button>
         <button type="button" class="l3d-b" id="l3dReset">Reset view</button>
@@ -30,8 +32,8 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
       <noscript><img src="/img/l3d-cassopolis.webp" width="1058" height="898" alt="Central Cassopolis from above, built from laser survey points: buildings in gold, trees in green, on the bare ground."></noscript>
     </figure>
     <ul class="l3d-key" aria-label="What the colours mean">
-      <li><i style="background:#e8b84a"></i>Buildings, {M['nb']:,} points</li>
-      <li><i style="background:#3fb38a"></i>Trees, {M['nv']:,} points</li>
+      <li><i style="background:#e8b84a"></i>Buildings, {M['nb']+M['wnb']:,} points</li>
+      <li><i style="background:#3fb38a"></i>Trees, {M['nv']+M['wnv']:,} points</li>
       <li><i style="background:#2c5f7a"></i>The bare ground, with a contour every two metres</li>
       <li><i style="background:#1c56a0"></i>Stone Lake and Diamond Lake</li>
     </ul>
@@ -42,9 +44,10 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
       <li><b>Buildings and trees.</b> The survey does not say which of the other points are roofs and which are leaves, so we sorted them: a laser pulse that hits a roof comes back once; one that hits a tree comes back several times, from leaves, branches and the ground below. Flat, single echoes in a patch the size of a building are coloured gold. A few porches and dense evergreens may be the wrong colour.</li>
       <li><b>The lakes and the land around.</b> Stone Lake lies just west of the courthouse, and Diamond Lake, with Grand Island in it, a short way east. The wider ground comes from the same 2015 flight, as the survey’s bare-earth elevation: the shape of the land every six metres or so, and its light and shade from a grid one and a half metres apart, sharp enough to show field edges, ditches and old roadbeds. The lakes are drawn flat at their surface, because the survey does not see through water. Buildings and trees are shown only in the town blocks, where every point is kept.</li>
       <li><b>The 1860 plan.</b> Press <i>1860 plan</i> to lay the town plan from the 1860 county wall map on the ground. Its west part reaches into these blocks. Compare it with the <a href="/map/cassopolis/">flat then-and-now page</a>.</li>
+      <li><b>Buildings and Trees.</b> Each button hides or shows its points, so you can see the bare land under the town, or the trees alone.</li>
       <li><b>Height ×3.</b> The town is fairly level, so tripling the heights makes the rise of the land easier to see. The buildings stretch too.</li>
     </ul>
-    <p class="note">Source: U.S. Geological Survey, 3D Elevation Program, Michigan Cass County LiDAR, 2015 (public domain), read from the survey’s public point-cloud archive. About one in two tree points is shown, to keep the page light; every building point is kept. The points cover the blocks north and east of the courthouse; the ground around them is the survey’s bare-earth elevation from the 3D Elevation Program, shaped every six metres or so and shaded from a grid about one and a half metres apart. Town plan: <i>Map of the Counties of Cass, Van Buren and Berrien, Michigan</i> (Geil, Harley &amp; Siverd, 1860), Library of Congress. 3D drawing by three.js.</p>
+    <p class="note">Source: U.S. Geological Survey, 3D Elevation Program, Michigan Cass County LiDAR, 2015 (public domain), read from the survey’s public point-cloud archive. In the town blocks every building and tree point is shown. Across the wider country the page shows the survey’s lighter sampling, about one point in ten, so that it stays quick to load (on a phone, press <i>Whole area</i> to load it); press <i>Buildings</i> or <i>Trees</i> to hide either. The points cover the blocks north and east of the courthouse; the ground around them is the survey’s bare-earth elevation from the 3D Elevation Program, shaped every six metres or so and shaded from a grid about one and a half metres apart. Town plan: <i>Map of the Counties of Cass, Van Buren and Berrien, Michigan</i> (Geil, Harley &amp; Siverd, 1860), Library of Congress. 3D drawing by three.js.</p>
     <script type="importmap">{{"imports":{{"three":"/vendor/three-{V}/three.module.min.js"}}}}</script>
     <script type="module">
     import * as THREE from 'three';
@@ -99,11 +102,11 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
     for (let i=0;i<n;i++){{ const o=i*8, x=dv.getInt16(o,true)/10, y=dv.getInt16(o+2,true)/10, z=dv.getInt16(o+4,true)/10, k=dv.getUint8(o+6), s=dv.getUint8(o+7)/255;
       P[i*3]=x; P[i*3+1]=z; P[i*3+2]=-y; K[i]=k; const a=k===1?gold:leaf, t=Math.min(1,s*1.6); C[i*3]=a[0].r+(a[1].r-a[0].r)*t; C[i*3+1]=a[0].g+(a[1].g-a[0].g)*t; C[i*3+2]=a[0].b+(a[1].b-a[0].b)*t; }}
     const pg=new THREE.BufferGeometry(); pg.setAttribute('position',new THREE.BufferAttribute(P,3)); pg.setAttribute('color',new THREE.BufferAttribute(C,3)); pg.setAttribute('kind',new THREE.BufferAttribute(K,1));
-    const pu={{uTrees:{{value:1}}, uPx:{{value:gl.getPixelRatio()}}, uTime:{{value:0}}}};
+    const pu={{uTrees:{{value:1}}, uBld:{{value:1}}, uPx:{{value:gl.getPixelRatio()}}, uTime:{{value:0}}}};
     const pmat=new THREE.ShaderMaterial({{uniforms:pu, transparent:true, depthWrite:true,
-      vertexShader:`attribute float kind; attribute vec3 color; uniform float uTrees, uPx, uTime; varying vec3 vC; varying float vK;
+      vertexShader:`attribute float kind; attribute vec3 color; uniform float uTrees, uBld, uPx, uTime; varying vec3 vC; varying float vK;
         void main(){{ vC=color; vK=kind; vec4 mv=modelViewMatrix*vec4(position,1.); gl_Position=projectionMatrix*mv;
-          float s=(kind<1.5?1.9:1.6)*uPx*260./-mv.z; if (kind>1.5 && uTrees<.5) s=0.; gl_PointSize=clamp(s,1.,7.); }}`,
+          float s=(kind<1.5?1.9:1.6)*uPx*260./-mv.z; gl_PointSize=clamp(s,1.,7.); if ((kind>1.5 && uTrees<.5) || (kind<1.5 && uBld<.5)){{ gl_PointSize=0.; gl_Position=vec4(2.,2.,2.,1.); }} }}`,
       fragmentShader:`varying vec3 vC; varying float vK; void main(){{ vec2 d=gl_PointCoord-.5; float r=dot(d,d); if (r>.25) discard; float glow=vK<1.5?1.15:1.; gl_FragColor=vec4(vC*glow*(1.-r*1.2),1.);
 #include <colorspace_fragment>
 }}`}});
@@ -117,12 +120,22 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
     const press=(b,on)=>b.setAttribute('aria-pressed',String(on));
     B('l3dPlan',b=>{{ planTo=planTo?0:1; press(b,!!planTo); }});
     B('l3dTrees',b=>{{ pu.uTrees.value=pu.uTrees.value?0:1; press(b,!!pu.uTrees.value); }});
+    B('l3dBld',b=>{{ pu.uBld.value=pu.uBld.value?0:1; press(b,!!pu.uBld.value); }});
     B('l3dTall',b=>{{ tallTo=tallTo===1?3:1; press(b,tallTo===3); }});
     const spin=B('l3dSpin',b=>{{ ctl.autoRotate=!ctl.autoRotate; press(b,ctl.autoRotate); }});
     B('l3dReset',()=>home());
     B('l3dFull',()=>{{ if (document.fullscreenElement) document.exitFullscreen(); else if (fig.requestFullscreen) fig.requestFullscreen().catch(()=>{{}}); }});
     if (!still){{ ctl.autoRotate=true; press(spin,true); ctl.addEventListener('start',()=>{{ ctl.autoRotate=false; press(spin,false); }}, {{once:true}}); }}
     load.hidden=true; fig.classList.add('ready');
+    /* the wider country: x and z in decimetres from the north-west corner, height in decimetres, then the class and a height shade */
+    const more=document.getElementById('l3dMore'); let wideOn=false;
+    const loadWide=()=>{{ if (wideOn) return; wideOn=true; more.hidden=true; fetch('wide-pts.bin').then(r=>r.ok?r.arrayBuffer():null).then(w=>{{ if (!w) return; const dw=new DataView(w), m=w.byteLength/8|0, [x0,z0]=ll2xz(M.wnorth,M.wwest);
+      const Q=new Float32Array(m*3), QC=new Float32Array(m*3), QK=new Float32Array(m);
+      for (let i=0;i<m;i++){{ const o=i*8, k=dw.getUint8(o+6), s=dw.getUint8(o+7)/255, a=k===1?gold:leaf, t=Math.min(1,s*1.6); Q[i*3]=x0+dw.getUint16(o,true)/10; Q[i*3+1]=dw.getInt16(o+4,true)/10; Q[i*3+2]=z0+dw.getUint16(o+2,true)/10; QK[i]=k;
+        QC[i*3]=a[0].r+(a[1].r-a[0].r)*t; QC[i*3+1]=a[0].g+(a[1].g-a[0].g)*t; QC[i*3+2]=a[0].b+(a[1].b-a[0].b)*t; }}
+      const qg=new THREE.BufferGeometry(); qg.setAttribute('position',new THREE.BufferAttribute(Q,3)); qg.setAttribute('color',new THREE.BufferAttribute(QC,3)); qg.setAttribute('kind',new THREE.BufferAttribute(QK,1)); world.add(new THREE.Points(qg,pmat)); }}).catch(()=>{{}}); }};
+    /* on a big screen the whole area loads at once; on a phone, when asked */
+    more.addEventListener('click',loadWide); if (innerWidth>=700 && (navigator.deviceMemory||8)>=4) loadWide(); else more.hidden=false;
     let vis=true; new IntersectionObserver(es=>{{ vis=es[0].isIntersecting; }}).observe(fig);
     const tmp=new THREE.Vector3();
     gl.setAnimationLoop(()=>{{ if (!vis) return;
@@ -134,7 +147,7 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
     </script>
 '''
 page('map/3d/cassopolis/index.html', 'Cassopolis in LiDAR · Project Scroll',
-     f'Cassopolis, Stone Lake and Diamond Lake in 3D, from the 2015 Cass County LiDAR flight: {M["n"]:,} laser points in the town blocks, buildings in gold, trees in green, the 1860 town plan laid on the ground.',
+     f'Cassopolis, Stone Lake and Diamond Lake in 3D, from the 2015 Cass County LiDAR flight: {M["n"]+M["wn"]:,} laser points, buildings in gold, trees in green, each switchable, and the 1860 town plan laid on the ground.',
      body, og='https://projectscroll.com/og/records.jpg')
 print('3d cassopolis built', M['n'])
 
