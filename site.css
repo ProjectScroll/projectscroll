@@ -4267,3 +4267,10 @@ main > section#timeline, main > section#hunt, main > section#cases, main > secti
 .nl-row{display:flex; gap:.5rem; flex-wrap:wrap}
 .nl-row input{flex:1 1 14rem; min-width:0; font:inherit; padding:.5rem .65rem; border:1px solid var(--line); border-radius:4px; background:var(--paper); color:var(--ink)}
 .nl-msg{font-size:.9rem; color:var(--ink-soft); min-height:1.3em}
+/* outdoors */
+.od-list{grid-template-columns:repeat(auto-fill,minmax(19rem,1fr))}
+.od .od-r{margin:.15rem 0; font-size:.9rem}
+.od .od-h{font-size:.9rem; border-left:3px solid var(--gold); padding-left:.6rem}
+.od .od-a{font-size:.85rem; color:var(--ink-soft); margin:.3rem 0 .1rem}
+.od-x{color:var(--rule); font-weight:700}
+.od-closed{opacity:.8}
