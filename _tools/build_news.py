@@ -263,6 +263,7 @@ b = f'''    <div class="nw-index"><p class="crumb"><a href="/">← Front page</a
     <div class="nw-filter" data-newsfilter hidden><label for="nwQ" class="vh">Search the news</label><input id="nwQ" type="search" placeholder="Search the news: a town, a name, a year" autocomplete="off"><button type="button" class="nw-fbtn" aria-pressed="false">Featured only</button><p class="nw-fcount" aria-live="polite"></p></div>
     <ul class="nw-cards">{cards}</ul>
     <p class="nw-fnone" hidden>No story matches that yet. Try another word, or <a href="mailto:research@projectscroll.com">tell us what you are looking for</a>.</p>
+    <!--placemap--><!--/placemap-->
     {CONTRIB}
     <p class="note">Every story is also in the <a href="/feed.xml">news feed</a> and on <a href="https://www.facebook.com/projectscroll/">Project Scroll’s Facebook page</a>.</p></div>
 '''

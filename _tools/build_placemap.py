@@ -1,7 +1,7 @@
 """Explore by place: the home page's map of every story with a place, and its town list.
 python3 _tools/build_placemap.py
 The map drawing and the story groups come from _tools/data/storymap.json (made by the map tool from news.json);
-this script writes the section into index.html between <!--placemap--> and <!--/placemap-->, after the front page and before This day in the valley."""
+this script writes the section into news/index.html (All the news) between <!--placemap--> and <!--/placemap-->. It used to sit on the home page."""
 import json, pathlib, re, html
 R = pathlib.Path(__file__).resolve().parent.parent
 E = lambda s: html.escape(str(s), quote=True)
@@ -15,10 +15,10 @@ n = sum(len(ss) for _, ss in groups)
 SEC = (f'<!--placemap-->\n    <section class="sm" aria-labelledby="smH" data-placemap><div class="sm-head"><h2 id="smH">Explore by place</h2>'
        f'<p>{n} stories, {len(groups)} places, one map. Press a town to read its story; where there are several, pick from the list.</p></div>'
        f'<div class="sm-grid"><figure class="sm-fig">{D["svg"].replace('role="img"', 'role="group"', 1)}</figure><ul class="sm-list">{li}</ul></div></section>\n    <!--/placemap-->')
-p = R / 'index.html'; s = open(p).read()
+p = R / 'news/index.html'; s = open(p).read()
 if '<!--placemap-->' in s:
     s = re.sub(r'<!--placemap-->.*?<!--/placemap-->', lambda m: SEC, s, flags=re.S)
 else:
-    a = s.index('<div class="dayval"'); s = s[:a] + SEC + '\n\n    ' + s[a:]
+    raise SystemExit('no <!--placemap--> marker in news/index.html')
 open(p, 'w').write(s)
 print('placemap', len(groups), 'places', n, 'stories')

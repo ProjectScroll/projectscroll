@@ -4550,3 +4550,17 @@ img,picture,svg image{-webkit-touch-callout:none;-webkit-user-drag:none;user-sel
 @media (min-width:800px){ .nw-fig-r.nw-scan{width:17rem} }
 @media (max-width:799px){ .nw-fig-r.nw-scan{max-width:24rem; margin-left:auto; margin-right:auto} }
 blockquote.nw-q footer{margin-top:.35rem; font-style:normal; font-size:.86rem; color:var(--ink-soft)}
+/* ===== On the record, so far: a modern pass ===== */
+:root{--tlmap-veil:rgba(244,238,222,.86); --tlmap-veil2:rgba(244,238,222,.72)}
+:root[data-theme="dark"]{--tlmap-veil:rgba(18,22,32,.86); --tlmap-veil2:rgba(18,22,32,.70)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--tlmap-veil:rgba(18,22,32,.86); --tlmap-veil2:rgba(18,22,32,.70)} }
+#timeline .tl{background:linear-gradient(90deg, var(--tlmap-veil), var(--tlmap-veil2) 50%, var(--tlmap-veil)), url("/img/bellin-great-lakes-1744-1000.webp") center 42% / cover no-repeat!important; border-radius:6px}
+#timeline .tl-mapnote{max-width:44rem; margin:.1rem auto .7rem; text-align:center; font-size:.82rem; color:var(--ink-soft)}
+#timeline .tl-mapnote a{white-space:nowrap}
+#timeline .tl-tally{display:grid; grid-template-columns:repeat(3, minmax(0, 9.5rem)); justify-content:center; gap:.6rem; margin:.4rem auto 1rem}
+#timeline .tl-tally > span:not(.tl-meter){display:flex; flex-direction:column; align-items:center; gap:.15rem; padding:.7rem .5rem .6rem; border:1px solid var(--line); border-radius:10px; background:color-mix(in srgb, var(--paper-2) 70%, transparent); font-size:.8rem; letter-spacing:.04em; text-transform:uppercase; text-align:center}
+#timeline .tl-tally b{margin:0; font-size:2rem; line-height:1}
+#timeline .tl-tally .op b{color:var(--kD, #2f6f4f)}
+#timeline .tl-meter{grid-column:1 / -1; height:.45rem; border-radius:99px; background:color-mix(in srgb, #9a2f24 22%, var(--line)); overflow:hidden}
+#timeline .tl-meter i{display:block; height:100%; width:var(--tlp, 38%); border-radius:inherit; background:linear-gradient(90deg, var(--gold-lo), var(--gold-hi))}
+@media (max-width:520px){ #timeline .tl-tally{grid-template-columns:repeat(3, minmax(0,1fr)); gap:.4rem} #timeline .tl-tally > span:not(.tl-meter){font-size:.66rem; padding:.55rem .3rem} #timeline .tl-tally b{font-size:1.6rem} }

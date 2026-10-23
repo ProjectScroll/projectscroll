@@ -162,7 +162,7 @@ function psWhenNear(el, fn){ if (!el) return; if (!('IntersectionObserver' in wi
     const all=[].slice.call(t.children), dated=all.filter(function(li){ return !li.classList.contains('now'); });
     const sealed=dated.filter(function(li){ return li.classList.contains('sealed'); }).length;
     const tally=document.getElementById('tlTally');
-    if (tally){ const b=tally.querySelectorAll('b'); if (b.length===3){ b[0].textContent=dated.length; b[1].textContent=dated.length-sealed; b[2].textContent=sealed; } }
+    if (tally){ const b=tally.querySelectorAll('b'); if (b.length===3){ b[0].textContent=dated.length; b[1].textContent=dated.length-sealed; b[2].textContent=sealed; } tally.style.setProperty('--tlp', Math.round(100*(dated.length-sealed)/Math.max(1,dated.length))+'%'); }
     document.querySelectorAll('.tl-filters button').forEach(function(btn){
       const m=btn.dataset.m, n= m==='all' ? dated.length : dated.filter(function(li){ return li.querySelector('.mk.'+m); }).length;
       const c=document.createElement('span'); c.className='n'; c.textContent=n; c.setAttribute('aria-hidden','true');
