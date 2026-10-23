@@ -4549,3 +4549,4 @@ img,picture,svg image{-webkit-touch-callout:none;-webkit-user-drag:none;user-sel
 .nw-scan img{display:block}
 @media (min-width:800px){ .nw-fig-r.nw-scan{width:17rem} }
 @media (max-width:799px){ .nw-fig-r.nw-scan{max-width:24rem; margin-left:auto; margin-right:auto} }
+blockquote.nw-q footer{margin-top:.35rem; font-style:normal; font-size:.86rem; color:var(--ink-soft)}
