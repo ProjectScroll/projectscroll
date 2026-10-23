@@ -16,6 +16,8 @@ const CARDS=[
    [[PC('ps053'),'right:26px;bottom:26px;width:270px;transform:rotate(3deg)']]],
  ['advertise','For businesses in the valley','Advertise with Project Scroll','Partner cards, seasonal spots, Facebook features, passport stops and hunt prizes. Every paid place labeled.',PC('ps091'),'center 35%',
    [[FD('cover-dr-miles'),'right:30px;bottom:30px;width:280px;transform:rotate(4deg)']]],
+ ['valley-map','The whole valley','The valley map','Museums, food, lodging, festivals, walks, lost towns and old town plans, all on one map.','file://'+path.join(R,'img/bellin-great-lakes-1744-1000.jpg'),'60% 70%',
+   [[PC('ps051'),'right:26px;bottom:26px;width:260px;transform:rotate(3deg)'],[PC('ps053'),'left:-30px;top:40px;width:200px;transform:rotate(-4deg)']]],
 ];
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
 (async()=>{const b=await chromium.launch(); const p=await b.newPage({viewport:{width:1200,height:630}});

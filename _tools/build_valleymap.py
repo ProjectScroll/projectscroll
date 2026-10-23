@@ -149,5 +149,5 @@ body = f'''    <p class="crumb"><a href="/visit/">← Visit &amp; Plan</a></p>
 '''
 page('valley-map/index.html', 'The valley map · every place on one map · Project Scroll',
      f'One map of the St. Joseph River valley with {N} places: museums and historic places, places to eat and stay, festivals, walk stops, lost towns and old town plans. Switch layers on and off and find what is near you.',
-     body, og='https://projectscroll.com/og/map.jpg')
+     body, og='https://projectscroll.com/og/valley-map.jpg?v=1')
 print('valley map built', N, cnt)

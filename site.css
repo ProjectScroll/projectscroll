@@ -4262,3 +4262,8 @@ main > section#timeline, main > section#hunt, main > section#cases, main > secti
 .vs-tags{display:flex; flex-wrap:wrap; gap:.4rem; margin:.4rem 0 .8rem}
 .vs-tags .vm-chip[aria-pressed="false"]{opacity:1; text-decoration:none; background:transparent}
 .vs-tags .vm-chip[aria-pressed="true"]{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+.nl-f{margin:1.2rem 0; max-width:34rem}
+.nl-f label{display:block; font-size:.9rem; margin-bottom:.3rem}
+.nl-row{display:flex; gap:.5rem; flex-wrap:wrap}
+.nl-row input{flex:1 1 14rem; min-width:0; font:inherit; padding:.5rem .65rem; border:1px solid var(--line); border-radius:4px; background:var(--paper); color:var(--ink)}
+.nl-msg{font-size:.9rem; color:var(--ink-soft); min-height:1.3em}
