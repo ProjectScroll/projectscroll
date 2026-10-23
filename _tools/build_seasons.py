@@ -178,7 +178,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <p class="mu-nmsg" id="scMsg" aria-live="polite"></p></section>
 {secs}
     <h2>Keep the calendar</h2>
-    <p>All {nev} events with set dates, in one calendar file. <a class="btn" href="webcal://projectscroll.com/seasons/valley.ics">Subscribe in your calendar</a> <a class="btn" href="/seasons/valley.ics" download>Download the file</a></p>
+    <p>All {nev} events with set dates, in one calendar file. <a class="btn" href="webcal://projectscroll.com/seasons/valley.ics">Subscribe in your calendar</a> <a class="btn" href="/seasons/valley.ics" download>Download the file</a> <a class="btn" href="/newsletter/">Get the valley letter, once a month</a></p>
     <p class="note">Subscribing keeps the dates up to date as we add the next year’s; your calendar app checks the file about once a week. It holds only the event dates, nothing about you.</p>
     <h2>Before you go</h2>
     <ul class="dis">

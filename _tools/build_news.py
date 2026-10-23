@@ -198,7 +198,7 @@ cards = ''.join(f'''<li class="nw-card" data-f="{1 if (x.get("featured") or x["s
 b = f'''    <div class="nw-index"><p class="crumb"><a href="/">← Front page</a></p>
     <p class="kicker">News of the hunt</p>
     <h1>All the news</h1>
-    <p class="lede">What’s new on the trail: new cases, new tools, new old pictures. The newest are on the front page too.</p>
+    <p class="lede">What’s new on the trail: new cases, new tools, new old pictures. The newest are on the front page too. Want them once a month by email? <a href="/newsletter/">Get the valley letter</a>.</p>
     <article class="nw-card nw-card-lead"><a href="/hunt/"><span class="nw-k">{E(L["kicker"])}</span><b>{E(L["headline"])}</b><span>Project Scroll now has a new, free online treasure hunt. Here is how to play.</span></a></article>
     <div class="nw-filter" data-newsfilter hidden><label for="nwQ" class="vh">Search the news</label><input id="nwQ" type="search" placeholder="Search the news: a town, a name, a year" autocomplete="off"><button type="button" class="nw-fbtn" aria-pressed="false">Featured only</button><p class="nw-fcount" aria-live="polite"></p></div>
     <ul class="nw-cards">{cards}</ul>
