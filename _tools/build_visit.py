@@ -259,6 +259,9 @@ def stop(a,b,h,r,k,n):
     link = f'<a href="{E(href)}">{E(b)}</a>' if href else E(b)
     di_ = (f' data-i="{pl["i"]}"' if pl and pl.get('i') else '') + (f' data-n="{E(pl["n"].split(" (")[0])}"' if pl else '')
     return f'<li{oh}{tz}{di_}><span class="vs-t">{E(a)}</span> {link}{open_}</li>', pl
+TAGS={'cass-dow':'day history kids','research':'day history','niles':'half history','free':'day free kids history','rainy':'day rainy kids history','fall':'day food outdoors','fruit':'weekend food outdoors kids','amish':'day food','kzoo':'day history kids'}
+TAGNAMES=[('half','Half day'),('day','A day'),('weekend','A weekend'),('free','Free'),('rainy','Rainy day'),('kids','Good with kids'),('history','History'),('food','Food & farms'),('outdoors','Outdoors')]
+TAGCHIPS='<div class="vs-tags" role="group" aria-label="Show days that suit you"><button type="button" class="vm-chip vs-tag" data-t="" aria-pressed="true">All</button>'+''.join(f'<button type="button" class="vm-chip vs-tag" data-t="{a}" aria-pressed="false">{b}</button>' for a,b in TAGNAMES)+'</div>'
 days=''
 for di,(k,t,w,st) in enumerate(DAYS):
     lis=[]; pls=[]
@@ -270,7 +273,7 @@ for di,(k,t,w,st) in enumerate(DAYS):
     for p in pls:
         if p.get('ll') and (not pts or pts[-1][:2]!=list(p['ll'])): pts.append([p['ll'][0],p['ll'][1],p['n']])
     DJSON.append({'k':k,'t':t,'c':COL[di%len(COL)],'p':pts})
-    days+=(f'<li class="vs-day" id="day-{k}" data-k="{k}" style="--dc:{COL[di%len(COL)]}">{dpic(k)}<h3><i class="vs-dot" aria-hidden="true"></i>{E(t)}</h3><p class="vs-when">{E(w)}</p><p class="vs-fit" hidden></p><p class="vs-prog" hidden></p><ol>'+''.join(lis)+
+    days+=(f'<li class="vs-day" id="day-{k}" data-k="{k}" data-tags="{TAGS.get(k,"")}" style="--dc:{COL[di%len(COL)]}">{dpic(k)}<h3><i class="vs-dot" aria-hidden="true"></i>{E(t)}</h3><p class="vs-when">{E(w)}</p><p class="vs-fit" hidden></p><p class="vs-prog" hidden></p><ol>'+''.join(lis)+
       f'</ol><p class="vs-acts">'+(f'<a class="btn vs-gm" href="{E(gm)}" rel="noopener">Open this day in Google Maps</a> ' if gm else '')+
       f'<button type="button" class="btn vs-show" data-k="{k}">Show on the map</button> <button type="button" class="btn vs-print" data-day="day-{k}">Print this day</button></p><p class="vs-spon"><a href="/sponsors/">Sponsor this day ›</a></p></li>')
 JS=JS.replace('__TOWNS__', json.dumps([[n,la,lo] for n,la,lo in V.TOWNS]))
@@ -293,7 +296,10 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
         <div class="mu-map vs-map" id="vsMap" role="region" aria-label="Map of the ready-made days. Every stop is also listed below."><p class="mu-mapph">The map of the days opens here.</p></div>
         <figcaption class="vs-legend" id="vsLegend"></figcaption>
       </figure>
+      {TAGCHIPS}
       <ol class="vs-days">{days}</ol>
+      <script>(function(){{ var bs=[].slice.call(document.querySelectorAll('.vs-tag')); bs.forEach(function(b){{ b.addEventListener('click',function(){{ bs.forEach(function(x){{ x.setAttribute('aria-pressed',String(x===b)); }});
+        [].forEach.call(document.querySelectorAll('.vs-day'),function(d){{ d.hidden=!!b.dataset.t && (' '+d.dataset.tags+' ').indexOf(' '+b.dataset.t+' ')<0; }}); }}); }}); }})();</script>
       <p><a class="btn" href="/visit/project-scroll-pocket-guide.pdf" download>Download the pocket guide (PDF, to print and fold)</a></p></section>
     <section aria-labelledby="vsBH" id="build"><h2 id="vsBH">Build your own day</h2>
       <p>Pick museums, places to eat and stay, and the walks. We’ll put them in a sensible driving order, and you can open the route in Google Maps, print it, or send it to someone. Your day is kept on this device only, and it is the same list as “My trip” on the museums page.</p>
