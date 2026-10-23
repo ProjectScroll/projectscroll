@@ -366,7 +366,6 @@ def places_page(ty, title, h1, lede, items_html, n, kcs, cur, hkey, hfb):
     {BEFORE}
     {DAYBTN}
     {NOTE}
-{ld}
 {PJS}
 """
 eat_body = places_page('restaurant', 'Places to eat with a story', 'Places to eat with a story',
@@ -379,7 +378,8 @@ stay_body = places_page('lodging', 'Places to stay', 'Places to stay in the vall
 import pages as _pg
 def _biz(d, kind):
     o={"@type":kind,"name":d['name'],"url":f"https://projectscroll.com/food/{'eat' if kind=='Restaurant' else 'stay'}/#{d['_id']}","description":d.get('what') or d.get('story','')}
-    if d.get('address'): o["address"]=d['address']
+    if d.get('address'): o["address"]={"@type":"PostalAddress","streetAddress":d['address'].split(',')[0],"addressLocality":d['town'],"addressRegion":d['state'],"addressCountry":"US"}
+    if d.get('url'): o["sameAs"]=d['url']
     if d.get('ll'): o["geo"]={"@type":"GeoCoordinates","latitude":d['ll'][0],"longitude":d['ll'][1]}
     return o
 def _list(items): return {"@type":"ItemList","numberOfItems":len(items),"itemListElement":[{"@type":"ListItem","position":i+1,"item":x} for i,x in enumerate(items)]}

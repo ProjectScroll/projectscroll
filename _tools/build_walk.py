@@ -177,5 +177,10 @@ for C in CFG:
       <p class="note">{C['note']}</p>
   {JS}
   '''
+  import pages as _pg
+  _base = 'https://projectscroll.com/' + C['out'].replace('index.html','')
+  _pg.EXTRA[C['out']] = {"mainEntity": {"@type":"TouristTrip","name":C['title'].split(' · ')[0],"touristType":"History walkers",
+      "itinerary":{"@type":"ItemList","numberOfItems":len(S),"itemListElement":[{"@type":"ListItem","position":i+1,"item":{"@type":"TouristAttraction","name":s['name'],"url":_base+'#'+s['id'],
+      "geo":{"@type":"GeoCoordinates","latitude":s['lat'],"longitude":s['lon']}}} for i,s in enumerate(S)]}}}
   page(C['out'], C['title'], C['desc'].format(n=len(S)), body, og=f"https://projectscroll.com/og/{C['og']}.jpg")
   print('walk built', C['out'], len(S))

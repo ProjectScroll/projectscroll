@@ -28,6 +28,15 @@ def sqpic(base, alt=''):
 LP = L.get('pic')
 LEADPIC = (f'<a class="nw-lp" href="{L["url"]}" tabindex="-1" aria-hidden="true"><picture><source media="(max-width:640px)" type="image/avif" srcset="/img/news/lead-hunt-band.avif"><source media="(max-width:640px)" srcset="/img/news/lead-hunt-band.webp">'
            f'<source type="image/avif" srcset="/img/news/lead-hunt-360.avif 360w, /img/news/lead-hunt.avif 720w" sizes="8rem"><img src="/img/news/lead-hunt-360.webp" srcset="/img/news/lead-hunt-360.webp 360w, /img/news/lead-hunt.webp 720w" sizes="8rem" width="720" height="1280" alt="" decoding="async"></picture></a>') if LP else ''
+def _secs():
+    """the first card's picture is the page's largest paint: ask for it first; cards past the second load as they near the screen"""
+    out=[]
+    for i,s in enumerate(TOP):
+        h=second(s)
+        if i==0: h=h.replace(' decoding="async"></picture>',' fetchpriority="high" decoding="async"></picture>',1)
+        elif i>=2: h=h.replace(' decoding="async"></picture>',' loading="lazy" decoding="async"></picture>',1)
+        out.append(h)
+    return ''.join(out)
 # ---------- 1. the front-page block on the home page ----------
 NUGGET = ('<svg class="nw-nug" viewBox="0 0 64 50" aria-hidden="true">'
           '<path d="M6 30 10 16 22 7 37 5 50 10 59 22 57 35 46 44 28 46 13 41z" fill="#B7811C" stroke="#6E4A0C" stroke-width="1.3" stroke-linejoin="round"/>'
@@ -60,7 +69,7 @@ BLOCK = f'''<!--news-->
       <div class="nw" role="region" aria-labelledby="nwLead">
         <p class="nw-bar"><span>Front page</span><time class="nw-date" id="nwDate" datetime="{today.isoformat()}">{today.strftime('%A, %-d %B %Y')}</time><span>News of the hunt</span></p>
         <div class="nw-paper">
-        <div class="nw-sec">{''.join(second(s) for s in TOP)}</div>
+        <div class="nw-sec">{_secs()}</div>
         <ul class="nw-more" aria-label="More news">{''.join(line(s) for s in S if s not in TOP)}</ul>
         {DSC}
         <article class="nw-lead nw-lead-last">
