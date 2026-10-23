@@ -4425,3 +4425,10 @@ a.nw-tag:hover{text-decoration:underline}
 .nw-short-h{font-variant:small-caps;letter-spacing:.12em;font-weight:700;margin:0 0 .35rem;color:var(--ink)}
 .nw-short p{margin:.35rem 0}
 .nw-short-m{font-size:.92rem}
+
+/* the side slideshow: the masthead plates again, at 16:9, under the valley map */
+.side-show{position:relative; aspect-ratio:16/9; max-width:100%; margin:0 0 .8rem; border-radius:8px; overflow:hidden; border:1px solid color-mix(in srgb, var(--gold) 75%, transparent); box-shadow:0 10px 24px -14px rgba(0,0,0,.55); background:#0b1622}
+.side-show::after{content:""; position:absolute; inset:.3rem; border:1px solid color-mix(in srgb, #f1d98a 65%, transparent); border-radius:5px; pointer-events:none}
+.side-show img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.6s ease}
+.side-show img.on{opacity:1}
+@media (prefers-reduced-motion: reduce){ .side-show img{transition:none} }
