@@ -1,7 +1,7 @@
 # The sponsors page: who keeps the hunt free, what sponsorship buys and what it never buys, and the ledger.
 import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page
 M='mailto:research@projectscroll.com?subject='
-body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
+body=f'''    <p class="crumb"><a href="/sponsor-and-advertise/">← Sponsor &amp; advertise</a></p>
     <p class="kicker">Keeping the hunt free</p>
     <h1>Sponsor the hunt</h1>
     <p class="lede">The hunt is free to play and always will be. The research behind it is not free to do: the scans, the certificates, the microfilm, the hours in the record. Sponsors pay for those. In return they are named, thanked, and shown exactly what their money bought.</p>
@@ -58,6 +58,7 @@ body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <h2>Friends of the hunt</h2>
     <p class="note" id="friends">No names yet. The first will be here, and so will the hundredth.</p>
 
+    <p class="note">Want a labelled place for your business instead? That is advertising, and it is kept separate: <a href="/advertise/">Advertise with us</a>.</p>
     <p class="note">Sponsorship is income to Project Scroll, an independent research desk, and is not a tax-deductible gift. Sponsors are listed with their permission and may be anonymous. Questions: <a href="mailto:research@projectscroll.com?subject=Sponsorship">research@projectscroll.com</a>.</p>
     <p class="ctas"><a class="btn primary" href="{M}Sponsorship">Write to the desk</a> <a class="btn" href="/#hunt">Play the hunt</a> <a class="btn" href="/research/">Research services</a></p>
 '''

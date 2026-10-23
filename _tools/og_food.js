@@ -1,4 +1,4 @@
-// Draws the colourful 1200x630 share cards for the food pages into /og/:  NODE_PATH=$(npm root -g) node _tools/og_food.js
+// Draws the colourful 1200x630 share cards for the food, sponsor and advertise pages into /og/:  NODE_PATH=$(npm root -g) node _tools/og_food.js
 const { chromium } = require('playwright'); const path=require('path'); const fs=require('fs');
 const R=path.resolve(__dirname,'..'); const F=f=>'file://'+path.join(R,'fonts',f);
 const PC=k=>'file://'+path.join(R,'img/oldcards',k+'-700.webp'); const FD=k=>'file://'+path.join(R,'img/food',k+'.webp');
@@ -12,6 +12,10 @@ const CARDS=[
    [[PC('ps091'),'left:-30px;bottom:24px;width:230px;transform:rotate(-3.5deg)']]],
  ['food-recipes','The valley kitchen','Old recipes, word for word','From the cookbooks and newspapers of the valley, 1896 to 1921, with notes for today’s kitchen.',PC('ps050'),'center 50%',
    [[FD('cover-three-rivers'),'left:40px;top:52px;width:200px;transform:rotate(-7deg)'],[FD('cover-dr-miles'),'left:150px;bottom:48px;width:300px;transform:rotate(4deg)']]],
+ ['sponsor-and-advertise','Support the work','Sponsor & advertise','Two ways to be part of a free local-history hunt: pay for the research, or take a labeled place for your business.',PC('ps051'),'center 60%',
+   [[PC('ps053'),'right:26px;bottom:26px;width:270px;transform:rotate(3deg)']]],
+ ['advertise','For businesses in the valley','Advertise with Project Scroll','Partner cards, seasonal spots, Facebook features, passport stops and hunt prizes. Every paid place labeled.',PC('ps091'),'center 35%',
+   [[FD('cover-dr-miles'),'right:30px;bottom:30px;width:280px;transform:rotate(4deg)']]],
 ];
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
 (async()=>{const b=await chromium.launch(); const p=await b.newPage({viewport:{width:1200,height:630}});

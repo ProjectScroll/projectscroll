@@ -332,7 +332,7 @@ BEFORE = ('<h2>Before you go</h2>\n    <ul class="dis">\n'
       '      <li><b>Call or check first.</b> Hours change with the seasons, and small places close for holidays and family days.</li>\n'
       '      <li><b>Make a day of it.</b> Pair a meal with the <a href="/museums/">museums nearby</a>, the <a href="/walk/">Broadway walk</a> or a <a href="/seasons/">festival</a>.</li>\n'
       '      <li><b>Know a place with a story?</b> <a href="/#contact">Tell us</a>, with what you know of its history.</li>\n'
-      '      <li><b>Own one of these places?</b> You can <a href="/sponsors/">sponsor or advertise</a>; paid places are always marked, and the listings are never for sale.</li>\n    </ul>')
+      '      <li><b>Own one of these places?</b> You can <a href="/sponsor-and-advertise/">sponsor or advertise</a>; paid places are always marked, and the listings are never for sale.</li>\n    </ul>')
 NOTE = '<p class="note">Every place here was chosen for its history and checked against its own website, or a city, county or tourism page, in October 2026. No place paid to be listed; any sponsor will always be marked as one. Places marked “check before you go” could not be fully confirmed online.</p>'
 def places_page(ty, title, h1, lede, items_html, n, kcs, cur, hkey, hfb):
     chips = '<button type="button" class="btn fd-k" data-kc="" aria-pressed="true">Any sort</button>' + ''.join(f'<button type="button" class="btn fd-k" data-kc="{k}" aria-pressed="false">{t}</button>' for k, t in kcs)
