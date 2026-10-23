@@ -170,8 +170,8 @@ document.addEventListener('DOMContentLoaded', function(){ "use strict";
 });
 </script>'''
 CARDS = [
- ('/food/#eat', 'Eat', f'{n_eat} places to eat with a story: old taverns, soda fountains, a diner beside an auto museum, orchards and farm markets.'),
- ('/food/#stay', 'Stay', f'{n_stay} inns, bed and breakfasts and historic hotels, from Kalamazoo to the lakeshore.'),
+ ('/food/eat/', 'Eat', f'{n_eat} places to eat with a story: old taverns, soda fountains, a diner beside an auto museum, orchards and farm markets.'),
+ ('/food/stay/', 'Stay', f'{n_stay} inns, bed and breakfasts and historic hotels, from Kalamazoo to the lakeshore.'),
  ('/seasons/', 'What’s on', f'{len(S)} fairs, festivals, harvests and holiday walks on a twelve-month calendar you can subscribe to.'),
  ('/museums/', 'Museums & historic places', f'{len(M)} museums, historic houses, libraries and archives on one map, with “open today”, directions and a trip planner.'),
  ('/walk/', 'Walk old Broadway', 'Eleven stops through downtown Cassopolis, with old postcards and the 1860 plan underfoot. Works offline.'),

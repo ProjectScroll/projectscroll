@@ -34,7 +34,7 @@ def fplace(d):
     if isinstance(ll, str): ll = json.loads(ll)
     return {'i': 'f:'+FID[d['name']], 'n': d['name'], 't': d['town'], 'k': d.get('kind', ''),
             'g': 'Places to stay' if d['type'] == 'lodging' else 'Places to eat',
-            'll': ll, 'd': d['name']+', '+(d.get('address') or d['town']), 'u': '/food/#'+FID[d['name']]}
+            'll': ll, 'd': d['name']+', '+(d.get('address') or d['town']), 'u': ('/food/stay/#' if d['type'] == 'lodging' else '/food/eat/#')+FID[d['name']]}
 
 WALKS = {
  'walk': {'i': 'w:walk', 'n': 'Broadway Virtual Walk (start)', 't': 'Cassopolis', 'k': 'walking tour', 'g': 'Walking tours',

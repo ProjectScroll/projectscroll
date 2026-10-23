@@ -46,7 +46,7 @@ def schema(path, title, desc, canon, og):
     import json, datetime, os
     top=path.split('/')[0]; parts=[p for p in path.replace('index.html','').split('/') if p]
     crumbs=[{"@type":"ListItem","position":1,"name":"Project Scroll","item":"https://projectscroll.com/"}]
-    names={'news':'News of the hunt','hunt':'The hunt','notes':'Field notes','map':'Map room','cases':'Cases','guide':'Guides','families':'Family histories','legends':'Family legends','records':'Where the records are','glossary':'Glossary','toolkit':'Toolkit','badges':'Badges','about':'About','document':'Document of the month','privacy':'Privacy','cassopolis':'Cassopolis','research':'Research services'}
+    names={'news':'News of the hunt','hunt':'The hunt','notes':'Field notes','map':'Map room','cases':'Cases','guide':'Guides','families':'Family histories','legends':'Family legends','records':'Where the records are','glossary':'Glossary','toolkit':'Toolkit','badges':'Badges','about':'About','document':'Document of the month','privacy':'Privacy','cassopolis':'Cassopolis','research':'Research services','food':'Food & Recipes'}
     url='https://projectscroll.com/'
     for i,p in enumerate(parts):
         url+=p+'/'; crumbs.append({"@type":"ListItem","position":i+2,"name":names.get(p, title.split(' · ')[0]) if i<len(parts)-1 else title.split(' · ')[0],"item":url})
@@ -123,7 +123,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=1cd8c1c1">
+<link rel="stylesheet" href="/site.min.css?v=844f5a45">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"href_matches":"/*"}},{{"not":{{"href_matches":["/*.pdf","/*.zip","/*.xml","/*.json"]}}}},{{"not":{{"selector_matches":"[download], [target=_blank]"}}}}]}},"eagerness":"moderate"}}],"prerender":[{{"where":{{"and":[{{"selector_matches":".bar a, .toolrow .nd a, .crumb a, footer nav a, .partrail a, .search-res a"}},{{"href_matches":"/*"}},{{"not":{{"href_matches":["/*.pdf","/map/3d/*"]}}}}]}},"eagerness":"conservative"}}]}}</script>
 </head>
 <body>
@@ -180,7 +180,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=1cd8c1c1" defer></script>
+<script src="/site.min.js?v=844f5a45" defer></script>
 </body>
 </html>
 '''

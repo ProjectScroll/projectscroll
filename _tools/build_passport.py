@@ -15,7 +15,7 @@ for f, key, url in (('walk.json','ps-walk-stamp','/walk/'), ('walk-dowagiac.json
 used = set()
 for d in json.load(open(P/'food.json')):
     s = slug(d['name']+' '+d['town']) if slug(d['name']) in used else slug(d['name']); used.add(s)
-    names['ps-food-stamp|'+s] = [d['name'], d['town'], '/food/#'+s]
+    names['ps-food-stamp|'+s] = [d['name'], d['town'], ('/food/stay/#' if d['type']=='lodging' else '/food/eat/#')+s]
 for d in json.load(open(P/'seasons.json')):
     names['ps-fest|'+slug(d['name'])] = [d['name'], d['town'], '/seasons/#'+slug(d['name'])]
 N = json.dumps(names, ensure_ascii=False, separators=(',',':')).replace('</','<\\/')
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function(){ "use strict";
     a.appendChild(k); a.appendChild(t); a.appendChild(b); a.appendChild(d); li.appendChild(a); ul.appendChild(li); });
   /* the fall trail */
   var has=function(k,id){ return all.some(function(s){ return s.href && s.href.indexOf(id)>=0; }); };
-  [['bonneyville-mill','/museums/#bonneyville-mill'],['jollay-orchards','/food/#jollay-orchards'],['dowagiac-area-history-museum','/museums/#dowagiac-area-history-museum']].forEach(function(x){ var el=document.querySelector('.pp-trail [data-id="'+x[0]+'"]'); if (el && has(null,x[0])) el.classList.add('done'); });
+  [['bonneyville-mill','/museums/#bonneyville-mill'],['jollay-orchards','/food/eat/#jollay-orchards'],['dowagiac-area-history-museum','/museums/#dowagiac-area-history-museum']].forEach(function(x){ var el=document.querySelector('.pp-trail [data-id="'+x[0]+'"]'); if (el && has(null,x[0])) el.classList.add('done'); });
   /* the certificate */
   var cn=$('#ppName'); try{ cn.value=localStorage.getItem('ps-pp-name')||''; }catch(e){}
   $('#ppCert').disabled=n<10; $('#ppCertMsg').textContent=n<10? 'The certificate opens at ten stamps.' : '';
@@ -70,7 +70,7 @@ body = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <div id="ppHave" hidden><ol class="mu-stamps pp-list" id="ppList"></ol></div>
     <section class="pp-trail" aria-labelledby="ppTH"><h2 id="ppTH">This season’s trail: the harvest</h2>
       <p>Between September and November, stamp all three: the mill that grinds the grain, the orchard that has farmed the same ground since 1857, and the town where the stoves were made. All three in one fall earns the harvest badge.</p>
-      <ol class="pp-tl"><li data-id="bonneyville-mill"><a href="/museums/#bonneyville-mill">Bonneyville Mill</a>, Bristol, Indiana</li><li data-id="jollay-orchards"><a href="/food/#jollay-orchards">Jollay Orchards</a>, Coloma, Michigan</li><li data-id="dowagiac-area-history-museum"><a href="/museums/#dowagiac-area-history-museum">Dowagiac Area History Museum</a>, Dowagiac, Michigan</li></ol>
+      <ol class="pp-tl"><li data-id="bonneyville-mill"><a href="/museums/#bonneyville-mill">Bonneyville Mill</a>, Bristol, Indiana</li><li data-id="jollay-orchards"><a href="/food/eat/#jollay-orchards">Jollay Orchards</a>, Coloma, Michigan</li><li data-id="dowagiac-area-history-museum"><a href="/museums/#dowagiac-area-history-museum">Dowagiac Area History Museum</a>, Dowagiac, Michigan</li></ol>
       <p class="note">A new trail opens each season. Check the mill’s and the museum’s hours before you go.</p></section>
     <section aria-labelledby="ppPH"><h2 id="ppPH">A paper passport</h2>
       <p>Prefer paper? Print the passport booklet: a box for every museum, walk stop, table and festival the site counts, to fill with stamps, signatures or dates as you go. Print it double-sided, fold it, and take it with you.</p>

@@ -1371,7 +1371,7 @@ try{ (function(){
   try{ document.querySelectorAll('.nw-print').forEach(function(b){ b.addEventListener('click', function(){ document.querySelectorAll('.nw-art img[loading=lazy]').forEach(function(i){ i.loading='eager'; }); setTimeout(function(){ window.print(); }, 400); }); }); }catch(err){ psFail(err); }
   /* ---------- story pictures: open large, with caption, step through with the arrow keys ---------- */
   try{ (function(){
-    const all=[].slice.call(document.querySelectorAll('.nw-art a.nw-pz, .rc-pic a.nw-pz')); if (!all.length || !window.HTMLDialogElement) return; const seen={}, links=[]; all.forEach(function(a){ if (!(a.href in seen)){ seen[a.href]=links.length; links.push(a); } });
+    const all=[].slice.call(document.querySelectorAll('.nw-art a.nw-pz, .rc-pic a.nw-pz, .rc-photo a.nw-pz, .rc-thumbs a.nw-pz')); if (!all.length || !window.HTMLDialogElement) return; const seen={}, links=[]; all.forEach(function(a){ if (!(a.href in seen)){ seen[a.href]=links.length; links.push(a); } });
     let z=null, i=0, back=null;
     const cap=function(a){ const f=a.closest('figure'); const c=f&&f.querySelector('figcaption'); return c?c.innerHTML:''; };
     const show=function(){ const a=links[i], im=a.querySelector('img'); z.querySelector('img').src=a.href; z.querySelector('img').alt=im?im.alt:''; z.querySelector('.zc').innerHTML=cap(a); z.querySelector('.zn').textContent=(i+1)+' / '+links.length; };

@@ -23,7 +23,7 @@ def eatnear(d):
     xs=sorted(((_km(d['ll'],x['ll'] if isinstance(x['ll'],list) else json.loads(x['ll'])),x) for x in _F), key=lambda t:t[0])
     xs=[(k,x) for k,x in xs if k<=12][:2]
     if not xs: return ''
-    return '<p class="fd-near">A table nearby: '+' · '.join(f'<a href="/food/#{_fid(x["name"])}">{E(x["name"])}</a> ({(k*0.621371):.0f} mi)' if k*0.621371>=1 else f'<a href="/food/#{_fid(x["name"])}">{E(x["name"])}</a> (in town)' for k,x in xs)+'</p>'
+    return '<p class="fd-near">A table nearby: '+' · '.join(f'<a href="/food/{"stay" if x.get("type")=="lodging" else "eat"}/#{_fid(x["name"])}">{E(x["name"])}</a> ({(k*0.621371):.0f} mi)' if k*0.621371>=1 else f'<a href="/food/{"stay" if x.get("type")=="lodging" else "eat"}/#{_fid(x["name"])}">{E(x["name"])}</a> (in town)' for k,x in xs)+'</p>'
 def card(d):
     dt = iso(d)
     when = E(d.get('when') or '')

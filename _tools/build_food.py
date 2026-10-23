@@ -80,7 +80,18 @@ def rec(d):
     who = f' · {E(d["contributor"])}' if d.get('contributor') else ''
     src = f'<a href="{E(d["url"])}" rel="noopener">{E(d["source_title"])}</a>' if d.get('url') else E(d['source_title'])
     course = d.get('course') or ('hint' if d['kind']=='hint' else 'main')
-    if d.get('img'):
+    ph = d.get('photos') or []
+    if ph:
+        f0 = ph[0]; wh0 = _wh(f0['src']); w0 = f' width="{wh0[0]}" height="{wh0[1]}"' if wh0 else ''
+        big = (f'<figure class="rc-photo"><a class="nw-pz" href="{E(f0["src"])}"><img src="{E(f0["src"])}"{w0} alt="{E(f0.get("alt") or d["title"])}" loading="lazy" decoding="async"></a>'
+               f'<figcaption>{E(f0.get("credit",""))}</figcaption></figure>')
+        th = ''
+        if d.get('img'):
+            th += f'<a class="nw-pz rc-printed" href="{E(d["img"])}"><img src="{E(d["img"])}" alt="{E(d["title"])}, as printed in {E(d["source_title"])}" loading="lazy" decoding="async"><span>As printed{(", "+E(str(d["year"]))) if d.get("year") else ""}</span></a>'
+        for f in ph[1:3]:
+            th += f'<a class="nw-pz" href="{E(f["src"])}"><img src="{E(f["src"])}" alt="{E(f.get("alt") or d["title"])}" loading="lazy" decoding="async"><span>{E(f.get("short") or "More")}</span></a>'
+        pic = big + (f'<div class="rc-thumbs">{th}</div>' if th else '')
+    elif d.get('img'):
         wh = _wh(d['img']); whs = f' width="{wh[0]}" height="{wh[1]}"' if wh else ''
         pic = (f'<figure class="rc-pic"><a class="nw-pz" href="{E(d["img"])}"><img src="{E(d["img"])}"{whs} alt="{E(d["title"])}, as printed in {E(d["source_title"])}" loading="lazy" decoding="async"></a>'
                f'<figcaption>As printed{(", "+E(str(d["year"]))) if d.get("year") else ""}. Tap to enlarge.</figcaption></figure>')
@@ -136,7 +147,7 @@ for d in F:
     if d.get('address'): it['address']={'@type':'PostalAddress','streetAddress':d['address'].split(',')[0],'addressLocality':d['town'],'addressRegion':d['state'],'addressCountry':'US'}
     items.append(it)
 ld='<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@type':'ItemList','name':'Places to eat and stay with a story in the St. Joseph River valley','itemListElement':[{'@type':'ListItem','position':i+1,'item':x} for i,x in enumerate(items)]},ensure_ascii=False).replace('</','<\\/')+'</script>'
-JS = r'''<script>
+PJS = r'''<script>
 (function(){ "use strict";
   var $=function(s){ return document.querySelector(s); }, $$=function(s){ return [].slice.call(document.querySelectorAll(s)); };
   var calm=matchMedia('(prefers-reduced-motion: reduce)').matches, glide=calm?'auto':'smooth';
@@ -191,7 +202,7 @@ JS = r'''<script>
     if (!navigator.geolocation){ nm.textContent='This browser cannot share a location.'; return; }
     nm.textContent='Asking your browser where you are…';
     navigator.geolocation.getCurrentPosition(function(pos){ var me=[pos.coords.latitude,pos.coords.longitude]; near=true; nb.setAttribute('aria-pressed','true'); nb.textContent='Back to the lists';
-      ['eat','stay'].forEach(function(sec){ var S=document.getElementById(sec), first=S.querySelector('.mu-list'); var lis=items.filter(function(li){ return S.contains(li); });
+      ['eat','stay'].forEach(function(sec){ var S=document.getElementById(sec); if (!S) return; var first=S.querySelector('.mu-list'); var lis=items.filter(function(li){ return S.contains(li); });
         lis.forEach(function(li){ li._d=li.dataset.ll? km(me, li.dataset.ll.split(',').map(Number)) : 1e9; });
         lis.sort(function(a,b){ return a._d-b._d; }).forEach(function(li){ first.appendChild(li); if (li._d<1e9){ var k=document.createElement('span'); k.className='fd-dist'; k.textContent=' · about '+((li._d*.621371)<10?(li._d*.621371).toFixed(1):Math.round(li._d*.621371))+' mi'; li.querySelector('.mu-k').appendChild(k); } });
         S.querySelectorAll('.fd-st').forEach(function(h){ h.classList.add('gone'); }); });
@@ -207,6 +218,20 @@ JS = r'''<script>
         else m.textContent='You look to be about '+((d*.621371)<10?(d*.621371).toFixed(1):Math.round(d*.621371))+' mi away. The stamp works at the door.'; },
         function(){ m.textContent='No location shared, so nothing changed.'; }, {enableHighAccuracy:true, timeout:20000, maximumAge:0}); }); });
   fpaint();
+  /* add to my day: the same list the Visit & Plan day builder uses, kept on this device */
+  var day=[]; try{ day=JSON.parse(localStorage.getItem('ps-day')||'[]')||[]; }catch(e){}
+  var dpaint=function(){ $$('.fd-add').forEach(function(b){ var on=day.indexOf(b.dataset.i)>=0; b.setAttribute('aria-pressed',String(on)); b.textContent=on?'On my day ✓':'Add to my day'; }); var n=$('#fdDayN'); if (n){ n.textContent=day.length; n.parentNode.hidden=!day.length; } };
+  $$('.fd-add').forEach(function(b){ b.addEventListener('click',function(){ var i=day.indexOf(b.dataset.i); if (i>=0) day.splice(i,1); else day.push(b.dataset.i); try{ localStorage.setItem('ps-day',JSON.stringify(day)); }catch(e){} dpaint(); }); });
+  dpaint();
+  draw();
+  var h=location.hash.slice(1), t=h && document.getElementById(h); if (t && t.classList.contains('fd')) setTimeout(function(){ go(t); },300);
+})();
+</script>'''
+KJS = r'''<script>
+(function(){ "use strict";
+  var $=function(s){ return document.querySelector(s); }, $$=function(s){ return [].slice.call(document.querySelectorAll(s)); };
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches, glide=calm?'auto':'smooth';
+  var go=function(li){ li.scrollIntoView({behavior:glide, block:'center'}); li.classList.remove('flash'); void li.offsetWidth; li.classList.add('flash'); };
   /* the recipe box: ticks for the ones you have cooked, kept on this device */
   var made={}; try{ made=JSON.parse(localStorage.getItem('ps-cooked')||'{}')||{}; }catch(e){}
   $$('.rc').forEach(function(li){ var b=document.createElement('button'); b.type='button'; b.className='mu-bb rc-b';
@@ -217,11 +242,6 @@ JS = r'''<script>
     var pr=document.createElement('button'); pr.type='button'; pr.className='mu-tb'; pr.textContent='Print this recipe'; pr.addEventListener('click',function(){ li.classList.add('rc-print'); document.documentElement.classList.add('rc-printing'); window.print(); });
     p.appendChild(pr); li.appendChild(p); });
   addEventListener('afterprint',function(){ document.documentElement.classList.remove('rc-printing'); $$('.rc-print').forEach(function(x){ x.classList.remove('rc-print'); }); });
-  /* add to my day: the same list the Visit & Plan day builder uses, kept on this device */
-  var day=[]; try{ day=JSON.parse(localStorage.getItem('ps-day')||'[]')||[]; }catch(e){}
-  var dpaint=function(){ $$('.fd-add').forEach(function(b){ var on=day.indexOf(b.dataset.i)>=0; b.setAttribute('aria-pressed',String(on)); b.textContent=on?'On my day ✓':'Add to my day'; }); var n=$('#fdDayN'); if (n){ n.textContent=day.length; n.parentNode.hidden=!day.length; } };
-  $$('.fd-add').forEach(function(b){ b.addEventListener('click',function(){ var i=day.indexOf(b.dataset.i); if (i>=0) day.splice(i,1); else day.push(b.dataset.i); try{ localStorage.setItem('ps-day',JSON.stringify(day)); }catch(e){} dpaint(); }); });
-  dpaint();
   /* the recipe box: find by word, kind of dish or town */
   var rq=$('#rcQ'), rp=$('#rcP'), rcs=$$('.rc-c'), rco='', rli=$$('.rc'), rcn=$('#rcCount');
   var rdraw=function(){ var w=rq.value.trim().toLowerCase().split(/\s+/).filter(Boolean), pl=rp.value, n=0;
@@ -230,8 +250,7 @@ JS = r'''<script>
   if (rq){ rq.addEventListener('input',rdraw); rp.addEventListener('change',rdraw);
     rcs.forEach(function(b){ b.addEventListener('click',function(){ rco=b.dataset.co; rcs.forEach(function(x){ x.setAttribute('aria-pressed',String(x===b)); }); rdraw(); }); }); }
   var pa=$('#rcAll'); if (pa) pa.addEventListener('click',function(){ $$('.rc').forEach(function(li){ li.classList.add('rc-print'); }); document.documentElement.classList.add('rc-printing'); window.print(); });
-  draw();
-  var h=location.hash.slice(1), t=h && document.getElementById(h); if (t && (t.classList.contains('fd') || t.classList.contains('rc'))) setTimeout(function(){ go(t); },300);
+  var h=location.hash.slice(1), t=h && document.getElementById(h); if (t && t.classList.contains('rc')) setTimeout(function(){ go(t); },300);
 })();
 </script>'''
 SEASON=[
@@ -248,9 +267,9 @@ SEASON=[
  ['November','The orchard season closes. Time for apple butter with cider from the valley kitchen.',[['Apple butter with cider','#apple-butter-with-cider']]],
  ['December','Holiday candy from the valley kitchen: maple creams and popcorn candy.',[['A $2.00 Christmas dinner, Benton Harbor, 1897','#black-pudding-and-sauce'],['Maple creams','#maple-creams'],['Popcorn candy','#popcorn-candy']]],
 ]
-JS = JS.replace('__SEASON__', json.dumps(SEASON, ensure_ascii=False))
+
 import visitdata as _V
-JS = JS.replace('__TOWNS__', json.dumps([[n,la,lo] for n,la,lo in _V.TOWNS]))
+PJS = PJS.replace('__TOWNS__', json.dumps([[n,la,lo] for n,la,lo in _V.TOWNS]))
 FIELDS = [
   ('The fruit belt', 'Along the Lake Michigan shore the big lake keeps spring frosts back and autumn warm, and for well over a century the counties near it have grown apples, peaches, cherries, grapes and blueberries. Many of the valley’s festivals are harvest festivals.', '/seasons/#summer', 'Harvest festivals by season'),
   ('Mills on every stream', 'Before the railroads, every town needed a grist mill to grind its wheat and corn, and most of the valley’s early towns grew up beside one. A few still stand, and one or two still grind.', '/roads-and-rails/', 'Roads, rails and mills'),
@@ -267,29 +286,122 @@ def fpic(t):
     return (f'<figure class="fd-pic"><a href="/postcards/#oc-{k}"><picture><source type="image/avif" srcset="/img/oldcards/{k}-700.avif"><img src="/img/oldcards/{k}-700.webp" width="700" height="{h}" alt="{E(c["title"])}, on an old postcard" loading="lazy" decoding="async"></picture></a>'
             f'<figcaption>{E(c["title"])}, {E(str(c.get("date") or ""))}{cred}</figcaption></figure>')
 fields = ''.join(f'<li class="fd-fi">{fpic(t)}<h3>{E(t)}</h3><p>{E(d)}</p><p><a href="{u}">{E(l)} ›</a></p></li>' for t,d,u,l in FIELDS)
-body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
+
+# ---------- where each old anchor now lives ----------
+RIDS = {slug(d['title']) for d in R}
+PLACE = {d['_id']: ('stay' if d['type']=='lodging' else 'eat') for d in F}
+def fix(h):
+    if not h.startswith('#'): return h
+    k=h[1:]
+    if k in RIDS or k in ('recipes','cookbooks','words'): return '/food/recipes/'+h
+    if k in PLACE: return f'/food/{PLACE[k]}/'+h
+    return '/food/'+h
+SEASON = [[m, t, [[a, fix(u)] for a, u in ls]] for m, t, ls in SEASON]
+SEASON_JSON = json.dumps(SEASON, ensure_ascii=False)
+PJS = PJS.replace('__SEASON__', SEASON_JSON)
+ART = json.load(open(P/'food_art.json')) if (P/'food_art.json').exists() else {}
+def art(key, fallback, alt=''):
+    a = (ART.get(key) or [None])[0]
+    if not a: return fallback, alt, ''
+    return a['src'], a.get('alt', alt), a.get('credit', '')
+Q = chr(34)
+def pic(src, alt, lazy=True):
+    wh = _wh(src)
+    whs = f' width="{wh[0]}" height="{wh[1]}"' if wh else ''
+    lz = ' loading="lazy"' if lazy else ''
+    return f'<img src="{E(src)}"{whs} alt="{E(alt)}"{lz} decoding="async">'
+NREC = sum(1 for d in R if d['kind']=='recipe')
+SUB = [('eat', '/food/eat/', 'Places to eat', f'{ne} places with a story: old banks, depots, family tables', '/img/oldcards/ps009-700.webp'),
+       ('stay', '/food/stay/', 'Places to stay', f'{ns} inns and bed &amp; breakfasts in old houses', '/img/oldcards/ps100-700.webp'),
+       ('kitchen', '/food/recipes/', 'The valley kitchen', f'{NREC} old recipes, with the pages they were printed on', '/img/food/cover-dr-miles.webp'),
+       ('fields', '/food/#fields', 'Where the food came from', 'Orchards, mills, celery and the stove town', '/img/oldcards/ps050-700.webp')]
+def tile(key, href, title, line, fb, cur=None):
+    src, alt, cred = art(key, fb, title)
+    ac = ' aria-current="page"' if key==cur else ''
+    return (f'<li class="ft{" on" if key==cur else ""}"><a href="{href}"{ac}><span class="ft-pic">{pic(src, "")}</span>'
+            f'<span class="ft-t">{title}</span><span class="ft-l">{line}</span></a></li>')
+def tiles(cur=None, small=False):
+    return f'<ul class="ft-grid{" ft-sm" if small else ""}" aria-label="Food, recipes and lodging">' + ''.join(tile(k, h, t, l, fb, cur) for k, h, t, l, fb in SUB) + '</ul>'
+def hero(key, fb, fbalt):
+    src, alt, cred = art(key, fb, fbalt)
+    cap = f'<figcaption>{cred}</figcaption>' if cred else ''
+    return f'<figure class="ft-hero">{pic(src, alt, lazy=False)}{cap}</figure>'
+CRUMB = '<p class="crumb"><a href="/food/">← Food &amp; Recipes</a></p>'
+DAYBTN = '<p class="vs-plan"><a class="btn" href="/visit/">Plan your visit: ready-made days out, food, lodging and festivals</a> <span hidden><a class="btn" href="/visit/#build">See my day (<span id="fdDayN">0</span>)</a></span></p>'
+BEFORE = ('<h2>Before you go</h2>\n    <ul class="dis">\n'
+      '      <li><b>Call or check first.</b> Hours change with the seasons, and small places close for holidays and family days.</li>\n'
+      '      <li><b>Make a day of it.</b> Pair a meal with the <a href="/museums/">museums nearby</a>, the <a href="/walk/">Broadway walk</a> or a <a href="/seasons/">festival</a>.</li>\n'
+      '      <li><b>Know a place with a story?</b> <a href="/#contact">Tell us</a>, with what you know of its history.</li>\n'
+      '      <li><b>Own one of these places?</b> You can <a href="/sponsors/">sponsor or advertise</a>; paid places are always marked, and the listings are never for sale.</li>\n    </ul>')
+NOTE = '<p class="note">Every place here was chosen for its history and checked against its own website, or a city, county or tourism page, in October 2026. No place paid to be listed; any sponsor will always be marked as one. Places marked “check before you go” could not be fully confirmed online.</p>'
+def places_page(ty, title, h1, lede, items_html, n, kcs, cur, hkey, hfb):
+    chips = '<button type="button" class="btn fd-k" data-kc="" aria-pressed="true">Any sort</button>' + ''.join(f'<button type="button" class="btn fd-k" data-kc="{k}" aria-pressed="false">{t}</button>' for k, t in kcs)
+    cl = sorted({d['county']+'|'+d['state'] for d in F if d['type']==ty}, key=lambda x:(x.split('|')[1]!='MI', x))
+    co = ''.join(f'<option value="{E(c.split("|")[0])}">{E(c.split("|")[0])} County, {ST[c.split("|")[1]]}</option>' for c in cl)
+    lg = '<span class="mu-lg"><i class="mu-dot fd-eat"></i> Places to eat</span>' if ty=='restaurant' else '<span class="mu-lg"><i class="mu-dot fd-stay"></i> Places to stay</span>'
+    sid = 'eat' if ty=='restaurant' else 'stay'
+    return f"""    {CRUMB}
     <p class="kicker">Food, recipes &amp; lodging</p>
-    <figure class="pg-art"><picture><source type="image/avif" srcset="/img/card-food-art-270.avif 270w, /img/card-food-art.avif 540w" sizes="8rem"><img class="vt-food" src="/img/card-food-art-270.webp" srcset="/img/card-food-art-270.webp 270w, /img/card-food-art.webp 540w" sizes="8rem" width="540" height="960" alt="" decoding="async"></picture></figure>
-    <h1>A table and a bed in the valley</h1>
-    <p class="lede" style="font-size:1.15rem">Where to eat and where to stay, chosen for their stories: dining rooms in old banks and depots, family tables that have fed a town for generations, inns in houses built before the railroad came. And from the old cookbooks and weekly papers, what the valley cooked.</p>
-    <p class="nm-chips fd-jump"><a class="btn" href="#eat">Places to eat</a><a class="btn" href="#stay">Places to stay</a><a class="btn" href="#recipes">The valley kitchen</a><a class="btn" href="#cookbooks">The cookbooks</a><a class="btn" href="#words">Old kitchen words</a><a class="btn" href="#fields">Where the food came from</a></p>
-    <aside class="fd-season" id="fdSeason" hidden aria-label="In season now"></aside>
+    <h1>{h1}</h1>
+    {hero(hkey, hfb, h1)}
+    <p class="lede" style="font-size:1.15rem">{lede}</p>
+    {tiles(cur, True)}
     <div class="mu-bar">
       <label class="nm-q"><span>Find a place</span><input type="search" id="fdQ" placeholder="A town, a kind of place, a building" autocomplete="off" spellcheck="false"></label>
-      <div class="nm-chips" role="group" aria-label="Show one kind"><button type="button" class="btn fd-f" data-ty="" aria-pressed="true">Everything</button><button type="button" class="btn fd-f" data-ty="restaurant" aria-pressed="false">Places to eat</button><button type="button" class="btn fd-f" data-ty="lodging" aria-pressed="false">Places to stay</button><button type="button" class="btn" id="fdNear" aria-pressed="false">Nearest to me</button><label class="mu-ol"><span class="vh">County</span><select id="fdC"><option value="">Every county</option>{copts}</select></label></div>
-      <div class="nm-chips" role="group" aria-label="Show one sort of place"><button type="button" class="btn fd-k" data-kc="" aria-pressed="true">Any sort</button><button type="button" class="btn fd-k" data-kc="tavern" aria-pressed="false">Taverns &amp; pubs</button><button type="button" class="btn fd-k" data-kc="dine" aria-pressed="false">Restaurants &amp; diners</button><button type="button" class="btn fd-k" data-kc="sweet" aria-pressed="false">Sweets &amp; soda fountains</button><button type="button" class="btn fd-k" data-kc="orchard" aria-pressed="false">Orchards, markets &amp; cider</button><button type="button" class="btn fd-k" data-kc="inn" aria-pressed="false">Historic inns &amp; hotels</button><button type="button" class="btn fd-k" data-kc="bnb" aria-pressed="false">Bed &amp; breakfasts</button></div>
+      <div class="nm-chips" role="group" aria-label="Show one sort of place">{chips}</div>
+      <div class="nm-chips"><button type="button" class="btn" id="fdNear" aria-pressed="false">Nearest to me</button><label class="mu-ol"><span class="vh">County</span><select id="fdC"><option value="">Every county</option>{co}</select></label></div>
       <p class="mu-nmsg" id="fdNearMsg" aria-live="polite"></p>
-      <p class="nm-count" id="fdCount" aria-live="polite">{len(F)} places</p>
+      <p class="nm-count" id="fdCount" aria-live="polite">{n} places</p>
     </div>
     <figure class="mu-mapf">
-      <div class="mu-map" id="fdMap" role="region" aria-label="Map of the places to eat and stay. Every place is also in the list below."><p class="mu-mapph">The map opens here.</p></div>
-      <figcaption><span class="mu-lg"><i class="mu-dot fd-eat"></i> Places to eat</span> <span class="mu-lg"><i class="mu-dot fd-stay"></i> Places to stay</span> <button type="button" class="btn" id="fdMu" aria-pressed="false" hidden>Show the museums too</button></figcaption>
+      <div class="mu-map" id="fdMap" role="region" aria-label="Map of {title.lower()}. Every place is also in the list below."><p class="mu-mapph">The map opens here.</p></div>
+      <figcaption>{lg} <button type="button" class="btn" id="fdMu" aria-pressed="false" hidden>Show the museums too</button></figcaption>
     </figure>
-    <section class="fd-sec" id="eat"><h2>Places to eat with a story <span class="mu-n">{ne} places</span></h2>{eat}</section>
-    <section class="fd-sec" id="stay"><h2>Places to stay <span class="mu-n">{ns} places</span></h2>{stay}</section>
-    <section id="recipes"><h2>The valley kitchen</h2>
-      <p><button type="button" class="btn" id="rcAll">Print the whole recipe box</button> <a class="btn" href="/food/valley-kitchen-recipes.pdf" download>Download the recipe booklet (PDF)</a></p>
-      <p>Recipes and household hints as they were printed, word for word: from the valley’s own cookbooks and newspapers, and from the club and church cookbooks where valley cooks signed their recipes with their home towns, from Cassopolis and Dowagiac to Goshen and South Bend. Each has a picture of the page it was printed on and a note on how to make it today. Tick the ones you have cooked: one earns a badge for your <a href="/badges/">field book</a>.</p>
+    <section class="fd-sec" id="{sid}"><h2>{title} <span class="mu-n">{n} places</span></h2>{items_html}</section>
+    {BEFORE}
+    {DAYBTN}
+    {NOTE}
+{ld}
+{PJS}
+"""
+eat_body = places_page('restaurant', 'Places to eat with a story', 'Places to eat with a story',
+    'Dining rooms in old banks and depots, taverns from the stagecoach days, family tables that have fed a town for generations, and the orchards and cider mills of the fruit belt.',
+    eat, ne, [('tavern','Taverns &amp; pubs'),('dine','Restaurants &amp; diners'),('sweet','Sweets &amp; soda fountains'),('orchard','Orchards, markets &amp; cider')], 'eat', 'eat', '/img/oldcards/ps009-700.webp')
+stay_body = places_page('lodging', 'Places to stay', 'Places to stay in the valley',
+    'Inns and bed &amp; breakfasts in houses with a past, each one chosen for its history.',
+    stay, ns, [('inn','Historic inns &amp; hotels'),('bnb','Bed &amp; breakfasts')], 'stay', 'stay', '/img/oldcards/ps100-700.webp')
+# structured data for search engines: the places as lists of businesses, the recipes as a list of recipes
+import pages as _pg
+def _biz(d, kind):
+    o={"@type":kind,"name":d['name'],"url":f"https://projectscroll.com/food/{'eat' if kind=='Restaurant' else 'stay'}/#{d['_id']}","description":d.get('what') or d.get('story','')}
+    if d.get('address'): o["address"]=d['address']
+    if d.get('ll'): o["geo"]={"@type":"GeoCoordinates","latitude":d['ll'][0],"longitude":d['ll'][1]}
+    return o
+def _list(items): return {"@type":"ItemList","numberOfItems":len(items),"itemListElement":[{"@type":"ListItem","position":i+1,"item":x} for i,x in enumerate(items)]}
+_pg.EXTRA['food/eat/index.html']={"mainEntity":_list([_biz(d,'Restaurant') for d in F if d['type']=='restaurant'])}
+_pg.EXTRA['food/stay/index.html']={"mainEntity":_list([_biz(d,'LodgingBusiness') for d in F if d['type']=='lodging'])}
+def _recipe(d):
+    img=(d.get('photos') or [{}])[0].get('src') or d.get('img') or ''
+    o={"@type":"Recipe","name":d['title'],"url":"https://projectscroll.com/food/recipes/#"+slug(d['title']),
+       "description":f"{d['title']}, as printed in {d['source_title']}" + (f", {d['source_place']}" if d.get('source_place') else '') + (f", {d['year']}" if d.get('year') else '') + '.',
+       "recipeInstructions":d['text'],"recipeCategory":CNAME.get(d.get('course'),'') if 'CNAME' in globals() else ''}
+    if img: o["image"]="https://projectscroll.com"+img
+    if d.get('contributor'): o["author"]={"@type":"Person","name":d['contributor']}
+    return o
+_pg.EXTRA['food/recipes/index.html']={"mainEntity":_list([_recipe(d) for d in R if d.get('kind')!='hint'])}
+page('food/eat/index.html', 'Places to eat with a story · Project Scroll',
+     f'{ne} places to eat in the St. Joseph River valley chosen for their history, with a map: old banks and depots, taverns, soda fountains, orchards and cider mills.', eat_body, og='https://projectscroll.com/og/food-eat.jpg?v=1')
+page('food/stay/index.html', 'Places to stay · Project Scroll',
+     f'{ns} inns and bed and breakfasts in the St. Joseph River valley, chosen for their history, with a map.', stay_body, og='https://projectscroll.com/og/food-stay.jpg?v=1')
+kitchen_body = f"""    {CRUMB}
+    <p class="kicker">Food, recipes &amp; lodging</p>
+    <h1>The valley kitchen</h1>
+    {hero('kitchen-hero', '/img/food/cover-three-rivers.webp', 'The cover of the Three Rivers Cook Book, 1896')}
+    <p class="lede" style="font-size:1.15rem">What the valley cooked, in the cooks’ own words: recipes and household hints as they were printed, from the valley’s own cookbooks and newspapers, and from the club and church cookbooks where valley cooks signed their recipes with their home towns, from Cassopolis and Dowagiac to Goshen and South Bend.</p>
+    {tiles('kitchen', True)}
+    <p class="nm-chips fd-jump"><a class="btn" href="#recipes">The recipes</a><a class="btn" href="#cookbooks">The cookbooks on the shelf</a><a class="btn" href="#words">Old kitchen words</a><button type="button" class="btn" id="rcAll">Print the whole recipe box</button><a class="btn" href="/food/valley-kitchen-recipes.pdf" download>The recipe booklet (PDF)</a></p>
+    <section id="recipes"><h2>The recipes</h2>
+      <p>Each recipe shows the dish, the page it was printed on, and a note on how to make it today. Tick the ones you have cooked: one earns a badge for your <a href="/badges/">field book</a>.</p>
       <div class="mu-bar rc-bar">
         <label class="nm-q"><span>Find a recipe</span><input type="search" id="rcQ" placeholder="An ingredient, a town, a cook" autocomplete="off" spellcheck="false"></label>
         <div class="nm-chips" role="group" aria-label="Show one kind of dish">{rchips}</div>
@@ -299,27 +411,55 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <ul class="rc-list">{recipes}</ul>
       <p class="rc-none" id="rcNone" hidden>No recipe matches. Try another word or town.</p></section>
     <section id="cookbooks"><h2>The cookbooks on the shelf</h2>
-      <p>Every recipe above comes from one of these books and papers, made by the church societies, clubs and newspapers of the valley. Each one is free to read online.</p>
+      <p>Every recipe here comes from one of these books and papers, made by the church societies, clubs and newspapers of the valley and its neighbors. Each one is free to read online.</p>
       <ul class="cb-list">{shelf}</ul></section>
     <section id="words"><h2>Old kitchen words</h2>
       <p>The old cooks wrote for readers who already knew how. Here is what their words mean in a kitchen today.</p>
       <dl class="rc-gloss">{gloss}</dl></section>
+    <p class="note">The recipes are from cookbooks and newspapers published before 1929, now in the public domain, quoted as printed; the notes on making them today are ours. Photographs of the dishes are credited on each one.</p>
+{KJS}
+"""
+page('food/recipes/index.html', 'The valley kitchen: old recipes · Project Scroll',
+     f'{len(R)} recipes and household hints from the old cookbooks and newspapers of the St. Joseph River valley, word for word, each with the page it was printed on and a note on making it today.', kitchen_body, og='https://projectscroll.com/og/food-recipes.jpg?v=1')
+# ---------- the landing page ----------
+def rphoto(d): return ((d.get('photos') or [{}])[0].get('src')) or d.get('img') or ''
+FEAT = [d for d in _RS if d['kind']=='recipe']
+feat_json = json.dumps([[slug(d['title']), d['title'], rplace(d), str(d.get('year') or ''), rphoto(d), d['text'][:150]] for d in FEAT], ensure_ascii=False)
+LJS = r"""<script>
+(function(){ "use strict";
+  var $=function(s){ return document.querySelector(s); };
+  /* old links to sections and places on the single food page now go to their own pages */
+  var MOVED=__MOVED__, h=location.hash.slice(1); if (h && MOVED[h]){ location.replace(MOVED[h]+'#'+h); return; }
+  var SEA=__SEASON__, sa=$('#fdSeason'), mo=new Date().getMonth(), z=SEA[mo];
+  if (sa && z){ sa.innerHTML='<p class="fd-sk">In season in '+z[0]+'</p><p></p><p class="fd-sl"></p>'; sa.children[1].textContent=z[1];
+    z[2].forEach(function(l,i){ var a=document.createElement('a'); a.href=l[1]; a.textContent=l[0]; if (i) sa.children[2].appendChild(document.createTextNode(' · ')); sa.children[2].appendChild(a); }); sa.hidden=false; }
+  /* a recipe of the week, the same for everyone that week */
+  var RS=__FEAT__, wk=Math.floor((Date.now()/864e5+4)/7), r=RS[wk%RS.length], box=$('#fdWeek');
+  if (box && r){ var im=box.querySelector('img'); im.src=r[4]; im.alt=r[1]; box.querySelector('.fw-t').textContent=r[1]; box.querySelector('.fw-p').textContent=r[2]+(r[3]?', '+r[3]:'');
+    box.querySelector('.fw-x').textContent='“'+r[5]+'…”'; box.querySelector('a').href='/food/recipes/#'+r[0]; }
+})();
+</script>"""
+MOVED = {k: '/food/recipes/' for k in list(RIDS) + ['recipes', 'cookbooks', 'words']}
+MOVED.update({k: f'/food/{v}/' for k, v in PLACE.items()}); MOVED.update({'eat': '/food/eat/', 'stay': '/food/stay/'})
+LJS = LJS.replace('__MOVED__', json.dumps(MOVED)).replace('__SEASON__', SEASON_JSON).replace('__FEAT__', feat_json)
+r0 = FEAT[0]
+land = f"""    <p class="crumb"><a href="/">← Project Scroll</a></p>
+    <p class="kicker">Food, recipes &amp; lodging</p>
+    <h1>Eat, stay and cook in the valley</h1>
+    {hero('header', '/img/oldcards/ps052-700.webp', 'An orchard near Benton Harbor and St. Joseph, on an old postcard')}
+    <p class="lede" style="font-size:1.15rem">Where to eat and where to stay, chosen for their stories: dining rooms in old banks and depots, family tables that have fed a town for generations, inns in houses built before the railroad came. And from the old cookbooks and weekly papers, what the valley cooked.</p>
+    {tiles()}
+    <aside class="fd-season" id="fdSeason" hidden aria-label="In season now"></aside>
+    <section class="fw" id="fdWeek" aria-label="Recipe of the week"><a href="/food/recipes/#{slug(r0['title'])}"><span class="fw-pic"><img src="{E(rphoto(r0))}" alt="{E(r0['title'])}" loading="lazy" decoding="async"></span>
+      <span class="fw-b"><span class="fw-k">Recipe of the week</span><span class="fw-t">{E(r0['title'])}</span><span class="fw-p">{E(rplace(r0))}</span><span class="fw-x">“{E(r0['text'][:150])}…”</span><span class="fw-go">Make it ›</span></span></a></section>
     <section id="fields"><h2>Where the food came from</h2><ul class="fd-fields">{fields}</ul></section>
-    <h2>Before you go</h2>
-    <ul class="dis">
-      <li><b>Call or check first.</b> Hours change with the seasons, and small places close for holidays and family days.</li>
-      <li><b>Make a day of it.</b> Pair a meal with the <a href="/museums/">museums nearby</a>, the <a href="/walk/">Broadway walk</a> or a <a href="/seasons/">festival</a>.</li>
-      <li><b>Know a place with a story?</b> <a href="/#contact">Tell us</a>, with what you know of its history.</li>
-      <li><b>Own one of these places?</b> Project Scroll is free to play and depends on sponsors. <a href="/sponsors/">See how to keep the lanterns lit</a>.</li>
-    </ul>
-    <p class="vs-plan"><a class="btn" href="/visit/">Plan your visit: ready-made days out, food, lodging and festivals</a> <span hidden><a class="btn" href="/visit/#build">See my day (<span id="fdDayN">0</span>)</a></span></p>
-    <p class="note">Every place here was chosen for its history and checked against its own website, or a city, county or tourism page, in October 2026. No place paid to be listed; any sponsor will always be marked as one. Places marked “check before you go” could not be fully confirmed online. The recipes are from cookbooks and newspapers published before 1929, now in the public domain, quoted as printed; the notes on making them today are ours.</p>
-{ld}
-{JS}
-'''
+    {BEFORE}
+    {DAYBTN}
+{LJS}
+"""
 page('food/index.html', 'Food, recipes & lodging · Project Scroll',
-     f'Where to eat and stay in the St. Joseph River valley, chosen for their history: {ne} places to eat and {ns} places to stay, with a map, plus recipes from the valley’s old cookbooks and newspapers.',
-     body, og='https://projectscroll.com/og/records.jpg')
+     f'Eat, stay and cook in the St. Joseph River valley: {ne} places to eat and {ns} places to stay chosen for their history, and {len(R)} recipes from the old cookbooks.',
+     land, og='https://projectscroll.com/og/food.jpg?v=1')
 # the museums as a small shared list for other maps
 M = json.load(open(P/'museums.json'))
 def mslug(s): return re.sub(r'[^a-z0-9]+','-',s.lower()).strip('-')
