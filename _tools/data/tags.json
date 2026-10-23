@@ -1,0 +1,20 @@
+{"_about": "Small labels beside a story's kicker. Manual tags by story; Discovery, Updated, Go see it, reading length, series and case status are added automatically by build_news.py.",
+ "tags": {
+  "the-kentucky-raid-of-1847": ["Myth tested"],
+  "how-kalamazoo-got-its-name": ["Myth tested"],
+  "e-clampus-vitus-in-cassopolis-1846": ["From the archive"],
+  "who-was-in-town-in-1860": ["From the archive"],
+  "company-d-sixth-michigan": ["From the archive"],
+  "the-courthouse-that-became-the-colonial": ["Then & now"],
+  "the-harvest-trail": ["In season"],
+  "a-paper-passport": ["For families"],
+  "where-is-this": ["Open case", "For families"],
+  "send-someone-an-old-postcard": ["For families"]
+ },
+ "cases": {"case-1-is-still-open": 1, "the-hotel-that-walked": 2},
+ "series": {
+  "The Underground Railroad": ["the-bonine-house", "the-kentucky-raid-of-1847"],
+  "E Clampus Vitus": ["e-clampus-vitus-in-cassopolis-1846", "e-clampus-vitus-the-complete-record"],
+  "How the towns got their names": ["how-cassopolis-got-its-name", "how-dowagiac-got-its-name", "how-niles-got-its-name", "how-edwardsburg-got-its-name", "how-paw-paw-got-its-name", "how-vandalia-got-its-name", "how-kalamazoo-got-its-name"],
+  "Old Cassopolis": ["dr-goodwins-hotel", "the-courthouse-that-became-the-colonial", "where-kellogg-made-its-cabinets", "race-day-at-the-cassopolis-fair"]
+ }}

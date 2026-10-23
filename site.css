@@ -4276,3 +4276,18 @@ main > section#timeline, main > section#hunt, main > section#cases, main > secti
 .od-closed{opacity:.8}
 /* the name box keeps room for its whole placeholder; the sponsor line tightens its letter-spacing to make that room */
 @media (min-width:900px){ .toolrow .pb-sponsor a{letter-spacing:.1em; gap:.35rem} .toolrow .tr-find{margin-right:.5rem} }
+.nw-ribbon.open{background:linear-gradient(180deg,#2f4f7a,#1d3352);color:#f1f5fb}
+/* small story labels */
+.nw-tags{display:flex; flex-wrap:wrap; gap:.3rem; margin:.35rem 0 .45rem; padding:0}
+.nw-tag{display:inline-block; font:600 .62rem/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; letter-spacing:.06em; text-transform:uppercase; padding:.05rem .45rem; border-radius:999px; border:1px solid var(--line); color:var(--ink-soft); background:var(--paper)}
+.nw-tag.t-disc{border-color:#b33a2a; color:#b33a2a}
+.nw-tag.t-open{border-color:#2f5f9a; color:#2f5f9a}
+.nw-tag.t-myth{border-color:#8a5a2b; color:#8a5a2b}
+.nw-tag.t-arch, .nw-tag.t-then{border-color:var(--gold-lo); color:var(--gold-lo)}
+.nw-tag.t-seas{border-color:#3f7f4a; color:#3f7f4a}
+.nw-tag.t-fam{border-color:#7a4e9c; color:#7a4e9c}
+.nw-tag.t-upd{border-color:var(--rule); color:var(--rule)}
+.nw-tag.t-visit{border-color:#1f8a8a; color:#1f8a8a}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nw-tag{filter:brightness(1.6); background:transparent} }
+:root[data-theme="dark"] .nw-tag{filter:brightness(1.6); background:transparent}
+.nw-card .nw-tags{display:flex; margin:.3rem 0}

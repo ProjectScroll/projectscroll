@@ -11,6 +11,29 @@ for _s in S:
     if _s['slug'] in _FD: _s['finds'] = [dict(x, d=x.get('d') or _s['date']) for x in _FD[_s['slug']]]
 CASES = json.load(open(f'{R}/cases.json'))['cases']
 nopen = sum(1 for c in CASES if not c.get('solved')); ncracked = len(CASES) - nopen
+_TG = json.load(open(f'{R}/_tools/data/tags.json'))
+_CBY = {c.get('id'): c for c in CASES}
+def _words(st):
+    b = st.get('body') or ''
+    b = ' '.join(map(str, b)) if isinstance(b, list) else str(b)
+    return len(re.sub('<[^>]+>', ' ', b).split())
+def tags(st, ribbon=None):
+    """small labels beside the kicker: what the research found, where it came from, what a reader can do with it"""
+    t = []
+    nf = len(_FD.get(st['slug']) or [])
+    if nf and ribbon != 'Discovery': t.append(('disc', f'Discovery · {nf} new finding' + ('s' if nf > 1 else '')))
+    cn = _TG['cases'].get(st['slug'])
+    if cn: t.append(('open', 'Solved' if (_CBY.get(cn) or {}).get('solved') else 'Open case'))
+    for x in _TG['tags'].get(st['slug'], []):
+        if not any(x == y for _, y in t): t.append(({'Open case':'open','Myth tested':'myth','From the archive':'arch','Then & now':'then','In season':'seas','For families':'fam','Reader find':'reader'}.get(x, 'x'), x))
+    if st.get('updated'): t.append(('upd', 'Updated'))
+    for name, xs in _TG['series'].items():
+        if st['slug'] in xs: t.append(('ser', f'Series · {xs.index(st["slug"])+1} of {len(xs)}')); break
+    if st.get('visit'): t.append(('visit', 'Go see it'))
+    m = max(1, round(_words(st)/200))
+    if m <= 3: t.append(('len', 'Quick read'))
+    elif m >= 10: t.append(('len', 'Long read'))
+    return '<p class="nw-tags">' + ''.join(f'<span class="nw-tag t-{c}">{E(x)}</span>' for c, x in t) + '</p>' if t else ''
 halls = sorted({c['hall'] for c in CASES if c['hall'].startswith('h')})
 def day(d, long=False):
     x = datetime.date.fromisoformat(d)
@@ -49,13 +72,13 @@ top, more = S[:4], S[4:]
 _TOPCFG = json.load(open(f'{R}/_tools/data/top.json'))['top']
 _RIB = dict(_TOPCFG)
 TOP = [x for k, _ in _TOPCFG for x in S if x['slug'] == k] or ([x for x in S if x.get('featured')] + [x for x in S if not x.get('featured')])[:2]
-_RCLS = {'Featured': '', 'Discovery': ' disc', 'Highlight': ' hl'}
+_RCLS = {'Featured': '', 'Discovery': ' disc', 'Highlight': ' hl', 'Open case': ' open'}
 brief = lambda s: (f'<article class="nw-b" data-d="{s["date"]}"><a class="nw-th" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{sqpic(s["pic"][0])}</a><p class="nw-k">{E(s["kicker"])}<span class="nw-new" hidden> · New</span></p>'
                    f'<h2><a href="/news/{s["slug"]}/">{E(s["headline"])}</a></h2></article>')
 line = lambda s: (f'<li data-d="{s["date"]}"><span class="nw-k">{E(s["kicker"])}</span> <a href="/news/{s["slug"]}/">{E(s["short"])}</a><span class="nw-new" hidden> · New</span></li>')
 FEAT = '<span class="nw-feat-k"><span aria-hidden="true">★</span> Featured</span> · '
 second = lambda s: (f'<article class="nw-s{" nw-feat" if s["slug"] in _RIB else ""}" data-d="{s["date"]}"><a class="nw-simg" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{npic(s["pic"][0], "", "(min-width:900px) 16rem, 92vw", lazy=False)}{f'<span class="nw-ribbon{_RCLS.get(_RIB[s["slug"]], "")}">{_RIB[s["slug"]]}</span>' if s["slug"] in _RIB else ""}</a>'
-                    f'<p class="nw-k">{E(s["kicker"])}<span class="nw-new" hidden> · New</span></p><h2><a href="/news/{s["slug"]}/">{E(s["headline"])}</a></h2><p class="nw-sd">{E(s.get("sdek") or s["dek"])}</p></article>')
+                    f'<p class="nw-k">{E(s["kicker"])}<span class="nw-new" hidden> · New</span></p><h2><a href="/news/{s["slug"]}/">{E(s["headline"])}</a></h2>{tags(s, _RIB.get(s["slug"]))}<p class="nw-sd">{E(s.get("sdek") or s["dek"])}</p></article>')
 _SHORTK = {'How the towns got their names': 'Town names'}
 line = lambda s: (f'<li data-d="{s["date"]}"><a class="nw-th" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{sqpic(s["pic"][0])}</a><span class="nw-lt"><span class="nw-k">{E(_SHORTK.get(s["kicker"], s["kicker"]))}</span> <a href="/news/{s["slug"]}/">{E(s["short"])}</a><span class="nw-new" hidden> · New</span></span></li>')
 _NF = sum(len(x.get('finds', [])) for x in S)
@@ -167,6 +190,7 @@ for k, st in enumerate(S):
     <article class="nw-art">
       <p class="kicker">{E(st["kicker"])}</p>
       <h1>{E(st["headline"])}</h1>
+      {tags(st, _RIB.get(st["slug"]))}
       <p class="lede">{E(st["dek"])}</p>
       {live}<p class="nw-by">{("By " + E(st["by"]) + " · ") if st.get("by") else ""}Project Scroll · {"First published " if st.get("updated") else ""}<time datetime="{st["date"]}">{day(st["date"], True)}</time>{(" · Updated <time datetime=\""+st["updated"]+"\">"+day(st["updated"], True)+"</time>") if st.get("updated") else ""} · {mins} min read <button type="button" class="linkbtn nw-share" data-t="{E(st["headline"])}">Share this story</button> <button type="button" class="linkbtn nw-print">Print or save as PDF</button> <button type="button" class="linkbtn nw-cite" data-cite="{E((st["by"] + ", " if st.get("by") else "") + "“" + st["headline"] + ",” Project Scroll, " + day(st["date"], True) + ", https://projectscroll.com/news/" + st["slug"] + "/")}">Cite this story</button> <button type="button" class="linkbtn nw-listen" hidden>Listen</button></p>
       {fig}
@@ -194,7 +218,7 @@ for k, st in enumerate(S):
 
 # ---------- 3. the news index ----------
 _ORDER = TOP + [y for y in S if y not in TOP]
-cards = ''.join(f'''<li class="nw-card" data-f="{1 if (x.get("featured") or x["slug"] in _RIB) else 0}" data-t="{E((x["kicker"]+" "+x["headline"]+" "+x["dek"]).lower())}"><a href="/news/{x["slug"]}/">{npic(x["pic"][0], "", "(min-width:900px) 15rem, 100vw", cls="nw-cimg")}<span class="nw-k">{E(x["kicker"])} · <time datetime="{x["date"]}">{day(x["date"])}</time></span><b>{E(x["headline"])}</b><span>{E(x["dek"])}</span></a></li>''' for x in _ORDER)
+cards = ''.join(f'''<li class="nw-card" data-f="{1 if (x.get("featured") or x["slug"] in _RIB) else 0}" data-t="{E((x["kicker"]+" "+x["headline"]+" "+x["dek"]).lower())}"><a href="/news/{x["slug"]}/">{npic(x["pic"][0], "", "(min-width:900px) 15rem, 100vw", cls="nw-cimg")}<span class="nw-k">{E(x["kicker"])} · <time datetime="{x["date"]}">{day(x["date"])}</time></span><b>{E(x["headline"])}</b>{tags(x, _RIB.get(x["slug"])).replace("<p ","<span ").replace("</p>","</span>")}<span>{E(x["dek"])}</span></a></li>''' for x in _ORDER)
 b = f'''    <div class="nw-index"><p class="crumb"><a href="/">← Front page</a></p>
     <p class="kicker">News of the hunt</p>
     <h1>All the news</h1>

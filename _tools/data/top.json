@@ -1,2 +1,45 @@
-{"_about": "The stories at the top of the front page and the news, in order, with the ribbon each one wears: Featured, Discovery or Highlight.", 
- "top": [["e-clampus-vitus-in-cassopolis-1846", "Discovery"], ["the-bonine-house", "Discovery"], ["the-kentucky-raid-of-1847", "Discovery"], ["how-kalamazoo-got-its-name", "Discovery"], ["e-clampus-vitus-the-complete-record", "Featured"], ["stone-lake-the-lake-that-keeps-secrets", "Highlight"]]}
+{
+ "_about": "The stories at the top of the front page and the news, in order, with the ribbon each one wears: Featured, Discovery, Highlight or Open case.",
+ "top": [
+  [
+   "e-clampus-vitus-in-cassopolis-1846",
+   "Discovery"
+  ],
+  [
+   "the-bonine-house",
+   "Discovery"
+  ],
+  [
+   "the-kentucky-raid-of-1847",
+   "Discovery"
+  ],
+  [
+   "how-kalamazoo-got-its-name",
+   "Discovery"
+  ],
+  [
+   "e-clampus-vitus-the-complete-record",
+   "Featured"
+  ],
+  [
+   "stone-lake-the-lake-that-keeps-secrets",
+   "Highlight"
+  ],
+  [
+   "how-niles-got-its-name",
+   "Discovery"
+  ],
+  [
+   "the-roosevelt-special-at-dowagiac",
+   "Highlight"
+  ],
+  [
+   "company-d-sixth-michigan",
+   "Featured"
+  ],
+  [
+   "case-1-is-still-open",
+   "Open case"
+  ]
+ ]
+}
