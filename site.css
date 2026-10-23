@@ -4432,3 +4432,6 @@ a.nw-tag:hover{text-decoration:underline}
 .side-show img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.6s ease}
 .side-show img.on{opacity:1}
 @media (prefers-reduced-motion: reduce){ .side-show img{transition:none} }
+
+/* pictures: no long-press save on phones, no dragging to the desktop */
+img,picture,svg image{-webkit-touch-callout:none;-webkit-user-drag:none;user-select:none}

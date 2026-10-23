@@ -35,10 +35,10 @@ terms='''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li>Links to other sites are offered for your research. We do not control those sites and are not responsible for their content or their privacy practices.</li>
     </ul>
     <h2 id="copyright">Copyright</h2>
-    <p>The text, design and original artwork of Project Scroll are © 2026 Project Scroll. You are welcome to quote a passage with credit and a link; please ask before reusing whole pages or artwork. Public-domain maps and documents stay public domain: the credit line on each says where the original is held. To cite a page, use the form in the footer.</p>
+    <p>The text, design and original artwork of Project Scroll are © 2026 Project Scroll. You are welcome to quote a passage with credit and a link; please ask before reusing whole pages. The original photographs, illustrations, artwork and studio images on this site may not be downloaded, copied or reused without written permission from Project Scroll. Public-domain maps and documents stay public domain: the credit line on each says where the original is held. To cite a page, use the form in the footer.</p>
     <h2 id="liability">Limits</h2>
     <p>The site is offered as it is, without warranties of any kind. To the extent the law allows, Project Scroll is not liable for any loss or harm arising from use of the site or reliance on its contents. These terms may change; the date below says when they last did.</p>
-    <p class="note">Last updated 20 October 2026. Questions: <a href="mailto:research@projectscroll.com?subject=Terms">research@projectscroll.com</a>. See also the <a href="/privacy/">privacy page</a> and the <a href="/accessibility/">accessibility statement</a>.</p>
+    <p class="note">Last updated 23 October 2026. Questions: <a href="mailto:research@projectscroll.com?subject=Terms">research@projectscroll.com</a>. See also the <a href="/privacy/">privacy page</a> and the <a href="/accessibility/">accessibility statement</a>.</p>
 '''
 page('terms/index.html','Terms and disclaimers · Project Scroll','The plain terms of Project Scroll: nothing is buried, never dig or trespass, recognition not prizes, history from the record but not guaranteed, and how pictures, sponsorship and copyright work.',terms)
 

@@ -1709,12 +1709,12 @@ try{ (function(){
   const set=mh.dataset.set.split(';').map(function(x){ const p=x.split('|'); return {id:p[0], pos:(p[2]||'50% 50%').split(' ')[0]+' 50%'}; }).filter(function(k){ return k.id; });
   for (let n=set.length-1; n>0; n--){ const r=Math.floor(Math.random()*(n+1)); const t=set[n]; set[n]=set[r]; set[r]=t; }
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches; let i=0, cur=box.querySelector('img'), seen=false, t=null;
-  const src=function(k){ return '/img/strip/'+k.id+'.webp'; };
-  const show=function(k){ const n=document.createElement('img'); n.alt=''; n.width=480; n.height=270; n.decoding='async'; n.style.objectPosition=k.pos; n.src=src(k);
+  const src=function(k){ return '/img/side/'+k.id+'.webp'; };
+  const show=function(k){ const n=document.createElement('img'); n.alt=''; n.width=480; n.height=270; n.decoding='async'; n.src=src(k);
     const go=function(){ box.appendChild(n); void n.offsetWidth; n.classList.add('on'); const old=cur; cur=n; if (old){ old.classList.remove('on'); setTimeout(function(){ if (old.parentNode) old.remove(); }, 1800); } };
     if (n.complete) go(); else n.addEventListener('load', go, {once:true}); };
   const pre=function(k){ const im=new Image(); im.src=src(k); };
-  cur.style.objectPosition=set[0].pos; cur.src=src(set[0]); cur.addEventListener('load', function(){ cur.classList.add('on'); }, {once:true}); if (cur.complete) cur.classList.add('on'); pre(set[1]);
+  cur.src=src(set[0]); cur.addEventListener('load', function(){ cur.classList.add('on'); }, {once:true}); if (cur.complete) cur.classList.add('on'); pre(set[1]);
   const arm=function(){ clearTimeout(t); if (!seen || reduce) return; t=setTimeout(function(){ if (document.documentElement.classList.contains('calm')){ arm(); return; } i=(i+1)%set.length; show(set[i]); pre(set[(i+1)%set.length]); arm(); }, 8000+Math.random()*12000); };
   if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ seen=es[0].isIntersecting; arm(); }, {threshold:.3}).observe(box);
 })(); }catch(err){ psFail(err); }
@@ -1725,4 +1725,11 @@ try{ (function(){
   const fit=function(){ if (innerWidth<900){ hero.style.removeProperty('--nwtop'); return; }
     hero.style.setProperty('--nwtop','0px'); const d=hk.getBoundingClientRect().top - side.getBoundingClientRect().top; hero.style.setProperty('--nwtop', Math.max(0, Math.round(d))+'px'); };
   fit(); addEventListener('resize', fit); addEventListener('load', fit); if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})(); }catch(err){ psFail(err); }
+
+/* ---------- pictures: no right-click save, no dragging (the menu still works everywhere else) ---------- */
+try{ (function(){
+  const isPic=function(t){ return t && t.closest && t.closest('img, picture, .mh-pic, .side-show, .vs-f, .nw-fig, figure'); };
+  document.addEventListener('contextmenu', function(e){ if (isPic(e.target) && e.target.tagName==='IMG' || (e.target.closest && e.target.closest('img, picture'))) e.preventDefault(); }, true);
+  document.addEventListener('dragstart', function(e){ if (e.target && e.target.tagName==='IMG') e.preventDefault(); }, true);
 })(); }catch(err){ psFail(err); }
