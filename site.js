@@ -326,7 +326,7 @@ function psWhenNear(el, fn){ if (!el) return; if (!('IntersectionObserver' in wi
     list.forEach(function(c){ if (new Date(c[0]+'T00:00:00')<=today) cur=c; });
     document.getElementById('clueLbl').textContent='Clue of the week · '+cur[1];
     document.getElementById('clueText').textContent=cur[2];
-    const cl=document.getElementById('clueLink'); cl.href='#case-'+cur[3]; cl.textContent='It’s Case '+cur[3]+' on the case board';
+    const cl=document.getElementById('clueLink'); cl.href='/cases/#case-'+cur[3]; cl.textContent='It’s Case '+cur[3]+' on the case board';
   }catch(e){} }
 
   /* the whisper: the open questions, one at a time, under the hero; and a red dot on Hunt while this week's clue is fresh */
@@ -336,7 +336,7 @@ function psWhenNear(el, fn){ if (!el) return; if (!('IntersectionObserver' in wi
       const all=JSON.parse(raw.textContent), today=new Date().toISOString().slice(0,10);
       const out=all.filter(function(c){ return c[0]<=today; }); const list=(out.length?out:all.slice(0,1)).slice().reverse();
       if (list.length){
-        let i=0; const show=function(){ const c=list[i%list.length]; WQ.textContent=c[2]; WQ.href='#case-'+c[3]; W.hidden=false; };
+        let i=0; const show=function(){ const c=list[i%list.length]; WQ.textContent=c[2]; WQ.href='/cases/#case-'+c[3]; W.hidden=false; };
         show();
         const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
         let hold=false; W.addEventListener('pointerenter', function(){ hold=true; }); W.addEventListener('pointerleave', function(){ hold=false; });
@@ -1736,7 +1736,7 @@ try{ (function(){
 
 /* ---------- long home-page sections fold to their opening, with a button; a link into one opens it ---------- */
 try{ (function(){
-  const ids=['method','marks','notes','faq']; const secs=[];
+  const ids=[]; const secs=[];
   ids.forEach(function(id){ const sec=document.getElementById(id); if (!sec) return; const intro=sec.querySelector(':scope > .intro') || sec.querySelector(':scope > h2'); if (!intro) return;
     const h=sec.querySelector(':scope > h2'); const b=document.createElement('button'); b.type='button'; b.className='btn fold-b'; b.textContent='Read the whole section'+(h?': '+h.textContent:''); b.setAttribute('aria-expanded','false');
     b.addEventListener('click', function(){ sec.classList.remove('fold'); b.remove(); }); intro.after(b); sec.classList.add('fold'); secs.push([sec,b]); });

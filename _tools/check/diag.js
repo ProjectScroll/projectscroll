@@ -18,17 +18,20 @@ for (const [w,cs,label] of [[1280,'light','computer/light'],[1280,'dark','comput
  const sw=await q.evaluate(()=>[document.documentElement.scrollWidth,innerWidth]); ok(P+'no sideways scrolling', sw[0]<=sw[1], sw.join('/'));
  // menu or nav
  if (w<880){ await q.click('#menu'); await q.waitForTimeout(200); const open=await q.evaluate(()=>getComputedStyle(document.querySelector('.bar nav')).display!=='none'); ok(P+'phone Menu opens',open);
-   await q.click('.bar nav a[href="/#cases"]'); await q.waitForTimeout(700); const closed=await q.evaluate(()=>!document.querySelector('.bar').classList.contains('open')); ok(P+'Menu closes after choosing a section',closed); }
+   await q.click('.bar nav a[href="/#contact"]'); await q.waitForTimeout(700); const closed=await q.evaluate(()=>!document.querySelector('.bar').classList.contains('open')); ok(P+'Menu closes after choosing a section',closed); }
  else { const tg=await q.evaluate(()=>[...document.querySelectorAll('.bar nav a[href^="/#"]')].every(a=>document.querySelector(a.getAttribute('href').slice(1)))); ok(P+'every top-bar link has a section',tg); }
  // all anchor targets
  const missing=await q.evaluate(()=>[...document.querySelectorAll('a[href^="#"]')].map(a=>a.getAttribute('href')).filter(h=>h.length>1&&!document.querySelector(h))); ok(P+'every on-page link points somewhere', missing.length===0, missing.join(' '));
  const dup=await q.evaluate(()=>{const s={},d=[];document.querySelectorAll('[id]').forEach(e=>{if(s[e.id])d.push(e.id);s[e.id]=1});return d}); ok(P+'no duplicate ids', dup.length===0, dup.join(' '));
  // footnote
  await q.click('#star'); await q.waitForTimeout(300); ok(P+'asterisk lights its footnote', await q.evaluate(()=>document.getElementById('foot').classList.contains('lit')));
- // popovers
+ const go=async u=>{ await q.goto(BASE+u); await q.waitForTimeout(600); };
+ // popovers (on the services page now)
+ await go('/services/');
  await q.click('button[popovertarget="s2"]'); await q.waitForTimeout(300); const po=await q.evaluate(()=>document.getElementById('s2').matches(':popover-open')); ok(P+'source card opens',po);
  if(po){ await q.click('#s2 .close'); await q.waitForTimeout(300); ok(P+'source card closes', !(await q.evaluate(()=>document.getElementById('s2').matches(':popover-open')))); }
- // case board
+ // case board (its own page now)
+ await go('/cases/');
  await q.click('.filters [data-f="h1"]'); let vis=await q.evaluate(()=>[...document.querySelectorAll('tr[id^=case-]')].filter(r=>!r.hidden).length); ok(P+'filter: first hall shows 2 cases',vis===2,String(vis));
  await q.click('.filters [data-f="h2"]'); vis=await q.evaluate(()=>[...document.querySelectorAll('tr[id^=case-]')].filter(r=>!r.hidden).length); ok(P+'filter: second hall shows 7',vis===7,String(vis));
  await q.click('.filters [data-f="desk"]'); vis=await q.evaluate(()=>[...document.querySelectorAll('tr[id^=case-]')].filter(r=>!r.hidden).length); ok(P+'filter: from the desk shows 1',vis===1,String(vis));
@@ -36,19 +39,24 @@ for (const [w,cs,label] of [[1280,'light','computer/light'],[1280,'dark','comput
  await q.click('#case-4 .follow'); await q.click('.filters [data-f="mine"]'); vis=await q.evaluate(()=>[...document.querySelectorAll('tr[id^=case-]')].filter(r=>!r.hidden).map(r=>r.id)); ok(P+'follow a case → My cases',vis.join()==='case-4',vis.join());
  await q.click('#case-4 .follow'); await q.click('.filters [data-f="all"]');
  await q.click('#case-4 .link'); await q.waitForTimeout(200); ok(P+'copy link to a case', /copied/i.test(await q.textContent('#caseCopied')));
- // quiz
+ // quiz (on the Scrollmarks page now)
+ await go('/scrollmarks/');
  for (let i=1;i<=5;i++) await q.click(`#quiz .qlist > li:nth-child(${i}) .qopts .mk >> nth=1`);
  ok(P+'quiz scores all five', /of 5/.test(await q.textContent('#qscore')), await q.textContent('#qscore'));
  await q.click('#qreset'); ok(P+'quiz Try again resets', (await q.textContent('#qscore')).trim()==='');
  // timeline
+ await go('/');
  const tl0=await q.evaluate(()=>document.getElementById('tl').scrollLeft);
  if (w>=640){ await q.click('.tl-nav.next'); await q.waitForTimeout(700); } else { await q.evaluate(()=>document.getElementById('tl').scrollBy(300,0)); await q.waitForTimeout(300); }
  ok(P+'timeline moves', (await q.evaluate(()=>document.getElementById('tl').scrollLeft))>tl0);
- // try it
+ // try it (Lesson No. 1, now its own page)
+ await go('/notes/from-the-desk/');
  await q.click('.card[data-pick="a"]'); ok(P+'two-record puzzle answers', (await q.textContent('#verdict')).length>20);
- // faq
+ // faq (its own page now)
+ await go('/faq/');
  await q.click('#faqall'); ok(P+'open all answers', await q.evaluate(()=>[...document.querySelectorAll('details.faq')].every(d=>d.open)));
  // form
+ await go('/');
  await q.fill('[name=names]','Test Name'); await q.click('#copy'); await q.waitForTimeout(300);
  ok(P+'message form copies', /Copied/.test(await q.textContent('#copied')) && (await q.evaluate(()=>navigator.clipboard.readText())).includes('Test Name'), await q.textContent('#copied'));
  await q.click('#clearmsg'); ok(P+'message form clears', (await q.inputValue('[name=names]'))==='');

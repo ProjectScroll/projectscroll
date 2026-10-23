@@ -75,7 +75,7 @@ document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-
       Project Scroll
     </a>
     <nav aria-label="Sections" id="sitenav">
-      <a href="/hunt/">Hunt</a><a href="/news/">News</a><a href="/food/">Food &amp; Recipes</a><a href="/#cases">Cases</a><a href="/notes/">Field Notes</a><a href="/#services">Services</a><a href="/#contact">Contact</a>
+      <a href="/hunt/">Hunt</a><a href="/news/">News</a><a href="/food/">Food &amp; Recipes</a><a href="/cases/">Cases</a><a href="/notes/">Field Notes</a><a href="/services/">Services</a><a href="/#contact">Contact</a>
     </nav>
     <button class="searchbtn" type="button" id="searchBtn" aria-label="Search the site" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     <a class="badgelink" id="badgeLink" href="/badges/" aria-label="Your badges"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3l4.6 9.4 10.4 1.5-7.5 7.3 1.8 10.3L20 26.6l-9.3 4.9 1.8-10.3-7.5-7.3 10.4-1.5z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg><span class="bn" id="badgeN" hidden></span></a>
@@ -238,13 +238,13 @@ if('requestIdleCallback' in window)requestIdleCallback(otd,{timeout:2500});else 
             <li><a href="/story/"><b>Share your story</b><span>A family memory, a photograph, a find</span></a></li>
             <li><a href="/heirlooms/"><b>Heirlooms</b><span>What the valley handed down</span></a></li>
             <li><a href="/postcards/"><b>Send an old postcard</b><span>Any card in the gallery, with your own message</span></a></li>
-            <li><a href="/#services"><b>Bring us a mystery</b><span>Research help for your own family puzzle</span></a></li>
+            <li><a href="/services/"><b>Bring us a mystery</b><span>Research help for your own family puzzle</span></a></li>
             <li><a href="mailto:research@projectscroll.com?subject=A%20story%20for%20Project%20Scroll"><b>Write for Project Scroll</b><span>Contributed articles carry your name</span></a></li></ul></div></div>
         <div class="door"><a class="tcard dcard" href="/hunt/" data-door="drHunt" aria-controls="drHunt" aria-expanded="false"><picture><source type="image/avif" srcset="/img/card-hunt-art-270.avif 270w, /img/card-hunt-art.avif 540w" sizes="(min-width:900px) 7.1rem, 9.5rem"><img src="/img/card-hunt-art-270.webp" srcset="/img/card-hunt-art-270.webp 270w, /img/card-hunt-art.webp 540w" sizes="(min-width:900px) 7.1rem, 9.5rem" width="540" height="960" alt="" loading="lazy" decoding="async"></picture><span>The<br>Hunt</span></a>
           <div class="drp" id="drHunt" popover><p class="drp-h">The hunt</p><ul>
             <li><a href="/hunt/"><b>Enter the hunt</b><span>Levels, side quests and your hunter’s card</span></a></li>
             <li><a href="/cases/1/"><b>Start with Case 1</b><span>Who told Shepard the story of the 1846 lodge?</span></a></li>
-            <li><a href="/#cases"><b>The case board</b><span>Every open case, hall by hall</span></a></li>
+            <li><a href="/cases/"><b>The case board</b><span>Every open case, hall by hall</span></a></li>
             <li><a href="/badges/"><b>Your badges</b><span>Forty tin badges and five ranks</span></a></li>
             <li><a href="/junior/"><b>The junior hunt</b><span>Seven questions for young hunters</span></a></li>
             <li><a href="/notes/"><b>Field notes</b><span>Short lessons from real cases</span></a></li>
@@ -272,7 +272,7 @@ if('requestIdleCallback' in window)requestIdleCallback(otd,{timeout:2500});else 
             <li><a href="/notes/"><b>Field notes</b><span>Short lessons from real cases</span></a></li></ul></div></div>
       </nav>
       <div class="startpath" id="startPath" hidden><p class="sp-k" id="npH">New here? Three steps in</p><ol>
-        <li data-b="casefile"><a href="#cases">Open a case</a> <span>from the case board, and read its first source</span></li>
+        <li data-b="casefile"><a href="/cases/">Open a case</a> <span>from the case board, and read its first source</span></li>
         <li data-b="thennow"><a href="/map/then-and-now/">Lay an old town over today</a> <span>and fade between the two</span></li>
         <li data-b="street"><a href="/map/cassopolis/#nhT">Find a street that changed its name</a> <span>and earn your first real badge</span></li>
       </ol><button type="button" class="sp-x" aria-label="Hide the three steps">Hide</button></div>
@@ -316,7 +316,7 @@ if('requestIdleCallback' in window)requestIdleCallback(otd,{timeout:2500});else 
       </figure>
       </div>
       <nav class="pshows" aria-label="Old pictures and old maps"><a class="vshow pshow" href="/postcards/" id="psPc" data-set="pc-ps002|Broadway Looking South, Cassopolis, Mich · 1909;pc-ps009|Hotel Goodwin, Cassopolis, Mich · 1916;pc-ps008|The Colonial Opera House, Cassopolis, Mich · 1913;pc-ps005|Public Library, Cassopolis, Mich · 1914;pc-ps004|Cass Co. Court House, Cassopolis, Mich · 1910;pc-ps003|W. Side Main St. North, Cassopolis, Mich · 1909;pc-ps006|Michigan Central Depot, Cassopolis, Mich · 1908;pc-ps000|Birds Eye State St. East, Cassopolis, Mich · 1910;pc-ps093|Forest Hall, Diamond Lake, Cassopolis · 1909;pc-ps011|Beckwith Building, Dowagiac, Mich · 1912;pc-ps014|Our New Fire Truck, Homecoming Aug. 1912, Dowagiac, Mich · 1912;pc-ps040|Front Street, looking north, Dowagiac, Mich · about 1930–45;pc-ps015|Roosevelt Special, March 30th 1912 · 1912;pc-ps016|Monument Day, Dowagiac, Mich · 1908;pc-ps041|Mill and mill pond, Dowagiac, Mich · about 1930–45;pc-ps024|Edwardsburg, Mich · 1907;pc-ps027|This is Main Street looking West, Marcellus · 1907;pc-ps033|State St., Vandalia, Mich · 1909;pc-ps046|Niles, Berrien County, Michigan (bird&#x27;s-eye view) · 1868;pc-ps052|An orchard at its best, near Benton Harbor and St. Joseph, Mich · about 1930–45;pc-ps051|Benton Harbor Fruit and Vegetable Market, largest in the world · about 1930–45;pc-ps064|Main Street looking south, Three Rivers, Michigan · about 1930–45;pc-ps067|Main Street looking west, Kalamazoo, Mich · about 1906;pc-ps071|Michigan Street, north from Washington Street, South Bend, Indiana · about 1930–45;pc-ps074|North Main St., Elkhart, Ind · 1915;pc-ps077|Court House, Goshen, Ind · 1912;pc-ps080|Main St. north from Washington St., Goshen, Ind · 1911;pc-ps081|St. Joe River bridge, Bristol, Ind · 1912;pc-ps088|Franklin St. North Market, Michigan City, Ind · 1906;pc-ps089|Hoosier Slide, Michigan City, Ind · 1907;pc-ps099|Wiest&#x27;s Resort, Indian Lake, Dowagiac · 1912;pc-ps012|M.C. R.R. Station, Dowagiac, Mich · 1910;pc-ps043|Elkhart St., Edwardsburg, Mich · 1910;pc-ps101|The court house, Cassopolis · about 1908–1916;pc-ps108|North Front Street, Dowagiac · about 1912–1918;pc-ps109|Grand Trunk depot, Edwardsburg · about 1907–1915;pc-ps111|The old mill, Vandalia · about 1908–1918;pc-ps119|A train at the depot, Vandalia · about 1907–1915;pc-ps115|The road to town, Cassopolis · about 1908–1915;pc-ps121|Main Street, Niles · about 1905–1915;pc-ps112|Building the Pioneer Log Cabin, Cassopolis · 1923;pc-ps120|Chicago Street, Edwardsburg · about 1907–1915;pc-ps116|Michigan Central depot, Cassopolis · about 1907–1915;pc-ps122|Steam shovel, White Pigeon · about 1905–1915;pc-ps117|State and Main, Vandalia · about 1907–1915"><span class="vs-f"><picture class="ps-p on"><source type="image/avif" srcset="/img/btn/pc-ps002-480.avif 480w, /img/btn/pc-ps002.avif 960w" sizes="(min-width:900px) 24rem, 92vw"><img src="/img/btn/pc-ps002-480.webp" srcset="/img/btn/pc-ps002-480.webp 480w, /img/btn/pc-ps002.webp 960w" sizes="(min-width:900px) 24rem, 92vw" width="960" height="540" alt="" loading="lazy" decoding="async"></picture></span><span class="ps-cap">Broadway Looking South, Cassopolis, Mich · 1909</span><span class="vs-l">Postcards &amp; historic photos</span></a><a class="vshow pshow" href="/map/" id="psMap" data-set="m-wall1|The 1860 wall map of Cass County;m-cass1|Cassopolis in 1860: the village plan;m-bellin|Bellin’s map of the Great Lakes, 1744;m-dow|Dowagiac in 1860;m-niles68|Niles in 1868, a bird’s-eye view;m-cass2|Cassopolis in 1860: Broadway and the square;m-niles|Niles in 1860, the river through the plan;m-royce|Land cessions in Michigan, Royce, 1899;m-dir|The 1860 Cassopolis business directory;m-paw|Paw Paw in 1860;m-wall2|The 1860 wall map: the southern townships;m-1928|Cass County townships, about 1928;m-jeff|Jefferson Township, Cass County, from a plat book"><span class="vs-f"><picture class="ps-p on"><source type="image/avif" srcset="/img/btn/m-wall1-480.avif 480w, /img/btn/m-wall1.avif 960w" sizes="(min-width:900px) 24rem, 92vw"><img src="/img/btn/m-wall1-480.webp" srcset="/img/btn/m-wall1-480.webp 480w, /img/btn/m-wall1.webp 960w" sizes="(min-width:900px) 24rem, 92vw" width="960" height="540" alt="" loading="lazy" decoding="async"></picture></span><span class="ps-cap">The 1860 wall map of Cass County</span><span class="vs-l">The map room</span></a></nav>
-      <p class="whisper" id="whisper" hidden><span class="w-l">Still unsolved</span> <a href="#cases" id="whisperQ"></a></p>
+      <p class="whisper" id="whisper" hidden><span class="w-l">Still unsolved</span> <a href="/cases/" id="whisperQ"></a></p>
     </div>
 
     <!--placemap-->
@@ -355,9 +355,9 @@ if('requestIdleCallback' in window)requestIdleCallback(otd,{timeout:2500});else 
         <li><a href="/map/#townships"><time datetime="2026-10-20">20 Oct</time> The map room grows: all fifteen township sheets of about 1928, the 1860 business directory and Royce’s cession map, with seventeen new plates in the masthead</a></li>
         <li><a href="/document/"><time datetime="2026-10-19">19 Oct</time> Document of the month: one page of Rogers, 1875, read slowly</a></li>
         <li><a href="#studio"><time datetime="2026-10-18T21:00">18 Oct</time> Now taking commissions: research, imaging, LiDAR, 3D and film</a></li>
-        <li><a href="#pom"><time datetime="2026-10-18">18 Oct</time> Person of the month: he wrote down the lodge’s story, but he was three when it happened</a></li>
+        <li><a href="/notes/from-the-desk/#pom"><time datetime="2026-10-18">18 Oct</time> Person of the month: he wrote down the lodge’s story, but he was three when it happened</a></li>
         <li><a href="/badges/"><time datetime="2026-10-18">18 Oct</time> Break the coded line at the foot of the page, and a second one waits in your badge book</a></li>
-        <li><a href="#tnc"><time datetime="2026-10-18">18 Oct</time> Then and now: drag the hotel corner from 1860 to today</a></li>
+        <li><a href="/cases/#tnc"><time datetime="2026-10-18">18 Oct</time> Then and now: drag the hotel corner from 1860 to today</a></li>
         <li><a href="/badges/"><time datetime="2026-10-18">18 Oct</time> Twenty-three tin badges to earn, and five ranks from Candidate to Keeper of the Hall</a></li>
         <li><a href="#hunt"><time datetime="2026-10-17">17 Oct</time> The second hall opens: a lake with no stream in and no stream out, and seven new cases</a></li>
         <li><a href="#clue"><time datetime="2026-10-17">17 Oct</time> Clue of the week: one man gave away forty acres of lakefront</a></li>
@@ -390,19 +390,19 @@ if('requestIdleCallback' in window)requestIdleCallback(otd,{timeout:2500});else 
           <li class="sealed"><span class="yr">1830</span><p>The record holds this year. The hunt hasn’t reached it yet.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
           <li class="dkD"><span class="yr">1831</span><p>The village is laid out. Broadway and State are already on the plat.</p><span class="mk sm kD">Document</span></li>
           <li class="sealed"><span class="yr">1834</span><p>The record holds this year. The hunt hasn’t reached it yet.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
-          <li class="dkC"><span class="yr">1846</span><p>In the spring, a joke secret society, all halters and blindfolds, is founded in a village hotel.</p><span class="mk sm kC">County history</span> <a href="#case-1">Case 1</a></li>
+          <li class="dkC"><span class="yr">1846</span><p>In the spring, a joke secret society, all halters and blindfolds, is founded in a village hotel.</p><span class="mk sm kC">County history</span> <a href="/cases/#case-1">Case 1</a></li>
           <li class="dkC"><span class="yr">1849</span><p>A small-town doctor sets out for the California gold fields, and writes it down.</p><span class="mk sm kC">County history</span></li>
           <li class="dkC"><span class="yr">1852</span><p>12 June: the Masons hold their first meeting under the same hotel roof.</p><span class="mk sm kC">County history</span></li>
           <li class="dkD"><span class="yr">1860</span><p>A Philadelphia wall map engraves one word on the hotel’s block: HOTEL.</p><span class="mk sm kD">Document</span></li>
-          <li class="dkC"><span class="yr">1867</span><p>The old hotel is hauled across the village and turned into a mill. A new hotel rises on its ground.</p><span class="mk sm kC">County history</span> <a href="#case-2">Case 2</a></li>
+          <li class="dkC"><span class="yr">1867</span><p>The old hotel is hauled across the village and turned into a mill. A new hotel rises on its ground.</p><span class="mk sm kC">County history</span> <a href="/cases/#case-2">Case 2</a></li>
           <li class="sealed"><span class="yr">1869</span><p>The record holds this year. The hunt hasn’t reached it yet.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
           <li class="sealed"><span class="yr">1870</span><p>The record holds this year. The hunt hasn’t reached it yet.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
           <li class="sealed"><span class="yr">1872</span><p>The record holds this year. The hunt hasn’t reached it yet.</p><span class="mk sm sealedmk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Sealed</span></li>
           <li class="dkC"><span class="yr">1882</span><p>The county history records that “many people” believe a lake is fed by a river from Lake Superior.</p><span class="mk sm kC">County history</span> <span class="mk sm kT">Tradition</span></li>
           <li class="dkC"><span class="yr">1906</span><p>A county historian hears in the lakes “the distant echoes … of the glacial age.”</p><span class="mk sm kC">County history</span></li>
-          <li class="dkD"><span class="yr">1912</span><p>A pioneer dies. His death certificate gives no middle initial.</p><span class="mk sm kD">Document</span> <a href="#case-10">Case 10</a></li>
+          <li class="dkD"><span class="yr">1912</span><p>A pioneer dies. His death certificate gives no middle initial.</p><span class="mk sm kD">Document</span> <a href="/cases/#case-10">Case 10</a></li>
           <li class="dkD"><span class="yr">1935</span><p>His son’s certificate gives the father an initial: the son’s own.</p><span class="mk sm kD">Document</span></li>
-          <li class="now"><span class="yr">Now</span><p>The scroll is still unrolling. The next date on it may be one you find.</p><a href="#cases">The case board</a></li>
+          <li class="now"><span class="yr">Now</span><p>The scroll is still unrolling. The next date on it may be one you find.</p><a href="/cases/">The case board</a></li>
         </ol>
         <i class="tl-thread" aria-hidden="true"></i>
         <button type="button" class="tl-nav next" aria-label="Later">›</button>
@@ -413,7 +413,7 @@ if('requestIdleCallback' in window)requestIdleCallback(otd,{timeout:2500});else 
       </figure>
     </section>
 
-    <aside class="promo ad" aria-labelledby="adH">
+    <aside class="promo ad" id="services" aria-labelledby="adH">
       <i class="ad-orn o1" aria-hidden="true">❦</i><i class="ad-orn o2" aria-hidden="true">❦</i><i class="ad-orn o3" aria-hidden="true">❦</i><i class="ad-orn o4" aria-hidden="true">❦</i>
       <p class="ad-stamp" aria-hidden="true"><span>Now taking<br>commissions</span></p>
       <p class="ad-banner"><span>★ Professional services ★</span></p>
@@ -422,6 +422,7 @@ if('requestIdleCallback' in window)requestIdleCallback(otd,{timeout:2500});else 
       <p class="ad-serve">Serving the St. Joseph River Valley, Cassopolis to South Bend, and anywhere the records reach</p>
       <p class="ad-tag">Research <i>·</i> Imaging <i>·</i> Design <i>·</i> Photography <i>·</i> LiDAR imaging <i>·</i> 3D <i>·</i> Animation <i>·</i> Video <i>·</i> Living documents</p>
       <p class="promo-lede">The hunt is free. When you want the work done for you, the same desk takes commissions, from a single lost ancestor to a landscape rebuilt in three dimensions.</p>
+      <span id="studio" class="anchor" aria-hidden="true"></span>
       <div class="ad-cols">
         <section class="ad-col" aria-labelledby="adR">
           <p class="ad-no" aria-hidden="true">No. 1</p>
@@ -477,7 +478,7 @@ if('requestIdleCallback' in window)requestIdleCallback(otd,{timeout:2500});else 
         <p class="ad-own"><b>You own the report.</b> Every source cited, every statement marked, every gap written down. Nothing about your family is published or shared without your word.</p>
         <p class="promo-ctas"><a class="btn primary" href="#contact">Tell us what you need</a><a class="btn" href="/sample/project-scroll-sample-report.pdf">Sample report (PDF)</a><a class="btn" href="/sample/project-scroll-sample-family-register.pdf">Sample family register (PDF)</a></p>
       </div>
-      <p class="ad-more"><a href="/sponsors/">The hunt is free because people sponsor it</a> · <a href="/research/">Research services, in full</a> · <a href="#marks">How we mark the evidence</a> · <a href="#studio">The studio</a></p>
+      <p class="ad-more"><a href="/services/">All our services, in full</a> · <a href="/sponsors/">The hunt is free because people sponsor it</a> · <a href="/research/">Research services, in full</a> · <a href="#marks">How we mark the evidence</a> · <a href="#studio">The studio</a></p>
     </aside>
 
 
@@ -486,7 +487,7 @@ if('requestIdleCallback' in window)requestIdleCallback(otd,{timeout:2500});else 
       <svg class="clue-ic" viewBox="0 0 64 64" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="26" cy="26" r="16"/><circle cx="26" cy="26" r="11" stroke-width="1" opacity=".5"/><path d="M38 38l16 16" stroke-width="5"/><path d="M19 20a9 9 0 0 1 8-5" stroke-width="1.6" opacity=".7"/></svg>
       <span class="lbl" id="clueLbl">Clue of the week · 17 October</span>
       <p id="clueText">One man gave away forty acres of lakefront. Try to picture anyone doing that today. Who was he?</p>
-      <a href="#case-3" id="clueLink">It’s Case 3 on the case board</a> · <a href="https://www.facebook.com/projectscroll/">Follow the hunt on Facebook</a>
+      <a href="/cases/#case-3" id="clueLink">It’s Case 3 on the case board</a> · <a href="https://www.facebook.com/projectscroll/">Follow the hunt on Facebook</a>
       <p class="clue-next" id="clueNext" aria-live="off"></p>
     </aside>
     <aside class="namehunt mom" aria-labelledby="momH" data-k="ps-mom-2026-10" data-h="2016457733" data-word="answer" data-yes="{n}." data-done="Right: R. Wilson, M.D., Eclectic, engraved beside the Cassopolis plan in 1860. Next month, a new map and a new question." data-no="Not him. Look again at the three physicians engraved beside the Cassopolis plan.">
@@ -503,17 +504,16 @@ if('requestIdleCallback' in window)requestIdleCallback(otd,{timeout:2500});else 
       <ol>
         <li><a href="#timeline"><b>I</b><span>On the record</span></a></li>
         <li><a href="#hunt"><b>II</b><span>The hunt</span></a></li>
-        <li><a href="#cases"><b>III</b><span>The case board</span></a></li>
-        <li><a href="#services"><b>IV</b><span>Bring us your mystery</span></a></li>
-        <li><a href="#method"><b>V</b><span>Five promises</span></a></li>
-        <li><a href="#marks"><b>VI</b><span>Marking the evidence</span></a></li>
-        <li><a href="#notes"><b>VII</b><span>From the field notes</span></a></li>
-        <li><a href="#faq"><b>VIII</b><span>Questions people ask</span></a></li>
+        <li><a href="/cases/"><b>III</b><span>The case board</span></a></li>
+        <li><a href="/services/"><b>IV</b><span>Bring us your mystery</span></a></li>
+        <li><a href="/scrollmarks/"><b>V</b><span>How we work</span></a></li>
+        <li><a href="/notes/from-the-desk/"><b>VI</b><span>From the field notes</span></a></li>
+        <li><a href="/faq/"><b>VII</b><span>Questions people ask</span></a></li>
         <li><a href="/sponsors/"><b>★</b><span>Sponsor the hunt</span></a></li>
       </ol>
     </nav>
     <ul class="stats" aria-label="Project Scroll at a glance">
-      <li><a href="#cases"><b>10</b><span>open cases on the board</span></a></li>
+      <li><a href="/cases/"><b>10</b><span>open cases on the board</span></a></li>
       <li><a href="/map/cassopolis/"><b>4</b><span>towns mapped, 1860 and today</span></a></li>
       <li><a href="/records/"><b>26</b><span>record sources, nearly all free</span></a></li>
       <li><a href="#marks"><b>9</b><span>marks for weighing evidence</span></a></li>
@@ -562,131 +562,18 @@ if('requestIdleCallback' in window)requestIdleCallback(otd,{timeout:2500});else 
       </ul>
     </section>
 
-    <section id="cases" data-accent="hunt">
+    <section id="cases" class="teaser" data-accent="hunt">
       <p class="part">Part III</p>
       <h2>The case board</h2>
-      <p class="intro">Every mystery the hunt has posted, and where each one stands. Crack one, and your name goes here and in the next post.</p>
-      <nav class="seals" aria-label="Jump to a case"><a href="#case-1" title="Case 1: open">1</a><a href="#case-2" title="Case 2: open">2</a><a href="#case-3" title="Case 3: open">3</a><a href="#case-4" title="Case 4: open">4</a><a href="#case-5" title="Case 5: open">5</a><a href="#case-6" title="Case 6: open">6</a><a href="#case-7" title="Case 7: open">7</a><a href="#case-8" title="Case 8: open">8</a><a href="#case-9" title="Case 9: open">9</a><a href="#case-10" title="Case 10: open">10</a></nav>
-      <div class="meter" role="img" aria-label="0 of 10 cases solved"><span style="width:0%"></span></div>
-      <p class="tally"><span><b>10</b>open</span><span><b>0</b>solved</span><span>Nobody is ahead of you yet.</span></p>
-      <p class="newhere"><b>New here?</b> <a href="/cases/10/">Case 10</a> is a practice case with the records already laid out. Read it, decide which certificate you trust, then try <a href="/cases/1/">case 1</a>, where two county histories tell one story twice. Keep <a href="/worksheet/project-scroll-hunters-worksheet.pdf">the hunter’s worksheet</a> open beside you.</p>
-      <div class="filters" role="group" aria-label="Show cases">
-        <button type="button" data-f="all" aria-pressed="true">All</button><button type="button" data-f="h1" aria-pressed="false">First hall</button><button type="button" data-f="h2" aria-pressed="false">Second hall</button><button type="button" data-f="desk" aria-pressed="false">From the desk</button><button type="button" data-f="mine" aria-pressed="false">★ My cases <span id="minecount"></span></button>
-      </div>
-      <p class="note mine-empty" id="mineEmpty" hidden>Tap the ☆ beside any case to follow it. Your list stays on this device only.</p>
-      <table class="ledger">
-        <caption>Last updated 18 October 2026.</caption>
-        <thead><tr><th scope="col">No.</th><th scope="col">The question</th><th scope="col">Opened</th><th scope="col">Status</th></tr></thead>
-        <tbody>
-          <tr class="group" data-hall="h1"><td colspan="4">The first hall <small><a href="https://www.facebook.com/comparativeovations/">The Cassopolis Hall of Comparative Ovations</a> · its page on Facebook</small></td></tr>
-          <tr id="case-1" data-hall="h1"><td class="no">1</td><td><a class="qlink" href="/cases/1/" style="view-transition-name:case-1">Did the joke lodge of 1846 ever have a real charter? Even the man who first wrote its story wasn’t sure.</a></td><td class="hall">15 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
-          <tr id="case-2" data-hall="h1"><td class="no">2</td><td><a class="qlink" href="/cases/2/" style="view-transition-name:case-2">In 1867 the old hotel where the lodge danced was hauled across the village and turned into a mill. Where did it end up?</a></td><td class="hall">15 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
-
-          <tr class="group" data-hall="h2"><td colspan="4">The second hall <small>A lake with no stream in and no stream out. Its page is behind the first hall’s last door. Find that door, and seven cases are yours to work.</small></td></tr>
-          <tr id="case-3" data-hall="h2"><td class="no">3</td><td><a class="qlink" href="/cases/3/" style="view-transition-name:case-3">Who was the settler who gave away forty acres of lakefront?</a></td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
-          <tr id="case-4" data-hall="h2"><td class="no">4</td><td><a class="qlink" href="/cases/4/" style="view-transition-name:case-4">Where is the 1831 parchment deed today?</a></td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
-          <tr id="case-5" data-hall="h2"><td class="no">5</td><td><a class="qlink" href="/cases/5/" style="view-transition-name:case-5">Where does the lake’s water really come from?</a></td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
-          <tr id="case-6" data-hall="h2"><td class="no">6</td><td><a class="qlink" href="/cases/6/" style="view-transition-name:case-6">Where did the boulders on the shore go?</a></td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
-          <tr id="case-7" data-hall="h2"><td class="no">7</td><td><a class="qlink" href="/cases/7/" style="view-transition-name:case-7">What powered the flour mill on a lake with no stream, and where did it stand?</a></td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
-          <tr id="case-8" data-hall="h2"><td class="no">8</td><td><a class="qlink" href="/cases/8/" style="view-transition-name:case-8">Who was the doctor who took a bone home and kept it?</a></td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
-          <tr id="case-9" data-hall="h2"><td class="no">9</td><td><a class="qlink" href="/cases/9/" style="view-transition-name:case-9">What became of that bone, and of everything else taken from the grave?</a></td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
-
-          <tr class="group" data-hall="desk"><td colspan="4">From the desk <small>A practice case: try the method before you take on a hall</small></td></tr>
-          <tr id="case-10" data-hall="desk"><td class="no">10</td><td><a class="qlink" href="/cases/10/" style="view-transition-name:case-10">One letter, two certificates: which middle initial is right?</a> <a href="/notes/one-letter-two-certificates/">Read the field note</a></td><td class="hall">17 Oct 2026</td><td class="status-c"><span class="status">Open</span><span class="tools"><button type="button" class="follow" aria-pressed="false" aria-label="Follow this case" title="Follow this case">☆</button><button type="button" class="link" aria-label="Copy a link to this case" title="Copy a link to this case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span></td></tr>
-        </tbody>
-      </table>
-      <p class="copied" id="caseCopied" aria-live="polite" style="margin:.6rem 0 0"></p>
-      <p class="note" style="margin-top:1rem">Post answers in the comments on <a href="https://www.facebook.com/projectscroll/">Facebook</a>, with the page you found them on. The rules above still apply: everything here is solved on paper.</p>
-      <div class="solvedbox"><h3>What counts as solved</h3><p>A case is solved when an answer is posted with the record it came from: the book or document, the page, and a link if there is one. The desk checks the page. If it says what you say it says, your name goes on the board, the case is marked Solved with your source beside it, and the next post names you. An answer without the page stays a guess, however right it is.</p></div>
-          <figure class="secfig map">
-        <a href="/map/" class="figlink"><picture><source type="image/webp" srcset="/img/wall-map-1860-640.webp 640w, /img/wall-map-1860-1000.webp 1000w, /img/wall-map-1860.webp 1100w" sizes="(min-width:900px) 768px, 92vw"><img src="/img/wall-map-1860.jpg" srcset="/img/wall-map-1860-640.jpg 640w, /img/wall-map-1860-1000.jpg 1000w, /img/wall-map-1860.jpg 1100w" sizes="(min-width:900px) 768px, 92vw" width="1100" height="1188" loading="lazy" decoding="async" alt="The 1860 wall map of Cass, Van Buren and Berrien counties, Michigan: hand-colored townships in a grid, with town plans and engraved pictures of houses and farms around the border."></picture></a><figcaption>The 1860 wall map of Cass, Van Buren and Berrien counties, where the hunt began. <a href="/map/">Walk every inch of it in the map room</a>, where the county’s township sheets of about 1928 now hang beside it.</figcaption>
-      </figure>
-      <figure class="tncorner" aria-label="The hotel corner in 1860 and today">
-        <div class="tnc-frame" id="tnc" style="--x:50%">
-          <picture><source srcset="/img/tn-corner-today.webp" type="image/webp"><img class="tnc-now" src="/img/tn-corner-today.jpg" width="900" height="606" loading="lazy" decoding="async" alt="Today’s streets around Broadway and State Street in Cassopolis, drawn as plain lines."></picture>
-          <span class="tnc-tag tnc-b">Broadway</span><span class="tnc-tag tnc-s">State Street</span>
-          <div class="tnc-old"><picture><source srcset="/img/tn-corner-1860.webp" type="image/webp"><img src="/img/tn-corner-1860.jpg" width="900" height="606" loading="lazy" decoding="async" alt="The same blocks on the 1860 town plan of Cassopolis, with HOTEL, Court House and Jail engraved near the corner of Broadway and State."></picture></div>
-          <span class="tnc-ring" aria-hidden="true"></span>
-          <input type="range" class="tnc-range" id="tncRange" min="0" max="100" value="50" aria-label="Slide between 1860 and today">
-          <span class="tnc-lab l" aria-hidden="true">1860</span><span class="tnc-lab r" aria-hidden="true">Today</span>
-        </div>
-        <figcaption>The hotel corner, then and now. Slide to see the 1860 plan give way to today’s streets. The ring marks where the engraver wrote HOTEL. The 1860 plan was matched to nineteen street corners that still carry their old names, and on average the old corners land within about five yards of today’s. <a href="/map/cassopolis/">Explore the whole town</a>.</figcaption>
-      </figure>
+      <p class="intro">Every mystery the hunt has posted, where each one stands, and who has cracked it. Ten cases are open, and nobody is ahead of you yet.</p>
+      <p class="center"><a class="btn primary" href="/cases/">Open the case board</a> <a class="btn" href="/cases/10/">Try the practice case</a></p>
     </section>
 
-    <section id="services" data-accent="desk">
+    <section id="bring" class="teaser" data-accent="desk">
       <p class="part">Part IV</p>
       <h2>Bring us your mystery</h2>
-      <p class="intro">Some questions have waited a hundred years for someone to look properly. If the answer was ever written down, we will look for it, and tell you honestly what we find. When what you have is a faded photograph, a fragile page or a story worth showing, the studio can image, restore, design, model or film it.</p>
-      <h3 class="sub">Cases from our desk</h3>
-      <div class="cases">
-        <p>A pioneer whose death certificate and his son’s can’t agree on his middle initial.<button class="src" type="button" popovertarget="s1" aria-label="Source for this case">source</button></p>
-        <p>A lake the 1882 county history said was fed by a river running underground from Lake Superior.<button class="src" type="button" popovertarget="s2" aria-label="Source for this case">source</button></p>
-        <p>A small-town doctor’s 1849 trek to the California gold fields, and a typescript of it listed in a museum’s collection, still waiting to be read for the hunt.<button class="src" type="button" popovertarget="s3" aria-label="Source for this case">source</button></p>
-      </div>
-      <div popover id="s1" class="source"><button type="button" class="close" popovertarget="s1" popovertargetaction="hide" aria-label="Close">×</button><b>Two certificates</b>Michigan death certificates, 1912 and 1935, Archives of Michigan. The father’s own certificate gives no middle initial; his son’s, filled in twenty-three years later, gives him one.</div>
-      <div popover id="s2" class="source"><button type="button" class="close" popovertarget="s2" popovertargetaction="hide" aria-label="Close">×</button><b>The underground river</b><i>History of Cass County, Michigan</i> (1882): “It is supposed by many people” that the lake is a surface spot of a great subterranean stream from Lake Superior. Free on archive.org.</div>
-      <div popover id="s3" class="source"><button type="button" class="close" popovertarget="s3" popovertargetaction="hide" aria-label="Close">×</button><b>The gold-rush doctor</b><i>Portrait and Biographical Record of Berrien and Cass Counties, Michigan</i> (1893), quoting his 1892 obituary; and the Oregon-California Trails Association’s trail-diary bibliography, which lists his “Journey to California” typescript.</div>
-      <p class="note center">Real cases, every one begun as a single question. All of them are still open, and when one is answered we will say so. Now we’re taking on yours.</p>
-
-      <h3 class="sub">What we research</h3>
-      <ul class="plain svc">
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/><path d="M17.5 4.5l2 -1M19 8h2"/></svg><b>A lost ancestor</b>Census rolls, death certificates, deeds, wills, church books and old newspapers, compared line by line. When the records disagree, we work out who was remembering, and when.</li>
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h12a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3h-6l-4 3v-3H4z"/><path d="M8 10h6M8 13h4"/></svg><b>Who said it first</b>A family story, a famous quote or a local legend, traced back to the first time it was printed. Who wrote it down? Were they there? Who told them? What changed each time it was retold?</li>
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><b>A forgotten place</b>A vanished mill, a schoolhouse, a cabin or a whole village, found again on old plat maps, surveyors’ field notes and county atlases.</li>
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.2l5.9-.9z"/></svg><b>A local legend worth testing</b>Giant bones, underground rivers, buried treasure. We read the story against the records and tell you which parts hold up and which don’t.</li>
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6-5 6 5-6 11z"/><path d="M6 9h12M10 9l2 11 2-11"/></svg><b>An heirloom no one can explain</b>An old photograph, a lodge badge, a deed, a letter or a piece of jewelry, traced through the people who owned it.</li>
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-5h6v5M12 7v3"/></svg><b>Lodges, churches and old societies</b>Rosters, proceedings and minute books, where they survive and their keepers allow access, to learn who belonged, when, and what they did.</li>
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><circle cx="6" cy="17" r="2"/><circle cx="18" cy="17" r="2"/><path d="M12 7v4M6 15v-2h12v2M12 11v2"/></svg><b>A family history or register</b>Every descendant of one couple, or every ancestor of one person, built from the records, with every statement marked and every gap shown honestly. <a href="/families/">See a specimen</a>.</li>
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.5v.4M12 17h.01"/></svg><b>Is the family story true?</b>The Ellis Island name change, the famous ancestor, the three brothers who came over together. We find where the story began and what the records say. <a href="/legends/">Test a family legend</a>.</li>
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="14" r="3.2"/><circle cx="17" cy="14" r="3.2"/><path d="M10.2 14h3.6M3.8 14L5 8M20.2 14L19 8"/></svg><b>A second pair of eyes</b>A family history, a book chapter or an article checked against its sources before it goes out into the world.</li>
-      </ul>
-      <figure class="secfig land">
-        <picture><source type="image/webp" srcset="/img/schoolhouse-640.webp 640w, /img/schoolhouse-1000.webp 1000w, /img/schoolhouse.webp 1400w" sizes="(min-width:900px) 768px, 92vw"><img src="/img/schoolhouse.jpg" srcset="/img/schoolhouse-640.jpg 640w, /img/schoolhouse-1000.jpg 1000w, /img/schoolhouse.jpg 1400w" sizes="(min-width:900px) 768px, 92vw" width="1400" height="763" loading="lazy" decoding="async" alt="An old photograph of a white one-room schoolhouse with a bell cupola and a small porch, standing among trees behind a split-rail fence at a dirt crossroads. Photograph, early 1900s; public domain."></picture>
-        <figcaption>A country schoolhouse in the oaks, the kind where a township’s records were once kept. <span class="credit">Photograph, early 1900s; public domain.</span></figcaption>
-      </figure>
-      <div class="morework">
-        <a href="/families/"><span class="k">Family histories</span><b>Registers, monographs and family books</b><span class="d">Built from the records, not copied from other trees. Tap through a specimen ancestral chart.</span></a>
-        <a href="/legends/"><span class="k">Mysteries in the family</span><b>Is the family story true?</b><span class="d">Pick the story your family tells and see what the records usually say about it.</span></a>
-      </div>
-
-      <h3 class="sub" id="studio">Imaging, design, 3D and video</h3>
-      <p class="center note" style="max-width:40rem;margin:0 auto 1rem">The same care, turned on pictures, landscapes and the record itself. Everything you send is handled gently and returned as you sent it.</p>
-      <ul class="plain svc studio">
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 12h18"/><path d="M7 8.5h5M7 15.5h8"/></svg><b>Digital imaging</b>Careful, high-resolution images of photographs, letters, certificates, maps, Bibles and heirlooms, so the originals can be put safely away and the copies shared.</li>
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><path d="M14.5 14.5 20 20"/><path d="M6.5 10h1.6l1-2 1.6 4 1-2h1.8"/></svg><b>Imaging analysis</b>Faded ink brought back, damaged or water-stained pages made readable again, and the small details in an old photograph studied and compared: the clothes, the buildings, the signs in a window.</li>
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4l5 5-8.5 8.5H6.5v-5z"/><path d="M12.5 6.5l5 5"/><path d="M4 21h7"/></svg><b>Image creation and restoration</b>Torn and faded photographs repaired, old maps redrawn clean, and new illustrations made from what the record describes, always labeled as new work.</li>
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l5 8.5-5 9.5-5-9.5z"/><circle cx="12" cy="11.5" r="1.6"/><path d="M12 13.1V21"/></svg><b>Graphic design</b>Family-history books and their covers, ancestral charts, reunion and memorial pieces, and anything else that deserves to be laid out well.</li>
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="1.5"/><path d="M3 8.5h18M6 6.5h.01M8.5 6.5h.01M7 12.5h6M7 15.5h10"/></svg><b>Web design</b>Websites and pages for families, historical societies, museums and small businesses: designed, written and built to be easy to read, quick to load on a phone, and easy to keep up to date. This site is an example.</li>
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l1.5-3h5L16 7"/><circle cx="12" cy="13.5" r="3.6"/></svg><b>Photography</b>Heirlooms, documents and family pieces photographed properly, and places that matter to a family history.</li>
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 11l5-3v8l-5-3"/><circle cx="7" cy="12" r="1.2"/></svg><b>Video production</b>Short family-history films, recorded interviews with the people who still remember, and documentaries built from the record and the photographs.</li>
-              <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l4-6 4 3 4-7 6 10"/><path d="M3 20h18"/><path d="M6 4l1 2M12 3v2M18 4l-1 2"/></svg><b>3D LiDAR imaging</b>Landscapes modeled in three dimensions from public LiDAR elevation surveys, which show old roads, field lines, mill races and shorelines that are hard to see on the ground. Made from the data, with no need to set foot on anyone’s land.</li>
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M9.5 10.5v4l3.5-2z"/></svg><b>3D animation</b>Fly-throughs of a landscape, and buildings or places shown as the record describes them, every reconstruction labeled as a reconstruction.</li>
-        <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 15h6M9 18h3"/><circle cx="17.5" cy="17.5" r="2.5"/><path d="M17.5 16.5v1l.8.5"/></svg><b>Living documents</b>Research papers, timelines and family records that keep growing as new evidence turns up, with every change dated, so the latest version is always the true one.</li>
-</ul>
-
-      <h3 class="sub">Is my research question answerable?</h3>
-      <div class="checker" id="checker">
-        <p class="note center" style="margin:0 0 .8rem">Four quick questions for an honest first read. Nothing you choose leaves this page.</p>
-        <ol class="ck">
-          <li><span>Do you know at least one full name?</span><div><button type="button" data-v="1">Yes</button><button type="button" data-v="0">Not yet</button></div></li>
-          <li><span>Do you know a place, even just a county or a town?</span><div><button type="button" data-v="1">Yes</button><button type="button" data-v="0">Not yet</button></div></li>
-          <li><span>Do you know a rough date, within twenty years or so?</span><div><button type="button" data-v="1">Yes</button><button type="button" data-v="0">Not yet</button></div></li>
-          <li><span>Did it happen before about 1950?</span><div><button type="button" data-v="1">Yes</button><button type="button" data-v="0">No, later</button></div></li>
-        </ol>
-        <div class="ck-out" id="ckOut" aria-live="polite" hidden></div>
-      </div>
-
-      <h3 class="sub">What happens when you bring us one</h3>
-      <ol class="steps">
-        <li><b>Tell us what you know.</b> A name, a place, rough dates, and whatever the family says. <a href="#contact">Our message form</a> lays it out for you to send by email or Facebook Messenger.</li>
-        <li><b>Get an honest first read.</b> We tell you what the records are likely to show, and what they probably can’t, before you commit to anything.</li>
-        <li><b>Agree on the question.</b> One clear question, and where we will look to answer it.</li>
-        <li><b>We search the record.</b> Certificates, deeds, censuses, old newspapers, county histories and maps, compared line by line.</li>
-        <li><b>You get the report.</b> Plain English, every statement marked, every source listed, and what is still open.</li>
-      </ol>
-      <p class="note center studionote">For studio work it is simpler: tell us what you have and what you would like made, we tell you honestly what can be done, and you get the finished files, with your originals returned as you sent them.</p>
-      <p class="center"><a class="btn dl" href="/sample/project-scroll-sample-report.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z M14 3v4h4 M9 12h6 M9 16h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>See a sample report (PDF)</a></p>
+      <p class="intro">Some questions have waited a hundred years for someone to look properly. Cases from our desk, everything we research, the imaging and design studio, a four-question check of whether your question can be answered, and what happens when you bring us one: it is all on one page.</p>
+      <p class="center"><a class="btn primary" href="/services/">Our services, in full</a> <a class="btn" href="#contact">Start with a question</a></p>
     </section>
 
     <aside class="sponsors" aria-labelledby="npH">
@@ -697,95 +584,15 @@ if('requestIdleCallback' in window)requestIdleCallback(otd,{timeout:2500});else 
         <li class="open"><a href="/sponsors/"><b>Patron of a case</b>$300 opens the next case on the board, with your name on it.</a></li>
       </ul>
     </aside>
-    <section id="method" data-accent="desk">
+
+
+    <section id="marks" class="teaser" data-accent="desk">
       <p class="part">Part V</p>
-      <h2>Five promises</h2>
-      <p class="intro">Five promises we keep on every case and commission, whether it takes an afternoon or a season.</p>
-      <ol class="promises">
-        <li><b>Every claim comes with its source.</b> You’ll know exactly where each fact came from, so you can check it yourself.</li>
-        <li><b>Disagreements are clues, not failures.</b> When two records argue, we show you both and explain why.</li>
-        <li><b>Open questions stay open.</b> If something might be true but can’t be proven yet, we say so, and we keep looking instead of throwing it away.</li>
-        <li><b>No guarantees, just the record.</b> Some questions have answers on paper and some don’t. We’ll tell you up front which kind yours looks like.</li>
-        <li><b>We research the past.</b> No locating living people, no legal or title opinions, no appraisals. No digging, no trespassing, and care with every family’s story.</li>
-      </ol>
-      <figure class="secfig small">
-        <picture><source srcset="/img/death-register.webp" type="image/webp"><img src="/img/death-register.jpg" width="512" height="362" loading="lazy" decoding="async" alt="An open ledger, the State of Michigan record of deaths for Allegan County, with handwritten entries in ruled columns across two pages."></picture><figcaption>State of Michigan, record of deaths, Allegan County. We read the page itself, not someone’s summary of it.</figcaption>
-      </figure>
-      <div class="getbox">
-      <h3>What you get</h3>
-      <p>A written report in plain English: what we found, where we found it, what is still open, and where to look next. Where the old books and maps are free online, we include the links so you can turn the pages yourself. For studio work, you get the finished images, design files or film, and your originals back as you sent them. <a href="/sample/project-scroll-sample-report.pdf">See a sample report</a>.</p>
-      </div>
-
-    </section>
-
-    <section id="marks" data-accent="desk">
-      <p class="part">Part VI</p>
-      <h2>How we mark the evidence</h2>
+      <h2>How we work</h2>
       <p class="std-name">Scrollmarks™</p>
-      <p class="intro">Not every source is worth the same. A death certificate filed the week a man died is not a story his grandson told sixty years later, and neither of them is our own opinion. So in every research report, every statement carries one of nine marks, strongest first. We call them Scrollmarks. You can see at a glance what the record says, and what we are arguing from it.</p>
-      <figure class="scale" aria-label="The nine marks, from strongest to weakest">
-        <div class="bar9"><a class="kD" href="#mk-document" title="Document" aria-label="Document"></a><a class="kP" href="#mk-period-print" title="Period print" aria-label="Period print"></a><a class="kC" href="#mk-county-history" title="County history" aria-label="County history"></a><a class="kM" href="#mk-compiled" title="Compiled" aria-label="Compiled"></a><a class="kT" href="#mk-tradition" title="Tradition" aria-label="Tradition"></a><a class="kF" href="#mk-field" title="Field" aria-label="Field"></a><span class="gap"></span><a class="kI" href="#mk-inference" title="Inference" aria-label="Inference"></a><a class="kR" href="#mk-reading" title="Reading" aria-label="Reading"></a><a class="kH" href="#mk-hypothesis" title="Hypothesis" aria-label="Hypothesis"></a></div>
-        <div class="ends"><span>Strongest</span><span>Weakest</span></div>
-        <figcaption><span>What the record says</span><span>What we argue from it</span></figcaption>
-      </figure>
-
-      <p class="mgroup">What the record says</p>
-      <dl class="marks">
-        <div id="mk-document"><dt><span class="mk kD">Document</span></dt><dd>Made at the time, by someone whose job was to write it down: a death certificate, a deed, a census page, a survey, a map. <i>Example: a 1912 Michigan death certificate.</i></dd></div>
-        <div id="mk-period-print"><dt><span class="mk kP">Period print</span></dt><dd>Printed at or near the time: a newspaper notice, an obituary, a book of the day. <i>Example: a doctor’s obituary printed the year he died.</i></dd></div>
-        <div id="mk-county-history"><dt><span class="mk kC">County history</span></dt><dd>The big county histories of the 1870s to the 1910s. Rich and indispensable, but often written decades later from what families remembered, and rarely checked. <i>Example: the 1882 History of Cass County.</i></dd></div>
-        <div id="mk-compiled"><dt><span class="mk kM">Compiled</span></dt><dd>A later hand gathering earlier records: an index, a bibliography, a transcription, a modern summary. Good for finding things; we go back to the original whenever it survives. <i>Example: a trail-diary bibliography that lists an unpublished typescript.</i></dd></div>
-        <div id="mk-tradition"><dt><span class="mk kT">Tradition</span></dt><dd>What a family or a community says, passed down by word of mouth. Worth recording exactly as told, and worth testing. <i>Example: “Grandpa always said he came over on the last boat before the war.”</i></dd></div>
-        <div id="mk-field"><dt><span class="mk kF">Field</span></dt><dd>What we saw or measured ourselves, at first hand, dated, from public ground or with permission. <i>Example: a dated photograph of a marker on a public roadside.</i></dd></div>
-      </dl>
-
-      <p class="mgroup arg">What we argue from it</p>
-      <dl class="marks">
-        <div id="mk-inference"><dt><span class="mk kI">Inference</span></dt><dd>A step that follows directly from the records. <i>Example: one certificate was filed a month after he died, the other twenty-three years later, so the first informant was closer to the event.</i></dd></div>
-        <div id="mk-reading"><dt><span class="mk kR">Reading</span></dt><dd>Our interpretation of what the records point to. Always labeled, always open to correction. <i>Example: “In 1935, someone gave the father his son’s initial.”</i></dd></div>
-        <div id="mk-hypothesis"><dt><span class="mk kH">Hypothesis</span></dt><dd>An idea worth testing that the records don’t yet support. We say what would prove or disprove it. <i>Example: he never used a middle initial at all; his obituary and gravestone would tell.</i></dd></div>
-      </dl>
-
-      <p class="mstrip"><i>Marks, strongest first:</i> <span class="tD">Document</span> <span class="tP">Period print</span> <span class="tC">County history</span> <span class="tM">Compiled</span> <span class="tT">Tradition</span> <span class="tF">Field (seen at first hand)</span> <span class="tI">Inference</span> <span class="tR">Reading</span> <span class="tH">Hypothesis</span> <i>— the last three marks are our own argument, offered for correction</i></p>
-
-      <div class="worked">
-        <p class="mgroup">How it looks in a report</p>
-        <p>A pioneer died in Michigan in 1912. His death certificate gives no middle initial <a class="mk sm kD" href="#mk-document" title="What this mark means">Document</a>. A county history adds “Senior” to his name <a class="mk sm kC" href="#mk-county-history" title="What this mark means">County history</a>. His son’s death certificate, filled in twenty-three years later, gives the father a middle initial: the son’s own <a class="mk sm kD" href="#mk-document" title="What this mark means">Document</a>. The first informant was closer to the event <a class="mk sm kI" href="#mk-inference" title="What this mark means">Inference</a>. Father and son shared a name, and in 1935 someone gave the father the son’s initial too <a class="mk sm kR" href="#mk-reading" title="What this mark means">Reading</a>. Or he never used a middle initial at all, which his obituary would show <a class="mk sm kH" href="#mk-hypothesis" title="What this mark means">Hypothesis</a>.</p>
-        <p class="note" style="margin:0">Tap a mark to see what it means. From our case “<a href="/notes/one-letter-two-certificates/">One Letter, Two Certificates</a>.” Every report you receive from us is marked the same way.</p>
-      </div>
-
-      <div class="weigh" id="weigh">
-        <h3>Weigh the evidence</h3>
-        <p class="note" style="margin:0 0 .8rem">Add records to each side and watch the scale. Records are weighed, not counted: one good document can outweigh a pile of family stories.</p>
-        <svg class="scale-svg" viewBox="0 0 320 170" aria-hidden="true">
-          <rect x="150" y="150" width="20" height="8" rx="2" class="brass"/><rect x="115" y="157" width="90" height="7" rx="3" class="brass"/>
-          <rect x="157" y="30" width="6" height="122" class="brass"/><circle cx="160" cy="28" r="6" class="brass"/>
-          <g id="beam"><rect x="40" y="25" width="240" height="6" rx="3" class="brass"/>
-            <g id="panL"><line x1="55" y1="31" x2="35" y2="95" class="cord"/><line x1="55" y1="31" x2="75" y2="95" class="cord"/><path d="M25 95 h60 a30 12 0 0 1 -60 0z" class="pan"/></g>
-            <g id="panR"><line x1="265" y1="31" x2="245" y2="95" class="cord"/><line x1="265" y1="31" x2="285" y2="95" class="cord"/><path d="M235 95 h60 a30 12 0 0 1 -60 0z" class="pan"/></g>
-          </g>
-        </svg>
-        <div class="sides">
-          <div class="side" data-side="L"><p class="side-h">Side A</p><div class="adds"><button type="button" class="mk kD" data-w="5">+ Document</button><button type="button" class="mk kP" data-w="4">+ Period print</button><button type="button" class="mk kC" data-w="3">+ County history</button><button type="button" class="mk kM" data-w="2">+ Compiled</button><button type="button" class="mk kT" data-w="1">+ Tradition</button></div><p class="pile" aria-live="polite"></p></div>
-          <div class="side" data-side="R"><p class="side-h">Side B</p><div class="adds"><button type="button" class="mk kD" data-w="5">+ Document</button><button type="button" class="mk kP" data-w="4">+ Period print</button><button type="button" class="mk kC" data-w="3">+ County history</button><button type="button" class="mk kM" data-w="2">+ Compiled</button><button type="button" class="mk kT" data-w="1">+ Tradition</button></div><p class="pile" aria-live="polite"></p></div>
-        </div>
-        <p class="center weigh-out" id="weighOut" aria-live="polite">The scale is level. Add a record to either side.</p>
-        <p class="center"><button type="button" class="linkbtn" id="weighReset">Empty both sides</button></p>
-        <p class="note center" style="margin:.2rem 0 0">The weights are a rule of thumb, not a formula: a late or careless document can still be wrong, and a detailed tradition can still be right.</p>
-      </div>
-
-      <div class="quiz" id="quiz">
-        <h3>Try marking these yourself</h3>
-        <p class="note">Teachers and group leaders are welcome to use this exercise and the hunter’s worksheet in class. Tell us how it went.</p>
-        <p class="note" style="margin:0 0 .6rem">Pick the mark you would give each one. <span id="qscore" aria-live="polite"></span> <button type="button" class="linkbtn" id="qreset" hidden>Try again</button></p>
-        <ol class="qlist">
-          <li data-a="kP"><p>A notice in the local paper, the week after he died.</p><div class="qopts"><button type="button" class="mk kD">Document</button><button type="button" class="mk kP">Period print</button><button type="button" class="mk kT">Tradition</button></div><p class="qwhy" hidden>Period print. It was printed at the time, but by a newspaper, not by an office whose job was to record the death.</p></li>
-          <li data-a="kT"><p>“Great-aunt Ruth always said the family came from Ohio.”</p><div class="qopts"><button type="button" class="mk kC">County history</button><button type="button" class="mk kT">Tradition</button><button type="button" class="mk kR">Reading</button></div><p class="qwhy" hidden>Tradition. Write it down exactly as she said it, then go and test it.</p></li>
-          <li data-a="kM"><p>A website listing every burial in a cemetery, typed up by volunteers.</p><div class="qopts"><button type="button" class="mk kD">Document</button><button type="button" class="mk kM">Compiled</button><button type="button" class="mk kF">Field</button></div><p class="qwhy" hidden>Compiled. A later hand gathered it. Wonderful for finding a name; then find the original burial record or the stone itself, on paper.</p></li>
-          <li data-a="kC"><p>A biography of a doctor in a county history of the 1890s, quoting his obituary.</p><div class="qopts"><button type="button" class="mk kP">Period print</button><button type="button" class="mk kC">County history</button><button type="button" class="mk kM">Compiled</button></div><p class="qwhy" hidden>County history. And notice the obituary inside it: if that newspaper survives, it is a period print, and stronger.</p></li>
-          <li data-a="kI"><p>“The first certificate was filed a month after he died, so its informant was closer to the event.”</p><div class="qopts"><button type="button" class="mk kI">Inference</button><button type="button" class="mk kR">Reading</button><button type="button" class="mk kH">Hypothesis</button></div><p class="qwhy" hidden>Inference. It follows directly from the dates on the records themselves.</p></li>
-        </ol>
-      </div>
+      <p class="intro">Five promises we keep on every case, and the nine marks we put on every statement, strongest first, so you can see what the record says and what we argue from it. Weigh the evidence yourself, and try marking a few.</p>
+      <p class="mstrip"><i>Marks, strongest first:</i> <span class="tD">Document</span> <span class="tP">Period print</span> <span class="tC">County history</span> <span class="tM">Compiled</span> <span class="tT">Tradition</span> <span class="tF">Field</span> <span class="tI">Inference</span> <span class="tR">Reading</span> <span class="tH">Hypothesis</span></p>
+      <p class="center"><a class="btn primary" href="/scrollmarks/">How we mark the evidence</a> <a class="btn" href="/scrollmarks/#method">Five promises</a></p>
     </section>
 
     <div class="plate2">
@@ -798,78 +605,20 @@ if('requestIdleCallback' in window)requestIdleCallback(otd,{timeout:2500});else 
     </blockquote>
     </div>
 
-    <section id="notes" class="notes" data-accent="hunt">
-      <p class="part">Part VII</p>
+    <section id="notes" class="teaser notes" data-accent="hunt">
+      <p class="part">Part VI</p>
       <h2>From the field notes</h2>
-      <p class="intro">Lesson No. 1 from the desk: two old records, two different stories. Here is what to do.</p>
-      <ol class="fieldpage">
-        <li>Ask who gave the information, and when. Closer to the event usually weighs more, but not always.</li>
-        <li>Keep looking. A third, independent record can tip the balance, but records are weighed, not counted.</li>
-        <li>Write down both versions and where each came from. Never quietly “fix” one.</li>
-        <li>Call it settled only when the evidence settles it. Until then, it’s an open question.</li>
-      </ol>
-      <p class="note center">From “One Letter, Two Certificates.” <a href="/notes/one-letter-two-certificates/">Read the whole case</a> · <a href="/notes/">All field notes</a></p>
-      <aside class="pom" id="pom" aria-labelledby="pomH">
-        <p class="kicker">Person of the month · October</p>
-        <h3 id="pomH">James M. Shepard, the dentist who wrote it down</h3>
-        <p>He was three years old in 1846, when the joke lodge was founded. He came to Cassopolis in 1868 and worked there as a dentist. In September 1870 the village’s reading room was organized in his dental office, and a year later he was one of the incorporators of its library association.</p>
-        <p>When Howard Rogers wrote the county’s first history in 1875, it was Shepard who wrote down the story of the lodge: the halters, the blindfolds, the ball and the two hundred badges. Seven years later, Alfred Mathews reprinted it and named him in a footnote.</p>
-        <p class="pom-r"><b>On the record:</b> in the same winter of 1846–47 that the joke lodge held its ball, the Odd Fellows’ Cass County Lodge No. 21 received its dispensation; Rogers called it “the first legitimate secret society.”</p>
-        <p class="pom-q"><b>The open question.</b> He was three in 1846. Who told him?</p>
-        <p class="pom-s">Sources: Howard S. Rogers, <i>History of Cass County, from 1825 to 1875</i> (1875), pp. 253–254 and 258; A. Mathews, <i>History of Cass County, Michigan</i> (1882), p. 174.</p>
-      </aside>
-      <p class="center"><a class="btn dl" href="/worksheet/project-scroll-hunters-worksheet.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The hunter’s worksheet (PDF, one page)</a> <a class="btn" href="/document/">Document of the month</a></p>
-
-      <div class="explore">
-        <a href="/map/cassopolis/"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="8" height="16" rx="1"/><rect x="13" y="4" width="8" height="16" rx="1"/><path d="M5 8h4M5 12h4M5 16h4M15 8l4 4M19 8l-4 4"/></svg><span class="k">Then and now</span><b>Four towns, 1860 and today</b><span class="d">Cassopolis, Niles, Dowagiac and Paw Paw: the 1860 town plans laid over today’s streets.</span></a>
-      <a href="/map/"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg><span class="k">The map room</span><b>Walk the 1860 wall map</b><span class="d">Zoom into every farm, town plan and engraved house on the great county map, straight from the Library of Congress.</span></a>
-        <a href="/guide/death-certificate/"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M8 7h8M8 10.5h8M8 14h5"/><circle cx="15.5" cy="17" r="1.6"/></svg><span class="k">A guide from the desk</span><b>How to read a death certificate</b><span class="d">Tap each box to see who filled it in, and how far to trust it.</span></a>
-        <a href="/toolkit/"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="5.5"/><path d="M14 14l6 6"/></svg><span class="k">The hunter’s toolkit</span><b>Tools for reading the record</b><span class="d">Bring faded ink back to life, turn an age at death into a birth date, find Soundex codes, name any cousin, and turn a cipher wheel.</span></a>
-        <a href="/guide/old-handwriting/"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-7 1-12 6-14 14l2 2c3-1 6-3 8-6"/><path d="M6 18l-2 3"/><path d="M11 13c2-2 5-5 9-9"/></svg><span class="k">A guide from the desk</span><b>Reading the old hand</b><span class="d">The long s, ye, inst. and ult., double dates and the other tricks of old handwriting.</span></a>
-        <a href="/records/"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9l8-5 8 5v11"/><path d="M7 20v-7M12 20v-7M17 20v-7M3 20h18"/></svg><span class="k">From the desk</span><b>Where the records are</b><span class="d">The free archives, newspapers and maps we search first, from Michigan to Sweden.</span></a>
-        <a href="/glossary/"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 1-4-4z"/><path d="M8.5 15l2.5-7 2.5 7M9.5 12.5h3"/></svg><span class="k">Plain English</span><b>The glossary</b><span class="d">Relict, probate, plat, ahnentafel: the words old records use, explained.</span></a>
-        <a href="/notes/book/"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.5-5-2-8-1.5v14c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-14c-3-.5-6 0-8 1.5z"/><path d="M12 6v14"/></svg><span class="k">Bound in leather</span><b>The book of field notes</b><span class="d">Every lesson from the desk, in a small book whose pages turn.</span></a>
-      </div>
-
-      <figure class="wide lens-wrap" id="lensFig">
-        <img src="/img/two-certificates.jpg" width="1400" height="787" loading="lazy" decoding="async" alt="Two old death certificates side by side on a wooden desk, a brass magnifying glass resting on one, with reading glasses, a fountain pen and old books."><span class="lens" aria-hidden="true"></span><figcaption class="lens-tip">Move over the picture to look closer.</figcaption>
-      </figure>
-      <div class="try" id="try">
-        <h3>Try it yourself</h3>
-        <p>A pioneer died in 1912. Two records name him. Which would you trust for his middle initial?</p>
-        <div class="cards">
-          <button type="button" class="card" data-pick="a"><span class="kind">Record A</span>His own death certificate, filed about a month after he died. <em>No middle initial.</em></button>
-          <button type="button" class="card" data-pick="b"><span class="kind">Record B</span>His son’s death certificate, filled in twenty-three years later. <em>Gives him one.</em></button>
-        </div>
-        <p class="verdict" id="verdict" aria-live="polite"></p>
-        <p class="note" id="trymore" hidden>Where the real case stands now: <a href="/notes/one-letter-two-certificates/">One Letter, Two Certificates</a>.</p>
-      </div>
+      <p class="intro">Lesson No. 1 from the desk: two old records, two different stories, and what to do. With the person of the month, the tools of the trade, and a record to weigh yourself.</p>
+      <p class="center"><a class="btn primary" href="/notes/from-the-desk/">Read Lesson No. 1</a> <a class="btn" href="/notes/">All the field notes</a></p>
     </section>
 
-    <section id="faq">
-      <p class="part">Part VIII</p>
+    <section id="faq" class="teaser">
+      <p class="part">Part VII</p>
       <h2>Questions people ask</h2>
-      <div class="faqbar"><label class="faqsearch"><span class="sr">Search the questions</span><input type="search" id="faqq" placeholder="Search the questions…" autocomplete="off"></label><button type="button" class="linkbtn" id="faqall">Open all answers</button></div>
-      <p class="note center" id="faqnone" hidden>No question matches that yet. <a href="mailto:research@projectscroll.com?subject=A%20question%20for%20Project%20Scroll">Email us</a> or <a href="https://m.me/projectscroll">ask on Facebook</a>.</p>
       <details class="faq"><summary>Does the hunt cost anything?</summary><p>No. The hunt is free to follow and free to play. All you need is curiosity and, now and then, a library card.</p></details>
-      <details class="faq"><summary>Do I have to go anywhere?</summary><p>No. Every clue is solved on paper: in books, maps and records, many of them free online. The hunt never sends anyone onto private land or near a grave.</p></details>
-      <details class="faq"><summary>I solved one. Now what?</summary><p>Post your answer in the comments on <a href="https://www.facebook.com/projectscroll/">Facebook</a>, with the book and page, or the link, where you found it. The first solver who can show the page is named in the next post and on the case board, and gets a solver’s keepsake to print.</p></details>
-      <details class="faq"><summary>I’ve never done research before. Can I play?</summary><p>Yes. Every case page has a “Start here” box with the first pages to open, many of them free online. <a href="/glossary/">The glossary</a> explains the old words, the guides show you how to read <a href="/guide/death-certificate/">a death certificate</a> and <a href="/guide/old-handwriting/">old handwriting</a>, and <a href="/worksheet/project-scroll-hunters-worksheet.pdf">the hunter’s worksheet</a> keeps your notes straight. All you need is curiosity and, now and then, a library card.</p></details>
       <details class="faq"><summary>Can you help with my own family’s mystery?</summary><p>Yes. Write to <a href="mailto:research@projectscroll.com?subject=My%20family%20mystery">research@projectscroll.com</a>, or <a href="https://m.me/projectscroll">send Project Scroll a message</a> on Facebook, with what you know. We’ll tell you honestly what the records are likely to show before you commit to anything.</p></details>
-      <details class="faq"><summary>Can you write up my whole family’s history?</summary><p>Yes. We make family registers (every descendant of one couple), ancestral monographs (every ancestor of one person) and full family histories, built from the records with every statement marked. <a href="/families/">See a specimen</a>, or download the <a href="/sample/project-scroll-sample-family-register.pdf">sample family register</a>.</p></details>
-      <details class="faq"><summary>Do you also offer imaging, design, photography, 3D or video?</summary><p>Yes. Alongside the research, we scan and restore old photographs and documents, bring up faded ink, design family-history books and charts, design and build websites, photograph heirlooms and places, model landscapes in 3D from public LiDAR surveys, make 3D animations and family-history films, and keep living documents that grow with the research. <a href="#studio">See the studio work</a>, then <a href="https://m.me/projectscroll">send us a message</a> with what you have and what you would like made.</p></details>
-      <details class="faq"><summary>What should I keep notes on?</summary><p>Use <a href="/worksheet/project-scroll-hunters-worksheet.pdf">the hunter’s worksheet</a>: one page to log each record, who made it, when, and where you found it. Print as many as you need.</p></details>
-      <details class="faq"><summary>Is anything hidden on this website?</summary><p>Perhaps. There is a line of code at the foot of every page, a gold diamond that answers if asked, more than thirty tin badges to earn, and every page has a back side. Curious hunters know where to look.</p></details>
-      <details class="faq"><summary>Who runs Project Scroll?</summary><p>An independent researcher and author who writes narrative nonfiction about the history of the Great Lakes country, trained in visual communications. The research behind those books is the same research we offer you, and the imaging and design studio grew from that training. <a href="/about/">More about Project Scroll</a>.</p></details>
-      <details class="faq"><summary>How is the hunt paid for?</summary><p>By sponsors: friends who give a few dollars a month, patrons who fund a case, local businesses with a card in the sponsors’ strip, and organizations that underwrite a hall. Sponsorship funds the work and never shapes a finding. <a href="/sponsors/">How it works, and the ledger of what every gift paid for</a>.</p></details>
       <details class="faq"><summary>How do I get in touch?</summary><p>Email <a href="mailto:research@projectscroll.com?subject=A%20question%20for%20Project%20Scroll">research@projectscroll.com</a>, or <a href="https://m.me/projectscroll">message the page on Facebook</a>. Both reach the same desk. <a href="#contact">The form below</a> lays out what to include. Expect a first reply within a few days; a full read of your records takes longer, and we say how long before we start.</p></details>
-      <details class="faq"><summary>How long does a research case take?</summary><p>It depends on the question and on what survives. Some mysteries open in an afternoon; some take a season. After the first read we tell you what we expect to find, and roughly how long it should take, before you commit to anything.</p></details>
-      <details class="faq"><summary>Does this website track me?</summary><p>Only if you say yes. On your first visit the site asks whether it may count your visit with a small Meta script; until you choose Allow, nothing is loaded and nothing is counted, and you can change your answer on the Privacy page. The things the site remembers, such as your followed cases and your notes, stay in your own browser either way. <a href="/privacy/">What this site keeps</a>.</p></details>
-      <details class="faq"><summary>Is Project Scroll only about Michigan?</summary><p>It started in one Michigan county, but the methods work anywhere, and so does our research. Mysteries are welcome from wherever you are. The St. Joseph River does not stop at the state line, and neither did the families: South Bend, Mishawaka and Elkhart mysteries are as welcome as Cassopolis ones.</p></details>
-      <p class="note center" style="margin-top:1.2rem">Still wondering about something? <a href="mailto:research@projectscroll.com?subject=A%20question%20for%20Project%20Scroll">Email us</a> or <a href="https://m.me/projectscroll">ask on Facebook</a>.</p>
-          <figure class="secfig land">
-        <picture><source type="image/webp" srcset="/img/mitchell-north-america-1755-640.webp 640w, /img/mitchell-north-america-1755-1000.webp 1000w, /img/mitchell-north-america-1755.webp 1400w" sizes="(min-width:900px) 768px, 92vw"><img src="/img/mitchell-north-america-1755.jpg" srcset="/img/mitchell-north-america-1755-640.jpg 640w, /img/mitchell-north-america-1755-1000.jpg 1000w, /img/mitchell-north-america-1755.jpg 1400w" sizes="(min-width:900px) 768px, 92vw" width="1400" height="986" loading="lazy" decoding="async" alt="John Mitchell’s eighteenth-century map of the British and French dominions in North America, hand-colored, with a decorated title cartouche in the lower right corner."></picture><figcaption>John Mitchell’s map of the British and French dominions in North America, first published in 1755. The hunt began in one county; the research goes wherever the records do.</figcaption>
-      </figure>
+      <p class="center"><a class="btn" href="/faq/">All 15 questions</a></p>
     </section>
 
     <section id="contact" class="contact">
@@ -910,7 +659,7 @@ if('requestIdleCallback' in window)requestIdleCallback(otd,{timeout:2500});else 
       <p>Project Scroll is independent historical research from the St. Joseph River Valley (<a href="/cassopolis/">Cassopolis</a>, Dowagiac, Niles and beyond), with a studio for digital imaging, design, photography, 3D LiDAR, animation and video. Some mysteries open in an afternoon. Some take a season.</p>
     </div>
     <nav aria-label="Footer">
-      <a href="#hunt">The hunt</a><a href="#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/junior/">Junior hunt</a><a href="/classrooms/">Classrooms</a><a href="/places/">Gazetteer</a><a href="/names/">Names</a><a href="/sources/">Sources</a><a href="/almanac/">Almanac</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/lore/">Lore and legends</a><a href="#studio">Studio</a><a href="/records/">Where the records are</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/badges/">Your badges</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/accessibility/">Accessibility</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
+      <a href="#hunt">The hunt</a><a href="/cases/">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/junior/">Junior hunt</a><a href="/classrooms/">Classrooms</a><a href="/places/">Gazetteer</a><a href="/names/">Names</a><a href="/sources/">Sources</a><a href="/almanac/">Almanac</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/lore/">Lore and legends</a><a href="#studio">Studio</a><a href="/records/">Where the records are</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/badges/">Your badges</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/accessibility/">Accessibility</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
     </nav>
     <a class="totop" href="#top" aria-label="Back to the top" hidden>↑</a>
     <p class="cite">To cite a page: Project Scroll, “[page title],” projectscroll.com/[path], dated as shown on the page, accessed [date]. Quote the date on the page, not today’s.</p>

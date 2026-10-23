@@ -1,10 +1,10 @@
 """Builds the notebook page and the search index:  python3 _tools/build_misc.py"""
 import sys, pathlib, re, json, html; sys.path.insert(0, str(pathlib.Path(__file__).parent)); from pages import page, R
-page('notebook/index.html','Your notebook · Project Scroll','Your private notes on Project Scroll cases, kept only on this device.','''    <p class="crumb"><a href="/#cases">← The case board</a></p>
+page('notebook/index.html','Your notebook · Project Scroll','Your private notes on Project Scroll cases, kept only on this device.','''    <p class="crumb"><a href="/cases/">← The case board</a></p>
     <p class="kicker">Private to this device</p>
     <h1>Your notebook</h1>
     <p>Notes you have written on case pages. They are stored only in this browser: nobody else can see them, and clearing your browser data erases them.</p>
-    <div id="nbList"><p class="note">You haven’t written any notes yet. Open a case from <a href="/#cases">the case board</a> to start.</p></div>
+    <div id="nbList"><p class="note">You haven’t written any notes yet. Open a case from <a href="/cases/">the case board</a> to start.</p></div>
     <p class="nbbtns" id="nbAll" hidden><button type="button" class="btn" id="nbDl">Download all notes</button><button type="button" class="btn" id="nbClear">Erase all notes</button></p>
 ''', noindex=True)
 # search index from the built pages
@@ -48,7 +48,7 @@ for f in sorted(pathlib.Path(R).rglob('index.html')):
             tx=re.sub(r'\s+',' ',html.unescape(re.sub(r'<[^>]+>',' ',inner))).strip()[:500]
             docs.append({'u':url+'#'+m.group(2),'t':it+' · '+title,'x':tx})
 G={'Plat':'A surveyor’s drawing of land divided into lots or parcels.','Probate':'The court process that settles a dead person’s estate.','Informant':'The person who answered the questions on a certificate.','Census':'The national head-count taken every ten years.','Soundex':'A code that groups surnames that sound alike, used in old census indexes.','Relict':'A widow: a woman who outlived her husband.'}
-for k,v in G.items(): docs.append({'u':'/toolkit/' if k=='Soundex' else '/guide/old-handwriting/' if k=='Relict' else '/#marks','t':'Glossary: '+k,'x':v})
+for k,v in G.items(): docs.append({'u':'/toolkit/' if k=='Soundex' else '/guide/old-handwriting/' if k=='Relict' else '/scrollmarks/','t':'Glossary: '+k,'x':v})
 # each township sheet of about 1928 is its own result, so a search for "Calvin" or "Volinia" opens it
 TWP=[('calvin','Calvin','Brownsville, Calvin Center'),('howard','Howard',''),('jefferson','Jefferson',''),('lagrange','LaGrange','LaGrange village, Cassopolis'),('marcellus','Marcellus','Marcellus village'),('mason','Mason',''),('milton','Milton',''),('newberg','Newberg',''),('ontwa','Ontwa','Edwardsburg, Adamsville'),('penn','Penn','Vandalia, Diamond Lake'),('pokagon','Pokagon','Pokagon village, Sumnerville'),('porter-north','Porter','Williamsville (north half)'),('porter-south','Porter','Union (south half)'),('silver-creek','Silver Creek','Indian Lake'),('volinia','Volinia','Nicholsville'),('wayne','Wayne','Glenwood')]
 for k,n,v in TWP:

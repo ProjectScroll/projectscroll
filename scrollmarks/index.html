@@ -47,7 +47,7 @@
       Project Scroll
     </a>
     <nav aria-label="Sections" id="sitenav">
-      <a href="/hunt/">Hunt</a><a href="/news/">News</a><a href="/food/">Food &amp; Recipes</a><a href="/#cases">Cases</a><a href="/notes/">Field Notes</a><a href="/#services">Services</a><a href="/#contact">Contact</a>
+      <a href="/hunt/">Hunt</a><a href="/news/">News</a><a href="/food/">Food &amp; Recipes</a><a href="/cases/">Cases</a><a href="/notes/">Field Notes</a><a href="/services/">Services</a><a href="/#contact">Contact</a>
     </nav>
     <button class="searchbtn" type="button" id="searchBtn" aria-label="Search the site" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     <a class="badgelink" id="badgeLink" href="/badges/" aria-label="Your badges"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3l4.6 9.4 10.4 1.5-7.5 7.3 1.8 10.3L20 26.6l-9.3 4.9 1.8-10.3-7.5-7.3 10.4-1.5z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg><span class="bn" id="badgeN" hidden></span></a>
@@ -101,11 +101,65 @@
       </div>
 
       </div>
+    <div class="sm-page sm-try"><div class="weigh" id="weigh">
+        <h3>Weigh the evidence</h3>
+        <p class="note" style="margin:0 0 .8rem">Add records to each side and watch the scale. Records are weighed, not counted: one good document can outweigh a pile of family stories.</p>
+        <svg class="scale-svg" viewBox="0 0 320 170" aria-hidden="true">
+          <rect x="150" y="150" width="20" height="8" rx="2" class="brass"/><rect x="115" y="157" width="90" height="7" rx="3" class="brass"/>
+          <rect x="157" y="30" width="6" height="122" class="brass"/><circle cx="160" cy="28" r="6" class="brass"/>
+          <g id="beam"><rect x="40" y="25" width="240" height="6" rx="3" class="brass"/>
+            <g id="panL"><line x1="55" y1="31" x2="35" y2="95" class="cord"/><line x1="55" y1="31" x2="75" y2="95" class="cord"/><path d="M25 95 h60 a30 12 0 0 1 -60 0z" class="pan"/></g>
+            <g id="panR"><line x1="265" y1="31" x2="245" y2="95" class="cord"/><line x1="265" y1="31" x2="285" y2="95" class="cord"/><path d="M235 95 h60 a30 12 0 0 1 -60 0z" class="pan"/></g>
+          </g>
+        </svg>
+        <div class="sides">
+          <div class="side" data-side="L"><p class="side-h">Side A</p><div class="adds"><button type="button" class="mk kD" data-w="5">+ Document</button><button type="button" class="mk kP" data-w="4">+ Period print</button><button type="button" class="mk kC" data-w="3">+ County history</button><button type="button" class="mk kM" data-w="2">+ Compiled</button><button type="button" class="mk kT" data-w="1">+ Tradition</button></div><p class="pile" aria-live="polite"></p></div>
+          <div class="side" data-side="R"><p class="side-h">Side B</p><div class="adds"><button type="button" class="mk kD" data-w="5">+ Document</button><button type="button" class="mk kP" data-w="4">+ Period print</button><button type="button" class="mk kC" data-w="3">+ County history</button><button type="button" class="mk kM" data-w="2">+ Compiled</button><button type="button" class="mk kT" data-w="1">+ Tradition</button></div><p class="pile" aria-live="polite"></p></div>
+        </div>
+        <p class="center weigh-out" id="weighOut" aria-live="polite">The scale is level. Add a record to either side.</p>
+        <p class="center"><button type="button" class="linkbtn" id="weighReset">Empty both sides</button></p>
+        <p class="note center" style="margin:.2rem 0 0">The weights are a rule of thumb, not a formula: a late or careless document can still be wrong, and a detailed tradition can still be right.</p>
+      </div>
+
+      <div class="quiz" id="quiz">
+        <h3>Try marking these yourself</h3>
+        <p class="note">Teachers and group leaders are welcome to use this exercise and the hunter’s worksheet in class. Tell us how it went.</p>
+        <p class="note" style="margin:0 0 .6rem">Pick the mark you would give each one. <span id="qscore" aria-live="polite"></span> <button type="button" class="linkbtn" id="qreset" hidden>Try again</button></p>
+        <ol class="qlist">
+          <li data-a="kP"><p>A notice in the local paper, the week after he died.</p><div class="qopts"><button type="button" class="mk kD">Document</button><button type="button" class="mk kP">Period print</button><button type="button" class="mk kT">Tradition</button></div><p class="qwhy" hidden>Period print. It was printed at the time, but by a newspaper, not by an office whose job was to record the death.</p></li>
+          <li data-a="kT"><p>“Great-aunt Ruth always said the family came from Ohio.”</p><div class="qopts"><button type="button" class="mk kC">County history</button><button type="button" class="mk kT">Tradition</button><button type="button" class="mk kR">Reading</button></div><p class="qwhy" hidden>Tradition. Write it down exactly as she said it, then go and test it.</p></li>
+          <li data-a="kM"><p>A website listing every burial in a cemetery, typed up by volunteers.</p><div class="qopts"><button type="button" class="mk kD">Document</button><button type="button" class="mk kM">Compiled</button><button type="button" class="mk kF">Field</button></div><p class="qwhy" hidden>Compiled. A later hand gathered it. Wonderful for finding a name; then find the original burial record or the stone itself, on paper.</p></li>
+          <li data-a="kC"><p>A biography of a doctor in a county history of the 1890s, quoting his obituary.</p><div class="qopts"><button type="button" class="mk kP">Period print</button><button type="button" class="mk kC">County history</button><button type="button" class="mk kM">Compiled</button></div><p class="qwhy" hidden>County history. And notice the obituary inside it: if that newspaper survives, it is a period print, and stronger.</p></li>
+          <li data-a="kI"><p>“The first certificate was filed a month after he died, so its informant was closer to the event.”</p><div class="qopts"><button type="button" class="mk kI">Inference</button><button type="button" class="mk kR">Reading</button><button type="button" class="mk kH">Hypothesis</button></div><p class="qwhy" hidden>Inference. It follows directly from the dates on the records themselves.</p></li>
+        </ol>
+      </div>
+    </div>
+        <section id="method" data-accent="desk">
+      <p class="part">Part V</p>
+      <h2>Five promises</h2>
+      <p class="intro">Five promises we keep on every case and commission, whether it takes an afternoon or a season.</p>
+      <ol class="promises">
+        <li><b>Every claim comes with its source.</b> You’ll know exactly where each fact came from, so you can check it yourself.</li>
+        <li><b>Disagreements are clues, not failures.</b> When two records argue, we show you both and explain why.</li>
+        <li><b>Open questions stay open.</b> If something might be true but can’t be proven yet, we say so, and we keep looking instead of throwing it away.</li>
+        <li><b>No guarantees, just the record.</b> Some questions have answers on paper and some don’t. We’ll tell you up front which kind yours looks like.</li>
+        <li><b>We research the past.</b> No locating living people, no legal or title opinions, no appraisals. No digging, no trespassing, and care with every family’s story.</li>
+      </ol>
+      <figure class="secfig small">
+        <picture><source srcset="/img/death-register.webp" type="image/webp"><img src="/img/death-register.jpg" width="512" height="362" loading="lazy" decoding="async" alt="An open ledger, the State of Michigan record of deaths for Allegan County, with handwritten entries in ruled columns across two pages."></picture><figcaption>State of Michigan, record of deaths, Allegan County. We read the page itself, not someone’s summary of it.</figcaption>
+      </figure>
+      <div class="getbox">
+      <h3>What you get</h3>
+      <p>A written report in plain English: what we found, where we found it, what is still open, and where to look next. Where the old books and maps are free online, we include the links so you can turn the pages yourself. For studio work, you get the finished images, design files or film, and your originals back as you sent them. <a href="/sample/project-scroll-sample-report.pdf">See a sample report</a>.</p>
+      </div>
+
+    </section>
+
     <h2>Scrollmarks in our news stories</h2>
     <p>A news story is shorter than a research report, so its statements carry four marks, which fold the nine together: <span class="nw-tier d">Documented</span> for anything a record says (a document, a period print, a county history or a compiled source, named in the text), <span class="nw-tier r">Reading</span> for our interpretation, <span class="nw-tier o">Open</span> for what is not yet known, and <span class="nw-tier n">New finding</span> for something we found in the record that no earlier telling mentions. Every new finding is also listed on the <a href="/discoveries/">Discoveries</a> page, with the kind of finding it is.</p>
     <h2>Using Scrollmarks</h2>
     <p>The name Scrollmarks, the badges and the wording of these definitions are Project Scroll’s own. To use them in a publication, write to <a href="mailto:research@projectscroll.com?subject=Scrollmarks">research@projectscroll.com</a>.</p>
-    <p class="ctas"><a class="btn primary" href="/notes/one-letter-two-certificates/">See them at work: One Letter, Two Certificates</a> <a class="btn" href="/#services">Bring us your mystery</a></p>
+    <p class="ctas"><a class="btn primary" href="/notes/one-letter-two-certificates/">See them at work: One Letter, Two Certificates</a> <a class="btn" href="/services/">Bring us your mystery</a></p>
 <aside class="sharebar" aria-label="Share this page" data-share data-url="https://projectscroll.com/scrollmarks/" data-title="Scrollmarks: how we mark the evidence"><p class="sb-h">Share this page</p><div class="sb-row"><a class="sb-l" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fprojectscroll.com%2Fscrollmarks%2F" rel="noopener nofollow">Facebook</a><a class="sb-l" href="https://x.com/intent/post?url=https%3A%2F%2Fprojectscroll.com%2Fscrollmarks%2F&amp;text=Scrollmarks%3A%20how%20we%20mark%20the%20evidence" rel="noopener nofollow">X</a><a class="sb-l" href="https://bsky.app/intent/compose?text=Scrollmarks%3A%20how%20we%20mark%20the%20evidence%20https%3A%2F%2Fprojectscroll.com%2Fscrollmarks%2F" rel="noopener nofollow">Bluesky</a><a class="sb-l" href="https://www.reddit.com/submit?url=https%3A%2F%2Fprojectscroll.com%2Fscrollmarks%2F&amp;title=Scrollmarks%3A%20how%20we%20mark%20the%20evidence" rel="noopener nofollow">Reddit</a><a class="sb-l" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fprojectscroll.com%2Fscrollmarks%2F" rel="noopener nofollow">LinkedIn</a><a class="sb-l" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fprojectscroll.com%2Fscrollmarks%2F&amp;media=https%3A%2F%2Fprojectscroll.com%2Fog-dark.jpg&amp;description=Scrollmarks%3A%20how%20we%20mark%20the%20evidence" rel="noopener nofollow">Pinterest</a><a class="sb-l" href="mailto:?subject=Scrollmarks%3A%20how%20we%20mark%20the%20evidence&amp;body=Scrollmarks%3A%20how%20we%20mark%20the%20evidence%0A%0Ahttps%3A%2F%2Fprojectscroll.com%2Fscrollmarks%2F" rel="noopener nofollow">Email</a><button type="button" class="sb-l sb-copy">Copy link</button><button type="button" class="sb-l sb-more" hidden>More…</button></div></aside>
   </main>
   <div class="trailx" aria-hidden="true"><svg viewBox="0 0 640 64" focusable="false"><defs><mask id="trailM" maskUnits="userSpaceOnUse"><path class="tx-draw" pathLength="1" d="M52 36C96 12 136 56 186 34S276 10 326 34 426 58 478 30 560 20 590 32"/></mask></defs><g class="tx-compass"><circle cx="26" cy="32" r="15"/><circle cx="26" cy="32" r="10.5"/><path class="tx-n" d="M26 19l3 13h-6z"/><path d="M26 45l3-13h-6z"/><path d="M13 32h26M26 17v30"/></g><path class="tx-path" mask="url(#trailM)" d="M52 36C96 12 136 56 186 34S276 10 326 34 426 58 478 30 560 20 590 32"/><g class="tx-x"><path d="M598 22l18 20M616 22l-18 20"/></g><g class="tx-gem"><path d="M607 10l3.2 3.2-3.2 7.6-3.2-7.6z"/><path class="tx-spark" d="M607 2v6M607 22v-1M600 12h-3M614 12h3"/></g></svg></div>
@@ -119,7 +173,7 @@
       <p>Project Scroll is independent historical research from the St. Joseph River Valley (<a href="/cassopolis/">Cassopolis</a>, Dowagiac, Niles and beyond), with a studio for digital imaging, design, photography, 3D LiDAR, animation and video. Some mysteries open in an afternoon. Some take a season.</p>
     </div>
     <nav aria-label="Footer">
-      <a href="/">Home</a><a href="/#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/junior/">Junior hunt</a><a href="/classrooms/">Classrooms</a><a href="/places/">Gazetteer</a><a href="/names/">Names</a><a href="/sources/">Sources</a><a href="/almanac/">Almanac</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/lore/">Lore and legends</a><a href="/#studio">Studio</a><a href="/records/">Where the records are</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/badges/">Your badges</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/accessibility/">Accessibility</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
+      <a href="/">Home</a><a href="/cases/">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/junior/">Junior hunt</a><a href="/classrooms/">Classrooms</a><a href="/places/">Gazetteer</a><a href="/names/">Names</a><a href="/sources/">Sources</a><a href="/almanac/">Almanac</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/lore/">Lore and legends</a><a href="/services/#studio">Studio</a><a href="/records/">Where the records are</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/badges/">Your badges</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/accessibility/">Accessibility</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter’s worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
     </nav>
     <p class="cite">To cite a page: Project Scroll, “[page title],” projectscroll.com/[path], dated as shown on the page, accessed [date]. Quote the date on the page, not today’s.</p>
 <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a></p>

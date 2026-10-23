@@ -95,7 +95,7 @@ def intake(kind):
     </script>
 """
 
-families = f'''    <p class="crumb"><a href="/#services">← Research services</a></p>
+families = f'''    <p class="crumb"><a href="/services/">← Research services</a></p>
     <p class="kicker">Research services</p>
     <h1>Family histories, built to be checked</h1>
     <p class="lede" style="font-size:1.15rem">Most family trees are copied from other family trees. Ours are built from the records themselves: every name, date and place marked with where it came from, every gap shown honestly, and every family story kept exactly as it was told, beside the evidence that tests it.</p>
@@ -232,7 +232,7 @@ def leg_html(l):
 
 btns = ''.join(f'<button type="button" class="lg-btn" data-k="{l["k"]}" aria-pressed="false">{l["t"]}</button>' for l in LEG)
 answers = '\n      '.join(leg_html(l) for l in LEG)
-legends = f'''    <p class="crumb"><a href="/#services">← Research services</a></p>
+legends = f'''    <p class="crumb"><a href="/services/">← Research services</a></p>
     <p class="kicker">Mysteries in the family</p>
     <h1>Is the family story true?</h1>
     <p class="lede" style="font-size:1.15rem">Every family has a story that has been told so often nobody questions it. Some are true. Some are half-true. Some began as a guess a hundred years ago. The records can usually tell which.</p>

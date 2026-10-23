@@ -19,7 +19,7 @@ cass='''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <figcaption>Who kept the village in 1860: two hotels, three merchants and three physicians, engraved beside the Cassopolis plan on the county wall map. <span class="credit">Geil, Harley &amp; Siverd, 1860 · Library of Congress</span></figcaption>
     </figure>
     <h2>What the hunt has found in Cassopolis</h2>
-    <p>The hunt began here, with a joke secret society of 1846 whose story is told in Rogers and Mathews, a village hotel that was hauled across town and turned into a mill, and a doctor who kept a bone. Each is an open case on <a href="/#cases">the case board</a>; the first two are listed here, and each has its sources free online.</p>
+    <p>The hunt began here, with a joke secret society of 1846 whose story is told in Rogers and Mathews, a village hotel that was hauled across town and turned into a mill, and a doctor who kept a bone. Each is an open case on <a href="/cases/">the case board</a>; the first two are listed here, and each has its sources free online.</p>
     <ul>
       <li><a href="/cases/1/">Who told Shepard the story of the 1846 lodge?</a></li>
       <li><a href="/cases/2/">Where did the Union Hotel go when it became a mill?</a></li>
@@ -84,7 +84,7 @@ res='''    <p class="crumb"><a href="/">← Project Scroll</a></p>
       <li><b>You own the report.</b> Nothing about your family is published or shared without your word.</li>
     </ol>
     <h2>Also from the studio</h2>
-    <p>Digital imaging and restoration of photographs and documents, family-history book design, photography, 3D LiDAR landscape models and short films. <a href="/#studio">The studio</a>.</p>
+    <p>Digital imaging and restoration of photographs and documents, family-history book design, photography, 3D LiDAR landscape models and short films. <a href="/services/#studio">The studio</a>.</p>
     <p class="ctas"><a class="btn primary" href="/#contact">Ask about a commission</a> <a class="btn" href="/sample/project-scroll-sample-report.pdf">Sample report (PDF)</a> <a class="btn" href="mailto:research@projectscroll.com?subject=A%20research%20commission">research@projectscroll.com</a></p>
 '''
 page('research/index.html', 'Genealogy and local history research, Michigan and Indiana · Project Scroll',

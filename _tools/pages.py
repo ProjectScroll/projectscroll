@@ -141,7 +141,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
       Project Scroll
     </a>
     <nav aria-label="Sections" id="sitenav">
-      <a href="/hunt/">Hunt</a><a href="/news/">News</a><a href="/food/">Food &amp; Recipes</a><a href="/#cases">Cases</a><a href="/notes/">Field Notes</a><a href="/#services">Services</a><a href="/#contact">Contact</a>
+      <a href="/hunt/">Hunt</a><a href="/news/">News</a><a href="/food/">Food &amp; Recipes</a><a href="/cases/">Cases</a><a href="/notes/">Field Notes</a><a href="/services/">Services</a><a href="/#contact">Contact</a>
     </nav>
     <button class="searchbtn" type="button" id="searchBtn" aria-label="Search the site" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     <a class="badgelink" id="badgeLink" href="/badges/" aria-label="Your badges"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3l4.6 9.4 10.4 1.5-7.5 7.3 1.8 10.3L20 26.6l-9.3 4.9 1.8-10.3-7.5-7.3 10.4-1.5z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg><span class="bn" id="badgeN" hidden></span></a>
@@ -173,7 +173,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
       <p>Project Scroll is independent historical research from the St. Joseph River Valley (<a href="/cassopolis/">Cassopolis</a>, Dowagiac, Niles and beyond), with a studio for digital imaging, design, photography, 3D LiDAR, animation and video. Some mysteries open in an afternoon. Some take a season.</p>
     </div>
     <nav aria-label="Footer">
-      <a href="/">Home</a><a href="/#cases">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/junior/">Junior hunt</a><a href="/classrooms/">Classrooms</a><a href="/places/">Gazetteer</a><a href="/names/">Names</a><a href="/sources/">Sources</a><a href="/almanac/">Almanac</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/lore/">Lore and legends</a><a href="/#studio">Studio</a><a href="/records/">Where the records are</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/badges/">Your badges</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/accessibility/">Accessibility</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter's worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
+      <a href="/">Home</a><a href="/cases/">Case board</a><a href="/notes/">Field notes</a><a href="/map/">Map room</a><a href="/junior/">Junior hunt</a><a href="/classrooms/">Classrooms</a><a href="/places/">Gazetteer</a><a href="/names/">Names</a><a href="/sources/">Sources</a><a href="/almanac/">Almanac</a><a href="/toolkit/">Toolkit</a><a href="/notes/book/">Book of notes</a><a href="/families/">Family histories</a><a href="/legends/">Family legends</a><a href="/lore/">Lore and legends</a><a href="/services/#studio">Studio</a><a href="/records/">Where the records are</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/badges/">Your badges</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/accessibility/">Accessibility</a><a href="/guide/death-certificate/">Certificate guide</a><a href="/worksheet/project-scroll-hunters-worksheet.pdf">Hunter's worksheet</a><a href="/sample/project-scroll-sample-report.pdf">Sample report</a><a href="/#contact">Contact</a><a href="https://www.facebook.com/projectscroll/">Facebook</a>
     </nav>
     <p class="cite">To cite a page: Project Scroll, “[page title],” projectscroll.com/[path], dated as shown on the page, accessed [date]. Quote the date on the page, not today’s.</p>
 <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a></p>
@@ -197,9 +197,9 @@ if __name__=='__main__':
         <p class="lede" style="font-size:1.2rem">One letter. That's all it was. A single middle initial, and it nearly turned one man into two.</p>
 
         <h2>The case</h2>
-        <p>A pioneer died in Michigan in 1912. The old county histories give him a plain first and last name. One of them adds "Senior." <a class="mk sm kC" href="/#mk-county-history" title="What this mark means">County history</a></p>
-        <p>His own death certificate, filed about a month after he died, gives the same plain name. No initial at all. <a class="mk sm kD" href="/#mk-document" title="What this mark means">Document</a></p>
-        <p>Then we found his son's death certificate, from 1935. In the box for the father's name, whoever answered the questions gave him a middle initial: the same one the son carried. <a class="mk sm kD" href="/#mk-document" title="What this mark means">Document</a></p>
+        <p>A pioneer died in Michigan in 1912. The old county histories give him a plain first and last name. One of them adds "Senior." <a class="mk sm kC" href="/scrollmarks/#mk-county-history" title="What this mark means">County history</a></p>
+        <p>His own death certificate, filed about a month after he died, gives the same plain name. No initial at all. <a class="mk sm kD" href="/scrollmarks/#mk-document" title="What this mark means">Document</a></p>
+        <p>Then we found his son's death certificate, from 1935. In the box for the father's name, whoever answered the questions gave him a middle initial: the same one the son carried. <a class="mk sm kD" href="/scrollmarks/#mk-document" title="What this mark means">Document</a></p>
         <p>So which is right? Make your guess now. Ours is further down.</p>
 
         <h2>Then it got stranger</h2>
@@ -214,7 +214,7 @@ if __name__=='__main__':
         <p><b>Every record was written by someone.</b> A death certificate tells you what the informant believed, on a hard day. Their name is usually on it. The father's was filed about a month after he died; the son's was filled in twenty-three years later, by someone remembering a man long gone. County histories have the same weakness: the family usually supplied the facts, often from memory, and nobody checked them.</p>
         <p><b>One letter can change everything.</b> Fathers and sons with the same name get tangled in the record all the time. One wrong initial can merge two men or split one, and send you chasing somebody else's family for a month.</p>
         <p><b>Watch out for "Senior."</b> In the 1800s it didn't always mean "father." Sometimes it only meant the older of two men with the same name in town, related or not. Here a son with the same name does turn up, so the label fits, but always check.</p>
-        <p><b>Disagreement is a clue, not a failure.</b> Every mismatch tells you who was remembering, and when. Our guess, as promised: father and son shared a name, and in 1935 someone gave the father the son's initial too <a class="mk sm kR" href="/#mk-reading" title="What this mark means">Reading</a>. But a guess is not proof.</p>
+        <p><b>Disagreement is a clue, not a failure.</b> Every mismatch tells you who was remembering, and when. Our guess, as promised: father and son shared a name, and in 1935 someone gave the father the son's initial too <a class="mk sm kR" href="/scrollmarks/#mk-reading" title="What this mark means">Reading</a>. But a guess is not proof.</p>
 
         <h2>Four rules for when records disagree</h2>
         <ol class="notes" style="padding-left:1.3rem">
@@ -227,7 +227,7 @@ if __name__=='__main__':
         <h2>Where the case stands</h2>
         <p><span class="status">Open</span> Our next witness: a local newspaper notice from the days or weeks after his death. Then his probate file, and the cemetery's burial records or a transcription of his stone. Read the stone on paper. Don't go to it.</p>
 
-        <p class="mstrip"><i>Scrollmarks, strongest first:</i> <span class="tD">Document</span> <span class="tP">Period print</span> <span class="tC">County history</span> <span class="tM">Compiled</span> <span class="tT">Tradition</span> <span class="tF">Field (seen at first hand)</span> <span class="tI">Inference</span> <span class="tR">Reading</span> <span class="tH">Hypothesis</span> <i>— <a href="/#marks">what the marks mean</a></i></p>
+        <p class="mstrip"><i>Scrollmarks, strongest first:</i> <span class="tD">Document</span> <span class="tP">Period print</span> <span class="tC">County history</span> <span class="tM">Compiled</span> <span class="tT">Tradition</span> <span class="tF">Field (seen at first hand)</span> <span class="tI">Inference</span> <span class="tR">Reading</span> <span class="tH">Hypothesis</span> <i>— <a href="/scrollmarks/">what the marks mean</a></i></p>
 
         <h2>Where to look, for free</h2>
         <ul class="dis">
@@ -242,7 +242,7 @@ if __name__=='__main__':
 
         <h2>Your turn</h2>
         <p>Pick someone in your family who died long ago. Find two records that name them and compare every box: name, dates, parents, birthplaces. Do they disagree? Which would you believe, and why? The best mysteries start at home.</p>
-        <p>Want to test yourself first? <a href="/#try">Try the two-record puzzle</a>. Got a mystery you can't crack? Write to <a href="mailto:research@projectscroll.com?subject=My%20mystery">research@projectscroll.com</a>, <a href="https://m.me/projectscroll">message us on Facebook</a>, or <a href="/#contact">start with a question</a>. Tell us how you did in the comments on <a href="https://www.facebook.com/projectscroll/">Project Scroll's page</a>.</p>
+        <p>Want to test yourself first? <a href="/notes/from-the-desk/#try">Try the two-record puzzle</a>. Got a mystery you can't crack? Write to <a href="mailto:research@projectscroll.com?subject=My%20mystery">research@projectscroll.com</a>, <a href="https://m.me/projectscroll">message us on Facebook</a>, or <a href="/#contact">start with a question</a>. Tell us how you did in the comments on <a href="https://www.facebook.com/projectscroll/">Project Scroll's page</a>.</p>
     ''', og='https://projectscroll.com/og/one-letter.jpg')
 
     page('notes/index.html','Field notes · Project Scroll',
@@ -277,6 +277,6 @@ if __name__=='__main__':
         <script>(function(){ var f=document.querySelector('.lq-f'); if(!f) return; var h=function(s){ var x=5381; for(var i=0;i<s.length;i++) x=((Math.imul(x,33))^s.charCodeAt(i))>>>0; return x; };
           f.addEventListener('submit',function(e){ e.preventDefault(); var v=document.getElementById('lqIn').value.toLowerCase().replace(/[^a-z]/g,''), o=document.querySelector('.lq-out');
             if (h(v)===554842722) o.innerHTML='Found it, and so are you. <a href="/map/#town-berrien">See the 1860 plan of Berrien in the map room →</a>'; else o.textContent='Not that one. It sits on the St. Joseph River, and today it carries a second word.'; }); })();</script>
-        <p class="ctas" style="margin-top:1.6rem"><a class="btn primary" href="/">Back to the first page</a><a class="btn" href="/#cases">See the case board</a></p>
+        <p class="ctas" style="margin-top:1.6rem"><a class="btn primary" href="/">Back to the first page</a><a class="btn" href="/cases/">See the case board</a></p>
     ''', noindex=True)
     print('pages written')

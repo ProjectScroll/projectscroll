@@ -149,14 +149,14 @@ about = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <h2>Who we are</h2>
     <p>Project Scroll is run by an independent researcher and author who writes narrative nonfiction about the history of the Great Lakes country, and who trained in visual communications. The research behind that writing is the same research we offer you: old certificates, deeds, surveys, county histories and newspapers, read line by line and compared until they agree, or until we can say exactly why they don’t.</p>
     <h2>What we offer</h2>
-    <p><b>Professional research.</b> Lost ancestors, family histories and registers, family legends tested against the record, forgotten places, maps and land surveys, heirlooms, lodges and old societies, historical research for authors, films and local groups, and a second pair of eyes on anything you mean to publish. <a href="/#services">Research services</a>.</p>
+    <p><b>Professional research.</b> Lost ancestors, family histories and registers, family legends tested against the record, forgotten places, maps and land surveys, heirlooms, lodges and old societies, historical research for authors, films and local groups, and a second pair of eyes on anything you mean to publish. <a href="/services/">Research services</a>.</p>
     <p><b>Imaging, design and video.</b> Digital imaging of photographs, documents, maps and heirlooms; imaging analysis of faded ink, damaged pages and the details in old photographs; image creation and restoration; graphic design for family books, charts, covers and keepsakes; web design for families, societies and small businesses; photography; and video production, from family-history films to recorded interviews.</p>
-    <p><b>3D and living documents.</b> Landscapes modeled in three dimensions from public LiDAR elevation surveys, 3D animations and fly-throughs, every reconstruction labeled as one, and living documents: research papers, timelines and family records that keep growing as new evidence turns up, with every change dated. <a href="/#studio">The studio</a>.</p>
+    <p><b>3D and living documents.</b> Landscapes modeled in three dimensions from public LiDAR elevation surveys, 3D animations and fly-throughs, every reconstruction labeled as one, and living documents: research papers, timelines and family records that keep growing as new evidence turns up, with every change dated. <a href="/services/#studio">The studio</a>.</p>
     <p>Every commission starts with an honest first read: what can be done, and what it will take, before you commit to anything.</p>
     <h2>What we believe</h2>
     <ul class="dis">
       <li><b>The record decides.</b> Not the family tree online, not the story everybody tells, not what we hoped to find.</li>
-      <li><b>Every statement is marked.</b> You can always see whether a fact comes from a document, a book, a family story or our own reading. <a href="/#marks">How we mark the evidence</a>.</li>
+      <li><b>Every statement is marked.</b> You can always see whether a fact comes from a document, a book, a family story or our own reading. <a href="/scrollmarks/">How we mark the evidence</a>.</li>
       <li><b>Gaps are shown, not filled.</b> An honest “not yet known” is worth more than a confident guess.</li>
       <li><b>Corrections are welcome.</b> If you know better, tell us. The record is bigger than any one of us.</li>
       <li><b>Places and people are respected.</b> The hunt never asks anyone to dig, to disturb a grave or a mound, or to go looking for anyone’s home.</li>
@@ -167,7 +167,7 @@ about = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p>The dates on the scroll, the person of the month and the then-and-now maps are built from the same sources the hunt asks you to open: Rogers (1875), Mathews (1882), Glover (1906), the 1860 wall map at the Library of Congress, and Michigan death certificates at the Archives of Michigan. Where a page of this site makes a claim, the source is on the page or one click away. If it is not, that is a correction we owe.</p>
     <h2>Where it started</h2>
     <p>Project Scroll began in <a href="/cassopolis/">Cassopolis, Michigan</a>, with a few questions the county history couldn’t answer. It doesn’t stop there. The hunt and the desk now take on questions from anywhere the records reach.</p>
-    <p class="center"><a class="btn" href="/#hunt">Play the hunt</a> <a class="btn" href="/#services">Research services</a> <a class="btn" href="/#studio">Imaging, design and video</a> <a class="btn" href="/#contact">Get in touch</a></p>
+    <p class="center"><a class="btn" href="/#hunt">Play the hunt</a> <a class="btn" href="/services/">Research services</a> <a class="btn" href="/services/#studio">Imaging, design and video</a> <a class="btn" href="/#contact">Get in touch</a></p>
 '''
 page('about/index.html', 'About · Project Scroll',
      'Project Scroll is independent historical research: an online treasure hunt anyone can play, a research desk anyone can hire, and a studio for digital imaging, design, photography, 3D LiDAR, animation and video.', about,
@@ -295,8 +295,7 @@ print('records, glossary, about, privacy, badges built')
 # (the part after # is never sent), so /services/ carries the Services card and steps straight through.
 for slug, title, desc, og, tgt in [
   ('hunt', 'The hunt · Project Scroll', 'Ten mysteries from one Michigan county, each begun as a single question. Free to play, solved with clues from real pages. Every clue is true, and every answer is in the record.', 'hunt', '/#hunt'),
-  ('services', 'Professional research · Project Scroll', 'Lost ancestors, family histories, legends tested against the record, forgotten places and land. Every source cited, every statement marked. An honest first read before you commit to anything.', 'services', '/#services'),
-  ('studio', 'The studio · Project Scroll', 'Digital imaging, imaging analysis, graphic design, web design, photography, video, 3D LiDAR landscapes, animation and living documents, from the desk that runs the hunt.', 'studio', '/#studio'),
+  ('studio', 'The studio · Project Scroll', 'Digital imaging, imaging analysis, graphic design, web design, photography, video, 3D LiDAR landscapes, animation and living documents, from the desk that runs the hunt.', 'studio', '/services/#studio'),
 ]:
     body=f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <h1>{title.split(' · ')[0]}</h1>
@@ -321,7 +320,7 @@ doc = '''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <ul class="dis">
       <li><b>Read past the quotation.</b> Rogers quotes a long passage and then adds a few words of his own. The words after the closing quotation mark are where a careful reader slows down.</li>
       <li><b>Watch the punctuation.</b> On the next page a single question mark sits inside a parenthesis. A question mark in a county history is a historian telling you, as plainly as he dared, that he is not sure.</li>
-      <li><b>Find the teller.</b> The passage is a quotation, and Rogers was not there in 1846. Seven years later Alfred Mathews reprinted the passage and put the teller’s name in a footnote: James M. Shepard, who was three years old in 1846. <a href="/#pom">Who told him?</a></li>
+      <li><b>Find the teller.</b> The passage is a quotation, and Rogers was not there in 1846. Seven years later Alfred Mathews reprinted the passage and put the teller’s name in a footnote: James M. Shepard, who was three years old in 1846. <a href="/notes/from-the-desk/#pom">Who told him?</a></li>
       <li><b>Count what can be counted.</b> Two hundred badges, one ball, one winter. Each number is a thing that might have left a record somewhere else: a newspaper, a bill, a diary, a badge in a drawer.</li>
     </ul>
     <h2>Read it yourself</h2>

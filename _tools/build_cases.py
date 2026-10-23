@@ -41,7 +41,7 @@ for c in C:
       <li hidden><b>Every name is a lead.</b> Look each person up in a second kind of record: a census, a deed index, a plat map, a cemetery list. Where two records made by different people agree, you are on firm ground.</li>
       <li hidden><b>Ask what the writer could not know.</b> A county history is a memory, written years later. Find a record made at the time, a newspaper, a plat, a certificate, and test the story against it. The answer is usually where the two disagree.</li>
     </ol><p><button type="button" class="btn hl-next">Show a way in</button> <span class="hl-n" aria-live="polite"></span></p></aside>'''
-    body=f'''    <p class="crumb"><a href="/#cases">← The case board</a></p>
+    body=f'''    <p class="crumb"><a href="/cases/">← The case board</a></p>
     <p class="kicker">Case {n} · {esc(c['hallName'])}</p>
     <h1 style="view-transition-name:case-{c['n']}">{esc(c['question'])}</h1>
     <p class="casestatus">{status}</p>
@@ -66,7 +66,7 @@ for c in C:
       <p class="nbbtns"><button type="button" class="btn" id="noteCopy">Copy as a Facebook answer</button><button type="button" class="btn" id="noteSave">Download as a text file</button><span class="copied" id="noteOut" aria-live="polite"></span></p>
     </div>
     {keep}
-    <p class="ctas" style="margin-top:1.4rem"><a class="btn primary" href="{c.get('post') or (HALLFB if c['hall']=='h1' else FB)}">{'Read the post on Facebook' if c.get('post') else 'Start on Facebook'}</a><a class="btn" href="/#cases">All cases</a><button type="button" class="btn" id="sharecase">Share this case</button></p>
+    <p class="ctas" style="margin-top:1.4rem"><a class="btn primary" href="{c.get('post') or (HALLFB if c['hall']=='h1' else FB)}">{'Read the post on Facebook' if c.get('post') else 'Start on Facebook'}</a><a class="btn" href="/cases/">All cases</a><button type="button" class="btn" id="sharecase">Share this case</button></p>
     <p class="copied" id="shareout" aria-live="polite"></p>
     <script>document.getElementById('sharecase').addEventListener('click',function(){{var u=location.href.split('#')[0],t=document.title;if(navigator.share){{navigator.share({{title:t,url:u}}).catch(function(){{}});}}else if(navigator.clipboard){{navigator.clipboard.writeText(u).then(function(){{document.getElementById('shareout').textContent='Link copied.';}},function(){{document.getElementById('shareout').textContent=u;}});}}}});</script>
 '''
@@ -75,8 +75,8 @@ for c in C:
 pathlib.Path(f'{R}/_tools/cards.json').write_text(json.dumps(C, ensure_ascii=False))
 
 # keepsake page (reads cases.json in the browser; shows a certificate only for a solved case)
-kbody='''    <p class="crumb no-print"><a href="/#cases">← The case board</a></p>
-    <div id="keep"><p class="kicker">Solver’s keepsake</p><h1>No case cracked yet</h1><p>When one is, its solver’s name goes on a keepsake here, ready to print. Could the first one be yours? Choose a solved case on <a href="/#cases">the case board</a>.</p></div>
+kbody='''    <p class="crumb no-print"><a href="/cases/">← The case board</a></p>
+    <div id="keep"><p class="kicker">Solver’s keepsake</p><h1>No case cracked yet</h1><p>When one is, its solver’s name goes on a keepsake here, ready to print. Could the first one be yours? Choose a solved case on <a href="/cases/">the case board</a>.</p></div>
     <p class="center no-print" id="keepbtns" hidden><button type="button" class="btn primary" id="keepPrint">Print or save as PDF</button></p>
     <script>
     (function(){ var n=+new URLSearchParams(location.search).get('case'); if(!n) return;
@@ -94,8 +94,8 @@ kbody='''    <p class="crumb no-print"><a href="/#cases">← The case board</a><
 '''
 page('keepsake/index.html','Solver’s keepsake · Project Scroll','A keepsake for solvers of Project Scroll cases.',kbody,noindex=True)
 
-# sync the case board on the home page
-p=f'{R}/index.html'; s=open(p).read()
+# sync the case board (its page is built from this fragment by build_moved.py)
+p=f'{R}/_tools/data/home/cases.html'; s=open(p).read()
 for c in C:
     attrs=f' data-hall="{c["hall"]}"'+(f' data-touched="{esc(c["touched"])}"' if c.get('touched') else '')+(f' data-solved="{esc(c["solved"])}"' if c.get('solved') else '')+(f' data-hint="{esc(c["hint"])}"' if c.get('hint') else '')
     s=re.sub(rf'<tr id="case-{c["n"]}" data-hall="\w+"[^>]*>', f'<tr id="case-{c["n"]}"{attrs}>', s)

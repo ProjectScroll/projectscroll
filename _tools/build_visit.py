@@ -201,7 +201,7 @@ DAYS=[
    ('Late morning','The Cass County Clerk/Register office, upstairs in the old courthouse at 120 N. Broadway, for birth, death and marriage records and the deed books. Call ahead (269-445-4464) to ask what you can see in person.',None,('x','Cass County Clerk/Register office','Cass County Clerk Register Office, 120 N Broadway, Cassopolis, MI 49031',[41.91202,-86.01243])),
    ('Lunch','Holden Green Tavern, two doors down Broadway in the old post office.',None,('f','Holden Green Tavern')),
    ('Afternoon','Prospect Hill Cemetery, the village cemetery on Disbrow Street, with burials going back to the 1830s. Take our guide to reading old gravestones.','/guide/gravestones/',('x','Prospect Hill Cemetery','Prospect Hill Cemetery, Disbrow St, Cassopolis, MI 49031')),
-   ('Before you go home','Stuck on a name? Write down what you found and where, and bring us your mystery.','/#services',None)]),
+   ('Before you go home','Stuck on a name? Write down what you found and where, and bring us your mystery.','/services/',None)]),
  ('niles','Niles and the river','A half day; the Fort St. Joseph Museum is open Wednesday to Saturday.',[
    ('Morning','The Fort St. Joseph Museum and the Niles History Center.',None,('m','Fort St. Joseph Museum (Niles History Center)')),
    ('Morning','The Four Flags City sites around downtown, mostly seen from outside.',None,('m','Niles Historic Sites (Four Flags City)')),

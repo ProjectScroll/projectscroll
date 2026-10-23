@@ -3358,7 +3358,7 @@
     ],
     [
      "The whole case board",
-     "/#cases"
+     "/cases/"
     ]
    ],
    "sources": [],
@@ -3439,12 +3439,13 @@
    "date": "2026-10-21",
    "kicker": "The map room",
    "headline": "Fly over Cassopolis, laser point by laser point",
-   "short": "Cassopolis in 355,650 laser points",
-   "dek": "355,650 real laser points from the 2015 survey, in 3D, with the 1860 town plan laid on the ground.",
+   "short": "Cassopolis in 1.5 million laser points",
+   "dek": "Every laser point of the 2015 survey in the town blocks, the land from Stone Lake to Diamond Lake, story pins, a guided tour, and the sun’s shadows, with the 1860 town plan laid on the ground.",
    "body": [
     "<span class=\"dl\">Cassopolis, Mich.</span> In 2015 an aircraft flew over Cass County firing laser pulses at the ground, hundreds of thousands a second, and timing each echo. Every dot in the new model is one of those echoes, from the blocks around the courthouse: 355,650 of them.",
     "The buildings and trees stand where the laser found them, 125,189 points of roofs and 230,461 of trees, over the bare ground of the town.",
     "Press “1860 plan” and the old town plan from the county wall map is laid on the ground beneath them. Raise the heights, tilt it, fly around it, or go full screen.",
+    "<span class=\"nw-tier d\">Documented</span><b>Updated 23 October.</b> The model now shows every tree and building point the survey kept in the town blocks, about 775,000, and some 760,000 more across the country from Stone Lake to Diamond Lake, on ground shaded from a survey grid one and a half metres apart. Buildings and trees each have their own switch. Gold pins mark the stops of our walking tour; a guided tour flies from Stone Lake to the courthouse square and out to Diamond Lake; tap the ground for its height; and the Sun slider casts every roof’s and tree’s shadow through a midsummer day.",
     "Fly over it, and you earn the Laser surveyor badge."
    ],
    "cta": [
@@ -3462,6 +3463,17 @@
     "/img/news/cassopolis-in-lidar",
     "Cassopolis in 3D: buildings in gold and trees in green, drawn from 355,650 laser points of the 2015 survey",
     "Cassopolis in LiDAR: every dot is one laser echo from the 2015 survey."
+   ],
+   "modified": "2026-10-23",
+   "changes": [
+    [
+     "2026-10-21",
+     "First published."
+    ],
+    [
+     "2026-10-23",
+     "The model widened to Stone Lake and Diamond Lake, every tree point added, and story pins, a guided tour, ground readings and the sun and shadows added."
+    ]
    ]
   },
   {
