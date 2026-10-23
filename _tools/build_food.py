@@ -67,18 +67,66 @@ RLINK={'Celery Soup':('Kalamazoo grew celery for a century','/made-in-the-valley
  'Pickle Peaches':('The fruit belt and its great market','/made-in-the-valley/#benton-harbor-fruit-market'),
  'Boiled Huckleberry Pudding':('Blueberry season on the calendar','/seasons/#blueberry-u-pick-season'),
  'Maple Creams':('Maple sugar festivals on the calendar','/seasons/#kalamazoo-nature-center-maple-sugar-festival')}
+COURSE = [('bread','Breads'),('soup','Soups'),('main','Main dishes'),('vegetable','Vegetables'),('pie-cake','Pies & cakes'),('dessert','Puddings & desserts'),('preserve','Preserves & pickles'),('drink','Drinks'),('candy','Candy'),('hint','Household hints')]
+CNAME = dict(COURSE)
+from PIL import Image as _Img
+ROOT = pathlib.Path(__file__).parent.parent
+def _wh(src):
+    try:
+        with _Img.open(ROOT/src.lstrip('/')) as im: return im.size
+    except Exception: return None
+def rplace(d): return (d.get('source_place') or '').split(',')[0].strip()
 def rec(d):
     who = f' · {E(d["contributor"])}' if d.get('contributor') else ''
     src = f'<a href="{E(d["url"])}" rel="noopener">{E(d["source_title"])}</a>' if d.get('url') else E(d['source_title'])
-    return f'''<li class="rc" id="{slug(d['title'])}" data-kind="{d['kind']}">
-        <p class="mu-k">{'Household hint' if d['kind']=='hint' else 'Recipe'} · {E(d.get('source_place') or '')}{(', '+E(str(d['year']))) if d.get('year') else ''}</p>
+    course = d.get('course') or ('hint' if d['kind']=='hint' else 'main')
+    if d.get('img'):
+        wh = _wh(d['img']); whs = f' width="{wh[0]}" height="{wh[1]}"' if wh else ''
+        pic = (f'<figure class="rc-pic"><a class="nw-pz" href="{E(d["img"])}"><img src="{E(d["img"])}"{whs} alt="{E(d["title"])}, as printed in {E(d["source_title"])}" loading="lazy" decoding="async"></a>'
+               f'<figcaption>As printed{(", "+E(str(d["year"]))) if d.get("year") else ""}. Tap to enlarge.</figcaption></figure>')
+    else:
+        pic = f'<div class="rc-card" aria-hidden="true"><b>{E(d["source_title"].split(" (")[0])}</b><span>{E(rplace(d))}</span><i>{E(str(d.get("year") or ""))}</i></div>'
+    return f'''<li class="rc" id="{slug(d['title'])}" data-kind="{d['kind']}" data-co="{course}" data-pl="{E(rplace(d))}" data-t="{E((d['title']+' '+d['text']+' '+(d.get('source_place') or '')+' '+d['source_title']+' '+(d.get('contributor') or '')).lower())}">
+        {pic}
+        <p class="mu-k">{E(CNAME.get(course,'Recipe'))} · {E(d.get('source_place') or '')}{(', '+E(str(d['year']))) if d.get('year') else ''}</p>
         <h3>{E(d['title'])}</h3>
         <blockquote class="rc-t">{E(d['text'])}</blockquote>
         <p class="rc-src">From {src}{who}</p>
         {f'<p class="fd-near">Its story today: <a href="{RLINK[d["title"]][1]}">{E(RLINK[d["title"]][0])}</a></p>' if d['title'] in RLINK else ''}
         {f'<details class="rc-m"><summary>Making it today</summary><p>{E(d["modern"])}</p></details>' if d.get('modern') else ''}
       </li>'''
-recipes = ''.join(rec(d) for d in R if d['kind']=='recipe') + ''.join(rec(d) for d in R if d['kind']=='hint')
+_ORDER = {c:i for i,(c,_) in enumerate(COURSE)}
+_RS = sorted(R, key=lambda d:(_ORDER.get(d.get('course') or ('hint' if d['kind']=='hint' else 'main'), 99), d['title']))
+recipes = ''.join(rec(d) for d in _RS)
+_cos = [c for c,_ in COURSE if any((d.get('course') or ('hint' if d['kind']=='hint' else 'main'))==c for d in R)]
+rchips = '<button type="button" class="btn rc-c" data-co="" aria-pressed="true">All</button>' + ''.join(f'<button type="button" class="btn rc-c" data-co="{c}" aria-pressed="false">{E(CNAME[c])}</button>' for c in _cos)
+_pls = sorted({rplace(d) for d in R if rplace(d)})
+rpl = ''.join(f'<option value="{E(x)}">{E(x)}</option>' for x in _pls)
+CB = json.load(open(P/'cookbooks.json')) if (P/'cookbooks.json').exists() else []
+def cbk(b):
+    n = sum(1 for d in R if d['source_title']==b['match'] or d['source_title'].startswith(b['match']))
+    wh = _wh(b['img']) if b.get('img') else None; whs = f' width="{wh[0]}" height="{wh[1]}"' if wh else ''
+    im = f'<a class="nw-pz" href="{E(b["img"])}"><img src="{E(b["img"])}"{whs} alt="The cover of {E(b["title"])}" loading="lazy" decoding="async"></a>' if b.get('img') else f'<div class="rc-card"><b>{E(b["title"])}</b><span>{E(b["place"])}</span><i>{E(b["year"])}</i></div>'
+    link = f'<a href="{E(b["url"])}" rel="noopener">{"Read the paper" if b.get("paper") else "Read the whole book"} ›</a>' if b.get('url') else ''
+    return f'<li class="cb"><figure class="rc-pic cb-pic">{im}</figure><div><p class="mu-k">{E(b["place"])} · {E(b["year"])}</p><h3>{E(b["title"])}</h3><p>{E(b["about"])}</p><p class="rc-src">{n} {"item" if n==1 else "items"} on this page{" · "+link if link else ""}</p></div></li>'
+shelf = ''.join(cbk(b) for b in CB)
+GLOSS = [
+ ('Saleratus', 'An early baking soda (bicarbonate of potash or soda). Use baking soda.'),
+ ('Butter the size of an egg', 'About 1/4 cup (4 tablespoons). “The size of a walnut” is about 2 tablespoons.'),
+ ('A gill', 'Half a cup (4 fluid ounces).'),
+ ('A coffeecup, a teacup', 'A coffeecup is about 1 cup; a teacup a little less, about 3/4 cup.'),
+ ('A salt spoon', 'About 1/4 teaspoon.'),
+ ('Rich paste', 'Pie pastry made with plenty of butter or lard.'),
+ ('A soft ball', 'Sugar syrup cooked until a drop forms a soft ball in cold water: 235–240°F on a candy thermometer.'),
+ ('A quick, moderate or slow oven', 'Before oven dials: quick or hot is about 400–450°F, moderate about 350–375°F, slow about 300–325°F.'),
+ ('Cassia buds', 'The dried flower buds of the cassia (Chinese cinnamon) tree. Whole cloves or a cinnamon stick will do.'),
+ ('Paraffine paper', 'Waxed paper.'),
+ ('Dripping pan', 'A shallow roasting or baking pan.'),
+ ('Maître d’hôtel sauce', 'Melted butter with chopped parsley, lemon juice, salt and pepper.'),
+ ('Sweet milk, sour milk', 'Sweet milk is fresh milk. Sour milk was soured naturally; buttermilk is the nearest today.'),
+ ('A peck, a bushel', 'A peck is about 8 quarts (around 12 lb of apples or peaches); a bushel is four pecks.'),
+]
+gloss = ''.join(f'<dt>{E(a)}</dt><dd>{E(b)}</dd>' for a,b in GLOSS)
 counties = sorted({d['county']+'|'+d['state'] for d in F}, key=lambda x:(x.split('|')[1]!='MI', x))
 copts = ''.join(f'<option value="{E(c.split("|")[0])}">{E(c.split("|")[0])} County, {ST[c.split("|")[1]]}</option>' for c in counties)
 items=[]
@@ -174,9 +222,16 @@ JS = r'''<script>
   var dpaint=function(){ $$('.fd-add').forEach(function(b){ var on=day.indexOf(b.dataset.i)>=0; b.setAttribute('aria-pressed',String(on)); b.textContent=on?'On my day ✓':'Add to my day'; }); var n=$('#fdDayN'); if (n){ n.textContent=day.length; n.parentNode.hidden=!day.length; } };
   $$('.fd-add').forEach(function(b){ b.addEventListener('click',function(){ var i=day.indexOf(b.dataset.i); if (i>=0) day.splice(i,1); else day.push(b.dataset.i); try{ localStorage.setItem('ps-day',JSON.stringify(day)); }catch(e){} dpaint(); }); });
   dpaint();
+  /* the recipe box: find by word, kind of dish or town */
+  var rq=$('#rcQ'), rp=$('#rcP'), rcs=$$('.rc-c'), rco='', rli=$$('.rc'), rcn=$('#rcCount');
+  var rdraw=function(){ var w=rq.value.trim().toLowerCase().split(/\s+/).filter(Boolean), pl=rp.value, n=0;
+    rli.forEach(function(li){ var ok=(!rco||li.dataset.co===rco) && (!pl||li.dataset.pl===pl) && w.every(function(x){ return li.dataset.t.indexOf(x)>=0; }); li.hidden=!ok; if (ok) n++; });
+    rcn.textContent=n===rli.length? n+' recipes and hints' : n+' of '+rli.length; $('#rcNone').hidden=n>0; };
+  if (rq){ rq.addEventListener('input',rdraw); rp.addEventListener('change',rdraw);
+    rcs.forEach(function(b){ b.addEventListener('click',function(){ rco=b.dataset.co; rcs.forEach(function(x){ x.setAttribute('aria-pressed',String(x===b)); }); rdraw(); }); }); }
   var pa=$('#rcAll'); if (pa) pa.addEventListener('click',function(){ $$('.rc').forEach(function(li){ li.classList.add('rc-print'); }); document.documentElement.classList.add('rc-printing'); window.print(); });
   draw();
-  var h=location.hash.slice(1), t=h && document.getElementById(h); if (t && t.classList.contains('fd')) setTimeout(function(){ go(t); },300);
+  var h=location.hash.slice(1), t=h && document.getElementById(h); if (t && (t.classList.contains('fd') || t.classList.contains('rc'))) setTimeout(function(){ go(t); },300);
 })();
 </script>'''
 SEASON=[
@@ -202,13 +257,22 @@ FIELDS = [
   ('Celery and the muck lands', 'Kalamazoo’s low, black “muck” soil made it famous for celery from the late 1800s. The Celery Flats Historical Area in Portage keeps the story.', '/museums/#celery-flats-historical-area', 'Celery Flats in the museums directory'),
   ('The stove in the kitchen', 'Dowagiac’s Round Oak stoves heated and cooked for farm kitchens across the country. The Dowagiac Area History Museum tells the story.', '/museums/#dowagiac-area-history-museum', 'Dowagiac Area History Museum'),
 ]
-fields = ''.join(f'<li class="fd-fi"><h3>{E(t)}</h3><p>{E(d)}</p><p><a href="{u}">{E(l)} ›</a></p></li>' for t,d,u,l in FIELDS)
+_OC = {c['id']:c for c in json.load(open(P/'oldcards.json'))}
+FPIC = {'The fruit belt':'ps050','Mills on every stream':'ps111','The stove in the kitchen':'ps107'}
+def fpic(t):
+    k=FPIC.get(t)
+    if not k: return ''
+    c=_OC[k]; h=round(700*c['h']/c['w'])
+    cred = '' if (c.get('credit') or '').startswith('none') else ' · '+E(c['credit'])
+    return (f'<figure class="fd-pic"><a href="/postcards/#oc-{k}"><picture><source type="image/avif" srcset="/img/oldcards/{k}-700.avif"><img src="/img/oldcards/{k}-700.webp" width="700" height="{h}" alt="{E(c["title"])}, on an old postcard" loading="lazy" decoding="async"></picture></a>'
+            f'<figcaption>{E(c["title"])}, {E(str(c.get("date") or ""))}{cred}</figcaption></figure>')
+fields = ''.join(f'<li class="fd-fi">{fpic(t)}<h3>{E(t)}</h3><p>{E(d)}</p><p><a href="{u}">{E(l)} ›</a></p></li>' for t,d,u,l in FIELDS)
 body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">Food, recipes &amp; lodging</p>
     <figure class="pg-art"><picture><source type="image/avif" srcset="/img/card-food-art-270.avif 270w, /img/card-food-art.avif 540w" sizes="8rem"><img class="vt-food" src="/img/card-food-art-270.webp" srcset="/img/card-food-art-270.webp 270w, /img/card-food-art.webp 540w" sizes="8rem" width="540" height="960" alt="" decoding="async"></picture></figure>
     <h1>A table and a bed in the valley</h1>
     <p class="lede" style="font-size:1.15rem">Where to eat and where to stay, chosen for their stories: dining rooms in old banks and depots, family tables that have fed a town for generations, inns in houses built before the railroad came. And from the old cookbooks and weekly papers, what the valley cooked.</p>
-    <p class="nm-chips fd-jump"><a class="btn" href="#eat">Places to eat</a><a class="btn" href="#stay">Places to stay</a><a class="btn" href="#recipes">The valley kitchen</a><a class="btn" href="#fields">Where the food came from</a></p>
+    <p class="nm-chips fd-jump"><a class="btn" href="#eat">Places to eat</a><a class="btn" href="#stay">Places to stay</a><a class="btn" href="#recipes">The valley kitchen</a><a class="btn" href="#cookbooks">The cookbooks</a><a class="btn" href="#words">Old kitchen words</a><a class="btn" href="#fields">Where the food came from</a></p>
     <aside class="fd-season" id="fdSeason" hidden aria-label="In season now"></aside>
     <div class="mu-bar">
       <label class="nm-q"><span>Find a place</span><input type="search" id="fdQ" placeholder="A town, a kind of place, a building" autocomplete="off" spellcheck="false"></label>
@@ -226,7 +290,20 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a></p>
     <section id="recipes"><h2>The valley kitchen</h2>
       <p><button type="button" class="btn" id="rcAll">Print the whole recipe box</button> <a class="btn" href="/food/valley-kitchen-recipes.pdf" download>Download the recipe booklet (PDF)</a></p>
       <p>Recipes and household hints as they were printed in the valley’s own cookbooks and newspapers, word for word, with a note on how to make each one today. Tick the ones you have cooked: one earns a badge for your <a href="/badges/">field book</a>.</p>
-      <ul class="rc-list">{recipes}</ul></section>
+      <div class="mu-bar rc-bar">
+        <label class="nm-q"><span>Find a recipe</span><input type="search" id="rcQ" placeholder="An ingredient, a town, a cook" autocomplete="off" spellcheck="false"></label>
+        <div class="nm-chips" role="group" aria-label="Show one kind of dish">{rchips}</div>
+        <label class="rc-pl"><span>From</span><select id="rcP"><option value="">Every town</option>{rpl}</select></label>
+        <p class="nm-count" id="rcCount" aria-live="polite">{len(R)} recipes and hints</p>
+      </div>
+      <ul class="rc-list">{recipes}</ul>
+      <p class="rc-none" id="rcNone" hidden>No recipe matches. Try another word or town.</p></section>
+    <section id="cookbooks"><h2>The cookbooks on the shelf</h2>
+      <p>Every recipe above comes from one of these books and papers, made by the church societies, clubs and newspapers of the valley. Each one is free to read online.</p>
+      <ul class="cb-list">{shelf}</ul></section>
+    <section id="words"><h2>Old kitchen words</h2>
+      <p>The old cooks wrote for readers who already knew how. Here is what their words mean in a kitchen today.</p>
+      <dl class="rc-gloss">{gloss}</dl></section>
     <section id="fields"><h2>Where the food came from</h2><ul class="fd-fields">{fields}</ul></section>
     <h2>Before you go</h2>
     <ul class="dis">

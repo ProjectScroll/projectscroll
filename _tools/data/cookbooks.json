@@ -1,0 +1,47 @@
+[
+ {
+  "match": "The Three Rivers Cook Book",
+  "title": "Three Rivers Cook Book, with Supplement",
+  "place": "Three Rivers, Michigan",
+  "year": "1896",
+  "img": "/img/food/cover-three-rivers.webp",
+  "url": "https://archive.lib.msu.edu/DMC/Michigan%20Cookbook%20Storage/PDFs/ja11a006.pdf",
+  "about": "A reprint published by the King’s Daughters Society of Three Rivers, a church women’s service circle, with recipes signed by the women of the town and advertisements from its shops. Digitized by Michigan State University Libraries."
+ },
+ {
+  "match": "New Crumbs of Comfort",
+  "title": "New Crumbs of Comfort",
+  "place": "Kalamazoo, Michigan",
+  "year": "1906",
+  "img": "/img/food/cover-new-crumbs.webp",
+  "url": "https://archive.org/details/newcrumbsofcomfo00stlu",
+  "about": "Compiled by the ladies of St. Luke’s Church, Kalamazoo, with nearly two hundred pages of signed recipes, household hints and local advertising. Library of Congress copy, on the Internet Archive."
+ },
+ {
+  "match": "Dr. Miles",
+  "title": "Dr. Miles’ Candy Book",
+  "place": "Elkhart, Indiana",
+  "year": "about 1900",
+  "img": "/img/food/cover-dr-miles.webp",
+  "url": "https://archive.org/details/b30478571",
+  "about": "A giveaway booklet from the Dr. Miles Medical Company of Elkhart, makers of Dr. Miles’ Nervine: home candy recipes on one page, patent-medicine advertising on the next."
+ },
+ {
+  "match": "South Bend News-Times",
+  "title": "South Bend News-Times",
+  "place": "South Bend, Indiana",
+  "year": "1917",
+  "url": "https://newspapers.library.in.gov/",
+  "about": "South Bend’s daily paper, which ran a “Canning Lesson” column in the wartime fall of 1917. Read on Hoosier State Chronicles, the Indiana State Library’s newspaper archive.",
+  "paper": true
+ },
+ {
+  "match": "Nappanee Advance-News",
+  "title": "Nappanee Advance-News",
+  "place": "Nappanee, Indiana",
+  "year": "1921",
+  "url": "https://newspapers.library.in.gov/",
+  "about": "The weekly paper of Nappanee, in Elkhart County, with household advice for farm kitchens. Read on Hoosier State Chronicles.",
+  "paper": true
+ }
+]
