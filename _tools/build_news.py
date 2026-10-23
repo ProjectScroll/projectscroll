@@ -82,7 +82,7 @@ top, more = S[:4], S[4:]
 _TOPCFG = json.load(open(f'{R}/_tools/data/top.json'))['top']
 _RIB = dict(_TOPCFG)
 TOP = [x for k, _ in _TOPCFG for x in S if x['slug'] == k] or ([x for x in S if x.get('featured')] + [x for x in S if not x.get('featured')])[:2]
-_RCLS = {'Featured': '', 'Discovery': ' disc', 'Highlight': ' hl', 'Open case': ' open'}
+_RCLS = {'Featured': '', 'Discovery': ' disc', 'Highlight': ' hl', 'Open case': ' open', 'Legend': ' legend'}
 brief = lambda s: (f'<article class="nw-b" data-d="{s["date"]}"><a class="nw-th" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{sqpic(s["pic"][0])}</a><p class="nw-k">{E(s["kicker"])}<span class="nw-new" hidden> · New</span></p>'
                    f'<h2><a href="/news/{s["slug"]}/">{E(s["headline"])}</a></h2></article>')
 line = lambda s: (f'<li data-d="{s["date"]}"><span class="nw-k">{E(s["kicker"])}</span> <a href="/news/{s["slug"]}/">{E(s["short"])}</a><span class="nw-new" hidden> · New</span></li>')
@@ -209,7 +209,7 @@ for k, st in enumerate(S):
     src = ('<div class="nw-src"><h2 id="sources">Sources</h2><ul>' + ''.join((f'<li><a href="{E(u)}" rel="noopener">{E(t)}</a></li>' if u else f'<li>{E(t)}</li>') for t,u in st['sources']) + '</ul><p class="nw-src-more"><a href="/sources/libraries/">The libraries behind all our stories ›</a></p></div>') if st['sources'] else ''
     who = st.get('credit')
     credit = (f'<div class="nw-about" role="note"><p class="nw-about-h">About this research</p>'
-              + (f'<p class="nw-about-by">Discovery and research by <b>{E(who)}</b>.</p>' if who else '<p class="nw-about-by">Researched and written by the Project Scroll research desk.</p>')
+              + (f'<p class="nw-about-by">Research and reporting by <b>{E(who)}</b>.</p>' if who else '<p class="nw-about-by">Researched and written by the Project Scroll research desk.</p>')
               + '<p>Every fact on this page comes from a source listed above, and each one can be checked where it is held. If you find an error, or hold a record that adds to the story, write to <a href="mailto:research@projectscroll.com">research@projectscroll.com</a>; corrections are made and noted on the page.</p></div>')
     from urllib.parse import quote as _q
     visit = ('<aside class="nw-visit" aria-labelledby="vis-h"><p class="nw-visit-h" id="vis-h">Visit and see</p><ul>' + ''.join(f'<li><b>{E(v["name"])}</b> {E(v["note"])} <a class="nw-dir" href="https://www.google.com/maps/dir/?api=1&amp;destination={_q(v["where"])}">Directions ›</a></li>' for v in st['visit']) + '</ul><p class="nw-visit-n">Public places only. Please respect private land and posted hours.</p></aside>') if st.get('visit') else ''

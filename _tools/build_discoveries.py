@@ -39,7 +39,7 @@ def item(i, x, s):
     srch = f'<div class="dsc-srch"><p class="dsc-srch-h">What we searched</p><p>{x["s"]}</p></div>' if x.get('s') else ''
     tw = town(x, s)
     return (f'<li id="{E(fid)}" data-town="{E(slug(tw))}"><span class="dsc-pic">{pic}{SEAL}{cap}</span>'
-            f'<div class="dsc-body"><p class="dsc-tw">{E(tw)}</p><p class="dsc-t">{x["t"]}</p>'
+            f'<div class="dsc-body"><p class="dsc-tw">{E(tw)}{(" <span class=\"dsc-kind\">"+E(x["kind"])+"</span>") if x.get("kind") else ""}</p><p class="dsc-t">{x["t"]}</p>'
             f'<p class="dsc-s">In <a href="/news/{E(s["slug"])}/">{E(s["headline"])}</a> · found by Michael Urbanski, Project Scroll, {day(x["d"])}</p>'
             f'{srch}<p class="dsc-act"><a class="dsc-link" href="#{E(fid)}" data-dsclink>Link to this finding</a></p></div></li>')
 
@@ -54,6 +54,7 @@ body = f'''    <p class="crumb"><a href="/">← Project Scroll</a> · <a href="/
     <h1>What we’ve found</h1>
     <p class="lede">Most of what Project Scroll publishes was known to someone before us; we say where. These are the exceptions: facts found in the original records by Michael Urbanski for Project Scroll that we could not find in any published history, article or website. Each shows the record it came from, links to the story where it is set out with its source, and lists what we searched before calling it new.</p>
     {chips}
+    <p class="dsc-kinds"><b>Kinds of finding.</b> <i>New record</i>: a fact in no published account. <i>Earliest record</i>: the first appearance in print, earlier than any account gives. <i>Correction</i>: the record says otherwise than the accounts. <i>Connection</i>: two records that had not been put together. <i>Identification</i>: an unnamed source named. <i>Map reading</i>: a fact read from a map. <i>Compilation</i>: a list that did not exist. <i>Myth tested</i>: a story traced and found to have no early source.</p>
     <ol class="dsc-list">{items}</ol>
     <p class="dsc-none" hidden>No findings for that town yet.</p>
     <p class="note">“New” means new to print as far as we can tell, not that nobody ever noticed. If you know of an earlier publication of any of these, <a href="mailto:research@projectscroll.com?subject=An%20earlier%20publication">tell us</a>, and we will credit it on the story and here. To cite a finding, cite the story, and credit Michael Urbanski, Project Scroll.</p>
