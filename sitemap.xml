@@ -18,6 +18,7 @@
   <url><loc>https://projectscroll.com/cases/9/</loc><lastmod>2026-10-23</lastmod><priority>0.6</priority></url>
   <url><loc>https://projectscroll.com/cassopolis/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/classrooms/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://projectscroll.com/corrections/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/discoveries/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/document/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/dowagiac/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
@@ -26,6 +27,7 @@
   <url><loc>https://projectscroll.com/food/eat/</loc><lastmod>2026-10-23</lastmod><priority>0.6</priority></url>
   <url><loc>https://projectscroll.com/food/recipes/</loc><lastmod>2026-10-23</lastmod><priority>0.6</priority></url>
   <url><loc>https://projectscroll.com/food/stay/</loc><lastmod>2026-10-23</lastmod><priority>0.6</priority></url>
+  <url><loc>https://projectscroll.com/getting-here/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/glossary/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/guide/death-certificate/</loc><lastmod>2026-10-23</lastmod><priority>0.6</priority></url>
   <url><loc>https://projectscroll.com/guide/gravestones/</loc><lastmod>2026-10-23</lastmod><priority>0.6</priority></url>
@@ -86,11 +88,13 @@
   <url><loc>https://projectscroll.com/news/where-is-this/</loc><lastmod>2026-10-23</lastmod><priority>0.6</priority></url>
   <url><loc>https://projectscroll.com/news/where-kellogg-made-its-cabinets/</loc><lastmod>2026-10-23</lastmod><priority>0.6</priority></url>
   <url><loc>https://projectscroll.com/news/who-was-in-town-in-1860/</loc><lastmod>2026-10-23</lastmod><priority>0.6</priority></url>
+  <url><loc>https://projectscroll.com/newsletter/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/newspaper/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/niles/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/notes/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/notes/book/</loc><lastmod>2026-10-23</lastmod><priority>0.6</priority></url>
   <url><loc>https://projectscroll.com/notes/one-letter-two-certificates/</loc><lastmod>2026-10-23</lastmod><priority>0.6</priority></url>
+  <url><loc>https://projectscroll.com/outdoors/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/passport/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/paw-paw/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/people/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
@@ -110,7 +114,9 @@
   <url><loc>https://projectscroll.com/story/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/terms/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/toolkit/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://projectscroll.com/valley-map/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/visit/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://projectscroll.com/voices/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/walk/</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://projectscroll.com/walk/dowagiac/</loc><lastmod>2026-10-23</lastmod><priority>0.6</priority></url>
 </urlset>

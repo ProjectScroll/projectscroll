@@ -2902,7 +2902,7 @@ table.gaz tbody tr:hover{background:color-mix(in srgb, var(--gold-hi) 8%, transp
   .toolrow{flex-wrap:nowrap}
   .tr-nav{flex:1 1 auto; min-width:0; flex-wrap:nowrap}
   .tr-nav > .navdrop{flex:none}
-  .tr-find{flex:0 1 13rem; min-width:6.5rem}
+  .tr-find{flex:0 1 13rem; min-width:9.6rem}
   .tr-find input{width:100%; min-width:0}
   .toolrow .pb-sponsor{flex:none}
   .toolrow .pb-sponsor a{white-space:nowrap}
@@ -4274,3 +4274,5 @@ main > section#timeline, main > section#hunt, main > section#cases, main > secti
 .od .od-a{font-size:.85rem; color:var(--ink-soft); margin:.3rem 0 .1rem}
 .od-x{color:var(--rule); font-weight:700}
 .od-closed{opacity:.8}
+/* the name box keeps room for its whole placeholder; the sponsor line tightens its letter-spacing to make that room */
+@media (min-width:900px){ .toolrow .pb-sponsor a{letter-spacing:.1em; gap:.35rem} .toolrow .tr-find{margin-right:.5rem} }
