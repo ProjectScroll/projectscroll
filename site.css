@@ -4435,3 +4435,11 @@ a.nw-tag:hover{text-decoration:underline}
 
 /* pictures: no long-press save on phones, no dragging to the desktop */
 img,picture,svg image{-webkit-touch-callout:none;-webkit-user-drag:none;user-select:none}
+
+/* the More news list shows ten until asked */
+#nwMore.cut > li:nth-child(n+11){display:none}
+.nw-moreb{margin:.6rem 0 0}
+/* long home-page sections fold to their opening until asked */
+.fold > :not(.part):not(h2):not(.intro):not(.std-name):not(.fold-b){display:none!important}
+.fold-b{display:inline-flex;align-items:center;gap:.4rem;margin:.4rem 0 1rem}
+.fold-b{display:flex;width:fit-content;margin-left:auto;margin-right:auto}

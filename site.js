@@ -1733,3 +1733,14 @@ try{ (function(){
   document.addEventListener('contextmenu', function(e){ if (isPic(e.target) && e.target.tagName==='IMG' || (e.target.closest && e.target.closest('img, picture'))) e.preventDefault(); }, true);
   document.addEventListener('dragstart', function(e){ if (e.target && e.target.tagName==='IMG') e.preventDefault(); }, true);
 })(); }catch(err){ psFail(err); }
+
+/* ---------- long home-page sections fold to their opening, with a button; a link into one opens it ---------- */
+try{ (function(){
+  const ids=['method','marks','notes','faq']; const secs=[];
+  ids.forEach(function(id){ const sec=document.getElementById(id); if (!sec) return; const intro=sec.querySelector(':scope > .intro') || sec.querySelector(':scope > h2'); if (!intro) return;
+    const h=sec.querySelector(':scope > h2'); const b=document.createElement('button'); b.type='button'; b.className='btn fold-b'; b.textContent='Read the whole section'+(h?': '+h.textContent:''); b.setAttribute('aria-expanded','false');
+    b.addEventListener('click', function(){ sec.classList.remove('fold'); b.remove(); }); intro.after(b); sec.classList.add('fold'); secs.push([sec,b]); });
+  const open=function(){ const id=decodeURIComponent(location.hash.slice(1)); if (!id) return; const el=document.getElementById(id); if (!el) return;
+    secs.forEach(function(p){ if (p[0].contains(el) && p[0]!==el){ p[0].classList.remove('fold'); p[1].remove(); el.scrollIntoView(); } }); };
+  open(); addEventListener('hashchange', open);
+})(); }catch(err){ psFail(err); }
