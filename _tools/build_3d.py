@@ -285,11 +285,18 @@ def _profile():
         if n not in PR['towns']: continue
         dd, hh, _ = PR['towns'][n]; lift = {'Hillsdale':14,'Union City':28,'Colon':14,'Three Rivers':14,'Constantine':42,'Elkhart':28,'South Bend':14,'Niles':42,'Berrien Springs':28,'St. Joseph':14}[n]; anc = 'start' if i == 0 else ('end' if n == 'St. Joseph' else 'middle')
         tw += f'<g class="rp-town"><circle cx="{X(dd):.1f}" cy="{Y(hh):.1f}" r="3.2"/><line x1="{X(dd):.1f}" x2="{X(dd):.1f}" y1="{Y(hh)-4:.1f}" y2="{Y(hh)-lift:.1f}"/><text x="{X(dd):.1f}" y="{Y(hh)-lift-4:.1f}" text-anchor="{anc}">{n}</text></g>'
+    # the dams on the main stem today (OpenStreetMap), placed along the profile between the towns they stand by
+    DAMS = [('Sturgis', 121.7), ('Three Rivers', 132.6), ('Constantine', 146.6), ('Mottville', 157.7), ('Elkhart', 186.9), ('Twin Branch', 205.6), ('French Paper, Niles', 236.0), ('Buchanan', 247.8), ('Berrien Springs', 265.7)]
+    def _h(x):
+        for (a0, b0), (a1, b1) in zip(zip(d, h), zip(d[1:], h[1:])):
+            if a0 <= x <= a1: return b0 + (b1 - b0) * (x - a0) / ((a1 - a0) or 1)
+        return h[-1]
+    tw += ''.join(f'<g class="rp-dam"><title>{n} dam</title><rect x="{X(x)-2:.1f}" y="{Y(_h(x))-11:.1f}" width="4" height="15" rx="1"/></g>' for n, x in DAMS)
     fall = round(h[0] - h[-1])
     return (f'<figure class="rprof"><svg viewBox="0 0 {W} {H}" role="img" aria-labelledby="rpT rpD"><title id="rpT">The fall of the St. Joseph River</title>'
             f'<desc id="rpD">The river’s surface falls about {fall} metres from near Hillsdale, about {round(h[0])} metres above sea level, to Lake Michigan at St. Joseph, about {round(h[-1])} metres, over roughly {round(D)} kilometres of our simplified line.</desc>'
             f'{g}<path d="{area}" class="rp-a"/><polyline points="{pts}" class="rp-l"/>{tw}{km}</svg>'
-            f'<figcaption>The St. Joseph River falls about {fall} metres ({round(fall*3.2808)} feet) on its way to Lake Michigan, most steeply in its first fifty kilometres below Hillsdale. Heights are read from the same elevation model, along a simplified line of the river; the river’s own course, with every bend, is longer.</figcaption></figure>')
+            f'<figcaption>The St. Joseph River falls about {fall} metres ({round(fall*3.2808)} feet) on its way to Lake Michigan, most steeply in its first fifty kilometres below Hillsdale. The small blue bars are the dams on the main river today, from the Sturgis Dam near Centreville down to Berrien Springs. Heights are read from the same elevation model, along a simplified line of the river; the river’s own course, with every bend, is longer.</figcaption></figure>')
 PROFILE = _profile()
 for g in GOLD:
     g['x'] = round((g['lon']-VM['lon0'])*VM['kx'], 3); g['z'] = round(-(g['lat']-VM['lat0'])*VM['kz'], 3)

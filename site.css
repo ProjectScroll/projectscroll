@@ -4622,3 +4622,4 @@ main.page{isolation:isolate}
 .nw-art .nw-fig img, .nw-hero img, main.page .secfig img{box-shadow:0 0 0 1px var(--glow-edge), 0 0 24px -6px var(--glow-cy)}
 .nw-art .nw-fig.nw-scan img, .nw-night .nm-svg{box-shadow:none}
 @media print{ main.page h2::before{display:none} .nw-card > a, .lr-card > a, .dsc-card, .vs-day, .mu{box-shadow:none!important} }
+.rprof .rp-dam rect{fill:#2bb8d6; stroke:#0b3a78; stroke-width:.8}
