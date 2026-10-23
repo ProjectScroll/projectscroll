@@ -4398,3 +4398,9 @@ a.nw-tag:hover{text-decoration:underline}
 @media (max-width:560px){ .tw-facts div{grid-template-columns:1fr; gap:.1rem} }
 .dr-map .wk-pin{display:grid; place-items:center; border-radius:50%; background:#C06A1A; border:2px solid #fff; color:#fff; font:700 .78rem/1 system-ui,sans-serif; box-shadow:0 1px 4px rgba(0,0,0,.35)}
 .nw-lk{color:var(--ink); font-weight:700; font-size:.68rem; letter-spacing:.12em}
+/* valley map tile: light map, so the live-event dots go dark red with a white ring */
+.vmt .vs-f{background:#eef2ec}
+.vmt-dots i{background:#B3362B; border:2px solid #fff; box-shadow:0 0 0 0 rgba(179,54,43,.7); animation-name:vmtp2}
+.vmt-dots i.tm{background:#3F7F4A}
+@keyframes vmtp2{0%{box-shadow:0 0 0 0 rgba(179,54,43,.7)} 100%{box-shadow:0 0 0 .9rem rgba(179,54,43,0)}}
+@media (prefers-reduced-motion: reduce){ .vmt-dots i{animation:none} }
