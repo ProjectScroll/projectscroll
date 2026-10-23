@@ -912,15 +912,13 @@ document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-
     var longrun=d.ev.filter(function(e){ return span(e)>30 && on(e,a); });
     var today=d.ev.filter(function(e){ return span(e)<=30 && on(e,a); }), tom=d.ev.filter(function(e){ return span(e)<=30 && on(e,b); });
     var el=function(tag,cls,txt){ var e=document.createElement(tag); if (cls) e.className=cls; if (txt) e.textContent=txt; return e; };
-    var line=function(head,list,none){ var p=el('p','vmt-ln'); p.appendChild(el('b','',head+' ')); if (!list.length){ p.appendChild(el('span','vmt-none',none)); L.appendChild(p); return; }
+    var line=function(head,list){ if (!list.length) return; var p=el('p','vmt-ln'); p.appendChild(el('b','',head+' '));
       var A=el('a','',list[0][0]); A.href='/seasons/#'+list[0][6]; p.appendChild(A); p.appendChild(el('span','',' · '+list[0][1].split(/,| and /)[0]));
       if (list.length>1){ var M=el('a','vmt-more','+'+(list.length-1)+' more'); M.href='/valley-map/#today'; p.appendChild(document.createTextNode(' ')); p.appendChild(M); } L.appendChild(p); };
     var tnew=tom.filter(function(e){ return today.indexOf(e)<0; });
-    line('Today', today, 'No fair or festival today');
-    line('Tomorrow', tnew, today.length&&tom.length? 'Today’s events continue' : 'Nothing new');
-    if (longrun.length){ var lr=el('p','vmt-ln'); lr.appendChild(el('b','','All season ')); longrun.slice(0,2).forEach(function(e,i){ var A=el('a','',e[0]); A.href='/seasons/#'+e[6]; if (i) lr.appendChild(document.createTextNode(' · ')); lr.appendChild(A); }); L.appendChild(lr); }
-    if (!today.length && !tom.length){ var nx=d.ev.filter(function(e){ return e[2]>b && span(e)<=30; }).sort(function(x,y){ return x[2]<y[2]?-1:1; })[0];
-      if (nx){ var p=el('p','vmt-ln'); p.appendChild(el('b','','Next ')); var B=el('a','',nx[0]); B.href='/seasons/#'+nx[6]; p.appendChild(B); p.appendChild(el('span','',' · '+new Date(nx[2]+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'}))); L.appendChild(p); } }
+    line('Today', today);
+    line('Tomorrow', tnew);
+    if (longrun.length){ var lr=el('p','vmt-ln'); lr.appendChild(el('b','','Running now ')); longrun.slice(0,2).forEach(function(e,i){ var A=el('a','',e[0]); A.href='/seasons/#'+e[6]; if (i) lr.appendChild(document.createTextNode(' · ')); lr.appendChild(A); }); L.appendChild(lr); }
     var live=document.getElementById('vmtLive'), dots=document.getElementById('vmtDots'), both=today.concat(tnew);
     live.textContent=today.length? today.length+(today.length>1?' events today':' event today') : (tom.length? 'Events tomorrow' : d.n+' places on one map');
     both.forEach(function(e,i){ if (e[4]==null) return; var s=document.createElement('i'); if (today.indexOf(e)<0) s.className='tm'; s.style.left=e[4]+'%'; s.style.top=e[5]+'%'; dots.appendChild(s); });
