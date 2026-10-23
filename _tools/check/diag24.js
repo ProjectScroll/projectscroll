@@ -11,7 +11,9 @@ for (const [w,cs,lab] of [[1280,'light','computer'],[390,'dark','phone']]){
  ok(P+'reveal: sections start hidden below the fold', await q.evaluate(()=>document.documentElement.classList.contains('reveal') && !document.getElementById('faq').classList.contains('in')));
  await q.evaluate(()=>document.getElementById('faq').scrollIntoView()); await q.waitForTimeout(900); ok(P+'reveal: a section appears when scrolled to', await q.evaluate(()=>document.getElementById('faq').classList.contains('in')));
  // clue rotation
+ await q.goto(BASE+'/hunt/'); await q.waitForTimeout(600);
  ok(P+'clue of the week matches today (18 Oct → 17 Oct clue)', /17 October/.test(await q.textContent('#clueLbl')));
+ await q.goto(BASE+'/'); await q.waitForTimeout(600);
  const go=async u=>{ await q.goto(BASE+u); await q.waitForTimeout(600); };
  // checker (services page)
  await go('/services/');

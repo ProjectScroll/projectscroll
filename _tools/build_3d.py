@@ -8,6 +8,8 @@ M = json.load(open(R / 'map/3d/cassopolis/meta.json'))
 V = '0.169.0'
 # the 1860 town plan (the same picture and placing as the then-and-now page)
 PLAN = dict(src='/img/cass1860.webp', N=41.917772, W=-86.018103, S=41.906100, E=-86.007168)
+SAN = dict(src='/img/sanborn-cass-1909.webp', N=41.9143, W=-86.0148, S=41.9088, E=-86.0092)   # sheets 2 and 3 of the 1909 Sanborn map, fitted to today's street corners
+DEP = dict(src='/img/diamond-lake-depths.png', N=41.912947, W=-85.998612, S=41.889430, E=-85.956131)   # Diamond Lake depth lines, IFR / Michigan DNR lake map 14-223
 _W = json.load(open(R / '_tools/data/walk.json'))['stops']
 PINS = [dict(n=s['name'], la=s['lat'], lo=s['lon'], b=s['built'], t=(s['then'].split('. ')[0].rstrip('.') + '.'), u='/walk/#' + s['id'], l='Read this stop on the walking tour') for s in _W if s['id'] != 'log-cabin']
 PINS.append(dict(n='Forest Hall and the island', la=41.9039, lo=-85.9769, b='summers of the 1890s on', t='Grand Island and its resort hotel drew summer people to Diamond Lake for generations.', u='/news/summer-on-diamond-lake/', l='Read the story'))
@@ -21,6 +23,8 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
       <canvas id="l3dC" aria-hidden="true"></canvas>
       <div class="l3d-ui" role="toolbar" aria-label="Model controls">
         <button type="button" class="l3d-b" id="l3dPlan" aria-pressed="false">1860 plan</button>
+        <button type="button" class="l3d-b" id="l3dSan" aria-pressed="false">1909 fire map</button>
+        <button type="button" class="l3d-b" id="l3dDep" aria-pressed="false">Lake depths</button>
         <button type="button" class="l3d-b" id="l3dBld" aria-pressed="true">Buildings</button>
         <button type="button" class="l3d-b" id="l3dTrees" aria-pressed="true">Trees</button>
         <button type="button" class="l3d-b" id="l3dMore" hidden>Whole area</button>
@@ -52,6 +56,8 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
       <li><b>Buildings and trees.</b> The survey does not say which of the other points are roofs and which are leaves, so we sorted them: a laser pulse that hits a roof comes back once; one that hits a tree comes back several times, from leaves, branches and the ground below. Flat, single echoes in a patch the size of a building are coloured gold. A few porches and dense evergreens may be the wrong colour.</li>
       <li><b>The lakes and the land around.</b> Stone Lake lies just west of the courthouse, and Diamond Lake, with Grand Island in it, a short way east. The wider ground comes from the same 2015 flight, as the survey’s bare-earth elevation: the shape of the land every six metres or so, and its light and shade from a grid one and a half metres apart, sharp enough to show field edges, ditches and old roadbeds. The lakes are drawn flat at their surface, because the survey does not see through water. Buildings and trees are shown only in the town blocks, where every point is kept.</li>
       <li><b>The 1860 plan.</b> Press <i>1860 plan</i> to lay the town plan from the 1860 county wall map on the ground. Its west part reaches into these blocks. Compare it with the <a href="/map/cassopolis/">flat then-and-now page</a>.</li>
+      <li><b>The 1909 fire map.</b> Press <i>1909 fire map</i> to lay the Sanborn fire-insurance map of January 1909 on the ground: every building downtown, in pink for brick and yellow for wood, from the courthouse to the hotel. We fitted its two sheets to today’s street corners; they line up to within about a metre.</li>
+      <li><b>Lake depths.</b> Press <i>Lake depths</i> to see the bottom of Diamond Lake drawn in lines every ten feet, from the state’s lake survey. The deepest point is 64 feet, east of the island.</li>
       <li><b>Story pins.</b> The gold pins are the stops of our <a href="/walk/">walking tour of Cassopolis</a>, from the site of the first courthouse to the bank corner, and the island in Diamond Lake. Press one for a line of its history.</li>
       <li><b>Guided tour.</b> Press <i>Guided tour</i> and the view flies itself from Stone Lake to the courthouse square and out to Diamond Lake. Touch the model to stop it.</li>
       <li><b>Sun and shadows.</b> Move the <i>Sun</i> slider through a midsummer day, from six in the morning to eight at night, and every roof and tree in the town blocks casts its shadow on the ground. The shadows are worked out from the laser points themselves.</li>
@@ -60,13 +66,13 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
       <li><b>Height ×3.</b> The town is fairly level, so tripling the heights makes the rise of the land easier to see. The buildings stretch too.</li>
     </ul>
     <aside class="l3d-svc" aria-label="A service we offer"><p><b>Your own place in 3D.</b> Project Scroll makes LiDAR models like this one for other places: a farm, a lake, a town, an old mill site, a family’s home ground, from the same public surveys, with fly-throughs and still pictures to keep. <a href="/services/#studio">See the studio</a>, or write to research@projectscroll.com.</p></aside>
-    <p class="note">Source: U.S. Geological Survey, 3D Elevation Program, Michigan Cass County LiDAR, 2015 (public domain), read from the survey’s public point-cloud archive. In the town blocks every building and tree point is shown. Across the wider country the page shows the survey’s lighter sampling, about one point in ten, so that it stays quick to load (on a phone, press <i>Whole area</i> to load it); press <i>Buildings</i> or <i>Trees</i> to hide either. The points cover the blocks north and east of the courthouse; the ground around them is the survey’s bare-earth elevation from the 3D Elevation Program, shaped every six metres or so and shaded from a grid about one and a half metres apart. Town plan: <i>Map of the Counties of Cass, Van Buren and Berrien, Michigan</i> (Geil, Harley &amp; Siverd, 1860), Library of Congress. 3D drawing by three.js.</p>
+    <p class="note">The 1909 fire map: Sanborn Map Company, Cassopolis, Cass County, Michigan, January 1909, sheets 2 and 3, Library of Congress (public domain). Diamond Lake depths: Institute for Fisheries Research and Michigan DNR lake map 14-223. Source: U.S. Geological Survey, 3D Elevation Program, Michigan Cass County LiDAR, 2015 (public domain), read from the survey’s public point-cloud archive. In the town blocks every building and tree point is shown. Across the wider country the page shows the survey’s lighter sampling, about one point in ten, so that it stays quick to load (on a phone, press <i>Whole area</i> to load it); press <i>Buildings</i> or <i>Trees</i> to hide either. The points cover the blocks north and east of the courthouse; the ground around them is the survey’s bare-earth elevation from the 3D Elevation Program, shaped every six metres or so and shaded from a grid about one and a half metres apart. Town plan: <i>Map of the Counties of Cass, Van Buren and Berrien, Michigan</i> (Geil, Harley &amp; Siverd, 1860), Library of Congress. 3D drawing by three.js.</p>
     <script type="importmap">{{"imports":{{"three":"/vendor/three-{V}/three.module.min.js"}}}}</script>
     <script type="module">
     import * as THREE from 'three';
     import {{ OrbitControls }} from '/vendor/three-{V}/OrbitControls.min.js';
     (async()=>{{
-    const M={json.dumps(M)}, PLAN={json.dumps(PLAN)}, SPOTS={json.dumps(SPOTS)}, PINS={json.dumps(PINS)};
+    const M={json.dumps(M)}, PLAN={json.dumps(PLAN)}, SAN={json.dumps(SAN)}, DEP={json.dumps(DEP)}, SPOTS={json.dumps(SPOTS)}, PINS={json.dumps(PINS)};
     const fig=document.getElementById('l3d'), cv=document.getElementById('l3dC'), load=document.getElementById('l3dLoad'), tags=document.getElementById('l3dTags');
     const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
     let gl; try{{ gl=new THREE.WebGLRenderer({{canvas:cv, antialias:true, powerPreference:'high-performance'}}); }}catch(e){{ load.textContent='This browser cannot draw 3D. Here is the model from above.'; fig.classList.add('no3d'); return; }}
@@ -88,15 +94,19 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
     geo.translate(-M.w/2+((gx-1)*M.step)/2,0,M.h/2-((gy-1)*M.step)/2); geo.computeVertexNormals();
     const hdTex=new THREE.TextureLoader().load('ground-hd.webp'); hdTex.colorSpace=THREE.SRGBColorSpace; hdTex.anisotropy=8;
     const planTex=new THREE.TextureLoader().load(PLAN.src); planTex.colorSpace=THREE.SRGBColorSpace; planTex.anisotropy=8;
-    const gu={{uPlan:{{value:0}}, uTex:{{value:planTex}}, uBox:{{value:new THREE.Vector4(M.west,M.east,M.south,M.north)}}, uPB:{{value:new THREE.Vector4(PLAN.W,PLAN.E,PLAN.S,PLAN.N)}}, uSize:{{value:new THREE.Vector2(M.w,M.h)}}, uHD:{{value:hdTex}}, uWB:{{value:new THREE.Vector4(M.wwest,M.weast,M.wsouth,M.wnorth)}}, uSunOn:{{value:0}}, uSun:{{value:new THREE.Vector3(-.5,1,.35).normalize()}}, uShadow:{{value:null}}, uSM:{{value:new THREE.Matrix4()}}}};
+    const sanTex=new THREE.TextureLoader().load(SAN.src); sanTex.colorSpace=THREE.SRGBColorSpace; sanTex.anisotropy=8;
+    const depTex=new THREE.TextureLoader().load(DEP.src); depTex.colorSpace=THREE.SRGBColorSpace; depTex.anisotropy=8;
+    const gu={{uPlan:{{value:0}}, uTex:{{value:planTex}}, uSan:{{value:0}}, uSanT:{{value:sanTex}}, uSB:{{value:new THREE.Vector4(SAN.W,SAN.E,SAN.S,SAN.N)}}, uDep:{{value:0}}, uDepT:{{value:depTex}}, uDB:{{value:new THREE.Vector4(DEP.W,DEP.E,DEP.S,DEP.N)}}, uBox:{{value:new THREE.Vector4(M.west,M.east,M.south,M.north)}}, uPB:{{value:new THREE.Vector4(PLAN.W,PLAN.E,PLAN.S,PLAN.N)}}, uSize:{{value:new THREE.Vector2(M.w,M.h)}}, uHD:{{value:hdTex}}, uWB:{{value:new THREE.Vector4(M.wwest,M.weast,M.wsouth,M.wnorth)}}, uSunOn:{{value:0}}, uSun:{{value:new THREE.Vector3(-.5,1,.35).normalize()}}, uShadow:{{value:null}}, uSM:{{value:new THREE.Matrix4()}}}};
     const gmat=new THREE.ShaderMaterial({{uniforms:gu, vertexShader:`varying vec3 vN; varying vec3 vP; varying vec3 vW; void main(){{ vN=normal; vP=position; vW=(modelMatrix*vec4(position,1.)).xyz; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }}`,
-      fragmentShader:`uniform float uPlan, uSunOn; uniform sampler2D uTex, uHD, uShadow; uniform vec4 uBox, uPB, uWB; uniform vec2 uSize; uniform vec3 uSun; uniform mat4 uSM; varying vec3 vN; varying vec3 vP; varying vec3 vW;
+      fragmentShader:`uniform float uPlan, uSunOn, uSan, uDep; uniform sampler2D uTex, uHD, uShadow, uSanT, uDepT; uniform vec4 uBox, uPB, uWB, uSB, uDB; uniform vec2 uSize; uniform vec3 uSun; uniform mat4 uSM; varying vec3 vN; varying vec3 vP; varying vec3 vW;
       void main(){{ float sh=clamp(dot(normalize(vN),normalize(vec3(-.5,1.,.35))),0.,1.); vec3 c=mix(vec3(.003,.01,.02),vec3(.025,.075,.12),sh);
         float h=vP.y*.5; float fw=max(fwidth(h),1e-4); float l=(1.-smoothstep(0.,1.,abs(fract(h-.5)-.5)/fw))*(1.-smoothstep(.15,.45,fw)); c=mix(c,vec3(.08,.42,.48),l*.35);
         float lon=uBox.x+(vP.x/uSize.x+.5)*(uBox.y-uBox.x), lat=uBox.z+(-vP.z/uSize.y+.5)*(uBox.w-uBox.z);
         vec2 uv=vec2((lon-uPB.x)/(uPB.y-uPB.x),(lat-uPB.z)/(uPB.w-uPB.z));
         vec2 hw=vec2((lon-uWB.x)/(uWB.y-uWB.x),(lat-uWB.z)/(uWB.w-uWB.z)); if (hw.x>=0. && hw.x<=1. && hw.y>=0. && hw.y<=1.) c=texture2D(uHD,hw).rgb*(.88+.24*sh);
         if (uPlan>0. && uv.x>=0. && uv.x<=1. && uv.y>=0. && uv.y<=1.){{ vec3 pc=texture2D(uTex,uv).rgb; c=mix(c,pc*mix(.75,1.05,sh),uPlan*.92); }}
+        vec2 us=vec2((lon-uSB.x)/(uSB.y-uSB.x),(lat-uSB.z)/(uSB.w-uSB.z)); if (uSan>0. && us.x>=0. && us.x<=1. && us.y>=0. && us.y<=1.){{ vec4 sc=texture2D(uSanT,us); c=mix(c,sc.rgb*mix(.78,1.05,sh),uSan*.95*sc.a); }}
+        vec2 ud=vec2((lon-uDB.x)/(uDB.y-uDB.x),(lat-uDB.z)/(uDB.w-uDB.z)); if (uDep>0. && ud.x>=0. && ud.x<=1. && ud.y>=0. && ud.y<=1.){{ vec4 dc=texture2D(uDepT,ud); c=mix(c,dc.rgb,uDep*dc.a); }}
         if (uSunOn>0.){{ float ls=clamp(dot(normalize(vN),uSun),0.,1.); float lit=.55+.6*ls*smoothstep(0.,.25,uSun.y); vec4 sc=uSM*vec4(vW,1.); vec3 q=sc.xyz/sc.w*.5+.5;
           if (q.x>0. && q.x<1. && q.y>0. && q.y<1. && q.z<1.){{ float dd=texture2D(uShadow,q.xy).r; if (q.z-.0008>dd) lit*=.5; }}
           c*=mix(1.,lit,uSunOn); }}
@@ -139,10 +149,12 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
     const spots=SPOTS.map(([name,la,lo,hy])=>{{ const [x,z]=ll2xz(la,lo); const el=document.createElement('span'); el.className='l3d-tag'; el.textContent=name; tags.appendChild(el); return {{v:new THREE.Vector3(x,hy,z), el}}; }});
     const size=()=>{{ const w=cv.clientWidth, h=cv.clientHeight; gl.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix(); }};
     new ResizeObserver(size).observe(cv); size(); home();
-    let tall=1, tallTo=1, plan=0, planTo=0;
+    let tall=1, tallTo=1, plan=0, planTo=0, san=0, sanTo=0, dep=0, depTo=0;
     const B=(id,f)=>{{ const b=document.getElementById(id); b.addEventListener('click',()=>f(b)); return b; }};
     const press=(b,on)=>b.setAttribute('aria-pressed',String(on));
     B('l3dPlan',b=>{{ planTo=planTo?0:1; press(b,!!planTo); }});
+    B('l3dSan',b=>{{ sanTo=sanTo?0:1; press(b,!!sanTo); }});
+    B('l3dDep',b=>{{ depTo=depTo?0:1; press(b,!!depTo); }});
     B('l3dTrees',b=>{{ pu.uTrees.value=pu.uTrees.value?0:1; press(b,!!pu.uTrees.value); }});
     B('l3dBld',b=>{{ pu.uBld.value=pu.uBld.value?0:1; press(b,!!pu.uBld.value); }});
     B('l3dTall',b=>{{ tallTo=tallTo===1?3:1; press(b,tallTo===3); }});
@@ -209,7 +221,7 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
     let vis=true; new IntersectionObserver(es=>{{ vis=es[0].isIntersecting; }}).observe(fig);
     const tmp=new THREE.Vector3();
     gl.setAnimationLoop(()=>{{ if (!vis) return;
-      const t0=tall; tall+=(tallTo-tall)*(still?1:.12); plan+=(planTo-plan)*(still?1:.15); world.scale.y=tall; gu.uPlan.value=plan; if (Math.abs(t0-tall)>1e-4) shDirty=true;
+      const t0=tall; tall+=(tallTo-tall)*(still?1:.12); plan+=(planTo-plan)*(still?1:.15); san+=(sanTo-san)*(still?1:.15); dep+=(depTo-dep)*(still?1:.15); world.scale.y=tall; gu.uPlan.value=plan; gu.uSan.value=san; gu.uDep.value=dep; if (Math.abs(t0-tall)>1e-4) shDirty=true;
       if (tour){{ const f=Math.min(1,(performance.now()-tour.t0)/tour.dur), e=ease(f); cam.position.lerpVectors(tour.fp,tour.tp,e); ctl.target.lerpVectors(tour.ft,tour.tt,e); if (f>=1 && performance.now()-tour.t0>tour.dur+(still?6000:3500)) goStop(tour.i+1); }}
       if (sunOn && shDirty) shadowPass();
       ctl.update(); gl.render(scene,cam);
@@ -312,6 +324,7 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
         <label class="l3d-b l3d-r">Height <input type="range" id="l3dEx" min="5" max="40" step="1" value="15" aria-label="Height exaggeration"><output id="l3dExO">×15</output></label>
         <button type="button" class="l3d-b" id="l3dPins" aria-pressed="true">Story pins</button>
         <button type="button" class="l3d-b" id="l3dGeo" aria-pressed="false">What the ice left</button>
+        <button type="button" class="l3d-b" id="l3dRail" aria-pressed="false">Railroads</button>
         <button type="button" class="l3d-b" id="l3dSpin" aria-pressed="false">Fly around</button>
         <button type="button" class="l3d-b" id="l3dCass">Fly to Cassopolis</button>
         <button type="button" class="l3d-b" id="l3dReset">Reset view</button>
@@ -332,13 +345,14 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
       <li><b>What the ice left.</b> The long ridges and knobby hills are moraines, left where the glaciers stood and melted, about 15,000 years ago. The flat, open plains between them are outwash, sand and gravel spread by the meltwater. The river wanders through them both.</li>
       <li><b>Story pins.</b> The gold pins mark where our stories happened, from the Dewey Lake week of 1964 to how Kalamazoo got its name. Press one for the stories told there.</li>
       <li><b>What the ice left.</b> Press it to name the big landforms: the Kalamazoo moraine, which runs through Cassopolis on its way to Kalamazoo and Hastings; the Sturgis moraine, Michigan’s oldest; the Valparaiso moraine along the lake shore; and the flat outwash plains spread by the meltwater. The labels are placed by eye from published maps, near the ground they name, not on a surveyed line.</li>
+      <li><b>Railroads.</b> Press it to see the valley’s railroads: the lines still running in pale grey, and in rust the ones that are gone, abandoned or pulled up, many of them now trails.</li>
       <li><b>Fly to Cassopolis.</b> The button flies you down into the county seat and opens <a href="/map/3d/cassopolis/">Cassopolis in LiDAR</a>, where every laser point is shown.</li>
       <li><b>The gold lights.</b> Each is the site of a lost town from the county histories. Tap each one. Where only the township or the neighbourhood is known, the light stands near it and its card says “about here.” Find all {NG} and the valley is yours: there is a badge for it.</li>
     </ul>
     <aside class="l3d-svc" aria-label="A service we offer"><p><b>Your own place in 3D.</b> Project Scroll makes LiDAR models like this one for other places: a farm, a lake, a town, an old mill site, a family’s home ground, from the same public surveys, with fly-throughs and still pictures to keep. <a href="/services/#studio">See the studio</a>, or write to research@projectscroll.com.</p></aside>
     <h2>The river’s fall</h2>
     {PROFILE}
-    <p class="note">Sources: U.S. Geological Survey, 3D Elevation Program, bare-earth elevation (public domain); watershed boundary from the USGS Watershed Boundary Dataset (HUC 04050001, St. Joseph); rivers and towns from OpenStreetMap, © OpenStreetMap contributors. Landforms: Michigan State University, <i>Geography of Michigan</i>, “Moraines”; Wikipedia, “Valparaiso Moraine” and “Kankakee Outwash Plain.” Lost-town sites: USGS place names (Williamsville, Kessington), and the land descriptions in Rogers’s <i>History of Cass County</i> (1875), Ellis’s <i>History of Berrien and Van Buren Counties</i> (1880) and Howard’s <i>History of St. Joseph County, Indiana</i> (1907), placed on the federal land-survey grid. 3D drawing by three.js. See also <a href="/map/3d/cassopolis/">Cassopolis in LiDAR</a>, where every laser point is shown.</p>
+    <p class="note">Railroads and dams: OpenStreetMap contributors (ODbL). Sources: U.S. Geological Survey, 3D Elevation Program, bare-earth elevation (public domain); watershed boundary from the USGS Watershed Boundary Dataset (HUC 04050001, St. Joseph); rivers and towns from OpenStreetMap, © OpenStreetMap contributors. Landforms: Michigan State University, <i>Geography of Michigan</i>, “Moraines”; Wikipedia, “Valparaiso Moraine” and “Kankakee Outwash Plain.” Lost-town sites: USGS place names (Williamsville, Kessington), and the land descriptions in Rogers’s <i>History of Cass County</i> (1875), Ellis’s <i>History of Berrien and Van Buren Counties</i> (1880) and Howard’s <i>History of St. Joseph County, Indiana</i> (1907), placed on the federal land-survey grid. 3D drawing by three.js. See also <a href="/map/3d/cassopolis/">Cassopolis in LiDAR</a>, where every laser point is shown.</p>
     <script type="importmap">{{"imports":{{"three":"/vendor/three-{V}/three.module.min.js"}}}}</script>
     <script type="module">
     import * as THREE from 'three';
@@ -374,6 +388,8 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
     const lift=()=>{{ lines.forEach(l=>{{ const a=[]; l.userData.pts.forEach(p=>a.push(p[0],Y(hAt(p[0],p[1]))+.12,p[1])); l.geometry.setPositions(a); }}); }};
     mkLine(J.ring.concat([J.ring[0]]),1.6,0xe8b84a,.75);
     const rivers=[]; Object.entries(J.riv).forEach(([n,segs])=>segs.forEach(s=>rivers.push(mkLine(s,n==='St. Joseph River'?3.2:1.8,n==='St. Joseph River'?0xffd77a:0xd9a84a,.95))));
+    /* railroads: lines that are gone in rust, the ones still running in pale grey (OpenStreetMap) */
+    const rails=[]; fetch('rail.json').then(r=>r.json()).then(RJ=>{{ RJ.now.forEach(o=>{{ const l=mkLine(o.p,1.3,0xa9b8c8,.6); l.visible=false; rails.push(l); }}); RJ.old.forEach(o=>{{ const l=mkLine(o.p,2.2,0xe0673f,.95); l.visible=false; rails.push(l); }}); lift(); }}).catch(()=>{{}});
     lift();
     /* towns */
     const tagFor=(name,cls)=>{{ const el=document.createElement('span'); el.className=cls; el.textContent=name; tags.appendChild(el); return el; }};
@@ -407,6 +423,7 @@ body = f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
     const geos=GEO.map(g=>({{g, el:tagFor(g.n,'l3d-tag l3d-geo')}}));
     B('l3dPins',b=>{{ pinsOn=!pinsOn; press(b,pinsOn); pinBox.hidden=!pinsOn; }});
     B('l3dGeo',b=>{{ geoOn=!geoOn; press(b,geoOn); }});
+    B('l3dRail',b=>{{ const on=!(rails[0]&&rails[0].visible); rails.forEach(l=>l.visible=on); press(b,on); }});
     /* down into Cassopolis */
     let fly=null;
     B('l3dCass',()=>{{ ctl.autoRotate=false; press(spin,false); fly={{t0:performance.now(), fp:cam.position.clone(), ft:ctl.target.clone(), tt:new THREE.Vector3(CASS.x, Y(hAt(CASS.x,CASS.z)), CASS.z)}}; fly.tp=fly.tt.clone().add(new THREE.Vector3(-1.2,2.2,2.4)); if (still) location.href='/map/3d/cassopolis/'; }});

@@ -123,7 +123,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=5b55727b">
+<link rel="stylesheet" href="/site.min.css?v=6e58ba38">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"href_matches":"/*"}},{{"not":{{"href_matches":["/*.pdf","/*.zip","/*.xml","/*.json"]}}}},{{"not":{{"selector_matches":"[download], [target=_blank]"}}}}]}},"eagerness":"moderate"}}],"prerender":[{{"where":{{"and":[{{"selector_matches":".bar a, .toolrow .nd a, .crumb a, footer nav a, .partrail a, .search-res a"}},{{"href_matches":"/*"}},{{"not":{{"href_matches":["/*.pdf","/map/3d/*"]}}}}]}},"eagerness":"conservative"}}]}}</script>
 </head>
 <body>
@@ -180,7 +180,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=5b55727b" defer></script>
+<script src="/site.min.js?v=6e58ba38" defer></script>
 </body>
 </html>
 '''
@@ -252,6 +252,7 @@ if __name__=='__main__':
         <h1>Field notes</h1>
         <p>Short lessons from real cases: how to read an old record, weigh it against another, and know when a question is settled. A new lesson is bound in each time a case teaches one.</p>
         <p><a class="btn" href="/notes/book/">Open the field notes as a book</a></p>
+    <aside class="notes-lesson" aria-labelledby="nlH"><p class="nl-k">From the desk · Lesson No. 1</p><h2 id="nlH">Two old records, two different stories</h2><p>What to do when the records disagree, with the person of the month, the tools of the trade, and a record to weigh yourself.</p><p><a class="btn primary" href="/notes/from-the-desk/">Read Lesson No. 1</a> <a class="btn" href="/notes/from-the-desk/#try">Try the two-record puzzle</a></p></aside>
     <aside class="whatsnew" aria-labelledby="wnH"><h2 id="wnH">New on the site</h2><ul>'''+''.join(f'<li><time datetime="{_d}">{_dt.date.fromisoformat(_d).strftime("%-d %b")}</time> <a href="{_u}">{_html.escape(_t)}</a> <span>{_html.escape(_s)}</span></li>' for _d,_u,_t,_s in _json.load(open(pathlib.Path(__file__).parent/'data'/'whatsnew.json'))[:8])+'''</ul></aside>
     <ul class="notelist">
           <li><a href="/notes/one-letter-two-certificates/">One Letter, Two Certificates</a><span>No. 1 · 17 October 2026 · What to do when two old records tell you two different things.</span></li>

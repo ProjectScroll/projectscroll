@@ -111,7 +111,6 @@ SEAS = ''.join(f'<a class="nw-seas" href="{E(z["href"])}" data-from="{z["from"]}
 BLOCK = f'''<!--news-->
       <div class="nw" role="region" aria-labelledby="nwLead">
         <p class="nw-bar"><span>Front page</span><time class="nw-date" id="nwDate" datetime="{today.isoformat()}">{today.strftime('%A, %-d %B %Y')}</time><span>News of the hunt</span></p>
-        <p class="nw-latest"><span class="nw-lk">Latest</span> <a href="/news/{_LATEST["slug"]}/">{E(_LATEST["headline"])}</a> <span class="nw-dt">· <time datetime="{_LATEST["date"]}">{usday(_LATEST["date"])}</time></span><span class="nw-since" id="nwSince" hidden></span></p>
         <p class="nw-otd" id="nwOtd" hidden></p>
         <div class="nw-paper">
         <p class="nw-tt"><b>The Top Ten</b><span>the ten stories leading this week</span></p>
@@ -332,6 +331,8 @@ b = f'''    <div class="hn"><p class="crumb"><a href="/">← Front page</a> · <
         <p class="note">Kept on this device only. <a href="/badges/">Your badge book</a></p>
       </aside>
     </div>
+
+    {pathlib.Path(R, '_tools/data/home/clue.html').read_text().strip() if pathlib.Path(R, '_tools/data/home/clue.html').exists() else ''}
 
     <section aria-labelledby="hnHow"><h2 id="hnHow">How to play</h2>
       <ol class="hn-steps"><li><b>Find a clue.</b> Every mystery is posted on Project Scroll’s Facebook page, and each case has its own page with the first sources to open.</li>

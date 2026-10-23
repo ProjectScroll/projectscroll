@@ -4616,10 +4616,37 @@ main > section:nth-of-type(even):not(.contact){background-image:radial-gradient(
 .nm-legend li::marker{color:var(--gold); font-weight:700}
 /* ===== Blue glow on the inside pages: headings, cards and figures ===== */
 main.page h2{position:relative}
-main.page h2::before{content:""; position:absolute; z-index:-1; left:-1.5rem; right:-1.5rem; top:-1.4rem; height:5rem; pointer-events:none; background:radial-gradient(28rem 4.5rem at 30% 50%, var(--glow-pool), transparent 72%); opacity:.75}
+main.page h2::before{content:""; position:absolute; z-index:-1; left:0; right:0; top:-1.4rem; height:5rem; pointer-events:none; background:radial-gradient(28rem 4.5rem at 30% 50%, var(--glow-pool), transparent 72%); opacity:.75}
 main.page{isolation:isolate}
 .nw-card > a, .lr-card > a, .dsc-card, .vs-day, .mu, .nw-related a, .vs-cards > *{box-shadow:0 0 0 1px var(--glow-edge), 0 0 22px -6px var(--glow-cy)}
 .nw-art .nw-fig img, .nw-hero img, main.page .secfig img{box-shadow:0 0 0 1px var(--glow-edge), 0 0 24px -6px var(--glow-cy)}
 .nw-art .nw-fig.nw-scan img, .nw-night .nm-svg{box-shadow:none}
 @media print{ main.page h2::before{display:none} .nw-card > a, .lr-card > a, .dsc-card, .vs-day, .mu{box-shadow:none!important} }
 .rprof .rp-dam rect{fill:#2bb8d6; stroke:#0b3a78; stroke-width:.8}
+/* ===== How we work, as an ad; the Lesson No. 1 card on the field notes ===== */
+main > section#marks.teaser, .notes-lesson{position:relative; border-radius:18px; color:#f3f7ff; text-align:center; overflow:hidden;
+  background:radial-gradient(50rem 22rem at 100% 0%, rgba(255,150,90,.20), transparent 60%), radial-gradient(40rem 22rem at 0% 100%, rgba(40,200,230,.18), transparent 60%), linear-gradient(135deg,#0a1a4a 0%,#0b3a78 50%,#0c6f8f 100%)!important;
+  box-shadow:0 0 0 1px rgba(95,227,255,.25), 0 24px 60px -24px rgba(8,30,90,.6)!important; border:0!important}
+main > section#marks.teaser{margin:2.4rem auto!important; padding:2.2rem 1.6rem 2rem!important}
+main > section#marks.teaser::before, main > section#marks.teaser::after{display:none!important}
+#marks.teaser .part{color:#ffc061!important} #marks.teaser .part::before, #marks.teaser .part::after{background:rgba(255,192,97,.5)!important}
+#marks.teaser h2{color:#f3f7ff!important; font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; font-weight:800; letter-spacing:-.01em}
+#marks.teaser h2::after{background:linear-gradient(90deg,#5fe3ff,#ffc061)!important}
+#marks.teaser .std-name{display:inline-block; margin:.2rem auto .8rem; padding:.3rem .9rem; border-radius:99px; border:1px solid rgba(255,192,97,.55); color:#ffc061; font:700 .8rem/1.2 system-ui,sans-serif; letter-spacing:.14em; text-transform:uppercase; background:rgba(255,192,97,.1)}
+#marks.teaser .intro{color:#c3d3ee!important; font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; max-width:40rem; margin-left:auto; margin-right:auto}
+#marks.teaser .mstrip{display:flex; flex-wrap:wrap; justify-content:center; gap:.45rem; margin:1.1rem auto 1.3rem; font-family:system-ui,sans-serif}
+#marks.teaser .mstrip i{flex-basis:100%; color:#c3d3ee; font-size:.82rem; letter-spacing:.06em; text-transform:uppercase; font-style:normal}
+#marks.teaser .mstrip span{border-radius:99px!important; padding:.32rem .75rem!important; font-size:.82rem!important; box-shadow:0 0 0 1px rgba(255,255,255,.18), 0 0 14px -4px rgba(95,227,255,.6)}
+#marks.teaser .btn, .notes-lesson .btn{font-family:system-ui,sans-serif; border-radius:99px; border:1px solid rgba(255,255,255,.35); background:transparent; color:#f3f7ff}
+#marks.teaser .btn.primary, .notes-lesson .btn.primary{border:0; background:linear-gradient(90deg,#ffc061,#ff8a6b); color:#1a1030; font-weight:700}
+#marks.teaser .listen{color:#f3f7ff!important; border-color:rgba(255,255,255,.35)!important}
+.notes-lesson{margin:1.6rem 0; padding:1.6rem 1.4rem}
+.notes-lesson .nl-k{margin:0 0 .3rem; color:#ffc061; font:700 .76rem/1.2 system-ui,sans-serif; letter-spacing:.16em; text-transform:uppercase}
+.notes-lesson h2{color:#f3f7ff; margin:.1rem 0 .4rem; font-family:system-ui,sans-serif; font-weight:800}
+.notes-lesson h2::before{display:none!important}
+.notes-lesson p{color:#c3d3ee; font-family:system-ui,sans-serif}
+@media print{ #marks.teaser, .notes-lesson{background:none!important; color:inherit!important; box-shadow:none!important} }
+main > section.teaser p.center, #marks.teaser p.center{display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:.6rem}
+main > section.teaser p.center .btn{margin:0!important}
+.notes-lesson p:last-child{display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:.6rem}
+.notes-lesson .btn{margin:0!important}
