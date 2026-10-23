@@ -4312,3 +4312,8 @@ table.ad-cmp{width:100%; border-collapse:collapse; font-size:.95rem; line-height
 .vmt-list li.vmt-none::before{background:var(--line)}
 .vmt-mu{margin:.2rem 0 0; font-size:.78rem}
 .vmt-dots i.tm{background:#9fd3a8; animation:none; opacity:.9}
+.vmt-ln{margin:.15rem 0; font-size:.78rem; line-height:1.35}
+.vmt-ln b{font-weight:400; font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-lo)}
+.vmt-ln span{color:var(--ink-soft)}
+.vmt-ln .vmt-none{font-style:italic}
+.vmt-ln .vmt-more{font-size:.72rem}
