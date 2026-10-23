@@ -6,13 +6,13 @@ for (const [w,cs,label] of [[1280,'light','computer/light'],[1280,'dark','comput
  const ctx=await b.newContext({viewport:{width:w,height:850},colorScheme:cs,permissions:['clipboard-read','clipboard-write']}); const q=await ctx.newPage();
  const errs=[]; q.on('pageerror',e=>errs.push(e.message)); q.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
  const bad=[]; q.on('response',r=>{ if(r.url().includes('localhost') && r.status()>=400) bad.push(r.status()+' '+r.url()); });
- await q.goto(''+BASE+'/'); await q.waitForTimeout(700);
+ await q.goto(''+BASE+'/'); await q.waitForTimeout(700); await q.evaluate(()=>document.querySelectorAll('.fold-b').forEach(b=>b.click()));
  const P=label+': ';
  // theme
  const bg=()=>q.evaluate(()=>getComputedStyle(document.querySelector('.sheet')||document.body).backgroundColor);
  const b0=await bg(); await q.click('#theme'); await q.waitForTimeout(500); const b1=await bg();
  ok(P+'Light/Dark switches colors', b0!==b1, b0+' → '+b1);
- await q.reload(); await q.waitForTimeout(500); ok(P+'Light/Dark choice remembered after reload', (await bg())===b1);
+ await q.reload(); await q.waitForTimeout(500); await q.evaluate(()=>document.querySelectorAll('.fold-b').forEach(b=>b.click())); ok(P+'Light/Dark choice remembered after reload', (await bg())===b1);
  await q.click('#theme'); await q.waitForTimeout(500); ok(P+'Light/Dark switches back', (await bg())===b0);
  // overflow
  const sw=await q.evaluate(()=>[document.documentElement.scrollWidth,innerWidth]); ok(P+'no sideways scrolling', sw[0]<=sw[1], sw.join('/'));

@@ -5,9 +5,9 @@ const R=[]; const ok=(n,c,d='')=>R.push((c?'PASS ':'FAIL ')+n+(d?' — '+d:''));
 for (const [w,cs,lab] of [[1280,'light','computer'],[390,'dark','phone']]){
  const ctx=await b.newContext({viewport:{width:w,height:850},colorScheme:cs,permissions:['clipboard-read','clipboard-write'],hasTouch:w<500}); const q=await ctx.newPage();
  const errs=[]; q.on('pageerror',e=>errs.push(e.message)); const P=lab+': ';
- await q.goto(''+BASE+'/'); await q.waitForTimeout(400);
+ await q.goto(''+BASE+'/'); await q.waitForTimeout(400); await q.evaluate(()=>document.querySelectorAll('.fold-b').forEach(b=>b.click()));
  ok(P+'ink: headline writes itself on first visit', await q.evaluate(()=>document.documentElement.classList.contains('ink')));
- await q.reload(); await q.waitForTimeout(400); ok(P+'ink: not repeated on the next visit', !(await q.evaluate(()=>document.documentElement.classList.contains('ink'))));
+ await q.reload(); await q.waitForTimeout(400); await q.evaluate(()=>document.querySelectorAll('.fold-b').forEach(b=>b.click())); ok(P+'ink: not repeated on the next visit', !(await q.evaluate(()=>document.documentElement.classList.contains('ink'))));
  ok(P+'reveal: sections start hidden below the fold', await q.evaluate(()=>document.documentElement.classList.contains('reveal') && !document.getElementById('faq').classList.contains('in')));
  await q.evaluate(()=>document.getElementById('faq').scrollIntoView()); await q.waitForTimeout(900); ok(P+'reveal: a section appears when scrolled to', await q.evaluate(()=>document.getElementById('faq').classList.contains('in')));
  // clue rotation
@@ -43,7 +43,7 @@ for (const [w,cs,lab] of [[1280,'light','computer'],[390,'dark','phone']]){
  await ctx.close(); }
 // simulated solved case + hint on a copy of the page
 const q=await b.newPage({viewport:{width:1280,height:900}}); await q.route('**/', async r=>{ const res=await r.fetch(); let t=await res.text(); t=t.replace('<tr id="case-3" data-hall="h2">','<tr id="case-3" data-hall="h2" data-solved="Jane Example" data-hint="Look for the deed in the county history’s chapter on the village.">'); r.fulfill({response:res,body:t,headers:{...res.headers(),'content-type':'text/html'}}); });
-await q.goto(''+BASE+'/'); await q.waitForTimeout(1200);
+await q.goto(''+BASE+'/'); await q.waitForTimeout(1200); await q.evaluate(()=>document.querySelectorAll('.fold-b').forEach(b=>b.click()));
 ok('demo: solved case gets a wax seal', await q.evaluate(()=>document.querySelector('.seals a[href="#case-3"]').classList.contains('solved')));
 ok('demo: status says Solved with the name', /Solved/.test(await q.textContent('#case-3 .status')) && /Jane Example/.test(await q.textContent('#case-3')));
 ok('demo: meter and count update', (await q.getAttribute('.meter','aria-label'))==='1 of 10 cases solved' && (await q.textContent('.tally b >> nth=1'))==='1');
