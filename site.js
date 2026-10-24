@@ -1391,6 +1391,11 @@ try{ (function(){
     var pick=function(g){ gs.forEach(function(x){ x.classList.toggle('on',x===g); }); out.textContent=g.getAttribute('data-t'); };
     gs.forEach(function(g){ g.addEventListener('click',function(){ pick(g); }); g.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); pick(g); } }); });
   }); }catch(err){ psFail(err); }
+  /* then and now: slide between the old plat and today */
+  try{ document.querySelectorAll('.nw-thennow').forEach(function(f){ var w=f.querySelector('.pn-wrap'), r=f.querySelector('input[type=range]'); if(!w||!r) return;
+    var set=function(v){ w.style.setProperty('--cut',v+'%'); }; r.addEventListener('input',function(){ set(r.value); });
+    w.addEventListener('pointerdown',function(e){ var mv=function(ev){ var b=w.getBoundingClientRect(); var v=Math.max(0,Math.min(100,(ev.clientX-b.left)/b.width*100)); r.value=v; set(v); }; mv(e); w.setPointerCapture(e.pointerId); w.onpointermove=mv; w.onpointerup=function(){ w.onpointermove=null; }; });
+  }); }catch(err){ psFail(err); }
   try{ document.querySelectorAll('.nw-cite').forEach(function(b){ b.addEventListener('click', function(){
       var d=new Date(), M=['January','February','March','April','May','June','July','August','September','October','November','December'];
       var t=b.getAttribute('data-cite')+' (accessed '+d.getDate()+' '+M[d.getMonth()]+' '+d.getFullYear()+').';
