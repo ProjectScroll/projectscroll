@@ -124,7 +124,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
-<link rel="stylesheet" href="/site.min.css?v=681c8a08">
+<link rel="stylesheet" href="/site.min.css?v=23f3fd70">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"and":[{{"href_matches":"/*"}},{{"not":{{"href_matches":["/*.pdf","/*.zip","/*.xml","/*.json"]}}}},{{"not":{{"selector_matches":"[download], [target=_blank]"}}}}]}},"eagerness":"moderate"}}],"prerender":[{{"where":{{"and":[{{"selector_matches":".bar a, .toolrow .nd a, .crumb a, footer nav a, .partrail a, .search-res a"}},{{"href_matches":"/*"}},{{"not":{{"href_matches":["/*.pdf","/map/3d/*"]}}}}]}},"eagerness":"conservative"}}]}}</script>
 </head>
 <body>
@@ -139,7 +139,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
   <div class="bar-in">
     <a class="mark" href="/" aria-label="Project Scroll home">
       <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="4" width="18" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 4v24" stroke="#B3362B" stroke-width="2"/><path d="M14 11h7M14 15h7M14 19h5" stroke="currentColor" stroke-width="1.6"/></svg>
-      Project Scroll
+      <span class="mk-t">Project Scroll<sup class="tm" aria-hidden="true">™</sup></span>
     </a>
     <nav aria-label="Sections" id="sitenav">
       <a href="/treasure-hunt-quest/">Quest</a><a href="/news/">News</a><a href="/food/">Food &amp; Recipes</a><a href="/promotions/">Promotions</a><a href="/services/">Services</a><a href="/#contact">Contact</a>
@@ -167,7 +167,7 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
   <div class="trailx" aria-hidden="true"><svg viewBox="0 0 640 64" focusable="false"><defs><mask id="trailM" maskUnits="userSpaceOnUse"><path class="tx-draw" pathLength="1" d="M52 36C96 12 136 56 186 34S276 10 326 34 426 58 478 30 560 20 590 32"/></mask></defs><g class="tx-compass"><circle cx="26" cy="32" r="15"/><circle cx="26" cy="32" r="10.5"/><path class="tx-n" d="M26 19l3 13h-6z"/><path d="M26 45l3-13h-6z"/><path d="M13 32h26M26 17v30"/></g><path class="tx-path" mask="url(#trailM)" d="M52 36C96 12 136 56 186 34S276 10 326 34 426 58 478 30 560 20 590 32"/><g class="tx-x"><path d="M598 22l18 20M616 22l-18 20"/></g><g class="tx-gem"><path d="M607 10l3.2 3.2-3.2 7.6-3.2-7.6z"/><path class="tx-spark" d="M607 2v6M607 22v-1M600 12h-3M614 12h3"/></g></svg></div>
   <footer class="site">
     <div>
-      <p class="motto">Every clue is true. Every answer is in the record.</p>
+      <p class="motto"><span>Every clue is true<sup class="tm" aria-hidden="true">™</sup>. Every answer is in the record.</span></p>
       <p class="fmail"><a href="mailto:research@projectscroll.com">research@projectscroll.com</a></p>
       <p class="fmail"><a href="/sponsor-and-advertise/">Sponsor &amp; advertise</a></p>
       <p class="calmrow"><button type="button" class="calmbtn" id="calm" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3" width="2.6" height="10" rx=".8"/><rect x="9.4" y="3" width="2.6" height="10" rx=".8"/></svg><span>Pause all motion</span></button></p>
@@ -179,10 +179,11 @@ def page(path, title, desc, body, canon=None, noindex=False, og='https://project
     </nav>
     <p class="cite">To cite a page: Project Scroll, “[page title],” projectscroll.com/[path], dated as shown on the page, accessed [date]. Quote the date on the page, not today’s.</p>
 <p class="fine">© 2026 Project Scroll · <a href="#top">Back to the top</a></p>
+    <p class="fine tmline">Project Scroll™, Scrollmarks™, Every clue is true™ and Where’s the treasure?™ are trademarks of Project Scroll.</p>
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=681c8a08" defer></script>
+<script src="/site.min.js?v=23f3fd70" defer></script>
 </body>
 </html>
 '''

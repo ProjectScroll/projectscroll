@@ -4901,3 +4901,8 @@ dl.marks > div,.ledger tr[id^="case-"],.mu,.wk,.se{scroll-margin-top:calc(6rem +
 .dsc-list>li,.dr-stop,.cg-c{scroll-margin-top:calc(5rem + var(--mh-h))}
 html.inframe .bar{top:0}
 @media print{ .bar{top:0} }
+
+/* trademark marks: small and quiet */
+sup.tm{font-size:.5em; vertical-align:super; line-height:0; margin-left:.08em; letter-spacing:0; opacity:.8; font-family:inherit}
+.mark sup.tm{font-size:.45em}
+.fine.tmline{margin-top:.2rem; opacity:.75}
