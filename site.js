@@ -1438,7 +1438,9 @@ try{ (function(){
     const all=[].slice.call(document.querySelectorAll('.nw-art a.nw-pz, .rc-pic a.nw-pz, .rc-photo a.nw-pz, .rc-thumbs a.nw-pz')); if (!all.length || !window.HTMLDialogElement) return; const seen={}, links=[]; all.forEach(function(a){ if (!(a.href in seen)){ seen[a.href]=links.length; links.push(a); } });
     let z=null, i=0, back=null;
     const cap=function(a){ const f=a.closest('figure'); const c=f&&f.querySelector('figcaption'); return c?c.innerHTML:''; };
-    const show=function(){ const a=links[i], im=a.querySelector('img'); z.querySelector('img').src=a.href; z.querySelector('img').alt=im?im.alt:''; z.querySelector('.zc').innerHTML=cap(a); z.querySelector('.zn').textContent=(i+1)+' / '+links.length; };
+    const isImg=function(u){ return /\.(webp|avif|jpe?g|png|gif|svg)(\?|#|$)/i.test(u); };
+    const big=function(im){ if(!im) return ''; const ss=(im.getAttribute('srcset')||'').split(',').map(function(x){ const p=x.trim().split(/\s+/); return [p[0], parseInt(p[1])||0]; }).filter(function(x){ return x[0]; }); ss.sort(function(a,b){ return b[1]-a[1]; }); return ss.length?new URL(ss[0][0],location.href).href:(im.currentSrc||im.src); };
+    const show=function(){ const a=links[i], im=a.querySelector('img'), ext=!isImg(a.href); z.querySelector('img').src=ext?big(im):a.href; z.querySelector('img').alt=im?im.alt:''; z.querySelector('.zc').innerHTML=cap(a)+(ext?' <a class="zo" href="'+a.href+'">See it where it is held ›</a>':''); z.querySelector('.zn').textContent=(i+1)+' / '+links.length; };
     const close=function(){ if (!z) return; if (z.open) z.close(); z.remove(); z=null; document.body.style.overflow=''; if (back) back.focus({preventScroll:true}); };
     const open=function(n){ i=n; back=links[n];
       z=document.createElement('dialog'); z.className='fp-zoom nw-zoom'; z.setAttribute('aria-label','Picture viewer');
