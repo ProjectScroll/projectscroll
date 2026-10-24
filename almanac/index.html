@@ -29,7 +29,7 @@
 <link rel="preload" href="/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ps-theme'); if(t) document.documentElement.dataset.theme=t;}catch(e){}</script>
-<link rel="stylesheet" href="/site.min.css?v=b22156f3">
+<link rel="stylesheet" href="/site.min.css?v=11d868e1">
 <script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/*.pdf","/*.zip","/*.xml","/*.json"]}},{"not":{"selector_matches":"[download], [target=_blank]"}}]},"eagerness":"moderate"}],"prerender":[{"where":{"and":[{"selector_matches":".bar a, .toolrow .nd a, .crumb a, footer nav a, .partrail a, .search-res a"},{"href_matches":"/*"},{"not":{"href_matches":["/*.pdf","/map/3d/*"]}}]},"eagerness":"conservative"}]}</script>
 </head>
 <body>
@@ -65,6 +65,91 @@
 <div class="sheet" id="top">
 <nav class="toolrow" aria-label="Visit and plan, research tools, sponsor and advertise"><div class="tr-nav"><a class="tr-visit" href="/visit/">Visit &amp; Plan</a><span class="navdrop"><button type="button" class="nd-b" aria-expanded="false" aria-controls="ndTools">Research tools</button><span class="nd" id="ndTools" hidden><span class="nd-h">Maps</span><a href="/map/">The map room</a><a href="/map/then-and-now/">Seven towns, then and now</a><a href="/map/3d/valley/">The valley in 3D</a><a href="/map/3d/cassopolis/">Cassopolis in LiDAR</a><a href="/places/">The gazetteer</a><a href="/map/#sanborn">Sanborn fire-insurance sheets</a><a href="/postcards/">Old postcards &amp; photos</a><a href="/roads-and-rails/">Roads, rails and mills</a><a href="/lost-towns/">Lost towns of the valley</a><a href="/place-names/">How the towns got their names</a><span class="nd-h">Research</span><a href="/discoveries/">Discoveries: what we’ve found</a><a href="/names/">Who was in town</a><a href="/soldiers/">Soldiers of the valley</a><a href="/newspaper/">Newspaper of the month</a><a href="/almanac/">This day in the valley</a><a href="/museums/">Museums &amp; historic places</a><a href="/passport/">Your passport</a><a href="/story/">Share your story</a><a href="/made-in-the-valley/">Made in the Valley</a><a href="/heirlooms/">Heirlooms</a><a href="/sources/">The sources shelf</a><a href="/sources/libraries/">The libraries behind the stories</a><a href="/records/">Finding the records</a><a href="/toolkit/">The research toolkit</a><a href="/guide/old-handwriting/">Reading old handwriting</a><a href="/guide/death-certificate/">Reading a death certificate</a><a href="/guide/gravestones/">Reading old gravestones</a><a href="/glossary/">Glossary</a><a href="/families/">Families</a><a href="/legends/">Legends</a><a href="/lore/">Lore and legends</a><a href="/classrooms/">For classrooms</a></span></span><form class="tr-find" action="/names/" method="get" role="search" aria-label="Find a name"><input type="search" name="q" placeholder="Find a name" aria-label="Find a name in the old directories and rolls" autocomplete="off" spellcheck="false" enterkeyhint="search"><button type="submit" aria-label="Find"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></form></div><p class="pb-sponsor"><a href="/sponsor-and-advertise/"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 2.5h4M5.5 4h5l-.6 1H6.1zM6 5.2c-1.1 1-1.6 2.3-1.6 3.6 0 2.3 1.6 4 3.6 4s3.6-1.7 3.6-4c0-1.3-.5-2.6-1.6-3.6M8 7.4c-.7.8-1 1.5-1 2.2a1 1 0 0 0 2 0c0-.7-.3-1.4-1-2.2zM6 12.8h4v1H6z"/></svg><span>Keep the lanterns lit</span><b>Sponsor &amp; advertise</b></a></p></nav>
   <main id="main" class="page">
+    <aside class="placeband" aria-labelledby="pbH">
+      <p class="pb-tag" id="pbH">Where’s the treasure?</p>
+      <div class="pb-view"><ul class="pb-track" id="pbTrack">
+        <li class="pb-hall"><a href="https://www.facebook.com/comparativeovations" rel="noopener">The Cassopolis Hall of Comparative Ovations</a></li>
+        <li class="pb-c">St. Joseph River Valley</li>
+        <li class="pb-c">Cass County</li>
+        <li><a href="/cassopolis/">Cassopolis</a></li>
+        <li><a href="/dowagiac/">Dowagiac</a></li>
+        <li><a href="/map/#town-edwardsburg" title="Edwardsburg’s plan on the 1860 wall map">Edwardsburg</a></li>
+        <li><a href="/map/#twp-marcellus" title="Marcellus village on the Marcellus Township plat of about 1928">Marcellus</a></li>
+        <li><a href="/map/#twp-penn" title="Vandalia on the Penn Township plat of about 1928">Vandalia</a></li>
+        <li><a href="/map/#twp-calvin" title="Calvin Township on the plat of about 1928">Calvin Township</a></li>
+        <li><a href="/map/#twp-howard" title="Howard Township on the plat of about 1928">Howard Township</a></li>
+        <li><a href="/map/#twp-jefferson" title="Jefferson Township on the plat of about 1928">Jefferson Township</a></li>
+        <li><a href="/map/#twp-marcellus" title="Marcellus Township on the plat of about 1928">Marcellus Township</a></li>
+        <li><a href="/map/#twp-mason" title="Mason Township on the plat of about 1928">Mason Township</a></li>
+        <li><a href="/map/#twp-milton" title="Milton Township on the plat of about 1928">Milton Township</a></li>
+        <li><a href="/map/#twp-newberg" title="Newberg Township on the plat of about 1928">Newberg Township</a></li>
+        <li><a href="/map/#twp-ontwa" title="Ontwa Township on the plat of about 1928">Ontwa Township</a></li>
+        <li><a href="/map/#twp-penn" title="Penn Township on the plat of about 1928">Penn Township</a></li>
+        <li><a href="/map/#twp-pokagon" title="Pokagon Township on the plat of about 1928">Pokagon Township</a></li>
+        <li><a href="/map/#twp-porter-north" title="Porter Township on the plat of about 1928">Porter Township</a></li>
+        <li><a href="/map/#twp-silver-creek" title="Silver Creek Township on the plat of about 1928">Silver Creek Township</a></li>
+        <li><a href="/map/#twp-volinia" title="Volinia Township on the plat of about 1928">Volinia Township</a></li>
+        <li><a href="/map/#twp-wayne" title="Wayne Township on the plat of about 1928">Wayne Township</a></li>
+        <li class="pb-c">Berrien County</li>
+        <li><a href="/niles/">Niles</a></li>
+        <li><a href="/map/#town-buchanan" title="Buchanan’s plan on the 1860 wall map">Buchanan</a></li>
+        <li><a href="/map/#town-berrien" title="The plan of Berrien, now Berrien Springs, on the 1860 wall map">Berrien Springs</a></li>
+        <li><a href="/map/#town-st-joseph" title="St. Joseph’s plan on the 1860 wall map">St. Joseph</a></li>
+        <li><a href="/map/#town-benton-harbor" title="Benton Harbor on the Benton Township plate of Graves’s Berrien County atlas">Benton Harbor</a></li>
+        <li><a href="/map/#town-coloma" title="Coloma’s plan on the 1860 wall map">Coloma</a></li>
+        <li><a href="/map/#town-watervliet" title="Watervliet on the old maps">Watervliet</a></li>
+        <li><a href="/map/#town-bridgman" title="Bridgman on the old maps">Bridgman</a></li>
+        <li><a href="/map/#town-stevensville" title="Stevensville on the old maps">Stevensville</a></li>
+        <li><a href="/map/#town-baroda" title="Baroda on the old maps">Baroda</a></li>
+        <li><a href="/map/#town-eau-claire" title="Eau Claire on the old maps">Eau Claire</a></li>
+        <li><a href="/map/#town-galien" title="Galien on the old maps">Galien</a></li>
+        <li><a href="/map/#town-three-oaks" title="Three Oaks on the old maps">Three Oaks</a></li>
+        <li><a href="/map/#town-new-buffalo" title="New Buffalo on the old maps">New Buffalo</a></li>
+        <li class="pb-c">Van Buren County</li>
+        <li><a href="/map/#town-decatur" title="Decatur’s plan on the 1860 wall map">Decatur</a></li>
+        <li><a href="/paw-paw/">Paw Paw</a></li>
+        <li><a href="/map/#town-lawton" title="Lawton’s plan on the 1860 wall map">Lawton</a></li>
+        <li><a href="/map/#town-lawrence" title="Lawrence’s plan on the 1860 wall map">Lawrence</a></li>
+        <li><a href="/map/#town-hartford" title="Hartford’s plan on the 1860 wall map">Hartford</a></li>
+        <li><a href="/map/#town-mattawan" title="Mattawan’s plan on the 1860 wall map">Mattawan</a></li>
+        <li><a href="/map/#town-bangor" title="Bangor on the old maps">Bangor</a></li>
+        <li><a href="/map/#town-gobles" title="Gobles on the old maps">Gobles</a></li>
+        <li><a href="/map/#town-south-haven" title="South Haven on the old maps">South Haven</a></li>
+        <li class="pb-c">St. Joseph County, Michigan</li>
+        <li><a href="/map/#town-three-rivers" title="Three Rivers on the map of St. Joseph County, Michigan, 1858">Three Rivers</a></li>
+        <li><a href="/map/#town-constantine" title="Constantine on the map of St. Joseph County, Michigan, 1858">Constantine</a></li>
+        <li><a href="/map/#town-centreville" title="Centreville on the map of St. Joseph County, Michigan, 1858">Centreville</a></li>
+        <li><a href="/map/#town-white-pigeon" title="White Pigeon on the map of St. Joseph County, Michigan, 1858">White Pigeon</a></li>
+        <li><a href="/map/#town-sturgis" title="Sturgis on the old maps">Sturgis</a></li>
+        <li><a href="/map/#town-mendon" title="Mendon on the old maps">Mendon</a></li>
+        <li><a href="/map/#town-colon" title="Colon on the old maps">Colon</a></li>
+        <li class="pb-c">Kalamazoo County</li>
+        <li><a href="/map/#town-kalamazoo" title="Kalamazoo on the map of Kalamazoo County">Kalamazoo</a></li>
+        <li><a href="/map/#town-portage" title="Portage on the old maps">Portage</a></li>
+        <li><a href="/map/#town-schoolcraft" title="Schoolcraft on the old maps">Schoolcraft</a></li>
+        <li><a href="/map/#town-vicksburg" title="Vicksburg on the old maps">Vicksburg</a></li>
+        <li class="pb-c">Kent County</li>
+        <li><a href="/map/#town-grand-rapids" title="Grand Rapids Township, 1894, with the city’s edge">Grand Rapids</a></li>
+        <li class="pb-c">St. Joseph County, Indiana</li>
+        <li><a href="/map/south-bend/" title="South Bend’s 1863 plan, laid over today’s streets">South Bend</a></li>
+        <li><a href="/map/#town-mishawaka" title="Mishawaka’s plan on the 1863 map of St. Joseph County, Indiana">Mishawaka</a></li>
+        <li><a href="/map/#town-roseland" title="The ground where Roseland grew, on the 1863 map">Roseland</a></li>
+        <li><a href="/map/#town-granger" title="Harris Township, where Granger grew, on the 1863 map">Granger</a></li>
+        <li><a href="/map/#town-osceola" title="Osceola on the 1863 map of St. Joseph County, Indiana">Osceola</a></li>
+        <li><a href="/map/#town-new-carlisle" title="New Carlisle on the 1863 map of St. Joseph County, Indiana">New Carlisle</a></li>
+        <li><a href="/map/#town-lakeville" title="Lakeville on the 1863 map of St. Joseph County, Indiana">Lakeville</a></li>
+        <li><a href="/map/#town-north-liberty" title="North Liberty on the 1863 map of St. Joseph County, Indiana">North Liberty</a></li>
+        <li><a href="/map/#town-walkerton" title="Walkerton on the 1863 map of St. Joseph County, Indiana">Walkerton</a></li>
+        <li class="pb-c">Elkhart County, Indiana</li>
+        <li><a href="/map/elkhart/" title="Elkhart’s 1861 plan, laid over today’s streets">Elkhart</a></li>
+        <li><a href="/map/goshen/" title="Goshen’s 1861 plan, laid over today’s streets">Goshen</a></li>
+        <li><a href="/map/#town-bristol" title="Bristol’s plan on the 1861 map of Elkhart County">Bristol</a></li>
+        <li><a href="/map/#town-middlebury" title="Middlebury’s plan on the 1861 map of Elkhart County">Middlebury</a></li>
+        <li><a href="/map/#town-nappanee" title="Nappanee on the old maps">Nappanee</a></li>
+        <li><a href="/map/#town-wakarusa" title="Wakarusa’s plan on the 1861 map of Elkhart County">Wakarusa</a></li>
+      </ul></div>
+      <p class="pb-tag pb-tag-r">Every clue is true.</p>
+    </aside>
     <p class="crumb"><a href="/">← Project Scroll</a></p>
     <p class="kicker">This day in the valley</p>
     <h1>The valley’s almanac</h1>
@@ -126,6 +211,6 @@
     <p class="cipherline"><span role="img" aria-label="A line written in code">ESP HZCO TD SLWEPC. DLJ TE TY JZFC MLORP MZZV.</span></p>
   </footer>
 </div>
-<script src="/site.min.js?v=b22156f3" defer></script>
+<script src="/site.min.js?v=11d868e1" defer></script>
 </body>
 </html>
