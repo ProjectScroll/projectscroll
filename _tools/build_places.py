@@ -27,6 +27,28 @@ for county, places in groups:
     sec.append(f'''    <h2 id="{sid}">{html.escape(county)}</h2>
     <table class="gaz"><thead><tr><th scope="col">Place</th><th scope="col">On the old map</th><th scope="col"><span class="vh">Link</span></th></tr></thead><tbody>{rows}</tbody></table>
 ''')
+
+LH_IN=[
+ ('St. Joseph North Pier Inner Light','North Pier, St. Joseph, Berrien County, at the mouth of the St. Joseph River','Standing. Built 1906, lit 1907; front of the pier’s range pair, joined to the outer light by the elevated catwalk. Decommissioned 2005, owned by the City of St. Joseph since 2013, restored 2016. Summer tours climb it.','https://www.lighthousefriends.com/light.asp?ID=186'),
+ ('St. Joseph North Pier Outer Light','End of the North Pier, St. Joseph','Standing. The steel tower at the pier end, 1906–07; National Register 2005 with the inner light.','https://en.wikipedia.org/wiki/St._Joseph_North_Pier_Inner_and_Outer_Lights'),
+ ('St. Joseph Light of 1832','On the shore at St. Joseph','Gone. A rubblestone tower and stone keeper’s house built by John Scott under a $2,700 contract; replaced in 1859.','https://www.lighthousefriends.com/light.asp?ID=186'),
+ ('St. Joseph Light of 1859','On the bluff at St. Joseph, 101 feet above the lake','Gone. A frame keeper’s house with a square tower; Daniel R. Platt kept it from 1883 to 1919, and Jane Enos was head keeper 1876–1881. Made unnecessary in 1919, bought by the city in 1936, razed for a parking lot in 1955.','https://www.lighthousefriends.com/light.asp?ID=186'),
+ ('New Buffalo Light','New Buffalo, Berrien County','Gone. Established 1840, discontinued 1859, destroyed. The lighthouses at New Buffalo today are replicas.','https://archives.uslhs.org/places/new-buffalo'),
+ ('South Haven South Pierhead Light','End of the south pier at the mouth of the Black River, South Haven, Van Buren County','Standing. A light from 1872; the present red cast-iron tower went up in 1903 and was moved 425 feet out to the pier end in 1913. National Register 1995. The 1872 keeper’s house at 91 Michigan Avenue is the Michigan Maritime Museum’s research library.','https://en.wikipedia.org/wiki/South_Haven_Light'),
+]
+LH_OUT=[
+ ('Michigan City Old Lighthouse','100 Heisman Harbor Road, Michigan City, Indiana','Standing, a museum. Built 1858; Harriet Colfax kept it 43 years, retiring in 1904, when the light moved to the new pierhead lighthouse.','https://www.mchistorical.org/about-the-old-lighthouse'),
+ ('Michigan City East Pierhead Light','East pier, Michigan City, Indiana','Standing. The 1904 fog-signal lighthouse at the harbor entrance.','https://en.wikipedia.org/wiki/Michigan_City_East_Light'),
+ ('Kalamazoo River Light','South shore of Kalamazoo Lake, Douglas, near Saugatuck','Gone. First lit 1839, rebuilt 1859, discontinued 1914, wrecked by the tornado of 3 April 1956. A red-and-white replica stands on private ground.','https://www.lighthousefriends.com/light.asp?ID=1773'),
+]
+def lhrows(L): return ''.join(f'<tr><th scope="row">{html.escape(n)}</th><td>{html.escape(w)}<br><span class="note">{html.escape(t)}</span></td><td><a href="{u}">Source</a></td></tr>' for n,w,t,u in L)
+sec.append(f"""    <h2 id="lighthouses">Lighthouses</h2>
+    <p>The St. Joseph River meets Lake Michigan at St. Joseph and Benton Harbor, and the valley’s shore runs from New Buffalo up to South Haven. Six lights have stood on that coast: three still stand.</p>
+    <table class="gaz"><thead><tr><th scope="col">Light</th><th scope="col">Where, and what became of it</th><th scope="col"><span class="vh">Source</span></th></tr></thead><tbody>{lhrows(LH_IN)}</tbody></table>
+    <h3>Just beyond the valley</h3>
+    <table class="gaz"><thead><tr><th scope="col">Light</th><th scope="col">Where, and what became of it</th><th scope="col"><span class="vh">Source</span></th></tr></thead><tbody>{lhrows(LH_OUT)}</tbody></table>
+""")
+groups.append(('Lighthouses',[]))
 n=sum(len(p) for _,p in groups); linked=sum(1 for _,p in groups for x in p if x[1])
 toc=' · '.join(f'<a href="#{re.sub(r"[^a-z]+","-",c.lower()).strip("-")}">{html.escape(c)}</a>' for c,_ in groups)
 body=f'''    <p class="crumb"><a href="/map/">← The map room</a></p>
