@@ -4549,6 +4549,7 @@
     "<span class=\"dl\">Cassopolis, Mich.</span> In 2015 an aircraft flew over Cass County firing laser pulses at the ground, hundreds of thousands a second, and timing each echo. Every dot in the new model is one of those echoes, from the blocks around the courthouse: 355,650 of them.",
     "The buildings and trees stand where the laser found them, 125,189 points of roofs and 230,461 of trees, over the bare ground of the town.",
     "Press “1860 plan” and the old town plan from the county wall map is laid on the ground beneath them. Raise the heights, tilt it, fly around it, or go full screen.",
+    "<figure class=\"nw-embed\"><div class=\"nw-embed-f\"><iframe src=\"/map/3d/cassopolis/\" title=\"The LiDAR model of Cassopolis, Stone Lake and Diamond Lake: drag to turn it, scroll or pinch to zoom\" loading=\"lazy\" allow=\"fullscreen\" allowfullscreen></iframe></div><figcaption>The model itself: Cassopolis, Stone Lake and Diamond Lake from the 2015 laser survey. Drag to turn it, scroll or pinch to zoom, and try the 1860 plan, the 1909 fire map, the lake depths and the guided tour. <a href=\"/map/3d/cassopolis/\">Open it full size ›</a></figcaption></figure>",
     "<span class=\"nw-tier d\">Documented</span><b>Updated 23 October.</b> The model now shows every tree and building point the survey kept in the town blocks, about 775,000, and some 760,000 more across the country from Stone Lake to Diamond Lake, on ground shaded from a survey grid one and a half metres apart. Buildings and trees each have their own switch. Gold pins mark the stops of our walking tour; a guided tour flies from Stone Lake to the courthouse square and out to Diamond Lake; tap the ground for its height; and the Sun slider casts every roof’s and tree’s shadow through a midsummer day.",
     "Fly over it, and you earn the Laser surveyor badge."
    ],
@@ -4577,6 +4578,10 @@
     [
      "2026-10-23",
      "The model widened to Stone Lake and Diamond Lake, every tree point added, and story pins, a guided tour, ground readings and the sun and shadows added."
+    ],
+    [
+     "2026-10-23",
+     "The LiDAR model itself is now on this page, ready to fly."
     ]
    ]
   },

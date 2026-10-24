@@ -4842,3 +4842,17 @@ blockquote.nw-q footer{margin:.3rem 0 0;padding:0;border:0;background:none}
 .pr-cols{grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))!important}
 .hn-ad h1.promo-h,.pr-hero h1.promo-h{font-size:clamp(2.1rem,1.3rem + 3.4vw,3.3rem)!important;line-height:1.08}
 .nw-copy{margin:.8rem 0 0;padding-top:.6rem;border-top:1px solid var(--line);font-size:.8rem;line-height:1.45;color:var(--ink-soft)}
+/* a map from this site shown inside a story */
+html.inframe body{background:#05080c}
+html.inframe .masthead,html.inframe .bar,html.inframe .toolrow,html.inframe footer,html.inframe .trailx,html.inframe .sharebar,html.inframe [class*=consent],html.inframe .btoast,html.inframe .vprogress,html.inframe .skip,html.inframe .crumb{display:none!important}
+html.inframe main.page > *:not(#l3d){display:none!important}
+html.inframe main.page{padding:0!important;margin:0!important;max-width:none!important}
+html.inframe #l3d{margin:0!important;height:100vh!important;max-height:none!important;border-radius:0}
+html.inframe #l3d canvas{height:100%!important}
+.nw-embed{margin:1.4rem 0;clear:both}
+.nw-embed-f{position:relative;aspect-ratio:16/10;max-width:100%;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#05080c}
+.nw-embed-f iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.nw-embed figcaption{margin-top:.6rem;font-size:.9rem;color:var(--ink-soft)}
+@media (max-width:600px){.nw-embed-f{aspect-ratio:3/4}}
+.sv-all{margin-top:2rem}
+.sv-all h2.promo-h{font-size:clamp(1.7rem,1.2rem + 2.2vw,2.5rem)!important}

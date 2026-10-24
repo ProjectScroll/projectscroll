@@ -1,3 +1,5 @@
+/* inside an embed (a story showing a map from this site): just the viewer */
+try{ if (window.self!==window.top && /^\/map\//.test(location.pathname)) document.documentElement.classList.add('inframe'); }catch(e){ document.documentElement.classList.add('inframe'); }
 /* each feature below runs inside its own guard: if one ever fails, the rest of the page keeps working */
 /* the full stylesheet arrives as a print sheet so it never blocks the first paint (the first screen is styled inline); it is switched on here */
 try{ document.querySelectorAll('link[data-full]').forEach(function(l){ l.media='all'; }); }catch(e){}
