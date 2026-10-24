@@ -26,8 +26,13 @@ def share_bottom(canon, t, img='', dek=''):
 SV_MINI = open(f'{R}/_tools/data/home/sv-mini.html').read().strip()
 N = json.load(open(f'{R}/_tools/data/news.json')); L = N['lead']; S = N['stories']
 _FD = json.load(open(f'{R}/_tools/data/finds.json'))
+def _fres(x):
+    if 'ref' not in x: return x
+    k, i = x['ref'].split('#'); y = next(z for z in _FD[k] if z.get('id') == i)
+    return dict(y, shared=k)
+_DATES = {s['slug']: s['date'] for s in S}
 for _s in S:
-    if _s['slug'] in _FD: _s['finds'] = [dict(x, d=x.get('d') or _s['date']) for x in _FD[_s['slug']]]
+    if _s['slug'] in _FD: _s['finds'] = [dict(_fres(x), d=_fres(x).get('d') or _DATES.get(_fres(x).get('shared') or _s['slug'])) for x in _FD[_s['slug']]]
 def _howto(nf):
     return ('<aside class="nw-howto" aria-labelledby="howH"><p class="nw-br-h" id="howH">How to read this page</p>'
       '<p class="nh-lede">This is a living research document. Every statement carries a mark, so you always know what is on the record and what is our reading of it. Every source is listed at the foot of the page, and the story is updated as new records turn up.</p>'
@@ -127,7 +132,7 @@ second = lambda s: (f'<article class="nw-s{" nw-feat" if s["slug"] in _RIB else 
                     f'<p class="nw-k">{E(s["kicker"])}<span class="nw-dt"> · <time datetime="{s["date"]}">{usday(s["date"])}</time></span><span class="nw-new" hidden> · New</span></p><h2><a href="/news/{s["slug"]}/">{E(s["headline"])}</a></h2>{tags(s, _RIB.get(s["slug"]))}<p class="nw-sd">{E(s.get("sdek") or s["dek"])}</p></article>')
 _SHORTK = {'How the towns got their names': 'Town names'}
 line = lambda s: (f'<li data-d="{s["date"]}" data-g="{E("|".join([s["kicker"]]+tagnames(s)))}"><a class="nw-th" href="/news/{s["slug"]}/" tabindex="-1" aria-hidden="true">{sqpic(s["pic"][0])}</a><span class="nw-lt"><span class="nw-k">{E(_SHORTK.get(s["kicker"], s["kicker"]))}</span> <a href="/news/{s["slug"]}/">{E(s["short"])}</a><span class="nw-new" hidden> · New</span></span></li>')
-_NF = sum(len(x.get('finds', [])) for x in S)
+_NF = sum(1 for x in S for y in x.get('finds', []) if not y.get('shared'))
 _SEAL = ('<svg class="dsc-seal" viewBox="0 0 60 60" aria-hidden="true"><g transform="translate(30 30)">' + ''.join(f'<path d="M0-29 5-22-5-22z" fill="#B7811C" transform="rotate({i*22.5})"/>' for i in range(16))
          + '<circle r="22" fill="#E9BE4C" stroke="#6E4A0C" stroke-width="1.3"/><circle r="18" fill="none" stroke="#FFF3C0" stroke-width="1" stroke-dasharray="2 2"/><path d="M-14-8 0-17 14-8" fill="none" stroke="#F7DC86" stroke-width="1.2"/><text y="5" text-anchor="middle" font-family="Georgia,serif" font-size="12.5" font-weight="700" fill="#4a300a" letter-spacing=".5">NEW</text></g></svg>')
 DSC = (f'<a class="dsc-col" href="/discoveries/"><span class="dsc-pic"><img src="/img/news/dsc-lodge-1846.webp" width="480" height="266" alt="A passage in the 1882 county history: the first secret society in Cassopolis was a lodge of the Ancient and Honorable Order of the Eclampsus Vitus, instituted in the spring of 1846" loading="lazy" decoding="async">{_SEAL}</span>'

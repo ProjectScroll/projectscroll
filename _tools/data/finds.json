@@ -240,6 +240,38 @@
    "s": "Isabella County Daily Times-News, 10 August 1964, p. 2 (United Press); Robert Atkinson’s survey (2017); Wikipedia; Notebook of Ghosts (2020); web searches for Sheridan, lion and Sister Lakes."
   }
  ],
+ "e-clampus-vitus-in-cassopolis-1846": [
+  {
+   "id": "cassopolis-1846-lodge",
+   "town": "Cassopolis",
+   "kind": "Earliest record",
+   "t": "The lodge of the “Ancient and Honorable Order of Eclampsus Vitus” instituted at Cassopolis in the spring of 1846, recorded by Rogers (1875) and Mathews (1882) with its four charter members named, is the earliest lodge of the order yet found anywhere with its members’ names written down, and the first known in Michigan.",
+   "s": "Full-text searches for “Eclampsus Vitus”, “Eclampses Vitus” and “Clampus Vitus”; Wikipedia’s articles on E Clampus Vitus and Ephraim Bee and their references; ecvinc.org and chapter websites; <i>Then and Now</i> (E Clampus Vitus, 1966); the Shumate list of early lodges; Rogers (1875) and Mathews (1882); the Cope genealogy of the Sharpless family (1887); Michigan newspapers of 1898."
+  },
+  {
+   "id": "cassopolis-1846-sisters",
+   "town": "Cassopolis",
+   "kind": "Connection",
+   "t": "Three of the Cassopolis lodge’s four charter members married sisters of one family, the Bealls: a Niles obituary of September 1898 lists two of them as survivors of Nathaniel Beall, and the third married the youngest sister in 1854. The lodge was very nearly a family affair.",
+   "s": "Full-text searches for “Eclampsus Vitus”, “Eclampses Vitus” and “Clampus Vitus”; Wikipedia’s articles on E Clampus Vitus and Ephraim Bee and their references; ecvinc.org and chapter websites; <i>Then and Now</i> (E Clampus Vitus, 1966); the Shumate list of early lodges; Rogers (1875) and Mathews (1882); the Cope genealogy of the Sharpless family (1887); Michigan newspapers of 1898."
+  },
+  {
+   "id": "cassopolis-1846-centreville",
+   "town": "Cassopolis",
+   "kind": "Connection",
+   "t": "The Cassopolis founders’ family came from Centreville, Indiana, the very town whose “Jackson Lodge” of the order asked the Indiana legislature for a charter that winter: the Beall sisters were born there, and the lodge’s young doctor read medicine there under a physician married to the sisters’ aunt.",
+   "s": "Full-text searches for “Eclampsus Vitus”, “Eclampses Vitus” and “Clampus Vitus”; Wikipedia’s articles on E Clampus Vitus and Ephraim Bee and their references; ecvinc.org and chapter websites; <i>Then and Now</i> (E Clampus Vitus, 1966); the Shumate list of early lodges; Rogers (1875) and Mathews (1882); the Cope genealogy of the Sharpless family (1887); Michigan newspapers of 1898."
+  },
+  {
+   "ref": "e-clampus-vitus-the-complete-record#connersville-1846"
+  },
+  {
+   "ref": "e-clampus-vitus-the-complete-record#tent-43-indianapolis-1846"
+  },
+  {
+   "ref": "e-clampus-vitus-the-complete-record#jackson-lodge-centreville"
+  }
+ ],
  "the-indian-lake-sea-serpent": [
   {
    "id": "serpent-fish-stocking",

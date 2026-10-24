@@ -11,6 +11,470 @@
  },
  "stories": [
   {
+   "slug": "the-last-stage-to-grand-rapids",
+   "kicker": "Old Plainwell",
+   "headline": "The stagecoach at the Junction",
+   "short": "The stagecoach at the Junction",
+   "dek": "A crowded Concord coach stands at Plainwell’s old Junction in a photograph shared as the last stage from Kalamazoo to Grand Rapids, 22 October 1869. We found its negative, its first printing and one of its drivers. The tavern and the stage line are real; the date has no source, and the picture has worn four different years.",
+   "sdek": "A Plainwell stage photo, its archive, its drivers and four dates",
+   "tldr": "<p>The negative belongs to the Grand Rapids Public Library (Coll. #33-10-24, Neg. #1896): a Concord coach marked “Kalamazoo” at Plainwell, four horses, men “in Civil War uniforms” on the roof. Plainwell’s 1969 centennial book printed it as Patterson, Glynn &amp; Lyon’s stage at the Plainwell House in 1859; the library has also dated it 1865. One of the line’s drivers, John W. James, drove for “W. G. Patterson” between Kalamazoo and Grand Rapids for thirteen years.</p><p>The Plainwell House was begun in 1853 where the plank road forked for Allegan, opened by Orson D. Dunham in July 1854, kept by a succession of landlords, and replaced in 1891 by the Union Block at 111–119 North Main. Railroads reached Grand Rapids from Kalamazoo by way of Allegan on 1 March 1869 and straight through Plainwell in October 1870. No source we found names 22 October 1869, or any day, as the last stage, or ties this photograph to a last trip.</p>",
+   "sources": [
+    [
+     "“Grand Rapids to Kalamazoo Stagecoach” (title by cataloguer), photograph, Plainwell, Mich. Grand Rapids Public Library, History & Special Collections Dept., Archives, Coll. #33-10-24, Neg. #1896. Grand Rapids History (historygrandrapids.org), photo 1523.",
+     "https://www.historygrandrapids.org/photo/1523/grand-rapids-to-kalamazoo-stag"
+    ],
+    [
+     "“Kalamazoo stage coach, 1865,” photograph record, data provider Grand Rapids Public Library; rights: “© Grand Rapids Public Library. All Rights Reserved.” Michigan Memories.",
+     "https://michmemories.org/exhibits/topics/catalog/ee061a3d50c693e20cc8315a7bbaf6cf"
+    ],
+    [
+     "Centennial Book Committee, Plainwell, 1869 to 1969: The First Hundred Years (Plainwell, 1969): history and plank road (p. 4), 1869 taxpayers (p. 7), the stagecoach caption (p. 11), 1873 business directory (p. 14), lodging (p. 18), railroads. Allen County Public Library copy, Internet Archive (page numbers are the archive’s search index).",
+     "https://archive.org/details/plainwell1869to1002"
+    ],
+    [
+     "Crisfield Johnson, History of Allegan and Barry Counties, Michigan (Philadelphia: D. W. Ensign, 1880): railroads, p. 87; village of Plainwell, pp. 292–293, 298–299. Cornell University Library copy, Internet Archive.",
+     "https://archive.org/details/cu31924032193587"
+    ],
+    [
+     "Samuel W. Durant, History of Kalamazoo County, Michigan (Philadelphia, 1880): “The Old Stage-Coach,” pp. 180–181; plank roads, p. 183. University of Michigan copy, Internet Archive.",
+     "https://archive.org/details/bad0947.0001.001.umich.edu"
+    ],
+    [
+     "David Fisher and Frank Little, eds., Compendium of History and Biography of Kalamazoo County, Mich. (Chicago, 1906): John W. James, pp. 474–475. Internet Archive.",
+     "https://archive.org/details/compendiumofhist00fish"
+    ],
+    [
+     "Albert Baxter, History of the City of Grand Rapids, Michigan (New York and Grand Rapids, 1891), chapter on highways, stages and the plank road. Kent County MIGenWeb transcription.",
+     "https://kent.migenweb.org/baxter1891/46highways.html"
+    ],
+    [
+     "“Coming of the Railroads,” from William J. Etten, A Citizens’ History of Grand Rapids, Michigan (1926). Kent County MIGenWeb transcription.",
+     "https://kent.migenweb.org/etten1926/railroads.html"
+    ],
+    [
+     "Mrs. A. D. Thomas, “Memories of the Early Stage Roads of Barry County.” Barry County MIGenWeb transcription.",
+     "https://migenweb.org/barry/EarlyStageRoads.htm"
+    ],
+    [
+     "Lynne B. Weir and Mary Grace York, Historic Resources of Plainwell, Michigan, National Register of Historic Places Multiple Property Documentation Form (September 1990), Section E. National Park Service, NPGallery.",
+     "https://npgallery.nps.gov/GetAsset/6af1658f-5a3b-4ce3-a968-3a8107a1965d"
+    ],
+    [
+     "“Plank Roads,” Kalamazoo Public Library, Local History (incl. Lucien H. Stoddard’s 1930 recollection and the toll-gate marker text).",
+     "https://www.kpl.gov/local-history/kalamazoo-history/transportation/plank-roads/"
+    ],
+    [
+     "“Grand Rapids & Indiana Railroad,” Kalamazoo Public Library, Local History.",
+     "https://www.kpl.gov/local-history/kalamazoo-history/transportation/grand-rapids-indiana-railroad/"
+    ],
+    [
+     "Sehvilla Mann, “Kalamazoo Plank Road Was A Boon To Travelers, But A Bumpy Ride For Investors,” WMUK, 11 April 2019.",
+     "https://www.wmuk.org/wmuk-news/2019-04-11/kalamazoo-plank-road-was-a-boon-to-travelers-but-a-bumpy-ride-for-investors"
+    ],
+    [
+     "Marty Arnold plank road collection (Collection 327), finding aid, historical note. Grand Rapids Public Library, Grand Rapids History Center.",
+     "https://archive.grpl.org/repositories/4/resources/324"
+    ],
+    [
+     "“Railroad Race,” Grand Rapids Historical Commission radio history, 3 April 2013, quoting the Grand Rapids Daily Eagle. Grand Rapids History (historygrandrapids.org).",
+     "https://www.historygrandrapids.org/audio/4409/railroad-race"
+    ],
+    [
+     "“Time Line – 1868” and “Time Line – 1869,” Michigan Railroad History (michiganrailroads.com).",
+     "https://www.michiganrailroads.com/timeline/468-1860-1869/3591-timeline-1869"
+    ],
+    [
+     "“Location of the Old Toll Gate” marker, Douglas Avenue and Baseline Road, Cooper Township. Historical Marker Database.",
+     "https://www.hmdb.org/m.asp?m=306529"
+    ],
+    [
+     "“American Stagecoach,” Concord coach of 1848, photograph record. Smithsonian Institution Archives.",
+     "https://si.edu/object/american-stagecoach%3Asiris_sic_8330"
+    ],
+    [
+     "“Abbot-Downing Company,” Wikipedia (founding and partnership dates).",
+     "https://en.wikipedia.org/wiki/Abbot-Downing_Company"
+    ],
+    [
+     "“Grand Rapids and Indiana Railroad,” Wikipedia (13 September 1870 completion into Grand Rapids from the south).",
+     "https://en.wikipedia.org/wiki/Grand_Rapids_and_Indiana_Railroad"
+    ],
+    [
+     "“Plainwell, Michigan,” Wikipedia (history: the stagecoach route and the Grand Rapids and Indiana Railroad).",
+     "https://en.wikipedia.org/wiki/Plainwell,_Michigan"
+    ],
+    [
+     "“Whitney Tavern Stand,” Wikipedia (the six-hour travel-time claim).",
+     "https://en.wikipedia.org/wiki/Whitney_Tavern_Stand"
+    ],
+    [
+     "1850 Concord coach (published 1904), Wikimedia Commons, public domain",
+     "https://commons.wikimedia.org/wiki/File:1850_Concord_coach.jpg"
+    ],
+    [
+     "Concord Coach No. 206, Collings Foundation, photograph by Daderot (2017), Wikimedia Commons, CC0",
+     "https://commons.wikimedia.org/wiki/File:Concord_Coach_No._206,_Abbot-Downing_Company_Carriage_Works,_Concord,_NH,_c._1867_-_Collings_Foundation_-_Massachusetts_-_DSC06788.jpg"
+    ],
+    [
+     "Group of 9 Stereograph Views of Carriages, Stagecoaches, and Wagons (1860s), The Metropolitan Museum of Art, DP75420, via Wikimedia Commons, CC0",
+     "https://commons.wikimedia.org/wiki/File:-Group_of_9_Stereograph_Views_of_Carriages,_Stagecoaches,_and_Wagons-_MET_DP75420.jpg"
+    ]
+   ],
+   "body": [
+    "<span class=\"dl\">Plainwell, Mich.</span> The horses have stopped, but they have not settled. Four of them, dark, in two pairs, stand in the churned mud of an unpaved street with their harness slack and the lead pair’s heads turned toward the camera. Behind them the coach rides high and heavy on wheels taller at the back than the front, and its roof is crowded: ten or more men in caps and broad-brimmed hats sit shoulder to shoulder along the top, and one stands, the tallest thing in the picture. To the left is a plain two-storey clapboard building. To the right, at the very edge of the frame, a painted sign on a shop front has been cut off after five letters: “STOV.”",
+    "That is all the photograph says for itself. Everything else has been said about it by other people, and they do not agree. Shared online, it comes with a date and a story: that on 22 October 1869 “the last stage coach trip from Kalamazoo to Grand Rapids took place,” and that this is that coach, stopped at the Plainwell House at “The Junction,” now the northwest corner of M-89 and North Main Street.",
+    "We went after the picture’s papers. We found the library that holds the negative, the centennial book that printed it in 1969, the county histories written while the stage drivers were still alive, a driver’s own obituary-style biography, the National Register study that traced the hotel’s ground to the present building, and the railroad records of 1868 to 1870. The hotel is real, and so is the stage line. The picture has been given four different dates by the people who handled it. None of them is the date in the caption, and nobody, in any source we could find, ever wrote down the day the last coach left.",
+    "<div class=\"nw-verdict\"><p class=\"nw-v-h\">What the record shows</p><ul><li><b>The negative is in Grand Rapids:</b> Grand Rapids Public Library, History &amp; Special Collections, Coll. #33-10-24, Neg. #1896, catalogued as a Concord coach marked “Kalamazoo” at Plainwell, with men “in Civil War uniforms” on the roof.</li><li><b>Plainwell’s 1969 centennial book</b> printed a picture captioned as Patterson, Glynn &amp; Lyon’s stagecoach at the Plainwell House in 1859, and the library has also dated it 1865.</li><li><b>The Plainwell House</b> was begun in the fall of 1853 at the junction of the Kalamazoo–Grand Rapids plank road and its Allegan branch, kept by a string of landlords, and replaced in 1891 by the Union Block, 111–119 North Main.</li><li><b>The railroads came in two waves:</b> to Plainwell in 1868, into Grand Rapids by way of Allegan on 1 March 1869, and straight through Plainwell on the Grand Rapids and Indiana in October 1870.</li></ul><p class=\"nw-v-h\">What it does not show</p><ul><li>Any source for 22 October 1869, or any record of a “last” coach on a named day.</li><li>That this photograph shows a last trip.</li><li>Who took it, or when.</li></ul></div>",
+    "{{toc}}",
+    "## The picture’s papers",
+    "<span class=\"nw-tier d\">Documented</span>The photograph belongs to the Grand Rapids Public Library. Its history website catalogues it as “Grand Rapids to Kalamazoo Stagecoach,” a title the record says was supplied by the cataloguer, credited to “Grand Rapids Public Library, History &amp; Special Collections Dept., Archives,” collection 33-10-24, negative 1896, location “Plainwell, MI.” The cataloguer looked closely: “In the background is the Plainwell Halfway House on the Kalamazoo Plank Road. Four horses pull the stagecoach loaded with passengers, those on top of the coach in Civil War uniforms. Note ‘Kalamazoo’ printed above the door of the coach, and the larger wheels at the rear. The coach is the type known as the Concord coach.”",
+    "<span class=\"nw-tier d\">Documented</span>A second record from the same library, shared to the state’s Michigan Memories portal, calls it “Kalamazoo stage coach, 1865,” and describes “The Kalazmazoo stage coach in Plainwell, Michigan. Several men are sitting and standing atop the stage coach. Four horses are pulling the stage coach.” Both records count four horses. The Michigan Memories rights line reads “© Grand Rapids Public Library. All Rights Reserved.”",
+    "<span class=\"nw-tier d\">Documented</span>The earliest printing we found is in <i>Plainwell, 1869 to 1969: The First Hundred Years</i>, the village’s centennial book, published in 1969 by its Centennial Book Committee, with art and layout by G. L. Rantz. The copy scanned by the Internet Archive, from the Allen County Public Library, has no copyright page. Among its pictures of horse races at the fairgrounds and the milkman’s dairy is this caption: “Patterson, Glynn &amp; Lyon’s Stagecoach in front of THE PLAINWELL HOUSE, unloading passengers at the ‘Junction’ for the Allegan turn-off on the Plank Road in 1859. THE PLAINWELL HOUSE was located on the northwest corner of Main and Allegan Streets.”",
+    "<span class=\"nw-tier r\">Reading</span>Put that caption next to the one going around today and the family resemblance is plain: the Plainwell House, the “Junction” in quotation marks, the northwest corner of Main. The modern caption keeps the place and swaps the year and the story. We matched the 1969 picture to the library’s negative by the agreement of their descriptions. The scanned page itself would not open for us at a size that allowed a side-by-side comparison, so that match, though strong, is not yet confirmed by eye.",
+    "## Four dates for one coach",
+    "<span class=\"nw-tier d\">Documented</span>Line the captions up and the photograph has been dated four times. The centennial book says 1859. The library’s Michigan Memories record says 1865. The library’s own photo record gives no year but sees Civil War uniforms on the roof, which would put the scene in the war years of 1861 to 1865 or soon after. The caption online says 22 October 1869.",
+    "<span class=\"nw-tier r\">Reading</span>Only the last claims a day, and it is the only one with no trail behind it. We searched for it in the county histories of Allegan and Barry (1880), Kalamazoo (1880 and 1906) and Grand Rapids (1891 and 1926), in the centennial book, in the National Register study of Plainwell, in the Kalamazoo and Grand Rapids libraries’ pages on the plank road and the railroads, and in the railroad timelines for 1868 and 1869. None mentions 22 October 1869. None names a last coach on any day. The Michigan newspaper archive that might hold an announcement does not allow automated searching, and we left it alone.",
+    "<span class=\"nw-tier r\">Reading</span>Neither the centennial book nor the library says how it arrived at its year, and the two are six years apart. The cataloguer’s “Civil War uniforms” is a reading of the clothes, not a date on the print.",
+    "<span class=\"nw-tier d\">Documented</span>Some of what is said about the photograph online falls away on a close look. There are four horses in two pairs, as both of the library’s records say, not six. The rear wheels are larger than the front, as the cataloguer noted.",
+    "<span class=\"nw-tier r\">Reading</span>The word “Kalamazoo” the cataloguer read above the door is not legible in the 800-pixel halftone copy that circulates; it needs the library’s print to read. The sign at the right, “STOV,” looks like the start of “stoves,” though no business of that name at the Junction is documented in the sources we read. The plain clapboard building fits a tavern of the 1850s or 1860s, but no other photograph of the Plainwell House turned up for comparison, so the building’s identity rests on the 1969 caption and the library’s description. The library calls it the “Plainwell Halfway House”; the nineteenth-century sources call it only the Plainwell House.",
+    "## A tavern where two roads met",
+    "<span class=\"nw-tier d\">Documented</span>Plainwell began as a mark on a road company’s plan. “In 1852 began the building of a plank-road from Kalamazoo to Grand Rapids,” says the <i>History of Allegan and Barry Counties</i> (1880), “and a branch extending from this point to Allegan.” A man named Wellever saw what a fork in a toll road could be worth. He “looked upon it as an exceedingly advantageous locality for the establishment of a relay-house, tavern, etc. Consequently, he purchased one acre of land, and during the fall of 1853 began the construction of the old Plainwell House.” The book’s footnote calls him “Supposed to be Henry Wellever”; a list on its page 299 gives “Wellever, Abram,” and the 1990 National Register study calls him Abraham.",
+    "<span class=\"nw-tier d\">Documented</span>He did not keep it. Orson D. Dunham bought Wellever’s tract “In November 1853,” says the centennial book, “and in July 1854, the Plainwell House was formally opened to the public as a place of entertainment for wearied, hungry men.” The National Register study puts Dunham’s purchase of “the partially completed hotel and the forty acres surrounding it” in 1854. Dunham was the hamlet’s first everything: “Orson D. Dunham was postmaster and proprietor of the Plainwell House,” the 1880 history says, and the study adds that he took over the post office “in the Plainwell House at the junction” in 1854.",
+    "<span class=\"nw-tier d\">Documented</span>Wellever crossed the road. He bought the opposite corner, put up a small frame building, “and within it exposed for sale a meagre stock of groceries,” the 1880 history says, before selling out to Alfred S. and Albert Pierson and moving to Flint.",
+    "<span class=\"nw-tier d\">Documented</span>The place had a nickname before it had a name. The National Register study says the crossroads was known as “The Junction,” and that it “was an important junction for the Patterson, Glynn and Lyons stage coach lines,” where horses were changed and passengers could eat before going on. The name on the map came from the hotel, or so the town has always said. “The name ‘Plainfield’ was originally chosen but was changed to ‘Plainwell,’” the study records, because “another town near Grand Rapids had the same name,” and “Allegedly, the village was named after the Plainwell House Hotel which had been a landmark at the junction since 1853.” The centennial book has no such hedge: the Plainwell House was “the first business actually built in the village,” “after which the village was named.”",
+    "<blockquote class=\"nw-q\"><p>“Mr. Dunham relates that very frequently he had the passengers of seven four-horse stage-coaches stopping at his house for dinner.”</p><footer><i>History of Allegan and Barry Counties, Michigan</i>, 1880, p. 293</footer></blockquote>",
+    "<span class=\"nw-tier d\">Documented</span>Seven coaches, four horses each, means twenty-eight horses at one country tavern at dinnertime. The centennial book retold the scene in 1969: “As many as seven four-horse stagecoaches have been fitted up in front of the PLAINWELL HOUSE in a single day, while the weary passengers and crew enjoyed dinner inside.”",
+    "<figure class=\"nw-fig nw-fig-r\"><a class=\"nw-pz\" href=\"https://commons.wikimedia.org/wiki/File:-Group_of_9_Stereograph_Views_of_Carriages,_Stagecoaches,_and_Wagons-_MET_DP75420.jpg\"><img src=\"/img/news/the-last-stage-to-grand-rapids/stereo-1860s.webp\" width=\"730\" height=\"700\" alt=\"A stereograph of the 1860s: a crowd of passengers in their best clothes beside a stagecoach and team before a two-storey frame house\" loading=\"lazy\" decoding=\"async\" style=\"width:100%;height:auto\"></a><figcaption>A coach, its team and a crowd of passengers before a frame house, on a stereograph of the 1860s. It is not Plainwell; it shows what a country stage stop looked like in the coaching years. The Metropolitan Museum of Art, via Wikimedia Commons. <span class=\"nw-lic\">CC0 · public domain</span></figcaption></figure>",
+    "## Forty-eight miles of plank",
+    "<span class=\"nw-tier d\">Documented</span>The road that made all this was a wooden one. Michigan’s plank-road law of 1848 let private companies lay roads of sawn timber and charge tolls; the Kalamazoo Public Library credits Governor Epaphroditus Ransom, a principal investor in this road, with helping to pass it. “Planks from two to four inches in thickness were laid upon timbers placed horizontally with a graded roadway,” the library explains. Albert Baxter’s <i>History of the City of Grand Rapids</i> (1891) names the company’s directors as “Epaphroditus Ransom and Israel Kellogg of Kalamazoo, and Charles Shepard and William H. Withey of Grand Rapids,” and its principal planking contractor as Titus Doan, with “an energetic and able assistant” in Benjamin Livingston.",
+    "<span class=\"nw-tier d\">Documented</span>The finishing date depends on whom you ask. The 1880 Allegan history: “The plank-road was completed in 1854, and immediately became a thronged thoroughfare for the hauling of freight, lumber, and farm produce; besides, it was a favorite route for stage travel.” Baxter: “completed and tolls taken thereon throughout its length in the summer of 1855.” The Grand Rapids Public Library’s finding aid for its plank-road collection agrees with Baxter that “coaches began using it in 1855.” Baxter gives the length as “about forty-eight miles.”",
+    "<span class=\"nw-tier d\">Documented</span>The finding aid gives the fare: “It was $2.50 for passengers to make the 48 mile coach trip,” starting at the Eagle Tavern on Market Avenue in Grand Rapids. A WMUK report of 2019 says the road “cut travel time between the villages in half - from two days, to just one.” The Wikipedia article on a Kent County tavern claims a six-hour trip; we could not trace that figure to a primary source, and it sits awkwardly beside WMUK’s full day.",
+    "<span class=\"nw-tier d\">Documented</span>Before the planks, the journey was a different animal. A Middleville woman, Mrs. A. D. Thomas, recalled that in the early 1840s “The stage ran from Kalamazoo to Grand Rapids once a week,” and that it was “a large wagon drawn by two horses,” later improved with “an oil cloth cover and four horses,” and remembered that “Passengers used to carry rails to pry the stage out of the mud.” Samuel Durant’s <i>History of Kalamazoo County</i> (1880) traces stage service between Kalamazoo and the Grand River country to 1833: “A line of stage-coaches was put in operation in 1833 between Kalamazoo and the Grand River country by one Sargent.”",
+    "<span class=\"nw-tier d\">Documented</span>On the plank road, traffic boomed. “The completion of the Grand Rapids and Kalamazoo plank road, in 1855, gave a wonderful impetus to stage traffic,” Baxter wrote, “and the passage of from six to eight coaches a day over that road was not an unusual occurrence.” Of all the stage routes out of Grand Rapids, “The liveliest and most profitable of the routes was that to Kalamazoo.”",
+    "<span class=\"nw-tier d\">Documented</span>South of Plainwell the road ran through a toll gate. The Daughters of the American Revolution marked its site with a tablet at Douglas Avenue and Baseline Road in Cooper Township. A family file read for WMUK by Paul Sugas describes the gate as “a covered barn that went across the road, and it had a draw,” and records that “During the seasons of 1855 and 1856, A.P. Ware and his wife Anna kept the toll gate and sold tobacco, cigars and beer to wayfarers.” The Wares remembered “some pretty contentious confrontations between people hauling things” over who should give way on the narrow planking.",
+    "<span class=\"nw-tier d\">Documented</span>The marker’s closing date depends on whose transcription you read. The Kalamazoo Public Library gives its text as “the old toll gate built in 1852 and discontinued in 1868”; the Historical Marker Database transcribes the last year as 1858. WMUK’s report says the gate “closed just 16 years later,” which agrees with 1868. None of the sources we read gives the toll rates.",
+    "<span class=\"nw-tier d\">Documented</span>Planks rot, splinter and warp, and the company knew a railroad was coming. Lucien H. Stoddard of Cooper Township, remembering in 1930 as the Kalamazoo library quotes him, said that “the planks were wearing out under the heavy traffic” and that the company was “very loath to put expense on the road for repairs.” Of Governor Ransom, the Allegan County historian Mark Lovett told WMUK: “He lost his shirt.”",
+    "## Patterson’s drivers",
+    "<span class=\"nw-tier d\">Documented</span>The 1880 Allegan history names the line that made the Junction a stage town: “After the plank-road and the success attending Patterson, Glenn &amp; Lyon’s line of stage-coaches, the next impetus given the village was the organization of the Plainwell Water-Power Company,” in the spring of 1856. The centennial book and the National Register study spell the middle name “Glynn.” None of the three gives a first name for any partner.",
+    "<span class=\"nw-tier d\">Documented</span>One of the men who drove for Patterson left a trace. David Fisher and Frank Little’s <i>Compendium of History and Biography of Kalamazoo County</i> (1906) carries the life of John W. James, born in Monroe County, New York, on 12 July 1822, who came to Alamo Township with his family in 1839, cut cordwood, and worked on D. S. Walbridge’s boats carrying flour down the Kalamazoo River. Then, the book says, he worked for “W. G. Patterson, the owner of extensive stage lines,” and drove for him for thirteen years, chiefly between Kalamazoo and Grand Rapids, saving his wages to buy land. A few weeks before his death on 14 August 1905, “a meeting of the old stage drivers was held at the home of Mr. James.” Three of his old companions came.",
+    "<span class=\"nw-tier r\">Reading</span>W. G. Patterson, owner of stage lines, driving the Kalamazoo–Grand Rapids road for thirteen years: he is very likely the Patterson of Patterson, Glenn &amp; Lyon. Thirteen years is also, almost exactly, Baxter’s span for the plank road’s working life, 1855 to the railroads. The 1906 sketch does not name the firm, so the identification rests on the match of name, route and trade.",
+    "<span class=\"nw-tier d\">Documented</span>Baxter adds names from the Grand Rapids end. “In 1855, Harvey P. Yale succeeded William H. Withey in the management of the Kalamazoo stage, and Hawley Lyon and George C. Morton also had an interest in it for a time.” Withey was also a director of the plank-road company.",
+    "<span class=\"nw-tier r\">Reading</span>A Lyon with a stake in the Kalamazoo stage at Grand Rapids and a Lyon in the firm that ran coaches through Plainwell may be the same man. No source we read joins them, and we leave the two as a strong possibility, not a finding. Of Glenn, or Glynn, we found nothing.",
+    "<span class=\"nw-tier d\">Documented</span>Durant’s 1880 history describes the coach these men drove, as Kalamazoo County remembered it. It was “familiarly known as the ‘Concord coach,’” because “the original pattern was built in Concord, N. H.” “The driver occupied a high seat in front,” with “a lamp firmly fixed, to light his way by night”; “an iron railing ran around the top of the coach”; and “inside of the coach were three seats, which would accommodate nine passengers.” Coming into town, the driver “whips out the tin horn from its sheath at his side.” “The common style of coach cost probably from two hundred to three hundred dollars.” When the roads were very bad, a lighter “mud-wagon,” on thorough-braces and drawn by two span of horses, took its place.",
+    "<figure class=\"nw-fig nw-fig-w\"><a class=\"nw-pz\" href=\"https://commons.wikimedia.org/wiki/File:1850_Concord_coach.jpg\"><img src=\"/img/news/the-last-stage-to-grand-rapids/concord-1850.webp\" width=\"1200\" height=\"951\" alt=\"An engraving-style photograph of a Concord coach lettered Senter House, with its high wheels, roof rail and leather-hung body\" loading=\"lazy\" decoding=\"async\" style=\"width:100%;height:auto\"></a><figcaption>A Concord coach built in 1850 by the Abbot-Downing Company for the Senter House, a hotel at Center Harbor, New Hampshire, pictured after half a century of use; published 1904. Via Wikimedia Commons. <span class=\"nw-lic\">Public domain</span></figcaption></figure>",
+    "<blockquote class=\"nw-q\"><p>“Common want made them companions, and common hardships made them friends.”</p><footer>Samuel W. Durant on stage passengers, <i>History of Kalamazoo County</i>, 1880, p. 180</footer></blockquote>",
+    "<span class=\"nw-tier d\">Documented</span>The Concord’s makers were the Abbot and Downing shops of Concord, New Hampshire. Lewis Downing founded the business in 1813 and partnered with the coachbuilder J. Stephen Abbot from 1828 to 1847; from 1847 to 1865 the two ran separate shops, Abbot keeping the Abbot-Downing name and Downing working with his sons. A Smithsonian record for an 1848 coach credits it to “J.S. and A.E. Abbott and Lewis Downing and Sons” and calls the style one “operated by the hundreds” in the East and West.",
+    "<figure class=\"nw-fig nw-fig-r\"><a class=\"nw-pz\" href=\"https://commons.wikimedia.org/wiki/File:Concord_Coach_No._206,_Abbot-Downing_Company_Carriage_Works,_Concord,_NH,_c._1867_-_Collings_Foundation_-_Massachusetts_-_DSC06788.jpg\"><img src=\"/img/news/the-last-stage-to-grand-rapids/concord-206.webp\" width=\"1000\" height=\"1111\" alt=\"A yellow Concord coach with red-spoked wheels on display in a museum hangar\" loading=\"lazy\" decoding=\"async\" style=\"width:100%;height:auto\"></a><figcaption>Concord Coach No. 206, built by the Abbot-Downing Company of Concord, New Hampshire, about 1867, now at the Collings Foundation in Massachusetts. Photograph by Daderot, 2017, via Wikimedia Commons. <span class=\"nw-lic\">CC0 · public domain</span></figcaption></figure>",
+    "<span class=\"nw-tier r\">Reading</span>The photograph matches Durant’s description well: the railing around the roof that gives the men something to hold, the high driver’s seat, the rear wheels larger than the front. Who built this particular coach is not recorded, and “Concord” here is the type, not a documented maker’s plate.",
+    "## The iron horse, twice",
+    "<span class=\"nw-tier d\">Documented</span>The first railroad came north from Kalamazoo. The 1880 Allegan history says articles for a Kalamazoo and Allegan Railroad were filed in the spring of 1868, and that in the summer of 1868 it became the Kalamazoo, Allegan and Grand Rapids. Plainwell’s centennial book: “The first railroad train came into Plainwell in 1868 over the road known as Lake Shore &amp; Michigan Southern,” the name of the company that later ran it. The line went on through Otsego and Allegan; the 1880 history says “the first train of cars ran into Allegan on Thanksgiving-day, Nov. 23, 1868,” and Michigan’s railroad timeline gives the same date.",
+    "<span class=\"nw-tier r\">Reading</span>One snag: Thanksgiving in 1868 fell on Thursday, 26 November, and 23 November was a Monday. The printed date or the printed holiday is wrong.",
+    "<span class=\"nw-tier d\">Documented</span>From Allegan the track turned north through Hopkins and Dorr, and Grand Rapids raced to meet it. A Grand Rapids Historical Commission radio history, “Railroad Race” (2013), tells how citizens promised a bonus if a train ran into the city “on or before March 1, 1869”; how on 28 February more than 200 workmen were still finishing the bridge over the Grand River southwest of the city, its draw swung for the first time at about five in the afternoon; and how “on the last day of grace, the funny little locomotive arrived.” The 1880 history confirms that “the first train of cars reached Grand Rapids on the 1st of March, 1869.” On 1 October 1869 the line was leased to the Michigan Southern.",
+    "<blockquote class=\"nw-q\"><p>“No more shall we be confined to the old stage line.”</p><footer>The Grand Rapids <i>Daily Eagle</i>, as quoted in “Railroad Race,” Grand Rapids Historical Commission</footer></blockquote>",
+    "<span class=\"nw-tier d\">Documented</span>The radio history called the new line “the death knell of the Kalamazoo stage line.” But it went the long way round, west through Allegan. The direct route the coaches had used got its own railroad a year and a half later: Plainwell sat on a stagecoach route from Kalamazoo to Grand Rapids, as a short encyclopedia history of the town puts it, and “later the Grand Rapids and Indiana Railroad was constructed along the same route.” The Grand Rapids and Indiana’s track from the south was completed into Grand Rapids on 13 September 1870; William Etten’s Grand Rapids history (1926) gives 10 October 1870 as the day regular trains began running south; and the Kalamazoo Public Library says that “by October, 1870, GR&amp;I trains were running to Grand Rapids.” Plainwell was a junction again: “The arrival of two intersecting railroad lines in 1868 and 1870 reinforced the city’s status as a junction,” says the National Register study. In the centennial book’s words, “These two railroads formed a junction in Plainwell.”",
+    "## The last coach, by the record",
+    "<span class=\"nw-tier r\">Reading</span>The sources give two ends for the Kalamazoo–Grand Rapids stage, neither of them 22 October 1869. Grand Rapids wrote the obituary on 1 March 1869, when the Allegan line came in. The Grand Rapids Public Library’s plank-road finding aid puts the end later: “In 1870, the Grand Rapids and Indiana Rail Road completed their line, which also functioned to end the heyday of the plank road.”",
+    "<span class=\"nw-tier r\">Reading</span>Baxter, writing of the railroads that reached Grand Rapids in 1858, warned that “Staging did not die out at once when the railroads came.” Between Plainwell and Grand Rapids the plank-road villages had no train until October 1870, and coaches serving them could have run until then. The caption’s October date sits exactly a year before the direct line opened. That coincidence is worth noting and nothing more; until a newspaper of the day names a last coach, the date in the caption is unsourced and the photograph cannot be tied to it.",
+    "<span class=\"nw-tier d\">Documented</span>Nor does the picture itself speak of an ending. The library’s cataloguer read the men on the roof as soldiers; the centennial book read the scene as passengers unloading for the Allegan turn-off. Neither saw a farewell.",
+    "## Landlords, and the end of the house",
+    "<span class=\"nw-tier d\">Documented</span>The Plainwell House changed hands often. In the fall of 1855, the 1880 history says, “Mr. Dunham sold his hotel property to Messrs. Mills &amp; Merritt,” and the centennial book says the name changed with the sale. The National Register study tells it differently: Dunham “sold the hotel to Mr. and Mrs. George Mills the following year.” The name Plainwell House came back or never left: when the new village held its first election on “Monday, March 29, 1869,” the voters “assembled at the Plainwell House,” 215 of them, and made Joseph W. Hicks president.",
+    "<span class=\"nw-tier d\">Documented</span>In June 1869, the village’s list of taxpayers in the centennial book shows a proprietor of the Plainwell House whose name the scan renders as “Atehinson, J.H.,” probably Atchinson. The 1873 business directory in the same book lists “A. B. Sabins, Proprietor of Plainwell House. Good Livery attached,” alongside the National Hotel and the Russell House.",
+    "<span class=\"nw-tier d\">Documented</span>The house did not outlast the century. The National Register study says it “survived until about 1890” and, elsewhere, that it “was demolished in 1891.” Its successor went up the same year: “The Union Block was built in 1891 and replaced the former Plainwell House at 111-119 North Main,” a two-storey brick Italianate block with segmental-arch-head windows and decorative brick caps, cornice and frieze. Its corner unit was given a terra-cotta front in about 1905 for the Citizens’ Savings Bank and, in recent decades, what the study calls an “enormous mansard roof treatment.” The Soule Fountain that once stood in the middle of the intersection of Allegan, Main and Bridge streets was rebuilt in Hicks Park in 1970.",
+    "<span class=\"nw-tier r\">Reading</span>So the caption’s “northwest corner” holds. Allegan Street enters from the west, Main runs north and south, and the angle north of Allegan and west of Main is the corner the study describes as “the angle between North Main and Allegan Streets.” The “M-89” of the caption is the state route that passes through the city today.",
+    "## A timeline",
+    "<ul class=\"nw-tl\"><li><b>1833</b> <span>A stage line runs between Kalamazoo and the Grand River country (Durant, 1880).</span></li><li><b>1848</b> <span>Michigan’s plank-road law.</span></li><li><b>1852</b> <span>Work begins on the Kalamazoo–Grand Rapids plank road and its Allegan branch.</span></li><li><b>1853</b> <span>Fall: Wellever begins the Plainwell House. November: Orson D. Dunham buys the tract (centennial book; the National Register study says 1854).</span></li><li><b>1854</b> <span>July: the Plainwell House formally opens. The 1880 history dates the road’s completion to this year.</span></li><li><b>1855</b> <span>Summer: tolls taken along the whole road (Baxter). A. P. and Anna Ware keep the toll gate, 1855–56. Fall: Dunham sells the hotel.</span></li><li><b>1859</b> <span>The centennial book’s date for the photograph.</span></li><li><b>1865</b> <span>The date on the library’s Michigan Memories record.</span></li><li><b>1868</b> <span>First train into Plainwell. 23 November: first train into Allegan. The toll gate near Plainwell closes (marker as transcribed by the Kalamazoo library).</span></li><li><b>1869</b> <span>1 March: first train into Grand Rapids by way of Allegan. 29 March: first village election at the Plainwell House. June: J. H. Atchinson (as scanned, “Atehinson”) its proprietor. 1 October: the line leased to the Michigan Southern. 22 October: the caption’s “last stage,” unsourced.</span></li><li><b>1870</b> <span>13 September: Grand Rapids and Indiana track completed into Grand Rapids from the south. October: its trains running through Plainwell.</span></li><li><b>1873</b> <span>A. B. Sabins keeps the Plainwell House.</span></li><li><b>1891</b> <span>The Union Block replaces the Plainwell House.</span></li><li><b>1905</b> <span>14 August: death of John W. James, Patterson’s driver, weeks after a reunion of old stage drivers at his home.</span></li><li><b>1969</b> <span>The centennial book prints the stagecoach photograph as 1859.</span></li></ul>",
+    "## If you go",
+    "<span class=\"nw-tier d\">Documented</span>The Plainwell House stood at the heart of downtown Plainwell, where North Main Street meets Allegan and Bridge streets; the Union Block at 111–119 North Main is on its ground and can be seen from the public sidewalk. The Soule Fountain is in Hicks Park. The Daughters of the American Revolution toll-gate marker is at Douglas Avenue and Baseline Road in Cooper Township, south of town, on the right as you travel south; it stands in the front yard of a private house, so view it from the road."
+   ],
+   "date": "2026-10-24",
+   "pic": [
+    "/img/news/the-last-stage-to-grand-rapids",
+    "A four-horse stagecoach loaded with men on the roof, stopped before a two-storey frame hotel at Plainwell",
+    "The coach at the Junction, Plainwell. Grand Rapids Public Library, History & Special Collections, Coll. 33-10-24, Neg. 1896."
+   ],
+   "cta": []
+  },
+  {
+   "slug": "the-grand-trunk-through-the-valley",
+   "kicker": "Railroads",
+   "headline": "Two Tries at the Valley: How the Grand Trunk Came Through",
+   "short": "The Grand Trunk through the valley",
+   "dek": "A railroad map of 1887 names a “Michigan Air Line” that was not the Air Line Cassopolis knew. Behind that puzzle is how the Grand Trunk crossed the St. Joseph valley: two tries, a court ruling, a county’s own money, a bankruptcy and a fight for Chicago, then eighty years of steam to the very last scheduled run.",
+   "sdek": "Two tries, one court ruling and the last steam train: the Grand Trunk in the valley",
+   "tldr": "<p>The Grand Trunk tried twice to cross the St. Joseph River valley on its way to Chicago. Its first line, the Michigan Air Line through Three Rivers and Cassopolis, ran out of money and was leased to the rival Michigan Central. The second, the Peninsular, was built with about $100,000 of private Cass County money after the state supreme court barred towns from voting railroad bonds. Its iron reached Cassopolis on 9 February 1871 and its trains reached South Bend, down the middle of a protesting residential street, that September. Bankrupt by 1874, it was bought piece by piece by the Grand Trunk in 1879, opened into Chicago in February 1880, and became the Chicago &amp; Grand Trunk, the line on a timetable map of 4 June 1887.</p><p>The pasted “this day” item dating the last Grand Trunk Western steam run to 23 October 1965 does not hold up. The record shows the last regularly scheduled steam passenger train in the United States ran Detroit–Durand and back on 27 March 1960, behind Nos. 6319 and 6322, with a one-day farewell by No. 6323 on 20 September 1961.</p>",
+   "sources": [
+    [
+     "Chicago and Grand Trunk Railway, map side of the timetable “Chicago and Grand Trunk Railway in connection with the Grand Trunk R’y of Canada including Great Western Division forming the Niagara Falls Air Line,” issued 4 June 1887 (Chicago, 1887): “Map of the Chicago & Grand Trunk R’y, Detroit, Grand Haven & Milwaukee Railway, Grand Trunk Railway and Michigan Air Line R’y.” David Rumsey Map Collection, List No. 5262.001.",
+     "https://davidrumsey.com/maps900030-24506.html"
+    ],
+    [
+     "The same timetable, covers (List No. 5262A). David Rumsey Map Collection.",
+     "https://davidrumsey.com/maps910133-24507.html"
+    ],
+    [
+     "The same timetable, text page with timetables, rate table and the steamer City of Milwaukee (List No. 5262B). David Rumsey Map Collection.",
+     "https://davidrumsey.com/maps910134-24508.html"
+    ],
+    [
+     "History of Cass County, Michigan (Chicago: Waterman, Watkins & Co., 1882), pp. 100 (the Air Line and Grand Trunk), 117 (Daniel Blackman), 187 (Agricultural Society), 222–223 (S. T. Read), 368 (subscriptions), 392 (Edwardsburg), 576 (Dailey), 604 (Thomas Burney), 616 (Marcellus station agent). Internet Archive.",
+     "https://archive.org/details/historyofcasscou00wate"
+    ],
+    [
+     "Lowell H. Glover, ed., A Twentieth Century History of Cass County, Michigan (Chicago, 1906), pp. 29, 154, 162, 168–169, 209–211, 223, 239, 318. Internet Archive.",
+     "https://archive.org/details/twentiethcentury00glov"
+    ],
+    [
+     "Timothy Edward Howard, A History of St. Joseph County, Indiana, vol. 1 (Chicago, 1907), pp. 289–291 (the Air Line, the Grand Trunk, the Division Street incident), 332 and 362–363 (Granger), 362 (Crum’s Point). Internet Archive.",
+     "https://archive.org/details/historyofstjosep01howa"
+    ],
+    [
+     "Samuel W. Durant, History of Kalamazoo County, Michigan (Philadelphia, 1880), pp. 185, 399 (Climax Township bonds), 413, 541, 564, 716 (Schoolcraft), 724 (Vicksburg). Internet Archive.",
+     "https://archive.org/details/bad0947.0001.001.umich.edu"
+    ],
+    [
+     "“People v. Salem” (People ex rel. Detroit & Howell Railroad v. Township Board of Salem, 20 Mich. 452, decided 26 May 1870). Wikipedia, used for the date and the Cooley quotation.",
+     "https://en.wikipedia.org/wiki/People_v._Salem"
+    ],
+    [
+     "“Peninsular Railway (Illinois–Indiana–Michigan).” Wikipedia, citing the ICC valuation report (1929), the Detroit Free Press (17 September 1869), the Lansing State Journal (16 June 1870) and the Cassopolis Vigilant (30 January 1873), for the charters and opening dates.",
+     "https://en.wikipedia.org/wiki/Peninsular_Railway_(Illinois%E2%80%93Indiana%E2%80%93Michigan)"
+    ],
+    [
+     "“Chicago and Lake Huron Railroad.” Wikipedia, citing the Chicago Tribune (8 October 1873), Railroad Gazette (18 October 1873), Poor’s Manual (1877) and Dunbar (1969).",
+     "https://en.wikipedia.org/wiki/Chicago_and_Lake_Huron_Railroad"
+    ],
+    [
+     "“Michigan Air Line Railroad.” Wikipedia.",
+     "https://en.wikipedia.org/wiki/Michigan_Air_Line_Railroad"
+    ],
+    [
+     "“Michigan Air Line Railway.” Wikipedia, citing Graydon Meints, Michigan Railroads and Railroad Companies (1992) and later works.",
+     "https://en.wikipedia.org/wiki/Michigan_Air_Line_Railway"
+    ],
+    [
+     "Michigan Railroad History: “The Michigan Air Line Railroad Company.”",
+     "https://michiganrailroads.com/railroads-in-history/464-m/3838-michigan-air-line-railroad-company-the"
+    ],
+    [
+     "Michigan Railroad History: “Peninsular Railway Company.”",
+     "https://michiganrailroads.com/railroads-in-history/484-n-p/3914-peninsular-railway-company"
+    ],
+    [
+     "“The Grand Trunk Main Line and How It Got That Way,” Inside Track (September 1972), largely from the Durand Express, 18 May 1961. Michigan Railroad History.",
+     "https://michiganrailroads.com/stories/7007-grand-trunk-main-line-and-how-it-got-that-way-the"
+    ],
+    [
+     "Michigan Railroad History: Time Line, 1871.",
+     "https://michiganrailroads.com/timeline/469-1870-1879/3594-timeline-1871"
+    ],
+    [
+     "Michigan Railroad History: Time Line, 1880.",
+     "https://michiganrailroads.com/timeline/470-1880-1889/3604-timeline-1880"
+    ],
+    [
+     "Michigan Railroad History: Station, Cassopolis, MI (the crossing, the 1888 collision, the 1904 interlocking, 1917 and 1918 working, depot photograph).",
+     "https://michiganrailroads.com/stations-locations/78-cass-county-14/593-cassopolis-mi"
+    ],
+    [
+     "Michigan Railroad History: Station, Edwardsburg, MI (the 1900 explosion, the 1953 station).",
+     "https://michiganrailroads.com/stations-locations/78-cass-county-14/595-edwardsburg-mi"
+    ],
+    [
+     "Michigan Railroad History: Station, Granger, IN.",
+     "https://www.michiganrailroads.com/stations-locations/154-st-joseph-county-in/7225-granger-in"
+    ],
+    [
+     "Michigan Railroad History: “Grand Trunk Western Railroad.”",
+     "https://www.michiganrailroads.com/railroads-in-history/461-g-h/3489-grand-trunk-western-railroad"
+    ],
+    [
+     "“Grand Trunk Western Railroad.” Wikipedia, citing Dorin (1977), Hofsommer (1995) and Mika & Mika (1972), for the 1900 and 1928 companies and the 1971 end of passenger service.",
+     "https://en.wikipedia.org/wiki/Grand_Trunk_Western_Railroad"
+    ],
+    [
+     "“Dearborn Station.” Wikipedia.",
+     "https://en.wikipedia.org/wiki/Dearborn_Station"
+    ],
+    [
+     "“Chicago and Western Indiana Railroad.” Wikipedia.",
+     "https://en.wikipedia.org/wiki/Chicago_and_Western_Indiana_Railroad"
+    ],
+    [
+     "Michigan Historical Marker S316, “Durand Union Station,” erected 1987. Michigan Department of Natural Resources.",
+     "https://www2.dnr.state.mi.us/Publications/PDFS/ArcGISOnline/StoryMaps/mhc_historical_markers/pdfs/MHC781970004.pdf"
+    ],
+    [
+     "“Durand Union Station” marker, Historical Marker Database.",
+     "https://www.hmdb.org/m.asp?m=119232"
+    ],
+    [
+     "“Durand Union Station.” Wikipedia (the museums in the station).",
+     "https://en.wikipedia.org/wiki/Durand_Union_Station"
+    ],
+    [
+     "Jerry A. Pinkepank, “Grand Trunk Western history remembered,” Trains, 5 January 2025.",
+     "https://www.trains.com/?p=217606"
+    ],
+    [
+     "J. David Ingles, “Grand Trunk Western steam: America’s last real show,” Trains, 19 January 2025.",
+     "https://www.trains.com/?p=217626"
+    ],
+    [
+     "“G.T.W. steam locomotive making its last run # 6319,” negative, CN Images of Canada Collection, Canada Science and Technology Museum archives (Ingenium), no. 54867, dated [1960?].",
+     "https://collections.ingeniumcanada.org/en/id/54867"
+    ],
+    [
+     "“1960 in rail transport.” Wikipedia, citing the film “Grand Trunk – last steam powered passenger run” (27 March 1960).",
+     "https://en.wikipedia.org/wiki/1960_in_rail_transport"
+    ],
+    [
+     "Railway Preservation News forum, thread on GTW steam, posts of 30 August–1 September 2007 (Bill Yoder and others) on Nos. 6319, 6322 and 6323.",
+     "https://www.rypn.org/forums/viewtopic.php?p=104149"
+    ],
+    [
+     "Midwest Railway Preservation Society, “The Last Run of 4070 in Service on the GTW.”",
+     "https://midwestrailway.org/the-last-run-of-4070-in-service-on-the-gtw/"
+    ],
+    [
+     "SteamLocomotive.com, “The Last of Steam” (Lake Superior & Ishpeming, 1962).",
+     "https://www.steamlocomotive.com/events/lastofsteam.php"
+    ],
+    [
+     "“Grand Trunk Western 6323.” Wikipedia (preservation at the Illinois Railway Museum).",
+     "https://en.wikipedia.org/wiki/Grand_Trunk_Western_6323"
+    ],
+    [
+     "“Vicksburg Union Depot.” Wikipedia, citing the National Register nomination by Don Wiertella and Margaret Snyder (2023).",
+     "https://en.wikipedia.org/wiki/Vicksburg_Union_Depot"
+    ],
+    [
+     "Vicksburg Historical Society, “Union Depot Museum.”",
+     "https://vicksburghistory.org/historic-village/union-depot-museum/"
+    ],
+    [
+     "The History Museum, South Bend: Division Street photograph and note (now Western Avenue).",
+     "https://www.historymuseumsb.org/?p=9145"
+    ],
+    [
+     "Chicago’s Lost Stations: Grand Trunk Western stations in Indiana (the 1929 track elevation; Valparaiso station).",
+     "https://www.chicagorailfan.com/msgtwin.html"
+    ],
+    [
+     "“Union Station (South Bend).” Wikipedia.",
+     "https://en.wikipedia.org/wiki/Union_Station_(South_Bend)"
+    ],
+    [
+     "Historical Society of Michigan, “this day in history” item for 23 October (text supplied by the reader; tested in this article).",
+     ""
+    ],
+    [
+     "Dearborn Station, Chicago, before 1922, Wikimedia Commons, public domain",
+     "https://commons.wikimedia.org/wiki/File:Dearborn_Station_pre-1922.jpg"
+    ],
+    [
+     "Union Station Depot, Durand, postcard about 1905, Wikimedia Commons, public domain",
+     "https://commons.wikimedia.org/wiki/File:Durand_station_1905_Photo432320o.jpg"
+    ],
+    [
+     "Engine & G. T. Round House, Durand, postcard dated 31 July 1909 (G. W. Beck), Wikimedia Commons, public domain",
+     "https://commons.wikimedia.org/wiki/File:Grand_Trunk_Western_Roundhouse_Durand_Michigan_1909.JPG"
+    ],
+    [
+     "Grand Trunk Western K-4-a No. 5628, about 1955, photograph by Robert Graham, Wikimedia Commons, public domain",
+     "https://commons.wikimedia.org/wiki/File:Grand_Trunk_Western_Class_K-4-a_No._5628_in_c._1955.jpg"
+    ],
+    [
+     "G. T. R. R. Station, Marcellus, Mich., 1908, David V. Tinder Collection, Clements Library",
+     "https://quod.lib.umich.edu/t/tinder/x-9327/tinder-rppc-018653"
+    ],
+    [
+     "Grand Trunk Depot, Edwardsburg, Mich., James H. Pratt, Tinder Collection, Clements Library",
+     "https://quod.lib.umich.edu/t/tinder/x-9120/tinder-rppc-018239"
+    ]
+   ],
+   "body": [
+    "<span class=\"dl\">South Bend, Ind.</span> On the last day of August 1871, a railroad crew finished its bridge over the St. Joseph River and turned onto Division Street. The street was then among the finest residence streets in South Bend, and nobody who lived on it had been asked. The crew laid its track along the street anyway, and the trains began to run, as the South Bend historian Timothy Howard put it thirty-six years later, “in the face of the angry protests of the residents.”",
+    "The line those trains ran on was called the Peninsular. Within a decade it would carry another name, the Chicago &amp; Grand Trunk, and by 1887 it was a heavy black stroke across a railroad map printed in Chicago: Port Huron to Chicago, straight through Cass County and over the Indiana line at Granger. A copy of that map, with a little engraving of Chicago’s new Dearborn Station in its corner, is the picture at the top of this page.",
+    "Look closely at its title and something does not fit. It names four railroads, and the last of them is the “Michigan Air Line.” Every reader in Cassopolis in 1887 knew an Air Line, and it was not the Grand Trunk’s. It belonged to the rival Michigan Central. How one name came to belong to two railroads is the key to how the Grand Trunk reached this valley at all, because it took two tries, a state supreme court decision, about $100,000 of Cass County money, a bankruptcy and a contest between two of the most powerful railroad men of the age. This is that story, and the story of the steam engines that ran the line until the very end.",
+    "<div class=\"nw-brethren\"><p class=\"nw-br-h\">How to read this page · Scrollmarks</p><p>Every factual paragraph below is marked <span class=\"nw-tier d\">Documented</span> (a source says so, and you can read it) or <span class=\"nw-tier r\">Reading</span> (our interpretation of the sources). Where the sources disagree, we say so and give both. Every source is listed at the foot of the page.</p></div>",
+    "<aside class=\"nw-glance\" aria-label=\"At a glance\"><h2 class=\"nw-gh\">At a glance</h2><dl><dt>The picture</dt><dd>“Map of the Chicago &amp; Grand Trunk R’y, Detroit, Grand Haven &amp; Milwaukee Railway, Grand Trunk Railway and Michigan Air Line R’y,” on the back of a folding timetable issued 4 June 1887 by the Chicago &amp; Grand Trunk Railway and printed in Chicago. A copy is in the David Rumsey Map Collection (List No. 5262.001)</dd><dt>The line</dt><dd>Port Huron, Flint, Durand, Lansing, Battle Creek, Climax, Vicksburg, Schoolcraft, Marcellus, Cassopolis, Edwardsburg, Granger, Mishawaka, South Bend, Valparaiso, Chicago: 330.40 miles, by the county history of 1882</dd><dt>Iron at Cassopolis</dt><dd>9 February 1871; trains to Cassopolis from 26 June 1871; to South Bend from 11 September 1871</dd><dt>The names</dt><dd>Peninsular Railway (1868); Chicago &amp; Lake Huron (1873); Chicago &amp; Grand Trunk (1880); Grand Trunk Western Railway (by 1900); Grand Trunk Western Railroad (1928); Canadian National (2002)</dd><dt>The other Air Line</dt><dd>Jackson to Niles through Three Rivers, Vandalia and Cassopolis, begun to carry the Grand Trunk to Chicago and leased instead to the Michigan Central; trains to Cassopolis from 16 January 1871</dd><dt>The last steam</dt><dd>27 March 1960, Detroit–Durand and back: the last regularly scheduled passenger train in the United States pulled by steam, by the state historical marker at Durand</dd><dt>The pasted claim</dt><dd>“23 October 1965”: we found no record of any Grand Trunk Western steam run on that date. The description fits 27 March 1960</dd></dl></aside>",
+    "{{toc}}",
+    "## The map on the table",
+    "<span class=\"nw-tier d\">Documented</span>The map is a timetable map: a sheet that folded down into its own covers to slip into a traveler’s pocket. The David Rumsey Map Collection holds a copy and catalogs it in detail. Its covers read “Chicago and Grand Trunk Railway in connection with the Grand Trunk R’y of Canada including Great Western Division forming the Niagara Falls Air Line,” and they are dated: “Issued June 4th, 1887.” The front is printed in black on dark blue. Unfolded, the sheet measures 33 by 53 centimeters; folded, it is 18 by 10. One side carries timetables, a table of rates, text and a drawing of the lake steamer <i>City of Milwaukee</i>. The other side is the map, printed without color, at a scale of about 1:3,830,000, with the hills drawn in hachures, the old engraver’s short strokes. It reaches from Chicago to Halifax and from Louisville to the Gulf of St. Lawrence, and it carries the drawing of Dearborn Station, a view of Niagara Falls and more timetable text. The publisher is the railroad itself; the printer was a Chicago stationery and printing house whose imprint runs along the bottom margin.",
+    "<span class=\"nw-tier r\">Reading</span>The copy shown here matches the Rumsey sheet: the same title in the same stacked lettering at lower right, the same Dearborn Station drawing at upper left, the same reach from Lake Michigan to Nova Scotia, and a line of small type along the foot where the Rumsey record places the printer’s imprint. At 843 by 530 pixels, that line cannot be read, so the match rests on everything else. Railroads of the 1880s reused engraved map plates from one timetable issue to the next, and other issues may carry the same map; the Rumsey copy of 4 June 1887 is the only catalogued one we found. Searches of the Library of Congress map collections, the University of Michigan’s map holdings and Wikimedia Commons turned up no other copy.",
+    "<span class=\"nw-tier d\">Documented</span>The engraving is the clue to the date. Dearborn Station, at Polk and Dearborn streets on the south edge of the Loop, opened on 8 May 1885. It was designed by Cyrus L. W. Eidlitz and owned by the Chicago &amp; Western Indiana Railroad, which in turn was owned by the lines that used it. The Chicago &amp; Grand Trunk had been one of the first three tenants of the Western Indiana’s tracks when they opened in 1880. The inset on the map calls the building the “New Dearborn Station” and locates it in the old street names: the block between Polk and Taylor streets and Third and Fourth avenues.",
+    "<figure class=\"nw-fig nw-fig-r\"><a class=\"nw-pz\" href=\"https://commons.wikimedia.org/wiki/File:Dearborn_Station_pre-1922.jpg\"><img src=\"/img/news/the-grand-trunk-through-the-valley/dearborn-station.webp\" width=\"1000\" height=\"1235\" alt=\"Dearborn Station in Chicago, a brick and stone terminal with a tall clock tower\" loading=\"lazy\" decoding=\"async\" style=\"width:100%;height:auto\"></a><figcaption>Dearborn Station, Chicago, the terminal drawn in the corner of the 1887 map, photographed before 1922. Via Wikimedia Commons. <span class=\"nw-lic\">Public domain</span></figcaption></figure>",
+    "<span class=\"nw-tier d\">Documented</span>Each name in the title is a company. The Chicago &amp; Grand Trunk was the Port Huron–Chicago line through this valley, organized under that name in April 1880. The Detroit, Grand Haven &amp; Milwaukee crossed the state from Detroit to Lake Michigan; it came under the Grand Trunk when the Grand Trunk took over the Great Western Railway of Canada on 12 August 1882. The Grand Trunk Railway was the Canadian parent. And the Michigan Air Line Railway, incorporated on 18 November 1875 and under Grand Trunk control from 1877, ran from Richmond, Michigan, through Romeo and Pontiac and, from 1 September 1884, all the way to Jackson.",
+    "<span class=\"nw-tier r\">Reading</span>So the “Michigan Air Line” on this map is the Grand Trunk’s line northwest of Detroit, not the Air Line through Three Rivers and Cassopolis. Both, though, grew from the same seed, and that seed was the Grand Trunk’s first attempt to cross this valley.",
+    "## The first try: an Air Line that got away",
+    "<span class=\"nw-tier d\">Documented</span>By the 1860s the Grand Trunk Railway of Canada had reached the St. Clair River and Port Huron, and it wanted Chicago. In 1867 and 1868 two companies were chartered with its name on them, the Grand Trunk Railway of Michigan and the Grand Trunk Railway of Northern Indiana, to build a line from Richmond, Michigan, toward Chicago. On 2 July 1868 they were consolidated as the Michigan Air Line Railroad. Howard’s <i>History of St. Joseph County, Indiana</i> (1907) describes a company formed at Jackson in 1867 “designed to aid in extending the Grand Trunk railroad” through Michigan and Indiana to Chicago, renamed the Michigan Air Line. Its first route ran by way of Niles and then straight to Chicago. “This would have left South Bend out,” Howard wrote.",
+    "<span class=\"nw-tier d\">Documented</span>The company built 14.2 miles from Romeo to Richmond, then called Ridgeway, in 1869. Then it began at Jackson and built west. On 29 September 1870, ten carloads of iron arrived for the stretch between Union City and Homer. The line reached Three Rivers in 1870. The 1882 <i>History of Cass County</i> records that its iron reached Cassopolis on 28 November 1870 and that the first regular passenger train ran on 16 January 1871. The road was finished to Niles in February 1871.",
+    "<span class=\"nw-tier d\">Documented</span>The Air Line was built, the Cass County history says, by the people along it, through Cass, St. Joseph, Calhoun and Jackson counties, and it was the Michigan Central that ran it. The sources differ on when the lease began: Howard says lack of funds “compelled the company in 1869 to lease its road”; the Air Line’s company history at Michigan Railroad History gives 1870; its encyclopedia entry gives February 1871, when the line reached Niles. In July 1873, unhappy stockholders called a meeting at Union City to replace the directors over a 999-year lease to the Michigan Central that had left the company with its bonded debt.",
+    "<span class=\"nw-tier d\">Documented</span>In Vandalia’s township, the 1882 county history notes, citizens gave right-of-way and private subscriptions to both the Air Line and the Grand Trunk, and in several cases the right-of-way had to be bought. A township along the line, Jefferson, got a station named Dailey, which owed its existence to the Air Line: after the line was finished in 1871, local people gave the railroad three acres for it, and a post office followed in 1872. South Bend, which the first survey had left out, raised $25,000 for an Indiana company to build a branch from the Air Line to the city; Howard credits Judge Thomas S. Stanfield and calls the ten miles from South Bend to Niles the most profitable ten miles in the Michigan Central system. Howard dates the branch to early 1870; the Air Line company’s history dates it to 1872, which fits better with the main line reaching Niles only in February 1871.",
+    "<span class=\"nw-tier r\">Reading</span>The Grand Trunk’s first line across the valley was thus finished with local money and run by its rival. Only the eastern stub, Richmond to Romeo, stayed in reach of the Grand Trunk, and it carried the Air Line name into the Grand Trunk family. When the Grand Trunk finally got to Chicago, it would be by a second route.",
+    "## A court says no, and Cass County pays anyway",
+    "<span class=\"nw-tier d\">Documented</span>In the late 1860s Michigan’s towns and townships were voting railroad aid bonds by the hundreds of thousands of dollars. In Climax Township, east of Kalamazoo, voters approved $15,000 for the Peninsular’s extension west from Battle Creek on 12 December 1866, on condition that $6,000 a mile be raised along the line; the condition was not met. They voted $15,000 again on 25 September 1869, and this time the bonds were issued and deposited with the state treasurer, to be paid out as the work was done.",
+    "<span class=\"nw-tier d\">Documented</span>Then, on 26 May 1870, the Michigan Supreme Court decided <i>People ex rel. Detroit &amp; Howell Railroad v. Township Board of Salem</i> (20 Mich. 452). Justice Thomas M. Cooley, writing for the majority, held that the state constitution did not allow a township to be compelled to issue bonds in aid of a privately owned railroad.",
+    "<blockquote class=\"nw-q\"><p>“…what the state as a political community cannot do it cannot require the inferior municipalities to do.”</p><footer>Justice Thomas M. Cooley, <i>People v. Salem</i>, 26 May 1870</footer></blockquote>",
+    "<span class=\"nw-tier d\">Documented</span>Climax took its bonds back out of the state treasury in 1872 and destroyed them. Glover’s <i>Twentieth Century History of Cass County</i> (1906) explains what the decision meant in Cass County: the towns could no longer obligate themselves, so the Air Line and the Peninsular, “now Grand Trunk,” were built through the county with private money. The 1882 county history puts the Cass County contribution to the Peninsular at about $100,000 in subscriptions and donated rights of way.",
+    "<span class=\"nw-tier d\">Documented</span>The county histories name the men behind it. Sylvador T. Read, born in Tompkins County, New York, in 1822, moved to Cassopolis in 1855, kept a store and shipped cattle, sheep and hogs to New York. The 1882 history says it was Read who suggested to the president of the Canadian railway at Port Huron a route across the peninsula to Chicago, and that the line came through the county largely through his efforts and money. Daniel Blackman, a Connecticut-born lawyer who had settled in Cassopolis in July 1851 and served as circuit judge from 1869 to 1872, “did much to bring the Peninsular Railroad through the village.”",
+    "<span class=\"nw-tier r\">Reading</span>Read’s story has a hometown flourish: one Cassopolis storekeeper putting the idea of a Chicago line into a Canadian railroad president’s head. The county history does not name the president or date the conversation, and no railroad source we found tells it. What is documented is the money: in a county that could no longer vote bonds, citizens paid for the road themselves.",
+    "## Iron in the winter: the Peninsular comes down the valley",
+    "<span class=\"nw-tier d\">Documented</span>The Peninsular was a chain of charters. The Peninsular Railroad Company was chartered on 3 October 1865 to build from Lansing to Battle Creek. The Peninsular Railroad Extension Company followed on 3 January 1868, to carry the line from Battle Creek to the Indiana state line, and the two joined as the Peninsular Railway Company on 17 February 1868. Companies with the same name were incorporated in Illinois and Indiana in 1869 and folded in on 9 May 1870. Track went down north from Battle Creek from 14 September 1869, and the 45 miles to Lansing opened on 13 June 1870. South and west of Battle Creek, the line opened to Climax on 15 October 1870.",
+    "<span class=\"nw-tier d\">Documented</span>The line ran southwest across the corner of Kalamazoo County. Durant’s <i>History of Kalamazoo County</i> (1880) says the coming of the Peninsular started a little village at Climax, gave Scotts and Indian Lake their stations, and reached Vicksburg “about 1871.” At Schoolcraft the line was surveyed and grading began in 1869, and “trains began running about 1871.” The Vicksburg Historical Society’s history of its depot dates the Peninsular’s arrival to 1872; the county history of 1880, and the line’s opening to Cassopolis further on in June 1871, both point to 1871. In June 1871 the road built across the northwest corner of St. Joseph County, Michigan.",
+    "<span class=\"nw-tier d\">Documented</span>Then it entered Cass County. At Marcellus, the 1882 history says, a Mr. Matthews had worked for the Peninsular project until the road was running and became the village’s first station agent and first express agent. Thomas Burney, who had built the first business building in Marcellus, sold goods on credit to the railroad’s laborers, “taking orders on the company, which were never paid.” A few miles on, a new village was named Wakelee, for C. Wakelee, the first treasurer of the railroad; its first plat was recorded on 12 December 1871.",
+    "<figure class=\"nw-fig nw-fig-w\"><a class=\"nw-pz\" href=\"https://quod.lib.umich.edu/t/tinder/x-9327/tinder-rppc-018653\"><img src=\"/img/oldcards/ps030.webp\" width=\"1400\" height=\"925\" alt=\"A real-photo postcard of the Grand Trunk railroad station at Marcellus, Michigan\" loading=\"lazy\" decoding=\"async\" style=\"width:100%;height:auto\"></a><figcaption>G. T. R. R. Station, Marcellus, Mich., a real-photo postcard of 1908. David V. Tinder Collection of Michigan Photography, William L. Clements Library, University of Michigan. <span class=\"nw-lic\">Public domain</span></figcaption></figure>",
+    "<blockquote class=\"nw-q\"><p>“He thus suffered a heavy loss, from which he never recovered.”</p><footer><i>History of Cass County, Michigan</i> (1882), on the Marcellus merchant Thomas Burney</footer></blockquote>",
+    "<span class=\"nw-tier d\">Documented</span>The iron reached Cassopolis on 9 February 1871, by the county history, and regular trains began running east from the village in June 1871. A history of the line compiled from period newspapers dates the opening of the extension to Cassopolis to 26 June 1871. The Cass County Agricultural Society, which had bought ground in 1857 where the Air Line depot later stood, had to give it up when the Peninsular’s right-of-way went through; in 1871 it bought twenty acres from Samuel Graham for $3,000.",
+    "<span class=\"nw-tier d\">Documented</span>Glover, in 1906, noticed something about the ground itself: the long glacial ridge that divides Cass County’s waters into two drainages is “roughly paralleled by the Grand Trunk Railroad.” South of Cassopolis the road reached Edwardsburg, and in Glover’s phrase it “revived the decadent village.” The population rose from 297 to 500 in ten years. By the early 1880s Edwardsburg had about twenty stores and shops and a grain elevator that held 16,000 bushels; in the year to 1 July 1881 the station shipped about 89,600 bushels of wheat, 46,100 of corn and 13,400 of oats.",
+    "<span class=\"nw-tier d\">Documented</span>Over the Indiana line the road passed Granger, which Howard described as a small town on the Grand Trunk in Harris Township, with Edwardsburg the next station beyond it; he connects the town’s name with the Grange, the farmers’ movement of the 1870s. From there the line ran southwest through Harris and Penn townships to Mishawaka and South Bend, then on across Warren Township, where Christian Holler laid out the village of Crum’s Point on the railroad on 21 April 1875.",
+    "<span class=\"nw-tier d\">Documented</span>In South Bend the city council had passed an ordinance on 2 March 1868 that let the “Peninsular Railway Company of Indiana” lay its tracks on Division Street, today’s Western Avenue. When the company did so on 31 August 1871, the residents went to court, and Howard wrote in 1907 that the litigation “has not been ended even to this day.” The railroad came to see its action as “an impolitic thing,” he added, and never won local goodwill. The line opened to South Bend, 120 miles from Lansing, on 11 September 1871.",
+    "<blockquote class=\"nw-q\"><p>“…the end can never justify the means.”</p><footer>Timothy Edward Howard, <i>A History of St. Joseph County, Indiana</i> (1907), on the Division Street tracks</footer></blockquote>",
+    "<span class=\"nw-tier d\">Documented</span>West of South Bend the sources disagree about the date. The 1882 Cass County history says the line was finished to Valparaiso in 1871. A <i>Cassopolis Vigilant</i> article of 30 January 1873, cited in the line’s history, places the end of track at Kingsbury, Indiana, about twenty miles short of Valparaiso, and the <i>Chicago Tribune</i> of 8 October 1873 reported the Valparaiso extension completed on 7 October 1873, where it met the Pittsburgh, Fort Wayne &amp; Chicago for through service to Chicago.",
+    "<span class=\"nw-tier r\">Reading</span>The newspaper dates are the better evidence: Valparaiso was reached in October 1873, not 1871. In about two years, from the first track at Battle Creek to the trains at South Bend, the Peninsular had laid a line across the whole valley, from the Kalamazoo County prairies to the St. Joseph at South Bend, on private money and on credit that, as Thomas Burney learned, was not always good.",
+    "## A bankrupt road, two barons, and the way into Chicago",
+    "<span class=\"nw-tier d\">Documented</span>On 15 August 1873 the Peninsular and the Port Huron &amp; Lake Michigan, which ran from Port Huron to Flint, were consolidated as the Chicago &amp; Lake Huron Railroad. Howard says the companies were all weak financially, and the road went into receivership in 1874, with the gap between Flint and Lansing still open. That gap was closed under the name of the Chicago &amp; North Eastern, and by 1 January 1877 there was a continuous route from Port Huron to Valparaiso.",
+    "<span class=\"nw-tier d\">Documented</span>The Grand Trunk was not the only party that wanted the road. A history of the main line, first printed in the <i>Durand Express</i> on 18 May 1961 and reprinted in <i>Inside Track</i> in 1972, tells how early in 1878 a secret sale of $1.2 million of Chicago &amp; Lake Huron bonds gave control to Vanderbilt, who in June 1878 also took the Michigan Central and blockaded the Chicago &amp; North Eastern segment at Flint, stopping the Grand Trunk’s through freight. That history names William K. Vanderbilt; the line’s encyclopedia history names William Henry Vanderbilt and the New York Central. Against him stood Sir Henry Tyler, president of the Grand Trunk, who told his shareholders on 29 April 1879 that the Grand Trunk would fight for an independent route to Chicago.",
+    "<span class=\"nw-tier d\">Documented</span>The Grand Trunk won by buying the pieces. The eastern division was sold at auction on 21 June 1879 for $300,000. The western division, Lansing to the Indiana line, the old Peninsular through this valley, was auctioned on 26 August 1879 for $300,000. On 3 September 1879 the Grand Trunk bought Vanderbilt’s interest in the Chicago &amp; North Eastern for $540,000. The property passed to companies of the Grand Trunk family, among them the North Western Grand Trunk; by 1880 Durant was calling the line through Vicksburg and Schoolcraft the Northwestern Grand Trunk.",
+    "<span class=\"nw-tier d\">Documented</span>What was missing was Chicago. The new line from Valparaiso to the city was finished on 8 February 1880, according to the Michigan Railroad History timeline; the 1961 history has the first Grand Trunk train out of Chicago on the new line on 7 February and the first freight in on 9 February. In April 1880 the pieces were organized as the Chicago &amp; Grand Trunk Railway Company, 330.40 miles from Port Huron to Chicago. The 1961 history notes that Chicago shippers welcomed the line because it stood outside the eastern railroads’ rate-fixing committee.",
+    "<span class=\"nw-tier d\">Documented</span>By 1900 the Grand Trunk had placed its lines in Michigan, Indiana and Illinois in a subsidiary, the Grand Trunk Western Railway Company. It was reincorporated as the Grand Trunk Western Railroad Company on 1 November 1928, and the same day the Grand Trunk’s Michigan Air Line Railway, the line on our map, was merged into it. The Grand Trunk Western name was withdrawn in 2002, and the line has run since as part of the Canadian National.",
+    "## What the railroad made",
+    "<span class=\"nw-tier d\">Documented</span>Cassopolis had no railroad at all in 1870. By the middle of 1871 it had two, crossing at grade, the Air Line running east and west and the Grand Trunk running northeast to southwest. The crossing had its dangers: on 6 July 1888 a Grand Trunk freight ran into a Michigan Central freight there and wrecked both trains. In 1904 the Michigan Central approved a full interlocking plant with derails and signals for the crossing; by 1917 a Michigan Central leverman and Grand Trunk operators worked it around the clock. Under wartime orders in 1918, train orders for both roads were issued from the interlocking tower, and the Grand Trunk station closed each evening after the 8:16 train and opened again at 2:00 in the morning.",
+    "<span class=\"nw-tier d\">Documented</span>Industry followed the track. Glover records that the Cassopolis Manufacturing Company built a grain drill plant near the Grand Trunk depot around 1900, and that the village voted a $7,000 subsidy to the Kellogg Switchboard &amp; Supply Company on condition of $150,000 in wages. Michigan Railroad History’s station file has a photograph of the Grand Trunk depot at Cassopolis captioned as built in 1888 and originally at Granger, Indiana; we found no second source for that history.",
+    "<span class=\"nw-tier d\">Documented</span>Not every railroad hour was a good one. On 27 January 1900 a Chicago &amp; Grand Trunk locomotive exploded at Edwardsburg, killing its engineer, fireman and conductor, all of Battle Creek, by the account in Michigan Railroad History’s station file. Edwardsburg’s wooden depot was replaced by a brick station in 1953. Granger, by 1915, had a passing track that held 144 cars, and by 1917 a day agent and telegraph operators on duty around the clock.",
+    "<span class=\"nw-tier r\">Reading</span>The pattern along the line is plain in the county histories. Places with a depot grew: Marcellus, founded mainly because of the railroad; Wakelee, a lumber-shipping point; Penn, where Parker James opened a store once the line was finished; Edwardsburg, revived. Cassopolis, a county seat with no railroad until 1870, became a junction. The railroad also took things away: the fair society lost two grounds to the two railroads, and South Bend’s Division Street lost its quiet for nearly sixty years.",
+    "<figure class=\"nw-fig nw-fig-w\"><a class=\"nw-pz\" href=\"https://quod.lib.umich.edu/t/tinder/x-9120/tinder-rppc-018239\"><img src=\"/img/oldcards/ps109.webp\" width=\"1400\" height=\"900\" alt=\"A real-photo postcard of the Grand Trunk depot at Edwardsburg, Michigan\" loading=\"lazy\" decoding=\"async\" style=\"width:100%;height:auto\"></a><figcaption>Grand Trunk Depot, Edwardsburg, Mich., a real-photo postcard by James H. Pratt, about 1907–1915. David V. Tinder Collection of Michigan Photography, William L. Clements Library, University of Michigan. <span class=\"nw-lic\">Public domain</span></figcaption></figure>",
+    "<span class=\"nw-tier d\">Documented</span>In South Bend the Division Street tracks lasted until 1929, when a track elevation project moved the Grand Trunk off the street and onto the New York Central’s line, where both railroads shared the new Union Station, an Art Deco building by Fellheimer &amp; Wagner that opened that year.",
+    "## The long goodbye to steam",
+    "<span class=\"nw-tier d\">Documented</span>For eighty years the line was steam country. The Grand Trunk Western dieselized its main line, the route through this valley, in April 1957, according to the railroad historian Jerry A. Pinkepank in <i>Trains</i>. What held out was the Detroit Division east of Durand, which kept the last regular intercity mainline steam freight in the United States and, on the Durand–Detroit local trains Nos. 21 and 56, the last regular steam passenger service.",
+    "<figure class=\"nw-fig nw-fig-w\"><a class=\"nw-pz\" href=\"https://commons.wikimedia.org/wiki/File:Grand_Trunk_Western_Class_K-4-a_No._5628_in_c._1955.jpg\"><img src=\"/img/news/the-grand-trunk-through-the-valley/gtw-5628.webp\" width=\"1200\" height=\"679\" alt=\"Grand Trunk Western steam locomotive No. 5628, a Pacific type, with its tender\" loading=\"lazy\" decoding=\"async\" style=\"width:100%;height:auto\"></a><figcaption>Grand Trunk Western K-4-a No. 5628, a passenger locomotive of the steam era’s last years, about 1955. Photograph by Robert Graham, via Wikimedia Commons. <span class=\"nw-lic\">Public domain</span></figcaption></figure>",
+    "<span class=\"nw-tier d\">Documented</span>That service ended on 27 March 1960. The state historical marker at Durand Union Station, erected in 1987, says that on that day a Grand Trunk Western train left the depot for Detroit as “the last regularly-scheduled passenger train in the United States to be pulled by a steam locomotive.” Accounts by railfans of the day, and the archival record of a contemporary film, say the crowd was so large that the railroad ran the train in two sections, behind the 4-8-4 locomotives Nos. 6319 and 6322. A Canadian National photograph in the Canada Science and Technology Museum’s archive is captioned “G.T.W. steam locomotive making its last run # 6319,” dated with a question mark to 1960.",
+    "<figure class=\"nw-fig nw-fig-w\"><a class=\"nw-pz\" href=\"https://commons.wikimedia.org/wiki/File:Durand_station_1905_Photo432320o.jpg\"><img src=\"/img/news/the-grand-trunk-through-the-valley/durand-1905.webp\" width=\"844\" height=\"523\" alt=\"A postcard view of Union Station at Durand, Michigan, crowded with trains and people\" loading=\"lazy\" decoding=\"async\" style=\"width:100%;height:auto\"></a><figcaption>Union Station Depot, Durand, Mich., on a postcard of about 1905: the station where the last regularly scheduled steam passenger trains ran in 1960. Via Wikimedia Commons. <span class=\"nw-lic\">Public domain</span></figcaption></figure>",
+    "<span class=\"nw-tier d\">Documented</span>Steam did not quite stop there. In the same week, a Grand Trunk Western 2-8-2, No. 4070, made its last day in service, on 29 March 1960, photographed at Rochester, Michigan, by a Grand Trunk engineer. After 1960 only one big steam engine was left, the 4-8-4 No. 6323, which ran fan excursions to Battle Creek, Greenville, Durand, Richmond and Port Huron. J. David Ingles, writing in <i>Trains</i>, followed its last excursion, to Bay City, on 17 September 1961, three days before its last run on trains 21 and 56, on 20 September 1961. No. 6323 is preserved at the Illinois Railway Museum in Union, Illinois.",
+    "<span class=\"nw-tier d\">Documented</span>Elsewhere in Michigan, the Lake Superior &amp; Ishpeming, an iron ore railroad in the Upper Peninsula, used steam until the middle of 1962, with no official date recorded for the last run.",
+    "<span class=\"nw-tier d\">Documented</span>Passenger trains on the line through Cassopolis and South Bend lasted until Amtrak took over most intercity service on 1 May 1971. The Grand Trunk Western’s <i>International Limited</i> was the last intercity train out of Dearborn Station, the building on our map, on 30 April 1971. South Bend’s Union Station saw its last trains that year as well, and the last Grand Trunk Western passenger train stopped at Durand in 1971.",
+    "<figure class=\"nw-fig nw-fig-w\"><a class=\"nw-pz\" href=\"https://commons.wikimedia.org/wiki/File:Grand_Trunk_Western_Roundhouse_Durand_Michigan_1909.JPG\"><img src=\"/img/news/the-grand-trunk-through-the-valley/durand-roundhouse-1909.webp\" width=\"740\" height=\"469\" alt=\"Railroad men standing before a steam engine on the tracks in front of the Grand Trunk roundhouse at Durand\" loading=\"lazy\" decoding=\"async\" style=\"width:100%;height:auto\"></a><figcaption>“Engine & G. T. Round House, Durand, Mich.,” a postcard dated 31 July 1909, published by G. W. Beck. Via Wikimedia Commons. <span class=\"nw-lic\">Public domain</span></figcaption></figure>",
+    "## The 1965 claim, tested",
+    "<span class=\"nw-tier d\">Documented</span>The item that started this story, from the Historical Society of Michigan’s “this day in history,” reads: “October 23, 1965 The last steam locomotive used in regular service dropped its fire in Detroit after a run from Durand. It had been used by the Grand Trunk Western.”",
+    "<div class=\"nw-verdict\"><p class=\"nw-v-h\">What the record shows</p><ul><li><b>The event is real; the date is not.</b> A last regular steam run from Durand into Detroit on the Grand Trunk Western is documented, on 27 March 1960, by the state historical marker at Durand, <i>Trains</i> magazine and the railroad’s own history.</li><li><b>The engines</b> on 27 March 1960 were the 4-8-4s Nos. 6319 and 6322, running the train in two sections, by several independent accounts and a Canadian National photograph caption.</li><li><b>A last encore</b> came on 20 September 1961, when No. 6323 ran the scheduled trains 21 and 56 one more time, by Ingles in <i>Trains</i>. It was a farewell, not regular steam service.</li><li><b>Not the last steam in Michigan.</b> The Lake Superior &amp; Ishpeming kept steam until mid-1962. The 1960 distinction is narrower: the last regularly scheduled steam passenger train in the United States.</li><li><b>Nothing on 23 October 1965.</b> We found no record of a Grand Trunk Western steam run, regular or special, on that date, and no source that gives 1965 for the end of Grand Trunk Western steam.</li></ul></div>",
+    "<span class=\"nw-tier r\">Reading</span>The wording of the “this day” item, a fire dropped in Detroit after a run from Durand, describes the 1960 trains closely. The year and the day look like an error in transmission; the substance belongs to 27 March 1960.",
+    "## A timeline",
+    "<ul class=\"nw-tl\"><li><b>1865</b> <span>3 October: Peninsular Railroad Company chartered, Lansing to Battle Creek.</span></li><li><b>1868</b> <span>17 February: Peninsular Railway Company formed to reach the Indiana line. 2 July: the Grand Trunk–backed companies become the Michigan Air Line Railroad. 2 March: South Bend lets the Peninsular use Division Street.</span></li><li><b>1869</b> <span>Romeo–Richmond section of the Air Line built. Grading at Schoolcraft. 14 September: track laying north of Battle Creek.</span></li><li><b>1870</b> <span>26 May: Michigan Supreme Court decides <i>People v. Salem</i>. 15 October: Peninsular opens to Climax. 28 November: Air Line iron reaches Cassopolis.</span></li><li><b>1871</b> <span>16 January: first regular Air Line passenger train at Cassopolis. February: Air Line reaches Niles. 9 February: Peninsular iron reaches Cassopolis. 26 June: Peninsular opens to Cassopolis. 31 August: track laid on Division Street. 11 September: line opens to South Bend.</span></li><li><b>1873</b> <span>15 August: Chicago &amp; Lake Huron formed. 7 October: line reaches Valparaiso.</span></li><li><b>1874</b> <span>Chicago &amp; Lake Huron in receivership.</span></li><li><b>1879</b> <span>26 August: western division, Lansing to Indiana, auctioned for $300,000; the Grand Trunk takes control.</span></li><li><b>1880</b> <span>7–9 February: first Grand Trunk trains on the new line into Chicago. April: Chicago &amp; Grand Trunk Railway organized.</span></li><li><b>1885</b> <span>8 May: Dearborn Station opens in Chicago.</span></li><li><b>1887</b> <span>4 June: the timetable with our map is issued.</span></li><li><b>1888</b> <span>6 July: Grand Trunk and Michigan Central freights collide at the Cassopolis crossing.</span></li><li><b>1900</b> <span>27 January: locomotive explosion at Edwardsburg. By this year, the Grand Trunk Western Railway Company.</span></li><li><b>1928</b> <span>1 November: Grand Trunk Western Railroad Company; the Michigan Air Line Railway merged in.</span></li><li><b>1929</b> <span>South Bend track elevation; Union Station opens.</span></li><li><b>1957</b> <span>April: main line through the valley dieselized.</span></li><li><b>1960</b> <span>27 March: last regularly scheduled steam passenger train in the United States, Detroit–Durand, Nos. 6319 and 6322.</span></li><li><b>1961</b> <span>20 September: No. 6323 runs trains 21 and 56 one last time.</span></li><li><b>1971</b> <span>30 April: the <i>International Limited</i> is the last intercity train out of Dearborn Station. 1 May: Amtrak.</span></li><li><b>2002</b> <span>Grand Trunk Western name withdrawn; the line runs as Canadian National.</span></li></ul>",
+    "## If you go",
+    "<span class=\"nw-tier r\">Reading</span>The old Peninsular is still a working railroad, part of the Canadian National, through Vicksburg, Schoolcraft, Marcellus, Cassopolis, Edwardsburg, Granger and South Bend. Watch trains only from public places, such as station grounds, parks and public road crossings, and never walk on the tracks or the right-of-way.",
+    "<span class=\"nw-tier d\">Documented</span>The Vicksburg Union Depot, at 300 North Richardson Street, was built in 1904 where the Grand Trunk crossed the Grand Rapids &amp; Indiana. The village bought it for one dollar in 1983, and since 1990 it has been the Union Depot Museum in the Vicksburg Historic Village. It was added to the National Register of Historic Places in 2024. The Vicksburg Historical Society gives its phone number as 269-649-1733; check its hours before you travel.",
+    "<span class=\"nw-tier d\">Documented</span>In South Bend, Union Station of 1929 stands at the end of the old track elevation. The city’s Redevelopment Commission bought the building in July 2024; view it from the street. At the line’s west end, the Grand Trunk station at Valparaiso still stands, moved a short way west and across the track in 2014.",
+    "<span class=\"nw-tier d\">Documented</span>Durand Union Station, at 200 Railroad Street in Durand, is where the last steam trains of 1960 began and ended their runs east of the valley. The city bought the depot in 1979, Amtrak service there resumed in 1974, and the building houses railroad history museums; the state marker stands outside. In Chicago, the headhouse of Dearborn Station, at 47 West Polk Street, now holds offices and shops, and the 4-8-4 No. 6323 is on display at the Illinois Railway Museum in Union, Illinois."
+   ],
+   "date": "2026-10-24",
+   "pic": [
+    "/img/news/the-grand-trunk-through-the-valley",
+    "An 1887 railroad map of the Chicago & Grand Trunk and its connections, with an engraving of Dearborn Station in Chicago",
+    "Map of the Chicago & Grand Trunk R’y, from the timetable issued 4 June 1887. David Rumsey Map Collection."
+   ],
+   "cta": []
+  },
+  {
    "slug": "the-indian-lake-sea-serpent",
    "date": "2026-10-23",
    "kicker": "Lore and legend",

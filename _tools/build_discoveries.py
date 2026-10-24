@@ -14,10 +14,15 @@ day = lambda d: (lambda x: f'{x.day} {M[x.month-1]} {x.year}')(datetime.date.fro
 slug = lambda s: re.sub(r'[^a-z0-9]+', '-', s.lower()).strip('-')
 N = json.load(open(R / '_tools/data/news.json'))
 _FD = json.load(open(R / '_tools/data/finds.json'))
+def _fres(x):
+    if 'ref' not in x: return x
+    k, i = x['ref'].split('#'); y = next(z for z in _FD[k] if z.get('id') == i)
+    return dict(y, shared=k)
+_DATES = {s['slug']: s['date'] for s in N['stories']}
 for _s in N['stories']:
-    if _s['slug'] in _FD: _s['finds'] = [dict(x, d=x.get('d') or _s['date']) for x in _FD[_s['slug']]]
+    if _s['slug'] in _FD: _s['finds'] = [dict(_fres(x), d=_fres(x).get('d') or _DATES.get(_fres(x).get('shared') or _s['slug'])) for x in _FD[_s['slug']]]
 _ORD = [k for k in _FD if not k.startswith('_')]
-rows = [(x, s) for s in sorted(N['stories'], key=lambda s: _ORD.index(s['slug']) if s['slug'] in _ORD else 99) for x in s.get('finds', [])]
+rows = [(x, s) for s in sorted(N['stories'], key=lambda s: _ORD.index(s['slug']) if s['slug'] in _ORD else 99) for x in s.get('finds', []) if not x.get('shared')]
 rows.sort(key=lambda r: r[0]['d'], reverse=True)
 
 SEAL = ('<svg class="dsc-seal" viewBox="0 0 60 60" aria-hidden="true"><g transform="translate(30 30)">'
