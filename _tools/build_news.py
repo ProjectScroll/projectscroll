@@ -5,6 +5,25 @@ import json, re, html, sys, pathlib, datetime
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from pages import page, R
 E = lambda s: html.escape(str(s), quote=True)
+
+from urllib.parse import quote as _q
+def _share_links(canon, t):
+    u, tt = _q(canon, safe=''), _q(t, safe='')
+    return [('Facebook', f'https://www.facebook.com/sharer/sharer.php?u={u}', ' sb-fb'),
+            ('X', f'https://x.com/intent/post?url={u}&amp;text={tt}', ''),
+            ('Email', f'mailto:?subject={tt}&amp;body={tt}%0A%0A{u}', '')]
+def share_top(canon, t):
+    a=''.join(f'<a class="sb-l{c}" href="{h}" rel="noopener nofollow">{n}</a>' for n,h,c in _share_links(canon,t))
+    return (f'<div class="nw-sharetop" data-share data-url="{E(canon)}" data-title="{E(t)}" role="group" aria-label="Share this story">'
+            f'<span class="nst-h">Share</span>{a}<button type="button" class="sb-l sb-copy">Copy link</button><button type="button" class="sb-l sb-more" hidden>More…</button></div>')
+def share_bottom(canon, t):
+    u, tt = _q(canon, safe=''), _q(t, safe='')
+    L=_share_links(canon,t)+[('Bluesky', f'https://bsky.app/intent/compose?text={tt}%20{u}',''),('Reddit', f'https://www.reddit.com/submit?url={u}&amp;title={tt}',''),('LinkedIn', f'https://www.linkedin.com/sharing/share-offsite/?url={u}','')]
+    a=''.join(f'<a class="sb-l{c}" href="{h}" rel="noopener nofollow">{n}</a>' for n,h,c in L)
+    return (f'<aside class="sharebar nw-sharebot" aria-labelledby="shbH" data-share data-url="{E(canon)}" data-title="{E(t)}">'
+            f'<p class="sb-h" id="shbH">Enjoyed this story? Pass it on</p><p class="nsb-d">Know someone who grew up around here, or who loves a good mystery? Send it their way.</p><div class="sb-row">{a}'
+            '<button type="button" class="sb-l sb-copy">Copy link</button><button type="button" class="sb-l sb-more" hidden>More…</button></div></aside>')
+SV_MINI = open(f'{R}/_tools/data/home/sv-mini.html').read().strip()
 N = json.load(open(f'{R}/_tools/data/news.json')); L = N['lead']; S = N['stories']
 _FD = json.load(open(f'{R}/_tools/data/finds.json'))
 for _s in S:
@@ -226,7 +245,8 @@ for k, st in enumerate(S):
       <h1>{E(st["headline"])}</h1>
       {tags(st, _RIB.get(st["slug"]))}
       <p class="lede">{E(st["dek"])}</p>
-      {live}<p class="nw-by">{("By " + E(st["by"]) + " · ") if st.get("by") else ""}Project Scroll · {"First published " if st.get("updated") else ""}<time datetime="{st["date"]}">{day(st["date"], True)}</time>{(" · Updated <time datetime=\""+st["updated"]+"\">"+day(st["updated"], True)+"</time>") if st.get("updated") else ""} · {mins} min read <button type="button" class="linkbtn nw-share" data-t="{E(st["headline"])}">Share this story</button> <button type="button" class="linkbtn nw-print">Print or save as PDF</button> <button type="button" class="linkbtn nw-cite" data-cite="{E((st["by"] + ", " if st.get("by") else "") + "“" + st["headline"] + ",” Project Scroll, " + day(st["date"], True) + ", https://projectscroll.com/news/" + st["slug"] + "/")}">Cite this story</button> <button type="button" class="linkbtn nw-listen" hidden>Listen</button></p>
+      {live}<p class="nw-by">{("By " + E(st["by"]) + " · ") if st.get("by") else ""}Project Scroll · {"First published " if st.get("updated") else ""}<time datetime="{st["date"]}">{day(st["date"], True)}</time>{(" · Updated <time datetime=\""+st["updated"]+"\">"+day(st["updated"], True)+"</time>") if st.get("updated") else ""} · {mins} min read <button type="button" class="linkbtn nw-print">Print or save as PDF</button> <button type="button" class="linkbtn nw-cite" data-cite="{E((st["by"] + ", " if st.get("by") else "") + "“" + st["headline"] + ",” Project Scroll, " + day(st["date"], True) + ", https://projectscroll.com/news/" + st["slug"] + "/")}">Cite this story</button> <button type="button" class="linkbtn nw-listen" hidden>Listen</button></p>
+      {share_top('https://projectscroll.com/news/'+st["slug"]+'/', st["headline"])}
       {fig}
       {('<aside class="nw-short" aria-labelledby="short-h"><p class="nw-short-h" id="short-h">The short version</p>'+st['tldr']+'<p class="nw-short-m"><a href="#'+re.sub(r'[^a-z0-9]+','-',[x[3:] for x in st['body'] if x.startswith('## ')][0].lower()).strip('-')+'">Read the whole story ›</a></p></aside>') if st.get('tldr') else ''}
       {finds}
@@ -238,10 +258,12 @@ for k, st in enumerate(S):
       {visit}
       {changes}
       {credit}
+      {share_bottom('https://projectscroll.com/news/'+st["slug"]+'/', st["headline"])}
       {CONTRIB}
       {pn}
     </article>
     <section class="nw-morebox" aria-labelledby="nwMoreH"><h2 id="nwMoreH">Keep reading</h2>{related(st)}<details class="nw-allnews"><summary>All the news ({len(S)-1} more stories)</summary>{morelist(st["slug"])}</details></section>
+    {SV_MINI}
 '''
     b += SHARE
     import pages as _P

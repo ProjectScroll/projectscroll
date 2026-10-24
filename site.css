@@ -4686,3 +4686,31 @@ blockquote.nw-q footer{font-size:.82rem;letter-spacing:.05em;opacity:.85}
 @media (min-width:800px){.nw-text .nw-fig-r{clear:right}.nw-text .nw-fig-l{clear:left}}
 blockquote.nw-q p{margin:.2rem 0 .5rem}
 blockquote.nw-q::before{font-size:4.4rem;top:-.55em}
+/* news: share strip under the byline, share box at the foot, small services ad */
+.nw-sharetop{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.2rem 0 1.1rem}
+.nw-sharetop .nst-h{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-right:.2rem}
+.nw-sharetop .sb-l{min-height:36px;padding:.2rem .8rem;font-size:.85rem}
+.sb-l.sb-fb{background:#1877f2;border-color:#1877f2;color:#fff;font-weight:600}
+.sb-l.sb-fb:hover{background:#0f63d1;border-color:#0f63d1}
+.nw-sharebot{margin:2.2rem 0 1.4rem;padding:1.1rem 1.2rem;border:1px solid color-mix(in srgb,var(--gold-lo,#c9a24a) 55%,transparent);border-radius:8px;background:color-mix(in srgb,var(--gold-lo,#c9a24a) 6%,transparent)}
+.nw-sharebot .sb-h{font-family:"Libre Caslon Display","Caslon Display Fallback",serif;font-size:1.35rem;letter-spacing:0;text-transform:none;color:var(--ink)}
+.nw-sharebot .nsb-d{margin:.1rem 0 .7rem;color:var(--ink-soft)}
+.promo.sv.sv-mini{max-width:46rem;margin:2.4rem auto 1rem}
+.promo.sv.sv-mini .promo-h{font-size:clamp(1.45rem,1.1rem + 1.6vw,2rem)}
+.promo.sv.sv-mini .promo-ctas{margin-top:1rem}
+@media print{.nw-sharetop,.nw-sharebot,.sv-mini{display:none!important}}
+/* who's who, and the part marker that follows you down a long story */
+.nw-cast{margin:1.6rem 0;border:1px solid var(--line);border-radius:8px;background:color-mix(in srgb,var(--paper-2,#16202c) 60%,transparent);clear:both}
+.nw-cast summary{cursor:pointer;padding:.75rem 1rem;font-family:"Libre Caslon Display","Caslon Display Fallback",serif;font-size:1.15rem;list-style-position:inside}
+.nw-cast summary span{font-family:inherit;font-size:.85rem;color:var(--ink-soft)}
+.nw-cast ul{list-style:none;margin:0;padding:.2rem 1rem 1rem;display:grid;gap:.55rem 1.4rem;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr))}
+.nw-cast li{font-size:.92rem;line-height:1.4}
+.nw-cast li b{display:block;color:var(--gold-lo,#c9a24a);font-weight:600}
+.nw-partpill{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));transform:translate(-50%,140%);z-index:40;display:flex;align-items:center;gap:.5rem;max-width:min(92vw,34rem);padding:.45rem .9rem;border-radius:999px;border:1px solid color-mix(in srgb,var(--gold-lo,#c9a24a) 60%,transparent);background:color-mix(in srgb,var(--paper,#0f1a26) 92%,transparent);backdrop-filter:blur(6px);box-shadow:0 8px 24px rgba(0,0,0,.35);color:var(--ink);font-size:.85rem;text-decoration:none;transition:transform .3s ease;white-space:nowrap}
+.nw-partpill.on{transform:translate(-50%,0)}
+.nw-partpill b{color:var(--gold-lo,#c9a24a);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+.nw-partpill span{overflow:hidden;text-overflow:ellipsis}
+.nw-partpill i{font-style:normal;opacity:.7}
+@media (prefers-reduced-motion:reduce){.nw-partpill{transition:none}}
+@media print{.nw-partpill{display:none!important}}
+.nw-text h2{counter-increment:none}.nw-text h2[id]{counter-increment:nwch}.nw-text h2:not([id])::after{content:none}

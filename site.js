@@ -1345,6 +1345,18 @@ try{ (function(){
     cp.addEventListener('click',function(){ var done=function(){ cp.textContent='Link copied ✓'; setTimeout(function(){cp.textContent='Copy link';},2500); };
       if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(u).then(done,fb); else fb(); function fb(){ var i=document.createElement('input'); i.value=u; i.readOnly=true; i.className='sb-l'; i.setAttribute('aria-label','Link to this page'); cp.replaceWith(i); i.select(); try{ if(document.execCommand('copy')) i.value='Link copied ✓'; }catch(e){} } });
   }); }catch(err){ psFail(err); }
+  /* share links open the network's own share window as a small popup, so the reader keeps their place; if popups are blocked, the link opens in this tab */
+  try{ document.addEventListener('click',function(e){ var a=e.target.closest&&e.target.closest('[data-share] a.sb-l'); if(!a||/^mailto:/.test(a.getAttribute('href')||'')||e.ctrlKey||e.metaKey||e.shiftKey) return;
+    var w=Math.min(640,screen.availWidth-40), h=Math.min(680,screen.availHeight-60), x=Math.round((screen.availWidth-w)/2), y=Math.round((screen.availHeight-h)/2);
+    var win=window.open(a.href,'psShare','popup=yes,width='+w+',height='+h+',left='+x+',top='+y+',noopener=no'); if(win){ e.preventDefault(); try{ win.opener=null; }catch(err){} } }); }catch(err){ psFail(err); }
+  /* long stories: a small marker shows which part you are in; tap it to return to the contents */
+  try{ (function(){ var hs=[].slice.call(document.querySelectorAll('.nw-text h2[id]')), toc=document.querySelector('.nw-toc'); if(hs.length<8||!toc||!('IntersectionObserver' in window)) return;
+    if(!toc.id) toc.id='contents'; var R=function(n){ var v=[[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']], r=''; v.forEach(function(p){ while(n>=p[0]){ r+=p[1]; n-=p[0]; } }); return r; };
+    var a=document.createElement('a'); a.className='nw-partpill'; a.href='#'+toc.id; a.setAttribute('aria-label','Back to the contents'); a.innerHTML='<b></b><span></span><i>▴ Contents</i>'; document.body.appendChild(a);
+    var cur=-1, set=function(k){ if(k===cur) return; cur=k; if(k<0){ a.classList.remove('on'); return; } a.querySelector('b').textContent='Part '+R(k+1)+' of '+R(hs.length); a.querySelector('span').textContent=hs[k].textContent; a.classList.add('on'); };
+    var art=document.querySelector('.nw-text'), q=0, spy=function(){ q=0; var y=innerHeight*0.35, k=-1; hs.forEach(function(h,i){ if(h.getBoundingClientRect().top<y) k=i; }); var end=art.getBoundingClientRect().bottom<innerHeight*0.5; set(end?-1:k); };
+    addEventListener('scroll',function(){ if(!q) q=requestAnimationFrame(spy); },{passive:true}); spy();
+  })(); }catch(err){ psFail(err); }
   try{ document.querySelectorAll('.nw-cite').forEach(function(b){ b.addEventListener('click', function(){
       var d=new Date(), M=['January','February','March','April','May','June','July','August','September','October','November','December'];
       var t=b.getAttribute('data-cite')+' (accessed '+d.getDate()+' '+M[d.getMonth()]+' '+d.getFullYear()+').';
