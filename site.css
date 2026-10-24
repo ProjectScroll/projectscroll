@@ -4803,3 +4803,22 @@ blockquote.nw-q::before{font-size:4.4rem;top:-.55em}
 .pn-tag-l{left:.6rem}.pn-tag-r{right:.6rem}
 .pn-ctl{display:flex;align-items:center;gap:.7rem;margin:.7rem 0 .2rem;font-size:.82rem;color:var(--ink-soft)}
 .pn-ctl input{flex:1;accent-color:#e0b25a;min-height:32px}
+/* torch: the eyes that look back, and a nervous flicker */
+.tc-eyes{position:absolute;width:26px;height:8px;transform:translate(-50%,-50%);opacity:0;pointer-events:none;background:radial-gradient(circle at 25% 50%,#ff3b2f 0 2px,rgba(255,59,47,.5) 3px,transparent 5px),radial-gradient(circle at 75% 50%,#ff3b2f 0 2px,rgba(255,59,47,.5) 3px,transparent 5px);filter:drop-shadow(0 0 6px #ff2a1a)}
+.tc-stage.found .tc-eyes{animation:tcEyes 2.6s ease-in-out .2s 2 both}
+@keyframes tcEyes{0%{opacity:0}20%{opacity:1}45%{opacity:1}50%{opacity:0}55%{opacity:1}100%{opacity:0}}
+.tc-stage:not(.lit) .tc-dark{animation:tcFlick 7s steps(1) infinite}
+@keyframes tcFlick{0%,100%{opacity:1}92%{opacity:1}93%{opacity:.985}94%{opacity:1}96%{opacity:.97}97%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.tc-stage .tc-dark{animation:none}.tc-stage.found .tc-eyes{animation:none;opacity:1}}
+/* lineup grows when it comes into view */
+.nw-lineup.wait .gr-b{transform:scaleY(0)}
+.nw-lineup.go .gr-b{animation:grUp 1.1s cubic-bezier(.2,.8,.2,1) both}
+.nw-lineup .gr-g:nth-child(n) .gr-b{transform-box:fill-box;transform-origin:bottom}
+.nw-lineup.go .gr-g:nth-of-type(3) .gr-b{animation-delay:.12s}.nw-lineup.go .gr-g:nth-of-type(4) .gr-b{animation-delay:.24s}.nw-lineup.go .gr-g:nth-of-type(5) .gr-b{animation-delay:.36s}.nw-lineup.go .gr-g:nth-of-type(6) .gr-b{animation-delay:.48s}.nw-lineup.go .gr-g:nth-of-type(7) .gr-b{animation-delay:.6s}
+.nw-lineup .gr-eye{opacity:0;transition:opacity .4s 1.2s}.nw-lineup.go .gr-eye,.nw-lineup:not(.wait) .gr-eye{opacity:1}
+@media (prefers-reduced-motion:reduce){.nw-lineup.wait .gr-b{transform:none}.nw-lineup.go .gr-b{animation:none}}
+.nw-wanted{margin-top:2.6rem}
+/* the sounds box, with a waveform */
+.nw-sounds{position:relative;padding-right:4.5rem}
+.nw-sounds::after{content:"";position:absolute;right:1rem;top:1rem;width:2.8rem;height:2rem;opacity:.7;background:linear-gradient(90deg,transparent 0 10%,currentColor 10% 16%,transparent 16% 26%,currentColor 26% 32%,transparent 32% 42%,currentColor 42% 48%,transparent 48% 58%,currentColor 58% 64%,transparent 64% 74%,currentColor 74% 80%,transparent 80%);color:#b3362b;clip-path:polygon(10% 30%,16% 30%,16% 70%,10% 70%,10% 30%,26% 0,32% 0,32% 100%,26% 100%,26% 0,42% 20%,48% 20%,48% 80%,42% 80%,42% 20%,58% 5%,64% 5%,64% 95%,58% 95%,58% 5%,74% 35%,80% 35%,80% 65%,74% 65%,74% 35%)}
+blockquote.nw-q footer{margin:.3rem 0 0;padding:0;border:0;background:none}

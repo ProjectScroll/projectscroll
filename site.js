@@ -1380,7 +1380,8 @@ try{ (function(){
   try{ document.querySelectorAll('.nw-torch').forEach(function(f){ var st=f.querySelector('.tc-stage'), msg=f.querySelector('.tc-msg'), btn=f.querySelector('.tc-light');
     var fx=+f.dataset.fx, fy=+f.dataset.fy, fr=+f.dataset.fr, px=.18, py=.78, done=false;
     var put=function(x,y){ px=Math.max(0,Math.min(1,x)); py=Math.max(0,Math.min(1,y)); st.style.setProperty('--x',(px*100)+'%'); st.style.setProperty('--y',(py*100)+'%');
-      if(!done && Math.hypot(px-fx,(py-fy)*1.28)<fr){ done=true; st.classList.add('found'); msg.textContent='There. It was standing there the whole time, letting them walk by.'; } };
+      if(!done && Math.hypot(px-fx,(py-fy)*1.28)<fr){ done=true; st.classList.add('found'); msg.textContent='There. It was standing there the whole time, letting them walk by.'; try{ navigator.vibrate&&navigator.vibrate(60); }catch(e){} } };
+    var eyes=document.createElement('span'); eyes.className='tc-eyes'; eyes.setAttribute('aria-hidden','true'); eyes.style.left=(f.dataset.ex||fx)*100+'%'; eyes.style.top=(f.dataset.ey||fy)*100+'%'; st.appendChild(eyes);
     var mv=function(e){ var r=st.getBoundingClientRect(); put((e.clientX-r.left)/r.width,(e.clientY-r.top)/r.height); };
     st.addEventListener('pointermove',mv); st.addEventListener('pointerdown',function(e){ mv(e); });
     st.addEventListener('keydown',function(e){ var k={ArrowLeft:[-.04,0],ArrowRight:[.04,0],ArrowUp:[0,-.04],ArrowDown:[0,.04]}[e.key]; if(!k) return; e.preventDefault(); put(px+k[0],py+k[1]); });
@@ -1388,6 +1389,7 @@ try{ (function(){
   }); }catch(err){ psFail(err); }
   /* the lineup: tap a bar for who said it */
   try{ document.querySelectorAll('.nw-lineup').forEach(function(f){ var out=f.querySelector('.gr-out'), gs=[].slice.call(f.querySelectorAll('.gr-g'));
+    if('IntersectionObserver' in window){ f.classList.add('wait'); var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ f.classList.remove('wait'); f.classList.add('go'); io.disconnect(); } }); },{threshold:.35}); io.observe(f); }
     var pick=function(g){ gs.forEach(function(x){ x.classList.toggle('on',x===g); }); out.textContent=g.getAttribute('data-t'); };
     gs.forEach(function(g){ g.addEventListener('click',function(){ pick(g); }); g.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); pick(g); } }); });
   }); }catch(err){ psFail(err); }
@@ -1685,7 +1687,7 @@ try{ (function(){
 })(); }catch(err){ psFail(err); }
 try{ (function(){
   /* save to your phone: an install button when the browser offers one, and a plain hint on iPhones and iPads */
-  const foot=document.querySelector('footer'); if (!foot || matchMedia('(display-mode: standalone)').matches || navigator.standalone) return;
+  const foot=document.querySelector('footer.site')||document.querySelector('body > footer'); if (!foot || matchMedia('(display-mode: standalone)').matches || navigator.standalone) return;
   const p=document.createElement('p'); p.className='installer'; p.hidden=true; foot.insertBefore(p, foot.firstChild);
   let ev=null;
   addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); ev=e; p.innerHTML=''; const b=document.createElement('button'); b.type='button'; b.className='btn'; b.textContent='Save Project Scroll to this device';
