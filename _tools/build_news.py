@@ -57,11 +57,11 @@ def tags(st, ribbon=None):
     """small labels beside the kicker: what the research found, where it came from, what a reader can do with it"""
     t = []
     nf = len(_FD.get(st['slug']) or [])
-    if nf and ribbon != 'Discovery': t.append(('disc', f'Discovery · {nf} new finding' + ('s' if nf > 1 else ''), f'/news/{st["slug"]}/#findings', 'new findings'))
+    if nf: t.append(('disc', f'Discovery · {nf} new finding' + ('s' if nf > 1 else ''), f'/news/{st["slug"]}/#findings', 'new findings'))
     cn = _TG['cases'].get(st['slug'])
     if cn: t.append(('open', 'Solved' if (_CBY.get(cn) or {}).get('solved') else 'Open case'))
     for x in _TG['tags'].get(st['slug'], []):
-        if not any(x == y for _, y in t): t.append(({'Open case':'open','Myth tested':'myth','From the archive':'arch','Then & now':'then','In season':'seas','For families':'fam','Reader find':'reader'}.get(x, 'x'), x))
+        if not any(x == z[1] for z in t): t.append(({'Open case':'open','Myth tested':'myth','From the archive':'arch','Then & now':'then','In season':'seas','For families':'fam','Reader find':'reader'}.get(x, 'x'), x))
     if st.get('updated'): t.append(('upd', 'Updated'))
     for name, xs in _TG['series'].items():
         if st['slug'] in xs:
