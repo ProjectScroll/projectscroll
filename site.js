@@ -1357,6 +1357,25 @@ try{ (function(){
     var art=document.querySelector('.nw-text'), q=0, spy=function(){ q=0; var y=innerHeight*0.35, k=-1; hs.forEach(function(h,i){ if(h.getBoundingClientRect().top<y) k=i; }); var end=art.getBoundingClientRect().bottom<innerHeight*0.5; set(end?-1:k); };
     addEventListener('scroll',function(){ if(!q) q=requestAnimationFrame(spy); },{passive:true}); spy();
   })(); }catch(err){ psFail(err); }
+  /* how to read: count the marks, and let the reader show only the record or only our readings */
+  try{ (function(){ var box=document.querySelector('.nw-howto'), tx=document.querySelector('.nw-text'); if(!box||!tx) return;
+    var n=function(c){ return tx.querySelectorAll('.nw-tier.'+c).length; }, nf=document.querySelectorAll('.nw-finds li').length||n('n');
+    var c=box.querySelector('.nh-count'); if(c) c.textContent='In this story: '+n('d')+' documented statements, '+n('r')+' readings, and '+nf+' new finding'+(nf===1?'':'s')+'.';
+    var hl=box.querySelector('.nh-hl'); if(!hl||!CSS.supports('selector(:has(*))')) return; hl.hidden=false;
+    hl.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return; [].forEach.call(hl.querySelectorAll('button'),function(x){ x.setAttribute('aria-pressed',x===b?'true':'false'); });
+      if(b.dataset.hl) tx.setAttribute('data-hl',b.dataset.hl); else tx.removeAttribute('data-hl'); });
+  })(); }catch(err){ psFail(err); }
+  /* long timelines: jump between eras */
+  try{ document.querySelectorAll('.nw-tl').forEach(function(ul){ var li=[].slice.call(ul.children); if(li.length<15) return;
+    var era=function(t){ var m=t.match(/(1[89]\d\d|20\d\d)/); if(!m){ return /early|pioneer/i.test(t)?'old':''; } var y=+m[1]; if(/late\s+19/i.test(t)) return 'new'; return y<1900?'old':(y>=1962&&y<=1964?'64':(y<1962?'old':'new')); };
+    li.forEach(function(x){ var b=x.querySelector('b'); x.dataset.era=era(b?b.textContent:''); });
+    var E=[['','All'],['old','The 1800s'],['64','1964'],['new','Since 1964']].filter(function(e){ return !e[0]||li.some(function(x){ return x.dataset.era===e[0]; }); });
+    var f=document.createElement('div'); f.className='nw-tl-f'; f.setAttribute('role','group'); f.setAttribute('aria-label','Show part of the timeline');
+    E.forEach(function(e,i){ var b=document.createElement('button'); b.type='button'; b.textContent=e[1]; b.setAttribute('aria-pressed',i?'false':'true'); b.dataset.era=e[0]; f.appendChild(b); });
+    ul.parentNode.insertBefore(f,ul);
+    f.addEventListener('click',function(ev){ var b=ev.target.closest('button'); if(!b) return; [].forEach.call(f.children,function(x){ x.setAttribute('aria-pressed',x===b?'true':'false'); });
+      li.forEach(function(x){ x.hidden=!!b.dataset.era && x.dataset.era!==b.dataset.era; }); });
+  }); }catch(err){ psFail(err); }
   try{ document.querySelectorAll('.nw-cite').forEach(function(b){ b.addEventListener('click', function(){
       var d=new Date(), M=['January','February','March','April','May','June','July','August','September','October','November','December'];
       var t=b.getAttribute('data-cite')+' (accessed '+d.getDate()+' '+M[d.getMonth()]+' '+d.getFullYear()+').';
