@@ -560,6 +560,10 @@
     [
      "OpenStreetMap contributors, lakes and roads of Silver Creek Township (data © OpenStreetMap contributors, ODbL), drawn on the 1928 plat’s grid for the then-and-now map.",
      "https://www.openstreetmap.org/#map=13/42.03/-86.16"
+    ],
+    [
+     "Isabella County Daily Times-News (Mount Pleasant), 13 June 1964, p. 1 (United Press: “Business Is Booming at ‘Monsterville’”; the kits, the burgers and the bounty). Digital Michigan Newspapers.",
+     "https://digmichnews.cmich.edu/?a=d&d=IsabellaICDTN19640613-01.1.1"
     ]
    ],
    "visit": [
@@ -627,7 +631,8 @@
    "by": "Michael Urbanski",
    "credit": "Michael Urbanski",
    "modified": "2026-10-23",
-   "nogo": true
+   "nogo": true,
+   "nochanges": true
   },
   {
    "slug": "the-kentucky-raid-of-1847",
