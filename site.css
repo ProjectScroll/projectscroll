@@ -4859,3 +4859,10 @@ html.inframe #l3d canvas{height:100%!important}
 main.page > .placeband{margin:-.4rem 0 1.2rem}
 .sheet > .placeband{margin:0}
 html.inframe .placeband{display:none!important}
+/* the Visit & Plan row sits exactly where it does on the home page */
+.sheet > .toolrow{padding-top:.5rem;margin-left:4px;margin-right:4px}
+@media (max-width:640px){ .sheet > .toolrow{padding-top:2.25rem;margin:0 0 1.4rem} }
+.sheet > .toolrow{padding-top:7px}
+@media (min-width:641px) and (max-width:899px){ .sheet > .toolrow{padding-top:49px;margin:0} }
+@media (max-width:640px){ .sheet > .toolrow{padding-top:2.25rem} }
+@media (min-width:861px) and (max-width:899px){ .sheet > .toolrow{margin:0 4px} }
