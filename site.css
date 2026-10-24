@@ -4744,3 +4744,53 @@ blockquote.nw-q::before{font-size:4.4rem;top:-.55em}
 .nw-tl-f button{font:inherit;font-size:.85rem;min-height:36px;padding:.2rem .8rem;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
 .nw-tl-f button[aria-pressed="true"]{background:var(--gold-lo,#c9a24a);border-color:var(--gold-lo,#c9a24a);color:#16120a;font-weight:600}
 @media print{.nh-hl,.nw-tl-f{display:none!important}}
+/* day title cards */
+.nw-daycard{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"day moon" "date moon" "line line";gap:.1rem 1rem;align-items:end;margin:.3rem 0 1.1rem;padding:.8rem 1rem;border-top:3px double color-mix(in srgb,var(--gold-lo,#c9a24a) 70%,transparent);border-bottom:1px solid color-mix(in srgb,var(--gold-lo,#c9a24a) 40%,transparent);background:linear-gradient(90deg,rgba(0,0,0,.25),transparent 70%)}
+.dc-day{grid-area:day;font-family:"Libre Caslon Display","Caslon Display Fallback",serif;font-size:clamp(1.7rem,1.2rem + 2vw,2.5rem);line-height:1;color:var(--ink)}
+.dc-date{grid-area:date;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lo,#c9a24a)}
+.dc-moon{grid-area:moon;justify-self:end;display:flex;align-items:center;gap:.45rem;font-size:.82rem;font-style:italic;color:var(--ink-soft);text-align:right;max-width:15rem}
+.dc-moon-i{width:28px;height:28px;flex:none;color:#e9e1c8}
+.dc-line{grid-area:line;margin-top:.45rem;font-size:.88rem;color:var(--ink-soft)}
+@media (max-width:520px){.nw-daycard{grid-template-areas:"day day" "date date" "moon moon" "line line"}.dc-moon{justify-self:start;text-align:left;margin-top:.35rem}}
+/* Detroit News headlines set in type */
+.nw-headline{margin:1.6rem auto;max-width:36rem;clear:both}
+.hl-sheet{padding:1rem 1.2rem 1.1rem;background:#ece4d0;color:#1d1a14;border-radius:2px;box-shadow:0 12px 30px rgba(0,0,0,.45);transform:rotate(-.6deg);background-image:radial-gradient(circle at 20% 10%,rgba(120,90,40,.12),transparent 40%),radial-gradient(circle at 85% 90%,rgba(120,90,40,.15),transparent 45%)}
+.hl-mast{margin:0;text-align:center;font-family:"Libre Caslon Display","Caslon Display Fallback",serif;font-size:clamp(1.5rem,1.1rem + 2vw,2.3rem);letter-spacing:.02em;border-bottom:3px double #1d1a14;padding-bottom:.25rem}
+.hl-date{display:flex;justify-content:space-between;margin:.3rem 0 .5rem;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid #1d1a14;padding-bottom:.2rem}
+.hl-h{margin:.2rem 0 .3rem;font-family:Georgia,"Times New Roman",serif;font-weight:900;font-size:clamp(1.35rem,1rem + 1.8vw,2.05rem);line-height:1.02;text-transform:uppercase;letter-spacing:-.01em;text-align:center}
+.hl-h2{font-size:clamp(1.2rem,.95rem + 1.4vw,1.7rem)}
+.hl-deck{margin:0;text-align:center;font-family:Georgia,serif;font-style:italic;font-size:1rem}
+.hl-sheet hr{border:0;border-top:1px solid #1d1a14;margin:.7rem 0 .2rem}
+.nw-headline figcaption{margin-top:.8rem;font-size:.85rem;color:var(--ink-soft)}
+/* be the witness */
+.nw-torch{margin:1.6rem auto;max-width:40rem;clear:both}
+.tc-stage{position:relative;overflow:hidden;border-radius:6px;cursor:none;touch-action:none;outline-offset:3px;--x:18%;--y:78%;--r:clamp(70px,13vw,120px)}
+.tc-stage img{display:block;width:100%;height:auto}
+.tc-dark{position:absolute;inset:0;background:#020306;-webkit-mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),transparent 0,transparent 45%,rgba(0,0,0,.75) 75%,#000 100%);mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),transparent 0,transparent 45%,rgba(0,0,0,.75) 75%,#000 100%);transition:opacity 1.2s ease}
+.tc-stage::after{content:"";position:absolute;left:var(--x);top:var(--y);width:calc(var(--r)*2);height:calc(var(--r)*2);transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,236,180,.22),transparent 65%);pointer-events:none;mix-blend-mode:screen}
+.tc-stage.lit .tc-dark{opacity:0}.tc-stage.lit::after{display:none}.tc-stage.lit{cursor:default}
+.tc-msg{position:absolute;left:0;right:0;bottom:0;margin:0;padding:1.4rem 1rem .8rem;background:linear-gradient(transparent,rgba(0,0,0,.85));color:#efe6cf;font-size:.95rem;text-align:center;pointer-events:none}
+.tc-stage.found .tc-msg{color:#ffcfc4;font-weight:600}
+.tc-ctl{margin:.6rem 0 0;text-align:center}
+.tc-ctl button{font:inherit;font-size:.88rem;min-height:40px;padding:.3rem 1rem;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.nw-torch figcaption{margin-top:.6rem;text-align:center;font-style:italic;color:var(--ink-soft)}
+@media (prefers-reduced-motion:reduce){.tc-dark{transition:none}}
+/* the lineup */
+.nw-lineup .gr-g{cursor:pointer;outline:none}
+.nw-lineup .gr-g:hover rect,.nw-lineup .gr-g:focus-visible rect{filter:brightness(1.25)}
+.nw-lineup .gr-g.on rect{stroke:var(--gold-lo,#c9a24a);stroke-width:3}
+.nw-lineup .gr-out{min-height:3em;margin:.2rem .6rem .4rem;padding:.6rem .8rem;border-left:3px solid var(--gold-lo,#c9a24a);background:color-mix(in srgb,var(--gold-lo,#c9a24a) 7%,transparent);font-size:.95rem}
+/* why people see what they see */
+.nw-why{margin:1.6rem 0;padding:1rem 1.2rem;border:1px solid var(--line);border-radius:8px;background:color-mix(in srgb,var(--paper-2,#16202c) 55%,transparent);clear:both}
+.nw-why ul{margin:.4rem 0;padding-left:1.1rem}.nw-why li{margin:.4rem 0}
+.nw-why-k{margin:.8rem 0 0;font-style:italic;color:var(--ink)}
+/* wanted poster */
+.nw-wanted{position:relative;margin:2rem 0 1rem;padding:1.3rem 1.3rem 1rem;background:#e9dfc5;color:#211b10;border-radius:2px;box-shadow:0 12px 30px rgba(0,0,0,.45);clear:both}
+.nw-wanted a{color:#7a2410}
+.nw-wanted .nw-br-h{color:#5b1d10}
+.nw-wanted-tag{position:absolute;top:-.9rem;right:1rem;margin:0;padding:.15rem .7rem;border:3px solid #a3261a;color:#a3261a;background:#e9dfc5;font-weight:900;letter-spacing:.24em;text-transform:uppercase;transform:rotate(4deg);font-size:.9rem}
+.nw-wanted ol{margin:.6rem 0 .2rem;padding-left:1.3rem}.nw-wanted li{margin:.45rem 0}
+@media print{.tc-ctl{display:none}.tc-dark{display:none}}
+.tc-stage img{filter:brightness(1.55) contrast(1.1)}
+.tc-stage.lit img{filter:brightness(1.15)}
+.tc-stage::after{background:radial-gradient(circle,rgba(255,236,180,.38),rgba(255,236,180,.12) 45%,transparent 70%)}

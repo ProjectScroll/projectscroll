@@ -1376,6 +1376,21 @@ try{ (function(){
     f.addEventListener('click',function(ev){ var b=ev.target.closest('button'); if(!b) return; [].forEach.call(f.children,function(x){ x.setAttribute('aria-pressed',x===b?'true':'false'); });
       li.forEach(function(x){ x.hidden=!!b.dataset.era && x.dataset.era!==b.dataset.era; }); });
   }); }catch(err){ psFail(err); }
+  /* be the witness: a flashlight in a dark farmyard */
+  try{ document.querySelectorAll('.nw-torch').forEach(function(f){ var st=f.querySelector('.tc-stage'), msg=f.querySelector('.tc-msg'), btn=f.querySelector('.tc-light');
+    var fx=+f.dataset.fx, fy=+f.dataset.fy, fr=+f.dataset.fr, px=.18, py=.78, done=false;
+    var put=function(x,y){ px=Math.max(0,Math.min(1,x)); py=Math.max(0,Math.min(1,y)); st.style.setProperty('--x',(px*100)+'%'); st.style.setProperty('--y',(py*100)+'%');
+      if(!done && Math.hypot(px-fx,(py-fy)*1.28)<fr){ done=true; st.classList.add('found'); msg.textContent='There. It was standing there the whole time, letting them walk by.'; } };
+    var mv=function(e){ var r=st.getBoundingClientRect(); put((e.clientX-r.left)/r.width,(e.clientY-r.top)/r.height); };
+    st.addEventListener('pointermove',mv); st.addEventListener('pointerdown',function(e){ mv(e); });
+    st.addEventListener('keydown',function(e){ var k={ArrowLeft:[-.04,0],ArrowRight:[.04,0],ArrowUp:[0,-.04],ArrowDown:[0,.04]}[e.key]; if(!k) return; e.preventDefault(); put(px+k[0],py+k[1]); });
+    btn.addEventListener('click',function(){ var on=st.classList.toggle('lit'); btn.textContent=on?'Turn the yard light off':'Turn on the yard light'; if(on&&!done){ msg.textContent='Between the barn and the shed: was it there all along?'; } });
+  }); }catch(err){ psFail(err); }
+  /* the lineup: tap a bar for who said it */
+  try{ document.querySelectorAll('.nw-lineup').forEach(function(f){ var out=f.querySelector('.gr-out'), gs=[].slice.call(f.querySelectorAll('.gr-g'));
+    var pick=function(g){ gs.forEach(function(x){ x.classList.toggle('on',x===g); }); out.textContent=g.getAttribute('data-t'); };
+    gs.forEach(function(g){ g.addEventListener('click',function(){ pick(g); }); g.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); pick(g); } }); });
+  }); }catch(err){ psFail(err); }
   try{ document.querySelectorAll('.nw-cite').forEach(function(b){ b.addEventListener('click', function(){
       var d=new Date(), M=['January','February','March','April','May','June','July','August','September','October','November','December'];
       var t=b.getAttribute('data-cite')+' (accessed '+d.getDate()+' '+M[d.getMonth()]+' '+d.getFullYear()+').';

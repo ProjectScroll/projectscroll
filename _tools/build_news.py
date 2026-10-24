@@ -253,12 +253,12 @@ for k, st in enumerate(S):
       {finds}
       {gal}
       {series}
-      {cta}
+      {share_bottom('https://projectscroll.com/news/'+st["slug"]+'/', st["headline"])}
       {src}
+      {cta}
       {visit}
       {changes}
       {credit}
-      {share_bottom('https://projectscroll.com/news/'+st["slug"]+'/', st["headline"])}
       {CONTRIB}
       {pn}
     </article>
