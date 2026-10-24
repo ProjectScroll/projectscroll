@@ -16,12 +16,12 @@ CRUMB = '    <p class="crumb"><a href="/">← Project Scroll</a></p>\n'
 
 page('cases/index.html', 'The case board · Project Scroll',
      'Every mystery the Project Scroll hunt has posted, where each one stands, and who has cracked it. Free to play; every answer is in the record.',
-     CRUMB + frag('cases', keep=('cases',)) + '\n    <p class="center"><a class="btn" href="/#hunt">How the hunt works</a> <a class="btn" href="/hunt/">The hunt: your hunter’s card</a></p>\n',
+     CRUMB + frag('cases', keep=('cases',)) + '\n    <p class="center"><a class="btn" href="/#hunt">How the hunt works</a> <a class="btn" href="/treasure-hunt-quest/">The hunt: your hunter’s card</a></p>\n',
      og='https://projectscroll.com/og/hunt.jpg')
 
 page('services/index.html', 'Services: research, imaging, design, LiDAR and film · Project Scroll',
      'Lost ancestors, family histories, legends tested against the record, forgotten places; digital imaging, graphic and web design, photography, 3D LiDAR, animation and film. An honest first read before you commit to anything.',
-     CRUMB + frag('services', keep=('studio',)) + '\n    <p class="center"><a class="btn primary" href="/#contact">Tell us what you need</a> <a class="btn" href="/research/">Research services, in detail</a></p>\n',
+     CRUMB + frag('services', keep=('studio',)) + '\n    <p class="center"><a class="btn primary" href="/#contact">Tell us what you need</a> <a class="btn" href="/promotions/">Promotions for local businesses</a> <a class="btn" href="/research/">Research services, in detail</a></p>\n',
      og='https://projectscroll.com/og/services.jpg')
 
 ld = (H / 'faq-ld.html').read_text() if (H / 'faq-ld.html').exists() else ''

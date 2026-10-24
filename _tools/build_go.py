@@ -3,7 +3,7 @@ Change a destination here and every flyer already printed follows it.  python3 _
 import pathlib, html
 R = pathlib.Path(__file__).resolve().parents[1]
 GO = {
-    'clue': '/hunt/',
+    'clue': '/treasure-hunt-quest/',
     'facebook': 'https://www.facebook.com/projectscroll/',
     'dewey': '/news/the-week-dewey-lake-went-wild/',
     'lore': '/lore/',

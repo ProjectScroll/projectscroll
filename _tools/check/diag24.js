@@ -11,7 +11,7 @@ for (const [w,cs,lab] of [[1280,'light','computer'],[390,'dark','phone']]){
  ok(P+'reveal: sections start hidden below the fold', await q.evaluate(()=>document.documentElement.classList.contains('reveal') && !document.getElementById('faq').classList.contains('in')));
  await q.evaluate(()=>document.getElementById('faq').scrollIntoView()); await q.waitForTimeout(900); ok(P+'reveal: a section appears when scrolled to', await q.evaluate(()=>document.getElementById('faq').classList.contains('in')));
  // clue rotation
- await q.goto(BASE+'/hunt/'); await q.waitForTimeout(600);
+ await q.goto(BASE+'/treasure-hunt-quest/'); await q.waitForTimeout(600);
  { const want=await q.evaluate(()=>{ const l=JSON.parse(document.getElementById('clues').textContent); let c=l[0]; l.forEach(x=>{ if(new Date(x[0]+'T00:00:00')<=new Date()) c=x; }); return c[1]; });
  ok(P+'clue of the week matches today', (await q.textContent('#clueLbl')).includes(want), want); }
  await q.goto(BASE+'/'); await q.waitForTimeout(600);

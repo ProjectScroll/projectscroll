@@ -1,5 +1,5 @@
 """News of the hunt: the front-page news block on the home page, a page for every story, the news index and the
-hunt's own game page (/hunt/). Source of truth: _tools/data/news.json and cases.json.
+hunt's own game page (/treasure-hunt-quest/). Source of truth: _tools/data/news.json and cases.json.
 python3 _tools/build_news.py"""
 import json, re, html, sys, pathlib, datetime
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
@@ -28,6 +28,23 @@ N = json.load(open(f'{R}/_tools/data/news.json')); L = N['lead']; S = N['stories
 _FD = json.load(open(f'{R}/_tools/data/finds.json'))
 for _s in S:
     if _s['slug'] in _FD: _s['finds'] = [dict(x, d=x.get('d') or _s['date']) for x in _FD[_s['slug']]]
+def _howto(nf):
+    return ('<aside class="nw-howto" aria-labelledby="howH"><p class="nw-br-h" id="howH">How to read this page</p>'
+      '<p class="nh-lede">This is a living research document. Every statement carries a mark, so you always know what is on the record and what is our reading of it. Every source is listed at the foot of the page, and the story is updated as new records turn up.</p>'
+      '<ul class="nh-key"><li><span class="nw-tier d">Documented</span><span>A source says so, and you can read it yourself.</span></li>'
+      '<li><span class="nw-tier r">Reading</span><span>Our interpretation of the sources, kept separate from the facts.</span></li>'
+      + ('<li><span class="nw-tier n">New finding</span><span>Something we found in the record that no earlier telling mentions.</span></li>' if nf else '') + '</ul>'
+      '<div class="nh-hl" hidden><span class="nh-hl-l">Show me:</span><button type="button" aria-pressed="true" data-hl="">Everything</button><button type="button" aria-pressed="false" data-hl="d">Only the record</button><button type="button" aria-pressed="false" data-hl="r">Only our readings</button></div>'
+      '<p class="nh-count" aria-live="polite"></p></aside>')
+for _s in S:
+    _b = _s.get('body')
+    if not isinstance(_b, list): continue
+    _j = ' '.join(map(str, _b))
+    if _j.count('nw-tier') < 10 or 'nw-howto' in _j: continue
+    _nf = bool(_s.get('finds')) or 'nw-tier n' in _j
+    _k = [i for i, x in enumerate(_b) if 'How to read this page' in str(x)]
+    if _k: _b[_k[0]] = _howto(_nf)
+    elif '{{toc}}' in _b: _b.insert(_b.index('{{toc}}'), _howto(_nf))
 CASES = json.load(open(f'{R}/cases.json'))['cases']
 nopen = sum(1 for c in CASES if not c.get('solved')); ncracked = len(CASES) - nopen
 _TG = json.load(open(f'{R}/_tools/data/tags.json'))
@@ -209,7 +226,7 @@ for k, st in enumerate(S):
     gal = ('<div class="nw-gal">' + ''.join(f'<figure><a href="{E(g[0])}"><img src="{E(g[0])}" width="{g[1]}" height="{g[2]}" alt="{E(g[3])}" loading="lazy" decoding="async"></a><figcaption>{E(g[3])}</figcaption></figure>' for g in st['gallery']) + '</div>') if st.get('gallery') else ''
     words = len(re.sub('<[^>]+>', ' ', ' '.join(st['body'])).split()); mins = max(1, round(words/200))
     prv, nxt = S[k-1] if k else None, S[k+1] if k+1 < len(S) else None
-    pn = '<nav class="nw-pn" aria-label="Previous and next story">' + (f'<a class="nw-prev" href="/news/{prv["slug"]}/"><span>‹ Previous story</span>{E(prv["headline"])}</a>' if prv else '<a class="nw-prev" href="/hunt/"><span>‹ The lead story</span>Every clue is true.</a>') + (f'<a class="nw-next" href="/news/{nxt["slug"]}/"><span>Next story ›</span>{E(nxt["headline"])}</a>' if nxt else '<a class="nw-next" href="/"><span>Back to ›</span>The front page</a>') + '</nav>'
+    pn = '<nav class="nw-pn" aria-label="Previous and next story">' + (f'<a class="nw-prev" href="/news/{prv["slug"]}/"><span>‹ Previous story</span>{E(prv["headline"])}</a>' if prv else '<a class="nw-prev" href="/treasure-hunt-quest/"><span>‹ The lead story</span>Every clue is true.</a>') + (f'<a class="nw-next" href="/news/{nxt["slug"]}/"><span>Next story ›</span>{E(nxt["headline"])}</a>' if nxt else '<a class="nw-next" href="/"><span>Back to ›</span>The front page</a>') + '</nav>'
     def para(x):
         m = re.match(r'^\{\{(fig|wide|row|album)(?::([^}]*))?\}\}$', x)
         if m: return picblock(m.group(1), (m.group(2) or '').split(','))
@@ -228,7 +245,8 @@ for k, st in enumerate(S):
     who = st.get('credit')
     credit = (f'<div class="nw-about" role="note"><p class="nw-about-h">About this research</p>'
               + (f'<p class="nw-about-by">Research and reporting by <b>{E(who)}</b>.</p>' if who else '<p class="nw-about-by">Researched and written by the Project Scroll research desk.</p>')
-              + '<p>Every fact on this page comes from a source listed above, and each one can be checked where it is held. If you find an error, or hold a record that adds to the story, write to <a href="mailto:research@projectscroll.com">research@projectscroll.com</a>; corrections are made and noted on the page.</p></div>')
+              + '<p>Every fact on this page comes from a source listed above, and each one can be checked where it is held. If you find an error, or hold a record that adds to the story, write to <a href="mailto:research@projectscroll.com">research@projectscroll.com</a>; corrections are made and noted on the page.</p>'
+              + f'<p class="nw-copy">© {st["date"][:4]} {E(who + " and ") if who else ""}Project Scroll. All rights reserved. The text, original maps, charts and illustrations on this page may not be reproduced without permission; short quotations with credit and a link back are welcome. Photographs, clippings and quotations from other sources belong to their holders and are credited where they appear; public-domain material is marked as such.</p></div>')
     from urllib.parse import quote as _q
     visit = ('<aside class="nw-visit" aria-labelledby="vis-h"><p class="nw-visit-h" id="vis-h">Visit and see</p><ul>' + ''.join(f'<li><b>{E(v["name"])}</b> {E(v["note"])} <a class="nw-dir" href="https://www.google.com/maps/dir/?api=1&amp;destination={_q(v["where"])}">Directions ›</a></li>' for v in st['visit']) + '</ul><p class="nw-visit-n">Public places only. Please respect private land and posted hours.</p></aside>') if st.get('visit') else ''
     SER = [x for x in S if x.get('series') == 'names']
@@ -267,7 +285,7 @@ for k, st in enumerate(S):
 '''
     b += SHARE
     import pages as _P
-    _x={"datePublished":st["date"],"dateModified":st.get("modified") or st.get("updated") or st["date"],"image":[f'https://projectscroll.com{st["pic"][0]}.webp',f'https://projectscroll.com/news/{st["slug"]}/card.jpg'],"articleSection":"News of the hunt","mainEntityOfPage":f'https://projectscroll.com/news/{st["slug"]}/'}
+    _x={"datePublished":st["date"],"dateModified":st.get("modified") or st.get("updated") or st["date"],"image":[f'https://projectscroll.com{st["pic"][0]}.webp',f'https://projectscroll.com/news/{st["slug"]}/card.jpg'],"articleSection":"News of the hunt","mainEntityOfPage":f'https://projectscroll.com/news/{st["slug"]}/',"copyrightYear":int(st["date"][:4]),"copyrightHolder":{"@type":"Organization","name":"Project Scroll","url":"https://projectscroll.com/"}}
     if st.get('by'): _x["author"]={"@type":"Person","name":st["by"]}
     if st.get('live'): _x["creativeWorkStatus"]="Live research document, updated as new records are found"
     _P.EXTRA[f'news/{st["slug"]}/index.html']=_x
@@ -280,7 +298,7 @@ b = f'''    <div class="nw-index"><p class="crumb"><a href="/">← Front page</a
     <p class="kicker">News of the hunt</p>
     <h1>All the news</h1>
     <p class="lede">What’s new on the trail: new cases, new tools, new old pictures. The newest are on the front page too. Want them once a month by email? <a href="/newsletter/">Get the valley letter</a>.</p>
-    <article class="nw-card nw-card-lead"><a href="/hunt/"><span class="nw-k">{E(L["kicker"])}</span><b>{E(L["headline"])}</b><span>Project Scroll now has a new, free online treasure hunt. Here is how to play.</span></a></article>
+    <article class="nw-card nw-card-lead"><a href="/treasure-hunt-quest/"><span class="nw-k">{E(L["kicker"])}</span><b>{E(L["headline"])}</b><span>Project Scroll now has a new, free online treasure hunt. Here is how to play.</span></a></article>
     <div class="nw-filter" data-newsfilter hidden><label for="nwQ" class="vh">Search the news</label><input id="nwQ" type="search" placeholder="Search the news: a town, a name, a year" autocomplete="off"><button type="button" class="nw-fbtn" aria-pressed="false">Featured only</button><p class="nw-fcount" aria-live="polite"></p></div>
     <ul class="nw-cards">{cards}</ul>
     <p class="nw-fnone" hidden>No story matches that yet. Try another word, or <a href="mailto:research@projectscroll.com">tell us what you are looking for</a>.</p>
@@ -307,6 +325,7 @@ for i, h in enumerate(halls):
                f'<ol class="hn-cases">{"".join(tile(c) for c in cs)}</ol></section>')
 fog = ''.join(f'<li class="hn-fog"><span class="hn-lv">Level {len(halls)+k+1} · Hall {"III IV V".split()[k]}</span><span>In the fog</span><span class="note">Opens when the hunt gets there</span></li>' for k in range(3))
 practice = [c for c in CASES if c['hall'] == 'desk']
+BOARD = ''.join(f'<tr class="{"solved" if c.get("solved") else ""}"><td><a href="/cases/{c["n"]}/">Case {c["n"]}</a></td><td>{E(qtext(c["n"]))}</td><td>{E(c.get("opened") or "")}</td><td>{("Cracked by " + E(c["solved"])) if c.get("solved") else ("Practice" if c["hall"]=="desk" else "Open")}</td></tr>' for c in CASES)
 FB1 = 'https://www.facebook.com/projectscroll/posts/pfbid02v8LvpApazxUZnzXDGX9z5WTPJX8LkGDUHDB3iQZyigMWMCuytPBfC6doeLBXbLdKl'
 QUESTS = [('casefile', 'Open a case', 'Read the first source of any case.', '/cases/1/'), ('thennow', 'Lay an old town over today', 'Fade a town plan of the 1860s into today’s streets.', '/map/cassopolis/'),
           ('street', 'Find a street that changed its name', 'Every then-and-now town hides one.', '/map/then-and-now/'), ('mapper', 'Walk the 1860 wall map', 'The whole county, every farm and name.', '/map/'),
@@ -334,15 +353,20 @@ document.addEventListener('DOMContentLoaded', function(){ "use strict";
 });
 </script>'''
 b = f'''    <div class="hn"><p class="crumb"><a href="/">← Front page</a> · <a href="/news/">All the news</a></p>
-    <div class="hn-head">
-      <div>
-        <figure class="hn-pic"><picture><source type="image/avif" srcset="/img/news/lead-hunt-360.avif 360w, /img/news/lead-hunt.avif 720w" sizes="10rem"><img src="/img/news/lead-hunt-360.webp" srcset="/img/news/lead-hunt-360.webp 360w, /img/news/lead-hunt.webp 720w" sizes="10rem" width="720" height="1280" alt="{E(L["pic"][1])}" decoding="async"></picture></figure>
-        <p class="kicker">The hunt</p>
-        <h1>Every clue is true.</h1>
-        <p class="lede">Project Scroll now has a new, free online treasure hunt. Real mysteries, history and clues hide in county histories, survey maps, certificates, forgotten newspapers, lore and local legends. Every one of them can be solved by you, and every answer is in the record.</p>
+    <div class="hn-head hn-head-ad">
+      <aside class="promo sv mod hn-ad" aria-labelledby="hnAdH">
+        <i class="sv-orn o1" aria-hidden="true">❦</i><i class="sv-orn o2" aria-hidden="true">❦</i><i class="sv-orn o3" aria-hidden="true">❦</i><i class="sv-orn o4" aria-hidden="true">❦</i>
+        <p class="sv-stamp" aria-hidden="true"><span>Free to <br>play</span></p>
+        <p class="sv-banner"><span>★ The Project Scroll quest ★</span></p>
+        <h1 class="promo-h" id="hnAdH">Every clue is true.</h1>
+        <p class="sv-serve">A free treasure hunt in the records of the St. Joseph River valley</p>
+        <figure class="sv-hero"><picture><source type="image/avif" srcset="/img/news/lead-hunt-band.avif" sizes="(min-width:1000px) 56rem, 94vw"><img src="/img/news/lead-hunt-band.webp" width="900" height="506" alt="An oil lamp burning on an old desk beside an open book, a brass magnifying glass and a leather-bound volume." decoding="async"></picture>
+          <figcaption class="sv-hero-t"><b>The answers are on the page.</b><span>County histories · Survey maps · Certificates · Forgotten newspapers · Lore and legend</span></figcaption></figure>
+        <p class="sv-tag"><span>Real cases</span> <i>·</i> <span>Halls to light</span> <i>·</i> <span>Badges</span> <i>·</i> <span>Side quests</span> <i>·</i> <span>No sign-up</span></p>
+        <p class="promo-lede">Real mysteries, history and clues hide in county histories, survey maps, certificates, forgotten newspapers, lore and local legends. Every one of them can be solved by you, and every answer is in the record.</p>
         <ul class="hn-stats"><li><b>{nopen}</b> cases open</li><li><b>{len(halls)}</b> halls lit</li><li><b>Free</b> no sign-up</li></ul>
-        <p class="nw-cta"><a class="btn primary" href="/cases/1/">Start with Case 1</a> <a class="btn" href="{FB1}">Open the first door on Facebook</a></p>
-      </div>
+        <p class="promo-ctas"><a class="btn primary" href="/cases/1/">Start with Case 1</a><a class="btn" href="#hnBoard">See the case board</a><a class="btn" href="{FB1}">Open the first door on Facebook</a></p>
+      </aside>
       <aside class="hn-card" id="hnCard" hidden aria-labelledby="hnCardH">
         <p class="hn-lv" id="hnCardH">Your hunter’s card</p>
         <p class="hn-rank" id="hnRank">Candidate</p>
@@ -356,6 +380,7 @@ b = f'''    <div class="hn"><p class="crumb"><a href="/">← Front page</a> · <
 
     {pathlib.Path(R, '_tools/data/home/clue.html').read_text().strip() if pathlib.Path(R, '_tools/data/home/clue.html').exists() else ''}
 
+    <nav class="hn-jump" aria-label="On this page"><a href="#hnHow">How to play</a><a href="#hnLevels">The levels</a><a href="#hnBoard">The case board</a><a href="#hnSide">Side quests</a><a href="#hnTools">Tools</a><a href="#hnRules">The rules</a></nav>
     <section aria-labelledby="hnHow"><h2 id="hnHow">How to play</h2>
       <ol class="hn-steps"><li><b>Find a clue.</b> Every mystery is posted on Project Scroll’s Facebook page, and each case has its own page with the first sources to open.</li>
       <li><b>Search the record.</b> Old books, maps and certificates, many of them free online.</li>
@@ -377,16 +402,23 @@ b = f'''    <div class="hn"><p class="crumb"><a href="/">← Front page</a> · <
       <ul class="hn-quests">{quests}</ul>
       <p><a href="/badges/">All the badges, and the five ranks ›</a></p></section>
 
-    <section aria-labelledby="hnTools"><h2 id="hnTools">Tools for the hunt</h2>
+    <section aria-labelledby="hnTools"><h2 id="hnTools">Tools for the quest</h2>
       {pathlib.Path(R, '_tools/data/home/explore.html').read_text().strip()}</section>
 
-    <section aria-labelledby="hnSolvers"><h2 id="hnSolvers">The solvers</h2>
-      <p>{"No case has been cracked yet. The first name on the board could be yours." if not ncracked else "Named on the case board, for good."}</p></section>
+    <section aria-labelledby="hnBoard" id="hnBoardS"><h2 id="hnBoard">The case board</h2>
+      <p>Every case on the quest, and who cracked it. {"No case has been cracked yet. The first name on the board could be yours." if not ncracked else "The first solver is named here, for good."}</p>
+      <div class="hn-board-w"><table class="hn-board"><thead><tr><th scope="col">Case</th><th scope="col">The question</th><th scope="col">Opened</th><th scope="col">Status</th></tr></thead><tbody>{BOARD}</tbody></table></div>
+      <p><a href="/cases/">The full case board, with every clue and source ›</a></p></section>
 
     <section aria-labelledby="hnRules"><h2 id="hnRules">The rules</h2>
       <ul class="hn-rules"><li><b>Read the record.</b> Every answer is in a book, on a map, or on a page.</li><li><b>Show your work.</b> A name without the page it came from is only a guess.</li>
       <li><b>Stay on paper.</b> Never dig, never go near a grave, and never set foot on anyone’s land.</li><li><b>Be kind.</b> These are real people, and their families are still here.</li></ul>
-      <p class="note">Tools for the hunt: <a href="/records/">where the records are</a>, <a href="/glossary/">the glossary</a>, <a href="/toolkit/">the toolkit</a> and <a href="/worksheet/project-scroll-hunters-worksheet.pdf">the hunter’s worksheet (PDF)</a>.</p></section></div>
+      <p class="note">Tools for the hunt: <a href="/records/">where the records are</a>, <a href="/glossary/">the glossary</a>, <a href="/toolkit/">the toolkit</a> and <a href="/worksheet/project-scroll-hunters-worksheet.pdf">the hunter’s worksheet (PDF)</a>.</p></section>
+    {share_bottom('https://projectscroll.com/treasure-hunt-quest/', 'The Project Scroll quest: every clue is true', 'https://projectscroll.com/hunt/card.jpg', 'A free treasure hunt in the records of the St. Joseph River valley.')}
+    {SV_MINI}</div>
 ''' + JS + '\n'
-page('hunt/index.html', 'The hunt: every clue is true · Project Scroll', 'Project Scroll’s free online treasure hunt: real mysteries of the St. Joseph River valley, solved from county histories, maps and certificates. Levels, side quests and badges, no sign-up.', b, og='https://projectscroll.com/hunt/card.jpg?v=1')
+page('treasure-hunt-quest/index.html', 'The treasure hunt quest: every clue is true · Project Scroll', 'Project Scroll’s free online treasure hunt: real mysteries of the St. Joseph River valley, solved from county histories, maps and certificates. Levels, side quests and badges, no sign-up.', b, og='https://projectscroll.com/hunt/card.jpg?v=1')
+import os as _os
+_os.makedirs(f'{R}/hunt', exist_ok=True)
+open(f'{R}/hunt/index.html','w').write('<!doctype html><html lang="en"><head><meta charset="utf-8"><title>The treasure hunt quest · Project Scroll</title><meta name="robots" content="noindex"><link rel="canonical" href="https://projectscroll.com/treasure-hunt-quest/"><meta http-equiv="refresh" content="0; url=/treasure-hunt-quest/"><script>location.replace("/treasure-hunt-quest/"+location.hash)</script></head><body><p>The quest has moved: <a href="/treasure-hunt-quest/">projectscroll.com/treasure-hunt-quest</a></p></body></html>')
 print('news built:', len(S), 'stories, the hunt page and the front page')

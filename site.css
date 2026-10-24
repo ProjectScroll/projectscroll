@@ -4822,3 +4822,23 @@ blockquote.nw-q::before{font-size:4.4rem;top:-.55em}
 .nw-sounds{position:relative;padding-right:4.5rem}
 .nw-sounds::after{content:"";position:absolute;right:1rem;top:1rem;width:2.8rem;height:2rem;opacity:.7;background:linear-gradient(90deg,transparent 0 10%,currentColor 10% 16%,transparent 16% 26%,currentColor 26% 32%,transparent 32% 42%,currentColor 42% 48%,transparent 48% 58%,currentColor 58% 64%,transparent 64% 74%,currentColor 74% 80%,transparent 80%);color:#b3362b;clip-path:polygon(10% 30%,16% 30%,16% 70%,10% 70%,10% 30%,26% 0,32% 0,32% 100%,26% 100%,26% 0,42% 20%,48% 20%,48% 80%,42% 80%,42% 20%,58% 5%,64% 5%,64% 95%,58% 95%,58% 5%,74% 35%,80% 35%,80% 65%,74% 65%,74% 35%)}
 blockquote.nw-q footer{margin:.3rem 0 0;padding:0;border:0;background:none}
+/* the quest page: the ad on top, the case board, jump links */
+.hn-head.hn-head-ad{display:block}
+.hn-head-ad .hn-ad{margin:.6rem 0 1.4rem}
+.hn-head-ad .hn-ad h1.promo-h{font-size:clamp(2.2rem,1.4rem + 3.6vw,3.4rem);margin:.2rem 0 .3rem}
+.hn-head-ad .hn-stats{justify-content:center}
+.hn-head-ad .hn-card{max-width:30rem;margin:0 auto 1.4rem}
+.hn-jump{display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center;margin:0 0 1.6rem}
+.hn-jump a{padding:.35rem .85rem;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);font-size:.9rem;background:color-mix(in srgb,var(--paper-2,#16202c) 50%,transparent)}
+.hn-jump a:hover{border-color:var(--gold-lo,#c9a24a)}
+.hn-board-w{overflow-x:auto;margin:.8rem 0}
+.hn-board{width:100%;border-collapse:collapse;font-size:.93rem}
+.hn-board th,.hn-board td{padding:.55rem .6rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.hn-board th{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lo,#c9a24a)}
+.hn-board td:first-child{white-space:nowrap;font-weight:600}
+.hn-board tr.solved td:last-child{color:#7fd39a;font-weight:600}
+/* promotions page */
+.pr-hero h1.promo-h{font-size:clamp(2rem,1.3rem + 3vw,3rem)}
+.pr-cols{grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))!important}
+.hn-ad h1.promo-h,.pr-hero h1.promo-h{font-size:clamp(2.1rem,1.3rem + 3.4vw,3.3rem)!important;line-height:1.08}
+.nw-copy{margin:.8rem 0 0;padding-top:.6rem;border-top:1px solid var(--line);font-size:.8rem;line-height:1.45;color:var(--ink-soft)}

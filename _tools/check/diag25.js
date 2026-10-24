@@ -20,7 +20,7 @@ for (const [w,cs,lab] of [[1280,'light','computer'],[390,'dark','phone']]){
  // ornaments
  const orn=await q.evaluate(()=>getComputedStyle(document.querySelector('#cases'),'::before').backgroundImage.includes('svg')); ok(P+'engraved flourish between sections', orn);
  // explore cards + case links
- { await q.goto(BASE+'/hunt/'); await q.waitForTimeout(500); ok(P+'eight explore cards present', await q.evaluate(()=>document.querySelectorAll('.explore a').length===8)); await q.goto(BASE+'/'); await q.waitForTimeout(500); }
+ { await q.goto(BASE+'/treasure-hunt-quest/'); await q.waitForTimeout(500); ok(P+'eight explore cards present', await q.evaluate(()=>document.querySelectorAll('.explore a').length===8)); await q.goto(BASE+'/'); await q.waitForTimeout(500); }
  { await q.goto(BASE+'/cases/'); await q.waitForTimeout(600); const pg=q.context().waitForEvent('page',{timeout:4000}).catch(()=>null); await q.click('#case-4 .qlink'); let cp=await pg; if(!cp){ await q.waitForURL(/\/cases\/4\/$/,{timeout:8000}).catch(()=>{}); cp=q; } await cp.waitForLoadState(); ok(P+'case question opens its own page', /\/cases\/4\/$/.test(cp.url()));
  ok(P+'case page has its own share card', (await cp.getAttribute('meta[property="og:image"]','content')).endsWith('/cases/4/card.jpg'));
  ok(P+'case page shows Open status', /Open/.test(await cp.textContent('.casestatus'))); if(cp!==q) await cp.close(); }
