@@ -4887,3 +4887,17 @@ html.inframe .placeband{display:none!important}
 .nw-find output{font-size:.85rem;color:var(--ink-soft)}
 .nw-text .nf-hit{outline:2px solid color-mix(in srgb,var(--gold-lo,#c9a24a) 70%,transparent);outline-offset:4px;border-radius:2px}
 .nw-text .nf-cur{background:color-mix(in srgb,var(--gold-lo,#c9a24a) 14%,transparent)}
+
+/* the masthead stays at the top of the screen while the page scrolls; the bar sits just under it */
+:root{--mh-h:100px}
+@media (max-width:700px){ :root{--mh-h:64px} }
+.masthead{position:sticky; top:0; z-index:7}
+.bar{top:var(--mh-h)}
+html{scroll-padding-top:calc(5.8rem + var(--mh-h))}
+.panel{top:calc(5rem + var(--mh-h))}
+.nm-bar{top:calc(4.2rem + var(--mh-h))}
+.nw-quiz-score{top:calc(3.6rem + var(--mh-h))}
+dl.marks > div,.ledger tr[id^="case-"],.mu,.wk,.se{scroll-margin-top:calc(6rem + var(--mh-h))}
+.dsc-list>li,.dr-stop,.cg-c{scroll-margin-top:calc(5rem + var(--mh-h))}
+html.inframe .bar{top:0}
+@media print{ .bar{top:0} }

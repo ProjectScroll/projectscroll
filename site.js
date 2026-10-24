@@ -1829,3 +1829,10 @@ try{ (function(){
     secs.forEach(function(p){ if (p[0].contains(el) && p[0]!==el){ p[0].classList.remove('fold'); p[1].remove(); el.scrollIntoView(); } }); };
   open(); addEventListener('hashchange', open);
 })(); }catch(err){ psFail(err); }
+
+/* ---------- keep the bar's sticky offset equal to the masthead's live height (it grows on hover or tap) ---------- */
+try{ (function(){
+  const mh=document.getElementById('masthead'); if (!mh || !('ResizeObserver' in window)) return;
+  const set=function(){ document.documentElement.style.setProperty('--mh-h', mh.offsetHeight+'px'); };
+  new ResizeObserver(set).observe(mh); set();
+})(); }catch(err){ psFail(err); }
