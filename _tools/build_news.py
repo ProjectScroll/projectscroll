@@ -50,7 +50,7 @@ def tags(st, ribbon=None):
         if st['slug'] in xs:
             k = xs.index(st['slug']); nx = xs[k+1] if k+1 < len(xs) else xs[0]
             t.append(('ser', f'Series · {k+1} of {len(xs)}', f'/news/{nx}/', 'next part' if k+1 < len(xs) else 'part 1')); break
-    if st.get('visit'): t.append(('visit', 'Go see it'))
+    if st.get('visit') and not st.get('nogo'): t.append(('visit', 'Go see it'))
     m = max(1, round(_words(st)/200))
     t.append(('len', f'{m} min read'))
     def one(x):
