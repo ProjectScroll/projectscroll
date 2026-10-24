@@ -232,7 +232,7 @@ for k, st in enumerate(S):
         if m: return picblock(m.group(1), (m.group(2) or '').split(','))
         if x.startswith('## '):
             t=x[3:]; return f'<h2 id="{re.sub(r"[^a-z0-9]+","-",t.lower()).strip("-")}">{t}</h2>'
-        return x if re.match(r'<(aside|nav|blockquote|ul|ol|p|div|figure)\b', x) else f'<p>{x}</p>'
+        return x if re.match(r'</?(aside|nav|blockquote|ul|ol|p|div|figure|details|summary)\b', x) else f'<p>{x}</p>'
     if '{{toc}}' in st['body']:
         hs=[x[3:] for x in st['body'] if x.startswith('## ')]
         toc='<nav class="nw-toc" aria-label="On this page"><b>On this page</b><ol>'+''.join(f'<li><a href="#{re.sub(r"[^a-z0-9]+","-",h.lower()).strip("-")}">{h}</a></li>' for h in hs)+'<li><a href="#sources">Sources</a></li></ol></nav>'

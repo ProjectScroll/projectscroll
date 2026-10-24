@@ -4866,3 +4866,24 @@ html.inframe .placeband{display:none!important}
 @media (min-width:641px) and (max-width:899px){ .sheet > .toolrow{padding-top:49px;margin:0} }
 @media (max-width:640px){ .sheet > .toolrow{padding-top:2.25rem} }
 @media (min-width:861px) and (max-width:899px){ .sheet > .toolrow{margin:0 4px} }
+/* key line beside a clipping */
+.nw-clipq{margin:1.2rem 0 .4rem;padding:.2rem 0 .2rem 1rem;border-left:4px solid var(--rule)}
+.nw-clipq p{margin:0;font-family:"Libre Caslon Display","Caslon Display Fallback",serif;font-size:clamp(1.25rem,1rem + 1vw,1.55rem);line-height:1.25}
+.nw-clipq footer{margin-top:.25rem;font-size:.8rem;color:var(--ink-soft)}
+/* fold for long lists of reports */
+.nw-more{margin:1rem 0 1.4rem;border:1px solid var(--line);border-radius:8px;padding:.2rem 1rem}
+.nw-more > summary{cursor:pointer;padding:.7rem 0;font-weight:600;color:var(--gold-lo,#c9a24a)}
+.nw-more[open] > summary{border-bottom:1px solid var(--line);margin-bottom:.8rem}
+/* you decide */
+.nw-decide{margin:1.8rem 0;padding:1.1rem 1.2rem;border:1px solid color-mix(in srgb,var(--gold-lo,#c9a24a) 55%,transparent);border-radius:8px;background:color-mix(in srgb,var(--gold-lo,#c9a24a) 6%,transparent);clear:both}
+.yd-opts{display:flex;flex-wrap:wrap;gap:.5rem;margin:.6rem 0}
+.yd-opts button{font:inherit;font-size:.92rem;min-height:42px;padding:.3rem .95rem;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.yd-opts button[aria-pressed="true"]{background:var(--gold-lo,#c9a24a);border-color:var(--gold-lo,#c9a24a);color:#16120a;font-weight:600}
+.yd-out{margin:.4rem 0 0;padding:.7rem .9rem;border-left:3px solid var(--gold-lo,#c9a24a);background:color-mix(in srgb,var(--paper-2,#16202c) 60%,transparent)}
+/* find in this story */
+.nw-find{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:.6rem 0 1.4rem}
+.nw-find input{flex:1 1 14rem;min-width:0;font:inherit;padding:.45rem .8rem;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+.nw-find button{font:inherit;font-size:.88rem;min-height:38px;padding:.25rem .85rem;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.nw-find output{font-size:.85rem;color:var(--ink-soft)}
+.nw-text .nf-hit{outline:2px solid color-mix(in srgb,var(--gold-lo,#c9a24a) 70%,transparent);outline-offset:4px;border-radius:2px}
+.nw-text .nf-cur{background:color-mix(in srgb,var(--gold-lo,#c9a24a) 14%,transparent)}

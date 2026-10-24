@@ -1409,6 +1409,25 @@ try{ (function(){
     var set=function(v){ w.style.setProperty('--cut',v+'%'); }; r.addEventListener('input',function(){ set(r.value); });
     w.addEventListener('pointerdown',function(e){ var mv=function(ev){ var b=w.getBoundingClientRect(); var v=Math.max(0,Math.min(100,(ev.clientX-b.left)/b.width*100)); r.value=v; set(v); }; mv(e); w.setPointerCapture(e.pointerId); w.onpointermove=mv; w.onpointerup=function(){ w.onpointermove=null; }; });
   }); }catch(err){ psFail(err); }
+  /* you decide: a verdict, kept on this device */
+  try{ document.querySelectorAll('.nw-decide').forEach(function(box){ var out=box.querySelector('.yd-out'), bs=[].slice.call(box.querySelectorAll('.yd-opts button'));
+    var T={bear:'A bear is the officials’ answer, and black bears do stand up. But bears were all but unknown this far south in 1964, and three girls watched it walk across a road on two legs in broad daylight.',
+      hoax:'There were hoaxes: a youth in fur on I-96 and boys in ponchos at Ionia. But the first reports came two summers before anyone could have known to fake them, from people who kept quiet for fear of being laughed at.',
+      fever:'Once the radio said “monster,” every shape at the edge of every field became one, and a hunter fired at a pony. Fear grew the monster from seven feet to ten in print. But fever needs a first spark.',
+      unknown:'Nobody has explained it, and nobody has ruled it out. The farmhouse, the moonless night, the girls in daylight, and the warning on the old road to Dewey’s Lake are all still on the record.'};
+    var pick=function(v){ bs.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.v===v?'true':'false'); }); out.textContent=T[v]||''; out.hidden=!T[v]; try{ localStorage.setItem('ps-decide-'+location.pathname, v); }catch(e){} };
+    bs.forEach(function(b){ b.addEventListener('click', function(){ pick(b.dataset.v); }); });
+    try{ var v=localStorage.getItem('ps-decide-'+location.pathname); if(v) pick(v); }catch(e){}
+  }); }catch(err){ psFail(err); }
+  /* find in this story: long stories get a search that jumps from match to match */
+  try{ (function(){ var tx=document.querySelector('.nw-text'), toc=document.querySelector('.nw-toc'); if(!tx||!toc||tx.querySelectorAll('h2').length<8) return;
+    var w=document.createElement('div'); w.className='nw-find'; w.setAttribute('role','search'); w.innerHTML='<input type="search" placeholder="Find in this story: a name, a place, a word" aria-label="Find in this story"><button type="button">Next ›</button><output aria-live="polite"></output>';
+    toc.parentNode.insertBefore(w, toc.nextSibling); var inp=w.querySelector('input'), nx=w.querySelector('button'), o=w.querySelector('output'), hits=[], k=-1;
+    var clear=function(){ hits.forEach(function(h){ h.classList.remove('nf-hit','nf-cur'); }); hits=[]; k=-1; };
+    var go=function(){ if(!hits.length) return; if(k>=0) hits[k].classList.remove('nf-cur'); k=(k+1)%hits.length; var h=hits[k]; var d=h.closest('details'); if(d) d.open=true; h.classList.add('nf-cur'); h.scrollIntoView({block:'center',behavior:'smooth'}); o.textContent=(k+1)+' of '+hits.length; };
+    var run=function(){ clear(); var q=inp.value.trim().toLowerCase(); if(q.length<3){ o.textContent=''; return; } hits=[].slice.call(tx.querySelectorAll('p, li, figcaption, blockquote')).filter(function(e){ return !e.closest('.nw-toc') && e.textContent.toLowerCase().indexOf(q)>-1 && !e.querySelector('p, li'); }); hits.forEach(function(h){ h.classList.add('nf-hit'); }); o.textContent=hits.length?hits.length+' found':'Not found'; };
+    var t=0; inp.addEventListener('input',function(){ clearTimeout(t); t=setTimeout(run,250); }); inp.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); if(!hits.length) run(); go(); } }); nx.addEventListener('click',function(){ if(!hits.length) run(); go(); });
+  })(); }catch(err){ psFail(err); }
   try{ document.querySelectorAll('.nw-cite').forEach(function(b){ b.addEventListener('click', function(){
       var d=new Date(), M=['January','February','March','April','May','June','July','August','September','October','November','December'];
       var t=b.getAttribute('data-cite')+' (accessed '+d.getDate()+' '+M[d.getMonth()]+' '+d.getFullYear()+').';
