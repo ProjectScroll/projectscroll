@@ -12,7 +12,8 @@ for (const [w,cs,lab] of [[1280,'light','computer'],[390,'dark','phone']]){
  await q.evaluate(()=>document.getElementById('faq').scrollIntoView()); await q.waitForTimeout(900); ok(P+'reveal: a section appears when scrolled to', await q.evaluate(()=>document.getElementById('faq').classList.contains('in')));
  // clue rotation
  await q.goto(BASE+'/hunt/'); await q.waitForTimeout(600);
- ok(P+'clue of the week matches today (18 Oct → 17 Oct clue)', /17 October/.test(await q.textContent('#clueLbl')));
+ { const want=await q.evaluate(()=>{ const l=JSON.parse(document.getElementById('clues').textContent); let c=l[0]; l.forEach(x=>{ if(new Date(x[0]+'T00:00:00')<=new Date()) c=x; }); return c[1]; });
+ ok(P+'clue of the week matches today', (await q.textContent('#clueLbl')).includes(want), want); }
  await q.goto(BASE+'/'); await q.waitForTimeout(600);
  const go=async u=>{ await q.goto(BASE+u); await q.waitForTimeout(600); };
  // checker (services page)

@@ -4654,3 +4654,15 @@ main > section.teaser p.center .btn{margin:0!important}
 .pb-tag.pb-tag-r::after{display:none}
 .pb-tag.pb-tag-r::before{content:""; width:.38rem; height:.38rem; margin-right:.7rem; transform:rotate(45deg); background:var(--gold)}
 .placeband .pb-pause + .pb-tag-r{padding-left:.6rem}
+/* Dewey: the $7.95 kit as a sales slip, and the growing bars */
+.nw-kit{border-left:0;border:1px dashed color-mix(in srgb,var(--ink) 35%,transparent);border-radius:4px;background:color-mix(in srgb,var(--glow-gold,#e8b64c) 7%,transparent);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;max-width:26rem}
+.nw-kit .nw-br-h{border-bottom:1px dashed color-mix(in srgb,var(--ink) 35%,transparent);padding-bottom:.4rem;letter-spacing:.06em;text-transform:uppercase}
+.nw-kit ul{list-style:none;padding:0;margin:.5rem 0}
+.nw-kit ul li{list-style:none!important;background:none!important;padding-left:1.5em!important;position:relative;margin:.15rem 0}
+.nw-kit ul li::marker{content:""}
+.nw-kit ul li::before{content:"☐"!important;position:absolute;left:0;top:-.1em;font-size:1.25em;line-height:1.4;opacity:.8;background:none!important;width:auto;height:auto;border:0;border-radius:0}
+.nw-kit p:last-child{font-style:italic;opacity:.8}
+.nw-grow .gr-b{transform-box:fill-box;transform-origin:bottom;animation:grUp 1.2s cubic-bezier(.2,.8,.2,1) both}
+.nw-grow .gr-b:nth-of-type(2){animation-delay:.15s}.nw-grow .gr-b:nth-of-type(3){animation-delay:.3s}.nw-grow .gr-b:nth-of-type(4){animation-delay:.45s}.nw-grow .gr-b:nth-of-type(5){animation-delay:.6s}
+@keyframes grUp{from{transform:scaleY(0)}}
+@media (prefers-reduced-motion:reduce){.nw-grow .gr-b{animation:none}}
